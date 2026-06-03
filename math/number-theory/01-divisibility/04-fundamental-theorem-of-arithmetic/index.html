@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4 Fundamental Theorem of Arithmetic — Number Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Number Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Number Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-divisibility">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-divisibility/" class="toc-chapter-link"><strong>1.</strong> Divisibility</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-divisibility/01-divisibility-and-division-algorithm/">1.1 Divisibility and the Division Algorithm</a>
+                        <a href="../../01-divisibility/02-greatest-common-divisor/">1.2 Greatest Common Divisor</a>
+                        <a href="../../01-divisibility/03-euclidean-algorithm/">1.3 The Euclidean Algorithm</a>
+                        <a href="../../01-divisibility/04-fundamental-theorem-of-arithmetic/">1.4 Fundamental Theorem of Arithmetic</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-congruences">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-congruences/" class="toc-chapter-link"><strong>2.</strong> Congruences</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-congruences/01-congruence-relations/">2.1 Congruence Relations</a>
+                        <a href="../../02-congruences/02-chinese-remainder-theorem/">2.2 Chinese Remainder Theorem</a>
+                        <a href="../../02-congruences/03-eulers-theorem-and-fermats-little-theorem/">2.3 Euler's Theorem and Fermat's Little Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-arithmetic-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-arithmetic-functions/" class="toc-chapter-link"><strong>3.</strong> Arithmetic Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-arithmetic-functions/01-multiplicative-functions/">3.1 Multiplicative Functions</a>
+                        <a href="../../03-arithmetic-functions/02-eulers-totient-function/">3.2 Euler's Totient Function</a>
+                        <a href="../../03-arithmetic-functions/03-mobius-function-and-inversion/">3.3 Möbius Function and Inversion</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-quadratic-residues">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-quadratic-residues/" class="toc-chapter-link"><strong>4.</strong> Quadratic Residues</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-quadratic-residues/01-legendre-symbol/">4.1 Legendre Symbol</a>
+                        <a href="../../04-quadratic-residues/02-quadratic-reciprocity/">4.2 Quadratic Reciprocity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-continued-fractions">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-continued-fractions/" class="toc-chapter-link"><strong>5.</strong> Continued Fractions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-continued-fractions/01-finite-and-infinite-continued-fractions/">5.1 Finite and Infinite Continued Fractions</a>
+                        <a href="../../05-continued-fractions/02-convergents/">5.2 Convergents</a>
+                        <a href="../../05-continued-fractions/03-pells-equation/">5.3 Pell's Equation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-distribution-of-primes">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-distribution-of-primes/" class="toc-chapter-link"><strong>6.</strong> Distribution of Primes</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-distribution-of-primes/01-infinitude-of-primes/">6.1 Infinitude of Primes</a>
+                        <a href="../../06-distribution-of-primes/02-prime-counting-function/">6.2 Prime Counting Function</a>
+                        <a href="../../06-distribution-of-primes/03-prime-number-theorem/">6.3 Prime Number Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Number Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Number Theory</a> ›
+                <a href="../">1. Divisibility</a> ›
+                <span>1.4 Fundamental Theorem of Arithmetic</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">1.4 Fundamental Theorem of Arithmetic</h1>
+
+                <p>The Fundamental Theorem of Arithmetic asserts that prime factorisation is both possible and unique for every integer greater than $1$. This is the bedrock of multiplicative number theory.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 1.4.1 — Fundamental Theorem of Arithmetic</div>
+                    <p class="mb-0">Every integer $n > 1$ can be written uniquely (up to ordering) as a product of primes:
+                    $$n = p_1^{a_1} p_2^{a_2} \cdots p_k^{a_k}$$
+                    where $p_1 &lt; p_2 &lt; \cdots &lt; p_k$ are primes and $a_i \ge 1$ for all $i$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof — Existence</div>
+                    <p>By strong induction on $n$. The base case $n = 2$ is a prime. Suppose every integer from $2$ to $n-1$ factors into primes. If $n$ is prime, we are done. Otherwise $n = ab$ with $1 &lt; a, b &lt; n$, and by the induction hypothesis both $a$ and $b$ factor into primes, so their product gives a prime factorisation of $n$. $\square$</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof — Uniqueness</div>
+                    <p>Suppose $n = p_1 \cdots p_r = q_1 \cdots q_s$ are two factorisations into (not necessarily distinct) primes. Since $p_1 \mid q_1 \cdots q_s$, by repeated application of Euclid's Lemma (Theorem 1.2.5) we have $p_1 \mid q_j$ for some $j$. Since $q_j$ is prime, $p_1 = q_j$. Cancel $p_1 = q_j$ from both sides and apply the same argument to $p_2, \ldots, p_r$. At each step one factor is removed from each side, so $r = s$ and the primes are equal (up to reordering). $\square$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Consequences</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 1.4.2 — GCD and LCM via Prime Factorisations</div>
+                    <p>If $n = \prod p_i^{a_i}$ and $m = \prod p_i^{b_i}$ (with $a_i, b_i \ge 0$), then:
+                    $$\gcd(m,n) = \prod p_i^{\min(a_i,b_i)}, \qquad \text{lcm}(m,n) = \prod p_i^{\max(a_i,b_i)}.$$
+                    </p>
+                    <p class="mb-0">In particular $\gcd(m,n) \cdot \text{lcm}(m,n) = mn$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 1.4.3 — Divisor Functions</div>
+                    <p>Let $n = p_1^{a_1} \cdots p_k^{a_k}$. Then:</p>
+                    <ul class="mb-0">
+                        <li>The <strong>number of divisors</strong>: $\tau(n) = \displaystyle\prod_{i=1}^k (a_i + 1)$.</li>
+                        <li>The <strong>sum of divisors</strong>: $\sigma(n) = \displaystyle\prod_{i=1}^k \frac{p_i^{a_i+1} - 1}{p_i - 1}$.</li>
+                    </ul>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p class="mb-0">Every divisor of $n$ has the form $p_1^{b_1} \cdots p_k^{b_k}$ with $0 \le b_i \le a_i$. There are $a_i + 1$ choices for each $b_i$, giving $\tau(n) = \prod(a_i+1)$. For $\sigma$, summing over all such divisors and using the geometric series formula $\sum_{j=0}^{a} p^j = (p^{a+1}-1)/(p-1)$ on each prime factor independently yields the product formula. $\square$</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 1.4.4</div>
+                    <p>$360 = 2^3 \cdot 3^2 \cdot 5^1$.</p>
+                    <ul class="mb-0">
+                        <li>$\tau(360) = (3+1)(2+1)(1+1) = 4 \cdot 3 \cdot 2 = 24$ divisors.</li>
+                        <li>$\sigma(360) = \frac{2^4-1}{2-1} \cdot \frac{3^3-1}{3-1} \cdot \frac{5^2-1}{5-1} = 15 \cdot 13 \cdot 6 = 1170$.</li>
+                        <li>$\gcd(360, 504) = \gcd(2^3 \cdot 3^2 \cdot 5,\; 2^3 \cdot 3^2 \cdot 7) = 2^3 \cdot 3^2 = 72$.</li>
+                    </ul>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Uniqueness is Non-trivial</div>
+                    <p class="mb-0">In other number systems, unique factorisation can fail. For instance, in $\mathbb{Z}[\sqrt{-5}]$ we have $6 = 2 \cdot 3 = (1+\sqrt{-5})(1-\sqrt{-5})$, two essentially different factorisations into irreducibles. The Fundamental Theorem is a special feature of the integers, ultimately relying on Euclid's Lemma, which in turn depends on the Euclidean algorithm.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../03-euclidean-algorithm/" class="btn btn-outline-custom">&larr; 1.3 The Euclidean Algorithm</a>
+                    <a href="../../02-congruences/" class="btn btn-custom">2. Congruences &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

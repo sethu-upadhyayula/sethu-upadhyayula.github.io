@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1 Divisibility and the Division Algorithm — Number Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Number Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Number Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-divisibility">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-divisibility/" class="toc-chapter-link"><strong>1.</strong> Divisibility</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-divisibility/01-divisibility-and-division-algorithm/">1.1 Divisibility and the Division Algorithm</a>
+                        <a href="../../01-divisibility/02-greatest-common-divisor/">1.2 Greatest Common Divisor</a>
+                        <a href="../../01-divisibility/03-euclidean-algorithm/">1.3 The Euclidean Algorithm</a>
+                        <a href="../../01-divisibility/04-fundamental-theorem-of-arithmetic/">1.4 Fundamental Theorem of Arithmetic</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-congruences">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-congruences/" class="toc-chapter-link"><strong>2.</strong> Congruences</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-congruences/01-congruence-relations/">2.1 Congruence Relations</a>
+                        <a href="../../02-congruences/02-chinese-remainder-theorem/">2.2 Chinese Remainder Theorem</a>
+                        <a href="../../02-congruences/03-eulers-theorem-and-fermats-little-theorem/">2.3 Euler's Theorem and Fermat's Little Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-arithmetic-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-arithmetic-functions/" class="toc-chapter-link"><strong>3.</strong> Arithmetic Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-arithmetic-functions/01-multiplicative-functions/">3.1 Multiplicative Functions</a>
+                        <a href="../../03-arithmetic-functions/02-eulers-totient-function/">3.2 Euler's Totient Function</a>
+                        <a href="../../03-arithmetic-functions/03-mobius-function-and-inversion/">3.3 Möbius Function and Inversion</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-quadratic-residues">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-quadratic-residues/" class="toc-chapter-link"><strong>4.</strong> Quadratic Residues</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-quadratic-residues/01-legendre-symbol/">4.1 Legendre Symbol</a>
+                        <a href="../../04-quadratic-residues/02-quadratic-reciprocity/">4.2 Quadratic Reciprocity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-continued-fractions">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-continued-fractions/" class="toc-chapter-link"><strong>5.</strong> Continued Fractions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-continued-fractions/01-finite-and-infinite-continued-fractions/">5.1 Finite and Infinite Continued Fractions</a>
+                        <a href="../../05-continued-fractions/02-convergents/">5.2 Convergents</a>
+                        <a href="../../05-continued-fractions/03-pells-equation/">5.3 Pell's Equation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-distribution-of-primes">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-distribution-of-primes/" class="toc-chapter-link"><strong>6.</strong> Distribution of Primes</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-distribution-of-primes/01-infinitude-of-primes/">6.1 Infinitude of Primes</a>
+                        <a href="../../06-distribution-of-primes/02-prime-counting-function/">6.2 Prime Counting Function</a>
+                        <a href="../../06-distribution-of-primes/03-prime-number-theorem/">6.3 Prime Number Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Number Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Number Theory</a> ›
+                <a href="../">1. Divisibility</a> ›
+                <span>1.1 Divisibility and the Division Algorithm</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">1.1 Divisibility and the Division Algorithm</h1>
+
+                <p>We begin with the most fundamental relation in number theory: divisibility. The simple idea that one integer "goes into" another evenly underlies the entire structure of the integers.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 1.1.1 — Divisibility</div>
+                    <p class="mb-0">Let $a, b \in \mathbb{Z}$ with $a \neq 0$. We say $a$ <strong>divides</strong> $b$, written $a \mid b$, if there exists an integer $k$ such that $b = ka$. We say $a$ is a <strong>divisor</strong> (or <strong>factor</strong>) of $b$, and $b$ is a <strong>multiple</strong> of $a$. If $a \nmid b$, we say $a$ does not divide $b$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Basic Properties of Divisibility</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 1.1.2 — Properties of Divisibility</div>
+                    <p>Let $a, b, c \in \mathbb{Z}$ (with divisors nonzero). Then:</p>
+                    <ul class="mb-0">
+                        <li><strong>Transitivity:</strong> If $a \mid b$ and $b \mid c$, then $a \mid c$.</li>
+                        <li><strong>Linear combinations:</strong> If $a \mid b$ and $a \mid c$, then $a \mid mb + nc$ for all $m, n \in \mathbb{Z}$.</li>
+                        <li><strong>Bound:</strong> If $a \mid b$ and $b > 0$, then $a \le b$.</li>
+                        <li><strong>Units:</strong> $1 \mid b$ for all $b$, and $b \mid b$ for all $b \neq 0$.</li>
+                    </ul>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p><em>Transitivity:</em> If $b = ka$ and $c = lb$, then $c = l(ka) = (lk)a$, so $a \mid c$.</p>
+                    <p><em>Linear combinations:</em> If $b = k_1 a$ and $c = k_2 a$, then $mb + nc = m k_1 a + n k_2 a = (mk_1 + nk_2)a$, so $a \mid mb + nc$.</p>
+                    <p class="mb-0"><em>Bound:</em> If $b = ka$ with $b > 0$, then $k \ge 1$ (since $b > 0$ and $a \ge 1$ forces $k \ge 1$), so $b = ka \ge a$. $\square$</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 1.1.3</div>
+                    <p>Since $6 \mid 18$ and $18 \mid 54$, transitivity gives $6 \mid 54$. Indeed $54 = 9 \cdot 6$.</p>
+                    <p class="mb-0">Since $3 \mid 12$ and $3 \mid 15$, we get $3 \mid (5 \cdot 12 - 2 \cdot 15) = 60 - 30 = 30$. Indeed $30 = 10 \cdot 3$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Division Algorithm</h2>
+
+                <p>The division algorithm formalises the familiar process of long division, guaranteeing a unique quotient and remainder.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 1.1.4 — Division Algorithm</div>
+                    <p class="mb-0">For every $a \in \mathbb{Z}$ and $b \in \mathbb{Z}^+$, there exist unique integers $q$ and $r$ such that
+                    $$a = bq + r \quad \text{and} \quad 0 \le r &lt; b.$$
+                    The integer $q$ is the <strong>quotient</strong> and $r$ is the <strong>remainder</strong> when $a$ is divided by $b$. We also write $r = a \bmod b$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p><em>Existence.</em> Consider the set $S = \{a - bk : k \in \mathbb{Z},\; a - bk \ge 0\}$. Since $b > 0$, taking $k$ sufficiently negative makes $a - bk$ positive, so $S$ is nonempty. By the Well-Ordering Principle, $S$ has a least element $r = a - bq$ for some integer $q$.</p>
+                    <p>We have $r \ge 0$ by definition of $S$. Suppose $r \ge b$. Then $r - b = a - b(q+1) \ge 0$, so $r - b \in S$. But $r - b &lt; r$, contradicting minimality of $r$. Therefore $0 \le r &lt; b$.</p>
+                    <p><em>Uniqueness.</em> Suppose $a = bq_1 + r_1 = bq_2 + r_2$ with $0 \le r_1, r_2 &lt; b$. Then $b(q_1 - q_2) = r_2 - r_1$. Taking absolute values, $b|q_1 - q_2| = |r_2 - r_1| &lt; b$. Thus $|q_1 - q_2| &lt; 1$, so $q_1 = q_2$ and consequently $r_1 = r_2$. $\square$</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 1.1.5 — Applying the Division Algorithm</div>
+                    <p>Divide $a = 37$ by $b = 5$: $37 = 5 \cdot 7 + 2$, so $q = 7$ and $r = 2$.</p>
+                    <p>Divide $a = -14$ by $b = 3$: we need $r \ge 0$, so $-14 = 3 \cdot (-5) + 1$, giving $q = -5$ and $r = 1$.</p>
+                    <p class="mb-0">Note: the remainder is always non-negative, so $(-14) \bmod 3 = 1$, not $-2$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark</div>
+                    <p class="mb-0">The proof uses the Well-Ordering Principle: every nonempty set of non-negative integers has a least element. This is equivalent to the Principle of Mathematical Induction and is a fundamental property of $\mathbb{N}$. The division algorithm is the engine that drives the Euclidean algorithm in Section 1.3.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 1. Divisibility</a>
+                    <a href="../02-greatest-common-divisor/" class="btn btn-custom">1.2 Greatest Common Divisor &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.2 Quadratic Reciprocity — Number Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Number Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Number Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-divisibility">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-divisibility/" class="toc-chapter-link"><strong>1.</strong> Divisibility</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-divisibility/01-divisibility-and-division-algorithm/">1.1 Divisibility and the Division Algorithm</a>
+                        <a href="../../01-divisibility/02-greatest-common-divisor/">1.2 Greatest Common Divisor</a>
+                        <a href="../../01-divisibility/03-euclidean-algorithm/">1.3 The Euclidean Algorithm</a>
+                        <a href="../../01-divisibility/04-fundamental-theorem-of-arithmetic/">1.4 Fundamental Theorem of Arithmetic</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-congruences">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-congruences/" class="toc-chapter-link"><strong>2.</strong> Congruences</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-congruences/01-congruence-relations/">2.1 Congruence Relations</a>
+                        <a href="../../02-congruences/02-chinese-remainder-theorem/">2.2 Chinese Remainder Theorem</a>
+                        <a href="../../02-congruences/03-eulers-theorem-and-fermats-little-theorem/">2.3 Euler's Theorem and Fermat's Little Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-arithmetic-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-arithmetic-functions/" class="toc-chapter-link"><strong>3.</strong> Arithmetic Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-arithmetic-functions/01-multiplicative-functions/">3.1 Multiplicative Functions</a>
+                        <a href="../../03-arithmetic-functions/02-eulers-totient-function/">3.2 Euler's Totient Function</a>
+                        <a href="../../03-arithmetic-functions/03-mobius-function-and-inversion/">3.3 Möbius Function and Inversion</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-quadratic-residues">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-quadratic-residues/" class="toc-chapter-link"><strong>4.</strong> Quadratic Residues</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-quadratic-residues/01-legendre-symbol/">4.1 Legendre Symbol</a>
+                        <a href="../../04-quadratic-residues/02-quadratic-reciprocity/">4.2 Quadratic Reciprocity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-continued-fractions">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-continued-fractions/" class="toc-chapter-link"><strong>5.</strong> Continued Fractions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-continued-fractions/01-finite-and-infinite-continued-fractions/">5.1 Finite and Infinite Continued Fractions</a>
+                        <a href="../../05-continued-fractions/02-convergents/">5.2 Convergents</a>
+                        <a href="../../05-continued-fractions/03-pells-equation/">5.3 Pell's Equation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-distribution-of-primes">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-distribution-of-primes/" class="toc-chapter-link"><strong>6.</strong> Distribution of Primes</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-distribution-of-primes/01-infinitude-of-primes/">6.1 Infinitude of Primes</a>
+                        <a href="../../06-distribution-of-primes/02-prime-counting-function/">6.2 Prime Counting Function</a>
+                        <a href="../../06-distribution-of-primes/03-prime-number-theorem/">6.3 Prime Number Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Number Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Number Theory</a> ›
+                <a href="../">4. Quadratic Residues</a> ›
+                <span>4.2 Quadratic Reciprocity</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 Quadratic Reciprocity</h1>
+
+                <p>The Law of Quadratic Reciprocity is one of the most celebrated results in number theory. Euler observed it empirically and Legendre stated it, but it was Gauss (age 19, in 1796) who gave the first rigorous proof. Gauss called it his <em>theorema aureum</em> — the golden theorem — and went on to give eight distinct proofs of it over his lifetime. Over 200 proofs are now known.</p>
+
+                <h2 class="mt-5 mb-3">The Law of Quadratic Reciprocity</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.2.1 — Law of Quadratic Reciprocity (Gauss, 1796)</div>
+                    <p>For distinct odd primes $p$ and $q$:
+                    $$\left(\frac{p}{q}\right)\left(\frac{q}{p}\right) = (-1)^{\frac{p-1}{2}\cdot\frac{q-1}{2}}.$$</p>
+                    <p class="mb-0">Equivalently, $\left(\frac{p}{q}\right) = \left(\frac{q}{p}\right)$ unless both $p \equiv 3 \pmod{4}$ and $q \equiv 3 \pmod{4}$, in which case $\left(\frac{p}{q}\right) = -\left(\frac{q}{p}\right)$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Plain-Language Interpretation</div>
+                    <p>The exponent $\frac{p-1}{2} \cdot \frac{q-1}{2}$ is odd if and only if both $\frac{p-1}{2}$ and $\frac{q-1}{2}$ are odd, i.e., both $p$ and $q$ are congruent to $3 \pmod{4}$. In all other cases the product $(-1)^{(\ldots)} = 1$, so reciprocity "swaps" freely:</p>
+                    <ul>
+                        <li>If $p \equiv 1 \pmod 4$ or $q \equiv 1 \pmod 4$: $\left(\frac{p}{q}\right) = \left(\frac{q}{p}\right)$.</li>
+                        <li>If $p \equiv q \equiv 3 \pmod 4$: $\left(\frac{p}{q}\right) = -\left(\frac{q}{p}\right)$ (exactly one is a QR).</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Algorithm for Evaluating Legendre Symbols</h2>
+
+                <p>Quadratic reciprocity, together with the two supplements and multiplicativity, gives a Euclidean-style algorithm for computing any Legendre symbol $\left(\frac{a}{p}\right)$:</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Algorithm 4.2.2 — Evaluation of Legendre Symbols</div>
+                    <ol>
+                        <li>Reduce $a \bmod p$ to lie in $\{0, 1, \ldots, p-1\}$.</li>
+                        <li>Factor out $-1$ and $2$ using the supplements (Theorems 4.1.6, 4.1.7) and multiplicativity.</li>
+                        <li>For the remaining odd part $q$ (which may be composite), factor it into primes and apply multiplicativity.</li>
+                        <li>For each prime factor $q$, use reciprocity to swap $\left(\frac{q}{p}\right) \to \left(\frac{p \bmod q}{q}\right)$, tracking the sign change.</li>
+                        <li>Reduce the argument modulo the new denominator and repeat (like the Euclidean algorithm). Terminate when the numerator is $1$ (symbol $= +1$) or a known case.</li>
+                    </ol>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Is 7 a Quadratic Residue mod 101?</div>
+                    <p>We compute $\left(\frac{7}{101}\right)$.</p>
+
+                    <p><strong>Step 1.</strong> Apply reciprocity. Both 7 and 101 are odd primes. We have $\frac{7-1}{2} = 3$ and $\frac{101-1}{2} = 50$. The exponent $3 \cdot 50 = 150$ is even, so:
+                    $$\left(\frac{7}{101}\right)\left(\frac{101}{7}\right) = (-1)^{150} = 1.$$
+                    Therefore $\left(\frac{7}{101}\right) = \left(\frac{101}{7}\right)$.</p>
+
+                    <p><strong>Step 2.</strong> Reduce $101 \bmod 7$: $101 = 14 \cdot 7 + 3$, so $101 \equiv 3 \pmod{7}$.
+                    $$\left(\frac{101}{7}\right) = \left(\frac{3}{7}\right).$$</p>
+
+                    <p><strong>Step 3.</strong> Compute $\left(\frac{3}{7}\right)$ by reciprocity. Both 3 and 7 are $\equiv 3 \pmod 4$, so $\frac{3-1}{2} \cdot \frac{7-1}{2} = 1 \cdot 3 = 3$ (odd):
+                    $$\left(\frac{3}{7}\right)\left(\frac{7}{3}\right) = (-1)^3 = -1.$$</p>
+
+                    <p><strong>Step 4.</strong> Reduce $7 \bmod 3$: $7 \equiv 1 \pmod{3}$, so $\left(\frac{7}{3}\right) = \left(\frac{1}{3}\right) = 1$.</p>
+
+                    <p><strong>Conclusion.</strong> From Step 3: $\left(\frac{3}{7}\right) \cdot 1 = -1$, so $\left(\frac{3}{7}\right) = -1$. Therefore:
+                    $$\left(\frac{7}{101}\right) = \left(\frac{3}{7}\right) = -1.$$
+                    7 is a <strong>quadratic non-residue</strong> mod 101.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Is 5 a QR mod 13?</div>
+                    <p>$\left(\frac{5}{13}\right)$: $\frac{5-1}{2} = 2$, $\frac{13-1}{2} = 6$. Exponent $2 \cdot 6 = 12$ is even, so $\left(\frac{5}{13}\right) = \left(\frac{13}{5}\right)$. Reduce: $13 \equiv 3 \pmod 5$, so $\left(\frac{13}{5}\right) = \left(\frac{3}{5}\right)$. Now $\frac{3-1}{2} \cdot \frac{5-1}{2} = 1 \cdot 2 = 2$ (even), so $\left(\frac{3}{5}\right) = \left(\frac{5}{3}\right) = \left(\frac{2}{3}\right)$. Since $3 \equiv 3 \pmod 8$, $\left(\frac{2}{3}\right) = -1$. Hence $\left(\frac{5}{13}\right) = -1$: 5 is a QNR mod 13.</p>
+                    <p class="mb-0">Verify directly: squares mod 13 are $1^2=1$, $2^2=4$, $3^2=9$, $4^2=3$, $5^2=12$, $6^2=10$. The QRs are $\{1,3,4,9,10,12\}$ and 5 is not among them. ✓</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Historical Note</div>
+                    <p class="mb-0">Gauss's first proof (1796) used induction on a complicated sequence of cases. His later proofs used Gauss sums $\tau = \sum_{a=0}^{p-1} \left(\frac{a}{p}\right) e^{2\pi i a/p}$, showing that $\tau^2 = (-1)^{(p-1)/2} p$. A beautiful modern proof uses the group of lattice points in a rectangle to count lattice points below a diagonal, cleverly relating the counts for $(p,q)$ and $(q,p)$. Quadratic reciprocity extends to the Jacobi symbol and further to higher reciprocity laws in algebraic number theory (Artin reciprocity).</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-legendre-symbol/" class="btn btn-outline-custom">&larr; 4.1 Legendre Symbol</a>
+                    <a href="../../05-continued-fractions/" class="btn btn-custom">5. Continued Fractions &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

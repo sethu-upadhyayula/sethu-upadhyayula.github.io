@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.1 Congruence Relations — Number Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Number Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Number Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-divisibility">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-divisibility/" class="toc-chapter-link"><strong>1.</strong> Divisibility</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-divisibility/01-divisibility-and-division-algorithm/">1.1 Divisibility and the Division Algorithm</a>
+                        <a href="../../01-divisibility/02-greatest-common-divisor/">1.2 Greatest Common Divisor</a>
+                        <a href="../../01-divisibility/03-euclidean-algorithm/">1.3 The Euclidean Algorithm</a>
+                        <a href="../../01-divisibility/04-fundamental-theorem-of-arithmetic/">1.4 Fundamental Theorem of Arithmetic</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-congruences">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-congruences/" class="toc-chapter-link"><strong>2.</strong> Congruences</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-congruences/01-congruence-relations/">2.1 Congruence Relations</a>
+                        <a href="../../02-congruences/02-chinese-remainder-theorem/">2.2 Chinese Remainder Theorem</a>
+                        <a href="../../02-congruences/03-eulers-theorem-and-fermats-little-theorem/">2.3 Euler's Theorem and Fermat's Little Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-arithmetic-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-arithmetic-functions/" class="toc-chapter-link"><strong>3.</strong> Arithmetic Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-arithmetic-functions/01-multiplicative-functions/">3.1 Multiplicative Functions</a>
+                        <a href="../../03-arithmetic-functions/02-eulers-totient-function/">3.2 Euler's Totient Function</a>
+                        <a href="../../03-arithmetic-functions/03-mobius-function-and-inversion/">3.3 Möbius Function and Inversion</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-quadratic-residues">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-quadratic-residues/" class="toc-chapter-link"><strong>4.</strong> Quadratic Residues</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-quadratic-residues/01-legendre-symbol/">4.1 Legendre Symbol</a>
+                        <a href="../../04-quadratic-residues/02-quadratic-reciprocity/">4.2 Quadratic Reciprocity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-continued-fractions">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-continued-fractions/" class="toc-chapter-link"><strong>5.</strong> Continued Fractions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-continued-fractions/01-finite-and-infinite-continued-fractions/">5.1 Finite and Infinite Continued Fractions</a>
+                        <a href="../../05-continued-fractions/02-convergents/">5.2 Convergents</a>
+                        <a href="../../05-continued-fractions/03-pells-equation/">5.3 Pell's Equation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-distribution-of-primes">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-distribution-of-primes/" class="toc-chapter-link"><strong>6.</strong> Distribution of Primes</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-distribution-of-primes/01-infinitude-of-primes/">6.1 Infinitude of Primes</a>
+                        <a href="../../06-distribution-of-primes/02-prime-counting-function/">6.2 Prime Counting Function</a>
+                        <a href="../../06-distribution-of-primes/03-prime-number-theorem/">6.3 Prime Number Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Number Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Number Theory</a> ›
+                <a href="../">2. Congruences</a> ›
+                <span>2.1 Congruence Relations</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">2.1 Congruence Relations</h1>
+
+                <p>Gauss introduced congruence notation in his <em>Disquisitiones Arithmeticae</em> (1801), transforming number theory from a collection of isolated results into a systematic theory. The idea is simple: two integers are congruent modulo $m$ if they have the same remainder when divided by $m$.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.1.1 — Congruence</div>
+                    <p class="mb-0">Let $m$ be a positive integer. We say $a$ is <strong>congruent to $b$ modulo $m$</strong>, written $a \equiv b \pmod{m}$, if $m \mid (a - b)$. Equivalently, $a$ and $b$ have the same remainder when divided by $m$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.1.2 — Congruence is an Equivalence Relation</div>
+                    <p>Congruence modulo $m$ is an equivalence relation on $\mathbb{Z}$: reflexive ($a \equiv a$), symmetric (if $a \equiv b$ then $b \equiv a$), and transitive (if $a \equiv b$ and $b \equiv c$ then $a \equiv c$). The equivalence classes are the <strong>residue classes</strong> $[0], [1], \ldots, [m-1]$, and $\mathbb{Z}$ is partitioned into exactly $m$ such classes.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Ring $\mathbb{Z}/m\mathbb{Z}$</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.1.3 — Well-Defined Arithmetic</div>
+                    <p>If $a \equiv a' \pmod{m}$ and $b \equiv b' \pmod{m}$, then:</p>
+                    <ul class="mb-0">
+                        <li>$a + b \equiv a' + b' \pmod{m}$</li>
+                        <li>$ab \equiv a'b' \pmod{m}$</li>
+                    </ul>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p class="mb-0">Write $a' = a + km$ and $b' = b + lm$. Then $a'+b' = (a+b) + (k+l)m \equiv a+b \pmod{m}$. Similarly, $a'b' = (a+km)(b+lm) = ab + (al+bk)m + klm^2 \equiv ab \pmod{m}$. $\square$</p>
+                </div>
+
+                <p>These operations make $\mathbb{Z}/m\mathbb{Z} = \{[0],[1],\ldots,[m-1]\}$ into a <strong>commutative ring</strong>. When $m = p$ is prime, every nonzero element has a multiplicative inverse, so $\mathbb{Z}/p\mathbb{Z}$ is a <strong>field</strong>.</p>
+
+                <h2 class="mt-5 mb-3">Linear Congruences</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.1.4 — Linear Congruences</div>
+                    <p class="mb-0">The linear congruence $ax \equiv b \pmod{m}$ has a solution if and only if $d = \gcd(a,m)$ divides $b$. When it does, there are exactly $d$ solutions modulo $m$, forming an arithmetic progression with common difference $m/d$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p>$ax \equiv b \pmod{m}$ means $m \mid ax - b$, i.e., $ax - my = b$ has an integer solution. By Bézout's identity, this is solvable iff $d = \gcd(a,m) \mid b$.</p>
+                    <p class="mb-0">When solvable, divide through by $d$ to get $(a/d)x \equiv (b/d) \pmod{m/d}$, which has a unique solution $x_0 \pmod{m/d}$ (since $\gcd(a/d, m/d)=1$). The $d$ solutions mod $m$ are $x_0, x_0 + m/d, x_0 + 2m/d, \ldots, x_0 + (d-1)m/d$. $\square$</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 2.1.5</div>
+                    <p>Solve $6x \equiv 9 \pmod{15}$. Here $d = \gcd(6,15) = 3$ and $3 \mid 9$, so solutions exist. Dividing by $3$: $2x \equiv 3 \pmod{5}$. Since $2^{-1} \equiv 3 \pmod{5}$, we get $x \equiv 9 \equiv 4 \pmod{5}$. The three solutions mod $15$ are $x \equiv 4, 9, 14 \pmod{15}$.</p>
+                    <p class="mb-0">Check: $6 \cdot 4 = 24 = 15 + 9 \equiv 9$. $\checkmark$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Units and Fields</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.1.6 — Units in $\mathbb{Z}/m\mathbb{Z}$</div>
+                    <p class="mb-0">An element $[a] \in \mathbb{Z}/m\mathbb{Z}$ is a <strong>unit</strong> (invertible) if and only if $\gcd(a,m)=1$. The group of units $(\mathbb{Z}/m\mathbb{Z})^*$ has order $\phi(m)$ (Euler's totient function). In particular, $\mathbb{Z}/m\mathbb{Z}$ is a field if and only if $m$ is prime.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 2. Congruences</a>
+                    <a href="../02-chinese-remainder-theorem/" class="btn btn-custom">2.2 Chinese Remainder Theorem &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

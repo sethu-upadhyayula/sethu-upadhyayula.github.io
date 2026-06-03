@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.3 Pell's Equation — Number Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Number Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Number Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-divisibility">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-divisibility/" class="toc-chapter-link"><strong>1.</strong> Divisibility</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-divisibility/01-divisibility-and-division-algorithm/">1.1 Divisibility and the Division Algorithm</a>
+                        <a href="../../01-divisibility/02-greatest-common-divisor/">1.2 Greatest Common Divisor</a>
+                        <a href="../../01-divisibility/03-euclidean-algorithm/">1.3 The Euclidean Algorithm</a>
+                        <a href="../../01-divisibility/04-fundamental-theorem-of-arithmetic/">1.4 Fundamental Theorem of Arithmetic</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-congruences">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-congruences/" class="toc-chapter-link"><strong>2.</strong> Congruences</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-congruences/01-congruence-relations/">2.1 Congruence Relations</a>
+                        <a href="../../02-congruences/02-chinese-remainder-theorem/">2.2 Chinese Remainder Theorem</a>
+                        <a href="../../02-congruences/03-eulers-theorem-and-fermats-little-theorem/">2.3 Euler's Theorem and Fermat's Little Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-arithmetic-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-arithmetic-functions/" class="toc-chapter-link"><strong>3.</strong> Arithmetic Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-arithmetic-functions/01-multiplicative-functions/">3.1 Multiplicative Functions</a>
+                        <a href="../../03-arithmetic-functions/02-eulers-totient-function/">3.2 Euler's Totient Function</a>
+                        <a href="../../03-arithmetic-functions/03-mobius-function-and-inversion/">3.3 Möbius Function and Inversion</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-quadratic-residues">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-quadratic-residues/" class="toc-chapter-link"><strong>4.</strong> Quadratic Residues</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-quadratic-residues/01-legendre-symbol/">4.1 Legendre Symbol</a>
+                        <a href="../../04-quadratic-residues/02-quadratic-reciprocity/">4.2 Quadratic Reciprocity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-continued-fractions">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-continued-fractions/" class="toc-chapter-link"><strong>5.</strong> Continued Fractions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-continued-fractions/01-finite-and-infinite-continued-fractions/">5.1 Finite and Infinite Continued Fractions</a>
+                        <a href="../../05-continued-fractions/02-convergents/">5.2 Convergents</a>
+                        <a href="../../05-continued-fractions/03-pells-equation/">5.3 Pell's Equation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-distribution-of-primes">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-distribution-of-primes/" class="toc-chapter-link"><strong>6.</strong> Distribution of Primes</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-distribution-of-primes/01-infinitude-of-primes/">6.1 Infinitude of Primes</a>
+                        <a href="../../06-distribution-of-primes/02-prime-counting-function/">6.2 Prime Counting Function</a>
+                        <a href="../../06-distribution-of-primes/03-prime-number-theorem/">6.3 Prime Number Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Number Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Number Theory</a> ›
+                <a href="../">5. Continued Fractions</a> ›
+                <span>5.3 Pell's Equation</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">5.3 Pell's Equation</h1>
+
+                <p>Pell's equation $x^2 - Dy^2 = 1$ is a Diophantine equation with a rich history stretching back to ancient India (Brahmagupta, 628 AD) and medieval Europe. Despite its simple appearance, it always has infinitely many solutions when $D$ is a positive non-square integer, and the complete solution theory relies beautifully on continued fractions.</p>
+
+                <h2 class="mt-5 mb-3">Statement and Existence</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 5.3.1 — Pell's Equation</div>
+                    <p class="mb-0"><strong>Pell's equation</strong> is $x^2 - Dy^2 = 1$, where $D$ is a positive integer that is not a perfect square. We seek positive integer solutions $(x, y)$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.3.2 — Existence of Solutions</div>
+                    <p class="mb-0">For any positive non-square integer $D$, Pell's equation $x^2 - Dy^2 = 1$ has infinitely many positive integer solutions. In particular, a minimal (fundamental) solution $(x_1, y_1)$ with $x_1, y_1 > 0$ always exists.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Periodic Continued Fractions of $\sqrt{D}$</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.3.3 — Periodicity of $\sqrt{D}$</div>
+                    <p>The continued fraction expansion of $\sqrt{D}$ (for non-square $D > 0$) is eventually periodic of the form:
+                    $$\sqrt{D} = [a_0; \overline{a_1, a_2, \ldots, a_{k-1}, 2a_0}]$$
+                    where $a_0 = \lfloor \sqrt{D} \rfloor$ and the period ends with $2a_0$. The period length $k$ depends on $D$.</p>
+                    <p class="mb-0">This is a special case of Lagrange's theorem (Theorem 5.1.4): $\sqrt{D}$ is a quadratic irrational, so its CF is eventually periodic.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Fundamental Solution via Convergents</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.3.4 — Fundamental Solution</div>
+                    <p>Let $\sqrt{D} = [a_0; \overline{a_1, \ldots, a_k}]$ with period length $k$, and let $p_n/q_n$ denote the convergents.</p>
+                    <ul>
+                        <li>If $k$ is <strong>even</strong>: the fundamental solution is $(x_1, y_1) = (p_{k-1}, q_{k-1})$.</li>
+                        <li>If $k$ is <strong>odd</strong>: $p_{k-1}^2 - D q_{k-1}^2 = -1$ (a solution to the negative Pell equation), and the fundamental solution to $x^2 - Dy^2 = 1$ is $(x_1, y_1) = (p_{2k-1}, q_{2k-1})$.</li>
+                    </ul>
+                    <p class="mb-0">In both cases, $x_1 + y_1 \sqrt{D} = (p_{k-1} + q_{k-1}\sqrt{D})^{1 \text{ or } 2}$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">All Solutions</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.3.5 — All Solutions of Pell's Equation</div>
+                    <p>If $(x_1, y_1)$ is the fundamental solution, then all positive integer solutions $(x_n, y_n)$ are given by:
+                    $$x_n + y_n \sqrt{D} = (x_1 + y_1 \sqrt{D})^n, \quad n = 1, 2, 3, \ldots$$
+                    The sequences $x_n$ and $y_n$ satisfy:
+                    $$x_n = 2x_1 x_{n-1} - x_{n-2}, \qquad y_n = 2x_1 y_{n-1} - y_{n-2}.$$</p>
+                    <p class="mb-0">The solutions grow exponentially: $x_n \approx \frac{(x_1 + y_1\sqrt{D})^n}{2}$ as $n \to \infty$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — $x^2 - 2y^2 = 1$</div>
+                    <p><strong>Step 1: CF of $\sqrt{2}$.</strong> We found $\sqrt{2} = [1; \overline{2}]$, so $a_0 = 1$, period $= (2)$, $k = 1$ (odd).</p>
+                    <p><strong>Step 2: Convergents.</strong> $p_{-1}=1$, $q_{-1}=0$; $p_0=1$, $q_0=1$; $p_1 = 2\cdot 1 + 1 = 3$, $q_1 = 2\cdot 1 + 0 = 2$.</p>
+                    <p><strong>Step 3: Fundamental solution.</strong> Since $k=1$ is odd, check $p_0^2 - 2q_0^2 = 1 - 2 = -1$: this solves the negative Pell equation. The fundamental solution to $x^2 - 2y^2 = 1$ uses $p_{2k-1} = p_1 = 3$, $q_{2k-1} = q_1 = 2$: check $3^2 - 2 \cdot 2^2 = 9 - 8 = 1$. ✓ So $(x_1, y_1) = (3, 2)$.</p>
+                    <p><strong>Step 4: All solutions.</strong> $(x_n + y_n\sqrt{2}) = (3 + 2\sqrt{2})^n$:
+                    <ul>
+                        <li>$n=1$: $(3, 2)$, check $9 - 8 = 1$ ✓</li>
+                        <li>$n=2$: $(3+2\sqrt{2})^2 = 17 + 12\sqrt{2}$, so $(17, 12)$: $289 - 2\cdot144 = 289-288=1$ ✓</li>
+                        <li>$n=3$: $(3+2\sqrt{2})^3 = 99 + 70\sqrt{2}$, so $(99, 70)$: $9801 - 2\cdot4900 = 9801-9800=1$ ✓</li>
+                    </ul></p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — $x^2 - 3y^2 = 1$</div>
+                    <p>$\sqrt{3} = [1; \overline{1, 2}]$, period $k = 2$ (even). Convergents: $p_0=1, q_0=1$; $p_1 = 1\cdot1+1=2, q_1=1\cdot1+0=1$; $p_2 = 2\cdot2+1=7/3$... Let me recompute: $a_0=1, a_1=1, a_2=2$. $p_1 = a_1 p_0 + p_{-1} = 1\cdot1+1=2$, $q_1 = 1\cdot1+0=1$. $p_2 = 2\cdot2+1=5$... Wait, $a_2 p_1 + p_0 = 2\cdot2+1=5$, $q_2 = 2\cdot1+1=3$. But $k-1 = 1$, so fundamental solution is $(p_1, q_1) = (2, 1)$: check $4 - 3 = 1$ ✓. So $(x_1,y_1)=(2,1)$.</p>
+                    <p class="mb-0">Next solution: $(2+\sqrt{3})^2 = 7+4\sqrt{3}$, giving $(7,4)$: $49-48=1$ ✓.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Historical Misnaming</div>
+                    <p class="mb-0">Pell's equation is named after John Pell (1611–1685), though Pell had little to do with it. Euler mistakenly attributed a solution method to Pell when it was actually due to Brouncker. The equation was studied extensively by Fermat (who posed it as a challenge) and solved completely by Lagrange (1768), who proved both the periodicity of the CF of $\sqrt{D}$ and the connection to Pell's equation. Indian mathematicians (Brahmagupta, 628 AD; Bhaskara II, 1150 AD) had solved special cases with the elegant "chakravala" (cyclic) method centuries earlier.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-convergents/" class="btn btn-outline-custom">&larr; 5.2 Convergents</a>
+                    <a href="../../06-distribution-of-primes/" class="btn btn-custom">6. Distribution of Primes &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>
