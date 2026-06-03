@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9.1 Fixed Point Iteration — Calculus</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Calculus</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Calculus</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-real-number-system"><div class="toc-chapter-header"><a href="../../01-real-number-system/" class="toc-chapter-link"><strong>1.</strong> The Real Number System</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../01-real-number-system/01-rationals-and-irrationals/">1.1 Rationals and Irrationals</a><a href="../../01-real-number-system/02-order-and-bounds/">1.2 Order and Bounds</a><a href="../../01-real-number-system/03-supremum-and-infimum/">1.3 Supremum and Infimum</a><a href="../../01-real-number-system/04-completeness/">1.4 Completeness</a><a href="../../01-real-number-system/05-archimedean-property/">1.5 Archimedean Property</a><a href="../../01-real-number-system/06-density/">1.6 Density</a></div></div>
+                <div class="toc-chapter" data-chapter="02-sequences"><div class="toc-chapter-header"><a href="../../02-sequences/" class="toc-chapter-link"><strong>2.</strong> Sequences</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../02-sequences/01-definition/">2.1 Definition</a><a href="../../02-sequences/02-convergence/">2.2 Convergence</a><a href="../../02-sequences/03-limit-theorems/">2.3 Limit Theorems</a><a href="../../02-sequences/04-sandwich-theorem/">2.4 Sandwich Theorem</a><a href="../../02-sequences/05-ratio-test/">2.5 Ratio Test</a><a href="../../02-sequences/06-bounded-sequences/">2.6 Bounded Sequences</a><a href="../../02-sequences/07-monotone-sequences/">2.7 Monotone Sequences</a></div></div>
+                <div class="toc-chapter" data-chapter="03-cauchy-sequences"><div class="toc-chapter-header"><a href="../../03-cauchy-sequences/" class="toc-chapter-link"><strong>3.</strong> Cauchy Sequences</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../03-cauchy-sequences/01-cauchy-criterion/">3.1 Cauchy Criterion</a><a href="../../03-cauchy-sequences/02-nested-intervals/">3.2 Nested Intervals</a><a href="../../03-cauchy-sequences/03-subsequences/">3.3 Subsequences</a><a href="../../03-cauchy-sequences/04-bolzano-weierstrass/">3.4 Bolzano-Weierstrass</a><a href="../../03-cauchy-sequences/05-convergence-criterion/">3.5 Convergence Criterion</a></div></div>
+                <div class="toc-chapter" data-chapter="04-limits-and-continuity"><div class="toc-chapter-header"><a href="../../04-limits-and-continuity/" class="toc-chapter-link"><strong>4.</strong> Limits and Continuity</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../04-limits-and-continuity/01-limits-of-functions/">4.1 Limits of Functions</a><a href="../../04-limits-and-continuity/02-continuity/">4.2 Continuity</a><a href="../../04-limits-and-continuity/03-sequential-characterization/">4.3 Sequential Characterization</a><a href="../../04-limits-and-continuity/04-continuity-on-subsets/">4.4 Continuity on Subsets</a><a href="../../04-limits-and-continuity/05-limits-at-infinity/">4.5 Limits at Infinity</a></div></div>
+                <div class="toc-chapter" data-chapter="05-continuous-functions"><div class="toc-chapter-header"><a href="../../05-continuous-functions/" class="toc-chapter-link"><strong>5.</strong> Continuous Functions on Intervals</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../05-continuous-functions/01-boundedness/">5.1 Boundedness</a><a href="../../05-continuous-functions/02-extreme-value-theorem/">5.2 Extreme Value Theorem</a><a href="../../05-continuous-functions/03-intermediate-value-property/">5.3 Intermediate Value Property</a><a href="../../05-continuous-functions/04-fixed-points/">5.4 Fixed Point Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="06-differentiation"><div class="toc-chapter-header"><a href="../../06-differentiation/" class="toc-chapter-link"><strong>6.</strong> Differentiation</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../06-differentiation/01-definition/">6.1 Definition</a><a href="../../06-differentiation/02-geometric-meaning/">6.2 Geometric Meaning</a><a href="../../06-differentiation/03-differentiability-and-continuity/">6.3 Differentiability and Continuity</a><a href="../../06-differentiation/04-examples/">6.4 Examples</a></div></div>
+                <div class="toc-chapter" data-chapter="07-mean-value-theorems"><div class="toc-chapter-header"><a href="../../07-mean-value-theorems/" class="toc-chapter-link"><strong>7.</strong> Mean Value Theorems</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../07-mean-value-theorems/01-local-extrema/">7.1 Local Extrema</a><a href="../../07-mean-value-theorems/02-rolles-theorem/">7.2 Rolle's Theorem</a><a href="../../07-mean-value-theorems/03-mean-value-theorem/">7.3 Mean Value Theorem</a><a href="../../07-mean-value-theorems/04-applications/">7.4 Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="08-lhospital-rule"><div class="toc-chapter-header"><a href="../../08-lhospital-rule/" class="toc-chapter-link"><strong>8.</strong> Cauchy MVT and L'Hospital Rule</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../08-lhospital-rule/01-cauchy-mean-value-theorem/">8.1 Cauchy Mean Value Theorem</a><a href="../../08-lhospital-rule/02-zero-zero-form/">8.2 0/0 Form</a><a href="../../08-lhospital-rule/03-infinity-form/">8.3 ∞/∞ Form</a><a href="../../08-lhospital-rule/04-other-forms/">8.4 Other Forms</a><a href="../../08-lhospital-rule/05-examples-and-warnings/">8.5 Examples and Warnings</a></div></div>
+                <div class="toc-chapter" data-chapter="09-numerical-methods"><div class="toc-chapter-header"><a href="../../09-numerical-methods/" class="toc-chapter-link"><strong>9.</strong> Numerical Methods</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../09-numerical-methods/01-fixed-point-iteration/">9.1 Fixed Point Iteration</a><a href="../../09-numerical-methods/02-newtons-method/">9.2 Newton's Method</a><a href="../../09-numerical-methods/03-error-and-convergence/">9.3 Error and Convergence</a></div></div>
+                <a href="../../10-integration/" class="text-decoration-none toc-chapter-link"><strong>10.</strong> Integration</a>
+                <a href="../../11-applications-of-integration/" class="text-decoration-none toc-chapter-link"><strong>11.</strong> Applications of Integration</a>
+                <a href="../../12-series/" class="text-decoration-none toc-chapter-link"><strong>12.</strong> Series</a>
+                <a href="../../13-multivariable-calculus/" class="text-decoration-none toc-chapter-link"><strong>13.</strong> Multivariable Calculus</a>
+                <a href="../../14-vector-calculus/" class="text-decoration-none toc-chapter-link"><strong>14.</strong> Vector Calculus</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Calculus</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Calculus</a> ›
+                <a href="../">9. Numerical Methods</a> ›
+                <span>9.1 Fixed Point Iteration</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">9.1 Fixed Point Iteration</h1>
+
+                <p>A <em>fixed point</em> of a function $g$ is a value $x^*$ satisfying $g(x^*) = x^*$. Many root-finding problems can be reformulated as fixed point problems: solving $f(x) = 0$ is equivalent to finding a fixed point of $g(x) = x - f(x)$ or any other equivalent rearrangement $g(x) = x$.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Fixed Point Iteration</div>
+                    <p>Given a function $g$, the <strong>fixed point iteration</strong> generates a sequence by choosing an initial guess $x_0$ and repeatedly applying:
+                    $$x_{n+1} = g(x_n), \quad n = 0, 1, 2, \ldots$$
+                    If the sequence $(x_n)$ converges to some $x^*$, and $g$ is continuous, then $x^* = g(x^*)$ is a fixed point of $g$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Banach Contraction Mapping Theorem</h2>
+
+                <p>The central theoretical result guaranteeing convergence of fixed point iteration is the Banach (or Picard) Contraction Mapping Theorem. It provides conditions under which the iteration converges to a unique fixed point regardless of the starting point.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Banach Contraction Mapping</div>
+                    <p>Let $g:[a,b]\to[a,b]$ be continuous, and suppose there exists a constant $k\in[0,1)$ such that
+                    $$|g'(x)| \le k \quad \text{for all } x \in (a,b).$$
+                    Then:</p>
+                    <ol>
+                        <li><strong>Existence and uniqueness:</strong> There is a unique fixed point $x^* \in [a,b]$.</li>
+                        <li><strong>Global convergence:</strong> For any initial guess $x_0 \in [a,b]$, the iteration $x_{n+1} = g(x_n)$ converges to $x^*$.</li>
+                        <li><strong>Error bound:</strong> $\displaystyle|x_n - x^*| \le \frac{k^n}{1-k}|x_1 - x_0|$ for all $n \ge 1$.</li>
+                    </ol>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof Sketch</div>
+                    <p><strong>Step 1 — $(x_n)$ is Cauchy.</strong> By the Mean Value Theorem applied to $g$:
+                    $$|x_{n+1} - x_n| = |g(x_n) - g(x_{n-1})| \le k|x_n - x_{n-1}|.$$
+                    By induction, $|x_{n+1} - x_n| \le k^n|x_1 - x_0|$. For $m > n$:
+                    $$|x_m - x_n| \le \sum_{j=n}^{m-1}|x_{j+1}-x_j| \le |x_1-x_0|\sum_{j=n}^{m-1}k^j \le \frac{k^n}{1-k}|x_1-x_0|.$$
+                    Since $k < 1$, this tends to $0$ as $n \to \infty$, so $(x_n)$ is Cauchy, hence convergent in $[a,b]$.</p>
+                    <p><strong>Step 2 — The limit is a fixed point.</strong> Let $x^* = \lim x_n$. By continuity of $g$:
+                    $$g(x^*) = g(\lim_{n\to\infty} x_n) = \lim_{n\to\infty} g(x_n) = \lim_{n\to\infty} x_{n+1} = x^*.$$</p>
+                    <p><strong>Step 3 — Uniqueness.</strong> If $x^*$ and $y^*$ are both fixed points in $[a,b]$:
+                    $$|x^* - y^*| = |g(x^*) - g(y^*)| \le k|x^* - y^*|.$$
+                    Since $k < 1$, we must have $|x^* - y^*| = 0$, i.e., $x^* = y^*$. $\square$</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Contraction Constant</div>
+                    <p class="mb-0">The condition $|g'(x)| \le k < 1$ is called the <em>contraction condition</em>. The smaller $k$ is, the faster the convergence: the error bound decays geometrically as $k^n$. A function satisfying this is called a <em>contraction mapping</em> on $[a,b]$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Example 1: Solving $x = \cos x$ (Dottie Number)</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — $g(x) = \cos x$</div>
+                    <p>We wish to find $x^*$ such that $x^* = \cos x^*$. Take $g(x) = \cos x$. Then $g'(x) = -\sin x$, so $|g'(x)| = |\sin x|$.</p>
+                    <p>On the interval $[0.7, 0.8]$, we have $|\sin x| \le \sin(0.8) \approx 0.717 < 1$, so the contraction condition holds. Starting from $x_0 = 1$:</p>
+                    <ul>
+                        <li>$x_1 = \cos(1) \approx 0.5403$</li>
+                        <li>$x_2 = \cos(0.5403) \approx 0.8576$</li>
+                        <li>$x_3 = \cos(0.8576) \approx 0.6543$</li>
+                        <li>$x_4 = \cos(0.6543) \approx 0.7935$</li>
+                        <li>$\vdots$</li>
+                        <li>$x_n \to x^* \approx 0.7391$ (the <em>Dottie number</em>)</li>
+                    </ul>
+                    <p class="mb-0">The Dottie number is the unique fixed point of cosine; it satisfies $\cos(x^*) = x^*$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Example 2: Solving $x^3 - x - 1 = 0$</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — $g(x) = \sqrt[3]{x+1}$</div>
+                    <p>Rearrange $x^3 = x + 1$ as $x = (x+1)^{1/3}$. Set $g(x) = (x+1)^{1/3}$. Then:
+                    $$g'(x) = \frac{1}{3}(x+1)^{-2/3}.$$
+                    Near the root (approximately $x \approx 1.3247$): $g'(1.3) \approx \frac{1}{3(2.3)^{2/3}} \approx \frac{1}{3 \cdot 1.69} \approx 0.197 < \frac{1}{3}$.</p>
+                    <p>The contraction condition holds on any interval around the root. Starting from $x_0 = 1.5$:</p>
+                    <ul>
+                        <li>$x_1 = (2.5)^{1/3} \approx 1.3572$</li>
+                        <li>$x_2 = (2.3572)^{1/3} \approx 1.3309$</li>
+                        <li>$x_3 \approx 1.3253$</li>
+                        <li>$x_4 \approx 1.3248$</li>
+                        <li>$x_n \to x^* \approx 1.3247$</li>
+                    </ul>
+                    <p class="mb-0">Since $k < 1/3$, convergence is rapid. The other rearrangement $g(x) = x^3 - 1$ gives $g'(x) = 3x^2 > 1$ near the root, and diverges — highlighting that the rearrangement matters.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Choice of $g$</div>
+                    <p class="mb-0">Many different rearrangements of $f(x) = 0$ as $x = g(x)$ are possible. Only those for which $|g'|$ is strictly less than $1$ near the root will converge. In practice one tries rearrangements and checks the derivative condition. Newton's method (Section 9.2) is a systematic way to construct a $g$ with $g'(x^*) = 0$, giving quadratic convergence.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; Chapter 9 Overview</a>
+                    <a href="../02-newtons-method/" class="btn btn-custom">9.2 Newton's Method &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

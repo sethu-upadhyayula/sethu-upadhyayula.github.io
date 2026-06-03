@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.3 Linear Independence and Basis — Linear Algebra</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+<div class="theme-toggle-container">
+<button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+</div>
+<header>
+<nav class="navbar navbar-expand-lg site-header">
+<div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3">
+<label class="theme-switch" for="desktop-theme-toggle">
+<input type="checkbox" id="desktop-theme-toggle">
+<span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+</label>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+</header>
+<main>
+<aside class="math-toc" id="math-toc">
+<a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Linear Algebra</a>
+<nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+<a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Linear Algebra</a>
+<hr>
+<div class="toc-chapter" data-chapter="01-vector-spaces">
+<div class="toc-chapter-header">
+<a href="../../01-vector-spaces/" class="toc-chapter-link"><strong>1.</strong> Vector Spaces</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../01-vector-spaces/01-definition-and-examples/">1.1 Definition and Examples</a>
+<a href="../../01-vector-spaces/02-subspaces/">1.2 Subspaces</a>
+<a href="../../01-vector-spaces/03-linear-independence-and-basis/">1.3 Linear Independence and Basis</a>
+<a href="../../01-vector-spaces/04-dimension/">1.4 Dimension</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="02-linear-transformations">
+<div class="toc-chapter-header">
+<a href="../../02-linear-transformations/" class="toc-chapter-link"><strong>2.</strong> Linear Transformations</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../02-linear-transformations/01-definition-and-examples/">2.1 Definition and Examples</a>
+<a href="../../02-linear-transformations/02-kernel-and-image/">2.2 Kernel and Image</a>
+<a href="../../02-linear-transformations/03-matrix-representations/">2.3 Matrix Representations</a>
+<a href="../../02-linear-transformations/04-change-of-basis/">2.4 Change of Basis</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="03-determinants">
+<div class="toc-chapter-header">
+<a href="../../03-determinants/" class="toc-chapter-link"><strong>3.</strong> Determinants</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../03-determinants/01-definition/">3.1 Definition</a>
+<a href="../../03-determinants/02-properties/">3.2 Properties</a>
+<a href="../../03-determinants/03-cofactor-expansion/">3.3 Cofactor Expansion</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="04-eigenvalues-and-eigenvectors">
+<div class="toc-chapter-header">
+<a href="../../04-eigenvalues-and-eigenvectors/" class="toc-chapter-link"><strong>4.</strong> Eigenvalues and Eigenvectors</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../04-eigenvalues-and-eigenvectors/01-characteristic-polynomial/">4.1 Characteristic Polynomial</a>
+<a href="../../04-eigenvalues-and-eigenvectors/02-diagonalization/">4.2 Diagonalization</a>
+<a href="../../04-eigenvalues-and-eigenvectors/03-jordan-normal-form/">4.3 Jordan Normal Form</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="05-inner-product-spaces">
+<div class="toc-chapter-header">
+<a href="../../05-inner-product-spaces/" class="toc-chapter-link"><strong>5.</strong> Inner Product Spaces</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../05-inner-product-spaces/01-inner-products-and-norms/">5.1 Inner Products and Norms</a>
+<a href="../../05-inner-product-spaces/02-orthogonality-and-gram-schmidt/">5.2 Orthogonality and Gram&#8211;Schmidt</a>
+<a href="../../05-inner-product-spaces/03-orthogonal-projections/">5.3 Orthogonal Projections</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="06-spectral-theory">
+<div class="toc-chapter-header">
+<a href="../../06-spectral-theory/" class="toc-chapter-link"><strong>6.</strong> Spectral Theory</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../06-spectral-theory/01-symmetric-matrices/">6.1 Symmetric Matrices</a>
+<a href="../../06-spectral-theory/02-spectral-theorem/">6.2 Spectral Theorem</a>
+<a href="../../06-spectral-theory/03-singular-value-decomposition/">6.3 Singular Value Decomposition</a>
+</div>
+</div>
+</nav>
+</aside>
+<section class="math-content">
+<div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Linear Algebra</a></div>
+<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> &rsaquo; <a href="../../">Linear Algebra</a> &rsaquo; <a href="../">1. Vector Spaces</a> &rsaquo; <span>1.3 Linear Independence and Basis</span></nav>
+<article>
+<h1 class="text-accent mb-4">1.3 Linear Independence and Basis</h1>
+
+<div class="math-box definition">
+<div class="math-box-label">Definition — Linear Independence</div>
+<p>A list of vectors $v_1,\ldots,v_k\in V$ is <strong>linearly independent</strong> if the only scalars $c_1,\ldots,c_k\in\mathbb{R}$ satisfying
+$$c_1 v_1 + c_2 v_2 + \cdots + c_k v_k = \mathbf{0}$$
+are $c_1=c_2=\cdots=c_k=0$. Otherwise the list is <strong>linearly dependent</strong>, meaning there exists a non-trivial solution, and consequently some $v_j$ is a linear combination of the others.</p>
+</div>
+
+<div class="math-box example">
+<div class="math-box-label">Example — Standard Basis Vectors in $\mathbb{R}^n$</div>
+<p>The vectors $e_1=(1,0,\ldots,0),\, e_2=(0,1,\ldots,0),\,\ldots,\, e_n=(0,\ldots,0,1)$ are linearly independent: if $\sum c_i e_i = \mathbf{0}$ then $(c_1,\ldots,c_n)=(0,\ldots,0)$, so each $c_i=0$.</p>
+</div>
+
+<div class="math-box example">
+<div class="math-box-label">Example — Dependent Set</div>
+<p>The vectors $v_1=(1,2)$, $v_2=(2,4)$ in $\mathbb{R}^2$ are linearly dependent: $2v_1 - v_2 = (2,4)-(2,4)=\mathbf{0}$, so $c_1=2$, $c_2=-1$ is a non-trivial solution.</p>
+</div>
+
+<div class="math-box example">
+<div class="math-box-label">Example — Monomials Are Independent</div>
+<p>The list $1, t, t^2, \ldots, t^n$ in $\mathcal{P}_n$ is linearly independent: if $a_0 + a_1 t + \cdots + a_n t^n = 0$ (the zero polynomial, meaning it vanishes for <em>all</em> $t$), then differentiating repeatedly and evaluating at $t=0$ gives $a_0=a_1=\cdots=a_n=0$.</p>
+</div>
+
+<div class="math-box definition">
+<div class="math-box-label">Definition — Basis</div>
+<p>A <strong>basis</strong> for a vector space $V$ is an ordered list $\mathcal{B}=(b_1,\ldots,b_n)$ of vectors that is simultaneously <em>linearly independent</em> and <em>spanning</em> ($\operatorname{span}\mathcal{B}=V$).</p>
+</div>
+
+<div class="math-box theorem">
+<div class="math-box-label">Theorem — Unique Representation</div>
+<p>If $\mathcal{B}=(b_1,\ldots,b_n)$ is a basis for $V$, then every vector $v\in V$ has a <em>unique</em> representation
+$$v = c_1 b_1 + c_2 b_2 + \cdots + c_n b_n.$$
+The scalars $(c_1,\ldots,c_n)$ are called the <strong>coordinates</strong> of $v$ with respect to $\mathcal{B}$, denoted $[v]_{\mathcal{B}} = (c_1,\ldots,c_n)^T\in\mathbb{R}^n$.</p>
+</div>
+
+<div class="math-box proof">
+<div class="math-box-label">Proof</div>
+<p><em>Existence:</em> since $\mathcal{B}$ spans $V$, every $v$ is a linear combination $v=\sum c_i b_i$.</p>
+<p><em>Uniqueness:</em> suppose also $v=\sum d_i b_i$. Then $\sum(c_i-d_i)b_i=\mathbf{0}$. By linear independence, $c_i-d_i=0$ for all $i$.</p>
+<p class="mb-0">$\square$</p>
+</div>
+
+<div class="math-box example">
+<div class="math-box-label">Example — Standard Bases</div>
+<p>
+<ul>
+<li><strong>$\mathbb{R}^n$:</strong> standard basis $\mathcal{E}=(e_1,\ldots,e_n)$; coordinates are just the components: $[v]_{\mathcal{E}}=v$.</li>
+<li><strong>$\mathcal{P}_n$:</strong> monomial basis $(1,t,t^2,\ldots,t^n)$ of size $n+1$; coordinates of $\sum a_i t^i$ are $(a_0,\ldots,a_n)^T$.</li>
+<li><strong>$\mathbb{R}^{m\times n}$:</strong> elementary matrices $E_{ij}$ (with a single $1$ at position $(i,j)$) form a basis of size $mn$.</li>
+</ul>
+</p>
+</div>
+
+<div class="math-box theorem">
+<div class="math-box-label">Theorem — Basis Extension and Compression</div>
+<p>Let $V$ be finite-dimensional. Then:</p>
+<ul>
+<li>Any linearly independent set in $V$ can be extended to a basis of $V$.</li>
+<li>Any spanning set for $V$ can be reduced (by removing vectors) to a basis.</li>
+</ul>
+<p class="mb-0">In particular, every finite-dimensional vector space has a basis.</p>
+</div>
+
+<hr class="my-5">
+<div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+<a href="../02-subspaces/" class="btn btn-outline-custom">&larr; 1.2 Subspaces</a>
+<a href="../04-dimension/" class="btn btn-custom">1.4 Dimension &rarr;</a>
+</div>
+</article>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container text-center">
+<div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<script src="../../../../js/script.js"></script>
+</body>
+</html>

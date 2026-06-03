@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9.3 Error and Convergence — Calculus</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Calculus</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Calculus</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-real-number-system"><div class="toc-chapter-header"><a href="../../01-real-number-system/" class="toc-chapter-link"><strong>1.</strong> The Real Number System</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../01-real-number-system/01-rationals-and-irrationals/">1.1 Rationals and Irrationals</a><a href="../../01-real-number-system/02-order-and-bounds/">1.2 Order and Bounds</a><a href="../../01-real-number-system/03-supremum-and-infimum/">1.3 Supremum and Infimum</a><a href="../../01-real-number-system/04-completeness/">1.4 Completeness</a><a href="../../01-real-number-system/05-archimedean-property/">1.5 Archimedean Property</a><a href="../../01-real-number-system/06-density/">1.6 Density</a></div></div>
+                <div class="toc-chapter" data-chapter="02-sequences"><div class="toc-chapter-header"><a href="../../02-sequences/" class="toc-chapter-link"><strong>2.</strong> Sequences</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../02-sequences/01-definition/">2.1 Definition</a><a href="../../02-sequences/02-convergence/">2.2 Convergence</a><a href="../../02-sequences/03-limit-theorems/">2.3 Limit Theorems</a><a href="../../02-sequences/04-sandwich-theorem/">2.4 Sandwich Theorem</a><a href="../../02-sequences/05-ratio-test/">2.5 Ratio Test</a><a href="../../02-sequences/06-bounded-sequences/">2.6 Bounded Sequences</a><a href="../../02-sequences/07-monotone-sequences/">2.7 Monotone Sequences</a></div></div>
+                <div class="toc-chapter" data-chapter="03-cauchy-sequences"><div class="toc-chapter-header"><a href="../../03-cauchy-sequences/" class="toc-chapter-link"><strong>3.</strong> Cauchy Sequences</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../03-cauchy-sequences/01-cauchy-criterion/">3.1 Cauchy Criterion</a><a href="../../03-cauchy-sequences/02-nested-intervals/">3.2 Nested Intervals</a><a href="../../03-cauchy-sequences/03-subsequences/">3.3 Subsequences</a><a href="../../03-cauchy-sequences/04-bolzano-weierstrass/">3.4 Bolzano-Weierstrass</a><a href="../../03-cauchy-sequences/05-convergence-criterion/">3.5 Convergence Criterion</a></div></div>
+                <div class="toc-chapter" data-chapter="04-limits-and-continuity"><div class="toc-chapter-header"><a href="../../04-limits-and-continuity/" class="toc-chapter-link"><strong>4.</strong> Limits and Continuity</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../04-limits-and-continuity/01-limits-of-functions/">4.1 Limits of Functions</a><a href="../../04-limits-and-continuity/02-continuity/">4.2 Continuity</a><a href="../../04-limits-and-continuity/03-sequential-characterization/">4.3 Sequential Characterization</a><a href="../../04-limits-and-continuity/04-continuity-on-subsets/">4.4 Continuity on Subsets</a><a href="../../04-limits-and-continuity/05-limits-at-infinity/">4.5 Limits at Infinity</a></div></div>
+                <div class="toc-chapter" data-chapter="05-continuous-functions"><div class="toc-chapter-header"><a href="../../05-continuous-functions/" class="toc-chapter-link"><strong>5.</strong> Continuous Functions on Intervals</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../05-continuous-functions/01-boundedness/">5.1 Boundedness</a><a href="../../05-continuous-functions/02-extreme-value-theorem/">5.2 Extreme Value Theorem</a><a href="../../05-continuous-functions/03-intermediate-value-property/">5.3 Intermediate Value Property</a><a href="../../05-continuous-functions/04-fixed-points/">5.4 Fixed Point Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="06-differentiation"><div class="toc-chapter-header"><a href="../../06-differentiation/" class="toc-chapter-link"><strong>6.</strong> Differentiation</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../06-differentiation/01-definition/">6.1 Definition</a><a href="../../06-differentiation/02-geometric-meaning/">6.2 Geometric Meaning</a><a href="../../06-differentiation/03-differentiability-and-continuity/">6.3 Differentiability and Continuity</a><a href="../../06-differentiation/04-examples/">6.4 Examples</a></div></div>
+                <div class="toc-chapter" data-chapter="07-mean-value-theorems"><div class="toc-chapter-header"><a href="../../07-mean-value-theorems/" class="toc-chapter-link"><strong>7.</strong> Mean Value Theorems</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../07-mean-value-theorems/01-local-extrema/">7.1 Local Extrema</a><a href="../../07-mean-value-theorems/02-rolles-theorem/">7.2 Rolle's Theorem</a><a href="../../07-mean-value-theorems/03-mean-value-theorem/">7.3 Mean Value Theorem</a><a href="../../07-mean-value-theorems/04-applications/">7.4 Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="08-lhospital-rule"><div class="toc-chapter-header"><a href="../../08-lhospital-rule/" class="toc-chapter-link"><strong>8.</strong> Cauchy MVT and L'Hospital Rule</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../08-lhospital-rule/01-cauchy-mean-value-theorem/">8.1 Cauchy Mean Value Theorem</a><a href="../../08-lhospital-rule/02-zero-zero-form/">8.2 0/0 Form</a><a href="../../08-lhospital-rule/03-infinity-form/">8.3 ∞/∞ Form</a><a href="../../08-lhospital-rule/04-other-forms/">8.4 Other Forms</a><a href="../../08-lhospital-rule/05-examples-and-warnings/">8.5 Examples and Warnings</a></div></div>
+                <div class="toc-chapter" data-chapter="09-numerical-methods"><div class="toc-chapter-header"><a href="../../09-numerical-methods/" class="toc-chapter-link"><strong>9.</strong> Numerical Methods</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../09-numerical-methods/01-fixed-point-iteration/">9.1 Fixed Point Iteration</a><a href="../../09-numerical-methods/02-newtons-method/">9.2 Newton's Method</a><a href="../../09-numerical-methods/03-error-and-convergence/">9.3 Error and Convergence</a></div></div>
+                <a href="../../10-integration/" class="text-decoration-none toc-chapter-link"><strong>10.</strong> Integration</a>
+                <a href="../../11-applications-of-integration/" class="text-decoration-none toc-chapter-link"><strong>11.</strong> Applications of Integration</a>
+                <a href="../../12-series/" class="text-decoration-none toc-chapter-link"><strong>12.</strong> Series</a>
+                <a href="../../13-multivariable-calculus/" class="text-decoration-none toc-chapter-link"><strong>13.</strong> Multivariable Calculus</a>
+                <a href="../../14-vector-calculus/" class="text-decoration-none toc-chapter-link"><strong>14.</strong> Vector Calculus</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Calculus</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Calculus</a> ›
+                <a href="../">9. Numerical Methods</a> ›
+                <span>9.3 Error and Convergence</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">9.3 Error and Convergence</h1>
+
+                <p>Understanding how quickly a root-finding method converges — and when it might fail — is essential for reliable numerical computation. This section formalises the concepts of error, order of convergence, and stopping criteria, and compares the main methods studied in this chapter.</p>
+
+                <h2 class="mt-4 mb-3">Error and Order of Convergence</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Absolute Error and Order of Convergence</div>
+                    <p>Let $(x_n)$ be a sequence converging to $x^*$. The <strong>absolute error</strong> at step $n$ is:
+                    $$e_n = |x_n - x^*|.$$
+                    The sequence converges with <strong>order $p$</strong> if there exists a constant $C > 0$ such that:
+                    $$\lim_{n\to\infty} \frac{|e_{n+1}|}{|e_n|^p} = C.$$
+                    The constant $C$ is called the <em>asymptotic error constant</em>.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Interpreting Orders</div>
+                    <ul class="mb-0">
+                        <li><strong>$p = 1$ (linear):</strong> Each step reduces the error by a constant factor $C < 1$. Slow but robust. Example: bisection ($C = 1/2$), basic fixed point iteration.</li>
+                        <li><strong>$p \approx 1.618$ (superlinear):</strong> Faster than linear. Example: the secant method, whose order is the golden ratio $\phi = (1+\sqrt{5})/2$.</li>
+                        <li><strong>$p = 2$ (quadratic):</strong> The error is squared each step — the number of correct digits doubles. Example: Newton's method at a simple root.</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Stopping Criteria</h2>
+
+                <p>In practice we cannot compute $e_n = |x_n - x^*|$ directly since $x^*$ is unknown. Instead, we use one or more of the following stopping criteria:</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Stopping Criteria</div>
+                    <ol class="mb-0">
+                        <li><strong>Absolute step size:</strong> Stop when $|x_{n+1} - x_n| < \text{tol}$. Measures how much the iterate changed.</li>
+                        <li><strong>Relative step size:</strong> Stop when $\dfrac{|x_{n+1} - x_n|}{|x_{n+1}|} < \text{tol}$ (avoids issues with scale).</li>
+                        <li><strong>Residual (function value):</strong> Stop when $|f(x_n)| < \text{tol}$. Directly checks how close to zero $f$ is at the current estimate.</li>
+                    </ol>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Which Criterion to Use</div>
+                    <p class="mb-0">No single criterion is universally best. If $f'(x^*)$ is very large, the residual can be small even though $x_n$ is far from $x^*$. If $f'(x^*)$ is very small (near a multiple root), $x_n$ can be close to $x^*$ while $|f(x_n)|$ is still appreciable. In practice, combining the absolute step size criterion with the residual criterion gives a robust stopping rule.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Bisection Method</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Bisection Convergence</div>
+                    <p>Suppose $f$ is continuous on $[a,b]$ with $f(a)f(b) < 0$ (so a root $x^*$ exists by IVT). The bisection method bisects $[a,b]$ at each step, retaining the half containing a sign change. After $n$ steps:
+                    $$e_n \le \frac{b-a}{2^n}.$$
+                    This is linear convergence with $C = 1/2$. To achieve $n_0$ correct decimal digits one needs approximately $n_0 \log_2(10) \approx 3.32\,n_0$ steps.</p>
+                    <p class="mb-0">Bisection always converges (given a sign change) but is slow compared to Newton's method.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Bisection Rate</div>
+                    <p class="mb-0">Starting on an interval of length $1$, after 10 bisection steps the error is at most $1/2^{10} = 1/1024 \approx 9.77 \times 10^{-4}$, giving roughly 3 correct decimal digits. After 20 steps: $\approx 10^{-6}$ (6 digits). Newton's method starting from the same point might reach 12 digits in 4 steps.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Failure Modes of Newton's Method</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Newton's Method Failure Cases</div>
+                    <ol class="mb-0">
+                        <li><strong>Multiple root ($f'(x^*) = 0$):</strong> Quadratic convergence degrades to linear. The formula $x_{n+1} = x_n - f(x_n)/f'(x_n)$ still works, but the asymptotic error constant $C = 1 - 1/m$ where $m$ is the multiplicity of the root.</li>
+                        <li><strong>Starting far from the root:</strong> The tangent at $x_0$ may intersect the $x$-axis at a point far from $x^*$, or outside the domain. The method may diverge or converge to a different root.</li>
+                        <li><strong>Oscillation / cycles:</strong> For some functions (e.g., $f(x) = x^3 - 2x$, starting at $x_0 = 1$) the iterates can cycle between two or more values without converging.</li>
+                        <li><strong>$f'(x_n) = 0$:</strong> The method is undefined; the tangent is horizontal and has no $x$-intercept.</li>
+                    </ol>
+                </div>
+
+                <h2 class="mt-5 mb-3">Comparison of Root-Finding Methods</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Summary Table</div>
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-sm mt-2">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Order $p$</th>
+                                <th>Pros</th>
+                                <th>Cons</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bisection</td>
+                                <td>$1$ ($C = 1/2$)</td>
+                                <td>Always converges; robust</td>
+                                <td>Slow; requires sign change bracket</td>
+                            </tr>
+                            <tr>
+                                <td>Fixed Point Iteration</td>
+                                <td>$1$ (when $k < 1$)</td>
+                                <td>Simple; flexible rearrangement</td>
+                                <td>Requires contraction; convergence can be slow</td>
+                            </tr>
+                            <tr>
+                                <td>Secant Method</td>
+                                <td>$\approx 1.618$</td>
+                                <td>No derivative needed</td>
+                                <td>Needs two initial points; may diverge</td>
+                            </tr>
+                            <tr>
+                                <td>Newton's Method</td>
+                                <td>$2$ (simple root)</td>
+                                <td>Very fast near root</td>
+                                <td>Needs $f'$; local convergence only; fails at multiple roots</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <p class="mb-0">In practice, Newton's method or a hybrid (e.g., bisection to localise, then Newton to refine) is preferred for smooth functions.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-newtons-method/" class="btn btn-outline-custom">&larr; 9.2 Newton's Method</a>
+                    <a href="../../10-integration/" class="btn btn-custom">10. Integration &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

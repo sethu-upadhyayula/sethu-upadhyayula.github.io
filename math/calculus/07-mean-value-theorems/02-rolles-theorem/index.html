@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.2 Rolle's Theorem — Calculus</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Calculus</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Calculus</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-real-number-system"><div class="toc-chapter-header"><a href="../../01-real-number-system/" class="toc-chapter-link"><strong>1.</strong> The Real Number System</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../01-real-number-system/01-rationals-and-irrationals/">1.1 Rationals and Irrationals</a><a href="../../01-real-number-system/02-order-and-bounds/">1.2 Order and Bounds</a><a href="../../01-real-number-system/03-supremum-and-infimum/">1.3 Supremum and Infimum</a><a href="../../01-real-number-system/04-completeness/">1.4 Completeness</a><a href="../../01-real-number-system/05-archimedean-property/">1.5 Archimedean Property</a><a href="../../01-real-number-system/06-density/">1.6 Density</a></div></div>
+                <div class="toc-chapter" data-chapter="02-sequences"><div class="toc-chapter-header"><a href="../../02-sequences/" class="toc-chapter-link"><strong>2.</strong> Sequences</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../02-sequences/01-definition/">2.1 Definition</a><a href="../../02-sequences/02-convergence/">2.2 Convergence</a><a href="../../02-sequences/03-limit-theorems/">2.3 Limit Theorems</a><a href="../../02-sequences/04-sandwich-theorem/">2.4 Sandwich Theorem</a><a href="../../02-sequences/05-ratio-test/">2.5 Ratio Test</a><a href="../../02-sequences/06-bounded-sequences/">2.6 Bounded Sequences</a><a href="../../02-sequences/07-monotone-sequences/">2.7 Monotone Sequences</a></div></div>
+                <div class="toc-chapter" data-chapter="03-cauchy-sequences"><div class="toc-chapter-header"><a href="../../03-cauchy-sequences/" class="toc-chapter-link"><strong>3.</strong> Cauchy Sequences</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../03-cauchy-sequences/01-cauchy-criterion/">3.1 Cauchy Criterion</a><a href="../../03-cauchy-sequences/02-nested-intervals/">3.2 Nested Intervals</a><a href="../../03-cauchy-sequences/03-subsequences/">3.3 Subsequences</a><a href="../../03-cauchy-sequences/04-bolzano-weierstrass/">3.4 Bolzano-Weierstrass</a><a href="../../03-cauchy-sequences/05-convergence-criterion/">3.5 Convergence Criterion</a></div></div>
+                <div class="toc-chapter" data-chapter="04-limits-and-continuity"><div class="toc-chapter-header"><a href="../../04-limits-and-continuity/" class="toc-chapter-link"><strong>4.</strong> Limits and Continuity</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../04-limits-and-continuity/01-limits-of-functions/">4.1 Limits of Functions</a><a href="../../04-limits-and-continuity/02-continuity/">4.2 Continuity</a><a href="../../04-limits-and-continuity/03-sequential-characterization/">4.3 Sequential Characterization</a><a href="../../04-limits-and-continuity/04-continuity-on-subsets/">4.4 Continuity on Subsets</a><a href="../../04-limits-and-continuity/05-limits-at-infinity/">4.5 Limits at Infinity</a></div></div>
+                <div class="toc-chapter" data-chapter="05-continuous-functions"><div class="toc-chapter-header"><a href="../../05-continuous-functions/" class="toc-chapter-link"><strong>5.</strong> Continuous Functions on Intervals</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../05-continuous-functions/01-boundedness/">5.1 Boundedness</a><a href="../../05-continuous-functions/02-extreme-value-theorem/">5.2 Extreme Value Theorem</a><a href="../../05-continuous-functions/03-intermediate-value-property/">5.3 Intermediate Value Property</a><a href="../../05-continuous-functions/04-fixed-points/">5.4 Fixed Point Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="06-differentiation"><div class="toc-chapter-header"><a href="../../06-differentiation/" class="toc-chapter-link"><strong>6.</strong> Differentiation</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../06-differentiation/01-definition/">6.1 Definition</a><a href="../../06-differentiation/02-geometric-meaning/">6.2 Geometric Meaning</a><a href="../../06-differentiation/03-differentiability-and-continuity/">6.3 Differentiability and Continuity</a><a href="../../06-differentiation/04-examples/">6.4 Examples</a></div></div>
+                <div class="toc-chapter" data-chapter="07-mean-value-theorems"><div class="toc-chapter-header"><a href="../../07-mean-value-theorems/" class="toc-chapter-link"><strong>7.</strong> Mean Value Theorems</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../07-mean-value-theorems/01-local-extrema/">7.1 Local Extrema</a><a href="../../07-mean-value-theorems/02-rolles-theorem/">7.2 Rolle's Theorem</a><a href="../../07-mean-value-theorems/03-mean-value-theorem/">7.3 Mean Value Theorem</a><a href="../../07-mean-value-theorems/04-applications/">7.4 Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="08-lhospital-rule"><div class="toc-chapter-header"><a href="../../08-lhospital-rule/" class="toc-chapter-link"><strong>8.</strong> Cauchy MVT and L'Hospital Rule</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../08-lhospital-rule/01-cauchy-mean-value-theorem/">8.1 Cauchy Mean Value Theorem</a><a href="../../08-lhospital-rule/02-zero-zero-form/">8.2 0/0 Form</a><a href="../../08-lhospital-rule/03-infinity-form/">8.3 ∞/∞ Form</a><a href="../../08-lhospital-rule/04-other-forms/">8.4 Other Forms</a><a href="../../08-lhospital-rule/05-examples-and-warnings/">8.5 Examples and Warnings</a></div></div>
+                <div class="toc-chapter" data-chapter="09-numerical-methods"><div class="toc-chapter-header"><a href="../../09-numerical-methods/" class="toc-chapter-link"><strong>9.</strong> Numerical Methods</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../09-numerical-methods/01-fixed-point-iteration/">9.1 Fixed Point Iteration</a><a href="../../09-numerical-methods/02-newtons-method/">9.2 Newton's Method</a><a href="../../09-numerical-methods/03-error-and-convergence/">9.3 Error and Convergence</a></div></div>
+                <a href="../../10-integration/" class="text-decoration-none toc-chapter-link"><strong>10.</strong> Integration</a>
+                <a href="../../11-applications-of-integration/" class="text-decoration-none toc-chapter-link"><strong>11.</strong> Applications of Integration</a>
+                <a href="../../12-series/" class="text-decoration-none toc-chapter-link"><strong>12.</strong> Series</a>
+                <a href="../../13-multivariable-calculus/" class="text-decoration-none toc-chapter-link"><strong>13.</strong> Multivariable Calculus</a>
+                <a href="../../14-vector-calculus/" class="text-decoration-none toc-chapter-link"><strong>14.</strong> Vector Calculus</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Calculus</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Calculus</a> ›
+                <a href="../">7. Mean Value Theorems</a> ›
+                <span>7.2 Rolle's Theorem</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">7.2 Rolle's Theorem</h1>
+
+                <p>Rolle's theorem is the stepping stone to the Mean Value Theorem. It handles the special case where a differentiable function takes equal values at the two endpoints of an interval, and concludes that the derivative must vanish somewhere in between.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 1 — Rolle's Theorem</div>
+                    <p>Let $f:[a,b]\to\mathbb{R}$ satisfy:</p>
+                    <ol>
+                        <li>$f$ is continuous on $[a,b]$,</li>
+                        <li>$f$ is differentiable on $(a,b)$,</li>
+                        <li>$f(a)=f(b)$.</li>
+                    </ol>
+                    <p class="mb-0">Then there exists $c\in(a,b)$ such that $f'(c)=0$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p>Since $f$ is continuous on the closed bounded interval $[a,b]$, the Extreme Value Theorem guarantees that $f$ attains its maximum value $M$ and its minimum value $m$ on $[a,b]$.</p>
+                    <p><strong>Case 1:</strong> $M=m$. Then $f$ is constant on $[a,b]$, so $f'(x)=0$ for every $x\in(a,b)$. Any $c\in(a,b)$ works.</p>
+                    <p><strong>Case 2:</strong> $M>m$. Since $f(a)=f(b)$, both $a$ and $b$ deliver the same value; therefore at least one of the extremes $M$ or $m$ is attained at some interior point $c\in(a,b)$. At such a point $f$ has a local extremum, and since $f$ is differentiable at $c$, Fermat's theorem (Section 7.1) gives $f'(c)=0$.</p>
+                    <p class="mb-0">$\square$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Geometric Interpretation</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Tangent Line is Horizontal</div>
+                    <p class="mb-0">The condition $f(a)=f(b)$ means the two endpoints lie at the same height. Rolle's theorem asserts that the graph must have a horizontal tangent line at some intermediate point $c$. Intuitively, if the curve rises and falls (or stays flat) between two equally high endpoints, there must be a peak or a trough in between where the slope is momentarily zero.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">When Hypotheses Fail</h2>
+
+                <p>Each of the three hypotheses is necessary. Removing any one of them can cause the conclusion to fail.</p>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 1 — Differentiability Fails at One Interior Point</div>
+                    <p>Let $f(x)=|x|$ on $[-1,1]$. Then $f(-1)=f(1)=1$, $f$ is continuous everywhere, but $f$ is not differentiable at $x=0$. Indeed $f'(x)=-1$ for $x<0$ and $f'(x)=1$ for $x>0$; the derivative is never zero on $(-1,1)$. The conclusion of Rolle's theorem fails.</p>
+                    <p class="mb-0">This shows that differentiability on the open interval is essential — continuity alone is not enough.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 2 — Endpoints are Not Equal</div>
+                    <p class="mb-0">Let $f(x)=x$ on $[0,1]$. Then $f(0)=0\ne1=f(1)$, and $f'(x)=1\ne0$ for all $x$. The conclusion fails because hypothesis (3) is violated.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Application: Uniqueness of Zeros</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Corollary — At Most One Zero</div>
+                    <p class="mb-0">If $f$ is continuous on $[a,b]$, differentiable on $(a,b)$, and $f'(x)\ne0$ for all $x\in(a,b)$, then $f$ has at most one zero in $[a,b]$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p>Suppose for contradiction that $f$ has two distinct zeros $x_1<x_2$ in $[a,b]$, so $f(x_1)=f(x_2)=0$. By Rolle's theorem applied on $[x_1,x_2]$, there exists $c\in(x_1,x_2)\subseteq(a,b)$ with $f'(c)=0$. This contradicts the assumption that $f'$ has no zeros in $(a,b)$.</p>
+                    <p class="mb-0">$\square$</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 3 — Applying the Corollary</div>
+                    <p>Show that $p(x)=x^3+3x-5$ has exactly one real root.</p>
+                    <p><strong>Existence:</strong> $p(0)=-5<0$ and $p(2)=8+6-5=9>0$. By the Intermediate Value Theorem, there is a root in $(0,2)$.</p>
+                    <p><strong>Uniqueness:</strong> $p'(x)=3x^2+3>0$ for all $x\in\mathbb{R}$, so $p$ is strictly increasing and can cross zero at most once. By the corollary, there is at most one zero.</p>
+                    <p class="mb-0">Combining both, $p$ has exactly one real root.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-local-extrema/" class="btn btn-outline-custom">&larr; 7.1 Local Extrema</a>
+                    <a href="../03-mean-value-theorem/" class="btn btn-custom">7.3 Mean Value Theorem &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

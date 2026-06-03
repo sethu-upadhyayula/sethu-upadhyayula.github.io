@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.2 Normal Subgroups and Quotient Groups — Abstract Algebra</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Abstract Algebra</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Abstract Algebra</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-groups">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-groups/" class="toc-chapter-link"><strong>1.</strong> Groups</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-groups/01-definition-and-examples/">1.1 Definition and Examples</a>
+                        <a href="../../01-groups/02-subgroups/">1.2 Subgroups</a>
+                        <a href="../../01-groups/03-cyclic-groups/">1.3 Cyclic Groups</a>
+                        <a href="../../01-groups/04-permutation-groups/">1.4 Permutation Groups</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-group-homomorphisms">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-group-homomorphisms/" class="toc-chapter-link"><strong>2.</strong> Group Homomorphisms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-group-homomorphisms/01-homomorphisms-and-isomorphisms/">2.1 Homomorphisms and Isomorphisms</a>
+                        <a href="../../02-group-homomorphisms/02-normal-subgroups-and-quotient-groups/">2.2 Normal Subgroups and Quotient Groups</a>
+                        <a href="../../02-group-homomorphisms/03-isomorphism-theorems/">2.3 Isomorphism Theorems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-group-actions-and-sylow">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-group-actions-and-sylow/" class="toc-chapter-link"><strong>3.</strong> Group Actions and Sylow Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-group-actions-and-sylow/01-group-actions/">3.1 Group Actions</a>
+                        <a href="../../03-group-actions-and-sylow/02-orbit-stabiliser-theorem/">3.2 Orbit–Stabiliser Theorem</a>
+                        <a href="../../03-group-actions-and-sylow/03-sylow-theorems/">3.3 Sylow Theorems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-rings">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-rings/" class="toc-chapter-link"><strong>4.</strong> Rings</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-rings/01-definition-and-examples/">4.1 Definition and Examples</a>
+                        <a href="../../04-rings/02-ideals-and-quotient-rings/">4.2 Ideals and Quotient Rings</a>
+                        <a href="../../04-rings/03-ring-homomorphisms/">4.3 Ring Homomorphisms</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-polynomial-rings-and-ufds">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-polynomial-rings-and-ufds/" class="toc-chapter-link"><strong>5.</strong> Polynomial Rings and UFDs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-polynomial-rings-and-ufds/01-polynomial-rings/">5.1 Polynomial Rings</a>
+                        <a href="../../05-polynomial-rings-and-ufds/02-unique-factorisation-domains/">5.2 Unique Factorisation Domains</a>
+                        <a href="../../05-polynomial-rings-and-ufds/03-euclidean-domains-and-pids/">5.3 Euclidean Domains and PIDs</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-fields-and-galois-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-fields-and-galois-theory/" class="toc-chapter-link"><strong>6.</strong> Fields and Galois Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-fields-and-galois-theory/01-field-extensions/">6.1 Field Extensions</a>
+                        <a href="../../06-fields-and-galois-theory/02-splitting-fields/">6.2 Splitting Fields</a>
+                        <a href="../../06-fields-and-galois-theory/03-galois-group/">6.3 Galois Group</a>
+                        <a href="../../06-fields-and-galois-theory/04-fundamental-theorem/">6.4 Fundamental Theorem of Galois Theory</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Abstract Algebra</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Abstract Algebra</a> ›
+                <a href="../">2. Group Homomorphisms</a> ›
+                <span>2.2 Normal Subgroups and Quotient Groups</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">2.2 Normal Subgroups and Quotient Groups</h1>
+
+                <p>Normal subgroups are exactly the subgroups that arise as kernels of homomorphisms. They allow us to form quotient groups — one of the most powerful constructions in algebra.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.2.1 — Normal Subgroup</div>
+                    <p>A subgroup $N \le G$ is <strong>normal</strong>, written $N \trianglelefteq G$, if any of the following equivalent conditions holds:</p>
+                    <ol>
+                        <li>$gNg^{-1} = N$ for all $g \in G$.</li>
+                        <li>$gN = Ng$ for all $g \in G$ (left and right cosets coincide).</li>
+                        <li>$gng^{-1} \in N$ for all $g \in G$, $n \in N$.</li>
+                    </ol>
+                    <p class="mb-0">Every subgroup of an abelian group is normal.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 2.2.2</div>
+                    <ul class="mb-0">
+                        <li>$A_n \trianglelefteq S_n$: since $\text{sgn}$ is a homomorphism and $A_n = \ker(\text{sgn})$.</li>
+                        <li>$SL_n(\mathbb{R}) \trianglelefteq GL_n(\mathbb{R})$: kernel of $\det$.</li>
+                        <li>The centre $Z(G) = \{z \in G : zg = gz \ \forall g \in G\} \trianglelefteq G$.</li>
+                        <li>The commutator subgroup $[G,G] = \langle aba^{-1}b^{-1} : a,b \in G \rangle \trianglelefteq G$.</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Quotient Groups</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.2.3 — Quotient Group</div>
+                    <p>If $N \trianglelefteq G$, the <strong>quotient group</strong> (or <strong>factor group</strong>) is:
+                    $$G/N = \{gN : g \in G\}$$
+                    with multiplication $(aN)(bN) = (ab)N$.</p>
+                    <p class="mb-0">This operation is well-defined if and only if $N$ is normal. The identity is $eN = N$, and $(gN)^{-1} = g^{-1}N$. We have $|G/N| = [G:N] = |G|/|N|$ when $G$ is finite.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Well-Definedness of Quotient Multiplication</div>
+                    <p>We need: if $aN = a'N$ and $bN = b'N$, then $(ab)N = (a'b')N$. Since $a' = an$ and $b' = bm$ for some $n, m \in N$:
+                    $$a'b' = (an)(bm) = ab(b^{-1}nb)m.$$
+                    Since $N \trianglelefteq G$, $b^{-1}nb \in N$, so $b^{-1}nb \cdot m \in N$, giving $a'b' \in (ab)N$, i.e. $(a'b')N = (ab)N$. $\square$</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 2.2.4 — Key Quotient Groups</div>
+                    <ul>
+                        <li>$\mathbb{Z}/n\mathbb{Z} = \mathbb{Z}/(n\mathbb{Z})$: the integers modulo $n$, quotient of $(\mathbb{Z},+)$ by the normal subgroup $n\mathbb{Z}$.</li>
+                        <li>$\mathbb{R}/\mathbb{Z} \cong S^1$ (the circle group): cosets are $\{x + \mathbb{Z}\}$, isomorphic to $\{e^{2\pi i x}\}$ via $x + \mathbb{Z} \mapsto e^{2\pi i x}$.</li>
+                        <li>$S_n/A_n \cong \mathbb{Z}/2\mathbb{Z}$: the quotient of $S_n$ by even permutations.</li>
+                    </ul>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.2.5 — Natural Projection</div>
+                    <p class="mb-0">The map $\pi : G \to G/N$ defined by $\pi(g) = gN$ is a surjective group homomorphism (the <strong>natural projection</strong> or <strong>quotient map</strong>) with $\ker\pi = N$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Abelianisation</div>
+                    <p class="mb-0">The commutator subgroup $[G,G]$ is the smallest normal subgroup $N$ such that $G/N$ is abelian. The quotient $G/[G,G]$ is called the <strong>abelianisation</strong> of $G$ and captures the "abelian part" of $G$. For $S_n$: $[S_n, S_n] = A_n$ and $S_n/A_n \cong \mathbb{Z}/2\mathbb{Z}$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-homomorphisms-and-isomorphisms/" class="btn btn-outline-custom">&larr; 2.1 Homomorphisms and Isomorphisms</a>
+                    <a href="../03-isomorphism-theorems/" class="btn btn-custom">2.3 Isomorphism Theorems &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

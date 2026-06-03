@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.2 Spectral Theorem — Linear Algebra</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+<div class="theme-toggle-container">
+<button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+</div>
+<header>
+<nav class="navbar navbar-expand-lg site-header">
+<div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3">
+<label class="theme-switch" for="desktop-theme-toggle">
+<input type="checkbox" id="desktop-theme-toggle">
+<span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+</label>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+</header>
+<main>
+<aside class="math-toc" id="math-toc">
+<a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Linear Algebra</a>
+<nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+<a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Linear Algebra</a>
+<hr>
+<div class="toc-chapter" data-chapter="01-vector-spaces">
+<div class="toc-chapter-header">
+<a href="../../01-vector-spaces/" class="toc-chapter-link"><strong>1.</strong> Vector Spaces</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../01-vector-spaces/01-definition-and-examples/">1.1 Definition and Examples</a>
+<a href="../../01-vector-spaces/02-subspaces/">1.2 Subspaces</a>
+<a href="../../01-vector-spaces/03-linear-independence-and-basis/">1.3 Linear Independence and Basis</a>
+<a href="../../01-vector-spaces/04-dimension/">1.4 Dimension</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="02-linear-transformations">
+<div class="toc-chapter-header">
+<a href="../../02-linear-transformations/" class="toc-chapter-link"><strong>2.</strong> Linear Transformations</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../02-linear-transformations/01-definition-and-examples/">2.1 Definition and Examples</a>
+<a href="../../02-linear-transformations/02-kernel-and-image/">2.2 Kernel and Image</a>
+<a href="../../02-linear-transformations/03-matrix-representations/">2.3 Matrix Representations</a>
+<a href="../../02-linear-transformations/04-change-of-basis/">2.4 Change of Basis</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="03-determinants">
+<div class="toc-chapter-header">
+<a href="../../03-determinants/" class="toc-chapter-link"><strong>3.</strong> Determinants</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../03-determinants/01-definition/">3.1 Definition</a>
+<a href="../../03-determinants/02-properties/">3.2 Properties</a>
+<a href="../../03-determinants/03-cofactor-expansion/">3.3 Cofactor Expansion</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="04-eigenvalues-and-eigenvectors">
+<div class="toc-chapter-header">
+<a href="../../04-eigenvalues-and-eigenvectors/" class="toc-chapter-link"><strong>4.</strong> Eigenvalues and Eigenvectors</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../04-eigenvalues-and-eigenvectors/01-characteristic-polynomial/">4.1 Characteristic Polynomial</a>
+<a href="../../04-eigenvalues-and-eigenvectors/02-diagonalization/">4.2 Diagonalization</a>
+<a href="../../04-eigenvalues-and-eigenvectors/03-jordan-normal-form/">4.3 Jordan Normal Form</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="05-inner-product-spaces">
+<div class="toc-chapter-header">
+<a href="../../05-inner-product-spaces/" class="toc-chapter-link"><strong>5.</strong> Inner Product Spaces</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../05-inner-product-spaces/01-inner-products-and-norms/">5.1 Inner Products and Norms</a>
+<a href="../../05-inner-product-spaces/02-orthogonality-and-gram-schmidt/">5.2 Orthogonality and Gram&#8211;Schmidt</a>
+<a href="../../05-inner-product-spaces/03-orthogonal-projections/">5.3 Orthogonal Projections</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="06-spectral-theory">
+<div class="toc-chapter-header">
+<a href="../../06-spectral-theory/" class="toc-chapter-link"><strong>6.</strong> Spectral Theory</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../06-spectral-theory/01-symmetric-matrices/">6.1 Symmetric Matrices</a>
+<a href="../../06-spectral-theory/02-spectral-theorem/">6.2 Spectral Theorem</a>
+<a href="../../06-spectral-theory/03-singular-value-decomposition/">6.3 Singular Value Decomposition</a>
+</div>
+</div>
+</nav>
+</aside>
+<section class="math-content">
+<div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Linear Algebra</a></div>
+<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> &rsaquo; <a href="../../">Linear Algebra</a> &rsaquo; <a href="../">6. Spectral Theory</a> &rsaquo; <span>6.2 Spectral Theorem</span></nav>
+<article>
+<h1 class="text-accent mb-4">6.2 Spectral Theorem</h1>
+
+<div class="math-box theorem">
+<div class="math-box-label">Theorem — Real Spectral Theorem</div>
+<p>Every real symmetric matrix $A=A^T\in M_n(\mathbb{R})$ is <strong>orthogonally diagonalisable</strong>: there exists an orthogonal matrix $Q$ (i.e., $Q^TQ=QQ^T=I$) and a diagonal matrix $\Lambda=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$ with real entries such that:</p>
+$$A = Q\Lambda Q^T.$$
+<p class="mb-0">The columns of $Q$ are orthonormal eigenvectors of $A$, and $\lambda_1,\ldots,\lambda_n$ are the corresponding real eigenvalues. This is the most powerful structure theorem for symmetric matrices.</p>
+</div>
+
+<div class="math-box proof">
+<div class="math-box-label">Proof Sketch — Induction on $n$</div>
+<p>By the fundamental theorem of algebra (and the fact that eigenvalues are real for symmetric matrices), $A$ has at least one real eigenvalue $\lambda_1$ with a unit eigenvector $q_1$. Extend $q_1$ to an orthonormal basis of $\mathbb{R}^n$; in this basis $A$ becomes:
+$$Q_1^TAQ_1=\begin{pmatrix}\lambda_1&\mathbf{0}^T\\\mathbf{0}&A'\end{pmatrix}$$
+where $A'$ is $(n-1)\times(n-1)$ and symmetric (this follows from $A=A^T$ and orthogonality). Apply the induction hypothesis to $A'$.</p>
+<p class="mb-0">$\square$</p>
+</div>
+
+<div class="math-box theorem">
+<div class="math-box-label">Theorem — Spectral Decomposition</div>
+<p>From $A=Q\Lambda Q^T$ with columns $q_i$ and eigenvalues $\lambda_i$, we get the <strong>spectral decomposition</strong>:</p>
+$$A = \sum_{i=1}^n \lambda_i\, q_i q_i^T.$$
+<p class="mb-0">Each term $q_iq_i^T$ is a rank-1 orthogonal projection onto $\operatorname{span}\{q_i\}$. This writes $A$ as a weighted sum of orthogonal rank-1 projections. For a matrix function $f(A)$ (e.g., $e^A$, $\sqrt{A}$): $f(A)=\sum_i f(\lambda_i)q_iq_i^T$.</p>
+</div>
+
+<div class="math-box theorem">
+<div class="math-box-label">Theorem — Quadratic Forms and the Spectral Theorem</div>
+<p>A <strong>quadratic form</strong> associated with $A=A^T$ is $Q(x)=x^TAx=\sum_{i,j}a_{ij}x_ix_j$. Under the change of variables $x=Qy$ (where $Q$ diagonalises $A$):</p>
+$$x^TAx = y^T\Lambda y = \sum_{i=1}^n\lambda_i y_i^2.$$
+<p>This eliminates all cross-terms. Consequently:</p>
+<ul>
+<li>$A$ is positive definite $\Leftrightarrow$ all $\lambda_i>0$.</li>
+<li>$A$ is positive semi-definite $\Leftrightarrow$ all $\lambda_i\ge0$.</li>
+<li>The maximum of $x^TAx$ over the unit sphere $\|x\|=1$ is $\lambda_{\max}$ (attained at the corresponding eigenvector).</li>
+</ul>
+</div>
+
+<div class="math-box example">
+<div class="math-box-label">Example — Diagonalising a $2\times2$ Symmetric Matrix</div>
+<p>Let $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$. Characteristic polynomial: $p(\lambda)=(\lambda-3)^2-1=(\lambda-4)(\lambda-2)$. Eigenvalues: $\lambda_1=4$, $\lambda_2=2$.</p>
+<p>Eigenvectors: $\lambda_1=4$: $(A-4I)v=\begin{pmatrix}-1&1\\1&-1\end{pmatrix}v=0$, so $q_1=\frac{1}{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix}$.</p>
+<p>$\lambda_2=2$: $q_2=\frac{1}{\sqrt2}\begin{pmatrix}-1\\1\end{pmatrix}$.</p>
+<p>Then $Q=\frac{1}{\sqrt2}\begin{pmatrix}1&-1\\1&1\end{pmatrix}$ and $A=Q\begin{pmatrix}4&0\\0&2\end{pmatrix}Q^T=4q_1q_1^T+2q_2q_2^T$.</p>
+</div>
+
+<hr class="my-5">
+<div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+<a href="../01-symmetric-matrices/" class="btn btn-outline-custom">&larr; 6.1 Symmetric Matrices</a>
+<a href="../03-singular-value-decomposition/" class="btn btn-custom">6.3 Singular Value Decomposition &rarr;</a>
+</div>
+</article>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container text-center">
+<div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<script src="../../../../js/script.js"></script>
+</body>
+</html>

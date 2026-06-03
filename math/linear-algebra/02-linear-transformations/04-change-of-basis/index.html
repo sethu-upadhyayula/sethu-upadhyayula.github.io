@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.4 Change of Basis — Linear Algebra</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+<aside class="math-toc" id="math-toc">
+<a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Linear Algebra</a>
+<nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+<a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Linear Algebra</a>
+<hr>
+<div class="toc-chapter"><div class="toc-chapter-header"><a href="../../01-vector-spaces/" class="toc-chapter-link"><strong>1.</strong> Vector Spaces</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../01-vector-spaces/01-definition-and-examples/">1.1 Definition and Examples</a><a href="../../01-vector-spaces/02-subspaces/">1.2 Subspaces</a><a href="../../01-vector-spaces/03-linear-independence-and-basis/">1.3 Linear Independence and Basis</a><a href="../../01-vector-spaces/04-dimension/">1.4 Dimension</a></div></div>
+<div class="toc-chapter"><div class="toc-chapter-header"><a href="../../02-linear-transformations/" class="toc-chapter-link"><strong>2.</strong> Linear Transformations</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../02-linear-transformations/01-definition-and-examples/">2.1 Definition and Examples</a><a href="../../02-linear-transformations/02-kernel-and-image/">2.2 Kernel and Image</a><a href="../../02-linear-transformations/03-matrix-representations/">2.3 Matrix Representations</a><a href="../../02-linear-transformations/04-change-of-basis/">2.4 Change of Basis</a></div></div>
+<div class="toc-chapter"><div class="toc-chapter-header"><a href="../../03-determinants/" class="toc-chapter-link"><strong>3.</strong> Determinants</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../03-determinants/01-definition/">3.1 Definition</a><a href="../../03-determinants/02-properties/">3.2 Properties</a><a href="../../03-determinants/03-cofactor-expansion/">3.3 Cofactor Expansion</a></div></div>
+<div class="toc-chapter"><div class="toc-chapter-header"><a href="../../04-eigenvalues-and-eigenvectors/" class="toc-chapter-link"><strong>4.</strong> Eigenvalues and Eigenvectors</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../04-eigenvalues-and-eigenvectors/01-characteristic-polynomial/">4.1 Characteristic Polynomial</a><a href="../../04-eigenvalues-and-eigenvectors/02-diagonalization/">4.2 Diagonalization</a><a href="../../04-eigenvalues-and-eigenvectors/03-jordan-normal-form/">4.3 Jordan Normal Form</a></div></div>
+<div class="toc-chapter"><div class="toc-chapter-header"><a href="../../05-inner-product-spaces/" class="toc-chapter-link"><strong>5.</strong> Inner Product Spaces</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../05-inner-product-spaces/01-inner-products-and-norms/">5.1 Inner Products and Norms</a><a href="../../05-inner-product-spaces/02-orthogonality-and-gram-schmidt/">5.2 Orthogonality and Gram&#8211;Schmidt</a><a href="../../05-inner-product-spaces/03-orthogonal-projections/">5.3 Orthogonal Projections</a></div></div>
+<div class="toc-chapter"><div class="toc-chapter-header"><a href="../../06-spectral-theory/" class="toc-chapter-link"><strong>6.</strong> Spectral Theory</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../06-spectral-theory/01-symmetric-matrices/">6.1 Symmetric Matrices</a><a href="../../06-spectral-theory/02-spectral-theorem/">6.2 Spectral Theorem</a><a href="../../06-spectral-theory/03-singular-value-decomposition/">6.3 Singular Value Decomposition</a></div></div>
+</nav>
+</aside>
+<section class="math-content">
+<div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Linear Algebra</a></div>
+<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> &rsaquo; <a href="../../">Linear Algebra</a> &rsaquo; <a href="../">2. Linear Transformations</a> &rsaquo; <span>2.4 Change of Basis</span></nav>
+<article>
+<h1 class="text-accent mb-4">2.4 Change of Basis</h1>
+
+<div class="math-box definition">
+<div class="math-box-label">Definition — Change-of-Basis Matrix</div>
+<p>Let $\mathcal{B}=(b_1,\ldots,b_n)$ and $\mathcal{B}'=(b_1',\ldots,b_n')$ be two bases for $V$. The <strong>change-of-basis matrix from $\mathcal{B}'$ to $\mathcal{B}$</strong> is
+$$P = [I]_{\mathcal{B}'}^{\mathcal{B}},$$
+whose $j$-th column is $[b_j']_{\mathcal{B}}$ (the coordinates of $b_j'$ in the old basis $\mathcal{B}$). Then:
+$$[v]_{\mathcal{B}} = P\,[v]_{\mathcal{B}'} \qquad\text{for all }v\in V.$$</p>
+</div>
+
+<div class="math-box theorem">
+<div class="math-box-label">Theorem — Similarity Relation</div>
+<p>Let $T:V\to V$ be a linear operator and $\mathcal{B},\mathcal{B}'$ two bases for $V$, with $P=[I]_{\mathcal{B}'}^{\mathcal{B}}$ the change-of-basis matrix. Then:
+$$[T]_{\mathcal{B}'} = P^{-1}[T]_{\mathcal{B}}\,P.$$
+Two matrices $A$ and $B$ are called <strong>similar</strong> (written $A\sim B$) if there exists an invertible $P$ with $B=P^{-1}AP$. Similar matrices represent the same linear map in different bases.</p>
+</div>
+
+<div class="math-box example">
+<div class="math-box-label">Example — Finding $P$</div>
+<p>In $\mathbb{R}^2$, let $\mathcal{B}=\{e_1,e_2\}$ (standard) and $\mathcal{B}'=\{(1,1),(1,-1)\}$. Express the new basis in terms of old: $(1,1)=1\cdot e_1+1\cdot e_2$ and $(1,-1)=1\cdot e_1+(-1)\cdot e_2$. So:
+$$P = \begin{pmatrix}1&1\\1&-1\end{pmatrix}, \qquad P^{-1}=\frac{1}{-2}\begin{pmatrix}-1&-1\\-1&1\end{pmatrix}=\frac{1}{2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}.$$
+If $T$ has matrix $A$ in the standard basis, then $[T]_{\mathcal{B}'}=P^{-1}AP$.</p>
+</div>
+
+<div class="math-box remark">
+<div class="math-box-label">Remark — Why Change of Basis Matters</div>
+<p>The goal of diagonalization (§4.2) is precisely to find a basis $\mathcal{B}'$ in which the matrix of $T$ is diagonal — i.e., a basis of eigenvectors. The change-of-basis matrix $P$ in that setting has eigenvectors of $T$ as its columns, and $P^{-1}AP=D$ (diagonal).</p>
+</div>
+
+<div class="math-box remark">
+<div class="math-box-label">Remark — Invariants of Similar Matrices</div>
+<p>Similar matrices share the same: determinant, trace, characteristic polynomial, eigenvalues, rank, and nullity. These are all intrinsic properties of the linear operator $T$, independent of the choice of basis.</p>
+</div>
+
+<hr class="my-5">
+<div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+<a href="../03-matrix-representations/" class="btn btn-outline-custom">&larr; 2.3 Matrix Representations</a>
+<a href="../../03-determinants/" class="btn btn-custom">3. Determinants &rarr;</a>
+</div>
+</article>
+</section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<script src="../../../../js/script.js"></script>
+</body>
+</html>

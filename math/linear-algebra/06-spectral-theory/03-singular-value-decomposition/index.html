@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.3 Singular Value Decomposition — Linear Algebra</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+<div class="theme-toggle-container">
+<button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+</div>
+<header>
+<nav class="navbar navbar-expand-lg site-header">
+<div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3">
+<label class="theme-switch" for="desktop-theme-toggle">
+<input type="checkbox" id="desktop-theme-toggle">
+<span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+</label>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+</header>
+<main>
+<aside class="math-toc" id="math-toc">
+<a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Linear Algebra</a>
+<nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+<a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Linear Algebra</a>
+<hr>
+<div class="toc-chapter" data-chapter="01-vector-spaces">
+<div class="toc-chapter-header">
+<a href="../../01-vector-spaces/" class="toc-chapter-link"><strong>1.</strong> Vector Spaces</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../01-vector-spaces/01-definition-and-examples/">1.1 Definition and Examples</a>
+<a href="../../01-vector-spaces/02-subspaces/">1.2 Subspaces</a>
+<a href="../../01-vector-spaces/03-linear-independence-and-basis/">1.3 Linear Independence and Basis</a>
+<a href="../../01-vector-spaces/04-dimension/">1.4 Dimension</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="02-linear-transformations">
+<div class="toc-chapter-header">
+<a href="../../02-linear-transformations/" class="toc-chapter-link"><strong>2.</strong> Linear Transformations</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../02-linear-transformations/01-definition-and-examples/">2.1 Definition and Examples</a>
+<a href="../../02-linear-transformations/02-kernel-and-image/">2.2 Kernel and Image</a>
+<a href="../../02-linear-transformations/03-matrix-representations/">2.3 Matrix Representations</a>
+<a href="../../02-linear-transformations/04-change-of-basis/">2.4 Change of Basis</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="03-determinants">
+<div class="toc-chapter-header">
+<a href="../../03-determinants/" class="toc-chapter-link"><strong>3.</strong> Determinants</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../03-determinants/01-definition/">3.1 Definition</a>
+<a href="../../03-determinants/02-properties/">3.2 Properties</a>
+<a href="../../03-determinants/03-cofactor-expansion/">3.3 Cofactor Expansion</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="04-eigenvalues-and-eigenvectors">
+<div class="toc-chapter-header">
+<a href="../../04-eigenvalues-and-eigenvectors/" class="toc-chapter-link"><strong>4.</strong> Eigenvalues and Eigenvectors</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../04-eigenvalues-and-eigenvectors/01-characteristic-polynomial/">4.1 Characteristic Polynomial</a>
+<a href="../../04-eigenvalues-and-eigenvectors/02-diagonalization/">4.2 Diagonalization</a>
+<a href="../../04-eigenvalues-and-eigenvectors/03-jordan-normal-form/">4.3 Jordan Normal Form</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="05-inner-product-spaces">
+<div class="toc-chapter-header">
+<a href="../../05-inner-product-spaces/" class="toc-chapter-link"><strong>5.</strong> Inner Product Spaces</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../05-inner-product-spaces/01-inner-products-and-norms/">5.1 Inner Products and Norms</a>
+<a href="../../05-inner-product-spaces/02-orthogonality-and-gram-schmidt/">5.2 Orthogonality and Gram&#8211;Schmidt</a>
+<a href="../../05-inner-product-spaces/03-orthogonal-projections/">5.3 Orthogonal Projections</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="06-spectral-theory">
+<div class="toc-chapter-header">
+<a href="../../06-spectral-theory/" class="toc-chapter-link"><strong>6.</strong> Spectral Theory</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../06-spectral-theory/01-symmetric-matrices/">6.1 Symmetric Matrices</a>
+<a href="../../06-spectral-theory/02-spectral-theorem/">6.2 Spectral Theorem</a>
+<a href="../../06-spectral-theory/03-singular-value-decomposition/">6.3 Singular Value Decomposition</a>
+</div>
+</div>
+</nav>
+</aside>
+<section class="math-content">
+<div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Linear Algebra</a></div>
+<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> &rsaquo; <a href="../../">Linear Algebra</a> &rsaquo; <a href="../">6. Spectral Theory</a> &rsaquo; <span>6.3 Singular Value Decomposition</span></nav>
+<article>
+<h1 class="text-accent mb-4">6.3 Singular Value Decomposition</h1>
+
+<div class="math-box theorem">
+<div class="math-box-label">Theorem — Singular Value Decomposition (SVD)</div>
+<p>Every matrix $A\in M_{m\times n}(\mathbb{R})$ of rank $r$ admits the <strong>singular value decomposition</strong>:</p>
+$$A = U\Sigma V^T$$
+<p>where:</p>
+<ul>
+<li>$U\in M_{m\times m}(\mathbb{R})$ is orthogonal ($U^TU=I_m$); its columns $u_1,\ldots,u_m$ are the <strong>left singular vectors</strong>.</li>
+<li>$V\in M_{n\times n}(\mathbb{R})$ is orthogonal ($V^TV=I_n$); its columns $v_1,\ldots,v_n$ are the <strong>right singular vectors</strong>.</li>
+<li>$\Sigma\in M_{m\times n}(\mathbb{R})$ has <strong>singular values</strong> $\sigma_1\ge\sigma_2\ge\cdots\ge\sigma_r>0=\sigma_{r+1}=\cdots$ on the main diagonal, and zeros elsewhere.</li>
+</ul>
+</div>
+
+<div class="math-box proof">
+<div class="math-box-label">Construction — Existence of SVD</div>
+<p>The matrix $A^TA\in M_n(\mathbb{R})$ is symmetric positive semi-definite. By the spectral theorem, $A^TA=V\Lambda V^T$ with eigenvalues $\lambda_1\ge\cdots\ge\lambda_n\ge0$. Define:</p>
+<ul>
+<li>Singular values: $\sigma_i=\sqrt{\lambda_i}$ for $i=1,\ldots,r$ (where $r=\operatorname{rank}(A)$).</li>
+<li>Right singular vectors: columns $v_i$ of $V$ (eigenvectors of $A^TA$).</li>
+<li>Left singular vectors: $u_i=Av_i/\sigma_i$ for $i=1,\ldots,r$; extend to an orthonormal basis of $\mathbb{R}^m$.</li>
+</ul>
+<p class="mb-0">One verifies $Av_i=\sigma_i u_i$ for $i\le r$ and $Av_i=0$ for $i>r$, which gives $A=U\Sigma V^T$.</p>
+</div>
+
+<div class="math-box remark">
+<div class="math-box-label">Remark — Geometric Interpretation</div>
+<p class="mb-0">The SVD factorises $A$ as three operations: $V^T$ (rotation/reflection in the input space), $\Sigma$ (scaling along the coordinate axes), $U$ (rotation/reflection in the output space). The linear map $x\mapsto Ax$ sends the unit sphere $\|x\|=1$ in $\mathbb{R}^n$ to an ellipsoid in $\mathbb{R}^m$ with semi-axes of lengths $\sigma_1,\ldots,\sigma_r$ in the directions $u_1,\ldots,u_r$.</p>
+</div>
+
+<div class="math-box theorem">
+<div class="math-box-label">Theorem — Eckart&#8211;Young Low-Rank Approximation</div>
+<p>Given the SVD $A=U\Sigma V^T=\sum_{i=1}^r\sigma_i u_iv_i^T$, define the rank-$k$ truncation ($k\le r$):</p>
+$$A_k=\sum_{i=1}^k\sigma_i u_iv_i^T.$$
+<p>Then $A_k$ is the best rank-$k$ approximation to $A$ in both the spectral norm and the Frobenius norm:</p>
+$$\|A-A_k\|_2=\sigma_{k+1},\qquad\|A-A_k\|_F=\sqrt{\sigma_{k+1}^2+\cdots+\sigma_r^2}.$$
+<p class="mb-0">No rank-$k$ matrix achieves a smaller error in either of these norms.</p>
+</div>
+
+<div class="math-box definition">
+<div class="math-box-label">Definition — Moore&#8211;Penrose Pseudo-Inverse</div>
+<p>Given $A=U\Sigma V^T$, the <strong>pseudo-inverse</strong> is:
+$$A^+=V\Sigma^+U^T,$$
+where $\Sigma^+$ is obtained from $\Sigma^T$ by replacing each nonzero singular value $\sigma_i$ by $1/\sigma_i$.</p>
+<p class="mb-0">Properties: $AA^+A=A$; $A^+AA^+=A^+$; $(AA^+)^T=AA^+$; $(A^+A)^T=A^+A$. When $A$ has full column rank: $A^+=(A^TA)^{-1}A^T$ (recovers the least-squares formula from §5.3).</p>
+</div>
+
+<div class="math-box example">
+<div class="math-box-label">Applications of SVD</div>
+<ul>
+<li><strong>PCA (Principal Component Analysis):</strong> The right singular vectors $v_1,\ldots,v_k$ of a data matrix give the principal components; $\sigma_i^2$ is proportional to the variance explained by the $i$-th component.</li>
+<li><strong>Image compression:</strong> Store only the first $k$ terms $\sigma_iu_iv_i^T$; the number of values stored is $k(m+n)$ instead of $mn$. For small $k$ this is a significant compression.</li>
+<li><strong>Recommender systems:</strong> Collaborative filtering uses the low-rank SVD approximation to fill in missing entries of a user-item rating matrix.</li>
+<li><strong>Numerical linear algebra:</strong> The condition number $\kappa(A)=\sigma_1/\sigma_r$ measures sensitivity of $Ax=b$ to perturbations; small $\sigma_r$ signals near-singularity.</li>
+</ul>
+</div>
+
+<hr class="my-5">
+<div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+<a href="../02-spectral-theorem/" class="btn btn-outline-custom">&larr; 6.2 Spectral Theorem</a>
+<a href="../../" class="btn btn-custom">Linear Algebra Home &rarr;</a>
+</div>
+</article>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container text-center">
+<div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<script src="../../../../js/script.js"></script>
+</body>
+</html>

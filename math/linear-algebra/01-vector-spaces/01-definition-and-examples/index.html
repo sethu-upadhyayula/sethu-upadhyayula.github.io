@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.1 Definition and Examples — Linear Algebra</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+<div class="theme-toggle-container">
+<button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+</div>
+<header>
+<nav class="navbar navbar-expand-lg site-header">
+<div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3">
+<label class="theme-switch" for="desktop-theme-toggle">
+<input type="checkbox" id="desktop-theme-toggle">
+<span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+</label>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+</header>
+<main>
+<aside class="math-toc" id="math-toc">
+<a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Linear Algebra</a>
+<nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+<a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Linear Algebra</a>
+<hr>
+<div class="toc-chapter" data-chapter="01-vector-spaces">
+<div class="toc-chapter-header">
+<a href="../../01-vector-spaces/" class="toc-chapter-link"><strong>1.</strong> Vector Spaces</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../01-vector-spaces/01-definition-and-examples/">1.1 Definition and Examples</a>
+<a href="../../01-vector-spaces/02-subspaces/">1.2 Subspaces</a>
+<a href="../../01-vector-spaces/03-linear-independence-and-basis/">1.3 Linear Independence and Basis</a>
+<a href="../../01-vector-spaces/04-dimension/">1.4 Dimension</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="02-linear-transformations">
+<div class="toc-chapter-header">
+<a href="../../02-linear-transformations/" class="toc-chapter-link"><strong>2.</strong> Linear Transformations</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../02-linear-transformations/01-definition-and-examples/">2.1 Definition and Examples</a>
+<a href="../../02-linear-transformations/02-kernel-and-image/">2.2 Kernel and Image</a>
+<a href="../../02-linear-transformations/03-matrix-representations/">2.3 Matrix Representations</a>
+<a href="../../02-linear-transformations/04-change-of-basis/">2.4 Change of Basis</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="03-determinants">
+<div class="toc-chapter-header">
+<a href="../../03-determinants/" class="toc-chapter-link"><strong>3.</strong> Determinants</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../03-determinants/01-definition/">3.1 Definition</a>
+<a href="../../03-determinants/02-properties/">3.2 Properties</a>
+<a href="../../03-determinants/03-cofactor-expansion/">3.3 Cofactor Expansion</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="04-eigenvalues-and-eigenvectors">
+<div class="toc-chapter-header">
+<a href="../../04-eigenvalues-and-eigenvectors/" class="toc-chapter-link"><strong>4.</strong> Eigenvalues and Eigenvectors</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../04-eigenvalues-and-eigenvectors/01-characteristic-polynomial/">4.1 Characteristic Polynomial</a>
+<a href="../../04-eigenvalues-and-eigenvectors/02-diagonalization/">4.2 Diagonalization</a>
+<a href="../../04-eigenvalues-and-eigenvectors/03-jordan-normal-form/">4.3 Jordan Normal Form</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="05-inner-product-spaces">
+<div class="toc-chapter-header">
+<a href="../../05-inner-product-spaces/" class="toc-chapter-link"><strong>5.</strong> Inner Product Spaces</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../05-inner-product-spaces/01-inner-products-and-norms/">5.1 Inner Products and Norms</a>
+<a href="../../05-inner-product-spaces/02-orthogonality-and-gram-schmidt/">5.2 Orthogonality and Gram&#8211;Schmidt</a>
+<a href="../../05-inner-product-spaces/03-orthogonal-projections/">5.3 Orthogonal Projections</a>
+</div>
+</div>
+<div class="toc-chapter" data-chapter="06-spectral-theory">
+<div class="toc-chapter-header">
+<a href="../../06-spectral-theory/" class="toc-chapter-link"><strong>6.</strong> Spectral Theory</a>
+<button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+</div>
+<div class="toc-subsections">
+<a href="../../06-spectral-theory/01-symmetric-matrices/">6.1 Symmetric Matrices</a>
+<a href="../../06-spectral-theory/02-spectral-theorem/">6.2 Spectral Theorem</a>
+<a href="../../06-spectral-theory/03-singular-value-decomposition/">6.3 Singular Value Decomposition</a>
+</div>
+</div>
+</nav>
+</aside>
+<section class="math-content">
+<div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Linear Algebra</a></div>
+<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> &rsaquo; <a href="../../">Linear Algebra</a> &rsaquo; <a href="../">1. Vector Spaces</a> &rsaquo; <span>1.1 Definition and Examples</span></nav>
+<article>
+<h1 class="text-accent mb-4">1.1 Definition and Examples</h1>
+
+<div class="math-box definition">
+<div class="math-box-label">Definition — Vector Space</div>
+<p>A <strong>vector space</strong> over $\mathbb{R}$ is a set $V$ together with two operations — <em>addition</em> $+: V\times V\to V$ and <em>scalar multiplication</em> $\cdot:\mathbb{R}\times V\to V$ — satisfying the following axioms for all $u,v,w\in V$ and $c,d\in\mathbb{R}$:</p>
+<ol>
+<li><strong>Closure under addition:</strong> $u+v\in V$.</li>
+<li><strong>Commutativity:</strong> $u+v = v+u$.</li>
+<li><strong>Associativity of addition:</strong> $(u+v)+w = u+(v+w)$.</li>
+<li><strong>Additive identity:</strong> There exists $\mathbf{0}\in V$ such that $v+\mathbf{0}=v$ for all $v$.</li>
+<li><strong>Additive inverses:</strong> For each $v$ there exists $-v\in V$ with $v+(-v)=\mathbf{0}$.</li>
+<li><strong>Closure under scalar multiplication:</strong> $cv\in V$.</li>
+<li><strong>Distributivity over vectors:</strong> $c(u+v)=cu+cv$.</li>
+<li><strong>Distributivity over scalars:</strong> $(c+d)v=cv+dv$.</li>
+<li><strong>Associativity of scalar multiplication:</strong> $c(dv)=(cd)v$.</li>
+<li><strong>Scalar identity:</strong> $1\cdot v=v$.</li>
+</ol>
+<p class="mb-0">Elements of $V$ are called <strong>vectors</strong> and elements of $\mathbb{R}$ are called <strong>scalars</strong>.</p>
+</div>
+
+<div class="math-box example">
+<div class="math-box-label">Example — $\mathbb{R}^n$</div>
+<p>The prototypical vector space is $\mathbb{R}^n = \{(x_1,\ldots,x_n) : x_i\in\mathbb{R}\}$ with componentwise operations:
+$$(x_1,\ldots,x_n)+(y_1,\ldots,y_n) = (x_1+y_1,\ldots,x_n+y_n),\qquad c(x_1,\ldots,x_n)=(cx_1,\ldots,cx_n).$$
+The zero vector is $\mathbf{0}=(0,\ldots,0)$ and $-(x_1,\ldots,x_n)=(-x_1,\ldots,-x_n)$. All ten axioms are inherited directly from the field $\mathbb{R}$.</p>
+</div>
+
+<div class="math-box example">
+<div class="math-box-label">Example — Matrices $\mathbb{R}^{m\times n}$</div>
+<p>The set $\mathbb{R}^{m\times n}$ of all $m\times n$ real matrices forms a vector space under entrywise addition and scalar multiplication:
+$$(A+B)_{ij} = A_{ij}+B_{ij}, \qquad (cA)_{ij} = cA_{ij}.$$
+The zero element is the $m\times n$ zero matrix $0_{m\times n}$. This space has dimension $mn$ (see §1.4).</p>
+</div>
+
+<div class="math-box example">
+<div class="math-box-label">Example — Polynomials $\mathcal{P}_n$</div>
+<p>Let $\mathcal{P}_n$ denote the set of all polynomials of degree <em>at most</em> $n$ with real coefficients:
+$$\mathcal{P}_n = \{a_0 + a_1 t + a_2 t^2 + \cdots + a_n t^n : a_i\in\mathbb{R}\}.$$
+Addition and scalar multiplication are the usual polynomial operations. The zero polynomial serves as $\mathbf{0}$. Note $\mathcal{P}_n$ is a subspace of $\mathcal{P}$ (all polynomials), which is itself an infinite-dimensional vector space.</p>
+</div>
+
+<div class="math-box example">
+<div class="math-box-label">Example — Continuous Functions $C[a,b]$</div>
+<p>The set $C[a,b]$ of all continuous real-valued functions on a closed interval $[a,b]$ is a vector space under pointwise operations:
+$$(f+g)(t)=f(t)+g(t), \qquad (cf)(t)=c\,f(t).$$
+The zero vector is the identically-zero function $\mathbf{0}(t)=0$. More generally, $C^k[a,b]$ ($k$-times continuously differentiable) and $C^\infty[a,b]$ (smooth functions) are also vector spaces, all infinite-dimensional.</p>
+</div>
+
+<div class="math-box example">
+<div class="math-box-label">Non-Example — $\mathbb{R}^2$ with non-standard addition</div>
+<p>Define addition on $\mathbb{R}^2$ by $(x_1,y_1)\oplus(x_2,y_2)=(x_1 x_2,\, y_1 y_2)$ (componentwise <em>multiplication</em>). This fails the additive identity axiom: a candidate identity $(e_1,e_2)$ must satisfy $(x,y)\oplus(e_1,e_2)=(x,y)$ for all $(x,y)$, forcing $e_1=1$, $e_2=1$. But then $(0,1)\oplus(-e_1,-e_2)$ cannot equal $(0,0)$, so the pair $(0,1)$ has no additive inverse. Hence this is <em>not</em> a vector space.</p>
+</div>
+
+<div class="math-box theorem">
+<div class="math-box-label">Theorem — Elementary Consequences of the Axioms</div>
+<p>Let $V$ be a vector space. Then:</p>
+<ul>
+<li>The zero vector $\mathbf{0}$ is unique.</li>
+<li>The additive inverse $-v$ is unique for each $v\in V$.</li>
+<li>$0\cdot v = \mathbf{0}$ for all $v\in V$.</li>
+<li>$c\cdot\mathbf{0} = \mathbf{0}$ for all $c\in\mathbb{R}$.</li>
+<li>$(-1)v = -v$ for all $v\in V$.</li>
+</ul>
+</div>
+
+<div class="math-box proof">
+<div class="math-box-label">Proof — $0\cdot v = \mathbf{0}$</div>
+<p>By distributivity over scalars (axiom 8):
+$$0\cdot v = (0+0)\cdot v = 0\cdot v + 0\cdot v.$$
+Adding $-(0\cdot v)$ to both sides:
+$$\mathbf{0} = 0\cdot v.$$</p>
+<p class="mb-0">$\square$</p>
+</div>
+
+<hr class="my-5">
+<div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+<a href="../" class="btn btn-outline-custom">&larr; 1. Vector Spaces</a>
+<a href="../02-subspaces/" class="btn btn-custom">1.2 Subspaces &rarr;</a>
+</div>
+</article>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container text-center">
+<div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<script src="../../../../js/script.js"></script>
+</body>
+</html>

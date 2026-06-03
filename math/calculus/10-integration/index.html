@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10. Integration — Calculus</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Calculus</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Calculus</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-real-number-system"><div class="toc-chapter-header"><a href="../01-real-number-system/" class="toc-chapter-link"><strong>1.</strong> The Real Number System</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../01-real-number-system/01-rationals-and-irrationals/">1.1 Rationals and Irrationals</a><a href="../01-real-number-system/02-order-and-bounds/">1.2 Order and Bounds</a><a href="../01-real-number-system/03-supremum-and-infimum/">1.3 Supremum and Infimum</a><a href="../01-real-number-system/04-completeness/">1.4 Completeness</a><a href="../01-real-number-system/05-archimedean-property/">1.5 Archimedean Property</a><a href="../01-real-number-system/06-density/">1.6 Density</a></div></div>
+                <div class="toc-chapter" data-chapter="02-sequences"><div class="toc-chapter-header"><a href="../02-sequences/" class="toc-chapter-link"><strong>2.</strong> Sequences</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../02-sequences/01-definition/">2.1 Definition</a><a href="../02-sequences/02-convergence/">2.2 Convergence</a><a href="../02-sequences/03-limit-theorems/">2.3 Limit Theorems</a><a href="../02-sequences/04-sandwich-theorem/">2.4 Sandwich Theorem</a><a href="../02-sequences/05-ratio-test/">2.5 Ratio Test</a><a href="../02-sequences/06-bounded-sequences/">2.6 Bounded Sequences</a><a href="../02-sequences/07-monotone-sequences/">2.7 Monotone Sequences</a></div></div>
+                <div class="toc-chapter" data-chapter="03-cauchy-sequences"><div class="toc-chapter-header"><a href="../03-cauchy-sequences/" class="toc-chapter-link"><strong>3.</strong> Cauchy Sequences</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../03-cauchy-sequences/01-cauchy-criterion/">3.1 Cauchy Criterion</a><a href="../03-cauchy-sequences/02-nested-intervals/">3.2 Nested Intervals</a><a href="../03-cauchy-sequences/03-subsequences/">3.3 Subsequences</a><a href="../03-cauchy-sequences/04-bolzano-weierstrass/">3.4 Bolzano-Weierstrass</a><a href="../03-cauchy-sequences/05-convergence-criterion/">3.5 Convergence Criterion</a></div></div>
+                <div class="toc-chapter" data-chapter="04-limits-and-continuity"><div class="toc-chapter-header"><a href="../04-limits-and-continuity/" class="toc-chapter-link"><strong>4.</strong> Limits and Continuity</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../04-limits-and-continuity/01-limits-of-functions/">4.1 Limits of Functions</a><a href="../04-limits-and-continuity/02-continuity/">4.2 Continuity</a><a href="../04-limits-and-continuity/03-sequential-characterization/">4.3 Sequential Characterization</a><a href="../04-limits-and-continuity/04-continuity-on-subsets/">4.4 Continuity on Subsets</a><a href="../04-limits-and-continuity/05-limits-at-infinity/">4.5 Limits at Infinity</a></div></div>
+                <div class="toc-chapter" data-chapter="05-continuous-functions"><div class="toc-chapter-header"><a href="../05-continuous-functions/" class="toc-chapter-link"><strong>5.</strong> Continuous Functions on Intervals</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../05-continuous-functions/01-boundedness/">5.1 Boundedness</a><a href="../05-continuous-functions/02-extreme-value-theorem/">5.2 Extreme Value Theorem</a><a href="../05-continuous-functions/03-intermediate-value-property/">5.3 Intermediate Value Property</a><a href="../05-continuous-functions/04-fixed-points/">5.4 Fixed Point Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="06-differentiation"><div class="toc-chapter-header"><a href="../06-differentiation/" class="toc-chapter-link"><strong>6.</strong> Differentiation</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../06-differentiation/01-definition/">6.1 Definition</a><a href="../06-differentiation/02-geometric-meaning/">6.2 Geometric Meaning</a><a href="../06-differentiation/03-differentiability-and-continuity/">6.3 Differentiability and Continuity</a><a href="../06-differentiation/04-examples/">6.4 Examples</a></div></div>
+                <div class="toc-chapter" data-chapter="07-mean-value-theorems"><div class="toc-chapter-header"><a href="../07-mean-value-theorems/" class="toc-chapter-link"><strong>7.</strong> Mean Value Theorems</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../07-mean-value-theorems/01-local-extrema/">7.1 Local Extrema</a><a href="../07-mean-value-theorems/02-rolles-theorem/">7.2 Rolle's Theorem</a><a href="../07-mean-value-theorems/03-mean-value-theorem/">7.3 Mean Value Theorem</a><a href="../07-mean-value-theorems/04-applications/">7.4 Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="08-lhospital-rule"><div class="toc-chapter-header"><a href="../08-lhospital-rule/" class="toc-chapter-link"><strong>8.</strong> Cauchy MVT and L'Hospital Rule</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../08-lhospital-rule/01-cauchy-mean-value-theorem/">8.1 Cauchy Mean Value Theorem</a><a href="../08-lhospital-rule/02-zero-zero-form/">8.2 0/0 Form</a><a href="../08-lhospital-rule/03-infinity-form/">8.3 ∞/∞ Form</a><a href="../08-lhospital-rule/04-other-forms/">8.4 Other Forms</a><a href="../08-lhospital-rule/05-examples-and-warnings/">8.5 Examples and Warnings</a></div></div>
+                <div class="toc-chapter" data-chapter="09-numerical-methods"><div class="toc-chapter-header"><a href="../09-numerical-methods/" class="toc-chapter-link"><strong>9.</strong> Numerical Methods</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../09-numerical-methods/01-fixed-point-iteration/">9.1 Fixed Point Iteration</a><a href="../09-numerical-methods/02-newtons-method/">9.2 Newton's Method</a><a href="../09-numerical-methods/03-error-and-convergence/">9.3 Error and Convergence</a></div></div>
+                <a href="../10-integration/" class="text-decoration-none toc-chapter-link"><strong>10.</strong> Integration</a>
+                <a href="../11-applications-of-integration/" class="text-decoration-none toc-chapter-link"><strong>11.</strong> Applications of Integration</a>
+                <a href="../12-series/" class="text-decoration-none toc-chapter-link"><strong>12.</strong> Series</a>
+                <a href="../13-multivariable-calculus/" class="text-decoration-none toc-chapter-link"><strong>13.</strong> Multivariable Calculus</a>
+                <a href="../14-vector-calculus/" class="text-decoration-none toc-chapter-link"><strong>14.</strong> Vector Calculus</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Calculus</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../math/">Math</a> ›
+                <a href="../">Calculus</a> ›
+                <span>10. Integration</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">Chapter 10: Integration</h1>
+
+                <p>Integration formalises the intuitive idea of area under a curve. The Riemann integral provides a rigorous definition via approximation by sums, and the Fundamental Theorem of Calculus connects integration with differentiation, making systematic computation possible.</p>
+
+                <h2 class="mt-4 mb-3">Partitions and Darboux Sums</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Partition and Darboux Sums</div>
+                    <p>A <strong>partition</strong> of $[a,b]$ is a finite set $P = \{x_0, x_1, \ldots, x_n\}$ with $a = x_0 < x_1 < \cdots < x_n = b$. Let $\Delta x_i = x_i - x_{i-1}$ and set:
+                    $$M_i = \sup_{x \in [x_{i-1},x_i]} f(x), \qquad m_i = \inf_{x \in [x_{i-1},x_i]} f(x).$$
+                    The <strong>upper Darboux sum</strong> and <strong>lower Darboux sum</strong> are:
+                    $$U(f,P) = \sum_{i=1}^n M_i \Delta x_i, \qquad L(f,P) = \sum_{i=1}^n m_i \Delta x_i.$$
+                    The <strong>upper integral</strong> is $\overline{\int_a^b} f = \inf_P U(f,P)$, and the <strong>lower integral</strong> is $\underline{\int_a^b} f = \sup_P L(f,P)$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Riemann Integrability</div>
+                    <p class="mb-0">A bounded function $f:[a,b]\to\mathbb{R}$ is <strong>Riemann integrable</strong> if $\overline{\int_a^b} f = \underline{\int_a^b} f$, and the common value is the <strong>Riemann integral</strong> $\int_a^b f(x)\,dx$. Equivalently (Riemann's criterion): $f$ is integrable if and only if for every $\varepsilon > 0$ there exists a partition $P$ such that $U(f,P) - L(f,P) < \varepsilon$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Continuous Functions Are Integrable</div>
+                    <p class="mb-0">Every continuous function $f:[a,b]\to\mathbb{R}$ is Riemann integrable. More generally, every bounded function with only finitely many discontinuities is integrable.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Properties of the Integral</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Basic Properties</div>
+                    <p>Let $f,g$ be integrable on $[a,b]$ and $a < c < b$.</p>
+                    <ul class="mb-0">
+                        <li><strong>Linearity:</strong> $\displaystyle\int_a^b (\alpha f + \beta g)\,dx = \alpha\int_a^b f\,dx + \beta\int_a^b g\,dx$.</li>
+                        <li><strong>Monotonicity:</strong> If $f(x) \le g(x)$ for all $x \in [a,b]$, then $\displaystyle\int_a^b f \le \int_a^b g$.</li>
+                        <li><strong>Additivity:</strong> $\displaystyle\int_a^b f\,dx = \int_a^c f\,dx + \int_c^b f\,dx$.</li>
+                        <li><strong>Triangle inequality:</strong> $\displaystyle\left|\int_a^b f\,dx\right| \le \int_a^b |f|\,dx$.</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Fundamental Theorem of Calculus</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — FTC Part 1</div>
+                    <p class="mb-0">Let $f$ be continuous on $[a,b]$ and define $F(x) = \int_a^x f(t)\,dt$ for $x \in [a,b]$. Then $F$ is differentiable on $(a,b)$ and $F'(x) = f(x)$. Thus $F$ is an antiderivative of $f$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — FTC Part 2</div>
+                    <p class="mb-0">Let $f$ be continuous on $[a,b]$ and $F$ any antiderivative of $f$ (i.e., $F' = f$). Then:
+                    $$\int_a^b f(x)\,dx = F(b) - F(a).$$</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Using FTC</div>
+                    <p class="mb-0">$\displaystyle\int_0^{\pi} \sin x\,dx = [-\cos x]_0^{\pi} = -\cos\pi + \cos 0 = 1 + 1 = 2.$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Integration Techniques</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Integration by Parts</div>
+                    <p class="mb-0">If $u$ and $v$ are differentiable with $u'v$ integrable:
+                    $$\int u\,dv = uv - \int v\,du.$$
+                    Example: $\int x e^x\,dx = xe^x - e^x + C$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Substitution Rule</div>
+                    <p class="mb-0">Let $g:[a,b]\to\mathbb{R}$ be differentiable with $g'$ continuous, and $f$ continuous on the range of $g$. Then:
+                    $$\int_a^b f(g(x))\,g'(x)\,dx = \int_{g(a)}^{g(b)} f(u)\,du.$$
+                    Example: $\int_0^1 2x\,e^{x^2}\,dx \xrightarrow{u=x^2} \int_0^1 e^u\,du = e - 1$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Partial Fractions</div>
+                    <p class="mb-0">To integrate rational functions $P(x)/Q(x)$, decompose into partial fractions. Example:
+                    $$\int \frac{1}{x^2-1}\,dx = \int\!\left(\frac{1/2}{x-1} - \frac{1/2}{x+1}\right)dx = \frac{1}{2}\ln|x-1| - \frac{1}{2}\ln|x+1| + C.$$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Improper Integrals</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Improper Integrals</div>
+                    <p><strong>Type I</strong> (infinite interval):
+                    $$\int_a^\infty f(x)\,dx = \lim_{R\to\infty}\int_a^R f(x)\,dx.$$
+                    <strong>Type II</strong> (integrand unbounded near $b$):
+                    $$\int_a^b f(x)\,dx = \lim_{\varepsilon\to 0^+}\int_a^{b-\varepsilon} f(x)\,dx.$$
+                    Both converge if the limit exists and is finite.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — $p$-Test</div>
+                    <p class="mb-0">$$\int_1^\infty \frac{1}{x^p}\,dx \text{ converges} \iff p > 1.$$
+                    For $p > 1$: $\displaystyle\int_1^\infty x^{-p}\,dx = \frac{1}{p-1}$. For $p = 1$: $\int_1^\infty x^{-1}\,dx$ diverges (equals $\ln R \to \infty$).</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Gaussian Integral</div>
+                    <p class="mb-0">The celebrated result $\displaystyle\int_{-\infty}^\infty e^{-x^2}\,dx = \sqrt{\pi}$ is proved by squaring and converting to polar coordinates. It is fundamental in probability (the normal distribution).</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../09-numerical-methods/03-error-and-convergence/" class="btn btn-outline-custom">&larr; 9.3 Error and Convergence</a>
+                    <a href="../11-applications-of-integration/" class="btn btn-custom">11. Applications of Integration &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>
