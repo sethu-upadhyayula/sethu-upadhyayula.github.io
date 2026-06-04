@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.2 Linear First-Order Equations — Ordinary Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to ODEs</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Ordinary Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-first-order-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-first-order-odes/" class="toc-chapter-link"><strong>1.</strong> First-Order ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-first-order-odes/01-separable-equations/">1.1 Separable Equations</a>
+                        <a href="../../01-first-order-odes/02-linear-first-order-equations/">1.2 Linear First-Order Equations</a>
+                        <a href="../../01-first-order-odes/03-exact-equations/">1.3 Exact Equations</a>
+                        <a href="../../01-first-order-odes/04-existence-and-uniqueness/">1.4 Existence and Uniqueness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-second-order-linear-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-second-order-linear-odes/" class="toc-chapter-link"><strong>2.</strong> Second-Order Linear ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-second-order-linear-odes/01-constant-coefficient-equations/">2.1 Constant Coefficient Equations</a>
+                        <a href="../../02-second-order-linear-odes/02-reduction-of-order/">2.2 Reduction of Order</a>
+                        <a href="../../02-second-order-linear-odes/03-variation-of-parameters/">2.3 Variation of Parameters</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-systems-of-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-systems-of-odes/" class="toc-chapter-link"><strong>3.</strong> Systems of ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-systems-of-odes/01-linear-systems/">3.1 Linear Systems</a>
+                        <a href="../../03-systems-of-odes/02-phase-plane-analysis/">3.2 Phase Plane Analysis</a>
+                        <a href="../../03-systems-of-odes/03-equilibria-and-stability/">3.3 Equilibria and Stability</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-series-solutions">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-series-solutions/" class="toc-chapter-link"><strong>4.</strong> Series Solutions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-series-solutions/01-power-series-solutions/">4.1 Power Series Solutions</a>
+                        <a href="../../04-series-solutions/02-regular-singular-points/">4.2 Regular Singular Points</a>
+                        <a href="../../04-series-solutions/03-bessel-and-legendre-equations/">4.3 Bessel and Legendre Equations</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-laplace-transforms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-laplace-transforms/" class="toc-chapter-link"><strong>5.</strong> Laplace Transforms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-laplace-transforms/01-definition-and-properties/">5.1 Definition and Properties</a>
+                        <a href="../../05-laplace-transforms/02-solving-odes-via-laplace/">5.2 Solving ODEs via Laplace</a>
+                        <a href="../../05-laplace-transforms/03-convolution/">5.3 Convolution</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-stability-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-stability-theory/" class="toc-chapter-link"><strong>6.</strong> Stability Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-stability-theory/01-lyapunov-stability/">6.1 Lyapunov Stability</a>
+                        <a href="../../06-stability-theory/02-lyapunov-functions/">6.2 Lyapunov Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-boundary-value-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-boundary-value-problems/" class="toc-chapter-link"><strong>7.</strong> Boundary Value Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-boundary-value-problems/01-two-point-boundary-problems/">7.1 Two-Point Boundary Problems</a>
+                        <a href="../../07-boundary-value-problems/02-sturm-liouville-theory/">7.2 Sturm–Liouville Theory</a>
+                        <a href="../../07-boundary-value-problems/03-eigenfunction-expansions/">7.3 Eigenfunction Expansions</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to ODEs</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Ordinary Differential Equations</a> ›
+                <a href="../">1. First-Order ODEs</a> ›
+                <span>1.2 Linear First-Order Equations</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">1.2 Linear First-Order Equations</h1>
+
+                <p>A first-order ODE is <em>linear</em> if it is linear in both $y$ and $y'$. Linear equations admit a complete, explicit solution via the method of integrating factors, making them one of the most tractable classes of ODEs.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 1.2.1 — Linear First-Order ODE</div>
+                    <p class="mb-0">A <strong>first-order linear ODE</strong> has the standard form
+                    $$y' + p(x)\,y = q(x),$$
+                    where $p$ and $q$ are given functions of $x$. The equation is <em>homogeneous</em> if $q \equiv 0$ and <em>nonhomogeneous</em> otherwise.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Integrating Factor Method</h2>
+
+                <p>The key idea is to multiply both sides by a function $\mu(x)$ chosen so that the left-hand side becomes an exact derivative $\frac{d}{dx}[\mu(x) y]$.</p>
+
+                <p>Expanding $\frac{d}{dx}[\mu y] = \mu y' + \mu' y$. For this to equal $\mu(y' + py)$ we need $\mu' = \mu p$, i.e., $\mu'/\mu = p$. This separable equation gives:</p>
+                $$\mu(x) = e^{\int p(x)\,dx}.$$
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 1.2.2 — General Solution</div>
+                    <p>Let $p, q$ be continuous on an interval $I$. Let $\mu(x) = e^{\int p(x)\,dx}$. Then the general solution of $y' + p(x)y = q(x)$ on $I$ is
+                    $$y(x) = \frac{1}{\mu(x)}\left[\int \mu(x)\,q(x)\,dx + C\right].$$</p>
+                    <p class="mb-0">Every IVP $y(x_0) = y_0$ with $x_0 \in I$ has a unique solution on all of $I$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Derivation</div>
+                    <p>Multiply $y' + py = q$ by $\mu$: $\mu y' + \mu p y = \mu q$. The left side is $\frac{d}{dx}(\mu y)$. Integrating both sides:</p>
+                    <p class="mb-0">$\mu y = \int \mu q\,dx + C$, so $y = \mu^{-1}\!\left[\int \mu q\,dx + C\right]$. $\square$</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 1.2.3 — First-Order Linear Equation</div>
+                    <p>Solve $y' - 2xy = x$ with $y(0) = 1$.</p>
+                    <p>Here $p(x) = -2x$, so $\mu = e^{\int -2x\,dx} = e^{-x^2}$. Multiply through:
+                    $$\frac{d}{dx}\!\left[e^{-x^2} y\right] = x e^{-x^2}.$$
+                    Integrate: $e^{-x^2} y = \int x e^{-x^2}\,dx = -\tfrac{1}{2}e^{-x^2} + C$.</p>
+                    <p class="mb-0">So $y = -\tfrac{1}{2} + Ce^{x^2}$. Applying $y(0) = 1$: $1 = -\tfrac{1}{2} + C$, giving $C = \tfrac{3}{2}$. The solution is $y = \tfrac{3}{2}e^{x^2} - \tfrac{1}{2}$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Application: RC Circuit</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 1.2.4 — RC Circuit</div>
+                    <p>In a series RC circuit driven by voltage $V(t)$, Kirchhoff's voltage law gives
+                    $$R\,\frac{dq}{dt} + \frac{q}{C} = V(t),$$
+                    where $q(t)$ is the charge on the capacitor, $R$ the resistance, and $C$ the capacitance. Dividing by $R$:
+                    $$q' + \frac{1}{RC}\,q = \frac{V(t)}{R}.$$
+                    This is linear with $p = 1/(RC)$ and $\mu = e^{t/(RC)}$. For constant $V$:
+                    $$q(t) = CV + (q_0 - CV)e^{-t/(RC)},$$</p>
+                    <p class="mb-0">where $q_0 = q(0)$. The steady state is $q_\infty = CV$ (full charge), approached exponentially with time constant $\tau = RC$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Superposition</div>
+                    <p class="mb-0">The general solution $y = y_h + y_p$ is the sum of the homogeneous solution $y_h = Ce^{-\int p\,dx}$ and any particular solution $y_p$. This superposition principle is a hallmark of linear equations and extends to all orders.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-separable-equations/" class="btn btn-outline-custom">&larr; 1.1 Separable Equations</a>
+                    <a href="../03-exact-equations/" class="btn btn-custom">1.3 Exact Equations &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>
