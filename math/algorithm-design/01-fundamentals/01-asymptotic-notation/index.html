@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1 Asymptotic Notation — Algorithm Design</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Algorithm Design</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Algorithm Design</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-fundamentals">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-fundamentals/" class="toc-chapter-link"><strong>1.</strong> Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-fundamentals/01-asymptotic-notation/">1.1 Asymptotic Notation</a>
+                        <a href="../../01-fundamentals/02-recurrences-and-master-theorem/">1.2 Recurrences and the Master Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-divide-and-conquer">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-divide-and-conquer/" class="toc-chapter-link"><strong>2.</strong> Divide and Conquer</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-divide-and-conquer/01-merge-sort-and-binary-search/">2.1 Merge Sort and Binary Search</a>
+                        <a href="../../02-divide-and-conquer/02-strassens-algorithm/">2.2 Strassen's Algorithm</a>
+                        <a href="../../02-divide-and-conquer/03-closest-pair-of-points/">2.3 Closest Pair of Points</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-dynamic-programming">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-dynamic-programming/" class="toc-chapter-link"><strong>3.</strong> Dynamic Programming</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-dynamic-programming/01-principles-and-memoization/">3.1 Principles and Memoization</a>
+                        <a href="../../03-dynamic-programming/02-sequence-problems/">3.2 Sequence Problems</a>
+                        <a href="../../03-dynamic-programming/03-knapsack-and-coin-problems/">3.3 Knapsack and Coin Problems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-greedy-algorithms">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-greedy-algorithms/" class="toc-chapter-link"><strong>4.</strong> Greedy Algorithms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-greedy-algorithms/01-activity-selection/">4.1 Activity Selection</a>
+                        <a href="../../04-greedy-algorithms/02-huffman-codes/">4.2 Huffman Codes</a>
+                        <a href="../../04-greedy-algorithms/03-matroids/">4.3 Matroids</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-graph-algorithms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-graph-algorithms/" class="toc-chapter-link"><strong>5.</strong> Graph Algorithms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-graph-algorithms/01-bfs-and-dfs/">5.1 BFS and DFS</a>
+                        <a href="../../05-graph-algorithms/02-shortest-paths/">5.2 Shortest Paths</a>
+                        <a href="../../05-graph-algorithms/03-topological-sorting/">5.3 Topological Sorting</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-network-flow">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-network-flow/" class="toc-chapter-link"><strong>6.</strong> Network Flow</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-network-flow/01-max-flow-min-cut/">6.1 Max-Flow Min-Cut</a>
+                        <a href="../../06-network-flow/02-ford-fulkerson-and-edmonds-karp/">6.2 Ford–Fulkerson and Edmonds–Karp</a>
+                        <a href="../../06-network-flow/03-applications/">6.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-computational-complexity">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-computational-complexity/" class="toc-chapter-link"><strong>7.</strong> Computational Complexity</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-computational-complexity/01-p-and-np/">7.1 P and NP</a>
+                        <a href="../../07-computational-complexity/02-np-completeness/">7.2 NP-Completeness</a>
+                        <a href="../../07-computational-complexity/03-approximation-algorithms/">7.3 Approximation Algorithms</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Algorithm Design</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Algorithm Design</a> ›
+                <a href="../">1. Fundamentals</a> ›
+                <span>1.1 Asymptotic Notation</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">1.1 Asymptotic Notation</h1>
+
+                <p>Asymptotic notation provides a precise, machine-independent language for comparing algorithm running times. We discard constants and lower-order terms, focusing on how running time scales with input size $n$.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 1.1.1 — Big-$O$ Notation</div>
+                    <p class="mb-0">$f(n) = O(g(n))$ if there exist constants $c > 0$ and $n_0 \ge 1$ such that $f(n) \le c \cdot g(n)$ for all $n \ge n_0$. Informally, $f$ grows no faster than $g$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 1.1.2 — $\Omega$, $\Theta$, $o$, $\omega$</div>
+                    <p>$f = \Omega(g)$: $f(n) \ge c \cdot g(n)$ eventually (lower bound). $f = \Theta(g)$: both $f = O(g)$ and $f = \Omega(g)$ (tight bound).</p>
+                    <p>$f = o(g)$: $f(n)/g(n) \to 0$ as $n \to \infty$ (strictly slower). $f = \omega(g)$: $f(n)/g(n) \to \infty$ (strictly faster).</p>
+                    <p class="mb-0">Relationship: $f = \Theta(g) \iff f = O(g) \text{ and } f = \Omega(g) \iff g = \Theta(f)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Standard Complexity Hierarchy</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 1.1.3 — Growth Rate Hierarchy</div>
+                    <p class="mb-0">The following functions are listed in strictly increasing order of asymptotic growth:
+                    $$1 \ll \log \log n \ll \log n \ll \sqrt{n} \ll n \ll n \log n \ll n^2 \ll n^3 \ll 2^n \ll n! \ll n^n.$$
+                    That is, each function is $o$ of the next.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 1.1.4 — Common Algorithm Complexities</div>
+                    <p>$O(1)$: array access, hash table lookup. $O(\log n)$: binary search, balanced BST. $O(n)$: linear scan, BFS/DFS. $O(n \log n)$: merge sort, heap sort, FFT.</p>
+                    <p class="mb-0">$O(n^2)$: bubble/insertion sort, brute-force matrix multiply. $O(n^3)$: Floyd–Warshall, naive matrix multiply. $O(2^n)$: subset enumeration. $O(n!)$: brute-force TSP.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Arithmetic Rules</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 1.1.5 — Rules for Asymptotic Notation</div>
+                    <p>$O(f) + O(g) = O(\max(f, g))$ (dominated by the larger term).</p>
+                    <p>$O(f) \cdot O(g) = O(f \cdot g)$ (multiply running times in nested loops).</p>
+                    <p>$O(c \cdot f) = O(f)$ for any constant $c > 0$ (constants don't matter).</p>
+                    <p>$\log_a n = \Theta(\log n)$ for any base $a > 1$ (log base doesn't matter for $\Theta$).</p>
+                    <p class="mb-0">$\log n^k = k \log n = O(\log n)$ for constant $k$ (polynomial powers of $\log$ stay $O(\log n)$); but $n^{0.01} = \omega(\log n)$ (any polynomial dominates any logarithm).</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Limits and Asymptotic Comparison</div>
+                    <p class="mb-0">If $\lim_{n\to\infty} f(n)/g(n) = L$ with $0 < L < \infty$, then $f = \Theta(g)$. If $L = 0$ then $f = o(g)$; if $L = \infty$ then $f = \omega(g)$. L'Hôpital's rule and Stirling's approximation ($n! \sim \sqrt{2\pi n}(n/e)^n$) are often useful here.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 1. Fundamentals</a>
+                    <a href="../02-recurrences-and-master-theorem/" class="btn btn-custom">1.2 Recurrences and the Master Theorem &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

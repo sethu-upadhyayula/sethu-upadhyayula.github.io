@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.2 Ordinal Arithmetic — Set Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Set Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Set Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-naive-set-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-naive-set-theory/" class="toc-chapter-link"><strong>1.</strong> Naive Set Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-naive-set-theory/01-sets-and-membership/">1.1 Sets and Membership</a>
+                        <a href="../../01-naive-set-theory/02-subsets/">1.2 Subsets</a>
+                        <a href="../../01-naive-set-theory/03-operations/">1.3 Operations</a>
+                        <a href="../../01-naive-set-theory/04-russell-paradox/">1.4 Russell's Paradox</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-relations-and-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-relations-and-functions/" class="toc-chapter-link"><strong>2.</strong> Relations and Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-relations-and-functions/01-ordered-pairs/">2.1 Ordered Pairs</a>
+                        <a href="../../02-relations-and-functions/02-relations/">2.2 Relations</a>
+                        <a href="../../02-relations-and-functions/03-equivalence-relations/">2.3 Equivalence Relations</a>
+                        <a href="../../02-relations-and-functions/04-functions/">2.4 Functions</a>
+                        <a href="../../02-relations-and-functions/05-injections-surjections/">2.5 Injections and Surjections</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-cardinality">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-cardinality/" class="toc-chapter-link"><strong>3.</strong> Cardinality</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-cardinality/01-finite-sets/">3.1 Finite Sets</a>
+                        <a href="../../03-cardinality/02-countable-sets/">3.2 Countable Sets</a>
+                        <a href="../../03-cardinality/03-uncountable-sets/">3.3 Uncountable Sets</a>
+                        <a href="../../03-cardinality/04-cantors-theorem/">3.4 Cantor's Theorem</a>
+                        <a href="../../03-cardinality/05-schroder-bernstein/">3.5 Schröder–Bernstein</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-ordinals">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-ordinals/" class="toc-chapter-link"><strong>4.</strong> Ordinal Numbers</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-ordinals/01-well-ordering/">4.1 Well-Ordering</a>
+                        <a href="../../04-ordinals/02-ordinal-arithmetic/">4.2 Ordinal Arithmetic</a>
+                        <a href="../../04-ordinals/03-transfinite-induction/">4.3 Transfinite Induction</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-cardinals">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-cardinals/" class="toc-chapter-link"><strong>5.</strong> Cardinal Numbers</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-cardinals/01-definition/">5.1 Definition</a>
+                        <a href="../../05-cardinals/02-cardinal-arithmetic/">5.2 Cardinal Arithmetic</a>
+                        <a href="../../05-cardinals/03-continuum-hypothesis/">5.3 Continuum Hypothesis</a>
+                    </div>
+                </div>
+                <a href="../../06-axiom-of-choice/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Axiom of Choice</a>
+                <a href="../../07-axiomatic-set-theory/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Axiomatic Set Theory (ZFC)</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Set Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Set Theory</a> ›
+                <a href="../">4. Ordinal Numbers</a> ›
+                <span>4.2 Ordinal Arithmetic</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 Ordinal Arithmetic</h1>
+
+                <p>Arithmetic on ordinals is defined by transfinite recursion. The key surprise is that addition and multiplication are <em>not commutative</em> — the order of operands matters.</p>
+
+                <h2 class="mt-4 mb-3">Addition</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.2.1 — Ordinal Addition</div>
+                    <p>$\alpha + \beta$ is the order type of the well-ordering formed by placing a copy of $\beta$ <em>after</em> a copy of $\alpha$. Formally by recursion on $\beta$:
+                    <ul>
+                        <li>$\alpha + 0 = \alpha$</li>
+                        <li>$\alpha + (\beta + 1) = (\alpha + \beta) + 1$</li>
+                        <li>$\alpha + \lambda = \sup_{\beta < \lambda} (\alpha + \beta)$ for limit $\lambda$.</li>
+                    </ul>
+                    </p>
+                    <p class="mb-0"></p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 4.2.2 — Non-Commutativity</div>
+                    <p>$1 + \omega$: Place a single element before $\omega = \{0,1,2,\ldots\}$. The resulting order $\{*, 0, 1, 2, \ldots\}$ has order type $\omega$ (rename $* \mapsto 0$, $0 \mapsto 1$, etc.).</p>
+                    <p>$\omega + 1$: Place a single element after $\omega$. The result is $\{0, 1, 2, \ldots, \omega\}$, which has a largest element — this is a strictly larger ordinal than $\omega$.</p>
+                    <p class="mb-0">Therefore $1 + \omega = \omega \neq \omega + 1$. Ordinal addition is not commutative!</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Multiplication</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.2.3 — Ordinal Multiplication</div>
+                    <p class="mb-0">$\alpha \cdot \beta$ is the order type of $\beta$ many copies of $\alpha$ laid end-to-end. For example, $\omega \cdot 2 = \omega + \omega$ (two copies of $\omega$), while $2 \cdot \omega = \omega$ (countably many copies of $2$, each of size $2$, giving $\{0,1,2,3,\ldots\}$ again).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Cantor Normal Form</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.2.4 — Cantor Normal Form</div>
+                    <p class="mb-0">Every ordinal $\alpha > 0$ has a unique representation
+                    $$\alpha = \omega^{\beta_1} k_1 + \omega^{\beta_2} k_2 + \cdots + \omega^{\beta_n} k_n$$
+                    where $\beta_1 > \beta_2 > \cdots > \beta_n \geq 0$ are ordinals and $k_1, \ldots, k_n \in \mathbb{N}_{>0}$. This is the <strong>Cantor normal form</strong> of $\alpha$ in base $\omega$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 4.2.5</div>
+                    <p class="mb-0">$\omega^2 \cdot 3 + \omega \cdot 5 + 7$ is in Cantor normal form. The ordinals $\omega^2$, $\omega$, and $1 = \omega^0$ appear with coefficients $3$, $5$, and $7$. This ordinal is countable (it is $< \omega^3$).</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-well-ordering/" class="btn btn-outline-custom">&larr; 4.1 Well-Ordering</a>
+                    <a href="../03-transfinite-induction/" class="btn btn-custom">4.3 Transfinite Induction &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

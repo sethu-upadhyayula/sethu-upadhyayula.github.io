@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.2 Four Color Theorem — Graph Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Graph Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Graph Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-basic-concepts">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-basic-concepts/" class="toc-chapter-link"><strong>1.</strong> Basic Concepts</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-basic-concepts/01-graphs-and-digraphs/">1.1 Graphs and Digraphs</a>
+                        <a href="../../01-basic-concepts/02-degree-sequences/">1.2 Degree Sequences</a>
+                        <a href="../../01-basic-concepts/03-paths-and-cycles/">1.3 Paths and Cycles</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-trees">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-trees/" class="toc-chapter-link"><strong>2.</strong> Trees</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-trees/01-trees-and-forests/">2.1 Trees and Forests</a>
+                        <a href="../../02-trees/02-spanning-trees/">2.2 Spanning Trees</a>
+                        <a href="../../02-trees/03-minimum-spanning-trees/">2.3 Minimum Spanning Trees</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-connectivity">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-connectivity/" class="toc-chapter-link"><strong>3.</strong> Connectivity</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-connectivity/01-vertex-and-edge-connectivity/">3.1 Vertex and Edge Connectivity</a>
+                        <a href="../../03-connectivity/02-mengers-theorem/">3.2 Menger's Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-eulerian-and-hamiltonian">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-eulerian-and-hamiltonian/" class="toc-chapter-link"><strong>4.</strong> Eulerian and Hamiltonian Graphs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-eulerian-and-hamiltonian/01-eulerian-circuits-and-paths/">4.1 Eulerian Circuits and Paths</a>
+                        <a href="../../04-eulerian-and-hamiltonian/02-hamiltonian-cycles/">4.2 Hamiltonian Cycles</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-planar-graphs">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-planar-graphs/" class="toc-chapter-link"><strong>5.</strong> Planar Graphs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-planar-graphs/01-eulers-formula/">5.1 Euler's Formula</a>
+                        <a href="../../05-planar-graphs/02-kuratowskis-theorem/">5.2 Kuratowski's Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-graph-coloring">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-graph-coloring/" class="toc-chapter-link"><strong>6.</strong> Graph Coloring</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-graph-coloring/01-chromatic-number/">6.1 Chromatic Number</a>
+                        <a href="../../06-graph-coloring/02-four-color-theorem/">6.2 Four Color Theorem</a>
+                        <a href="../../06-graph-coloring/03-edge-colorings/">6.3 Edge Colorings</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-matchings-and-flows">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-matchings-and-flows/" class="toc-chapter-link"><strong>7.</strong> Matchings and Flows</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-matchings-and-flows/01-matchings-and-halls-theorem/">7.1 Matchings and Hall's Theorem</a>
+                        <a href="../../07-matchings-and-flows/02-network-flows-and-max-flow-min-cut/">7.2 Network Flows and Max-Flow Min-Cut</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="08-spectral-graph-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../08-spectral-graph-theory/" class="toc-chapter-link"><strong>8.</strong> Spectral Graph Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../08-spectral-graph-theory/01-adjacency-matrix/">8.1 Adjacency Matrix</a>
+                        <a href="../../08-spectral-graph-theory/02-laplacian/">8.2 Laplacian</a>
+                        <a href="../../08-spectral-graph-theory/03-spectral-bounds/">8.3 Spectral Bounds</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Graph Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Graph Theory</a> ›
+                <a href="../">6. Graph Coloring</a> ›
+                <span>6.2 Four Color Theorem</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">6.2 Four Color Theorem</h1>
+
+                <p>The Four Colour Theorem is one of the most famous results in all of mathematics — both for its long history and for being the first major theorem whose proof relied essentially on computer computation.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.2.1 — Four Colour Theorem (Appel–Haken, 1976)</div>
+                    <p class="mb-0">Every planar graph is properly 4-colourable, i.e., $\chi(G) \le 4$ for every planar graph $G$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">History</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Historical Note</div>
+                    <p>Francis Guthrie conjectured in 1852 that four colours suffice to colour any map so that adjacent regions have different colours. The problem resisted proof for over a century.</p>
+                    <p>Appel and Haken proved the theorem in 1976 by reducing the problem to a finite case analysis of 1,936 <em>reducible configurations</em>, each checked by computer — the first major theorem proved with essential computer assistance.</p>
+                    <p class="mb-0">Robertson, Sanders, Seymour, and Thomas gave a simplified proof in 1997, reducing to 633 configurations, though still computer-assisted.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Five Colour Theorem (Elementary Proof)</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.2.2 — Five Colour Theorem</div>
+                    <p class="mb-0">Every planar graph is properly 5-colourable.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof (by induction on $|V|$)</div>
+                    <p>Every planar graph has a vertex $v$ with $\deg(v) \le 5$ (by $e \le 3v - 6$). Remove $v$; by induction the remaining graph is 5-coloured. If $\deg(v) \le 4$, at most 4 colours appear among $v$'s neighbours, so a fifth colour is free for $v$.</p>
+                    <p>If $\deg(v) = 5$ with all 5 colours used by its 5 neighbours (in cyclic order $v_1, \ldots, v_5$ with colours $1, \ldots, 5$): consider the $1$-$3$ Kempe chain starting at $v_1$. If it does not reach $v_3$, swap colours $1$ and $3$ in its component — $v_1$ now has colour $3$, freeing colour $1$ for $v$. If it does reach $v_3$, the $2$-$4$ Kempe chain from $v_2$ cannot reach $v_4$ (blocked by the $1$-$3$ chain), so swap $2$ and $4$ in the component of $v_2$ — colour $2$ is freed for $v$. $\square$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Related Results</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.2.3 — Grötzsch's Theorem (1959)</div>
+                    <p class="mb-0">Every triangle-free planar graph is properly 3-colourable.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.2.4 — Heawood Conjecture (surfaces of genus $g > 0$)</div>
+                    <p class="mb-0">For a surface of genus $g > 0$, any graph embeddable on that surface can be properly coloured with at most $\left\lfloor \frac{7 + \sqrt{1 + 48g}}{2} \right\rfloor$ colours. This bound is achieved by the complete graph $K_n$ for appropriate $n$ (proved by Ringel and Youngs for all $g > 0$; the torus case $g=1$ gives the bound 7).</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-chromatic-number/" class="btn btn-outline-custom">&larr; 6.1 Chromatic Number</a>
+                    <a href="../03-edge-colorings/" class="btn btn-custom">6.3 Edge Colorings &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

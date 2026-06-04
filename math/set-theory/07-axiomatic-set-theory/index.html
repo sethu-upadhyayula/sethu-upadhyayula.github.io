@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Axiomatic Set Theory (ZFC) — Set Theory</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Set Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Set Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-naive-set-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../01-naive-set-theory/" class="toc-chapter-link"><strong>1.</strong> Naive Set Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-naive-set-theory/01-sets-and-membership/">1.1 Sets and Membership</a>
+                        <a href="../01-naive-set-theory/02-subsets/">1.2 Subsets</a>
+                        <a href="../01-naive-set-theory/03-operations/">1.3 Operations</a>
+                        <a href="../01-naive-set-theory/04-russell-paradox/">1.4 Russell's Paradox</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-relations-and-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../02-relations-and-functions/" class="toc-chapter-link"><strong>2.</strong> Relations and Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../02-relations-and-functions/01-ordered-pairs/">2.1 Ordered Pairs</a>
+                        <a href="../02-relations-and-functions/02-relations/">2.2 Relations</a>
+                        <a href="../02-relations-and-functions/03-equivalence-relations/">2.3 Equivalence Relations</a>
+                        <a href="../02-relations-and-functions/04-functions/">2.4 Functions</a>
+                        <a href="../02-relations-and-functions/05-injections-surjections/">2.5 Injections and Surjections</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-cardinality">
+                    <div class="toc-chapter-header">
+                        <a href="../03-cardinality/" class="toc-chapter-link"><strong>3.</strong> Cardinality</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../03-cardinality/01-finite-sets/">3.1 Finite Sets</a>
+                        <a href="../03-cardinality/02-countable-sets/">3.2 Countable Sets</a>
+                        <a href="../03-cardinality/03-uncountable-sets/">3.3 Uncountable Sets</a>
+                        <a href="../03-cardinality/04-cantors-theorem/">3.4 Cantor's Theorem</a>
+                        <a href="../03-cardinality/05-schroder-bernstein/">3.5 Schröder–Bernstein</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-ordinals">
+                    <div class="toc-chapter-header">
+                        <a href="../04-ordinals/" class="toc-chapter-link"><strong>4.</strong> Ordinal Numbers</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../04-ordinals/01-well-ordering/">4.1 Well-Ordering</a>
+                        <a href="../04-ordinals/02-ordinal-arithmetic/">4.2 Ordinal Arithmetic</a>
+                        <a href="../04-ordinals/03-transfinite-induction/">4.3 Transfinite Induction</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-cardinals">
+                    <div class="toc-chapter-header">
+                        <a href="../05-cardinals/" class="toc-chapter-link"><strong>5.</strong> Cardinal Numbers</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../05-cardinals/01-definition/">5.1 Definition</a>
+                        <a href="../05-cardinals/02-cardinal-arithmetic/">5.2 Cardinal Arithmetic</a>
+                        <a href="../05-cardinals/03-continuum-hypothesis/">5.3 Continuum Hypothesis</a>
+                    </div>
+                </div>
+                <a href="../06-axiom-of-choice/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Axiom of Choice</a>
+                <a href="../07-axiomatic-set-theory/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Axiomatic Set Theory (ZFC)</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Set Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../math/">Math</a> ›
+                <a href="../">Set Theory</a> ›
+                <span>7. Axiomatic Set Theory (ZFC)</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">Chapter 7: Axiomatic Set Theory (ZFC)</h1>
+
+                <p>The Zermelo–Fraenkel axioms with the Axiom of Choice — ZFC — form the standard foundation for modern mathematics. They were developed to avoid the paradoxes of naive set theory while preserving all the mathematics one actually uses. Every standard mathematical object (number systems, functions, topological spaces, groups) can be constructed as a set within ZFC.</p>
+
+                <h2 class="mt-5 mb-3">The Ten Axioms of ZFC</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Axiom 1 — Extensionality</div>
+                    <p class="mb-0">Two sets are equal iff they have the same elements:
+                    $$\forall x\, \forall y\, [\forall z\, (z \in x \leftrightarrow z \in y) \Rightarrow x = y].$$</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Axiom 2 — Empty Set</div>
+                    <p class="mb-0">There exists a set with no elements:
+                    $$\exists x\, \forall y\, (y \notin x).$$
+                    By extensionality this set is unique; it is $\emptyset$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Axiom 3 — Pairing</div>
+                    <p class="mb-0">For any two sets $x, y$, there exists the set $\{x, y\}$:
+                    $$\forall x\, \forall y\, \exists z\, \forall w\, (w \in z \leftrightarrow w = x \vee w = y).$$</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Axiom 4 — Union</div>
+                    <p class="mb-0">For any set $\mathcal{F}$, there exists the set $\bigcup \mathcal{F}$ of all elements of elements of $\mathcal{F}$:
+                    $$\forall \mathcal{F}\, \exists A\, \forall x\, (x \in A \leftrightarrow \exists B\, (B \in \mathcal{F} \wedge x \in B)).$$</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Axiom 5 — Power Set</div>
+                    <p class="mb-0">For any set $x$, there exists $\mathcal{P}(x)$, the set of all subsets of $x$:
+                    $$\forall x\, \exists y\, \forall z\, (z \in y \leftrightarrow z \subseteq x).$$</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Axiom 6 — Infinity</div>
+                    <p class="mb-0">There exists an infinite set — specifically, a set containing $\emptyset$ and closed under the successor operation $x \mapsto x \cup \{x\}$:
+                    $$\exists I\, (\emptyset \in I \wedge \forall x\, (x \in I \Rightarrow x \cup \{x\} \in I)).$$</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Axiom Schema 7 — Separation (Aussonderung)</div>
+                    <p class="mb-0">For any set $A$ and formula $\phi(x)$, there exists $\{x \in A : \phi(x)\}$. (A schema: one axiom for each formula $\phi$.) This replaces unrestricted comprehension and resolves Russell's paradox.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Axiom Schema 8 — Replacement</div>
+                    <p class="mb-0">If $F(x,y)$ is a functional formula (for each $x$ there is at most one $y$ with $F(x,y)$), then for any set $A$, $\{y : \exists x \in A,\, F(x,y)\}$ is a set. This allows defining sets by applying class functions to existing sets.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Axiom 9 — Foundation (Regularity)</div>
+                    <p class="mb-0">Every nonempty set has an $\in$-minimal element:
+                    $$\forall x\, (x \neq \emptyset \Rightarrow \exists y\, (y \in x \wedge y \cap x = \emptyset)).$$
+                    This rules out sets like $x = \{x\}$ (a set containing itself) and guarantees the cumulative hierarchy $V = \bigcup_\alpha V_\alpha$ covers all sets.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Axiom 10 — Choice</div>
+                    <p class="mb-0">For any family $\mathcal{F}$ of nonempty sets, there is a choice function $f$ with $f(A) \in A$ for all $A \in \mathcal{F}$. (See Chapter 6 for detailed discussion.)</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Resolution of Russell's Paradox</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">How ZFC Avoids Russell's Paradox</div>
+                    <p>Russell's set $R = \{x : x \notin x\}$ cannot be formed in ZFC because there is no universal set from which to apply Separation. Applying Separation to any set $A$, we can form $R_A = \{x \in A : x \notin x\}$. The argument then shows $R_A \notin A$, which is perfectly consistent — $R_A$ is a legitimate set, just not a member of $A$.</p>
+                    <p class="mb-0">The absence of a "set of all sets" in ZFC (shown by Separation + Cantor's paradox) is not a bug but a feature.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Von Neumann Universe</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Theorem 7.1 — Cumulative Hierarchy</div>
+                    <p>The von Neumann universe $V = \bigcup_{\alpha \in \mathrm{Ord}} V_\alpha$ (where $V_0 = \emptyset$, $V_{\alpha+1} = \mathcal{P}(V_\alpha)$, $V_\lambda = \bigcup_{\beta<\lambda} V_\beta$) satisfies ZFC and contains every set. The Axiom of Foundation is equivalent to "$V$ is all there is."</p>
+                    <p class="mb-0">$V_\omega$ contains all hereditarily finite sets, which already forms a model of ZFC minus Infinity. $V_{\omega+\omega}$ is a model of ZFC (assuming large cardinals exist).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Independence Results and Large Cardinals</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">What ZFC Cannot Decide</div>
+                    <p>By Gödel's Second Incompleteness Theorem, ZFC cannot prove its own consistency. Many natural mathematical statements are independent of ZFC:
+                    <ul>
+                        <li>The Continuum Hypothesis (Chapter 5).</li>
+                        <li>The existence of measurable cardinals, Woodin cardinals, supercompact cardinals, etc.</li>
+                        <li>Suslin's Hypothesis (every dense linear order without endpoints satisfying the countable chain condition is isomorphic to $\mathbb{R}$).</li>
+                    </ul>
+                    </p>
+                    <p class="mb-0">Large cardinal axioms form a natural hierarchy extending ZFC and resolve many of these questions, but at the cost of adding axioms whose consistency we cannot prove.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Alternative Foundations</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">NBG Set Theory</div>
+                    <p class="mb-0">Von Neumann–Bernays–Gödel (NBG) set theory extends ZFC by allowing <em>proper classes</em> (like the class of all sets, or the class of all ordinals) as explicit objects. NBG is a conservative extension of ZFC: every statement about sets provable in NBG is provable in ZFC.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Homotopy Type Theory (HoTT)</div>
+                    <p class="mb-0">Homotopy Type Theory provides an alternative foundation based on type theory and homotopy theory rather than set theory. Types correspond to spaces, terms to points, equalities to paths, and the Univalence Axiom (due to Voevodsky) identifies equivalent structures. HoTT is particularly suited for formalising mathematics in proof assistants like Coq, Agda, and Lean.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../06-axiom-of-choice/" class="btn btn-outline-custom">&larr; 6. Axiom of Choice</a>
+                    <a href="../" class="btn btn-outline-custom">Back to Set Theory</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

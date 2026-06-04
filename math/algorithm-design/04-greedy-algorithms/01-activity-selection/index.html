@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.1 Activity Selection — Algorithm Design</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Algorithm Design</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Algorithm Design</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-fundamentals">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-fundamentals/" class="toc-chapter-link"><strong>1.</strong> Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-fundamentals/01-asymptotic-notation/">1.1 Asymptotic Notation</a>
+                        <a href="../../01-fundamentals/02-recurrences-and-master-theorem/">1.2 Recurrences and the Master Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-divide-and-conquer">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-divide-and-conquer/" class="toc-chapter-link"><strong>2.</strong> Divide and Conquer</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-divide-and-conquer/01-merge-sort-and-binary-search/">2.1 Merge Sort and Binary Search</a>
+                        <a href="../../02-divide-and-conquer/02-strassens-algorithm/">2.2 Strassen's Algorithm</a>
+                        <a href="../../02-divide-and-conquer/03-closest-pair-of-points/">2.3 Closest Pair of Points</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-dynamic-programming">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-dynamic-programming/" class="toc-chapter-link"><strong>3.</strong> Dynamic Programming</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-dynamic-programming/01-principles-and-memoization/">3.1 Principles and Memoization</a>
+                        <a href="../../03-dynamic-programming/02-sequence-problems/">3.2 Sequence Problems</a>
+                        <a href="../../03-dynamic-programming/03-knapsack-and-coin-problems/">3.3 Knapsack and Coin Problems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-greedy-algorithms">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-greedy-algorithms/" class="toc-chapter-link"><strong>4.</strong> Greedy Algorithms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-greedy-algorithms/01-activity-selection/">4.1 Activity Selection</a>
+                        <a href="../../04-greedy-algorithms/02-huffman-codes/">4.2 Huffman Codes</a>
+                        <a href="../../04-greedy-algorithms/03-matroids/">4.3 Matroids</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-graph-algorithms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-graph-algorithms/" class="toc-chapter-link"><strong>5.</strong> Graph Algorithms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-graph-algorithms/01-bfs-and-dfs/">5.1 BFS and DFS</a>
+                        <a href="../../05-graph-algorithms/02-shortest-paths/">5.2 Shortest Paths</a>
+                        <a href="../../05-graph-algorithms/03-topological-sorting/">5.3 Topological Sorting</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-network-flow">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-network-flow/" class="toc-chapter-link"><strong>6.</strong> Network Flow</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-network-flow/01-max-flow-min-cut/">6.1 Max-Flow Min-Cut</a>
+                        <a href="../../06-network-flow/02-ford-fulkerson-and-edmonds-karp/">6.2 Ford–Fulkerson and Edmonds–Karp</a>
+                        <a href="../../06-network-flow/03-applications/">6.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-computational-complexity">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-computational-complexity/" class="toc-chapter-link"><strong>7.</strong> Computational Complexity</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-computational-complexity/01-p-and-np/">7.1 P and NP</a>
+                        <a href="../../07-computational-complexity/02-np-completeness/">7.2 NP-Completeness</a>
+                        <a href="../../07-computational-complexity/03-approximation-algorithms/">7.3 Approximation Algorithms</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Algorithm Design</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Algorithm Design</a> ›
+                <a href="../">4. Greedy Algorithms</a> ›
+                <span>4.1 Activity Selection</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Activity Selection</h1>
+
+                <p>The activity selection problem is a scheduling problem that illustrates the greedy paradigm perfectly. A single resource can handle at most one activity at a time; we want to schedule the most activities possible.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.1.1 — Activity Selection Problem</div>
+                    <p class="mb-0">Given $n$ activities each with start time $s_i$ and finish time $f_i$ (with $s_i < f_i$), two activities $i$ and $j$ are <strong>compatible</strong> if their intervals $[s_i, f_i)$ and $[s_j, f_j)$ do not overlap (i.e., $f_i \le s_j$ or $f_j \le s_i$). Find a maximum-cardinality set of mutually compatible activities.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.1.2 — Greedy Activity Selection</div>
+                    <p>Algorithm: Sort activities by finish time $f_1 \le f_2 \le \cdots \le f_n$. Initialise $A = \{1\}$ and $k = 1$ (last selected). For $i = 2, \ldots, n$: if $s_i \ge f_k$, add $i$ to $A$ and set $k = i$.</p>
+                    <p class="mb-0">This runs in $O(n \log n)$ (dominated by sorting). The greedy choice of "earliest finish time" is optimal.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof of Correctness (Exchange Argument)</div>
+                    <p>Let $G = \{g_1, \ldots, g_k\}$ (greedy solution, sorted by finish time) and $O = \{o_1, \ldots, o_m\}$ (any optimal solution, sorted). We claim $k = m$.</p>
+                    <p>By induction: $f_{g_i} \le f_{o_i}$ for all $i$ (the greedy choice finishes no later than any other). If $k < m$, after the last greedy selection $g_k$ there would be activities in $O$ compatible with $g_k$ (since $f_{g_k} \le f_{o_k} \le s_{o_{k+1}}$), contradicting the greedy selection stopping. $\square$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Variants and Limitations</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 4.1.3 — Weighted Job Scheduling</div>
+                    <p class="mb-0">If activities have weights (profits) and we want to maximise total weight, the greedy approach fails. Dynamic programming is needed: $\mathrm{dp}[i]$ = max profit using activities from $\{1,\ldots,i\}$ (sorted by finish time); $\mathrm{dp}[i] = \max(\mathrm{dp}[i-1],\, w_i + \mathrm{dp}[p(i)])$ where $p(i)$ is the last compatible activity before $i$. Time: $O(n \log n)$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 4.1.4 — Interval Partitioning</div>
+                    <p class="mb-0">Given $n$ lectures with time intervals, schedule all lectures using the minimum number of classrooms (no two in the same room at the same time). Greedy: sort by start time, assign each lecture to any available room; if none, open a new one. The minimum number of classrooms equals the maximum number of simultaneous lectures (depth). Implementable with a priority queue in $O(n \log n)$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Greedy Algorithms</a>
+                    <a href="../02-huffman-codes/" class="btn btn-custom">4.2 Huffman Codes &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

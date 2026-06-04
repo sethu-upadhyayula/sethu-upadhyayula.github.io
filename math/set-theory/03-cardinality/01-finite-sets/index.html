@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.1 Finite Sets — Set Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Set Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Set Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-naive-set-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-naive-set-theory/" class="toc-chapter-link"><strong>1.</strong> Naive Set Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-naive-set-theory/01-sets-and-membership/">1.1 Sets and Membership</a>
+                        <a href="../../01-naive-set-theory/02-subsets/">1.2 Subsets</a>
+                        <a href="../../01-naive-set-theory/03-operations/">1.3 Operations</a>
+                        <a href="../../01-naive-set-theory/04-russell-paradox/">1.4 Russell's Paradox</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-relations-and-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-relations-and-functions/" class="toc-chapter-link"><strong>2.</strong> Relations and Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-relations-and-functions/01-ordered-pairs/">2.1 Ordered Pairs</a>
+                        <a href="../../02-relations-and-functions/02-relations/">2.2 Relations</a>
+                        <a href="../../02-relations-and-functions/03-equivalence-relations/">2.3 Equivalence Relations</a>
+                        <a href="../../02-relations-and-functions/04-functions/">2.4 Functions</a>
+                        <a href="../../02-relations-and-functions/05-injections-surjections/">2.5 Injections and Surjections</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-cardinality">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-cardinality/" class="toc-chapter-link"><strong>3.</strong> Cardinality</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-cardinality/01-finite-sets/">3.1 Finite Sets</a>
+                        <a href="../../03-cardinality/02-countable-sets/">3.2 Countable Sets</a>
+                        <a href="../../03-cardinality/03-uncountable-sets/">3.3 Uncountable Sets</a>
+                        <a href="../../03-cardinality/04-cantors-theorem/">3.4 Cantor's Theorem</a>
+                        <a href="../../03-cardinality/05-schroder-bernstein/">3.5 Schröder–Bernstein</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-ordinals">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-ordinals/" class="toc-chapter-link"><strong>4.</strong> Ordinal Numbers</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-ordinals/01-well-ordering/">4.1 Well-Ordering</a>
+                        <a href="../../04-ordinals/02-ordinal-arithmetic/">4.2 Ordinal Arithmetic</a>
+                        <a href="../../04-ordinals/03-transfinite-induction/">4.3 Transfinite Induction</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-cardinals">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-cardinals/" class="toc-chapter-link"><strong>5.</strong> Cardinal Numbers</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-cardinals/01-definition/">5.1 Definition</a>
+                        <a href="../../05-cardinals/02-cardinal-arithmetic/">5.2 Cardinal Arithmetic</a>
+                        <a href="../../05-cardinals/03-continuum-hypothesis/">5.3 Continuum Hypothesis</a>
+                    </div>
+                </div>
+                <a href="../../06-axiom-of-choice/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Axiom of Choice</a>
+                <a href="../../07-axiomatic-set-theory/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Axiomatic Set Theory (ZFC)</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Set Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Set Theory</a> ›
+                <a href="../">3. Cardinality</a> ›
+                <span>3.1 Finite Sets</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">3.1 Finite Sets</h1>
+
+                <p>The finite sets are those that can be completely enumerated. Cardinality for finite sets simply counts elements, but even here the set-theoretic definition via bijections is illuminating and generalises cleanly to the infinite case.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 3.1.1 — Finite Set and Cardinality</div>
+                    <p>A set $A$ is <strong>finite</strong> if either $A = \emptyset$ or there exists $n \in \mathbb{N}_{>0}$ and a bijection $f: \{1, 2, \ldots, n\} \to A$. In this case, the <strong>cardinality</strong> of $A$ is $|A| = n$ (and $|\emptyset| = 0$).</p>
+                    <p class="mb-0">A set that is not finite is <strong>infinite</strong>.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 3.1.2 — Cardinality is Well-Defined</div>
+                    <p class="mb-0">If $f: \{1,\ldots,m\} \to A$ and $g: \{1,\ldots,n\} \to A$ are both bijections, then $m = n$. (Proved by induction on $m$.)</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Pigeonhole Principle</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 3.1.3 — Pigeonhole Principle</div>
+                    <p class="mb-0">If $|A| > |B|$ and $f: A \to B$, then $f$ is not injective: some element of $B$ has at least two preimages. Equivalently, there is no injection from a set with more elements into one with fewer.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 3.1.4</div>
+                    <p class="mb-0">Among any 13 people, at least two share a birth month. (13 people, 12 months — by pigeonhole, some month contains two people.)</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 3.1.5 — No Bijection with a Proper Subset</div>
+                    <p class="mb-0">A finite set $A$ is not in bijection with any proper subset $B \subsetneq A$. (This property fails for infinite sets — Dedekind used this as the definition of infinite.)</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Dedekind Infinite Sets</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 3.1.6 — Dedekind Infinite</div>
+                    <p class="mb-0">A set $A$ is <strong>Dedekind infinite</strong> if there exists a bijection between $A$ and a proper subset of $A$. For example, $f: \mathbb{N} \to \mathbb{N} \setminus \{0\}$, $f(n) = n+1$ shows $\mathbb{N}$ is Dedekind infinite. Under ZFC (which includes the Axiom of Choice), Dedekind infinite is equivalent to infinite.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 3. Cardinality</a>
+                    <a href="../02-countable-sets/" class="btn btn-custom">3.2 Countable Sets &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

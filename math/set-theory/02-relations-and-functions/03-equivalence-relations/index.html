@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.3 Equivalence Relations — Set Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Set Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Set Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-naive-set-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-naive-set-theory/" class="toc-chapter-link"><strong>1.</strong> Naive Set Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-naive-set-theory/01-sets-and-membership/">1.1 Sets and Membership</a>
+                        <a href="../../01-naive-set-theory/02-subsets/">1.2 Subsets</a>
+                        <a href="../../01-naive-set-theory/03-operations/">1.3 Operations</a>
+                        <a href="../../01-naive-set-theory/04-russell-paradox/">1.4 Russell's Paradox</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-relations-and-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-relations-and-functions/" class="toc-chapter-link"><strong>2.</strong> Relations and Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-relations-and-functions/01-ordered-pairs/">2.1 Ordered Pairs</a>
+                        <a href="../../02-relations-and-functions/02-relations/">2.2 Relations</a>
+                        <a href="../../02-relations-and-functions/03-equivalence-relations/">2.3 Equivalence Relations</a>
+                        <a href="../../02-relations-and-functions/04-functions/">2.4 Functions</a>
+                        <a href="../../02-relations-and-functions/05-injections-surjections/">2.5 Injections and Surjections</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-cardinality">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-cardinality/" class="toc-chapter-link"><strong>3.</strong> Cardinality</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-cardinality/01-finite-sets/">3.1 Finite Sets</a>
+                        <a href="../../03-cardinality/02-countable-sets/">3.2 Countable Sets</a>
+                        <a href="../../03-cardinality/03-uncountable-sets/">3.3 Uncountable Sets</a>
+                        <a href="../../03-cardinality/04-cantors-theorem/">3.4 Cantor's Theorem</a>
+                        <a href="../../03-cardinality/05-schroder-bernstein/">3.5 Schröder–Bernstein</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-ordinals">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-ordinals/" class="toc-chapter-link"><strong>4.</strong> Ordinal Numbers</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-ordinals/01-well-ordering/">4.1 Well-Ordering</a>
+                        <a href="../../04-ordinals/02-ordinal-arithmetic/">4.2 Ordinal Arithmetic</a>
+                        <a href="../../04-ordinals/03-transfinite-induction/">4.3 Transfinite Induction</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-cardinals">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-cardinals/" class="toc-chapter-link"><strong>5.</strong> Cardinal Numbers</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-cardinals/01-definition/">5.1 Definition</a>
+                        <a href="../../05-cardinals/02-cardinal-arithmetic/">5.2 Cardinal Arithmetic</a>
+                        <a href="../../05-cardinals/03-continuum-hypothesis/">5.3 Continuum Hypothesis</a>
+                    </div>
+                </div>
+                <a href="../../06-axiom-of-choice/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Axiom of Choice</a>
+                <a href="../../07-axiomatic-set-theory/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Axiomatic Set Theory (ZFC)</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Set Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Set Theory</a> ›
+                <a href="../">2. Relations and Functions</a> ›
+                <span>2.3 Equivalence Relations</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">2.3 Equivalence Relations</h1>
+
+                <p>An equivalence relation captures the idea of "being the same in some respect." It partitions a set into disjoint classes of mutually equivalent elements, and the collection of these classes is the quotient set.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.3.1 — Equivalence Relation</div>
+                    <p class="mb-0">A relation $\sim$ on $A$ is an <strong>equivalence relation</strong> if it is:
+                    <ul style="margin-bottom:0">
+                        <li>Reflexive: $a \sim a$ for all $a \in A$.</li>
+                        <li>Symmetric: $a \sim b \Rightarrow b \sim a$.</li>
+                        <li>Transitive: $a \sim b$ and $b \sim c$ imply $a \sim c$.</li>
+                    </ul></p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.3.2 — Equivalence Class</div>
+                    <p class="mb-0">The <strong>equivalence class</strong> of $a \in A$ under $\sim$ is
+                    $$[a] = [a]_\sim = \{x \in A : x \sim a\}.$$
+                    Every element $b \in [a]$ is called a <strong>representative</strong> of the class.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.3.3 — Classes are Equal or Disjoint</div>
+                    <p class="mb-0">For an equivalence relation $\sim$ on $A$: either $[a] = [b]$ or $[a] \cap [b] = \emptyset$. Equivalently, $a \sim b \iff [a] = [b]$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p>Suppose $[a] \cap [b] \neq \emptyset$; let $c \in [a] \cap [b]$, so $c \sim a$ and $c \sim b$. By symmetry $a \sim c$, and by transitivity $a \sim b$.</p>
+                    <p>Now take any $x \in [a]$: $x \sim a \sim b$, so $x \in [b]$. Hence $[a] \subseteq [b]$. By symmetry $[b] \subseteq [a]$, so $[a] = [b]$. $\square$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Partitions and Quotient Sets</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.3.4 — Partition</div>
+                    <p class="mb-0">A <strong>partition</strong> of $A$ is a collection $\mathcal{P}$ of nonempty, pairwise disjoint subsets of $A$ whose union is $A$:
+                    $$\bigcup_{C \in \mathcal{P}} C = A, \quad C \cap D = \emptyset \text{ for } C \neq D \in \mathcal{P}.$$</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.3.5 — Equivalence Relations $\leftrightarrow$ Partitions</div>
+                    <p class="mb-0">Every equivalence relation on $A$ induces a partition of $A$ (the equivalence classes), and every partition of $A$ induces an equivalence relation ($a \sim b \iff$ they belong to the same block). These correspondences are mutually inverse.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.3.6 — Quotient Set</div>
+                    <p class="mb-0">The <strong>quotient set</strong> of $A$ by $\sim$ is
+                    $$A/{\sim} = \{[a] : a \in A\},$$
+                    the set of all equivalence classes. The map $\pi: A \to A/{\sim}$, $a \mapsto [a]$, is the <strong>natural projection</strong>.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 2.3.7 — Integers Modulo $n$</div>
+                    <p>Define $a \equiv b \pmod{n}$ iff $n \mid (a - b)$. This is an equivalence relation on $\mathbb{Z}$. The equivalence classes are the residue classes $[0], [1], \ldots, [n-1]$, and the quotient set is $\mathbb{Z}/n\mathbb{Z}$.</p>
+                    <p class="mb-0">For $n = 3$: $[0] = \{\ldots, -3, 0, 3, 6, \ldots\}$, $[1] = \{\ldots,-2,1,4,7,\ldots\}$, $[2] = \{\ldots,-1,2,5,8,\ldots\}$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-relations/" class="btn btn-outline-custom">&larr; 2.2 Relations</a>
+                    <a href="../04-functions/" class="btn btn-custom">2.4 Functions &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>
