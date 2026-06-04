@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.3 Taylor's Theorem — Real Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Real Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Real Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-real-number-system">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-real-number-system/" class="toc-chapter-link"><strong>1.</strong> The Real Number System</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-real-number-system/01-axioms-of-the-real-numbers/">1.1 Axioms of the Real Numbers</a>
+                        <a href="../../01-real-number-system/02-the-completeness-axiom/">1.2 The Completeness Axiom</a>
+                        <a href="../../01-real-number-system/03-countable-and-uncountable-sets/">1.3 Countable and Uncountable Sets</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-sequences-and-series">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-sequences-and-series/" class="toc-chapter-link"><strong>2.</strong> Sequences and Series</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-sequences-and-series/01-sequences-of-real-numbers/">2.1 Sequences of Real Numbers</a>
+                        <a href="../../02-sequences-and-series/02-limits-and-convergence/">2.2 Limits and Convergence</a>
+                        <a href="../../02-sequences-and-series/03-series-and-convergence-tests/">2.3 Series and Convergence Tests</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-limits-and-continuity">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-limits-and-continuity/" class="toc-chapter-link"><strong>3.</strong> Limits and Continuity</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-limits-and-continuity/01-limits-of-functions/">3.1 Limits of Functions</a>
+                        <a href="../../03-limits-and-continuity/02-continuity/">3.2 Continuity</a>
+                        <a href="../../03-limits-and-continuity/03-uniform-continuity/">3.3 Uniform Continuity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-differentiation">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-differentiation/" class="toc-chapter-link"><strong>4.</strong> Differentiation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-differentiation/01-the-derivative/">4.1 The Derivative</a>
+                        <a href="../../04-differentiation/02-mean-value-theorems/">4.2 Mean Value Theorems</a>
+                        <a href="../../04-differentiation/03-taylors-theorem/">4.3 Taylor's Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-riemann-integral">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-riemann-integral/" class="toc-chapter-link"><strong>5.</strong> The Riemann Integral</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-riemann-integral/01-darboux-sums-and-integrability/">5.1 Darboux Sums and Integrability</a>
+                        <a href="../../05-riemann-integral/02-fundamental-theorem-of-calculus/">5.2 Fundamental Theorem of Calculus</a>
+                        <a href="../../05-riemann-integral/03-improper-integrals/">5.3 Improper Integrals</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-sequences-of-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-sequences-of-functions/" class="toc-chapter-link"><strong>6.</strong> Sequences and Series of Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-sequences-of-functions/01-pointwise-and-uniform-convergence/">6.1 Pointwise and Uniform Convergence</a>
+                        <a href="../../06-sequences-of-functions/02-power-series/">6.2 Power Series</a>
+                        <a href="../../06-sequences-of-functions/03-weierstrass-approximation/">6.3 Weierstrass Approximation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-metric-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-metric-spaces/" class="toc-chapter-link"><strong>7.</strong> Metric Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-metric-spaces/01-metric-spaces-and-topology/">7.1 Metric Spaces and Topology</a>
+                        <a href="../../07-metric-spaces/02-completeness/">7.2 Completeness</a>
+                        <a href="../../07-metric-spaces/03-compactness/">7.3 Compactness</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Real Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Real Analysis</a> ›
+                <a href="../">4. Differentiation</a> ›
+                <span>4.3 Taylor's Theorem</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">4.3 Taylor's Theorem</h1>
+
+                <p>Taylor's theorem approximates a smooth function near a point by a polynomial, with an explicit bound on the error. This is one of the most used results in all of analysis and applied mathematics.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.3.1 — Taylor Polynomial</div>
+                    <p class="mb-0">If $f$ is $n$-times differentiable at $a$, its <strong>$n$-th order Taylor polynomial</strong> centred at $a$ is $$P_n(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k.$$ By construction, $P_n^{(k)}(a) = f^{(k)}(a)$ for $0 \le k \le n$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.3.2 — Taylor's Theorem with Lagrange Remainder</div>
+                    <p>If $f$ is $(n+1)$-times differentiable on an interval containing $a$ and $x$, then $$f(x) = P_n(x) + R_n(x),$$ where $$R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$$ for some $c$ strictly between $a$ and $x$.</p>
+                    <p class="mb-0">Proof: apply the Cauchy MVT $n+1$ times to appropriate auxiliary functions. The MVT ($n=0$) is the special case $f(x) = f(a) + f'(c)(x-a)$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.3.3 — Peano Remainder</div>
+                    <p class="mb-0">If $f$ is $n$-times differentiable at $a$ (not necessarily in a neighbourhood), then $f(x) = P_n(x) + o\!\left((x-a)^n\right)$ as $x \to a$. This is weaker than Lagrange but requires fewer hypotheses — $n$ derivatives at a single point suffice.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.3.4 — Integral Form of the Remainder</div>
+                    <p class="mb-0">If $f^{(n+1)}$ is continuous, then $$R_n(x) = \frac{1}{n!}\int_a^x (x-t)^n f^{(n+1)}(t)\,dt.$$ This form is often the most useful for bounding remainders: $|R_n(x)| \le \dfrac{\sup|f^{(n+1)}|}{(n+1)!}|x-a|^{n+1}$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 4.3.5 — $C^\infty$ Function with Trivial Taylor Series</div>
+                    <p>Define $f: \mathbb{R} \to \mathbb{R}$ by $f(x) = e^{-1/x^2}$ for $x \ne 0$ and $f(0) = 0$. One shows by induction that $f^{(n)}(0) = 0$ for every $n \ge 0$. Thus the Taylor series of $f$ at 0 is identically 0.</p>
+                    <p class="mb-0">But $f(x) \ne 0$ for $x \ne 0$. So the Taylor series converges everywhere but equals $f$ only at 0. This shows that $C^\infty \ne$ analytic — the Taylor series of a smooth function can fail to represent the function.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-mean-value-theorems/" class="btn btn-outline-custom">&larr; 4.2 Mean Value Theorems</a>
+                    <a href="../../05-riemann-integral/" class="btn btn-custom">5. The Riemann Integral &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Series Representations — Complex Analysis</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Complex Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Complex Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-complex-numbers">
+                    <div class="toc-chapter-header">
+                        <a href="../01-complex-numbers/" class="toc-chapter-link"><strong>1.</strong> Complex Numbers</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-complex-numbers/01-the-complex-field/">1.1 The Complex Field</a>
+                        <a href="../01-complex-numbers/02-geometry-of-complex-numbers/">1.2 Geometry of Complex Numbers</a>
+                        <a href="../01-complex-numbers/03-complex-exponential-and-eulers-formula/">1.3 Complex Exponential and Euler's Formula</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-analytic-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../02-analytic-functions/" class="toc-chapter-link"><strong>2.</strong> Analytic Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../02-analytic-functions/01-limits-and-continuity/">2.1 Limits and Continuity</a>
+                        <a href="../02-analytic-functions/02-differentiability-and-cauchy-riemann/">2.2 Differentiability and the Cauchy–Riemann Equations</a>
+                        <a href="../02-analytic-functions/03-harmonic-functions/">2.3 Harmonic Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-elementary-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../03-elementary-functions/" class="toc-chapter-link"><strong>3.</strong> Elementary Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../03-elementary-functions/01-exponential-and-trigonometric/">3.1 Exponential and Trigonometric Functions</a>
+                        <a href="../03-elementary-functions/02-logarithm-and-power-functions/">3.2 Logarithm and Power Functions</a>
+                        <a href="../03-elementary-functions/03-branch-cuts/">3.3 Branch Cuts</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-complex-integration">
+                    <div class="toc-chapter-header">
+                        <a href="../04-complex-integration/" class="toc-chapter-link"><strong>4.</strong> Complex Integration</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../04-complex-integration/01-contour-integrals/">4.1 Contour Integrals</a>
+                        <a href="../04-complex-integration/02-cauchys-theorem/">4.2 Cauchy's Theorem</a>
+                        <a href="../04-complex-integration/03-cauchys-integral-formula/">4.3 Cauchy's Integral Formula</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-series-representations">
+                    <div class="toc-chapter-header">
+                        <a href="../05-series-representations/" class="toc-chapter-link"><strong>5.</strong> Series Representations</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../05-series-representations/01-taylor-series/">5.1 Taylor Series</a>
+                        <a href="../05-series-representations/02-laurent-series/">5.2 Laurent Series</a>
+                        <a href="../05-series-representations/03-classification-of-singularities/">5.3 Classification of Singularities</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-residue-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../06-residue-theory/" class="toc-chapter-link"><strong>6.</strong> Residue Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../06-residue-theory/01-the-residue-theorem/">6.1 The Residue Theorem</a>
+                        <a href="../06-residue-theory/02-evaluation-of-real-integrals/">6.2 Evaluation of Real Integrals</a>
+                        <a href="../06-residue-theory/03-argument-principle/">6.3 Argument Principle</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-conformal-mappings">
+                    <div class="toc-chapter-header">
+                        <a href="../07-conformal-mappings/" class="toc-chapter-link"><strong>7.</strong> Conformal Mappings</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../07-conformal-mappings/01-mobius-transformations/">7.1 Möbius Transformations</a>
+                        <a href="../07-conformal-mappings/02-riemann-mapping-theorem/">7.2 Riemann Mapping Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Complex Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../math/">Math</a> ›
+                <a href="../">Complex Analysis</a> ›
+                <span>5. Series Representations</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">Chapter 5: Series Representations</h1>
+
+                <p>Every analytic function is locally representable as a power series (Taylor), and near isolated singularities as a Laurent series — a two-sided power series that captures the singular behavior. This chapter develops both representations and uses them to give a complete classification of isolated singularities.</p>
+
+                <p>The key engine is Cauchy's integral formula from Chapter 4: by expanding the Cauchy kernel as a geometric series and interchanging sum and integral, one obtains the Taylor coefficients as contour integrals. Allowing negative powers yields the Laurent expansion, whose principal part encodes the nature of any isolated singularity.</p>
+
+                <h2 class="mt-5 mb-3">Chapter Overview</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">5.1 — Taylor Series</div>
+                    <p class="mb-0">If $f$ is analytic in a disk $D(z_0, R)$, then $f(z) = \sum_{n=0}^\infty a_n (z-z_0)^n$ with $a_n = f^{(n)}(z_0)/n!$. The radius of convergence equals the distance from $z_0$ to the nearest singularity. Standard series for $e^z$, $\sin z$, $\cos z$, and $1/(1-z)$ are derived and applied.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">5.2 — Laurent Series</div>
+                    <p class="mb-0">In an annulus $r &lt; |z-z_0| &lt; R$, $f$ expands as $\sum_{n=-\infty}^\infty a_n(z-z_0)^n$. The terms with $n &lt; 0$ form the <em>principal part</em>, which detects singularities. Uniqueness holds on the annulus; examples include $e^{1/z}$ and partial fractions.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">5.3 — Classification of Singularities</div>
+                    <p class="mb-0">An isolated singularity at $z_0$ is <em>removable</em> (principal part vanishes), a <em>pole of order $m$</em> (finitely many negative terms), or an <em>essential singularity</em> (infinitely many negative terms). The Casorati–Weierstrass theorem and Picard's great theorem describe the wild behavior near essential singularities.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../04-complex-integration/03-cauchys-integral-formula/" class="btn btn-outline-custom">&larr; 4.3 Cauchy's Integral Formula</a>
+                    <a href="01-taylor-series/" class="btn btn-custom">5.1 Taylor Series &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

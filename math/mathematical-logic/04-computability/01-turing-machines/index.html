@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.1 Turing Machines — Mathematical Logic</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Mathematical Logic</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Mathematical Logic</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-propositional-logic">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-propositional-logic/" class="toc-chapter-link"><strong>1.</strong> Propositional Logic</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-propositional-logic/01-propositions-and-connectives/">1.1 Propositions and Connectives</a>
+                        <a href="../../01-propositional-logic/02-truth-tables/">1.2 Truth Tables</a>
+                        <a href="../../01-propositional-logic/03-tautologies-and-contradictions/">1.3 Tautologies and Contradictions</a>
+                        <a href="../../01-propositional-logic/04-normal-forms/">1.4 Normal Forms</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-predicate-logic">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-predicate-logic/" class="toc-chapter-link"><strong>2.</strong> Predicate Logic</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-predicate-logic/01-predicates-and-quantifiers/">2.1 Predicates and Quantifiers</a>
+                        <a href="../../02-predicate-logic/02-formal-language/">2.2 Formal Language</a>
+                        <a href="../../02-predicate-logic/03-interpretations-and-models/">2.3 Interpretations and Models</a>
+                        <a href="../../02-predicate-logic/04-proof-systems/">2.4 Proof Systems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-soundness-and-completeness">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-soundness-and-completeness/" class="toc-chapter-link"><strong>3.</strong> Soundness and Completeness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-soundness-and-completeness/01-soundness/">3.1 Soundness</a>
+                        <a href="../../03-soundness-and-completeness/02-completeness/">3.2 Completeness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-computability">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-computability/" class="toc-chapter-link"><strong>4.</strong> Computability</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-computability/01-turing-machines/">4.1 Turing Machines</a>
+                        <a href="../../04-computability/02-decidability/">4.2 Decidability</a>
+                    </div>
+                </div>
+                <a href="../../05-godels-theorems/" class="text-decoration-none toc-chapter-link"><strong>5.</strong> Gödel's Incompleteness Theorems</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Mathematical Logic</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Mathematical Logic</a> ›
+                <a href="../">4. Computability</a> ›
+                <span>4.1 Turing Machines</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Turing Machines</h1>
+
+                <p>A <strong>Turing machine</strong> is an abstract model of computation introduced by Alan Turing in 1936. It formalises the intuitive notion of an algorithm and defines the boundary of what can be computed mechanically.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.1.1 — Turing Machine</div>
+                    <p>A Turing machine is a tuple $M = (Q, \Sigma, \Gamma, \delta, q_0, q_{\text{acc}}, q_{\text{rej}})$ where:</p>
+                    <ul>
+                        <li>$Q$ is a finite set of <strong>states</strong>;</li>
+                        <li>$\Sigma$ is the <strong>input alphabet</strong> (not containing the blank symbol $\sqcup$);</li>
+                        <li>$\Gamma \supseteq \Sigma \cup \{\sqcup\}$ is the <strong>tape alphabet</strong>;</li>
+                        <li>$\delta: Q \times \Gamma \to Q \times \Gamma \times \{L, R\}$ is the <strong>transition function</strong>;</li>
+                        <li>$q_0 \in Q$ is the <strong>start state</strong>;</li>
+                        <li>$q_{\text{acc}}, q_{\text{rej}} \in Q$ are the <strong>accept</strong> and <strong>reject states</strong>.</li>
+                    </ul>
+                    <p class="mb-0">The tape is infinite in both directions and initially contains the input string with blanks everywhere else. The read-write head starts at the leftmost input symbol.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Computation</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.1.2 — Step of Computation</div>
+                    <p>At each step, the machine reads the symbol $a \in \Gamma$ under the head. Given current state $q$, it applies $\delta(q, a) = (q', b, D)$:</p>
+                    <ul>
+                        <li>Write symbol $b$ to the current tape cell;</li>
+                        <li>Move the head left ($D = L$) or right ($D = R$);</li>
+                        <li>Transition to state $q'$.</li>
+                    </ul>
+                    <p class="mb-0">Computation <strong>halts</strong> when the machine enters $q_{\text{acc}}$ (accept) or $q_{\text{rej}}$ (reject). If neither is reached, the machine <strong>loops</strong> indefinitely.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Three Outcomes</div>
+                    <p class="mb-0">On any input $w$, a TM $M$ either: (1) accepts $w$ (enters $q_{\text{acc}}$), (2) rejects $w$ (enters $q_{\text{rej}}$), or (3) loops forever. A TM that always halts (never loops) is called a <strong>decider</strong>.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Church-Turing Thesis</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Church-Turing Thesis</div>
+                    <p class="mb-0">Every effectively computable function — any function that can be computed by a systematic, finite procedure — is computable by a Turing machine. This is not a theorem (it cannot be formally proved) but is universally accepted based on the equivalence of all known models of computation.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Equivalent Models</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Equivalent Models of Computation</div>
+                    <p>The following models are all equivalent in computational power to the standard single-tape TM:</p>
+                    <ul>
+                        <li><strong>Multi-tape TMs:</strong> same power; $k$ tapes can be simulated by one tape with at most quadratic overhead in time;</li>
+                        <li><strong>Non-deterministic TMs (NTMs):</strong> same power; an NTM accepting in $t$ steps can be simulated deterministically in $O(2^t)$ steps;</li>
+                        <li><strong>$\lambda$-calculus</strong> (Church, 1936): functions defined by $\beta$-reduction;</li>
+                        <li><strong>$\mu$-recursive functions</strong> (Kleene): built from primitive recursion and minimisation.</li>
+                    </ul>
+                    <p class="mb-0">The equivalence of these diverse models strongly supports the Church-Turing thesis.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Universal Turing Machine</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.1.1 — Universal Turing Machine</div>
+                    <p>There exists a TM $U$ (the <strong>Universal Turing Machine</strong>) that, given the encoding $\langle M, w \rangle$ of a TM $M$ and an input string $w$, simulates the computation of $M$ on $w$:</p>
+                    $$U(\langle M, w \rangle) \text{ accepts} \iff M(w) \text{ accepts.}$$
+                    <p class="mb-0">The UTM is fundamental: it shows that a single fixed machine can carry out any computation, given an appropriate description of the desired computation. This is the theoretical basis for stored-program computers.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Encoding</div>
+                    <p class="mb-0">We can encode any TM $M$ as a string $\langle M \rangle$ over a fixed alphabet. This encoding (Gödel numbering applied to TMs) allows TMs to reason about other TMs — a key technique in the proofs of undecidability and Gödel's theorems.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Computability</a>
+                    <a href="../02-decidability/" class="btn btn-custom">4.2 Decidability &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

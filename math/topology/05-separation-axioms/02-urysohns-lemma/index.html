@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.2 Urysohn's Lemma — Topology</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Topology</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Topology</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-topological-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-topological-spaces/" class="toc-chapter-link"><strong>1.</strong> Topological Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-topological-spaces/01-open-sets-and-topologies/">1.1 Open Sets and Topologies</a>
+                        <a href="../../01-topological-spaces/02-basis-and-subbasis/">1.2 Basis and Subbasis</a>
+                        <a href="../../01-topological-spaces/03-subspaces/">1.3 Subspaces</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-continuity-and-homeomorphisms">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-continuity-and-homeomorphisms/" class="toc-chapter-link"><strong>2.</strong> Continuity and Homeomorphisms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-continuity-and-homeomorphisms/01-continuous-functions/">2.1 Continuous Functions</a>
+                        <a href="../../02-continuity-and-homeomorphisms/02-homeomorphisms/">2.2 Homeomorphisms</a>
+                        <a href="../../02-continuity-and-homeomorphisms/03-topological-properties/">2.3 Topological Properties</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-connectedness">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-connectedness/" class="toc-chapter-link"><strong>3.</strong> Connectedness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-connectedness/01-connected-spaces/">3.1 Connected Spaces</a>
+                        <a href="../../03-connectedness/02-path-connectedness/">3.2 Path Connectedness</a>
+                        <a href="../../03-connectedness/03-components/">3.3 Components</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-compactness">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-compactness/" class="toc-chapter-link"><strong>4.</strong> Compactness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-compactness/01-compact-spaces/">4.1 Compact Spaces</a>
+                        <a href="../../04-compactness/02-heine-borel-theorem/">4.2 Heine–Borel Theorem</a>
+                        <a href="../../04-compactness/03-applications/">4.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-separation-axioms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-separation-axioms/" class="toc-chapter-link"><strong>5.</strong> Separation Axioms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-separation-axioms/01-t0-to-t4/">5.1 T&#x2080; to T&#x2084; Axioms</a>
+                        <a href="../../05-separation-axioms/02-urysohns-lemma/" class="active">5.2 Urysohn's Lemma</a>
+                        <a href="../../05-separation-axioms/03-tietze-extension-theorem/">5.3 Tietze Extension Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-product-and-quotient-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-product-and-quotient-spaces/" class="toc-chapter-link"><strong>6.</strong> Product and Quotient Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-product-and-quotient-spaces/01-product-topology/">6.1 Product Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/02-quotient-topology/">6.2 Quotient Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/03-examples/">6.3 Examples</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-homotopy-and-fundamental-group">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-homotopy-and-fundamental-group/" class="toc-chapter-link"><strong>7.</strong> Homotopy and the Fundamental Group</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-homotopy-and-fundamental-group/01-homotopy/">7.1 Homotopy</a>
+                        <a href="../../07-homotopy-and-fundamental-group/02-the-fundamental-group/">7.2 The Fundamental Group</a>
+                        <a href="../../07-homotopy-and-fundamental-group/03-van-kampens-theorem/">7.3 van Kampen's Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Topology</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Topology</a> ›
+                <a href="../">5. Separation Axioms</a> ›
+                <span>5.2 Urysohn's Lemma</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">5.2 Urysohn's Lemma</h1>
+
+                <p>Urysohn's lemma is a fundamental theorem of general topology, sometimes called "the first deep theorem of the subject." It transforms the purely set-theoretic condition of normality into a rich supply of continuous real-valued functions, bridging the gap between topology and analysis.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Urysohn's Lemma</div>
+                    <p>Let $X$ be a topological space. Then $X$ is <strong>normal</strong> if and only if for every pair of disjoint closed sets $A, B \subseteq X$, there exists a continuous function $f: X \to [0,1]$ satisfying</p>
+                    $$f(a) = 0 \quad \forall\, a \in A, \qquad f(b) = 1 \quad \forall\, b \in B.$$
+                    <p class="mb-0">Such a function $f$ is called a <em>Urysohn function</em> for the pair $(A, B)$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof ($\Leftarrow$)</div>
+                    <p class="mb-0">If such $f$ always exists, then for disjoint closed $A, B$, the sets $U = f^{-1}([0, \tfrac{1}{2}))$ and $V = f^{-1}((\tfrac{1}{2}, 1])$ are disjoint open sets containing $A$ and $B$ respectively. Since $X$ is $T_1$ (implied by the function separating points from singletons), $X$ is normal.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof ($\Rightarrow$) — Construction of the Urysohn Function</div>
+                    <p>Assume $X$ is normal and $A, B$ are disjoint closed sets. We construct $f$ via a dyadic rational indexing.</p>
+                    <p><strong>Step 1 — Dyadic interpolation.</strong> Let $D = \{k/2^n : k = 0, 1, \ldots, 2^n,\; n \in \mathbb{N}\} \cap [0,1]$ be the dyadic rationals in $[0,1]$. By normality and induction, for each $q \in D$ we find open sets $U_q$ such that:</p>
+                    <ul>
+                        <li>$A \subseteq U_0$ and $\overline{U_1} \subseteq X \setminus B$,</li>
+                        <li>$\overline{U_q} \subseteq U_r$ whenever $q < r$ in $D$.</li>
+                    </ul>
+                    <p><strong>Step 2 — Define $f$.</strong> Set</p>
+                    $$f(x) = \inf\{q \in D : x \in U_q\},$$
+                    <p>with the convention $\inf \emptyset = 1$.</p>
+                    <p><strong>Step 3 — Verify $f|_A = 0$ and $f|_B = 1$.</strong> If $x \in A$ then $x \in U_q$ for all $q \in D$ (since $A \subseteq U_0 \subseteq U_q$), so $f(x) = 0$. If $x \in B$ then $x \notin U_q$ for any $q \in D$ (since $\overline{U_q} \subseteq X\setminus B$), so $f(x) = 1$.</p>
+                    <p><strong>Step 4 — Verify continuity.</strong> The sets $\{f < t\} = \bigcup_{q < t} U_q$ and $\{f > t\} = \bigcup_{q > t}(X \setminus \overline{U_q})$ are open for each $t \in \mathbb{R}$. Since these generate the topology of $\mathbb{R}$, $f$ is continuous.</p>
+                    <p class="mb-0">This completes the construction. $\square$</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Richness of Continuous Functions</div>
+                    <p class="mb-0">Urysohn's lemma shows that normal spaces carry a rich supply of continuous real-valued functions. In particular, the $C(X)$-algebra of continuous functions on a compact Hausdorff space $X$ completely determines $X$ (Gelfand duality), a cornerstone of functional analysis.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Urysohn Metrisation Theorem</div>
+                    <p>Every second-countable $T_3$ (regular) space $X$ is <strong>metrisable</strong>. In fact $X$ embeds homeomorphically into the Hilbert cube $[0,1]^{\mathbb{N}}$.</p>
+                    <p class="mb-0"><em>Proof idea:</em> A second-countable $T_3$ space is normal (shown by a countable-basis argument). Urysohn's lemma then supplies a countable family of continuous functions $\{f_n\}$ separating points, and the map $x \mapsto (f_1(x), f_2(x), \ldots)$ embeds $X$ into $[0,1]^\mathbb{N}$, which carries the metric $d((x_n),(y_n)) = \sum_n 2^{-n}|x_n - y_n|$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Explicit Urysohn Function on $\mathbb{R}$</div>
+                    <p>Let $X = \mathbb{R}$, $A = (-\infty, 0]$, $B = [1, \infty)$. Then</p>
+                    $$f(x) = \begin{cases} 0 & x \le 0 \\ x & 0 \le x \le 1 \\ 1 & x \ge 1 \end{cases}$$
+                    <p class="mb-0">is a Urysohn function for $(A, B)$. More generally, for $A = (-\infty, a]$ and $B = [b, \infty)$ with $a < b$, one uses $f(x) = \max(0, \min(1, (x-a)/(b-a)))$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Corollary — Completely Regular Characterisation</div>
+                    <p class="mb-0">A $T_1$ space $X$ is completely regular ($T_{3\frac{1}{2}}$) if and only if its topology is initial with respect to the family $C(X, [0,1])$ of continuous functions into $[0,1]$. Equivalently, $X$ embeds into a product $[0,1]^I$ for some index set $I$ (it is a subspace of a compact Hausdorff space — a <em>Tychonoff space</em>).</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-t0-to-t4/" class="btn btn-outline-custom">&larr; 5.1 Separation Axioms T&#x2080; to T&#x2084;</a>
+                    <a href="../03-tietze-extension-theorem/" class="btn btn-custom">5.3 Tietze Extension Theorem &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

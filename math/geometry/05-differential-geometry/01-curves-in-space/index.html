@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.1 Curves in Space — Geometry</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Geometry</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Geometry</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-euclidean-geometry">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-euclidean-geometry/" class="toc-chapter-link"><strong>1.</strong> Euclidean Geometry</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-euclidean-geometry/01-axioms-and-basic-theorems/">1.1 Axioms and Basic Theorems</a>
+                        <a href="../../01-euclidean-geometry/02-triangles-and-congruence/">1.2 Triangles and Congruence</a>
+                        <a href="../../01-euclidean-geometry/03-circles/">1.3 Circles</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-analytic-geometry">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-analytic-geometry/" class="toc-chapter-link"><strong>2.</strong> Analytic Geometry</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-analytic-geometry/01-coordinates-and-lines/">2.1 Coordinates and Lines</a>
+                        <a href="../../02-analytic-geometry/02-conic-sections/">2.2 Conic Sections</a>
+                        <a href="../../02-analytic-geometry/03-quadrics/">2.3 Quadrics</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-transformation-geometry">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-transformation-geometry/" class="toc-chapter-link"><strong>3.</strong> Transformation Geometry</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-transformation-geometry/01-isometries/">3.1 Isometries</a>
+                        <a href="../../03-transformation-geometry/02-similarities/">3.2 Similarities</a>
+                        <a href="../../03-transformation-geometry/03-affine-and-projective-maps/">3.3 Affine and Projective Maps</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-non-euclidean-geometry">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-non-euclidean-geometry/" class="toc-chapter-link"><strong>4.</strong> Non-Euclidean Geometry</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-non-euclidean-geometry/01-hyperbolic-geometry/">4.1 Hyperbolic Geometry</a>
+                        <a href="../../04-non-euclidean-geometry/02-elliptic-geometry/">4.2 Elliptic Geometry</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-differential-geometry">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-differential-geometry/" class="toc-chapter-link"><strong>5.</strong> Differential Geometry</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-differential-geometry/01-curves-in-space/">5.1 Curves in Space</a>
+                        <a href="../../05-differential-geometry/02-surfaces/">5.2 Surfaces</a>
+                        <a href="../../05-differential-geometry/03-curvature/">5.3 Curvature</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Geometry</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Geometry</a> ›
+                <a href="../">5. Differential Geometry</a> ›
+                <span>5.1 Curves in Space</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">5.1 Curves in Space</h1>
+
+                <p>A <strong>smooth curve</strong> in $\mathbb{R}^3$ is a smooth map $\boldsymbol{\alpha} : (a,b) \to \mathbb{R}^3$. The curve is called <strong>regular</strong> if its velocity vector is never zero: $|\boldsymbol{\alpha}'(t)| \ne 0$ for all $t$. Regularity ensures the curve has a well-defined tangent direction at every point.</p>
+
+                <h2 class="mt-5 mb-3">Arc Length and Reparametrisation</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 5.1.1 — Arc Length</div>
+                    <p>The <strong>speed</strong> of $\boldsymbol{\alpha}$ at $t$ is $|\boldsymbol{\alpha}'(t)|$. The <strong>arc length</strong> from $a$ to $t$ is
+                    $$s(t) = \int_a^t |\boldsymbol{\alpha}'(u)|\,du.$$
+                    For a regular curve, $s'(t) = |\boldsymbol{\alpha}'(t)| > 0$, so $s$ is strictly increasing and may be used as a new parameter.</p>
+                    <p class="mb-0">A curve is <strong>unit-speed</strong> (or parametrised by arc length) if $|\boldsymbol{\alpha}'(s)| = 1$ for all $s$. Every regular curve admits a unit-speed reparametrisation.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Frenet-Serret Frame</h2>
+
+                <p>For a unit-speed regular curve, we define a canonical orthonormal frame — the <strong>Frenet-Serret frame</strong> — that travels along the curve and captures its bending and twisting.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 5.1.2 — Frenet-Serret Frame</div>
+                    <p>Let $\boldsymbol{\alpha}(s)$ be a unit-speed curve with $\boldsymbol{\alpha}''(s) \ne \mathbf{0}$. Define:</p>
+                    <ul>
+                        <li><strong>Unit tangent:</strong> $\mathbf{T}(s) = \boldsymbol{\alpha}'(s)$, so $|\mathbf{T}| = 1$.</li>
+                        <li><strong>Curvature:</strong> $\kappa(s) = |\boldsymbol{\alpha}''(s)| = |\mathbf{T}'(s)| \geq 0$.</li>
+                        <li><strong>Principal normal:</strong> $\mathbf{N}(s) = \boldsymbol{\alpha}''(s)/\kappa(s)$ (unit vector, perpendicular to $\mathbf{T}$).</li>
+                        <li><strong>Binormal:</strong> $\mathbf{B}(s) = \mathbf{T}(s) \times \mathbf{N}(s)$ (unit vector, perpendicular to both $\mathbf{T}$ and $\mathbf{N}$).</li>
+                        <li><strong>Torsion:</strong> $\tau(s)$ defined by $\mathbf{B}'(s) = -\tau(s)\mathbf{N}(s)$.</li>
+                    </ul>
+                    <p class="mb-0">The triple $(\mathbf{T}, \mathbf{N}, \mathbf{B})$ is a right-handed orthonormal frame at each point, called the <em>Frenet-Serret frame</em> or <em>moving trihedron</em>.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Frenet-Serret Equations</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.1.1 — Frenet-Serret Formulas</div>
+                    <p>The derivatives of the Frenet-Serret frame vectors satisfy:
+                    $$\mathbf{T}' = \kappa\,\mathbf{N},$$
+                    $$\mathbf{N}' = -\kappa\,\mathbf{T} + \tau\,\mathbf{B},$$
+                    $$\mathbf{B}' = -\tau\,\mathbf{N}.$$
+                    In matrix form: $\begin{pmatrix}\mathbf{T}'\\\mathbf{N}'\\\mathbf{B}'\end{pmatrix} = \begin{pmatrix}0&\kappa&0\\-\kappa&0&\tau\\0&-\tau&0\end{pmatrix}\begin{pmatrix}\mathbf{T}\\\mathbf{N}\\\mathbf{B}\end{pmatrix}.$</p>
+                    <p class="mb-0">The skew-symmetry of the matrix reflects the fact that $(\mathbf{T},\mathbf{N},\mathbf{B})$ is an orthonormal frame.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Geometric Interpretation</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Meaning of Curvature and Torsion</div>
+                    <ul>
+                        <li><strong>Curvature $\kappa$</strong> measures how fast the tangent turns — the reciprocal of the radius of the <em>osculating circle</em>. A straight line has $\kappa = 0$; a circle of radius $r$ has $\kappa = 1/r$.</li>
+                        <li><strong>Torsion $\tau$</strong> measures how fast the curve twists out of the <em>osculating plane</em> spanned by $\mathbf{T}$ and $\mathbf{N}$. A plane curve has $\tau = 0$ everywhere. A helix has constant nonzero $\tau$.</li>
+                    </ul>
+                    <p class="mb-0">The osculating plane at a point is the plane through that point spanned by $\mathbf{T}$ and $\mathbf{N}$; the curve hugs this plane to second order.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Circular Helix</div>
+                    <p>The helix $\boldsymbol{\alpha}(t) = (a\cos t,\, a\sin t,\, bt)$ for $a > 0, b \ne 0$ has speed $|\boldsymbol{\alpha}'| = \sqrt{a^2+b^2}$. After reparametrising by arc length, the curvature and torsion are constant:
+                    $$\kappa = \frac{a}{a^2+b^2}, \qquad \tau = \frac{b}{a^2+b^2}.$$</p>
+                    <p class="mb-0">A helix is the only curve with both $\kappa$ and $\tau$ constant. When $b=0$ it degenerates to a circle ($\tau = 0$, $\kappa = 1/a$).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Fundamental Theorem of Curves</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.1.2 — Fundamental Theorem of Space Curves</div>
+                    <p>Given smooth functions $\kappa(s) > 0$ and $\tau(s)$ on an interval, there exists a unit-speed curve $\boldsymbol{\alpha}(s)$ in $\mathbb{R}^3$ with curvature $\kappa$ and torsion $\tau$. Moreover, this curve is unique up to a rigid motion (isometry) of $\mathbb{R}^3$.</p>
+                    <p class="mb-0">In other words, the pair $(\kappa(s), \tau(s))$ is a complete set of local invariants for smooth space curves.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 5. Differential Geometry</a>
+                    <a href="../02-surfaces/" class="btn btn-custom">5.2 Surfaces &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>
