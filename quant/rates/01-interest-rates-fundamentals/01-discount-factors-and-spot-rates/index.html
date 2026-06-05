@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Factors and Spot Rates — Rates</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Rates</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Rates</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rates-fundamentals">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rates-fundamentals/" class="toc-chapter-link"><strong>1.</strong> Interest Rates Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rates-fundamentals/01-discount-factors-and-spot-rates/">1.1 Discount Factors and Spot Rates</a>
+                        <a href="../../01-interest-rates-fundamentals/02-forward-rates/">1.2 Forward Rates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-yield-curve-construction">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-yield-curve-construction/" class="toc-chapter-link"><strong>2.</strong> Yield Curve Construction</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-yield-curve-construction/01-bootstrapping/">2.1 Bootstrapping</a>
+                        <a href="../../02-yield-curve-construction/02-interpolation-methods/">2.2 Interpolation Methods</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-interest-rate-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-interest-rate-swaps/" class="toc-chapter-link"><strong>3.</strong> Interest Rate Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-interest-rate-swaps/01-vanilla-interest-rate-swaps/">3.1 Vanilla Interest Rate Swaps</a>
+                        <a href="../../03-interest-rate-swaps/02-ois-and-sofr-discounting/">3.2 OIS and SOFR Discounting</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-interest-rate-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-interest-rate-options/" class="toc-chapter-link"><strong>4.</strong> Interest Rate Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-interest-rate-options/01-caps-and-floors/">4.1 Caps and Floors</a>
+                        <a href="../../04-interest-rate-options/02-swaptions/">4.2 Swaptions</a>
+                        <a href="../../04-interest-rate-options/03-sabr-model/">4.3 SABR Model</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-short-rate-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-short-rate-models/" class="toc-chapter-link"><strong>5.</strong> Short Rate Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-short-rate-models/01-vasicek-and-hull-white/">5.1 Vasicek and Hull-White</a>
+                        <a href="../../05-short-rate-models/02-hjm-framework/">5.2 HJM Framework</a>
+                        <a href="../../05-short-rate-models/03-lmm/">5.3 LMM (LIBOR Market Model)</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Rates</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../../quant/">Quant</a> › <a href="../../">Rates</a> › <a href="../">1. Interest Rates Fundamentals</a> › <span>Discount Factors and Spot Rates</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">1.1 Discount Factors and Spot Rates</h1>
+
+                <p>The central question of fixed income is: what is a future cash flow worth today? The answer is given by the discount factor — the present value of one unit of currency to be received at a specified future date. Discount factors are the primitive objects of interest rate theory; all other rates are derived from them.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Discount Factor</div>
+                    <p class="mb-0">The <em>discount factor</em> $P(t, T)$ is the value at time $t$ of a contract that pays one unit of currency at time $T \geq t$ with certainty. In particular, $P(t,t) = 1$ for all $t$. The function $T \mapsto P(0, T)$ is called the <em>discount curve</em> or <em>term structure of discount factors</em>. It must be a positive, decreasing function with $P(0,0) = 1$ and $P(0,\infty) = 0$ (assuming positive interest rates).</p>
+                </div>
+
+                <p>A zero-coupon bond is the traded instrument that directly realises the discount factor: a zero-coupon bond maturing at $T$ with face value 1 has price $P(0,T)$ today. In practice, pure zero-coupon bonds are not traded at all maturities, so discount factors are inferred by stripping (bootstrapping) from prices of coupon-bearing instruments — a process we address in Chapter 2.</p>
+
+                <h2 class="mt-5 mb-3">Compounding Conventions</h2>
+
+                <p>Given the discount factor $P(0,T)$, the associated interest rate depends on the compounding convention chosen. Different conventions are standard in different markets and for different instruments, so it is essential to be fluent in all of them.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Compounding Conventions</div>
+                    <p><strong>Continuous compounding.</strong> The continuously compounded spot rate $r(0,T)$ satisfies:
+                    $$P(0,T) = e^{-r(0,T)\cdot T} \quad \Longleftrightarrow \quad r(0,T) = -\frac{\ln P(0,T)}{T}$$
+                    This is the most natural convention for theoretical work as it simplifies many formulas.</p>
+                    <p><strong>Annual compounding.</strong> The annually compounded spot rate $y(0,T)$ satisfies:
+                    $$P(0,T) = \frac{1}{(1+y(0,T))^T} \quad \Longleftrightarrow \quad y(0,T) = P(0,T)^{-1/T} - 1$$</p>
+                    <p><strong>Simple (linear) compounding.</strong> The simply compounded rate $L(0,T)$ satisfies:
+                    $$P(0,T) = \frac{1}{1 + L(0,T) \cdot T}$$
+                    Simple compounding is standard for short maturities (money market instruments, LIBOR, SOFR term rates) where $T \leq 1$ year.</p>
+                    <p class="mb-0"><strong>$m$-times per year compounding.</strong> At frequency $m$:
+                    $$P(0,T) = \left(1 + \frac{r_m(0,T)}{m}\right)^{-mT}$$
+                    Semi-annual ($m=2$) compounding is standard for US Treasury yields and US dollar swap rates quoted as bond yields.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Equivalence of Conventions</div>
+                    <p class="mb-0">All conventions encode the same information. Given a discount factor $P(0,T)$, one can convert freely between conventions. For small rates and short maturities all conventions give nearly identical results. The differences become significant at longer maturities or higher rates. In quantitative work, continuous compounding is usually preferred for its analytic convenience; practitioners in specific markets use the relevant market convention for quoting and communication.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Spot Rate Curve</h2>
+
+                <p>The <em>spot rate curve</em> (or <em>zero curve</em>) is the function $T \mapsto r(0,T)$ — the continuously compounded yield on a zero-coupon bond of each maturity. It encodes the market's current pricing of all future cash flows.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Present Value of a Cash Flow Stream</div>
+                    <p class="mb-0">The present value of a deterministic cash flow stream $(C_1, t_1), \ldots, (C_n, t_n)$ is:
+                    $$PV = \sum_{i=1}^n C_i \cdot P(0, t_i) = \sum_{i=1}^n C_i \cdot e^{-r(0,t_i)\,t_i}$$
+                    Each cash flow is discounted at its own maturity-specific rate, not a single flat rate. Using a flat yield — as in the yield-to-maturity of a coupon bond — is an approximation that conflates rates at different maturities.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Par Rate</h2>
+
+                <p>The par rate for maturity $T$ is the fixed coupon rate that makes a fixed-coupon bond (paying coupons at times $t_1, \ldots, t_n = T$ with face value 1) worth exactly par (price = 1) today.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Par Rate</div>
+                    <p>Let $\delta_i = t_i - t_{i-1}$ be the day count fraction for coupon period $i$. The par rate $c$ satisfies:
+                    $$1 = c \sum_{i=1}^n \delta_i P(0, t_i) + P(0, t_n)$$
+                    Solving:
+                    $$c = \frac{1 - P(0,t_n)}{\sum_{i=1}^n \delta_i P(0,t_i)}$$
+                    The denominator $A = \sum_{i=1}^n \delta_i P(0,t_i)$ is called the <em>annuity factor</em> or <em>DV01 per unit notional</em>. Par rates are the market-quoted rates for vanilla interest rate swaps.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Par Rate from Discount Factors</div>
+                    <p>Suppose we observe the following discount factors for annual maturities:</p>
+                    <table class="table table-sm table-bordered" style="max-width:400px;">
+                        <thead><tr><th>$T$ (years)</th><th>$P(0,T)$</th><th>$r(0,T)$ (cont.)</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td>0.9524</td><td>4.88%</td></tr>
+                            <tr><td>2</td><td>0.9057</td><td>4.93%</td></tr>
+                            <tr><td>3</td><td>0.8638</td><td>4.96%</td></tr>
+                        </tbody>
+                    </table>
+                    <p>The 3-year annual par rate is:
+                    $$c = \frac{1 - 0.8638}{0.9524 + 0.9057 + 0.8638} = \frac{0.1362}{2.7219} = 5.00\%$$</p>
+                    <p class="mb-0">The par rate (5.00%) lies slightly above the 3-year spot rate (4.96%) because the coupon payments in years 1 and 2 are discounted at lower rates, pulling the effective yield up marginally.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Day Count Conventions in Rates Markets</h2>
+
+                <p>Interest accrual in rates markets depends on day count conventions, which determine the year fraction $\delta$ between two dates. The conventions differ by instrument and currency.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Common Rates Day Count Conventions</div>
+                    <p><strong>Act/360:</strong> standard for USD money market instruments, SOFR, Euribor, and most floating rate legs. The year fraction between dates $d_1$ and $d_2$ is (actual calendar days) / 360.</p>
+                    <p><strong>Act/365 Fixed:</strong> standard for GBP SONIA and sterling money markets. Year fraction = (actual days) / 365.</p>
+                    <p><strong>30/360 (Bond Basis):</strong> standard for the fixed legs of USD interest rate swaps and US corporate bonds. Assumes each month has 30 days and each year has 360 days.</p>
+                    <p class="mb-0"><strong>Act/Act (ISDA):</strong> used for US Treasury bonds and German Bunds. The year fraction correctly accounts for leap years by splitting periods that span a year boundary.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 1. Interest Rates Fundamentals</a>
+                    <a href="../02-forward-rates/" class="btn btn-custom">1.2 Forward Rates &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

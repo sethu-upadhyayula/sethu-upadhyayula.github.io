@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.2 Ideals and Quotient Rings — Abstract Algebra</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Abstract Algebra</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Abstract Algebra</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-groups"><div class="toc-chapter-header"><a href="../../01-groups/" class="toc-chapter-link"><strong>1.</strong> Groups</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../01-groups/01-definition-and-examples/">1.1 Definition and Examples</a><a href="../../01-groups/02-subgroups/">1.2 Subgroups</a><a href="../../01-groups/03-cyclic-groups/">1.3 Cyclic Groups</a><a href="../../01-groups/04-permutation-groups/">1.4 Permutation Groups</a></div></div>
+                <div class="toc-chapter" data-chapter="02-group-homomorphisms"><div class="toc-chapter-header"><a href="../../02-group-homomorphisms/" class="toc-chapter-link"><strong>2.</strong> Group Homomorphisms</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../02-group-homomorphisms/01-homomorphisms-and-isomorphisms/">2.1 Homomorphisms and Isomorphisms</a><a href="../../02-group-homomorphisms/02-normal-subgroups-and-quotient-groups/">2.2 Normal Subgroups and Quotient Groups</a><a href="../../02-group-homomorphisms/03-isomorphism-theorems/">2.3 Isomorphism Theorems</a></div></div>
+                <div class="toc-chapter" data-chapter="03-group-actions-and-sylow"><div class="toc-chapter-header"><a href="../../03-group-actions-and-sylow/" class="toc-chapter-link"><strong>3.</strong> Group Actions and Sylow Theory</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../03-group-actions-and-sylow/01-group-actions/">3.1 Group Actions</a><a href="../../03-group-actions-and-sylow/02-orbit-stabiliser-theorem/">3.2 Orbit–Stabiliser Theorem</a><a href="../../03-group-actions-and-sylow/03-sylow-theorems/">3.3 Sylow Theorems</a></div></div>
+                <div class="toc-chapter" data-chapter="04-rings"><div class="toc-chapter-header"><a href="../../04-rings/" class="toc-chapter-link"><strong>4.</strong> Rings</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../04-rings/01-definition-and-examples/">4.1 Definition and Examples</a><a href="../../04-rings/02-ideals-and-quotient-rings/">4.2 Ideals and Quotient Rings</a><a href="../../04-rings/03-ring-homomorphisms/">4.3 Ring Homomorphisms</a></div></div>
+                <div class="toc-chapter" data-chapter="05-polynomial-rings-and-ufds"><div class="toc-chapter-header"><a href="../../05-polynomial-rings-and-ufds/" class="toc-chapter-link"><strong>5.</strong> Polynomial Rings and UFDs</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../05-polynomial-rings-and-ufds/01-polynomial-rings/">5.1 Polynomial Rings</a><a href="../../05-polynomial-rings-and-ufds/02-unique-factorisation-domains/">5.2 Unique Factorisation Domains</a><a href="../../05-polynomial-rings-and-ufds/03-euclidean-domains-and-pids/">5.3 Euclidean Domains and PIDs</a></div></div>
+                <div class="toc-chapter" data-chapter="06-fields-and-galois-theory"><div class="toc-chapter-header"><a href="../../06-fields-and-galois-theory/" class="toc-chapter-link"><strong>6.</strong> Fields and Galois Theory</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../06-fields-and-galois-theory/01-field-extensions/">6.1 Field Extensions</a><a href="../../06-fields-and-galois-theory/02-splitting-fields/">6.2 Splitting Fields</a><a href="../../06-fields-and-galois-theory/03-galois-group/">6.3 Galois Group</a><a href="../../06-fields-and-galois-theory/04-fundamental-theorem/">6.4 Fundamental Theorem of Galois Theory</a></div></div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Abstract Algebra</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Abstract Algebra</a> ›
+                <a href="../">4. Rings</a> ›
+                <span>4.2 Ideals and Quotient Rings</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 Ideals and Quotient Rings</h1>
+
+                <p>Ideals play the same role in ring theory that normal subgroups play in group theory: they are the kernels of ring homomorphisms and allow the construction of quotient rings.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.2.1 — Ideal</div>
+                    <p>Let $R$ be a ring. A non-empty subset $I \subseteq R$ is a <strong>left ideal</strong> if for all $a, b \in I$ and $r \in R$: (1) $a - b \in I$, and (2) $ra \in I$. It is a <strong>right ideal</strong> if $ar \in I$ instead. A <strong>(two-sided) ideal</strong> satisfies both conditions: $ra \in I$ and $ar \in I$ for all $r \in R$, $a \in I$.</p>
+                    <p class="mb-0">In a commutative ring, left, right, and two-sided ideals coincide.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 4.2.2 — Principal Ideals</div>
+                    <p class="mb-0">In $\mathbb{Z}$, for any $n \in \mathbb{Z}$, the set $n\mathbb{Z} = \{nk : k \in \mathbb{Z}\}$ is an ideal. These are all ideals of $\mathbb{Z}$: every ideal of $\mathbb{Z}$ is of the form $n\mathbb{Z}$ for some $n \geq 0$. More generally, in a commutative ring $R$ with unity, the <strong>principal ideal generated by $a$</strong> is $(a) = aR = \{ar : r \in R\}$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.2.3 — Quotient Ring</div>
+                    <p>Let $I$ be an ideal of $R$. The <strong>quotient ring</strong> $R/I$ has underlying set $\{a + I : a \in R\}$ (the cosets of $I$ in $(R,+)$) with operations:
+                    $$(a+I) + (b+I) = (a+b)+I, \qquad (a+I)(b+I) = (ab)+I.$$
+                    These are well-defined because $I$ is an ideal. The zero element is $0 + I = I$ and, if $R$ has unity $1$, then $1 + I$ is the unity of $R/I$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 4.2.4 — $\mathbb{Z}/n\mathbb{Z}$</div>
+                    <p class="mb-0">Taking $R = \mathbb{Z}$ and $I = n\mathbb{Z}$, we obtain the familiar quotient ring $\mathbb{Z}/n\mathbb{Z}$ of integers modulo $n$. The elements are residue classes $[0], [1], \ldots, [n-1]$, with arithmetic modulo $n$. This ring is a field if and only if $n$ is prime.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 4.2.5 — $\mathbb{R}[x]/(x^2+1)$</div>
+                    <p class="mb-0">In the polynomial ring $\mathbb{R}[x]$, the ideal $(x^2+1) = (x^2+1)\mathbb{R}[x]$ is maximal (since $x^2 + 1$ is irreducible over $\mathbb{R}$). The quotient $\mathbb{R}[x]/(x^2+1) \cong \mathbb{C}$, where the image of $x$ plays the role of $i$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Special Classes of Ideals</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.2.6 — Prime and Maximal Ideals</div>
+                    <p>Let $R$ be a commutative ring with unity and $I \subsetneq R$ a proper ideal.</p>
+                    <ul class="mb-0">
+                        <li>$I$ is <strong>prime</strong> if $ab \in I$ implies $a \in I$ or $b \in I$.</li>
+                        <li>$I$ is <strong>maximal</strong> if there is no ideal $J$ with $I \subsetneq J \subsetneq R$.</li>
+                    </ul>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.2.7 — Characterisation via Quotients</div>
+                    <p class="mb-0">Let $R$ be a commutative ring with unity and $I$ a proper ideal. Then:
+                    <ul class="mb-0">
+                        <li>$I$ is prime $\iff$ $R/I$ is an integral domain.</li>
+                        <li>$I$ is maximal $\iff$ $R/I$ is a field.</li>
+                    </ul>
+                    In particular, every maximal ideal is prime.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.2.8 — Existence of Maximal Ideals</div>
+                    <p class="mb-0">Every proper ideal of a commutative ring with unity is contained in a maximal ideal. (Proof uses Zorn's Lemma applied to the poset of proper ideals containing $I$, ordered by inclusion.)</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.2.9 — Generated Ideals</div>
+                    <p class="mb-0">The ideal <strong>generated by</strong> a subset $S \subseteq R$ is the smallest ideal containing $S$:
+                    $$\langle S \rangle = \left\{\sum_{i} r_i s_i t_i : r_i, t_i \in R,\, s_i \in S\right\}.$$
+                    For $S = \{a_1, \ldots, a_n\}$ in a commutative ring with unity, $\langle a_1, \ldots, a_n \rangle = \{r_1 a_1 + \cdots + r_n a_n : r_i \in R\}$. An ideal generated by one element is called a <strong>principal ideal</strong>.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-definition-and-examples/" class="btn btn-outline-custom">&larr; 4.1 Definition and Examples</a>
+                    <a href="../03-ring-homomorphisms/" class="btn btn-custom">4.3 Ring Homomorphisms &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

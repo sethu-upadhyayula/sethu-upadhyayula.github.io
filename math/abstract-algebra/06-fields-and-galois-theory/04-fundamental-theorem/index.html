@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.4 Fundamental Theorem of Galois Theory — Abstract Algebra</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Abstract Algebra</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Abstract Algebra</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-groups"><div class="toc-chapter-header"><a href="../../01-groups/" class="toc-chapter-link"><strong>1.</strong> Groups</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../01-groups/01-definition-and-examples/">1.1 Definition and Examples</a><a href="../../01-groups/02-subgroups/">1.2 Subgroups</a><a href="../../01-groups/03-cyclic-groups/">1.3 Cyclic Groups</a><a href="../../01-groups/04-permutation-groups/">1.4 Permutation Groups</a></div></div>
+                <div class="toc-chapter" data-chapter="02-group-homomorphisms"><div class="toc-chapter-header"><a href="../../02-group-homomorphisms/" class="toc-chapter-link"><strong>2.</strong> Group Homomorphisms</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../02-group-homomorphisms/01-homomorphisms-and-isomorphisms/">2.1 Homomorphisms and Isomorphisms</a><a href="../../02-group-homomorphisms/02-normal-subgroups-and-quotient-groups/">2.2 Normal Subgroups and Quotient Groups</a><a href="../../02-group-homomorphisms/03-isomorphism-theorems/">2.3 Isomorphism Theorems</a></div></div>
+                <div class="toc-chapter" data-chapter="03-group-actions-and-sylow"><div class="toc-chapter-header"><a href="../../03-group-actions-and-sylow/" class="toc-chapter-link"><strong>3.</strong> Group Actions and Sylow Theory</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../03-group-actions-and-sylow/01-group-actions/">3.1 Group Actions</a><a href="../../03-group-actions-and-sylow/02-orbit-stabiliser-theorem/">3.2 Orbit–Stabiliser Theorem</a><a href="../../03-group-actions-and-sylow/03-sylow-theorems/">3.3 Sylow Theorems</a></div></div>
+                <div class="toc-chapter" data-chapter="04-rings"><div class="toc-chapter-header"><a href="../../04-rings/" class="toc-chapter-link"><strong>4.</strong> Rings</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../04-rings/01-definition-and-examples/">4.1 Definition and Examples</a><a href="../../04-rings/02-ideals-and-quotient-rings/">4.2 Ideals and Quotient Rings</a><a href="../../04-rings/03-ring-homomorphisms/">4.3 Ring Homomorphisms</a></div></div>
+                <div class="toc-chapter" data-chapter="05-polynomial-rings-and-ufds"><div class="toc-chapter-header"><a href="../../05-polynomial-rings-and-ufds/" class="toc-chapter-link"><strong>5.</strong> Polynomial Rings and UFDs</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../05-polynomial-rings-and-ufds/01-polynomial-rings/">5.1 Polynomial Rings</a><a href="../../05-polynomial-rings-and-ufds/02-unique-factorisation-domains/">5.2 Unique Factorisation Domains</a><a href="../../05-polynomial-rings-and-ufds/03-euclidean-domains-and-pids/">5.3 Euclidean Domains and PIDs</a></div></div>
+                <div class="toc-chapter" data-chapter="06-fields-and-galois-theory"><div class="toc-chapter-header"><a href="../../06-fields-and-galois-theory/" class="toc-chapter-link"><strong>6.</strong> Fields and Galois Theory</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../06-fields-and-galois-theory/01-field-extensions/">6.1 Field Extensions</a><a href="../../06-fields-and-galois-theory/02-splitting-fields/">6.2 Splitting Fields</a><a href="../../06-fields-and-galois-theory/03-galois-group/">6.3 Galois Group</a><a href="../../06-fields-and-galois-theory/04-fundamental-theorem/">6.4 Fundamental Theorem of Galois Theory</a></div></div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Abstract Algebra</a></div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> › <a href="../../">Abstract Algebra</a> › <a href="../">6. Fields and Galois Theory</a> › <span>6.4 Fundamental Theorem of Galois Theory</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">6.4 Fundamental Theorem of Galois Theory</h1>
+                <p>The fundamental theorem establishes a perfect order-reversing bijection between the lattice of intermediate fields of a Galois extension and the lattice of subgroups of its Galois group. It is the cornerstone of Galois theory and has profound consequences for the solvability of polynomial equations.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.4.1 — Fundamental Theorem of Galois Theory</div>
+                    <p>Let $K/F$ be a finite Galois extension with Galois group $G = \mathrm{Gal}(K/F)$. There is an <strong>order-reversing bijection</strong>:
+                    $$\left\{\text{intermediate fields } F \subseteq E \subseteq K\right\} \longleftrightarrow \left\{\text{subgroups } H \leq G\right\}$$
+                    given by $E \mapsto \mathrm{Gal}(K/E)$ with inverse $H \mapsto K^H$. Under this correspondence:</p>
+                    <ul class="mb-0">
+                        <li>$[E:F] = [G:\mathrm{Gal}(K/E)]$ and $[K:E] = |\mathrm{Gal}(K/E)|$.</li>
+                        <li>$E/F$ is Galois $\iff$ $\mathrm{Gal}(K/E) \trianglelefteq G$, in which case $\mathrm{Gal}(E/F) \cong G/\mathrm{Gal}(K/E)$.</li>
+                        <li>Larger subgroups correspond to smaller intermediate fields.</li>
+                    </ul>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 6.4.2 — $\mathbb{Q}(\sqrt[3]{2}, \omega)/\mathbb{Q}$</div>
+                    <p>With $G = S_3$, $|G| = 6$, the subgroup lattice has: $\{e\}$, three subgroups of order 2 ($\langle(12)\rangle$, $\langle(13)\rangle$, $\langle(23)\rangle$), one subgroup of order 3 ($A_3 = \langle(123)\rangle$), and $G$ itself. The correspondence gives:</p>
+                    <ul class="mb-0">
+                        <li>$G \leftrightarrow \mathbb{Q}$ (fixed by all), $\{e\} \leftrightarrow K$.</li>
+                        <li>$A_3 \leftrightarrow \mathbb{Q}(\omega)$ (degree 2 over $\mathbb{Q}$, normal since $A_3 \trianglelefteq S_3$).</li>
+                        <li>The three order-2 subgroups $\leftrightarrow$ $\mathbb{Q}(\sqrt[3]{2})$, $\mathbb{Q}(\omega\sqrt[3]{2})$, $\mathbb{Q}(\omega^2\sqrt[3]{2})$ (degree 3 over $\mathbb{Q}$, not normal).</li>
+                    </ul>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.4.3 — Solvability by Radicals</div>
+                    <p class="mb-0">A polynomial $f \in F[x]$ (char $F = 0$) is <strong>solvable by radicals</strong> if and only if its Galois group $\mathrm{Gal}(K/F)$ (where $K$ is the splitting field) is a <strong>solvable group</strong>. Since $S_5$ is not solvable, the general quintic polynomial has no solution by radicals — a result first proved by Abel and Galois.</p>
+                </div>
+
+                <div class="math-box corollary">
+                    <div class="math-box-label">Corollary 6.4.4 — Quadratic, Cubic, Quartic Formulas</div>
+                    <p class="mb-0">The Galois groups of generic polynomials of degrees 2, 3, 4 are $S_2 \cong \mathbb{Z}/2$, $S_3$, and $S_4$ respectively. Since $S_2$, $S_3$, $S_4$ are all solvable (with composition factors $\mathbb{Z}/2$, $\mathbb{Z}/3$, $\mathbb{Z}/2$), the quadratic, cubic, and quartic formulas exist — consistent with classical results. The group $S_5$ is not solvable, hence no general quintic formula.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Constructibility</div>
+                    <p class="mb-0">A real number $\alpha$ is constructible by straightedge and compass from $\mathbb{Q}$ if and only if $[\mathbb{Q}(\alpha):\mathbb{Q}]$ is a power of 2. This explains why trisecting an angle, doubling the cube ($\sqrt[3]{2}$ has degree 3), and constructing a regular 7-gon (requires degree 6) are impossible.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../03-galois-group/" class="btn btn-outline-custom">&larr; 6.3 Galois Group</a>
+                    <a href="../../" class="btn btn-custom">Back to Abstract Algebra &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

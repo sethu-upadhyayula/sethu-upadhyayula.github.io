@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atomic Chess — Chess Variants</title>
+<link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../css/styles.css">
+<style>
+.chess-board-placeholder{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:2px solid var(--border-color,#555);width:fit-content;margin:1rem auto;}
+.chess-board-placeholder .sq{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
+.chess-board-placeholder .light{background:#f0d9b5;}
+.chess-board-placeholder .dark{background:#b58863;}
+.chess-board-placeholder .exploded{background:#c0392b !important;opacity:0.7;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main><div class="container py-4">
+<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Variants</a> › <span>Atomic Chess</span></nav>
+
+<h1 class="mb-3">Atomic Chess</h1>
+<p class="lead mb-4">In Atomic Chess, every capture triggers an explosion that annihilates the capturing piece and all non-pawn pieces on adjacent squares. One wrong capture can wipe out an entire army — or win the game in a single move.</p>
+
+<!-- RULES -->
+<section class="hero-card p-4 mb-4">
+  <h2>1. The Rules of Atomic Chess</h2>
+  <p>Atomic Chess is played exactly like standard chess, with one dramatic exception: <strong>every capture causes an explosion</strong>.</p>
+
+  <h3>Explosion Mechanics</h3>
+  <ul>
+    <li>When a piece captures, <strong>both the capturing piece and the captured piece are removed</strong> from the board.</li>
+    <li>Additionally, all pieces (of either colour) on the <strong>8 adjacent squares</strong> are also destroyed — except pawns. Pawns are immune to explosion but not to direct capture.</li>
+    <li>The explosion happens instantaneously. A single capture can obliterate queens, rooks, and bishops simultaneously.</li>
+    <li><strong>Pawns can capture</strong> (and will explode everything around the target square), but they themselves are never destroyed by a nearby explosion — only by direct capture.</li>
+  </ul>
+
+  <h3>The King Exception</h3>
+  <p>The king has a critical special property: <strong>a king can never be blown up by a direct capture</strong>. If a piece tries to capture the king directly, the rules forbid it — that move is illegal. The only way to win is by exploding pieces <em>adjacent</em> to the king so that the explosion reaches it, or by delivering checkmate the classical way.</p>
+
+  <h3>Winning Conditions</h3>
+  <ul>
+    <li><strong>Explode the opponent's king:</strong> Capture a piece adjacent to the enemy king, causing the explosion to destroy the king. This ends the game immediately.</li>
+    <li><strong>Checkmate:</strong> The standard checkmate rules still apply.</li>
+    <li><strong>Note:</strong> A player who loses their king loses the game, regardless of how it happened.</li>
+  </ul>
+
+  <div class="chess-board-placeholder" id="board-explosion"></div>
+  <script>(function(){
+    var b=document.getElementById('board-explosion');
+    var files='abcdefgh';
+    // Show a position where a piece is about to explode the area around d5
+    var board={d5:'♟',e5:'♖',c5:'♗',e4:'♘',d4:'♕',c4:'♝',e6:'♞',c6:'♜',d6:'♚'};
+    var explodeZone=['c4','c5','c6','e4','e5','e6','d4','d6'];
+    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
+      var s=document.createElement('div');
+      var sq=files[c]+(r+1);
+      var isExplode=explodeZone.indexOf(sq)>=0;
+      s.className='sq '+((r+c)%2===0?'dark':'light')+(isExplode?' exploded':'');
+      if(board[sq])s.textContent=board[sq];
+      b.appendChild(s);
+    }
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>If White captures on d5 (the black pawn), all pieces on highlighted adjacent squares explode — including the Black king on d6!</small></p>
+</section>
+
+<!-- STRATEGIC DIFFERENCES -->
+<section class="hero-card p-4 mb-4">
+  <h2>2. King Safety and the Inversion of Values</h2>
+  <p>Atomic Chess inverts several fundamental principles of classical chess, creating a completely different strategic landscape.</p>
+
+  <h3>The King as a Weapon</h3>
+  <p>In classical chess, the king hides behind pawns and tries to stay safe. In Atomic Chess, the king is simultaneously the <strong>most vulnerable</strong> and <strong>most powerful</strong> piece on the board:</p>
+  <ul>
+    <li>The king is invulnerable to direct capture — no piece can legally take it outright.</li>
+    <li>A king marching into the opponent's position can threaten captures that blow up nearby enemy pieces, while itself remaining untouchable by direct capture.</li>
+    <li>However, the king is extremely vulnerable to explosions from adjacent captures — a single pawn capture next to it can end the game.</li>
+  </ul>
+
+  <h3>Pawn Chains and Shields</h3>
+  <p>Because pawns survive adjacent explosions, pawn chains serve a unique defensive role in Atomic Chess. A ring of your own pawns around your king actually protects it — enemy pieces cannot "slide in" next to the king without passing through the pawn cordon. This makes pawn structure far more important for king safety than in classical chess.</p>
+
+  <h3>Connected Kings</h3>
+  <p>One of the most fascinating Atomic Chess rules: <strong>two kings can never be adjacent to each other</strong>. If a king moves next to the opposing king, the move would "capture" via explosion, blowing up both kings simultaneously — which is illegal. This creates a fascinating dance where kings can face off at a distance but never touch.</p>
+</section>
+
+<!-- TACTICS -->
+<section class="hero-card p-4 mb-4">
+  <h2>3. Atomic Tactics</h2>
+
+  <h3>Knight Explosions</h3>
+  <p>Knights are uniquely dangerous in Atomic Chess because they jump over pieces. A knight that lands adjacent to the enemy king — even in the middle of a dense position — can threaten a devastating explosion. The knight's L-shape means it often reaches squares no other piece can attack quickly, making it a prime attacking weapon.</p>
+
+  <div class="chess-board-placeholder" id="board-knight"></div>
+  <script>(function(){
+    var b=document.getElementById('board-knight');
+    var files='abcdefgh';
+    var board={f6:'♘',e8:'♚',d8:'♛',f8:'♜',g8:'♜',e7:'♟',f7:'♟',g7:'♟'};
+    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
+      var s=document.createElement('div');s.className='sq '+((r+c)%2===0?'dark':'light');
+      var sq=files[c]+(r+1);
+      if(board[sq])s.textContent=board[sq];
+      b.appendChild(s);
+    }
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>White knight on f6 threatens Nxe8 or Nxg8. Either capture explodes adjacent to the Black king on e8, winning immediately.</small></p>
+
+  <h3>Rook Explosions</h3>
+  <p>Rooks sweeping along open files are deadly in Atomic Chess. A rook on the 7th rank can capture a pawn adjacent to the enemy king, triggering an explosion that ends the game. Open files are therefore not just good for pressure — they are direct winning threats.</p>
+
+  <h3>Suicide Tactics and Anti-Tactics</h3>
+  <p>Sometimes the strongest move involves sacrificing material to trigger a chain of explosions. For example, allowing a piece to be captured can set up a devastating counter-explosion on the next move. Players must calculate not just material counts but explosion chains — sometimes three or four moves deep.</p>
+
+  <h3>Avoiding Exploding Yourself</h3>
+  <p>One pitfall unique to Atomic Chess: carelessly capturing a piece adjacent to <em>your own</em> king is suicide. Your own king gets blown up by your own capture. This means certain otherwise-attractive recaptures are completely forbidden, and king position must always be kept in mind before executing any capture.</p>
+</section>
+
+<!-- OPENING THEORY -->
+<section class="hero-card p-4 mb-4">
+  <h2>4. Opening Theory and Practical Tips</h2>
+
+  <h3>Opening Differences</h3>
+  <p>Classical opening principles (control the centre, develop knights and bishops) still apply in Atomic Chess, but with important modifications:</p>
+  <ul>
+    <li><strong>King safety first:</strong> Getting your king to a safe square — ideally behind a solid pawn wall — takes higher priority than in classical chess.</li>
+    <li><strong>Avoid early captures near your king:</strong> In the classical Ruy López, Black sometimes plays …Nxe4 immediately. In Atomic, such a capture might blow up your own king-side if pieces are adjacent.</li>
+    <li><strong>Control of f7/f2:</strong> These squares, adjacent to the king's starting square before castling, are critical explosion targets. Early pressure on f7 (for White) can win immediately if Black's king hasn't moved.</li>
+  </ul>
+
+  <h3>Famous Atomic Opening Trap</h3>
+  <div class="notation-box mb-3">
+    1.e3 e6 2.Qh5? f6?? 3.Qxf7# — the queen captures f7, adjacent to the Black king on e8. Explosion! Black king destroyed.
+  </div>
+  <p>This demonstrates how quickly games can end in Atomic Chess. Always verify that captures adjacent to your king are safe before proceeding.</p>
+
+  <h3>Endgame Considerations</h3>
+  <p>Atomic endgames are unusual. With fewer pieces, king activity becomes paramount but also dangerous — a king that wanders too close to enemy pieces risks explosion. King-and-pawn endgames often reduce to races where both sides try to promote, since pawns are the safest pieces in the variant. A passed pawn supported by an active king can frequently decide the game.</p>
+</section>
+
+</div></main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../js/script.js"></script>
+</body></html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moremovers — Chess Compositions</title>
+<link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../css/styles.css">
+<style>
+.chess-board-placeholder{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:2px solid var(--border-color,#555);width:fit-content;margin:1rem auto;}
+.chess-board-placeholder .sq{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
+.chess-board-placeholder .light{background:#f0d9b5;}
+.chess-board-placeholder .dark{background:#b58863;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main><div class="container py-4">
+<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Compositions</a> › <span>Moremovers</span></nav>
+
+<h1 class="mb-3">Moremovers</h1>
+<p class="lead mb-4">Moremovers — problems with the stipulation #n where n ≥ 4 — occupy the frontier between the purely combinatorial world of short problems and the strategic world of endgame studies. They demand plan-based thinking, long manoeuvres, and an ability to see positional motifs unfolding across many moves.</p>
+
+<!-- DEFINITION -->
+<section class="hero-card p-4 mb-4">
+  <h2>1. Definition and Scope</h2>
+  <p>A <strong>moremover</strong> carries the stipulation <strong>#n</strong> with n ≥ 4. In practice, most competition moremovers range from #4 to #20, though notable examples exist at much higher move counts. As n grows, the problem increasingly resembles a study in character — White must pursue a coherent strategic plan rather than a sharply defined tactical sequence.</p>
+  <p>The boundary between a moremover and an endgame study is often described this way: a moremover has a <em>precisely specified</em> number of moves, and there is only one correct stipulation (White must mate in exactly n, not fewer). An endgame study says "White wins" or "White draws" without specifying the move count. This formal difference has deep artistic consequences — moremovers allow composers to encode precise rhythmic structures that studies cannot.</p>
+</section>
+
+<!-- CHARACTERISTICS -->
+<section class="hero-card p-4 mb-4">
+  <h2>2. Characteristics</h2>
+
+  <h3>Plan-Based Thinking</h3>
+  <p>Unlike twomovers, where every Black reply is considered in isolation, moremovers demand that White pursue a coherent <em>plan</em> across many moves. The plan might be: transfer the queen to a specific square via a clearance manoeuvre, force the Black king into a corner, or systematically reduce Black's defensive options. Black, naturally, tries to disrupt this plan at every opportunity.</p>
+
+  <h3>Long Manoeuvres</h3>
+  <p>A piece may need 3–4 moves to reach its destination, making an apparently useless first move actually the beginning of a decisive journey. These long manoeuvres — especially by knights, which must zig-zag across the board — are among the most beautiful elements of moremovers. The solver must recognise the destination rather than the path.</p>
+
+  <h3>Zugzwang</h3>
+  <p>Zugzwang positions appear more naturally in moremovers because there is enough time to manoeuvre into a position where Black is in mutual zugzwang. The classic structure: White manoeuvres for several moves to reach a position where both sides are in zugzwang — but it is Black's turn to move, so Black must self-destruct.</p>
+
+  <h3>Positional Motifs</h3>
+  <p>Moremovers regularly feature motifs more commonly seen in practical play: piece coordination, outpost squares, pawn chains, king marches. The compositions of composers like Lev Loshinsky and Comins Mansfield show how profound positional chess can be encoded in a composed moremover.</p>
+
+  <h3>The Logical Theme at Scale</h3>
+  <p>The "logical" tradition (foreplan + main plan) reaches its full expression in long moremovers. A 10-mover might require White to execute three separate foreplans — each removing an obstacle to the next — before the decisive main plan becomes executable. The construction of such problems is extraordinarily demanding.</p>
+</section>
+
+<!-- FAMOUS COMPOSERS -->
+<section class="hero-card p-4 mb-4">
+  <h2>3. Famous Composers and Their Styles</h2>
+
+  <h3>Sam Loyd (1841–1911)</h3>
+  <p>The American puzzle master produced moremovers of startling ingenuity. Loyd's problems often had paradoxical keys — pieces moving backwards, quiet retreats setting up devastating chains of forced play. His "Excelsior" problem demonstrates a pawn marching from e2 to e7, delivering mate on its final step, in a setting where every other piece seems more likely to deliver the checkmate.</p>
+
+  <h3>Henry Dudeney (1857–1930)</h3>
+  <p>The British puzzlist worked at the boundary between chess problems and mathematical puzzles, producing moremovers with elegant numerical symmetry and precise combinatorial structures.</p>
+
+  <h3>Jan Hartong and Comins Mansfield</h3>
+  <p>These composers specialised in moremovers with rich thematic content — multiple related variations with long forcing sequences that each display a unified idea. Mansfield in particular was celebrated for the economy and surprise of his keys across all problem lengths.</p>
+
+  <h3>Werner Speckmann</h3>
+  <p>Known for miniature moremovers — positions with the fewest possible pieces that still display a rich thematic idea. Miniatures (seven or fewer pieces) are considered especially elegant because economy is guaranteed by the piece count itself.</p>
+</section>
+
+<!-- DIAGRAM -->
+<section class="hero-card p-4 mb-4">
+  <h2>4. A Knight Manoeuvre Problem</h2>
+  <p>This illustrative position demonstrates a long knight manoeuvre — the defining character of many moremovers. The knight must travel across the board to deliver the decisive blow.</p>
+
+  <p><strong>Position:</strong> White: ♔a1, ♕h8, ♘a3 &nbsp;|&nbsp; Black: ♚h3, ♟g4, ♟h4, ♟g3</p>
+  <p><em>White to play and mate in 5</em></p>
+
+  <div class="chess-board-placeholder" id="board-more"></div>
+  <script>(function(){
+    var pieces={
+      'a1':'♔','h8':'♕','a3':'♘',
+      'h3':'♚','g4':'♟','h4':'♟','g3':'♟'
+    };
+    var b=document.getElementById('board-more');
+    var files='abcdefgh';
+    for(var r=7;r>=0;r--){for(var c=0;c<8;c++){
+      var s=document.createElement('div');
+      var sq=files[c]+(r+1);
+      s.className='sq '+((r+c)%2===0?'dark':'light');
+      if(pieces[sq])s.textContent=pieces[sq];
+      b.appendChild(s);
+    }}
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>Knight manoeuvre moremover — illustrative</small></p>
+
+  <h3 class="mt-3">Solution Outline</h3>
+  <div class="notation-box">
+    The knight on a3 must reach f2 (or another key square) via a multi-step route,<br>
+    while the queen and king coordinate to restrict the Black king.<br><br>
+    <strong>1. Nb5!</strong> (begins the manoeuvre — not check, not capture)<br>
+    <strong>1... Kg2</strong> (Black tries to escape)<br>
+    <strong>2. Nd4</strong> (continuing the knight tour)<br>
+    <strong>2... Kh3</strong><br>
+    <strong>3. Nf3</strong> (knight arrives, cutting off escape)<br>
+    <strong>3... Kg2</strong><br>
+    <strong>4. Qg7+</strong> (queen enters the attack)<br>
+    <strong>4... Kh3</strong><br>
+    <strong>5. Qg4#</strong><br><br>
+    <em>The knight manoeuvre Nb5-Nd4-Nf3 is the engine of the solution.</em>
+  </div>
+</section>
+
+<!-- DISTINCTION FROM ENDGAME STUDIES -->
+<section class="hero-card p-4 mb-4">
+  <h2>5. Moremovers vs. Endgame Studies</h2>
+  <p>The distinction matters artistically:</p>
+  <table class="table table-sm mt-2">
+    <thead><tr><th>Feature</th><th>Moremover</th><th>Endgame Study</th></tr></thead>
+    <tbody>
+      <tr><td>Stipulation</td><td>Mate in exactly n moves</td><td>Win or draw (no move count)</td></tr>
+      <tr><td>Appearance</td><td>May be artificial</td><td>Should look like a real game position</td></tr>
+      <tr><td>Criterion</td><td>Thematic content, economy</td><td>Surprise, practical instruction</td></tr>
+      <tr><td>Main variations</td><td>Usually one main line plus sidelines</td><td>Often only one main line required</td></tr>
+      <tr><td>Black's role</td><td>All defences must be covered exactly</td><td>Best defence suffices; some ambiguity allowed</td></tr>
+      <tr><td>Move count</td><td>Exact — mating earlier is a flaw</td><td>Flexible — winning faster is fine</td></tr>
+    </tbody>
+  </table>
+  <p class="mt-3">The strictness of the move count in moremovers is their defining constraint — and their greatest artistic strength. Because White must mate in <em>exactly</em> n moves, rhythmic patterns (pieces repeating motifs at precise intervals), echo mates (the same mating position reappearing in different parts of the board), and precise timing become possible artistic goals unavailable to study composers.</p>
+</section>
+
+<!-- SOLVING -->
+<section class="hero-card p-4 mb-4">
+  <h2>6. How to Solve Moremovers</h2>
+  <ol>
+    <li><strong>Ask: what is White's plan?</strong> Rather than trying to calculate every variation, identify what White is trying to accomplish. Where should the pieces end up? How is the Black king to be mated?</li>
+    <li><strong>Identify the main line.</strong> Find the sequence where Black puts up the best resistance. This is usually the longest and most forcing line.</li>
+    <li><strong>Look for the mating picture.</strong> Work backwards from a natural mating position — then ask how to reach it in the required number of moves.</li>
+    <li><strong>Notice the count.</strong> If the most natural plan takes n−1 moves, White may need a "waiting move" — a quiet move that wastes a tempo while maintaining the position's integrity. These tempo moves are often the key.</li>
+    <li><strong>Watch for traps.</strong> Black's best defences often involve counter-checks, stalemate threats, or unexpected piece escapes. The composer will have set these up deliberately to mislead.</li>
+  </ol>
+</section>
+
+</div></main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../js/script.js"></script>
+</body></html>
