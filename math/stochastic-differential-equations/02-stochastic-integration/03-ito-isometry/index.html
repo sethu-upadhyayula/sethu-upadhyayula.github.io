@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.3 Itô Isometry — Stochastic Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Stochastic Differential Equations</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Stochastic Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-brownian-motion-and-filtrations">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-brownian-motion-and-filtrations/" class="toc-chapter-link"><strong>1.</strong> Brownian Motion and Filtrations</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-brownian-motion-and-filtrations/01-brownian-motion/">1.1 Brownian Motion</a>
+                        <a href="../../01-brownian-motion-and-filtrations/02-filtrations-and-adaptedness/">1.2 Filtrations and Adaptedness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-stochastic-integration">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-stochastic-integration/" class="toc-chapter-link"><strong>2.</strong> Stochastic Integration</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-stochastic-integration/01-ito-integral/">2.1 Itô Integral</a>
+                        <a href="../../02-stochastic-integration/02-properties-of-the-ito-integral/">2.2 Properties of the Itô Integral</a>
+                        <a href="../../02-stochastic-integration/03-ito-isometry/">2.3 Itô Isometry</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-itos-formula">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-itos-formula/" class="toc-chapter-link"><strong>3.</strong> Itô's Formula</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-itos-formula/01-one-dimensional-ito-formula/">3.1 One-Dimensional Itô Formula</a>
+                        <a href="../../03-itos-formula/02-multi-dimensional-ito-formula/">3.2 Multi-Dimensional Itô Formula</a>
+                        <a href="../../03-itos-formula/03-applications/">3.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-stochastic-differential-equations">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-stochastic-differential-equations/" class="toc-chapter-link"><strong>4.</strong> Stochastic Differential Equations</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-stochastic-differential-equations/01-existence-and-uniqueness/">4.1 Existence and Uniqueness</a>
+                        <a href="../../04-stochastic-differential-equations/02-linear-sdes/">4.2 Linear SDEs</a>
+                        <a href="../../04-stochastic-differential-equations/03-geometric-brownian-motion/">4.3 Geometric Brownian Motion</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-feynman-kac-formula">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-feynman-kac-formula/" class="toc-chapter-link"><strong>5.</strong> The Feynman–Kac Formula</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-feynman-kac-formula/01-connections-to-pdes/">5.1 Connections to PDEs</a>
+                        <a href="../../05-feynman-kac-formula/02-feynman-kac/">5.2 Feynman–Kac</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-change-of-measure">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-change-of-measure/" class="toc-chapter-link"><strong>6.</strong> Change of Measure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-change-of-measure/01-girsanovs-theorem/">6.1 Girsanov's Theorem</a>
+                        <a href="../../06-change-of-measure/02-applications/">6.2 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-numerical-methods-for-sdes">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-numerical-methods-for-sdes/" class="toc-chapter-link"><strong>7.</strong> Numerical Methods for SDEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-numerical-methods-for-sdes/01-euler-maruyama/">7.1 Euler–Maruyama Scheme</a>
+                        <a href="../../07-numerical-methods-for-sdes/02-milstein-scheme/">7.2 Milstein Scheme</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Stochastic Differential Equations</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Stochastic Differential Equations</a> ›
+                <a href="../">2. Stochastic Integration</a> ›
+                <span>2.3 Itô Isometry</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">2.3 Itô Isometry</h1>
+
+                <p>The Itô isometry is the fundamental norm-preservation property of the stochastic integral. It says that the map $f \mapsto \int f\,dW$ is an isometry from $\mathcal{L}^2([0,T])$ (with the norm $\|f\|^2 = E[\int f^2\,dt]$) into $L^2(\Omega)$ (with the norm $\|X\|^2 = E[X^2]$). This is what allows the integral to be extended from simple to general processes.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.3.1 — Itô Isometry</div>
+                    <p>For $f \in \mathcal{L}^2([0,T])$:</p>
+                    $$E\!\left[\left(\int_0^T f_t\,dW_t\right)^2\right] = E\!\left[\int_0^T f_t^2\,dt\right].$$
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof — Simple Processes</div>
+                    <p>Let $f$ be simple with $f_t = f_{t_k}$ on $[t_k, t_{k+1})$. Write $\Delta W_k = W_{t_{k+1}} - W_{t_k}$ and $I = \int_0^T f_t\,dW_t = \sum_k f_{t_k}\Delta W_k$. Then:</p>
+                    $$E[I^2] = \sum_k E[f_{t_k}^2 (\Delta W_k)^2] + 2\sum_{j < k} E[f_{t_j}\Delta W_j \cdot f_{t_k}\Delta W_k].$$
+                    <p>For the cross terms with $j < k$: since $f_{t_j}, \Delta W_j, f_{t_k}$ are all $\mathcal{F}_{t_k}$-measurable while $\Delta W_k$ is independent of $\mathcal{F}_{t_k}$ with $E[\Delta W_k] = 0$:</p>
+                    $$E[f_{t_j}\Delta W_j \cdot f_{t_k}\Delta W_k] = E[f_{t_j}\Delta W_j \cdot f_{t_k}] \cdot E[\Delta W_k] = 0.$$
+                    <p>For the diagonal terms: since $f_{t_k} \in \mathcal{F}_{t_k}$ and $\Delta W_k$ is independent of $\mathcal{F}_{t_k}$ with $E[(\Delta W_k)^2] = t_{k+1} - t_k$:</p>
+                    $$E[f_{t_k}^2(\Delta W_k)^2] = E[f_{t_k}^2] \cdot (t_{k+1} - t_k) = E\!\left[\int_{t_k}^{t_{k+1}} f_{t_k}^2\,dt\right] = E\!\left[\int_{t_k}^{t_{k+1}} f_t^2\,dt\right].$$
+                    <p class="mb-0">Summing over $k$ gives $E[I^2] = E[\int_0^T f_t^2\,dt]$. The general case follows by density of simple processes in $\mathcal{L}^2$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Generalisation: Cross-Product Formula</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.3.2 — Polarisation Identity</div>
+                    <p>For $f, g \in \mathcal{L}^2([0,T])$:</p>
+                    $$E\!\left[\int_0^T f_t\,dW_t \cdot \int_0^T g_t\,dW_t\right] = E\!\left[\int_0^T f_t g_t\,dt\right].$$
+                    <p class="mb-0">This follows immediately by polarisation: $4\langle u, v\rangle = \|u+v\|^2 - \|u-v\|^2$, applying the isometry to $f+g$ and $f-g$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Isometry and Hilbert Space Structure</div>
+                    <p>The Itô isometry says the map $f \mapsto \int_0^T f_t\,dW_t$ is an inner-product-preserving map from $\mathcal{L}^2([0,T])$ to $L^2(\Omega)$. In particular, it is an <em>isometric embedding</em>: it preserves all distances and angles. This is what allows the extension from simple processes (a dense subspace) to all of $\mathcal{L}^2$.</p>
+                    <p class="mb-0">Concretely: if $f^{(n)} \to f$ in $\mathcal{L}^2([0,T])$, then by isometry $\int f^{(n)}\,dW \to \int f\,dW$ in $L^2(\Omega)$. The limit is well-defined and independent of the approximating sequence.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 2.3.3 — Computing Second Moments</div>
+                    <p>Let $M_t = \int_0^t e^{-s}\,dW_s$. By the isometry:</p>
+                    $$E[M_t^2] = E\!\left[\int_0^t e^{-2s}\,ds\right] = \int_0^t e^{-2s}\,ds = \frac{1 - e^{-2t}}{2}.$$
+                    <p>As $t \to \infty$, $E[M_\infty^2] = 1/2$, so $M_\infty$ is a well-defined $L^2$ random variable.</p>
+                    <p class="mb-0">For the cross-product: $E[M_s M_t] = E[\int_0^{\min(s,t)} e^{-2u}\,du] = (1 - e^{-2\min(s,t)})/2$, which gives the covariance structure of this Gaussian process.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-properties-of-the-ito-integral/" class="btn btn-outline-custom">&larr; 2.2 Properties of the Itô Integral</a>
+                    <a href="../../03-itos-formula/" class="btn btn-custom">3. Itô's Formula &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

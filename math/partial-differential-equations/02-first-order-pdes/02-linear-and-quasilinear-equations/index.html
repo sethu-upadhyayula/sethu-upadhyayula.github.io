@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.2 Linear and Quasilinear Equations — Partial Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Partial Differential Equations</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Partial Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-introduction-and-classification">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-introduction-and-classification/" class="toc-chapter-link"><strong>1.</strong> Introduction and Classification</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-introduction-and-classification/01-first-and-second-order-pdes/">1.1 First and Second Order PDEs</a>
+                        <a href="../../01-introduction-and-classification/02-classification/">1.2 Classification</a>
+                        <a href="../../01-introduction-and-classification/03-well-posed-problems/">1.3 Well-Posed Problems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-first-order-pdes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-first-order-pdes/" class="toc-chapter-link"><strong>2.</strong> First-Order PDEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-first-order-pdes/01-method-of-characteristics/">2.1 Method of Characteristics</a>
+                        <a href="../../02-first-order-pdes/02-linear-and-quasilinear-equations/">2.2 Linear and Quasilinear Equations</a>
+                        <a href="../../02-first-order-pdes/03-conservation-laws/">2.3 Conservation Laws</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-the-wave-equation">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-the-wave-equation/" class="toc-chapter-link"><strong>3.</strong> The Wave Equation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-the-wave-equation/01-dalemberts-formula/">3.1 d'Alembert's Formula</a>
+                        <a href="../../03-the-wave-equation/02-separation-of-variables/">3.2 Separation of Variables</a>
+                        <a href="../../03-the-wave-equation/03-energy-methods/">3.3 Energy Methods</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-the-heat-equation">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-the-heat-equation/" class="toc-chapter-link"><strong>4.</strong> The Heat Equation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-the-heat-equation/01-maximum-principle/">4.1 Maximum Principle</a>
+                        <a href="../../04-the-heat-equation/02-fundamental-solution/">4.2 Fundamental Solution</a>
+                        <a href="../../04-the-heat-equation/03-fourier-series-solution/">4.3 Fourier Series Solution</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-laplace-and-poisson-equations">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-laplace-and-poisson-equations/" class="toc-chapter-link"><strong>5.</strong> Laplace and Poisson Equations</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-laplace-and-poisson-equations/01-harmonic-functions/">5.1 Harmonic Functions</a>
+                        <a href="../../05-laplace-and-poisson-equations/02-greens-functions/">5.2 Green's Functions</a>
+                        <a href="../../05-laplace-and-poisson-equations/03-mean-value-property/">5.3 Mean Value Property</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-fourier-analysis">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-fourier-analysis/" class="toc-chapter-link"><strong>6.</strong> Fourier Analysis</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-fourier-analysis/01-fourier-series/">6.1 Fourier Series</a>
+                        <a href="../../06-fourier-analysis/02-fourier-transform/">6.2 Fourier Transform</a>
+                        <a href="../../06-fourier-analysis/03-applications/">6.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-weak-solutions-and-distributions">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-weak-solutions-and-distributions/" class="toc-chapter-link"><strong>7.</strong> Weak Solutions and Distributions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-weak-solutions-and-distributions/01-distributions/">7.1 Distributions</a>
+                        <a href="../../07-weak-solutions-and-distributions/02-weak-derivatives/">7.2 Weak Derivatives</a>
+                        <a href="../../07-weak-solutions-and-distributions/03-sobolev-spaces/">7.3 Sobolev Spaces</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Partial Differential Equations</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Partial Differential Equations</a> ›
+                <a href="../">2. First-Order PDEs</a> ›
+                <span>2.2 Linear and Quasilinear Equations</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">2.2 Linear and Quasilinear Equations</h1>
+
+                <p>In a <strong>quasilinear</strong> first-order PDE, the coefficients of the derivatives may depend on $u$ itself — not just on the independent variables. This causes the characteristic curves to depend on the solution, creating the possibility of <strong>shock formation</strong>.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.2.1 — Quasilinear First-Order PDE</div>
+                    <p>A PDE of the form</p>
+                    <p>$$a(x, y, u)\, u_x + b(x, y, u)\, u_y = c(x, y, u)$$</p>
+                    <p class="mb-0">is called <strong>quasilinear</strong>. The characteristic ODEs become:</p>
+                    <p class="mb-0">$$\frac{dx}{ds} = a(x,y,u),\quad \frac{dy}{ds} = b(x,y,u),\quad \frac{du}{ds} = c(x,y,u)$$</p>
+                </div>
+
+                <p>Unlike the linear case, here all three equations must be solved <em>simultaneously</em> since $a$ and $b$ depend on $u$. The characteristics in the $(x,y)$-plane are not known in advance.</p>
+
+                <h2 class="mt-5 mb-3">Inviscid Burgers' Equation</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 2.2.1 — Burgers' Equation $u_t + u\,u_x = 0$</div>
+                    <p>Here $a = u$, $b = 1$ (in $(x,t)$ coordinates), $c = 0$. Characteristic ODEs:</p>
+                    <p>$$\frac{dx}{ds} = u, \quad \frac{dt}{ds} = 1, \quad \frac{du}{ds} = 0$$</p>
+                    <p>Since $du/ds = 0$, $u$ is constant along each characteristic. Therefore $dx/ds = u = u_0 = \text{const}$, giving straight-line characteristics:</p>
+                    <p>$$x = x_0 + u_0(x_0)\, t, \quad u(x,t) = u_0(x_0)$$</p>
+                    <p>where $x_0$ satisfies $x = x_0 + u_0(x_0)t$ implicitly. <strong>Key consequence:</strong> characteristics have different slopes $1/u_0(x_0)$ in the $(x,t)$-plane.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.2.1 — Shock Formation</div>
+                    <p>If $u_0'(x_0) < 0$ for some $x_0$ (the initial profile has a decreasing portion), characteristics emanating from nearby points will intersect at a finite time:</p>
+                    <p>$$t^* = \frac{-1}{\min_{x_0} u_0'(x_0)}$$</p>
+                    <p class="mb-0">At time $t^*$, the classical solution breaks down — the characteristics cross and $u$ becomes multi-valued. This is the formation of a <strong>shock</strong> (a discontinuity in $u$).</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 2.2.2 — Compression and Rarefaction</div>
+                    <p>Consider the step initial data: $u_0(x) = 1$ for $x < 0$ and $u_0(x) = 0$ for $x > 0$.</p>
+                    <ul>
+                        <li>Left characteristics have slope $1/u = 1$; right characteristics have slope $1/u = \infty$ (vertical).</li>
+                        <li>These immediately intersect at $t = 0^+$, creating an instantaneous shock at $x = 0$.</li>
+                        <li>This is a <strong>compression wave</strong> (fast characteristics catching up with slow ones).</li>
+                    </ul>
+                    <p class="mb-0">If instead $u_0(x) = 0$ for $x < 0$ and $u_0(x) = 1$ for $x > 0$, characteristics diverge and a <strong>rarefaction fan</strong> fills the gap — a continuous solution $u(x,t) = x/t$ for $0 < x < t$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Need for Weak Solutions</div>
+                    <p class="mb-0">Once characteristics cross, the classical solution ceases to exist. We must extend the notion of solution to allow discontinuities — these are <strong>weak solutions</strong>, which satisfy the PDE in an integral sense. The theory of conservation laws (Section 2.3) provides the framework for selecting physically meaningful weak solutions via entropy conditions.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-method-of-characteristics/" class="btn btn-outline-custom">&larr; 2.1 Method of Characteristics</a>
+                    <a href="../03-conservation-laws/" class="btn btn-custom">2.3 Conservation Laws &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

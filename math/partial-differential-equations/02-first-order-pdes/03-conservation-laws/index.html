@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.3 Conservation Laws — Partial Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Partial Differential Equations</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Partial Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-introduction-and-classification">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-introduction-and-classification/" class="toc-chapter-link"><strong>1.</strong> Introduction and Classification</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-introduction-and-classification/01-first-and-second-order-pdes/">1.1 First and Second Order PDEs</a>
+                        <a href="../../01-introduction-and-classification/02-classification/">1.2 Classification</a>
+                        <a href="../../01-introduction-and-classification/03-well-posed-problems/">1.3 Well-Posed Problems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-first-order-pdes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-first-order-pdes/" class="toc-chapter-link"><strong>2.</strong> First-Order PDEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-first-order-pdes/01-method-of-characteristics/">2.1 Method of Characteristics</a>
+                        <a href="../../02-first-order-pdes/02-linear-and-quasilinear-equations/">2.2 Linear and Quasilinear Equations</a>
+                        <a href="../../02-first-order-pdes/03-conservation-laws/">2.3 Conservation Laws</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-the-wave-equation">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-the-wave-equation/" class="toc-chapter-link"><strong>3.</strong> The Wave Equation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-the-wave-equation/01-dalemberts-formula/">3.1 d'Alembert's Formula</a>
+                        <a href="../../03-the-wave-equation/02-separation-of-variables/">3.2 Separation of Variables</a>
+                        <a href="../../03-the-wave-equation/03-energy-methods/">3.3 Energy Methods</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-the-heat-equation">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-the-heat-equation/" class="toc-chapter-link"><strong>4.</strong> The Heat Equation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-the-heat-equation/01-maximum-principle/">4.1 Maximum Principle</a>
+                        <a href="../../04-the-heat-equation/02-fundamental-solution/">4.2 Fundamental Solution</a>
+                        <a href="../../04-the-heat-equation/03-fourier-series-solution/">4.3 Fourier Series Solution</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-laplace-and-poisson-equations">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-laplace-and-poisson-equations/" class="toc-chapter-link"><strong>5.</strong> Laplace and Poisson Equations</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-laplace-and-poisson-equations/01-harmonic-functions/">5.1 Harmonic Functions</a>
+                        <a href="../../05-laplace-and-poisson-equations/02-greens-functions/">5.2 Green's Functions</a>
+                        <a href="../../05-laplace-and-poisson-equations/03-mean-value-property/">5.3 Mean Value Property</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-fourier-analysis">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-fourier-analysis/" class="toc-chapter-link"><strong>6.</strong> Fourier Analysis</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-fourier-analysis/01-fourier-series/">6.1 Fourier Series</a>
+                        <a href="../../06-fourier-analysis/02-fourier-transform/">6.2 Fourier Transform</a>
+                        <a href="../../06-fourier-analysis/03-applications/">6.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-weak-solutions-and-distributions">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-weak-solutions-and-distributions/" class="toc-chapter-link"><strong>7.</strong> Weak Solutions and Distributions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-weak-solutions-and-distributions/01-distributions/">7.1 Distributions</a>
+                        <a href="../../07-weak-solutions-and-distributions/02-weak-derivatives/">7.2 Weak Derivatives</a>
+                        <a href="../../07-weak-solutions-and-distributions/03-sobolev-spaces/">7.3 Sobolev Spaces</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Partial Differential Equations</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Partial Differential Equations</a> ›
+                <a href="../">2. First-Order PDEs</a> ›
+                <span>2.3 Conservation Laws</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">2.3 Conservation Laws</h1>
+
+                <p>A <strong>conservation law</strong> expresses that the total amount of some quantity $u$ (mass, momentum, charge) changes only due to flux through the boundary. In one spatial dimension, the scalar conservation law takes the form:</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.3.1 — Scalar Conservation Law</div>
+                    <p>$$u_t + f(u)_x = 0$$</p>
+                    <p class="mb-0">where $u = u(x,t)$ is the conserved density and $f(u)$ is the <strong>flux function</strong>. Integrating over $[a,b]$: $\frac{d}{dt}\int_a^b u\,dx = f(u(a,t)) - f(u(b,t))$, confirming conservation.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Examples of Conservation Laws</div>
+                    <ul class="mb-0">
+                        <li><strong>Transport:</strong> $f(u) = cu$ → $u_t + cu_x = 0$</li>
+                        <li><strong>Burgers:</strong> $f(u) = u^2/2$ → $u_t + uu_x = 0$</li>
+                        <li><strong>Traffic flow:</strong> $f(u) = u(1-u)$ (LWR model), $u$ = density, $f$ = flow rate</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Rankine–Hugoniot Condition</h2>
+
+                <p>When a shock forms, classical solutions break down. We seek <strong>weak solutions</strong> satisfying the integral form. Across a shock at position $x = s(t)$, the shock speed must satisfy:</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.3.1 — Rankine–Hugoniot Jump Condition</div>
+                    <p>If $u$ has a jump discontinuity across the shock curve $x = s(t)$, with left state $u_L = \lim_{x \to s^-} u$ and right state $u_R = \lim_{x \to s^+} u$, then the shock speed satisfies:</p>
+                    <p>$$s'(t) = \frac{f(u_R) - f(u_L)}{u_R - u_L}$$</p>
+                    <p class="mb-0">This is derived by integrating the conservation law across the shock and applying the divergence theorem. For Burgers: $s' = (u_L + u_R)/2$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Entropy Condition</h2>
+
+                <p>The Rankine–Hugoniot condition alone does not uniquely determine the solution — there may be multiple weak solutions. The physically correct one is selected by an <strong>entropy condition</strong>:</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.3.2 — Lax Entropy Condition</div>
+                    <p>A shock at speed $s$ is <strong>admissible</strong> (entropy-satisfying) if:</p>
+                    <p>$$f'(u_L) > s > f'(u_R)$$</p>
+                    <p class="mb-0">Equivalently, characteristics must run <em>into</em> the shock from both sides (characteristics on the left have speed $f'(u_L)$ greater than $s$; on the right, $f'(u_R)$ less than $s$). This ensures the shock is compressive, not expansive.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Rarefaction Waves</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.3.3 — Rarefaction Wave</div>
+                    <p>When $u_L < u_R$ and $f''(u) > 0$ (convex flux), characteristics diverge. The entropy solution in the expanding region is a continuous <strong>rarefaction wave</strong>:</p>
+                    <p>$$u(x,t) = (f')^{-1}(x/t) \quad \text{for } f'(u_L) < x/t < f'(u_R)$$</p>
+                    <p class="mb-0">For Burgers ($f' = u$): $u(x,t) = x/t$ in the fan $u_L < x/t < u_R$. Rarefaction waves are smooth and do not violate the entropy condition.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Riemann Problem</div>
+                    <p class="mb-0">The <strong>Riemann problem</strong> — initial data that is piecewise constant with a single jump — has an explicit solution consisting of at most one shock or rarefaction fan. It is the building block for numerical methods (Godunov's method, Roe's method) and the theory of systems of conservation laws.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-linear-and-quasilinear-equations/" class="btn btn-outline-custom">&larr; 2.2 Linear and Quasilinear Equations</a>
+                    <a href="../../03-the-wave-equation/" class="btn btn-custom">3. The Wave Equation &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

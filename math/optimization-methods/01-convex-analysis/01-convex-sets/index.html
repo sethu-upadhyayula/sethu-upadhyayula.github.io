@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1 Convex Sets — Optimization Methods</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Optimization Methods</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Optimization Methods</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-convex-analysis">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-convex-analysis/" class="toc-chapter-link"><strong>1.</strong> Convex Analysis</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-convex-analysis/01-convex-sets/">1.1 Convex Sets</a>
+                        <a href="../../01-convex-analysis/02-convex-functions/">1.2 Convex Functions</a>
+                        <a href="../../01-convex-analysis/03-separation-theorems/">1.3 Separation Theorems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-unconstrained-optimization">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-unconstrained-optimization/" class="toc-chapter-link"><strong>2.</strong> Unconstrained Optimisation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-unconstrained-optimization/01-optimality-conditions/">2.1 Optimality Conditions</a>
+                        <a href="../../02-unconstrained-optimization/02-gradient-descent/">2.2 Gradient Descent</a>
+                        <a href="../../02-unconstrained-optimization/03-newtons-method/">2.3 Newton's Method</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-constrained-optimization">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-constrained-optimization/" class="toc-chapter-link"><strong>3.</strong> Constrained Optimisation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-constrained-optimization/01-equality-constraints-and-lagrange/">3.1 Equality Constraints and Lagrange Multipliers</a>
+                        <a href="../../03-constrained-optimization/02-inequality-constraints-and-kkt/">3.2 Inequality Constraints and KKT Conditions</a>
+                        <a href="../../03-constrained-optimization/03-constraint-qualifications/">3.3 Constraint Qualifications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-linear-programming">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-linear-programming/" class="toc-chapter-link"><strong>4.</strong> Linear Programming</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-linear-programming/01-standard-form/">4.1 Standard Form</a>
+                        <a href="../../04-linear-programming/02-the-simplex-method/">4.2 The Simplex Method</a>
+                        <a href="../../04-linear-programming/03-revised-simplex-and-big-m/">4.3 Revised Simplex and Big-M</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-duality">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-duality/" class="toc-chapter-link"><strong>5.</strong> Duality</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-duality/01-lagrangian-duality/">5.1 Lagrangian Duality</a>
+                        <a href="../../05-duality/02-strong-and-weak-duality/">5.2 Strong and Weak Duality</a>
+                        <a href="../../05-duality/03-complementary-slackness/">5.3 Complementary Slackness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-interior-point-methods">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-interior-point-methods/" class="toc-chapter-link"><strong>6.</strong> Interior Point Methods</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-interior-point-methods/01-barrier-functions/">6.1 Barrier Functions</a>
+                        <a href="../../06-interior-point-methods/02-primal-dual-methods/">6.2 Primal–Dual Methods</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-integer-programming">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-integer-programming/" class="toc-chapter-link"><strong>7.</strong> Integer Programming</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-integer-programming/01-branch-and-bound/">7.1 Branch and Bound</a>
+                        <a href="../../07-integer-programming/02-cutting-plane-methods/">7.2 Cutting Plane Methods</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Optimization Methods</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Optimization Methods</a> ›
+                <a href="../">1. Convex Analysis</a> ›
+                <span>1.1 Convex Sets</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">1.1 Convex Sets</h1>
+
+                <p>Convex sets are the fundamental geometric objects of optimisation theory. A set is convex if the straight line between any two of its points lies entirely within the set — a simple condition with surprisingly rich algebraic and geometric consequences.</p>
+
+                <h2 class="mt-4 mb-3">Definition and Basic Examples</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 1.1.1 — Convex Set</div>
+                    <p>A set $C\subseteq\mathbb{R}^n$ is <strong>convex</strong> if for all $x,y\in C$ and all $\lambda\in[0,1]$,
+                    $$\lambda x + (1-\lambda)y \in C.$$</p>
+                    <p class="mb-0">Geometrically: the line segment connecting any two points in $C$ stays in $C$. Examples: the empty set, all of $\mathbb{R}^n$, halfspaces $\{x:a^Tx\le b\}$, balls $\{x:\|x-c\|\le r\}$, hyperplanes, and convex cones.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Polyhedra</div>
+                    <p>A <strong>polyhedron</strong> is a set of the form $\{x\in\mathbb{R}^n : Ax\le b\}$ for a matrix $A\in\mathbb{R}^{m\times n}$ and vector $b\in\mathbb{R}^m$. Polyhedra are convex because they are finite intersections of halfspaces, and each halfspace is convex.</p>
+                    <p class="mb-0">A bounded polyhedron is called a <strong>polytope</strong>. The feasible region of a linear program is a polyhedron.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Operations Preserving Convexity</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 1.1.2 — Convexity-Preserving Operations</div>
+                    <p>The following operations preserve convexity:</p>
+                    <ul>
+                        <li><strong>Intersection:</strong> if $C_\alpha$ is convex for each $\alpha$, then $\bigcap_\alpha C_\alpha$ is convex.</li>
+                        <li><strong>Affine image:</strong> if $C$ is convex and $f(x)=Ax+b$, then $f(C)=\{Ax+b:x\in C\}$ is convex.</li>
+                        <li><strong>Affine preimage:</strong> if $D$ is convex, then $\{x:Ax+b\in D\}$ is convex.</li>
+                        <li><strong>Minkowski sum:</strong> $C_1+C_2=\{x_1+x_2:x_1\in C_1,x_2\in C_2\}$ is convex if $C_1,C_2$ are convex.</li>
+                    </ul>
+                    <p class="mb-0">Notably, the <em>union</em> of convex sets need not be convex.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Convex Hull and Extreme Points</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 1.1.3 — Convex Hull</div>
+                    <p>The <strong>convex hull</strong> of a set $S\subseteq\mathbb{R}^n$ is the smallest convex set containing $S$:
+                    $$\operatorname{conv}(S) = \left\{\sum_{i=1}^k \lambda_i x_i : k\ge1,\, x_i\in S,\, \lambda_i\ge0,\, \sum_i\lambda_i=1\right\}.$$</p>
+                    <p class="mb-0">The convex hull of finitely many points is a polytope.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 1.1.4 — Extreme Point</div>
+                    <p>A point $x\in C$ is an <strong>extreme point</strong> (vertex) of a convex set $C$ if it cannot be written as $x=\lambda y+(1-\lambda)z$ with $y,z\in C$, $y\ne z$, and $\lambda\in(0,1)$. Extreme points cannot be expressed as non-trivial convex combinations of other points in $C$.</p>
+                    <p class="mb-0"><strong>Minkowski–Weyl Theorem:</strong> every compact convex set is the convex hull of its extreme points. For polytopes, the extreme points are exactly the vertices of the polyhedron.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Recession Cone</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 1.1.5 — Recession Cone</div>
+                    <p>The <strong>recession cone</strong> of a convex set $C$ is
+                    $$\operatorname{rec}(C) = \{d\in\mathbb{R}^n : x+td\in C \text{ for all } x\in C,\, t\ge0\}.$$</p>
+                    <p class="mb-0">It captures the directions in which $C$ is unbounded. A convex set is bounded if and only if $\operatorname{rec}(C)=\{0\}$. For the polyhedron $\{x:Ax\le b\}$, the recession cone is $\{d:Ad\le0\}$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Convex Cones</div>
+                    <p class="mb-0">A set $K$ is a <strong>convex cone</strong> if it is convex and closed under non-negative scaling: $x\in K$ and $\lambda\ge0$ imply $\lambda x\in K$. Important examples: the non-negative orthant $\mathbb{R}^n_+$, the second-order cone $\{(x,t):\|x\|\le t\}$, and the cone of positive semidefinite matrices $\mathbb{S}^n_+$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 1. Convex Analysis</a>
+                    <a href="../02-convex-functions/" class="btn btn-custom">1.2 Convex Functions &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

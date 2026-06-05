@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.1 Itô Integral — Stochastic Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Stochastic Differential Equations</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Stochastic Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-brownian-motion-and-filtrations">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-brownian-motion-and-filtrations/" class="toc-chapter-link"><strong>1.</strong> Brownian Motion and Filtrations</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-brownian-motion-and-filtrations/01-brownian-motion/">1.1 Brownian Motion</a>
+                        <a href="../../01-brownian-motion-and-filtrations/02-filtrations-and-adaptedness/">1.2 Filtrations and Adaptedness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-stochastic-integration">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-stochastic-integration/" class="toc-chapter-link"><strong>2.</strong> Stochastic Integration</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-stochastic-integration/01-ito-integral/">2.1 Itô Integral</a>
+                        <a href="../../02-stochastic-integration/02-properties-of-the-ito-integral/">2.2 Properties of the Itô Integral</a>
+                        <a href="../../02-stochastic-integration/03-ito-isometry/">2.3 Itô Isometry</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-itos-formula">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-itos-formula/" class="toc-chapter-link"><strong>3.</strong> Itô's Formula</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-itos-formula/01-one-dimensional-ito-formula/">3.1 One-Dimensional Itô Formula</a>
+                        <a href="../../03-itos-formula/02-multi-dimensional-ito-formula/">3.2 Multi-Dimensional Itô Formula</a>
+                        <a href="../../03-itos-formula/03-applications/">3.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-stochastic-differential-equations">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-stochastic-differential-equations/" class="toc-chapter-link"><strong>4.</strong> Stochastic Differential Equations</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-stochastic-differential-equations/01-existence-and-uniqueness/">4.1 Existence and Uniqueness</a>
+                        <a href="../../04-stochastic-differential-equations/02-linear-sdes/">4.2 Linear SDEs</a>
+                        <a href="../../04-stochastic-differential-equations/03-geometric-brownian-motion/">4.3 Geometric Brownian Motion</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-feynman-kac-formula">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-feynman-kac-formula/" class="toc-chapter-link"><strong>5.</strong> The Feynman–Kac Formula</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-feynman-kac-formula/01-connections-to-pdes/">5.1 Connections to PDEs</a>
+                        <a href="../../05-feynman-kac-formula/02-feynman-kac/">5.2 Feynman–Kac</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-change-of-measure">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-change-of-measure/" class="toc-chapter-link"><strong>6.</strong> Change of Measure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-change-of-measure/01-girsanovs-theorem/">6.1 Girsanov's Theorem</a>
+                        <a href="../../06-change-of-measure/02-applications/">6.2 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-numerical-methods-for-sdes">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-numerical-methods-for-sdes/" class="toc-chapter-link"><strong>7.</strong> Numerical Methods for SDEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-numerical-methods-for-sdes/01-euler-maruyama/">7.1 Euler–Maruyama Scheme</a>
+                        <a href="../../07-numerical-methods-for-sdes/02-milstein-scheme/">7.2 Milstein Scheme</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Stochastic Differential Equations</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Stochastic Differential Equations</a> ›
+                <a href="../">2. Stochastic Integration</a> ›
+                <span>2.1 Itô Integral</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">2.1 The Itô Integral</h1>
+
+                <p>The Itô integral is the cornerstone of stochastic calculus. We want to define $\int_0^T f_t\,dW_t$ for adapted processes $f$. Because Brownian motion has unbounded variation on every interval, the Stieltjes integral $\int f\,dW$ does not exist pathwise. Instead, we define the integral as an $L^2$ limit of simple approximations.</p>
+
+                <h2 class="mt-4 mb-3">Simple Processes</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.1.1 — Simple Adapted Process</div>
+                    <p>A process $f$ is <strong>simple</strong> if it has the form:</p>
+                    $$f_t = \sum_{k=0}^{n-1} f_{t_k} \mathbf{1}_{[t_k, t_{k+1})}(t)$$
+                    <p class="mb-0">for a partition $0 = t_0 < t_1 < \cdots < t_n = T$, where each $f_{t_k}$ is $\mathcal{F}_{t_k}$-measurable and square-integrable. The collection of simple adapted processes is denoted $\mathcal{S}$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.1.2 — Itô Integral for Simple Processes</div>
+                    <p>For a simple adapted process $f \in \mathcal{S}$, the <strong>Itô integral</strong> is defined as:</p>
+                    $$\int_0^T f_t\,dW_t = \sum_{k=0}^{n-1} f_{t_k}(W_{t_{k+1}} - W_{t_k}).$$
+                    <p class="mb-0">The critical feature is that $f_{t_k}$ is evaluated at the <em>left endpoint</em> $t_k$, using information from $\mathcal{F}_{t_k}$, before the increment $W_{t_{k+1}} - W_{t_k}$ is observed.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why Left Endpoints?</div>
+                    <p>The left-endpoint rule is not a technicality — it is the crucial choice that makes the integral a martingale. Economically, it corresponds to choosing a portfolio $f_{t_k}$ shares at the beginning of the interval $[t_k, t_{k+1}]$ before seeing the price move. This is the only causal (non-anticipating) choice.</p>
+                    <p class="mb-0">If we used midpoints instead, we would obtain the Stratonovich integral $\int f \circ dW$, which satisfies the classical chain rule but is not a martingale and is harder to work with probabilistically.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Extension to $\mathcal{L}^2$</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.1.3 — The Space $\mathcal{L}^2([0,T])$</div>
+                    <p>Let $\mathcal{L}^2([0,T])$ denote the space of processes $f : [0,T] \times \Omega \to \mathbb{R}$ that are adapted to $(\mathcal{F}_t)$ and satisfy:</p>
+                    $$\|f\|_{\mathcal{L}^2}^2 := E\!\left[\int_0^T f_t^2\,dt\right] < \infty.$$
+                    <p class="mb-0">Simple processes are dense in $\mathcal{L}^2([0,T])$: for any $f \in \mathcal{L}^2$, there exist simple $f^{(n)} \in \mathcal{S}$ with $\|f^{(n)} - f\|_{\mathcal{L}^2} \to 0$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.1.4 — Extension of the Itô Integral</div>
+                    <p>There is a unique linear map $\mathcal{I}: \mathcal{L}^2([0,T]) \to L^2(\Omega)$, called the <strong>Itô integral</strong>, such that:</p>
+                    <ol>
+                        <li>$\mathcal{I}(f) = \sum_k f_{t_k}(W_{t_{k+1}}-W_{t_k})$ for simple $f$.</li>
+                        <li>$\|\mathcal{I}(f)\|_{L^2(\Omega)}^2 = \|f\|_{\mathcal{L}^2}^2$ (Itô isometry).</li>
+                        <li>$\mathcal{I}(f) = \lim_{n \to \infty} \mathcal{I}(f^{(n)})$ in $L^2(\Omega)$ for any approximating sequence $f^{(n)} \to f$ in $\mathcal{L}^2$.</li>
+                    </ol>
+                    <p class="mb-0">We write $\mathcal{I}(f) = \int_0^T f_t\,dW_t$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Itô Integral as a Martingale</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.1.5 — Martingale Property</div>
+                    <p>For $f \in \mathcal{L}^2([0,T])$, the process $M_t = \int_0^t f_s\,dW_s$ (for $t \in [0,T]$) is a continuous square-integrable martingale with respect to $(\mathcal{F}_t)$. In particular:</p>
+                    <ul>
+                        <li>$M_0 = 0$.</li>
+                        <li>$E[M_t \mid \mathcal{F}_s] = M_s$ for $s \le t$.</li>
+                        <li>$E[M_t^2] = E\!\left[\int_0^t f_s^2\,ds\right]$.</li>
+                    </ul>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof — Martingale Property for Simple Processes</div>
+                    <p>For simple $f$, with $s \in [t_j, t_{j+1})$ and $t \in [t_k, t_{k+1})$ with $j \le k$:</p>
+                    $$E[M_t - M_s \mid \mathcal{F}_s] = \sum_{i=j}^{k-1} E[f_{t_i}(W_{t_{i+1}} - W_{t_i}) \mid \mathcal{F}_s].$$
+                    <p>Since $f_{t_i} \in \mathcal{F}_{t_i} \subseteq \mathcal{F}_{t_{i+1}}$ and $W_{t_{i+1}} - W_{t_i}$ is independent of $\mathcal{F}_{t_i}$ with mean zero:</p>
+                    $$E[f_{t_i}(W_{t_{i+1}} - W_{t_i}) \mid \mathcal{F}_s] = E[f_{t_i} \mid \mathcal{F}_s] \cdot E[W_{t_{i+1}} - W_{t_i}] = 0.$$
+                    <p class="mb-0">Hence $E[M_t \mid \mathcal{F}_s] = M_s$. The general case follows by taking $L^2$ limits.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 2.1.6 — Itô Integral of Brownian Motion</div>
+                    <p>Compute $\int_0^T W_t\,dW_t$. Since $W_t \in \mathcal{F}_t$, the integrand is adapted. Using the formula $W_{t_k}(W_{t_{k+1}} - W_{t_k}) = \frac{1}{2}(W_{t_{k+1}}^2 - W_{t_k}^2) - \frac{1}{2}(W_{t_{k+1}} - W_{t_k})^2$, summing and taking limits:</p>
+                    $$\int_0^T W_t\,dW_t = \frac{1}{2}W_T^2 - \frac{1}{2}T.$$
+                    <p class="mb-0">This differs from the classical result $\int_0^T W_t\,dW_t = \frac{1}{2}W_T^2$ by the Itô correction $-T/2$, which comes from the quadratic variation term $[W]_T = T$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 2. Stochastic Integration</a>
+                    <a href="../02-properties-of-the-ito-integral/" class="btn btn-custom">2.2 Properties of the Itô Integral &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>
