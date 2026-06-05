@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Integration — Measure Theory</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Measure Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Measure Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-sigma-algebras">
+                    <div class="toc-chapter-header">
+                        <a href="../01-sigma-algebras/" class="toc-chapter-link"><strong>1.</strong> Sigma-Algebras</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-sigma-algebras/01-sigma-algebras-and-generated/">1.1 Sigma-Algebras and Generated</a>
+                        <a href="../01-sigma-algebras/02-borel-sets/">1.2 Borel Sets</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-measures">
+                    <div class="toc-chapter-header">
+                        <a href="../02-measures/" class="toc-chapter-link"><strong>2.</strong> Measures</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../02-measures/01-measures-and-outer-measures/">2.1 Measures and Outer Measures</a>
+                        <a href="../02-measures/02-caratheodorys-extension/">2.2 Carathéodory's Extension</a>
+                        <a href="../02-measures/03-lebesgue-measure/">2.3 Lebesgue Measure</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-measurable-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../03-measurable-functions/" class="toc-chapter-link"><strong>3.</strong> Measurable Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../03-measurable-functions/01-measurability/">3.1 Measurability</a>
+                        <a href="../03-measurable-functions/02-simple-functions/">3.2 Simple Functions</a>
+                        <a href="../03-measurable-functions/03-approximation/">3.3 Approximation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-integration">
+                    <div class="toc-chapter-header">
+                        <a href="../04-integration/" class="toc-chapter-link"><strong>4.</strong> Integration</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../04-integration/01-the-lebesgue-integral/">4.1 The Lebesgue Integral</a>
+                        <a href="../04-integration/02-monotone-convergence-theorem/">4.2 Monotone Convergence Theorem</a>
+                        <a href="../04-integration/03-dominated-convergence-theorem/">4.3 Dominated Convergence Theorem</a>
+                        <a href="../04-integration/04-comparison-with-riemann/">4.4 Comparison with Riemann</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-lp-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../05-lp-spaces/" class="toc-chapter-link"><strong>5.</strong> $L^p$ Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../05-lp-spaces/01-definition-and-basic-properties/">5.1 Definition and Basic Properties</a>
+                        <a href="../05-lp-spaces/02-hoelder-and-minkowski/">5.2 Hölder and Minkowski</a>
+                        <a href="../05-lp-spaces/03-completeness-of-lp/">5.3 Completeness of $L^p$</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-product-measures">
+                    <div class="toc-chapter-header">
+                        <a href="../06-product-measures/" class="toc-chapter-link"><strong>6.</strong> Product Measures</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../06-product-measures/01-product-sigma-algebras/">6.1 Product Sigma-Algebras</a>
+                        <a href="../06-product-measures/02-fubinis-theorem/">6.2 Fubini's Theorem</a>
+                        <a href="../06-product-measures/03-tonellis-theorem/">6.3 Tonelli's Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-differentiation">
+                    <div class="toc-chapter-header">
+                        <a href="../07-differentiation/" class="toc-chapter-link"><strong>7.</strong> Differentiation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../07-differentiation/01-absolutely-continuous-functions/">7.1 Absolutely Continuous Functions</a>
+                        <a href="../07-differentiation/02-radon-nikodym-theorem/">7.2 Radon-Nikodym Theorem</a>
+                        <a href="../07-differentiation/03-lebesgue-differentiation-theorem/">7.3 Lebesgue Differentiation Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Measure Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../math/">Math</a> ›
+                <a href="../">Measure Theory</a> ›
+                <span>4. Integration</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">Chapter 4: Integration</h1>
+
+                <p>The Lebesgue integral extends the Riemann integral to a much wider class of functions while providing far more powerful convergence theorems. The key innovation is to integrate by partitioning the <em>range</em> of $f$ (via level sets) rather than the domain. The result is an integral that interacts perfectly with pointwise limits of functions.</p>
+
+                <h2 class="mt-5 mb-3">Chapter Overview</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">4.1 — The Lebesgue Integral</div>
+                    <p class="mb-0">For $f \geq 0$, $\int f\,d\mu = \sup\{\int s\,d\mu : s \text{ simple}, 0 \leq s \leq f\}$. For general $f = f^+ - f^-$, $\int f = \int f^+ - \int f^-$ when not $\infty - \infty$. Key properties: linearity, monotonicity, and $\int f = 0 \Leftrightarrow f = 0$ a.e.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">4.2 — Monotone Convergence Theorem</div>
+                    <p class="mb-0">If $0 \leq f_n \nearrow f$ pointwise a.e., then $\int f_n \nearrow \int f$. This is the fundamental tool for interchanging limits and integrals of non-negative functions, and implies both the series interchange theorem and Fatou's lemma.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">4.3 — Dominated Convergence Theorem</div>
+                    <p class="mb-0">If $f_n \to f$ a.e. and $|f_n| \leq g$ with $\int g < \infty$, then $\int f_n \to \int f$. This is the main tool for signed functions and allows limit-integral interchange without monotonicity, merely requiring a dominating integrable function.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">4.4 — Comparison with Riemann Integral</div>
+                    <p class="mb-0">Every Riemann integrable function is Lebesgue integrable with the same value. Lebesgue's criterion: bounded $f$ is Riemann integrable iff its discontinuities form a null set. The Lebesgue integral handles many functions the Riemann integral cannot.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../03-measurable-functions/" class="btn btn-outline-custom">&larr; 3. Measurable Functions</a>
+                    <a href="01-the-lebesgue-integral/" class="btn btn-custom">4.1 The Lebesgue Integral &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

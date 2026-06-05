@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="dark"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1.1 Addition and Multiplication Principles — Combinatorics</title>
+<title>1.3 Binomial Theorem — Combinatorics</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -95,59 +95,61 @@
 </nav></aside>
 <section class="math-content">
 <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Combinatorics</a></div>
-<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Basic Counting</a> › <span>Addition and Multiplication Principles</span></nav>
-<article><h1 class="text-accent mb-4">1.1 Addition and Multiplication Principles</h1>
+<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Basic Counting</a> › <span>Binomial Theorem</span></nav>
+<article><h1 class="text-accent mb-4">1.3 Binomial Theorem</h1>
 
-<p>The two most fundamental counting tools are the <em>addition principle</em> (for disjoint choices) and the <em>multiplication principle</em> (for sequential independent choices). Every counting argument ultimately rests on one or both of these.</p>
+<p>The Binomial Theorem gives the expansion of $(x+y)^n$ as an explicit sum. It connects algebra to combinatorics: the coefficients $\binom{n}{k}$ count the number of ways to assign $x$'s and $y$'s from the $n$ factors.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Addition Principle</div>
-<p>If $A$ and $B$ are <em>disjoint</em> finite sets (i.e., $A \cap B = \emptyset$), then
-$$|A \cup B| = |A| + |B|.$$
-More generally, for pairwise disjoint sets $A_1, A_2, \ldots, A_k$:
-$$\left|\bigsqcup_{i=1}^k A_i\right| = \sum_{i=1}^k |A_i|.$$</p>
+<div class="math-box theorem"><div class="math-box-label">Theorem — Binomial Theorem</div>
+<p>For any $n \in \mathbb{N}_0$ and any $x, y$:
+$$(x + y)^n = \sum_{k=0}^{n} \binom{n}{k} x^k y^{n-k}.$$</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Multiplication Principle</div>
-<p>If a task consists of $k$ sequential steps, where step $i$ can be performed in $n_i$ ways <em>independently</em> of the choices at other steps, then the total number of ways to complete the task is
-$$n_1 \times n_2 \times \cdots \times n_k = \prod_{i=1}^k n_i.$$</p>
+<div class="math-box proof"><div class="math-box-label">Proof</div>
+<p>Expand $(x+y)^n = (x+y)(x+y)\cdots(x+y)$ ($n$ factors). Each term in the expansion is obtained by choosing either $x$ or $y$ from each factor. A term $x^k y^{n-k}$ arises when $x$ is chosen from exactly $k$ of the $n$ factors. The number of ways to choose which $k$ factors contribute $x$ is $\binom{n}{k}$. Summing over $k$ gives the theorem. $\square$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Functions Between Sets</div>
-<p>Let $A$ and $B$ be finite sets with $|A| = m$ and $|B| = n$. How many functions $f : A \to B$ are there?</p>
-<p>For each of the $m$ elements of $A$, we independently choose one of $n$ elements of $B$ as its image. By the multiplication principle:</p>
-$$|B^A| = n^m = |B|^{|A|}.$$
+<div class="math-box theorem"><div class="math-box-label">Corollary — Sum of Binomial Coefficients</div>
+<p>Setting $x = y = 1$:
+$$\sum_{k=0}^{n} \binom{n}{k} = 2^n.$$
+Setting $x = 1, y = -1$:
+$$\sum_{k=0}^{n} (-1)^k \binom{n}{k} = 0, \quad n \ge 1.$$
+These say: the number of subsets equals $2^n$; and the number of even-sized subsets equals the number of odd-sized subsets.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Power Set</div>
-<p>How many subsets does a set $A$ with $|A| = n$ have?</p>
-<p>Each element independently either belongs to the subset (1) or does not (0). By the multiplication principle with $n$ binary choices:</p>
-$$|\mathcal{P}(A)| = 2^n.$$
+<div class="math-box theorem"><div class="math-box-label">Theorem — Vandermonde's Identity</div>
+<p>For non-negative integers $m, n, r$:
+$$\sum_{k=0}^{r} \binom{m}{k}\binom{n}{r-k} = \binom{m+n}{r}.$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Binary Strings</div>
-<p>The number of binary strings of length $n$ is $2^n$ (each position is independently 0 or 1).</p>
-<p>Among these, how many contain at least one 1? By the addition principle, this is $2^n - 1$ (all strings minus the all-zeros string).</p>
+<div class="math-box proof"><div class="math-box-label">Proof</div>
+<p>Compare coefficients of $x^r$ on both sides of $(1+x)^m (1+x)^n = (1+x)^{m+n}$. The left side gives $\sum_k \binom{m}{k}\binom{n}{r-k}$ (by convolution of coefficients), and the right side gives $\binom{m+n}{r}$. $\square$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Subsets Containing a Fixed Element</div>
-<p>How many subsets of $\{1, 2, \ldots, n\}$ contain element 1?</p>
-<p>Element 1 is fixed in the subset; each of the remaining $n-1$ elements independently belongs or not. So the count is $2^{n-1}$.</p>
-<p>Alternatively, by the addition principle: subsets containing 1 and subsets not containing 1 partition all $2^n$ subsets equally, giving $2^n / 2 = 2^{n-1}$ each.</p>
+<div class="math-box theorem"><div class="math-box-label">Corollary — Sum of Squares of Binomial Coefficients</div>
+<p>Setting $m = n$ and $r = n$ in Vandermonde's identity (using $\binom{n}{k} = \binom{n}{n-k}$):
+$$\sum_{k=0}^{n} \binom{n}{k}^2 = \binom{2n}{n}.$$</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Complement Counting</div>
-<p>To count the elements of $A$ satisfying property $P$, it is often easier to count those <em>not</em> satisfying $P$ and subtract:
-$$|\{x \in A : P(x)\}| = |A| - |\{x \in A : \lnot P(x)\}|.$$</p>
+<div class="math-box theorem"><div class="math-box-label">Theorem — Multinomial Theorem</div>
+<p>For $r$ variables and $n \in \mathbb{N}_0$:
+$$(x_1 + x_2 + \cdots + x_r)^n = \sum_{\substack{k_1,\ldots,k_r \ge 0 \\ k_1+\cdots+k_r=n}} \binom{n}{k_1, k_2, \ldots, k_r}\, x_1^{k_1} x_2^{k_2} \cdots x_r^{k_r}.$$</p>
 </div>
 
-<div class="math-box remark"><div class="math-box-label">Remark</div>
-<p>The multiplication principle applies when choices are <em>independent</em>. If later choices depend on earlier ones (e.g., sampling without replacement), the principle still applies but the number of options at each step must be re-evaluated. For example, choosing an ordered pair of distinct elements from $\{1,\ldots,n\}$ gives $n(n-1)$ options, not $n^2$.</p>
+<div class="math-box example"><div class="math-box-label">Example — Coefficient Extraction</div>
+<p>What is the coefficient of $x^3 y^2$ in $(x+y)^5$?</p>
+<p>By the binomial theorem with $k=3$: $\binom{5}{3} = 10$.</p>
+</div>
+
+<div class="math-box example"><div class="math-box-label">Example — Multinomial Coefficient</div>
+<p>What is the coefficient of $x^2 y^2 z^1$ in $(x+y+z)^5$?</p>
+<p>$\binom{5}{2,2,1} = \dfrac{5!}{2!\,2!\,1!} = 30$.</p>
 </div>
 
 <hr class="my-5">
 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-<a href="../" class="btn btn-outline-custom">&larr; Basic Counting</a>
-<a href="../02-permutations-and-combinations/" class="btn btn-custom">1.2 Permutations and Combinations &rarr;</a>
+<a href="../02-permutations-and-combinations/" class="btn btn-outline-custom">&larr; 1.2 Permutations and Combinations</a>
+<a href="../04-inclusion-exclusion/" class="btn btn-custom">1.4 Inclusion–Exclusion &rarr;</a>
 </div></article></section></main>
 <footer class="site-footer"><div class="container text-center"><div class="social-links">
 <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>

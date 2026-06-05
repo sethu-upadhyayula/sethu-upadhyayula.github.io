@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="dark"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1.1 Addition and Multiplication Principles — Combinatorics</title>
+<title>3.1 Linear Recurrences — Combinatorics</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -95,59 +95,53 @@
 </nav></aside>
 <section class="math-content">
 <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Combinatorics</a></div>
-<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Basic Counting</a> › <span>Addition and Multiplication Principles</span></nav>
-<article><h1 class="text-accent mb-4">1.1 Addition and Multiplication Principles</h1>
+<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Recurrence Relations</a> › <span>Linear Recurrences</span></nav>
+<article><h1 class="text-accent mb-4">3.1 Linear Recurrences</h1>
 
-<p>The two most fundamental counting tools are the <em>addition principle</em> (for disjoint choices) and the <em>multiplication principle</em> (for sequential independent choices). Every counting argument ultimately rests on one or both of these.</p>
+<p>A <strong>linear recurrence of order $k$</strong> expresses $a_n$ as a linear combination of $a_{n-1}, \ldots, a_{n-k}$ (possibly plus a forcing term). The theory mirrors that of linear ODEs: the solution space is $k$-dimensional and determined by $k$ initial conditions.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Addition Principle</div>
-<p>If $A$ and $B$ are <em>disjoint</em> finite sets (i.e., $A \cap B = \emptyset$), then
-$$|A \cup B| = |A| + |B|.$$
-More generally, for pairwise disjoint sets $A_1, A_2, \ldots, A_k$:
-$$\left|\bigsqcup_{i=1}^k A_i\right| = \sum_{i=1}^k |A_i|.$$</p>
+<div class="math-box definition"><div class="math-box-label">Definition — Homogeneous Linear Recurrence</div>
+<p>A <strong>homogeneous linear recurrence of order $k$</strong> with constant coefficients is:
+$$a_n = c_1 a_{n-1} + c_2 a_{n-2} + \cdots + c_k a_{n-k}, \quad n \ge k,$$
+where $c_1, \ldots, c_k$ are constants with $c_k \ne 0$.</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Multiplication Principle</div>
-<p>If a task consists of $k$ sequential steps, where step $i$ can be performed in $n_i$ ways <em>independently</em> of the choices at other steps, then the total number of ways to complete the task is
-$$n_1 \times n_2 \times \cdots \times n_k = \prod_{i=1}^k n_i.$$</p>
+<div class="math-box theorem"><div class="math-box-label">Theorem — Dimension of Solution Space</div>
+<p>The set of all sequences satisfying a given homogeneous linear recurrence of order $k$ forms a vector space of dimension $k$. Any solution is uniquely determined by specifying $k$ initial values $a_0, a_1, \ldots, a_{k-1}$.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Functions Between Sets</div>
-<p>Let $A$ and $B$ be finite sets with $|A| = m$ and $|B| = n$. How many functions $f : A \to B$ are there?</p>
-<p>For each of the $m$ elements of $A$, we independently choose one of $n$ elements of $B$ as its image. By the multiplication principle:</p>
-$$|B^A| = n^m = |B|^{|A|}.$$
+<div class="math-box definition"><div class="math-box-label">Definition — Non-Homogeneous Linear Recurrence</div>
+<p>A <strong>non-homogeneous</strong> linear recurrence has the form:
+$$a_n = c_1 a_{n-1} + \cdots + c_k a_{n-k} + f(n),$$
+where $f(n) \ne 0$ is the <em>forcing term</em>. Its general solution is:
+$$a_n = a_n^{(h)} + a_n^{(p)},$$
+where $a_n^{(h)}$ is the general homogeneous solution and $a_n^{(p)}$ is any particular solution.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Power Set</div>
-<p>How many subsets does a set $A$ with $|A| = n$ have?</p>
-<p>Each element independently either belongs to the subset (1) or does not (0). By the multiplication principle with $n$ binary choices:</p>
-$$|\mathcal{P}(A)| = 2^n.$$
+<div class="math-box example"><div class="math-box-label">Example — Fibonacci Sequence</div>
+<p>$F_n = F_{n-1} + F_{n-2}$ is a homogeneous recurrence of order 2 with $c_1 = c_2 = 1$. Given $F_0=0, F_1=1$, the sequence begins $0,1,1,2,3,5,8,13,21,\ldots$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Binary Strings</div>
-<p>The number of binary strings of length $n$ is $2^n$ (each position is independently 0 or 1).</p>
-<p>Among these, how many contain at least one 1? By the addition principle, this is $2^n - 1$ (all strings minus the all-zeros string).</p>
+<div class="math-box example"><div class="math-box-label">Example — Tribonacci</div>
+<p>$T_n = T_{n-1} + T_{n-2} + T_{n-3}$, $T_0=T_1=0, T_2=1$. This is a homogeneous recurrence of order 3. Its characteristic polynomial is $r^3 - r^2 - r - 1 = 0$.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Subsets Containing a Fixed Element</div>
-<p>How many subsets of $\{1, 2, \ldots, n\}$ contain element 1?</p>
-<p>Element 1 is fixed in the subset; each of the remaining $n-1$ elements independently belongs or not. So the count is $2^{n-1}$.</p>
-<p>Alternatively, by the addition principle: subsets containing 1 and subsets not containing 1 partition all $2^n$ subsets equally, giving $2^n / 2 = 2^{n-1}$ each.</p>
+<div class="math-box example"><div class="math-box-label">Example — Algorithm Analysis</div>
+<p>The number of comparisons in insertion sort satisfies $C_n = C_{n-1} + (n-1)$, $C_1 = 0$. This is non-homogeneous with forcing term $f(n) = n-1$. The particular solution is $a_n^{(p)} = n(n-1)/2$, and the general solution is $C_n = n(n-1)/2$.</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Complement Counting</div>
-<p>To count the elements of $A$ satisfying property $P$, it is often easier to count those <em>not</em> satisfying $P$ and subtract:
-$$|\{x \in A : P(x)\}| = |A| - |\{x \in A : \lnot P(x)\}|.$$</p>
-</div>
-
-<div class="math-box remark"><div class="math-box-label">Remark</div>
-<p>The multiplication principle applies when choices are <em>independent</em>. If later choices depend on earlier ones (e.g., sampling without replacement), the principle still applies but the number of options at each step must be re-evaluated. For example, choosing an ordered pair of distinct elements from $\{1,\ldots,n\}$ gives $n(n-1)$ options, not $n^2$.</p>
+<div class="math-box remark"><div class="math-box-label">Remark — Finding Particular Solutions</div>
+<p>For common forcing terms, guess a particular solution of the same form:</p>
+<ul>
+  <li>$f(n) = p(n)$ (polynomial of degree $d$): try a polynomial of degree $d$ (or $d+m$ if the homogeneous recurrence has a characteristic root of multiplicity $m$ at $r=1$).</li>
+  <li>$f(n) = \alpha^n$: try $A\alpha^n$ (unless $\alpha$ is a characteristic root, in which case multiply by $n^m$).</li>
+</ul>
 </div>
 
 <hr class="my-5">
 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-<a href="../" class="btn btn-outline-custom">&larr; Basic Counting</a>
-<a href="../02-permutations-and-combinations/" class="btn btn-custom">1.2 Permutations and Combinations &rarr;</a>
+<a href="../" class="btn btn-outline-custom">&larr; Recurrence Relations</a>
+<a href="../02-characteristic-roots/" class="btn btn-custom">3.2 Characteristic Roots &rarr;</a>
 </div></article></section></main>
 <footer class="site-footer"><div class="container text-center"><div class="social-links">
 <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>

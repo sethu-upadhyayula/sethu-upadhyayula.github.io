@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1 Norms and Banach Spaces — Functional Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Functional Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Functional Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-normed-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-normed-spaces/" class="toc-chapter-link"><strong>1.</strong> Normed Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-normed-spaces/01-norms-and-banach-spaces/">1.1 Norms and Banach Spaces</a>
+                        <a href="../../01-normed-spaces/02-finite-dimensional-spaces/">1.2 Finite-Dimensional Spaces</a>
+                        <a href="../../01-normed-spaces/03-bounded-linear-operators/">1.3 Bounded Linear Operators</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-hilbert-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-hilbert-spaces/" class="toc-chapter-link"><strong>2.</strong> Hilbert Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-hilbert-spaces/01-inner-products-and-hilbert-spaces/">2.1 Inner Products and Hilbert Spaces</a>
+                        <a href="../../02-hilbert-spaces/02-orthonormal-bases/">2.2 Orthonormal Bases</a>
+                        <a href="../../02-hilbert-spaces/03-projection-theorem/">2.3 Projection Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fundamental-theorems">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-fundamental-theorems/" class="toc-chapter-link"><strong>3.</strong> Fundamental Theorems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-fundamental-theorems/01-hahn-banach-theorem/">3.1 Hahn–Banach Theorem</a>
+                        <a href="../../03-fundamental-theorems/02-open-mapping-theorem/">3.2 Open Mapping Theorem</a>
+                        <a href="../../03-fundamental-theorems/03-closed-graph-theorem/">3.3 Closed Graph Theorem</a>
+                        <a href="../../03-fundamental-theorems/04-uniform-boundedness-principle/">3.4 Uniform Boundedness Principle</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-dual-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-dual-spaces/" class="toc-chapter-link"><strong>4.</strong> Dual Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-dual-spaces/01-the-dual-of-a-normed-space/">4.1 The Dual of a Normed Space</a>
+                        <a href="../../04-dual-spaces/02-weak-and-weak-star-topologies/">4.2 Weak and Weak* Topologies</a>
+                        <a href="../../04-dual-spaces/03-reflexivity/">4.3 Reflexivity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-spectral-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-spectral-theory/" class="toc-chapter-link"><strong>5.</strong> Spectral Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-spectral-theory/01-spectrum-of-an-operator/">5.1 Spectrum of an Operator</a>
+                        <a href="../../05-spectral-theory/02-spectral-theorem/">5.2 Spectral Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-compact-operators">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-compact-operators/" class="toc-chapter-link"><strong>6.</strong> Compact Operators</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-compact-operators/01-compact-operators/">6.1 Compact Operators</a>
+                        <a href="../../06-compact-operators/02-fredholm-theory/">6.2 Fredholm Theory</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Functional Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Functional Analysis</a> ›
+                <a href="../">1. Normed Spaces</a> ›
+                <span>1.1 Norms and Banach Spaces</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">1.1 Norms and Banach Spaces</h1>
+
+                <p>A norm on a vector space turns abstract algebraic structure into a metric geometry: we can measure lengths, define convergence, and study continuity. Banach spaces are the complete normed spaces — completeness ensures that Cauchy sequences converge, a prerequisite for most analytic arguments.</p>
+
+                <h2 class="mt-4 mb-3">Norms</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 1.1.1 — Norm</div>
+                    <p>A <strong>norm</strong> on a vector space $X$ over $\mathbb{F}$ ($\mathbb{R}$ or $\mathbb{C}$) is a function $\|\cdot\|:X\to[0,\infty)$ satisfying for all $x,y\in X$ and $\alpha\in\mathbb{F}$:</p>
+                    <ul>
+                        <li><strong>Positive definiteness:</strong> $\|x\|\ge0$, and $\|x\|=0\iff x=0$.</li>
+                        <li><strong>Homogeneity:</strong> $\|\alpha x\|=|\alpha|\|x\|$.</li>
+                        <li><strong>Triangle inequality:</strong> $\|x+y\|\le\|x\|+\|y\|$.</li>
+                    </ul>
+                    <p class="mb-0">A vector space equipped with a norm is called a <strong>normed space</strong>. Every normed space is a metric space with $d(x,y)=\|x-y\|$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 1.1.2 — Banach Space</div>
+                    <p class="mb-0">A normed space $(X,\|\cdot\|)$ is a <strong>Banach space</strong> if it is complete: every Cauchy sequence converges. That is, if $\|x_n-x_m\|\to0$ as $n,m\to\infty$, then there exists $x\in X$ with $\|x_n-x\|\to0$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Key Examples</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 1.1.3 — Euclidean and $\ell^p$ Norms on $\mathbb{R}^n$</div>
+                    <p>On $\mathbb{R}^n$, for $1\le p<\infty$:
+                    $$\|x\|_p = \left(\sum_{k=1}^n |x_k|^p\right)^{1/p}, \qquad \|x\|_\infty = \max_{1\le k\le n}|x_k|.$$
+                    All these norms make $\mathbb{R}^n$ a Banach space. By the equivalence theorem (below), they are all equivalent — sequences converge in one iff they converge in any other.</p>
+                    <p class="mb-0">The $p=2$ case gives the familiar Euclidean norm arising from the standard inner product.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 1.1.4 — Sequence Spaces $\ell^p$</div>
+                    <p>For $1\le p<\infty$, define
+                    $$\ell^p = \left\{(x_n)_{n\ge1} : \sum_{n=1}^\infty |x_n|^p < \infty\right\}, \quad \|x\|_p = \left(\sum_{n=1}^\infty|x_n|^p\right)^{1/p}.$$
+                    Also $\ell^\infty = \{(x_n) : \sup_n|x_n|<\infty\}$ with $\|x\|_\infty=\sup_n|x_n|$.
+                    </p>
+                    <p class="mb-0">Each $\ell^p$ ($1\le p\le\infty$) is a Banach space. Minkowski's inequality ensures the triangle inequality; completeness follows from a standard argument using dominated convergence or direct estimation. Note $\ell^1\subsetneq\ell^2\subsetneq\ell^\infty$ as sets, but they are distinct Banach spaces (non-isomorphic for $p\ne q$).</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 1.1.5 — $L^p(\mu)$ Spaces</div>
+                    <p>Let $(X,\mathcal{M},\mu)$ be a measure space. For $1\le p<\infty$:
+                    $$L^p(\mu) = \left\{f \text{ measurable} : \int|f|^p\,d\mu < \infty\right\}, \quad \|f\|_p = \left(\int|f|^p\,d\mu\right)^{1/p}.$$
+                    Elements are equivalence classes (identify functions equal $\mu$-a.e.). $L^\infty(\mu)$ consists of essentially bounded functions with the essential supremum norm.</p>
+                    <p class="mb-0">By the Riesz–Fischer theorem, each $L^p(\mu)$ ($1\le p\le\infty$) is a Banach space. Completeness is the key non-trivial fact.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 1.1.6 — $C[a,b]$ with the Sup Norm</div>
+                    <p class="mb-0">The space of continuous functions $f:[a,b]\to\mathbb{R}$ with norm $\|f\|_\infty=\sup_{t\in[a,b]}|f(t)|$ is a Banach space. Completeness follows because a uniform Cauchy sequence of continuous functions converges uniformly to a continuous limit.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Equivalence of Norms on $\mathbb{R}^n$</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 1.1.7 — Equivalence of Norms on Finite-Dimensional Spaces</div>
+                    <p>Any two norms $\|\cdot\|$ and $\|\cdot\|'$ on $\mathbb{R}^n$ are equivalent: there exist constants $c,C>0$ such that
+                    $$c\|x\|\le\|x\|'\le C\|x\| \quad \text{for all }x\in\mathbb{R}^n.$$</p>
+                    <p class="mb-0">Consequently, convergence, continuity, and completeness are norm-independent on $\mathbb{R}^n$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof Sketch</div>
+                    <p>It suffices to show every norm $\|\cdot\|'$ is equivalent to the Euclidean norm $\|\cdot\|_2$. Write $x=\sum x_k e_k$; by homogeneity and triangle inequality, $\|x\|'\le C\|x\|_2$ where $C=(\sum\|e_k\|'^2)^{1/2}$ (by Cauchy–Schwarz). This shows $\|\cdot\|'$ is continuous with respect to $\|\cdot\|_2$.</p>
+                    <p class="mb-0">The unit sphere $S=\{x:\|x\|_2=1\}$ is compact in $(\mathbb{R}^n,\|\cdot\|_2)$. Since $\|\cdot\|'>0$ on $S$ and $\|\cdot\|'$ is continuous, it attains its minimum $c>0$ on $S$. Thus $\|x\|'\ge c\|x\|_2$ for all $x$. $\square$</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Infinite Dimensions</div>
+                    <p class="mb-0">Equivalence of all norms fails in infinite dimensions. On $C[0,1]$, the sup norm and the $L^1$ norm both make sense, but $\|\cdot\|_1\le\|\cdot\|_\infty$ while there is no constant $C$ with $\|f\|_\infty\le C\|f\|_1$ for all $f\in C[0,1]$. As a consequence, the spaces $\ell^1$, $\ell^2$, $\ell^\infty$ are genuinely different as Banach spaces.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 1. Normed Spaces</a>
+                    <a href="../02-finite-dimensional-spaces/" class="btn btn-custom">1.2 Finite-Dimensional Spaces &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

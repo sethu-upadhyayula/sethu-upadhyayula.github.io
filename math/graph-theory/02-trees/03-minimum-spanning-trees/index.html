@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.3 Minimum Spanning Trees — Graph Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Graph Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Graph Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-basic-concepts">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-basic-concepts/" class="toc-chapter-link"><strong>1.</strong> Basic Concepts</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-basic-concepts/01-graphs-and-digraphs/">1.1 Graphs and Digraphs</a>
+                        <a href="../../01-basic-concepts/02-degree-sequences/">1.2 Degree Sequences</a>
+                        <a href="../../01-basic-concepts/03-paths-and-cycles/">1.3 Paths and Cycles</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-trees">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-trees/" class="toc-chapter-link"><strong>2.</strong> Trees</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-trees/01-trees-and-forests/">2.1 Trees and Forests</a>
+                        <a href="../../02-trees/02-spanning-trees/">2.2 Spanning Trees</a>
+                        <a href="../../02-trees/03-minimum-spanning-trees/">2.3 Minimum Spanning Trees</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-connectivity">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-connectivity/" class="toc-chapter-link"><strong>3.</strong> Connectivity</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-connectivity/01-vertex-and-edge-connectivity/">3.1 Vertex and Edge Connectivity</a>
+                        <a href="../../03-connectivity/02-mengers-theorem/">3.2 Menger's Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-eulerian-and-hamiltonian">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-eulerian-and-hamiltonian/" class="toc-chapter-link"><strong>4.</strong> Eulerian and Hamiltonian Graphs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-eulerian-and-hamiltonian/01-eulerian-circuits-and-paths/">4.1 Eulerian Circuits and Paths</a>
+                        <a href="../../04-eulerian-and-hamiltonian/02-hamiltonian-cycles/">4.2 Hamiltonian Cycles</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-planar-graphs">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-planar-graphs/" class="toc-chapter-link"><strong>5.</strong> Planar Graphs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-planar-graphs/01-eulers-formula/">5.1 Euler's Formula</a>
+                        <a href="../../05-planar-graphs/02-kuratowskis-theorem/">5.2 Kuratowski's Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-graph-coloring">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-graph-coloring/" class="toc-chapter-link"><strong>6.</strong> Graph Coloring</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-graph-coloring/01-chromatic-number/">6.1 Chromatic Number</a>
+                        <a href="../../06-graph-coloring/02-four-color-theorem/">6.2 Four Color Theorem</a>
+                        <a href="../../06-graph-coloring/03-edge-colorings/">6.3 Edge Colorings</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-matchings-and-flows">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-matchings-and-flows/" class="toc-chapter-link"><strong>7.</strong> Matchings and Flows</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-matchings-and-flows/01-matchings-and-halls-theorem/">7.1 Matchings and Hall's Theorem</a>
+                        <a href="../../07-matchings-and-flows/02-network-flows-and-max-flow-min-cut/">7.2 Network Flows and Max-Flow Min-Cut</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="08-spectral-graph-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../08-spectral-graph-theory/" class="toc-chapter-link"><strong>8.</strong> Spectral Graph Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../08-spectral-graph-theory/01-adjacency-matrix/">8.1 Adjacency Matrix</a>
+                        <a href="../../08-spectral-graph-theory/02-laplacian/">8.2 Laplacian</a>
+                        <a href="../../08-spectral-graph-theory/03-spectral-bounds/">8.3 Spectral Bounds</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Graph Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Graph Theory</a> ›
+                <a href="../">2. Trees</a> ›
+                <span>2.3 Minimum Spanning Trees</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">2.3 Minimum Spanning Trees</h1>
+
+                <p>Given a connected weighted graph, a <strong>minimum spanning tree</strong> (MST) is a spanning tree whose total edge weight is as small as possible. MSTs model least-cost networks and arise in clustering, network design, and approximation algorithms.</p>
+
+                <h2 class="mt-5 mb-3">Setup and Optimality Conditions</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 2.3.1 — Weighted Graph and MST</div>
+                    <p class="mb-0">A <strong>weighted graph</strong> is a graph $G = (V, E)$ with a weight function $w : E \to \mathbb{R}$. The <strong>weight of a spanning tree</strong> $T$ is $w(T) = \sum_{e \in E(T)} w(e)$. A <strong>minimum spanning tree</strong> is a spanning tree $T^*$ minimising $w(T^*)$ over all spanning trees of $G$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.3.2 — Cut Property</div>
+                    <p class="mb-0">Let $(S, V \setminus S)$ be any cut of $G$ (partition of $V$ into two non-empty sets). If $e$ is a minimum-weight edge crossing the cut (with one endpoint in $S$ and one in $V \setminus S$), then $e$ belongs to some MST of $G$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.3.3 — Cycle Property</div>
+                    <p class="mb-0">If $e$ is a maximum-weight edge in some cycle $C$ of $G$ (and the maximum is unique), then $e$ does not belong to any MST of $G$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 2.3.4 — Uniqueness</div>
+                    <p class="mb-0">If all edge weights of $G$ are distinct, then $G$ has a unique MST.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Kruskal's Algorithm</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Algorithm 2.3.5 — Kruskal (1956)</div>
+                    <p>Sort all edges by non-decreasing weight. Initialise $T = \emptyset$. Process edges in order: add edge $e$ to $T$ if and only if $e$ does not create a cycle in $T$ (equivalently, its endpoints lie in different components of $T$).</p>
+                    <p class="mb-0"><strong>Correctness</strong> follows from the cut property: each added edge is the minimum crossing some cut. <strong>Complexity:</strong> $O(E \log E)$ for sorting; union-find gives near-linear component queries, giving overall $O(E \log E) = O(E \log V)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Prim's Algorithm</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Algorithm 2.3.6 — Prim (1957)</div>
+                    <p>Start with any vertex $r$; let $S = \{r\}$ and $T = \emptyset$. Repeatedly find the minimum-weight edge $\{u, v\}$ with $u \in S$ and $v \notin S$; add $v$ to $S$ and $\{u,v\}$ to $T$. Repeat until $S = V$.</p>
+                    <p class="mb-0"><strong>Correctness</strong> follows from the cut property applied to the cut $(S, V \setminus S)$. <strong>Complexity:</strong> $O(E \log V)$ with a binary heap; $O(E + V \log V)$ with a Fibonacci heap.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Borůvka's Algorithm</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Algorithm 2.3.7 — Borůvka (1926)</div>
+                    <p>Initially each vertex is its own component. In each phase, each component selects its cheapest outgoing edge; add all selected edges (merging components). Repeat until only one component remains.</p>
+                    <p class="mb-0">After each phase the number of components halves, so there are $O(\log V)$ phases, each taking $O(E)$ time. Total: $O(E \log V)$. Borůvka's algorithm naturally parallelises and is used in external-memory and randomised MST algorithms.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Linear-Time MST</div>
+                    <p class="mb-0">Combining Borůvka's algorithm with random edge contraction, Karger, Klein, and Tarjan (1995) gave a randomised linear-time MST algorithm. A deterministic linear-time algorithm (on a RAM) was given by Pettie and Ramachandran (2002), though it is not practical.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-spanning-trees/" class="btn btn-outline-custom">&larr; 2.2 Spanning Trees</a>
+                    <a href="../../03-connectivity/" class="btn btn-custom">3. Connectivity &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

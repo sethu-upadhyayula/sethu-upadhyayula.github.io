@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="dark"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1.1 Addition and Multiplication Principles — Combinatorics</title>
+<title>2.2 Exponential Generating Functions — Combinatorics</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -95,59 +95,48 @@
 </nav></aside>
 <section class="math-content">
 <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Combinatorics</a></div>
-<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Basic Counting</a> › <span>Addition and Multiplication Principles</span></nav>
-<article><h1 class="text-accent mb-4">1.1 Addition and Multiplication Principles</h1>
+<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Generating Functions</a> › <span>Exponential Generating Functions</span></nav>
+<article><h1 class="text-accent mb-4">2.2 Exponential Generating Functions</h1>
 
-<p>The two most fundamental counting tools are the <em>addition principle</em> (for disjoint choices) and the <em>multiplication principle</em> (for sequential independent choices). Every counting argument ultimately rests on one or both of these.</p>
+<p>The <strong>exponential generating function</strong> (EGF) is the right tool for counting <em>labelled</em> combinatorial structures — those where the elements carry distinct identities (labels). The $1/n!$ denominators absorb the over-counting from permutations of labels.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Addition Principle</div>
-<p>If $A$ and $B$ are <em>disjoint</em> finite sets (i.e., $A \cap B = \emptyset$), then
-$$|A \cup B| = |A| + |B|.$$
-More generally, for pairwise disjoint sets $A_1, A_2, \ldots, A_k$:
-$$\left|\bigsqcup_{i=1}^k A_i\right| = \sum_{i=1}^k |A_i|.$$</p>
+<div class="math-box definition"><div class="math-box-label">Definition — EGF</div>
+<p>The <strong>exponential generating function</strong> of $(a_n)_{n \ge 0}$ is:
+$$\hat{A}(x) = \sum_{n=0}^{\infty} a_n \frac{x^n}{n!}.$$
+We have $a_n = n!\, [x^n]\, \hat{A}(x)$.</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Multiplication Principle</div>
-<p>If a task consists of $k$ sequential steps, where step $i$ can be performed in $n_i$ ways <em>independently</em> of the choices at other steps, then the total number of ways to complete the task is
-$$n_1 \times n_2 \times \cdots \times n_k = \prod_{i=1}^k n_i.$$</p>
+<div class="math-box theorem"><div class="math-box-label">Theorem — Product of EGFs (Labelled Convolution)</div>
+<p>If $\hat{A}(x)\hat{B}(x) = \hat{C}(x)$, then:
+$$c_n = \sum_{k=0}^{n} \binom{n}{k} a_k b_{n-k}.$$
+This counts structures on $[n]$ obtained by splitting $[n]$ into a $k$-element subset carrying an $A$-structure and the remaining $(n-k)$-element subset carrying a $B$-structure.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Functions Between Sets</div>
-<p>Let $A$ and $B$ be finite sets with $|A| = m$ and $|B| = n$. How many functions $f : A \to B$ are there?</p>
-<p>For each of the $m$ elements of $A$, we independently choose one of $n$ elements of $B$ as its image. By the multiplication principle:</p>
-$$|B^A| = n^m = |B|^{|A|}.$$
+<div class="math-box theorem"><div class="math-box-label">Theorem — Key EGFs</div>
+<p>$$e^x = \sum_{n \ge 0} \frac{x^n}{n!}: \text{ all permutations (one per } n\text{)}.$$
+$$e^x - 1 = \sum_{n \ge 1} \frac{x^n}{n!}: \text{ non-empty sets.}$$
+$$\frac{e^x + e^{-x}}{2} = \cosh x: \text{ even-size subsets.}$$
+$$\frac{1}{1-x} = \sum_{n \ge 0} n! \cdot \frac{x^n}{n!}: \text{ EGF for } a_n = n! \text{ (all permutations of } [n]\text{)}.$$
+$$\ln\frac{1}{1-x} = \sum_{n \ge 1} (n-1)!\, \frac{x^n}{n!}: \text{ EGF for cycles.}$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Power Set</div>
-<p>How many subsets does a set $A$ with $|A| = n$ have?</p>
-<p>Each element independently either belongs to the subset (1) or does not (0). By the multiplication principle with $n$ binary choices:</p>
-$$|\mathcal{P}(A)| = 2^n.$$
+<div class="math-box example"><div class="math-box-label">Example — Labelled Structures: Set Partitions into Even Sets</div>
+<p>The EGF for even-size sets is $\cosh x = (e^x + e^{-x})/2$. By the product formula (or more generally, $e^{\cosh x - 1}$), one can build EGFs for structures composed of even-size blocks.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Binary Strings</div>
-<p>The number of binary strings of length $n$ is $2^n$ (each position is independently 0 or 1).</p>
-<p>Among these, how many contain at least one 1? By the addition principle, this is $2^n - 1$ (all strings minus the all-zeros string).</p>
+<div class="math-box example"><div class="math-box-label">Example — Involutions</div>
+<p>An involution is a permutation $\sigma$ with $\sigma^2 = \text{id}$ — it consists only of fixed points and transpositions. Let $a_n$ be the number of involutions of $[n]$. Then $a_n = a_{n-1} + (n-1)a_{n-2}$ (either $n$ is fixed, or $n$ pairs with one of the $n-1$ others). The EGF is:
+$$\hat{A}(x) = e^{x + x^2/2}.$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Subsets Containing a Fixed Element</div>
-<p>How many subsets of $\{1, 2, \ldots, n\}$ contain element 1?</p>
-<p>Element 1 is fixed in the subset; each of the remaining $n-1$ elements independently belongs or not. So the count is $2^{n-1}$.</p>
-<p>Alternatively, by the addition principle: subsets containing 1 and subsets not containing 1 partition all $2^n$ subsets equally, giving $2^n / 2 = 2^{n-1}$ each.</p>
-</div>
-
-<div class="math-box theorem"><div class="math-box-label">Theorem — Complement Counting</div>
-<p>To count the elements of $A$ satisfying property $P$, it is often easier to count those <em>not</em> satisfying $P$ and subtract:
-$$|\{x \in A : P(x)\}| = |A| - |\{x \in A : \lnot P(x)\}|.$$</p>
-</div>
-
-<div class="math-box remark"><div class="math-box-label">Remark</div>
-<p>The multiplication principle applies when choices are <em>independent</em>. If later choices depend on earlier ones (e.g., sampling without replacement), the principle still applies but the number of options at each step must be re-evaluated. For example, choosing an ordered pair of distinct elements from $\{1,\ldots,n\}$ gives $n(n-1)$ options, not $n^2$.</p>
+<div class="math-box remark"><div class="math-box-label">Remark — Labelled vs Unlabelled</div>
+<p>OGFs are used for unlabelled structures (integer partitions, non-crossing partitions, plane trees). EGFs are used for labelled structures (permutations, labelled graphs, set partitions). The symbolic method systematises which to use based on whether the objects carry labels.</p>
 </div>
 
 <hr class="my-5">
 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-<a href="../" class="btn btn-outline-custom">&larr; Basic Counting</a>
-<a href="../02-permutations-and-combinations/" class="btn btn-custom">1.2 Permutations and Combinations &rarr;</a>
+<a href="../01-ordinary-generating-functions/" class="btn btn-outline-custom">&larr; 2.1 Ordinary Generating Functions</a>
+<a href="../03-applications/" class="btn btn-custom">2.3 Applications &rarr;</a>
 </div></article></section></main>
 <footer class="site-footer"><div class="container text-center"><div class="social-links">
 <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>

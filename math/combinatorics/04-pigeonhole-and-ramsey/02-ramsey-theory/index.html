@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="dark"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1.1 Addition and Multiplication Principles — Combinatorics</title>
+<title>4.2 Ramsey Theory — Combinatorics</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -95,59 +95,53 @@
 </nav></aside>
 <section class="math-content">
 <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Combinatorics</a></div>
-<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Basic Counting</a> › <span>Addition and Multiplication Principles</span></nav>
-<article><h1 class="text-accent mb-4">1.1 Addition and Multiplication Principles</h1>
+<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Pigeonhole and Ramsey Theory</a> › <span>Ramsey Theory</span></nav>
+<article><h1 class="text-accent mb-4">4.2 Ramsey Theory</h1>
 
-<p>The two most fundamental counting tools are the <em>addition principle</em> (for disjoint choices) and the <em>multiplication principle</em> (for sequential independent choices). Every counting argument ultimately rests on one or both of these.</p>
+<p>Ramsey theory studies the conditions under which a sufficiently large combinatorial structure must contain a highly ordered substructure, regardless of how the structure is arranged. As Ramsey's theorem says: <em>complete disorder is impossible.</em></p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Addition Principle</div>
-<p>If $A$ and $B$ are <em>disjoint</em> finite sets (i.e., $A \cap B = \emptyset$), then
-$$|A \cup B| = |A| + |B|.$$
-More generally, for pairwise disjoint sets $A_1, A_2, \ldots, A_k$:
-$$\left|\bigsqcup_{i=1}^k A_i\right| = \sum_{i=1}^k |A_i|.$$</p>
+<div class="math-box definition"><div class="math-box-label">Definition — Ramsey Number $R(s,t)$</div>
+<p>The <strong>Ramsey number</strong> $R(s,t)$ is the least integer $n$ such that any 2-colouring (red/blue) of the edges of the complete graph $K_n$ contains either a red $K_s$ or a blue $K_t$.</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Multiplication Principle</div>
-<p>If a task consists of $k$ sequential steps, where step $i$ can be performed in $n_i$ ways <em>independently</em> of the choices at other steps, then the total number of ways to complete the task is
-$$n_1 \times n_2 \times \cdots \times n_k = \prod_{i=1}^k n_i.$$</p>
+<div class="math-box theorem"><div class="math-box-label">Theorem — $R(3,3) = 6$</div>
+<p><strong>Sufficiency ($n=6$ works):</strong> Fix any vertex $v$. It has 5 edges; by PHP, at least 3 have the same colour, say red, going to $\{u_1, u_2, u_3\}$. If any edge among $u_1, u_2, u_3$ is red, we have a red triangle with $v$. If all three edges among $u_1,u_2,u_3$ are blue, they form a blue triangle.</p>
+<p><strong>Necessity ($n=5$ fails):</strong> Colour $K_5$ as the Petersen graph (cycle $C_5$ red, all diagonals blue); one can verify there is no monochromatic triangle.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Functions Between Sets</div>
-<p>Let $A$ and $B$ be finite sets with $|A| = m$ and $|B| = n$. How many functions $f : A \to B$ are there?</p>
-<p>For each of the $m$ elements of $A$, we independently choose one of $n$ elements of $B$ as its image. By the multiplication principle:</p>
-$$|B^A| = n^m = |B|^{|A|}.$$
+<div class="math-box theorem"><div class="math-box-label">Theorem — Upper Bound via Pascal Recursion</div>
+<p>$$R(s,t) \le R(s-1,t) + R(s,t-1).$$
+Consequently, $R(s,t) \le \binom{s+t-2}{s-1}$.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Power Set</div>
-<p>How many subsets does a set $A$ with $|A| = n$ have?</p>
-<p>Each element independently either belongs to the subset (1) or does not (0). By the multiplication principle with $n$ binary choices:</p>
-$$|\mathcal{P}(A)| = 2^n.$$
+<div class="math-box proof"><div class="math-box-label">Proof Sketch</div>
+<p>In $K_{R(s-1,t)+R(s,t-1)}$, fix any vertex $v$. It has red or blue degree $\ge R(s-1,t)$ or $\ge R(s,t-1)$ respectively (by PHP). In the first case, the red neighbourhood contains a red $K_{s-1}$ (by definition of $R(s-1,t)$) giving a red $K_s$ with $v$, or a blue $K_t$. Similarly for the second case. $\square$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Binary Strings</div>
-<p>The number of binary strings of length $n$ is $2^n$ (each position is independently 0 or 1).</p>
-<p>Among these, how many contain at least one 1? By the addition principle, this is $2^n - 1$ (all strings minus the all-zeros string).</p>
+<div class="math-box definition"><div class="math-box-label">Known Ramsey Numbers</div>
+<p>Computing exact Ramsey numbers is extremely hard. Known values include:</p>
+<ul>
+  <li>$R(3,3) = 6$</li>
+  <li>$R(3,4) = 9$</li>
+  <li>$R(3,5) = 14$</li>
+  <li>$R(4,4) = 18$</li>
+  <li>$R(4,5) = 25$</li>
+</ul>
+<p>$R(5,5)$ is unknown; only $43 \le R(5,5) \le 48$ is established.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Subsets Containing a Fixed Element</div>
-<p>How many subsets of $\{1, 2, \ldots, n\}$ contain element 1?</p>
-<p>Element 1 is fixed in the subset; each of the remaining $n-1$ elements independently belongs or not. So the count is $2^{n-1}$.</p>
-<p>Alternatively, by the addition principle: subsets containing 1 and subsets not containing 1 partition all $2^n$ subsets equally, giving $2^n / 2 = 2^{n-1}$ each.</p>
+<div class="math-box theorem"><div class="math-box-label">Theorem — Van der Waerden's Theorem</div>
+<p>For any $k, r \ge 1$, there exists $W(k,r)$ such that any $k$-colouring of $\{1, 2, \ldots, W(k,r)\}$ contains a monochromatic arithmetic progression of length $r$.</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Complement Counting</div>
-<p>To count the elements of $A$ satisfying property $P$, it is often easier to count those <em>not</em> satisfying $P$ and subtract:
-$$|\{x \in A : P(x)\}| = |A| - |\{x \in A : \lnot P(x)\}|.$$</p>
-</div>
-
-<div class="math-box remark"><div class="math-box-label">Remark</div>
-<p>The multiplication principle applies when choices are <em>independent</em>. If later choices depend on earlier ones (e.g., sampling without replacement), the principle still applies but the number of options at each step must be re-evaluated. For example, choosing an ordered pair of distinct elements from $\{1,\ldots,n\}$ gives $n(n-1)$ options, not $n^2$.</p>
+<div class="math-box remark"><div class="math-box-label">Remark — The Ramsey Paradigm</div>
+<p>Ramsey theory encapsulates the idea that in any sufficiently large system, complete randomness cannot be sustained — some pattern must emerge. This principle appears in graph theory (Ramsey numbers), number theory (Van der Waerden, Hales-Jewett), and geometry (Happy Ending problem: any 5 points in general position contain the vertices of a convex quadrilateral).</p>
 </div>
 
 <hr class="my-5">
 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-<a href="../" class="btn btn-outline-custom">&larr; Basic Counting</a>
-<a href="../02-permutations-and-combinations/" class="btn btn-custom">1.2 Permutations and Combinations &rarr;</a>
+<a href="../01-pigeonhole-principle/" class="btn btn-outline-custom">&larr; 4.1 Pigeonhole Principle</a>
+<a href="../../05-designs-and-codes/" class="btn btn-custom">5. Designs and Codes &rarr;</a>
 </div></article></section></main>
 <footer class="site-footer"><div class="container text-center"><div class="social-links">
 <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>

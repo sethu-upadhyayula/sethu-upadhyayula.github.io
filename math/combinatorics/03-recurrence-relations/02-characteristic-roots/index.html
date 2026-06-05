@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="dark"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1.1 Addition and Multiplication Principles — Combinatorics</title>
+<title>3.2 Characteristic Roots — Combinatorics</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -95,59 +95,50 @@
 </nav></aside>
 <section class="math-content">
 <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Combinatorics</a></div>
-<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Basic Counting</a> › <span>Addition and Multiplication Principles</span></nav>
-<article><h1 class="text-accent mb-4">1.1 Addition and Multiplication Principles</h1>
+<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Recurrence Relations</a> › <span>Characteristic Roots</span></nav>
+<article><h1 class="text-accent mb-4">3.2 Characteristic Roots</h1>
 
-<p>The two most fundamental counting tools are the <em>addition principle</em> (for disjoint choices) and the <em>multiplication principle</em> (for sequential independent choices). Every counting argument ultimately rests on one or both of these.</p>
+<p>The <strong>characteristic root method</strong> solves homogeneous linear recurrences by converting them to polynomial equations. The roots of the characteristic polynomial determine the form of the general solution.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Addition Principle</div>
-<p>If $A$ and $B$ are <em>disjoint</em> finite sets (i.e., $A \cap B = \emptyset$), then
-$$|A \cup B| = |A| + |B|.$$
-More generally, for pairwise disjoint sets $A_1, A_2, \ldots, A_k$:
-$$\left|\bigsqcup_{i=1}^k A_i\right| = \sum_{i=1}^k |A_i|.$$</p>
+<div class="math-box definition"><div class="math-box-label">Definition — Characteristic Polynomial</div>
+<p>For the recurrence $a_n = c_1 a_{n-1} + \cdots + c_k a_{n-k}$, the <strong>characteristic polynomial</strong> is:
+$$p(r) = r^k - c_1 r^{k-1} - c_2 r^{k-2} - \cdots - c_k.$$
+Its roots $r_1, \ldots, r_k$ (counting multiplicity) are the <strong>characteristic roots</strong>.</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Multiplication Principle</div>
-<p>If a task consists of $k$ sequential steps, where step $i$ can be performed in $n_i$ ways <em>independently</em> of the choices at other steps, then the total number of ways to complete the task is
-$$n_1 \times n_2 \times \cdots \times n_k = \prod_{i=1}^k n_i.$$</p>
+<div class="math-box theorem"><div class="math-box-label">Theorem — General Solution (Distinct Roots)</div>
+<p>If the characteristic polynomial has $k$ distinct roots $r_1, \ldots, r_k$, then the general solution of the recurrence is:
+$$a_n = \alpha_1 r_1^n + \alpha_2 r_2^n + \cdots + \alpha_k r_k^n,$$
+where $\alpha_1, \ldots, \alpha_k$ are determined by the $k$ initial conditions.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Functions Between Sets</div>
-<p>Let $A$ and $B$ be finite sets with $|A| = m$ and $|B| = n$. How many functions $f : A \to B$ are there?</p>
-<p>For each of the $m$ elements of $A$, we independently choose one of $n$ elements of $B$ as its image. By the multiplication principle:</p>
-$$|B^A| = n^m = |B|^{|A|}.$$
+<div class="math-box theorem"><div class="math-box-label">Theorem — General Solution (Repeated Roots)</div>
+<p>If $r$ is a root of multiplicity $m$, it contributes terms:
+$$(A_0 + A_1 n + A_2 n^2 + \cdots + A_{m-1} n^{m-1})\, r^n$$
+to the general solution, with $m$ free constants.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Power Set</div>
-<p>How many subsets does a set $A$ with $|A| = n$ have?</p>
-<p>Each element independently either belongs to the subset (1) or does not (0). By the multiplication principle with $n$ binary choices:</p>
-$$|\mathcal{P}(A)| = 2^n.$$
+<div class="math-box example"><div class="math-box-label">Example — Fibonacci (Binet's Formula)</div>
+<p>The recurrence $F_n = F_{n-1} + F_{n-2}$ has characteristic polynomial $r^2 - r - 1 = 0$ with roots:
+$$\phi = \frac{1+\sqrt{5}}{2}, \quad \hat\phi = \frac{1-\sqrt{5}}{2}.$$
+General solution: $F_n = \alpha\phi^n + \beta\hat\phi^n$. Using $F_0=0$, $F_1=1$:
+$$\alpha + \beta = 0, \quad \alpha\phi + \beta\hat\phi = 1 \implies \alpha = \frac{1}{\sqrt5}, \;\beta = -\frac{1}{\sqrt5}.$$
+<strong>Binet's formula:</strong>
+$$F_n = \frac{\phi^n - \hat\phi^n}{\sqrt{5}}.$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Binary Strings</div>
-<p>The number of binary strings of length $n$ is $2^n$ (each position is independently 0 or 1).</p>
-<p>Among these, how many contain at least one 1? By the addition principle, this is $2^n - 1$ (all strings minus the all-zeros string).</p>
+<div class="math-box example"><div class="math-box-label">Example — Repeated Root</div>
+<p>The recurrence $a_n = 2a_{n-1} - a_{n-2}$ has characteristic polynomial $(r-1)^2 = 0$ with double root $r=1$. General solution: $a_n = (A + Bn) \cdot 1^n = A + Bn$. With $a_0=1, a_1=3$: $A=1, B=2$, so $a_n = 1+2n$.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Subsets Containing a Fixed Element</div>
-<p>How many subsets of $\{1, 2, \ldots, n\}$ contain element 1?</p>
-<p>Element 1 is fixed in the subset; each of the remaining $n-1$ elements independently belongs or not. So the count is $2^{n-1}$.</p>
-<p>Alternatively, by the addition principle: subsets containing 1 and subsets not containing 1 partition all $2^n$ subsets equally, giving $2^n / 2 = 2^{n-1}$ each.</p>
-</div>
-
-<div class="math-box theorem"><div class="math-box-label">Theorem — Complement Counting</div>
-<p>To count the elements of $A$ satisfying property $P$, it is often easier to count those <em>not</em> satisfying $P$ and subtract:
-$$|\{x \in A : P(x)\}| = |A| - |\{x \in A : \lnot P(x)\}|.$$</p>
-</div>
-
-<div class="math-box remark"><div class="math-box-label">Remark</div>
-<p>The multiplication principle applies when choices are <em>independent</em>. If later choices depend on earlier ones (e.g., sampling without replacement), the principle still applies but the number of options at each step must be re-evaluated. For example, choosing an ordered pair of distinct elements from $\{1,\ldots,n\}$ gives $n(n-1)$ options, not $n^2$.</p>
+<div class="math-box remark"><div class="math-box-label">Remark — Complex Roots</div>
+<p>If the characteristic polynomial has complex roots $r = \rho e^{i\theta}$ and $\bar{r} = \rho e^{-i\theta}$ (conjugate pair), they contribute terms $\rho^n(A\cos(n\theta) + B\sin(n\theta))$, producing oscillating solutions. The magnitude grows like $\rho^n$.</p>
 </div>
 
 <hr class="my-5">
 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-<a href="../" class="btn btn-outline-custom">&larr; Basic Counting</a>
-<a href="../02-permutations-and-combinations/" class="btn btn-custom">1.2 Permutations and Combinations &rarr;</a>
+<a href="../01-linear-recurrences/" class="btn btn-outline-custom">&larr; 3.1 Linear Recurrences</a>
+<a href="../03-divide-and-conquer-recurrences/" class="btn btn-custom">3.3 Divide-and-Conquer Recurrences &rarr;</a>
 </div></article></section></main>
 <footer class="site-footer"><div class="container text-center"><div class="social-links">
 <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>

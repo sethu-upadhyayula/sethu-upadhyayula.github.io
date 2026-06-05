@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="dark"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1.1 Addition and Multiplication Principles — Combinatorics</title>
+<title>2.1 Ordinary Generating Functions — Combinatorics</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -95,59 +95,54 @@
 </nav></aside>
 <section class="math-content">
 <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Combinatorics</a></div>
-<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Basic Counting</a> › <span>Addition and Multiplication Principles</span></nav>
-<article><h1 class="text-accent mb-4">1.1 Addition and Multiplication Principles</h1>
+<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Generating Functions</a> › <span>Ordinary Generating Functions</span></nav>
+<article><h1 class="text-accent mb-4">2.1 Ordinary Generating Functions</h1>
 
-<p>The two most fundamental counting tools are the <em>addition principle</em> (for disjoint choices) and the <em>multiplication principle</em> (for sequential independent choices). Every counting argument ultimately rests on one or both of these.</p>
+<p>The <strong>ordinary generating function</strong> (OGF) of a sequence $(a_n)_{n \ge 0}$ is the formal power series $A(x) = \sum_{n \ge 0} a_n x^n$. We treat $x$ as a formal variable — convergence is secondary to algebraic structure.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Addition Principle</div>
-<p>If $A$ and $B$ are <em>disjoint</em> finite sets (i.e., $A \cap B = \emptyset$), then
-$$|A \cup B| = |A| + |B|.$$
-More generally, for pairwise disjoint sets $A_1, A_2, \ldots, A_k$:
-$$\left|\bigsqcup_{i=1}^k A_i\right| = \sum_{i=1}^k |A_i|.$$</p>
+<div class="math-box definition"><div class="math-box-label">Definition — OGF</div>
+<p>Given a sequence $(a_n)_{n \ge 0}$, its <strong>ordinary generating function</strong> is:
+$$A(x) = \sum_{n=0}^{\infty} a_n x^n.$$
+We write $[x^n] A(x) = a_n$ for the coefficient extraction operator.</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Multiplication Principle</div>
-<p>If a task consists of $k$ sequential steps, where step $i$ can be performed in $n_i$ ways <em>independently</em> of the choices at other steps, then the total number of ways to complete the task is
-$$n_1 \times n_2 \times \cdots \times n_k = \prod_{i=1}^k n_i.$$</p>
+<div class="math-box theorem"><div class="math-box-label">Theorem — Operations on OGFs</div>
+<p>If $A(x) = \sum a_n x^n$ and $B(x) = \sum b_n x^n$, then:</p>
+<ul>
+  <li><strong>Sum:</strong> $A(x) + B(x) = \sum (a_n + b_n)x^n$.</li>
+  <li><strong>Shift:</strong> $x A(x) = \sum_{n \ge 1} a_{n-1} x^n$ (right-shift by 1).</li>
+  <li><strong>Product (convolution):</strong> $A(x)B(x) = \sum_{n \ge 0}\left(\sum_{k=0}^n a_k b_{n-k}\right)x^n$.</li>
+  <li><strong>Derivative:</strong> $A'(x) = \sum_{n \ge 1} n a_n x^{n-1}$.</li>
+</ul>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Functions Between Sets</div>
-<p>Let $A$ and $B$ be finite sets with $|A| = m$ and $|B| = n$. How many functions $f : A \to B$ are there?</p>
-<p>For each of the $m$ elements of $A$, we independently choose one of $n$ elements of $B$ as its image. By the multiplication principle:</p>
-$$|B^A| = n^m = |B|^{|A|}.$$
+<div class="math-box theorem"><div class="math-box-label">Theorem — Key OGFs</div>
+<p>$$\frac{1}{1-x} = \sum_{n \ge 0} x^n, \qquad \frac{1}{1-x^k} = \sum_{n \ge 0} x^{kn}.$$
+$$\frac{1}{(1-x)^k} = \sum_{n \ge 0} \binom{n+k-1}{k-1} x^n \quad (k \ge 1).$$
+$$(1+x)^n = \sum_{k=0}^n \binom{n}{k} x^k.$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Power Set</div>
-<p>How many subsets does a set $A$ with $|A| = n$ have?</p>
-<p>Each element independently either belongs to the subset (1) or does not (0). By the multiplication principle with $n$ binary choices:</p>
-$$|\mathcal{P}(A)| = 2^n.$$
+<div class="math-box example"><div class="math-box-label">Example — Fibonacci Numbers via OGF</div>
+<p>The Fibonacci sequence satisfies $F_0=0$, $F_1=1$, $F_n = F_{n-1}+F_{n-2}$ for $n \ge 2$. Let $F(x) = \sum F_n x^n$. Then:
+$$F(x) - xF(x) - x^2F(x) = x \implies F(x) = \frac{x}{1-x-x^2}.$$
+Using partial fractions with roots $\phi = (1+\sqrt5)/2$ and $\hat\phi = (1-\sqrt5)/2$:
+$$F_n = \frac{\phi^n - \hat\phi^n}{\sqrt{5}} \quad \text{(Binet's formula)}.$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Binary Strings</div>
-<p>The number of binary strings of length $n$ is $2^n$ (each position is independently 0 or 1).</p>
-<p>Among these, how many contain at least one 1? By the addition principle, this is $2^n - 1$ (all strings minus the all-zeros string).</p>
+<div class="math-box example"><div class="math-box-label">Example — Number of Coin Compositions</div>
+<p>The number of ways to write $n$ as an ordered sum of positive integers (compositions) is $[x^n]$ in:
+$$\sum_{k \ge 0}\left(\frac{x}{1-x}\right)^k = \frac{1}{1-\frac{x}{1-x}} = \frac{1-x}{1-2x} = 1 + \sum_{n \ge 1} 2^{n-1} x^n.$$
+So there are $2^{n-1}$ compositions of $n$ for $n \ge 1$.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Subsets Containing a Fixed Element</div>
-<p>How many subsets of $\{1, 2, \ldots, n\}$ contain element 1?</p>
-<p>Element 1 is fixed in the subset; each of the remaining $n-1$ elements independently belongs or not. So the count is $2^{n-1}$.</p>
-<p>Alternatively, by the addition principle: subsets containing 1 and subsets not containing 1 partition all $2^n$ subsets equally, giving $2^n / 2 = 2^{n-1}$ each.</p>
-</div>
-
-<div class="math-box theorem"><div class="math-box-label">Theorem — Complement Counting</div>
-<p>To count the elements of $A$ satisfying property $P$, it is often easier to count those <em>not</em> satisfying $P$ and subtract:
-$$|\{x \in A : P(x)\}| = |A| - |\{x \in A : \lnot P(x)\}|.$$</p>
-</div>
-
-<div class="math-box remark"><div class="math-box-label">Remark</div>
-<p>The multiplication principle applies when choices are <em>independent</em>. If later choices depend on earlier ones (e.g., sampling without replacement), the principle still applies but the number of options at each step must be re-evaluated. For example, choosing an ordered pair of distinct elements from $\{1,\ldots,n\}$ gives $n(n-1)$ options, not $n^2$.</p>
+<div class="math-box remark"><div class="math-box-label">Remark — Formal vs Analytic</div>
+<p>We work with formal power series: algebraic manipulations are valid regardless of convergence. However, when the generating function converges in a neighbourhood of 0, analytic techniques (contour integration, singularity analysis) yield asymptotic estimates for $a_n$.</p>
 </div>
 
 <hr class="my-5">
 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-<a href="../" class="btn btn-outline-custom">&larr; Basic Counting</a>
-<a href="../02-permutations-and-combinations/" class="btn btn-custom">1.2 Permutations and Combinations &rarr;</a>
+<a href="../" class="btn btn-outline-custom">&larr; Generating Functions</a>
+<a href="../02-exponential-generating-functions/" class="btn btn-custom">2.2 Exponential Generating Functions &rarr;</a>
 </div></article></section></main>
 <footer class="site-footer"><div class="container text-center"><div class="social-links">
 <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>

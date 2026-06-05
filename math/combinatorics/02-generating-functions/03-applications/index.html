@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="dark"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1.1 Addition and Multiplication Principles — Combinatorics</title>
+<title>2.3 Applications — Combinatorics</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -95,59 +95,71 @@
 </nav></aside>
 <section class="math-content">
 <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Combinatorics</a></div>
-<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Basic Counting</a> › <span>Addition and Multiplication Principles</span></nav>
-<article><h1 class="text-accent mb-4">1.1 Addition and Multiplication Principles</h1>
+<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Generating Functions</a> › <span>Applications</span></nav>
+<article><h1 class="text-accent mb-4">2.3 Applications</h1>
 
-<p>The two most fundamental counting tools are the <em>addition principle</em> (for disjoint choices) and the <em>multiplication principle</em> (for sequential independent choices). Every counting argument ultimately rests on one or both of these.</p>
+<p>We apply generating functions to derive closed forms for three fundamental combinatorial sequences: the Catalan numbers, the Bell numbers, and the Stirling numbers of the second kind.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Addition Principle</div>
-<p>If $A$ and $B$ are <em>disjoint</em> finite sets (i.e., $A \cap B = \emptyset$), then
-$$|A \cup B| = |A| + |B|.$$
-More generally, for pairwise disjoint sets $A_1, A_2, \ldots, A_k$:
-$$\left|\bigsqcup_{i=1}^k A_i\right| = \sum_{i=1}^k |A_i|.$$</p>
+<h2>Catalan Numbers</h2>
+
+<div class="math-box definition"><div class="math-box-label">Definition — Catalan Numbers</div>
+<p>The $n$-th Catalan number is:
+$$C_n = \frac{1}{n+1}\binom{2n}{n}, \quad n \ge 0.$$
+Values: $C_0=1, C_1=1, C_2=2, C_3=5, C_4=14, C_5=42, \ldots$</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Multiplication Principle</div>
-<p>If a task consists of $k$ sequential steps, where step $i$ can be performed in $n_i$ ways <em>independently</em> of the choices at other steps, then the total number of ways to complete the task is
-$$n_1 \times n_2 \times \cdots \times n_k = \prod_{i=1}^k n_i.$$</p>
+<div class="math-box theorem"><div class="math-box-label">Theorem — OGF of Catalan Numbers</div>
+<p>The OGF $C(x) = \sum_{n \ge 0} C_n x^n$ satisfies the functional equation $C(x) = 1 + x C(x)^2$ (from the recursive structure: a non-empty Dyck path decomposes as a first return and a suffix). Solving:
+$$C(x) = \frac{1 - \sqrt{1-4x}}{2x}.$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Functions Between Sets</div>
-<p>Let $A$ and $B$ be finite sets with $|A| = m$ and $|B| = n$. How many functions $f : A \to B$ are there?</p>
-<p>For each of the $m$ elements of $A$, we independently choose one of $n$ elements of $B$ as its image. By the multiplication principle:</p>
-$$|B^A| = n^m = |B|^{|A|}.$$
+<div class="math-box example"><div class="math-box-label">Example — What Catalan Numbers Count</div>
+<p>$C_n$ counts many equivalent combinatorial objects:</p>
+<ul>
+  <li>Binary trees with $n$ internal nodes.</li>
+  <li>Triangulations of a convex $(n+2)$-gon.</li>
+  <li>Dyck paths (lattice paths from $(0,0)$ to $(2n,0)$ with steps $\pm1$, never going below 0).</li>
+  <li>Ways to fully parenthesise a product of $n+1$ factors.</li>
+  <li>Sequences of $n$ pairs of matching parentheses.</li>
+</ul>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Power Set</div>
-<p>How many subsets does a set $A$ with $|A| = n$ have?</p>
-<p>Each element independently either belongs to the subset (1) or does not (0). By the multiplication principle with $n$ binary choices:</p>
-$$|\mathcal{P}(A)| = 2^n.$$
+<h2 class="mt-4">Bell Numbers</h2>
+
+<div class="math-box definition"><div class="math-box-label">Definition — Bell Numbers</div>
+<p>The $n$-th Bell number $B_n$ counts the number of partitions of $[n] = \{1,\ldots,n\}$ into non-empty subsets (blocks). Values: $B_0=1, B_1=1, B_2=2, B_3=5, B_4=15, B_5=52$.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Binary Strings</div>
-<p>The number of binary strings of length $n$ is $2^n$ (each position is independently 0 or 1).</p>
-<p>Among these, how many contain at least one 1? By the addition principle, this is $2^n - 1$ (all strings minus the all-zeros string).</p>
+<div class="math-box theorem"><div class="math-box-label">Theorem — EGF of Bell Numbers</div>
+<p>$$\sum_{n \ge 0} B_n \frac{x^n}{n!} = e^{e^x - 1}.$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Subsets Containing a Fixed Element</div>
-<p>How many subsets of $\{1, 2, \ldots, n\}$ contain element 1?</p>
-<p>Element 1 is fixed in the subset; each of the remaining $n-1$ elements independently belongs or not. So the count is $2^{n-1}$.</p>
-<p>Alternatively, by the addition principle: subsets containing 1 and subsets not containing 1 partition all $2^n$ subsets equally, giving $2^n / 2 = 2^{n-1}$ each.</p>
+<div class="math-box proof"><div class="math-box-label">Proof Sketch</div>
+<p>A partition of $[n]$ is a set of non-empty blocks. The EGF for a single non-empty block is $e^x - 1$ (any non-empty subset, labelled). The EGF for a set of such blocks is $e^{e^x-1}$ (exponentiating the EGF of a single block gives the EGF of a set of such blocks). $\square$</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Complement Counting</div>
-<p>To count the elements of $A$ satisfying property $P$, it is often easier to count those <em>not</em> satisfying $P$ and subtract:
-$$|\{x \in A : P(x)\}| = |A| - |\{x \in A : \lnot P(x)\}|.$$</p>
+<h2 class="mt-4">Stirling Numbers of the Second Kind</h2>
+
+<div class="math-box definition"><div class="math-box-label">Definition — Stirling Numbers $S(n,k)$</div>
+<p>$S(n,k)$ (also written $\left\{n \atop k\right\}$) counts the number of ways to partition $[n]$ into exactly $k$ non-empty blocks. Recurrence:
+$$S(n,k) = k \cdot S(n-1,k) + S(n-1,k-1),$$
+with $S(0,0)=1$ and $S(n,0)=S(0,k)=0$ for $n,k>0$.</p>
 </div>
 
-<div class="math-box remark"><div class="math-box-label">Remark</div>
-<p>The multiplication principle applies when choices are <em>independent</em>. If later choices depend on earlier ones (e.g., sampling without replacement), the principle still applies but the number of options at each step must be re-evaluated. For example, choosing an ordered pair of distinct elements from $\{1,\ldots,n\}$ gives $n(n-1)$ options, not $n^2$.</p>
+<div class="math-box theorem"><div class="math-box-label">Theorem — Connection to Surjections</div>
+<p>The number of surjections from $[n]$ to $[k]$ equals $k!\, S(n,k)$. Consequently:
+$$n^k = \sum_{j=0}^{k} S(k,j) \cdot j! \cdot \binom{n}{j} = \sum_{j=0}^{k} S(k,j) \cdot n^{\underline{j}},$$
+where $n^{\underline{j}} = n(n-1)\cdots(n-j+1)$ is the falling factorial. This expresses ordinary powers in the falling factorial basis.</p>
+</div>
+
+<div class="math-box example"><div class="math-box-label">Example — Small Values</div>
+<p>$S(4,2) = 7$: the 7 ways to partition $\{1,2,3,4\}$ into 2 non-empty blocks are $\{1\}\cup\{2,3,4\}$, $\{2\}\cup\{1,3,4\}$, $\{3\}\cup\{1,2,4\}$, $\{4\}\cup\{1,2,3\}$, $\{1,2\}\cup\{3,4\}$, $\{1,3\}\cup\{2,4\}$, $\{1,4\}\cup\{2,3\}$.</p>
 </div>
 
 <hr class="my-5">
 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-<a href="../" class="btn btn-outline-custom">&larr; Basic Counting</a>
-<a href="../02-permutations-and-combinations/" class="btn btn-custom">1.2 Permutations and Combinations &rarr;</a>
+<a href="../02-exponential-generating-functions/" class="btn btn-outline-custom">&larr; 2.2 Exponential Generating Functions</a>
+<a href="../../03-recurrence-relations/" class="btn btn-custom">3. Recurrence Relations &rarr;</a>
 </div></article></section></main>
 <footer class="site-footer"><div class="container text-center"><div class="social-links">
 <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>

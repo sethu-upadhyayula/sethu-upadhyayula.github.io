@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="dark"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1. Basic Counting — Combinatorics</title>
+<title>2. Generating Functions — Combinatorics</title>
 <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -95,32 +95,33 @@
 </nav></aside>
 <section class="math-content">
 <div class="d-lg-none mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Combinatorics</a></div>
-<nav class="breadcrumb-nav"><a href="../../../math/">Math</a> › <a href="../">Combinatorics</a> › <span>Basic Counting</span></nav>
-<article><h1 class="text-accent mb-4">1. Basic Counting</h1>
-<p>Basic counting is the foundation of combinatorics. We develop the addition and multiplication principles, then build up to permutations, combinations, the binomial theorem, and the powerful inclusion–exclusion principle. These tools let us count finite sets exactly without listing every element.</p>
+<nav class="breadcrumb-nav"><a href="../../../math/">Math</a> › <a href="../">Combinatorics</a> › <span>Generating Functions</span></nav>
+<article><h1 class="text-accent mb-4">2. Generating Functions</h1>
+
+<p>Generating functions encode sequences as formal power series, converting combinatorial identities and recurrence relations into algebraic operations. Herbert Wilf called them "a clothesline on which we hang up a sequence of numbers for display."</p>
 
 <div class="math-box definition"><div class="math-box-label">Chapter Overview</div>
-<p>This chapter covers four fundamental topics:</p>
+<p>This chapter develops two types of generating functions:</p>
 <ul>
-  <li><strong>1.1 Addition &amp; Multiplication Principles:</strong> counting via disjoint union and Cartesian product.</li>
-  <li><strong>1.2 Permutations &amp; Combinations:</strong> ordered and unordered selections, with and without repetition.</li>
-  <li><strong>1.3 Binomial Theorem:</strong> expansion of $(x+y)^n$ and combinatorial identities.</li>
-  <li><strong>1.4 Inclusion–Exclusion:</strong> counting unions by alternating sums of intersections.</li>
+  <li><strong>2.1 Ordinary Generating Functions (OGFs):</strong> $A(x) = \sum a_n x^n$; used for unlabelled combinatorial objects and integer partitions.</li>
+  <li><strong>2.2 Exponential Generating Functions (EGFs):</strong> $\hat{A}(x) = \sum a_n x^n/n!$; used for labelled structures such as permutations and set partitions.</li>
+  <li><strong>2.3 Applications:</strong> Catalan numbers, Bell numbers, Stirling numbers, and symbolic methods.</li>
 </ul>
 </div>
 
-<h2 class="mt-4">Motivation</h2>
-<p>Many problems in probability, computer science, and mathematics reduce to counting. How many passwords of a given length exist? How many ways can a committee be formed? How many integers below $n$ are coprime to $n$? Basic counting answers all of these and more.</p>
+<h2 class="mt-4">Why Generating Functions?</h2>
+<p>Generating functions transform recurrence relations into polynomial or rational equations, which are easier to solve. They also encode combinatorial structure: the product of two generating functions corresponds to a "disjoint union" or "Cartesian product" construction on the underlying objects.</p>
 
 <div class="math-box example"><div class="math-box-label">Motivating Example</div>
-<p>A password consists of 3 letters (A–Z) followed by 2 digits (0–9). How many passwords are there?</p>
-<p>By the multiplication principle: $26^3 \times 10^2 = 17{,}576 \times 100 = 1{,}757{,}600$.</p>
+<p>The number of ways to make change for $n$ cents using pennies (1¢) and nickels (5¢) is the coefficient of $x^n$ in:
+$$\frac{1}{1-x} \cdot \frac{1}{1-x^5}.$$
+This product of OGFs reflects the independence of choosing how many pennies and how many nickels to use.</p>
 </div>
 
 <hr class="my-5">
 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-<a href="../" class="btn btn-outline-custom">&larr; Combinatorics</a>
-<a href="01-addition-and-multiplication-principles/" class="btn btn-custom">1.1 Addition and Multiplication Principles &rarr;</a>
+<a href="../01-basic-counting/04-inclusion-exclusion/" class="btn btn-outline-custom">&larr; 1.4 Inclusion–Exclusion</a>
+<a href="01-ordinary-generating-functions/" class="btn btn-custom">2.1 Ordinary Generating Functions &rarr;</a>
 </div></article></section></main>
 <footer class="site-footer"><div class="container text-center"><div class="social-links">
 <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>

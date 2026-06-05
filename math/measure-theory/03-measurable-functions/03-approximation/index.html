@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.3 Approximation by Simple Functions — Measure Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Measure Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Measure Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-sigma-algebras">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-sigma-algebras/" class="toc-chapter-link"><strong>1.</strong> Sigma-Algebras</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-sigma-algebras/01-sigma-algebras-and-generated/">1.1 Sigma-Algebras and Generated</a>
+                        <a href="../../01-sigma-algebras/02-borel-sets/">1.2 Borel Sets</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-measures">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-measures/" class="toc-chapter-link"><strong>2.</strong> Measures</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-measures/01-measures-and-outer-measures/">2.1 Measures and Outer Measures</a>
+                        <a href="../../02-measures/02-caratheodorys-extension/">2.2 Carathéodory's Extension</a>
+                        <a href="../../02-measures/03-lebesgue-measure/">2.3 Lebesgue Measure</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-measurable-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-measurable-functions/" class="toc-chapter-link"><strong>3.</strong> Measurable Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-measurable-functions/01-measurability/">3.1 Measurability</a>
+                        <a href="../../03-measurable-functions/02-simple-functions/">3.2 Simple Functions</a>
+                        <a href="../../03-measurable-functions/03-approximation/">3.3 Approximation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-integration">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-integration/" class="toc-chapter-link"><strong>4.</strong> Integration</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-integration/01-the-lebesgue-integral/">4.1 The Lebesgue Integral</a>
+                        <a href="../../04-integration/02-monotone-convergence-theorem/">4.2 Monotone Convergence Theorem</a>
+                        <a href="../../04-integration/03-dominated-convergence-theorem/">4.3 Dominated Convergence Theorem</a>
+                        <a href="../../04-integration/04-comparison-with-riemann/">4.4 Comparison with Riemann</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-lp-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-lp-spaces/" class="toc-chapter-link"><strong>5.</strong> $L^p$ Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-lp-spaces/01-definition-and-basic-properties/">5.1 Definition and Basic Properties</a>
+                        <a href="../../05-lp-spaces/02-hoelder-and-minkowski/">5.2 Hölder and Minkowski</a>
+                        <a href="../../05-lp-spaces/03-completeness-of-lp/">5.3 Completeness of $L^p$</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-product-measures">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-product-measures/" class="toc-chapter-link"><strong>6.</strong> Product Measures</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-product-measures/01-product-sigma-algebras/">6.1 Product Sigma-Algebras</a>
+                        <a href="../../06-product-measures/02-fubinis-theorem/">6.2 Fubini's Theorem</a>
+                        <a href="../../06-product-measures/03-tonellis-theorem/">6.3 Tonelli's Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-differentiation">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-differentiation/" class="toc-chapter-link"><strong>7.</strong> Differentiation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-differentiation/01-absolutely-continuous-functions/">7.1 Absolutely Continuous Functions</a>
+                        <a href="../../07-differentiation/02-radon-nikodym-theorem/">7.2 Radon-Nikodym Theorem</a>
+                        <a href="../../07-differentiation/03-lebesgue-differentiation-theorem/">7.3 Lebesgue Differentiation Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Measure Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Measure Theory</a> ›
+                <a href="../">3. Measurable Functions</a> ›
+                <span>3.3 Approximation by Simple Functions</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">3.3 Approximation by Simple Functions</h1>
+
+                <p>The fundamental approximation theorem states that every non-negative measurable function can be built up from simple functions by taking a pointwise increasing limit. This theorem is the bridge between the elementary integral of simple functions and the general Lebesgue integral.</p>
+
+                <h2 class="mt-5 mb-3">The Approximation Theorem</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 3.3.1 — Approximation by Simple Functions</div>
+                    <p>Let $f : X \to [0, \infty]$ be a measurable function. Then there exists a sequence of non-negative simple functions $(s_n)_{n \geq 1}$ such that:</p>
+                    <ol>
+                        <li>$0 \leq s_1 \leq s_2 \leq \cdots \leq f$ (the sequence is increasing).</li>
+                        <li>$s_n(x) \to f(x)$ for every $x \in X$ (pointwise convergence).</li>
+                    </ol>
+                    <p class="mb-0">If $f$ is bounded, then $s_n \to f$ uniformly on any set of finite measure.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Explicit Construction</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Construction 3.3.2 — Standard Approximating Sequence</div>
+                    <p>For $n \geq 1$, define:
+                    $$s_n(x) = \frac{\lfloor \min(f(x), n) \cdot 2^n \rfloor}{2^n} = \sum_{k=0}^{n \cdot 2^n - 1} \frac{k}{2^n} \cdot \mathbf{1}_{\{k/2^n \leq f < (k+1)/2^n\}}(x) + n \cdot \mathbf{1}_{\{f \geq n\}}(x).$$</p>
+                    <p class="mb-0">Equivalently, $s_n$ approximates $f$ up to level $n$ with resolution $2^{-n}$: for $f(x) < n$, round down to the nearest multiple of $2^{-n}$; for $f(x) \geq n$, set $s_n(x) = n$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof of Theorem 3.3.1</div>
+                    <p><strong>Monotonicity ($s_n \leq s_{n+1}$)</strong>: The level sets at step $n+1$ refine those at step $n$ (each interval $[k/2^n, (k+1)/2^n)$ splits into two intervals of half the width). So the approximation at resolution $2^{-(n+1)}$ is at least as large as at $2^{-n}$.</p>
+                    <p><strong>Convergence</strong>: Fix $x$. If $f(x) < \infty$, for large enough $n$ we have $f(x) < n$, so $s_n(x) = \lfloor f(x) \cdot 2^n \rfloor / 2^n$. The error satisfies $0 \leq f(x) - s_n(x) < 2^{-n} \to 0$. If $f(x) = \infty$, then $s_n(x) = n \to \infty = f(x)$.</p>
+                    <p class="mb-0"><strong>Uniform convergence for bounded $f$</strong>: If $|f| \leq M$, then for $n > M$ we have $s_n(x) = \lfloor f(x) \cdot 2^n \rfloor / 2^n$ everywhere, and $\sup_x |f(x) - s_n(x)| < 2^{-n} \to 0$. $\square$</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 3.3.3</div>
+                    <p class="mb-0">For $f(x) = x$ on $[0,1]$ and $n = 2$: $s_2(x) = 0$ for $x \in [0, 1/4)$, $= 1/4$ for $x \in [1/4, 1/2)$, $= 1/2$ for $x \in [1/2, 3/4)$, $= 3/4$ for $x \in [3/4, 1]$. The error is at most $2^{-2} = 0.25$. As $n$ increases, $s_n \to f$ uniformly.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Applications</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Role in Integration Theory</div>
+                    <p>The approximation theorem allows us to:</p>
+                    <ul class="mb-0">
+                        <li>Define $\int f \, d\mu = \lim_{n \to \infty} \int s_n \, d\mu$ for non-negative $f$ (the Monotone Convergence Theorem guarantees the limit equals the supremum over all simple $s \leq f$).</li>
+                        <li>Transfer properties (linearity, monotonicity) from simple functions to general integrals by passing to limits.</li>
+                        <li>Prove the Monotone Convergence Theorem by reducing to the behaviour of simple functions.</li>
+                    </ul>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-simple-functions/" class="btn btn-outline-custom">&larr; 3.2 Simple Functions</a>
+                    <a href="../../04-integration/" class="btn btn-custom">4. Integration &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

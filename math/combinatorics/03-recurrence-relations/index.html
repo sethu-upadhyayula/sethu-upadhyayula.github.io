@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="dark"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1. Basic Counting — Combinatorics</title>
+<title>3. Recurrence Relations — Combinatorics</title>
 <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -95,32 +95,29 @@
 </nav></aside>
 <section class="math-content">
 <div class="d-lg-none mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Combinatorics</a></div>
-<nav class="breadcrumb-nav"><a href="../../../math/">Math</a> › <a href="../">Combinatorics</a> › <span>Basic Counting</span></nav>
-<article><h1 class="text-accent mb-4">1. Basic Counting</h1>
-<p>Basic counting is the foundation of combinatorics. We develop the addition and multiplication principles, then build up to permutations, combinations, the binomial theorem, and the powerful inclusion–exclusion principle. These tools let us count finite sets exactly without listing every element.</p>
+<nav class="breadcrumb-nav"><a href="../../../math/">Math</a> › <a href="../">Combinatorics</a> › <span>Recurrence Relations</span></nav>
+<article><h1 class="text-accent mb-4">3. Recurrence Relations</h1>
+
+<p>A <strong>recurrence relation</strong> defines each term of a sequence in terms of previous terms. Recurrences arise naturally in combinatorics (from decomposing structures), algorithms (from divide-and-conquer), and analysis (from differential equations). The main goal is to find a <em>closed form</em> — an explicit formula for $a_n$.</p>
 
 <div class="math-box definition"><div class="math-box-label">Chapter Overview</div>
-<p>This chapter covers four fundamental topics:</p>
 <ul>
-  <li><strong>1.1 Addition &amp; Multiplication Principles:</strong> counting via disjoint union and Cartesian product.</li>
-  <li><strong>1.2 Permutations &amp; Combinations:</strong> ordered and unordered selections, with and without repetition.</li>
-  <li><strong>1.3 Binomial Theorem:</strong> expansion of $(x+y)^n$ and combinatorial identities.</li>
-  <li><strong>1.4 Inclusion–Exclusion:</strong> counting unions by alternating sums of intersections.</li>
+  <li><strong>3.1 Linear Recurrences:</strong> structure of the solution space; homogeneous and non-homogeneous cases.</li>
+  <li><strong>3.2 Characteristic Roots:</strong> the characteristic polynomial method; distinct and repeated roots; Binet's formula.</li>
+  <li><strong>3.3 Divide-and-Conquer Recurrences:</strong> the Master Theorem for $T(n) = aT(n/b) + f(n)$; algorithmic applications.</li>
 </ul>
 </div>
 
-<h2 class="mt-4">Motivation</h2>
-<p>Many problems in probability, computer science, and mathematics reduce to counting. How many passwords of a given length exist? How many ways can a committee be formed? How many integers below $n$ are coprime to $n$? Basic counting answers all of these and more.</p>
-
-<div class="math-box example"><div class="math-box-label">Motivating Example</div>
-<p>A password consists of 3 letters (A–Z) followed by 2 digits (0–9). How many passwords are there?</p>
-<p>By the multiplication principle: $26^3 \times 10^2 = 17{,}576 \times 100 = 1{,}757{,}600$.</p>
+<div class="math-box example"><div class="math-box-label">Motivating Example — Fibonacci</div>
+<p>$F_n = F_{n-1} + F_{n-2}$, $F_0 = 0$, $F_1 = 1$. This simple recurrence has the closed form:
+$$F_n = \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n - \left(\frac{1-\sqrt{5}}{2}\right)^n\right].$$
+Deriving this from the recurrence is the main goal of Section 3.2.</p>
 </div>
 
 <hr class="my-5">
 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-<a href="../" class="btn btn-outline-custom">&larr; Combinatorics</a>
-<a href="01-addition-and-multiplication-principles/" class="btn btn-custom">1.1 Addition and Multiplication Principles &rarr;</a>
+<a href="../02-generating-functions/03-applications/" class="btn btn-outline-custom">&larr; 2.3 Applications</a>
+<a href="01-linear-recurrences/" class="btn btn-custom">3.1 Linear Recurrences &rarr;</a>
 </div></article></section></main>
 <footer class="site-footer"><div class="container text-center"><div class="social-links">
 <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
