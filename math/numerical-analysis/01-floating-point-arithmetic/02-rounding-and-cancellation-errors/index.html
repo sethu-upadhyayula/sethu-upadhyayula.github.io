@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.2 Rounding and Cancellation Errors — Numerical Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Numerical Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Numerical Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-floating-point-arithmetic">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-floating-point-arithmetic/" class="toc-chapter-link"><strong>1.</strong> Floating-Point Arithmetic</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-floating-point-representation/">1.1 Floating-Point Representation</a>
+                        <a href="../02-rounding-and-cancellation-errors/">1.2 Rounding and Cancellation Errors</a>
+                        <a href="../03-condition-numbers/">1.3 Condition Numbers</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-root-finding">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-root-finding/" class="toc-chapter-link"><strong>2.</strong> Root Finding</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-root-finding/01-bisection-method/">2.1 Bisection Method</a>
+                        <a href="../../02-root-finding/02-newton-raphson-method/">2.2 Newton–Raphson Method</a>
+                        <a href="../../02-root-finding/03-secant-method/">2.3 Secant Method</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-linear-systems">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-linear-systems/" class="toc-chapter-link"><strong>3.</strong> Linear Systems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-linear-systems/01-gaussian-elimination/">3.1 Gaussian Elimination</a>
+                        <a href="../../03-linear-systems/02-lu-factorisation/">3.2 LU Factorisation</a>
+                        <a href="../../03-linear-systems/03-iterative-methods/">3.3 Iterative Methods (Jacobi, Gauss–Seidel)</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-interpolation">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-interpolation/" class="toc-chapter-link"><strong>4.</strong> Interpolation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-interpolation/01-polynomial-interpolation/">4.1 Polynomial Interpolation</a>
+                        <a href="../../04-interpolation/02-divided-differences/">4.2 Divided Differences</a>
+                        <a href="../../04-interpolation/03-spline-interpolation/">4.3 Spline Interpolation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-numerical-integration">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-numerical-integration/" class="toc-chapter-link"><strong>5.</strong> Numerical Integration</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-numerical-integration/01-newton-cotes-formulas/">5.1 Newton–Cotes Formulas</a>
+                        <a href="../../05-numerical-integration/02-gaussian-quadrature/">5.2 Gaussian Quadrature</a>
+                        <a href="../../05-numerical-integration/03-adaptive-integration/">5.3 Adaptive Integration</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-numerical-ode-methods">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-numerical-ode-methods/" class="toc-chapter-link"><strong>6.</strong> Numerical ODE Methods</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-numerical-ode-methods/01-eulers-method/">6.1 Euler's Method</a>
+                        <a href="../../06-numerical-ode-methods/02-runge-kutta-methods/">6.2 Runge–Kutta Methods</a>
+                        <a href="../../06-numerical-ode-methods/03-stability-and-stiffness/">6.3 Stability and Stiffness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-eigenvalue-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-eigenvalue-problems/" class="toc-chapter-link"><strong>7.</strong> Eigenvalue Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-eigenvalue-problems/01-power-iteration/">7.1 Power Iteration</a>
+                        <a href="../../07-eigenvalue-problems/02-qr-algorithm/">7.2 QR Algorithm</a>
+                        <a href="../../07-eigenvalue-problems/03-svd-computation/">7.3 SVD Computation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Numerical Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Numerical Analysis</a> ›
+                <a href="../">1. Floating-Point Arithmetic</a> ›
+                <span>1.2 Rounding and Cancellation Errors</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">1.2 Rounding and Cancellation Errors</h1>
+                <p>Every floating-point operation introduces a small rounding error. Understanding how these errors originate, how they propagate through a computation, and when they can catastrophically amplify is essential to writing numerically reliable code.</p>
+
+                <h2 class="mt-4 mb-3">Rounding Modes</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — IEEE 754 Rounding Modes</div>
+                    <p>IEEE 754 specifies four rounding modes for the operation of mapping a real number $x$ to its floating-point approximation $\text{fl}(x)$:</p>
+                    <ul>
+                        <li><strong>Round to nearest, ties to even</strong> (default): choose the floating-point number nearest to $x$; on a tie, choose the one with even last bit.</li>
+                        <li><strong>Round toward $+\infty$</strong> (round up): $\text{fl}(x) \ge x$.</li>
+                        <li><strong>Round toward $-\infty$</strong> (round down): $\text{fl}(x) \le x$.</li>
+                        <li><strong>Round toward zero</strong> (truncation): $|\text{fl}(x)| \le |x|$.</li>
+                    </ul>
+                    <p class="mb-0">The default mode minimises the maximum relative error and is used in almost all scientific computing.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Absolute and Relative Error</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Absolute and Relative Error</div>
+                    <p>Given the true value $x$ and its floating-point approximation $\tilde{x} = \text{fl}(x)$:</p>
+                    <ul>
+                        <li><strong>Absolute error</strong>: $|e| = |\tilde{x} - x|$.</li>
+                        <li><strong>Relative error</strong>: $|e_r| = |\tilde{x} - x| / |x|$ (for $x \ne 0$).</li>
+                    </ul>
+                    <p class="mb-0">Under round-to-nearest, the fundamental rounding error bound is:
+                    $$|\text{fl}(x) - x| \le \tfrac{1}{2}\varepsilon_{\text{mach}}\,|x|,$$
+                    so the relative error in storing any real number is at most $\frac{1}{2}\varepsilon_{\text{mach}} \approx 1.11\times 10^{-16}$ for double precision.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Error Propagation</h2>
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Unit Roundoff Model</div>
+                    <p class="mb-0">For any basic arithmetic operation $\circ \in \{+,-,\times,\div\}$, IEEE 754 arithmetic satisfies the <em>unit roundoff model</em>:
+                    $$\text{fl}(x \circ y) = (x \circ y)(1 + \delta), \quad |\delta| \le \varepsilon_{\text{mach}},$$
+                    provided no overflow or underflow occurs. Each operation introduces at most one unit of relative error.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Error Propagation through a Chain</div>
+                    <p>For a sequence of $n$ operations, the accumulated relative error is bounded by approximately $n\varepsilon_{\text{mach}}$ (using $(1+\delta_1)(1+\delta_2)\cdots(1+\delta_n) \approx 1 + \sum\delta_i$ for small $\delta_i$). More precisely, $\prod_{i=1}^n(1+\delta_i) = 1+\theta_n$ where $|\theta_n| \le \frac{n\varepsilon_{\text{mach}}}{1-n\varepsilon_{\text{mach}}}$ for $n\varepsilon_{\text{mach}} < 1$.</p>
+                    <p class="mb-0">This is typically denoted $|\theta_n| \lesssim n\varepsilon_{\text{mach}}$ and forms the basis of rounding error analysis of algorithms.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Catastrophic Cancellation</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Catastrophic Cancellation</div>
+                    <p class="mb-0"><strong>Catastrophic cancellation</strong> occurs when two nearly equal floating-point numbers are subtracted. The leading significant digits cancel, leaving only the trailing (potentially erroneous) digits. If $a$ and $b$ agree to $k$ decimal digits, the result $a - b$ loses up to $k$ significant digits of precision.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Loss of Significance</div>
+                    <p>Suppose $a = 1.23456789012345$ and $b = 1.23456789012344$ (differ only in the last digit). In double precision both are stored with relative error $\sim \varepsilon_{\text{mach}}$. Their difference $a - b \approx 10^{-14}$ retains only about $10^{-16}/10^{-14} = 1\%$ correct relative precision — effectively all precision is lost.</p>
+                    <p class="mb-0">More concretely: $\text{fl}(a) - \text{fl}(b)$ has relative error of order 1 when $|a-b|/|a| \sim \varepsilon_{\text{mach}}$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Quadratic Formula: A Case Study</h2>
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Unstable vs Stable Quadratic Formula</div>
+                    <p>The roots of $ax^2 + bx + c = 0$ are nominally:
+                    $$x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.$$
+                    When $b^2 \gg 4ac$, we have $\sqrt{b^2 - 4ac} \approx |b|$, and one of the roots involves subtracting two nearly equal quantities.</p>
+                    <p>For $b > 0$, the root $x_1 = (-b + \sqrt{b^2 - 4ac})/(2a)$ suffers catastrophic cancellation. The numerically stable form uses the identity $x_1 x_2 = c/a$:</p>
+                    <ol>
+                        <li>Compute $x_2 = (-b - \sqrt{b^2 - 4ac})/(2a)$ (no cancellation for $b > 0$).</li>
+                        <li>Recover $x_1 = c/(a\,x_2)$.</li>
+                    </ol>
+                    <p class="mb-0"><strong>Numerical example</strong>: $x^2 - (10^8 + 10^{-8})x + 1 = 0$. Roots are $x_1 \approx 10^{-8}$ and $x_2 \approx 10^8$. The naive formula gives $x_1 = (10^8 - \sqrt{10^{16} - 4})/2 \approx 0$ in double precision. The stable formula gives $x_1 = 1/x_2 = 10^{-8}$ exactly.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Kahan Summation Algorithm</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Algorithm — Kahan Compensated Summation</div>
+                    <p>Naive summation $S = \sum_{i=1}^n x_i$ accumulates rounding error proportional to $n\varepsilon_{\text{mach}}$. The <strong>Kahan summation algorithm</strong> reduces this to $O(\varepsilon_{\text{mach}})$ independent of $n$ by tracking a running compensation term $c$:</p>
+                    <pre style="background:var(--bg-card);padding:1em;border-radius:6px;overflow-x:auto;">S = 0; c = 0
+for i = 1 to n:
+    y = x[i] - c          // compensated value
+    t = S + y             // add to sum (low bits of y may be lost)
+    c = (t - S) - y       // recover lost bits
+    S = t
+return S</pre>
+                    <p class="mb-0">The compensation $c$ captures the rounding error from the previous step. The total error is bounded by $2\varepsilon_{\text{mach}}\sum|x_i|$, compared to $n\varepsilon_{\text{mach}}\sum|x_i|$ for naive summation. This is crucial when summing large arrays of floating-point numbers.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Benign vs Catastrophic Cancellation</div>
+                    <p class="mb-0">Not all cancellation is catastrophic. If both operands are exact (e.g., $\text{fl}(a) = a$ and $\text{fl}(b) = b$), then $\text{fl}(a-b) = a - b$ exactly by Sterbenz's lemma (when $a/2 \le b \le 2a$). Cancellation is only harmful when the operands themselves carry earlier rounding errors that are amplified by the subtraction.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3">
+                    <a href="../01-floating-point-representation/" class="btn btn-outline-custom">&larr; 1.1 Floating-Point Representation</a>
+                    <a href="../03-condition-numbers/" class="btn btn-custom">1.3 Condition Numbers &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

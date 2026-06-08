@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Assembly and Implementation — Finite Element Methods</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to FEM</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Finite Element Methods</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-variational-formulation">
+                    <div class="toc-chapter-header">
+                        <a href="../01-variational-formulation/" class="toc-chapter-link"><strong>1.</strong> Variational Formulation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-variational-formulation/01-weak-form-of-bvps/">1.1 Weak Form of BVPs</a>
+                        <a href="../01-variational-formulation/02-function-spaces-for-bvps/">1.2 Function Spaces for BVPs</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-galerkin-method">
+                    <div class="toc-chapter-header">
+                        <a href="../02-galerkin-method/" class="toc-chapter-link"><strong>2.</strong> Galerkin Method</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../02-galerkin-method/01-abstract-galerkin-framework/">2.1 Abstract Galerkin Framework</a>
+                        <a href="../02-galerkin-method/02-lax-milgram-theorem/">2.2 Lax–Milgram Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-finite-element-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../03-finite-element-spaces/" class="toc-chapter-link"><strong>3.</strong> Finite Element Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../03-finite-element-spaces/01-triangulations-and-meshes/">3.1 Triangulations and Meshes</a>
+                        <a href="../03-finite-element-spaces/02-lagrange-elements/">3.2 Lagrange Elements</a>
+                        <a href="../03-finite-element-spaces/03-reference-elements-and-mapping/">3.3 Reference Elements and Mapping</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-assembly-and-implementation">
+                    <div class="toc-chapter-header">
+                        <a href="../04-assembly-and-implementation/" class="toc-chapter-link"><strong>4.</strong> Assembly and Implementation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../04-assembly-and-implementation/01-stiffness-matrix-and-load-vector/">4.1 Stiffness Matrix and Load Vector</a>
+                        <a href="../04-assembly-and-implementation/02-boundary-conditions/">4.2 Boundary Conditions</a>
+                        <a href="../04-assembly-and-implementation/03-solvers-for-linear-systems/">4.3 Solvers for Linear Systems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-error-analysis">
+                    <div class="toc-chapter-header">
+                        <a href="../05-error-analysis/" class="toc-chapter-link"><strong>5.</strong> Error Analysis</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../05-error-analysis/01-ceas-lemma/">5.1 Céa's Lemma</a>
+                        <a href="../05-error-analysis/02-interpolation-error/">5.2 Interpolation Error</a>
+                        <a href="../05-error-analysis/03-a-priori-error-estimates/">5.3 A Priori Error Estimates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-applications-to-elliptic-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../06-applications-to-elliptic-problems/" class="toc-chapter-link"><strong>6.</strong> Applications to Elliptic Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../06-applications-to-elliptic-problems/01-poissons-equation/">6.1 Poisson's Equation</a>
+                        <a href="../06-applications-to-elliptic-problems/02-elasticity/">6.2 Elasticity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-time-dependent-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../07-time-dependent-problems/" class="toc-chapter-link"><strong>7.</strong> Time-Dependent Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../07-time-dependent-problems/01-semi-discrete-formulation/">7.1 Semi-Discrete Formulation</a>
+                        <a href="../07-time-dependent-problems/02-time-discretisation/">7.2 Time Discretisation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to FEM</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../math/">Math</a> ›
+                <a href="../">Finite Element Methods</a> ›
+                <span>4. Assembly and Implementation</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">Chapter 4: Assembly and Implementation</h1>
+                <p>Having chosen the finite element space $V_h$ and established the abstract framework, we now turn to the practical task of constructing the linear system $K\mathbf{u} = \mathbf{f}$. This requires: computing the element stiffness matrices and load vectors element-by-element (exploiting the reference element), assembling them into a global sparse system, incorporating boundary conditions, and finally solving the resulting linear system efficiently.</p>
+                <p>The three sections of this chapter cover each step in turn. Assembly produces a sparse positive definite system; boundary condition enforcement modifies this system to incorporate Dirichlet data; and modern sparse solvers — from direct Cholesky factorisation to preconditioned Krylov methods and multigrid — then deliver the coefficient vector $\mathbf{u}$ from which the FEM solution $u_h = \sum_j u_j\varphi_j$ is reconstructed.</p>
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3">
+                    <a href="../03-finite-element-spaces/03-reference-elements-and-mapping/" class="btn btn-outline-custom">&larr; 3.3 Reference Elements and Mapping</a>
+                    <a href="01-stiffness-matrix-and-load-vector/" class="btn btn-custom">4.1 Stiffness Matrix and Load Vector &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

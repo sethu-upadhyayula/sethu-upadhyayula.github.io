@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.2 Sturm–Liouville Theory — Ordinary Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to ODEs</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Ordinary Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-first-order-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-first-order-odes/" class="toc-chapter-link"><strong>1.</strong> First-Order ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-first-order-odes/01-separable-equations/">1.1 Separable Equations</a>
+                        <a href="../../01-first-order-odes/02-linear-first-order-equations/">1.2 Linear First-Order Equations</a>
+                        <a href="../../01-first-order-odes/03-exact-equations/">1.3 Exact Equations</a>
+                        <a href="../../01-first-order-odes/04-existence-and-uniqueness/">1.4 Existence and Uniqueness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-second-order-linear-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-second-order-linear-odes/" class="toc-chapter-link"><strong>2.</strong> Second-Order Linear ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-second-order-linear-odes/01-constant-coefficient-equations/">2.1 Constant Coefficient Equations</a>
+                        <a href="../../02-second-order-linear-odes/02-reduction-of-order/">2.2 Reduction of Order</a>
+                        <a href="../../02-second-order-linear-odes/03-variation-of-parameters/">2.3 Variation of Parameters</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-systems-of-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-systems-of-odes/" class="toc-chapter-link"><strong>3.</strong> Systems of ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-systems-of-odes/01-linear-systems/">3.1 Linear Systems</a>
+                        <a href="../../03-systems-of-odes/02-phase-plane-analysis/">3.2 Phase Plane Analysis</a>
+                        <a href="../../03-systems-of-odes/03-equilibria-and-stability/">3.3 Equilibria and Stability</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-series-solutions">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-series-solutions/" class="toc-chapter-link"><strong>4.</strong> Series Solutions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-series-solutions/01-power-series-solutions/">4.1 Power Series Solutions</a>
+                        <a href="../../04-series-solutions/02-regular-singular-points/">4.2 Regular Singular Points</a>
+                        <a href="../../04-series-solutions/03-bessel-and-legendre-equations/">4.3 Bessel and Legendre Equations</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-laplace-transforms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-laplace-transforms/" class="toc-chapter-link"><strong>5.</strong> Laplace Transforms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-laplace-transforms/01-definition-and-properties/">5.1 Definition and Properties</a>
+                        <a href="../../05-laplace-transforms/02-solving-odes-via-laplace/">5.2 Solving ODEs via Laplace</a>
+                        <a href="../../05-laplace-transforms/03-convolution/">5.3 Convolution</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-stability-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-stability-theory/" class="toc-chapter-link"><strong>6.</strong> Stability Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-stability-theory/01-lyapunov-stability/">6.1 Lyapunov Stability</a>
+                        <a href="../../06-stability-theory/02-lyapunov-functions/">6.2 Lyapunov Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-boundary-value-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-boundary-value-problems/" class="toc-chapter-link"><strong>7.</strong> Boundary Value Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-boundary-value-problems/01-two-point-boundary-problems/">7.1 Two-Point Boundary Problems</a>
+                        <a href="../../07-boundary-value-problems/02-sturm-liouville-theory/">7.2 Sturm–Liouville Theory</a>
+                        <a href="../../07-boundary-value-problems/03-eigenfunction-expansions/">7.3 Eigenfunction Expansions</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to ODEs</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Ordinary Differential Equations</a> ›
+                <a href="../">7. Boundary Value Problems</a> ›
+                <span>7.2 Sturm–Liouville Theory</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">7.2 Sturm–Liouville Theory</h1>
+
+                <p>Sturm–Liouville theory provides the spectral theory of a broad class of second-order linear differential operators. The key results — real eigenvalues, orthogonal eigenfunctions, completeness — generalise the spectral theorem for symmetric matrices to infinite dimensions and underlie the convergence of all classical eigenfunction expansions.</p>
+
+                <h2 class="mt-5 mb-3">The Sturm–Liouville Operator</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.2.1 — Sturm–Liouville Problem</div>
+                    <p>A <strong>Sturm–Liouville (SL) problem</strong> consists of the equation
+                    $$\mathcal{L}[y] \equiv -\frac{d}{dx}\!\left[p(x)\frac{dy}{dx}\right] + q(x)y = \lambda\,w(x)\,y, \quad a < x < b,$$
+                    together with boundary conditions at $x=a$ and $x=b$. Here:</p>
+                    <ul>
+                        <li>$p, p', q, w$ are continuous on $[a,b]$;</li>
+                        <li>$p(x) > 0$ and $w(x) > 0$ on $(a,b)$ (weight function);</li>
+                        <li>$\lambda$ is the eigenvalue parameter.</li>
+                    </ul>
+                    <p class="mb-0">The problem is <strong>regular</strong> if $p > 0$ and $w > 0$ on the closed interval $[a,b]$; it is <strong>singular</strong> if $p$ or $w$ vanish at an endpoint (as in the Legendre or Bessel equations). Standard separated BCs: $\alpha_1 y(a) + \alpha_2 y'(a) = 0$ and $\beta_1 y(b) + \beta_2 y'(b) = 0$ (not both coefficients zero at each end).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Self-Adjointness</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 7.2.2 — Self-Adjointness</div>
+                    <p>Define the weighted inner product $\langle u, v\rangle_w = \int_a^b u(x)\overline{v(x)}\,w(x)\,dx$. The SL operator $\mathcal{L}$ is <strong>self-adjoint</strong> with respect to this inner product (for functions satisfying the BCs):
+                    $$\langle \mathcal{L}u, v\rangle_w = \langle u, \mathcal{L}v\rangle_w.$$</p>
+                    <p><em>Proof via Green's identity.</em> Integrate by parts twice:
+                    $$\int_a^b \mathcal{L}[u]\cdot \overline{v}\,dx = \int_a^b \mathcal{L}[\overline{v}]\cdot u\,dx + \bigl[p(u'\overline{v} - u\overline{v}')\bigr]_a^b.$$</p>
+                    <p class="mb-0">The boundary term $[p(u'\overline{v}-u\overline{v}')]_a^b$ vanishes when $u$ and $v$ satisfy the separated BCs, establishing self-adjointness. (This is the <strong>Lagrange identity</strong>.)</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Main Spectral Theorem</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.2.3 — Sturm–Liouville Spectral Theorem</div>
+                    <p>For a regular SL problem:</p>
+                    <ol>
+                        <li>All eigenvalues are <strong>real</strong>.</li>
+                        <li>Eigenfunctions corresponding to <strong>distinct eigenvalues</strong> are orthogonal with respect to $\langle\cdot,\cdot\rangle_w$:
+                        $$\lambda_m \neq \lambda_n \implies \langle \phi_m, \phi_n\rangle_w = 0.$$</li>
+                        <li>Each eigenvalue has <strong>geometric multiplicity 1</strong> (simple eigenvalues).</li>
+                        <li>Eigenvalues form a <strong>countably infinite sequence</strong> $\lambda_1 < \lambda_2 < \lambda_3 < \cdots \to +\infty$.</li>
+                        <li>The eigenfunctions $\{\phi_n\}$ form a <strong>complete orthogonal set</strong> in $L^2_w(a,b)$.</li>
+                    </ol>
+                    <p class="mb-0"><em>Proof sketch (reality).</em> Suppose $\mathcal{L}[\phi] = \lambda w\phi$. Then $\langle\mathcal{L}\phi,\phi\rangle_w = \lambda\|\phi\|^2_w$. By self-adjointness, the left side equals $\langle\phi,\mathcal{L}\phi\rangle_w = \overline{\lambda}\|\phi\|^2_w$. Since $\|\phi\|^2_w > 0$, $\lambda = \overline{\lambda}$, so $\lambda \in \mathbb{R}$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Oscillation and Comparison</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.2.4 — Sturm Comparison Theorem</div>
+                    <p class="mb-0">Let $y_1$ and $y_2$ be non-trivial solutions of $(p_1 y')' + q_1 y = 0$ and $(p_2 y')' + q_2 y = 0$ respectively on $(a,b)$, where $0 < p_2 \leq p_1$ and $q_1 \leq q_2$. Then between any two consecutive zeros of $y_1$ there is at least one zero of $y_2$. In particular, as $\lambda$ increases, the $n$-th eigenfunction $\phi_n$ has exactly $n-1$ interior zeros on $(a,b)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Examples as Sturm–Liouville Problems</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.2.5 — Fourier Problem as SL</div>
+                    <p>The problem $-y'' = \lambda y$, $y(0)=0$, $y(L)=0$ is SL with $p=1$, $q=0$, $w=1$. Eigenvalues: $\lambda_n = (n\pi/L)^2$; eigenfunctions: $\phi_n(x) = \sin(n\pi x/L)$, $n=1,2,3,\ldots$ These are orthogonal: $\int_0^L \sin(m\pi x/L)\sin(n\pi x/L)\,dx = \frac{L}{2}\delta_{mn}$.</p>
+                    <p class="mb-0">The eigenfunction expansion is the Fourier sine series (Section 7.3).</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.2.6 — Legendre Equation as SL</div>
+                    <p>The Legendre equation $(1-x^2)y'' - 2xy' + \lambda y = 0$ on $[-1,1]$ is written as
+                    $$-\frac{d}{dx}\!\left[(1-x^2)\frac{dy}{dx}\right] = \lambda y.$$
+                    This is SL with $p(x) = 1-x^2$, $q=0$, $w=1$. The endpoint $x=\pm1$ are singular (since $p(\pm1)=0$), but with the natural boundary condition of boundedness the eigenvalues are $\lambda_n = n(n+1)$, $n=0,1,2,\ldots$, and the eigenfunctions are the Legendre polynomials $P_n(x)$:
+                    $$\int_{-1}^1 P_m(x)P_n(x)\,dx = \frac{2}{2n+1}\delta_{mn}.$$</p>
+                    <p class="mb-0">The weight is $w=1$ here; the orthogonality is with respect to the ordinary $L^2(-1,1)$ inner product.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.2.7 — Bessel Equation as SL</div>
+                    <p class="mb-0">The Bessel equation of order $\nu$: $x^2 y'' + xy' + (\mu^2 x^2 - \nu^2)y = 0$ can be rewritten as
+                    $$-\frac{d}{dx}\!\left[x\frac{dy}{dx}\right] + \frac{\nu^2}{x}y = \mu^2 x\,y.$$
+                    This is SL with $p(x)=x$, $q(x)=\nu^2/x$, $w(x)=x$ on $(0,R)$. The endpoint $x=0$ is singular. With BCs $y(0)$ bounded and $y(R)=0$ (or $y'(R)=0$), the eigenvalues are $\mu^2 = j_{\nu,n}^2/R^2$ where $j_{\nu,n}$ are the positive zeros of $J_\nu$. Eigenfunctions $J_\nu(\mu_n x)$ are orthogonal with weight $w=x$: $\int_0^R J_\nu(\mu_m x)J_\nu(\mu_n x)\,x\,dx = \frac{R^2}{2}[J_{\nu+1}(\mu_n R)]^2\,\delta_{mn}$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-two-point-boundary-problems/" class="btn btn-outline-custom">&larr; 7.1 Two-Point Boundary Problems</a>
+                    <a href="../03-eigenfunction-expansions/" class="btn btn-custom">7.3 Eigenfunction Expansions &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

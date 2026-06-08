@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.1 Euler's Method — Numerical Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Numerical Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Numerical Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-floating-point-arithmetic"><div class="toc-chapter-header"><a href="../../01-floating-point-arithmetic/" class="toc-chapter-link"><strong>1.</strong> Floating-Point Arithmetic</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../01-floating-point-arithmetic/01-floating-point-representation/">1.1 Floating-Point Representation</a><a href="../../01-floating-point-arithmetic/02-rounding-and-cancellation-errors/">1.2 Rounding and Cancellation Errors</a><a href="../../01-floating-point-arithmetic/03-condition-numbers/">1.3 Condition Numbers</a></div></div>
+                <div class="toc-chapter" data-chapter="02-root-finding"><div class="toc-chapter-header"><a href="../../02-root-finding/" class="toc-chapter-link"><strong>2.</strong> Root Finding</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../02-root-finding/01-bisection-method/">2.1 Bisection Method</a><a href="../../02-root-finding/02-newton-raphson-method/">2.2 Newton–Raphson Method</a><a href="../../02-root-finding/03-secant-method/">2.3 Secant Method</a></div></div>
+                <div class="toc-chapter" data-chapter="03-linear-systems"><div class="toc-chapter-header"><a href="../../03-linear-systems/" class="toc-chapter-link"><strong>3.</strong> Linear Systems</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../03-linear-systems/01-gaussian-elimination/">3.1 Gaussian Elimination</a><a href="../../03-linear-systems/02-lu-factorisation/">3.2 LU Factorisation</a><a href="../../03-linear-systems/03-iterative-methods/">3.3 Iterative Methods (Jacobi, Gauss–Seidel)</a></div></div>
+                <div class="toc-chapter" data-chapter="04-interpolation"><div class="toc-chapter-header"><a href="../../04-interpolation/" class="toc-chapter-link"><strong>4.</strong> Interpolation</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../04-interpolation/01-polynomial-interpolation/">4.1 Polynomial Interpolation</a><a href="../../04-interpolation/02-divided-differences/">4.2 Divided Differences</a><a href="../../04-interpolation/03-spline-interpolation/">4.3 Spline Interpolation</a></div></div>
+                <div class="toc-chapter" data-chapter="05-numerical-integration"><div class="toc-chapter-header"><a href="../../05-numerical-integration/" class="toc-chapter-link"><strong>5.</strong> Numerical Integration</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../05-numerical-integration/01-newton-cotes-formulas/">5.1 Newton–Cotes Formulas</a><a href="../../05-numerical-integration/02-gaussian-quadrature/">5.2 Gaussian Quadrature</a><a href="../../05-numerical-integration/03-adaptive-integration/">5.3 Adaptive Integration</a></div></div>
+                <div class="toc-chapter" data-chapter="06-numerical-ode-methods"><div class="toc-chapter-header"><a href="../../06-numerical-ode-methods/" class="toc-chapter-link"><strong>6.</strong> Numerical ODE Methods</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../01-eulers-method/">6.1 Euler's Method</a><a href="../02-runge-kutta-methods/">6.2 Runge–Kutta Methods</a><a href="../03-stability-and-stiffness/">6.3 Stability and Stiffness</a></div></div>
+                <div class="toc-chapter" data-chapter="07-eigenvalue-problems"><div class="toc-chapter-header"><a href="../../07-eigenvalue-problems/" class="toc-chapter-link"><strong>7.</strong> Eigenvalue Problems</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../07-eigenvalue-problems/01-power-iteration/">7.1 Power Iteration</a><a href="../../07-eigenvalue-problems/02-qr-algorithm/">7.2 QR Algorithm</a><a href="../../07-eigenvalue-problems/03-svd-computation/">7.3 SVD Computation</a></div></div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Numerical Analysis</a></div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> › <a href="../../">Numerical Analysis</a> › <a href="../">6. Numerical ODE Methods</a> › <span>6.1 Euler's Method</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">6.1 Euler's Method</h1>
+                <p>Euler's method is the simplest numerical scheme for the initial value problem. Though rarely used in practice due to its low accuracy, it introduces all the key ideas — local truncation error, global error accumulation, stability, consistency, and convergence — that carry over to higher-order methods.</p>
+
+                <h2 class="mt-5 mb-3">The Initial Value Problem</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Initial Value Problem</div>
+                    <p class="mb-0">The <strong>initial value problem (IVP)</strong> is: find $y:[t_0,T]\to\mathbb{R}$ satisfying
+                    $$y'(t) = f(t,y(t)), \quad y(t_0) = y_0.$$
+                    Under the Picard–Lindelöf theorem, a unique solution exists on $[t_0,T]$ whenever $f$ is continuous and Lipschitz in $y$: $|f(t,u)-f(t,v)|\le L|u-v|$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Forward (Explicit) Euler</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Forward Euler Method</div>
+                    <p>Partition $[t_0,T]$ into $N$ equal steps of size $h = (T-t_0)/N$, so $t_n = t_0+nh$. The <strong>forward Euler</strong> scheme is:
+                    $$y_{n+1} = y_n + h\,f(t_n,y_n), \quad n = 0,1,\ldots,N-1.$$</p>
+                    <p class="mb-0">This follows from truncating the Taylor expansion $y(t_{n+1}) = y(t_n) + h\,y'(t_n) + \tfrac{h^2}{2}y''(t_n) + \cdots$ after the first-order term and replacing $y'(t_n)$ by $f(t_n,y_n)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Local Truncation Error</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Local Truncation Error</div>
+                    <p class="mb-0">The <strong>local truncation error (LTE)</strong> is the residual when the exact solution is substituted into the scheme:
+                    $$\tau_n = \frac{y(t_{n+1})-y(t_n)}{h} - f(t_n,y(t_n)) = \frac{h}{2}y''(t_n) + O(h^2).$$
+                    So $\tau_n = O(h)$, and the forward Euler method is <strong>first-order consistent</strong>.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Global Error</h2>
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Global Error of Forward Euler</div>
+                    <p class="mb-0">Let $e_n = y(t_n) - y_n$ be the global error. Under the Lipschitz condition with constant $L$,
+                    $$|e_n| \le \frac{h\,M_2}{2L}\bigl(e^{L(t_n-t_0)}-1\bigr),$$
+                    where $M_2 = \max_{[t_0,T]}|y''(t)|$. In particular the global error is $O(h)$: halving $h$ halves the error. Note that $n = (T-t_0)/h$ steps each contribute LTE $O(h^2)$, and $n \cdot O(h^2) = O(h)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Backward (Implicit) Euler</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Backward Euler Method</div>
+                    <p class="mb-0">The <strong>backward Euler</strong> scheme evaluates $f$ at the new time level:
+                    $$y_{n+1} = y_n + h\,f(t_{n+1},y_{n+1}).$$
+                    This is an implicit equation in $y_{n+1}$ and must be solved at each step, typically by Newton's method. It has the same first-order accuracy as forward Euler ($\tau_n = O(h)$), but its stability properties are dramatically better.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Stability on the Test Equation</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Dahlquist Test Equation</div>
+                    <p class="mb-0">The <strong>test equation</strong> is $y' = \lambda y$ with $\lambda \in \mathbb{C}$, $\text{Re}\,\lambda < 0$ (so the exact solution $y(t) = y_0 e^{\lambda t}\to 0$). Applied to this equation, any one-step method produces $y_{n+1} = R(h\lambda)\,y_n$ for some <strong>stability function</strong> $R(z)$. The method is <em>stable</em> on this equation iff $|R(h\lambda)| \le 1$.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Stability Regions</div>
+                    <p>For forward Euler, $R(z) = 1+z$, so $|R(h\lambda)|\le 1$ iff $h\lambda$ lies in the unit disk centred at $-1$: the stability region is $\{z\in\mathbb{C}: |1+z|\le 1\}$.</p>
+                    <p class="mb-0">For backward Euler, $R(z)=1/(1-z)$, so $|R(h\lambda)|\le 1$ for all $\text{Re}(h\lambda)\le 0$: backward Euler is <strong>unconditionally stable</strong> (A-stable) for the test equation. This is why implicit methods are essential for stiff problems.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Dahlquist's Convergence Theorem</h2>
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Dahlquist: Consistency + Zero-Stability $\Rightarrow$ Convergence</div>
+                    <p class="mb-0">A linear multistep method is <strong>convergent</strong> (global error $\to 0$ as $h\to 0$) if and only if it is <strong>consistent</strong> (LTE $\to 0$) and <strong>zero-stable</strong> (all roots of the first characteristic polynomial lie in the unit disk, with those on the boundary being simple). Both forward and backward Euler satisfy this theorem and converge at first order.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3">
+                    <a href="../" class="btn btn-outline-custom">&larr; 6. Numerical ODE Methods</a>
+                    <a href="../02-runge-kutta-methods/" class="btn btn-custom">6.2 Runge–Kutta Methods &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links"><a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a><a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a></div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.1 Two-Point Boundary Problems — Ordinary Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to ODEs</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Ordinary Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-first-order-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-first-order-odes/" class="toc-chapter-link"><strong>1.</strong> First-Order ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-first-order-odes/01-separable-equations/">1.1 Separable Equations</a>
+                        <a href="../../01-first-order-odes/02-linear-first-order-equations/">1.2 Linear First-Order Equations</a>
+                        <a href="../../01-first-order-odes/03-exact-equations/">1.3 Exact Equations</a>
+                        <a href="../../01-first-order-odes/04-existence-and-uniqueness/">1.4 Existence and Uniqueness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-second-order-linear-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-second-order-linear-odes/" class="toc-chapter-link"><strong>2.</strong> Second-Order Linear ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-second-order-linear-odes/01-constant-coefficient-equations/">2.1 Constant Coefficient Equations</a>
+                        <a href="../../02-second-order-linear-odes/02-reduction-of-order/">2.2 Reduction of Order</a>
+                        <a href="../../02-second-order-linear-odes/03-variation-of-parameters/">2.3 Variation of Parameters</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-systems-of-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-systems-of-odes/" class="toc-chapter-link"><strong>3.</strong> Systems of ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-systems-of-odes/01-linear-systems/">3.1 Linear Systems</a>
+                        <a href="../../03-systems-of-odes/02-phase-plane-analysis/">3.2 Phase Plane Analysis</a>
+                        <a href="../../03-systems-of-odes/03-equilibria-and-stability/">3.3 Equilibria and Stability</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-series-solutions">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-series-solutions/" class="toc-chapter-link"><strong>4.</strong> Series Solutions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-series-solutions/01-power-series-solutions/">4.1 Power Series Solutions</a>
+                        <a href="../../04-series-solutions/02-regular-singular-points/">4.2 Regular Singular Points</a>
+                        <a href="../../04-series-solutions/03-bessel-and-legendre-equations/">4.3 Bessel and Legendre Equations</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-laplace-transforms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-laplace-transforms/" class="toc-chapter-link"><strong>5.</strong> Laplace Transforms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-laplace-transforms/01-definition-and-properties/">5.1 Definition and Properties</a>
+                        <a href="../../05-laplace-transforms/02-solving-odes-via-laplace/">5.2 Solving ODEs via Laplace</a>
+                        <a href="../../05-laplace-transforms/03-convolution/">5.3 Convolution</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-stability-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-stability-theory/" class="toc-chapter-link"><strong>6.</strong> Stability Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-stability-theory/01-lyapunov-stability/">6.1 Lyapunov Stability</a>
+                        <a href="../../06-stability-theory/02-lyapunov-functions/">6.2 Lyapunov Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-boundary-value-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-boundary-value-problems/" class="toc-chapter-link"><strong>7.</strong> Boundary Value Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-boundary-value-problems/01-two-point-boundary-problems/">7.1 Two-Point Boundary Problems</a>
+                        <a href="../../07-boundary-value-problems/02-sturm-liouville-theory/">7.2 Sturm–Liouville Theory</a>
+                        <a href="../../07-boundary-value-problems/03-eigenfunction-expansions/">7.3 Eigenfunction Expansions</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to ODEs</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Ordinary Differential Equations</a> ›
+                <a href="../">7. Boundary Value Problems</a> ›
+                <span>7.1 Two-Point Boundary Problems</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">7.1 Two-Point Boundary Problems</h1>
+
+                <p>A two-point boundary value problem (BVP) specifies conditions on a solution at two distinct points rather than prescribing all data at a single point. This seemingly small change has profound consequences for existence and uniqueness.</p>
+
+                <h2 class="mt-5 mb-3">Problem Formulation</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.1.1 — Two-Point BVP</div>
+                    <p class="mb-0">A <strong>two-point boundary value problem</strong> consists of the ODE
+                    $$y'' = f(x, y, y'), \quad a \leq x \leq b,$$
+                    together with boundary conditions $y(a) = \alpha$ and $y(b) = \beta$ (Dirichlet conditions). More generally, boundary conditions may involve $y'$, e.g. $y'(a) = \alpha$ (Neumann) or $y(a) + \gamma y'(a) = \alpha$ (Robin). Unlike IVPs, the BVP may have zero, one, or infinitely many solutions.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.1.2 — Non-uniqueness and Non-existence</div>
+                    <p>Consider $y'' + y = 0$, $y(0) = 0$, $y(\pi) = 0$. The general solution is $y = A\sin x + B\cos x$. Applying $y(0)=0$: $B=0$, so $y = A\sin x$. Then $y(\pi) = 0$ for <em>every</em> $A$ — infinitely many solutions. Changing the right endpoint: $y'' + y = 0$, $y(0)=0$, $y(\pi) = 1$ has <em>no</em> solution (since $y(\pi) = 0$ for all solutions satisfying $y(0)=0$).</p>
+                    <p class="mb-0">Contrast with the IVP $y''+y=0$, $y(0)=0$, $y'(0)=1$, which has the unique solution $y=\sin x$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Shooting Method</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.1.3 — Shooting Method</div>
+                    <p>Convert the BVP $y'' = f(x,y,y')$, $y(a)=\alpha$, $y(b)=\beta$ into a root-finding problem. For a parameter $s$ (the initial slope), let $y(x;s)$ solve the IVP
+                    $$y'' = f(x,y,y'), \quad y(a)=\alpha,\quad y'(a) = s.$$
+                    Define the <strong>shooting function</strong> $\phi(s) = y(b;s) - \beta$. We seek $s^*$ with $\phi(s^*)=0$.</p>
+                    <p><strong>Secant method update:</strong> Given iterates $s_k, s_{k-1}$:
+                    $$s_{k+1} = s_k - \phi(s_k)\,\frac{s_k - s_{k-1}}{\phi(s_k) - \phi(s_{k-1})}.$$</p>
+                    <p class="mb-0">For linear BVPs, $\phi(s)$ is affine in $s$, so one step suffices: compute $y(x;s_1)$ and $y(x;s_2)$, then $s^* = s_1 - \phi(s_1)(s_2-s_1)/(\phi(s_2)-\phi(s_1))$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Finite Difference Discretisation</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.1.4 — Finite Difference Method</div>
+                    <p>Discretise $[a,b]$ with a uniform grid $x_i = a + ih$, $h = (b-a)/N$, $i = 0, 1, \ldots, N$. Replace $y''$ by the second-order central difference:
+                    $$y''(x_i) \approx \frac{y_{i-1} - 2y_i + y_{i+1}}{h^2}.$$
+                    For the linear BVP $y'' + p(x)y' + q(x)y = r(x)$, $y_0=\alpha$, $y_N=\beta$, this gives a <strong>tridiagonal linear system</strong> for the unknowns $y_1, \ldots, y_{N-1}$:
+                    $$\frac{y_{i-1} - 2y_i + y_{i+1}}{h^2} + p_i \frac{y_{i+1}-y_{i-1}}{2h} + q_i y_i = r_i, \quad i=1,\ldots,N-1.$$
+                    In matrix form $T\mathbf{y} = \mathbf{r}$ where $T$ is tridiagonal (Thomas algorithm solves this in $O(N)$ operations). The method has global truncation error $O(h^2)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Green's Function</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.1.5 — Green's Function</div>
+                    <p>For the linear BVP $\mathcal{L}[y] \equiv y'' + p(x)y' + q(x)y = f(x)$, $y(a)=0$, $y(b)=0$, the <strong>Green's function</strong> $G(x,\xi)$ is defined by $\mathcal{L}_x G(x,\xi) = \delta(x-\xi)$ with homogeneous BCs. The solution is then
+                    $$y(x) = \int_a^b G(x,\xi)\,f(\xi)\,d\xi.$$</p>
+                    <p>Explicitly, if $y_1, y_2$ are solutions of the homogeneous equation $\mathcal{L}[y]=0$ satisfying $y_1(a)=0$ and $y_2(b)=0$ respectively, and $W = y_1 y_2' - y_1' y_2$ is their (constant, up to $p$-factor) Wronskian, then:
+                    $$G(x,\xi) = \begin{cases} \dfrac{y_1(x)\,y_2(\xi)}{W(\xi)}, & a \leq x \leq \xi,\\[6pt] \dfrac{y_1(\xi)\,y_2(x)}{W(\xi)}, & \xi \leq x \leq b.\end{cases}$$</p>
+                    <p class="mb-0">$G$ is symmetric: $G(x,\xi)=G(\xi,x)$ (for self-adjoint $\mathcal{L}$). Green's functions exist precisely when $\mathcal{L}[y]=0$ has only the trivial solution satisfying the BCs, i.e., when the associated homogeneous BVP has no non-trivial solution.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.1.6 — Green's Function for $-y'' = f$</div>
+                    <p>Solve $-y'' = f(x)$, $y(0)=0$, $y(1)=0$. Homogeneous solutions: $y_1 = x$ (satisfies $y_1(0)=0$) and $y_2 = 1-x$ (satisfies $y_2(1)=0$). Wronskian: $W = y_1 y_2' - y_1' y_2 = x(-1) - (1)(1-x) = -x - 1 + x = -1$. So $W = -1$.
+                    $$G(x,\xi) = \begin{cases} \dfrac{x(1-\xi)}{1}, & 0 \leq x \leq \xi,\\[6pt] \dfrac{\xi(1-x)}{1}, & \xi \leq x \leq 1.\end{cases}$$
+                    (Here the sign from $-y''=f$ is absorbed.) The solution is $y(x) = \int_0^1 G(x,\xi)f(\xi)\,d\xi.$</p>
+                    <p class="mb-0">Verification: $-G_{xx} = \delta(x-\xi)$. For $x\neq\xi$, $G_{xx}=0$; the jump condition $[G_x]_{x=\xi} = G_x(\xi^+,\xi) - G_x(\xi^-,\xi) = -(1-\xi) - \xi = -1$ gives $-[G_x]=-1\cdot(-1)=1=\delta$-coefficient ✓.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 7. Boundary Value Problems</a>
+                    <a href="../02-sturm-liouville-theory/" class="btn btn-custom">7.2 Sturm–Liouville Theory &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

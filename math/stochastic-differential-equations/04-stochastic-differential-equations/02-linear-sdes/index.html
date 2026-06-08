@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.2 Linear SDEs — Stochastic Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Stochastic Differential Equations</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Stochastic Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-brownian-motion-and-filtrations">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-brownian-motion-and-filtrations/" class="toc-chapter-link"><strong>1.</strong> Brownian Motion and Filtrations</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-brownian-motion-and-filtrations/01-brownian-motion/">1.1 Brownian Motion</a>
+                        <a href="../../01-brownian-motion-and-filtrations/02-filtrations-and-adaptedness/">1.2 Filtrations and Adaptedness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-stochastic-integration">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-stochastic-integration/" class="toc-chapter-link"><strong>2.</strong> Stochastic Integration</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-stochastic-integration/01-ito-integral/">2.1 Itô Integral</a>
+                        <a href="../../02-stochastic-integration/02-properties-of-the-ito-integral/">2.2 Properties of the Itô Integral</a>
+                        <a href="../../02-stochastic-integration/03-ito-isometry/">2.3 Itô Isometry</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-itos-formula">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-itos-formula/" class="toc-chapter-link"><strong>3.</strong> Itô's Formula</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-itos-formula/01-one-dimensional-ito-formula/">3.1 One-Dimensional Itô Formula</a>
+                        <a href="../../03-itos-formula/02-multi-dimensional-ito-formula/">3.2 Multi-Dimensional Itô Formula</a>
+                        <a href="../../03-itos-formula/03-applications/">3.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-stochastic-differential-equations">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-stochastic-differential-equations/" class="toc-chapter-link"><strong>4.</strong> Stochastic Differential Equations</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-stochastic-differential-equations/01-existence-and-uniqueness/">4.1 Existence and Uniqueness</a>
+                        <a href="../../04-stochastic-differential-equations/02-linear-sdes/">4.2 Linear SDEs</a>
+                        <a href="../../04-stochastic-differential-equations/03-geometric-brownian-motion/">4.3 Geometric Brownian Motion</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-feynman-kac-formula">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-feynman-kac-formula/" class="toc-chapter-link"><strong>5.</strong> The Feynman–Kac Formula</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-feynman-kac-formula/01-connections-to-pdes/">5.1 Connections to PDEs</a>
+                        <a href="../../05-feynman-kac-formula/02-feynman-kac/">5.2 Feynman–Kac</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-change-of-measure">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-change-of-measure/" class="toc-chapter-link"><strong>6.</strong> Change of Measure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-change-of-measure/01-girsanovs-theorem/">6.1 Girsanov's Theorem</a>
+                        <a href="../../06-change-of-measure/02-applications/">6.2 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-numerical-methods-for-sdes">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-numerical-methods-for-sdes/" class="toc-chapter-link"><strong>7.</strong> Numerical Methods for SDEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-numerical-methods-for-sdes/01-euler-maruyama/">7.1 Euler–Maruyama Scheme</a>
+                        <a href="../../07-numerical-methods-for-sdes/02-milstein-scheme/">7.2 Milstein Scheme</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Stochastic Differential Equations</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Stochastic Differential Equations</a> ›
+                <a href="../">4. Stochastic Differential Equations</a> ›
+                <span>4.2 Linear SDEs</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 Linear SDEs</h1>
+
+                <p>A linear SDE is one in which the coefficients are linear (affine) functions of the state. Such equations can always be solved explicitly using an integrating factor, a technique made rigorous by Itô's formula.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.2.1 — General Linear SDE</div>
+                    <p class="mb-0">A <strong>general linear SDE</strong> has the form</p>
+                    $$dX_t = \bigl(a(t)X_t + b(t)\bigr)dt + \bigl(c(t)X_t + d(t)\bigr)dW_t, \quad X_0 = x_0,$$
+                    where $a, b, c, d: [0,T] \to \mathbb{R}$ are deterministic, continuous functions.
+                </div>
+
+                <h2 class="mt-5 mb-3">Solving the Homogeneous Linear SDE</h2>
+
+                <p>We first consider the <em>homogeneous</em> case $b \equiv 0$, $d \equiv 0$:</p>
+                $$dX_t = a(t)X_t\,dt + c(t)X_t\,dW_t.$$
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.2.2 — Explicit Solution of the Homogeneous Linear SDE</div>
+                    <p>The solution of $dX = a(t)X\,dt + c(t)X\,dW$ with $X_0 = x_0$ is</p>
+                    $$X_t = x_0 \exp\!\left(\int_0^t \!\bigl(a(s) - \tfrac{1}{2}c(s)^2\bigr)ds + \int_0^t c(s)\,dW_s\right).$$
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof via Itô's Formula</div>
+                    <p>Let $Z_t = \int_0^t (a(s) - \frac{1}{2}c(s)^2)ds + \int_0^t c(s)\,dW_s$, so $dZ_t = (a - \frac{1}{2}c^2)dt + c\,dW_t$. Apply Itô's formula to $f(z) = x_0 e^z$:</p>
+                    $$d(x_0 e^{Z_t}) = x_0 e^{Z_t} dZ_t + \frac{1}{2}x_0 e^{Z_t}(dZ_t)^2.$$
+                    Since $(dZ_t)^2 = c(t)^2\,dt$:
+                    $$= x_0 e^{Z_t}\!\left[\bigl(a - \tfrac{1}{2}c^2\bigr)dt + c\,dW_t + \tfrac{1}{2}c^2\,dt\right] = x_0 e^{Z_t}\bigl(a\,dt + c\,dW_t\bigr) = a(t)X_t\,dt + c(t)X_t\,dW_t.$$
+                    Hence $X_t = x_0 e^{Z_t}$ satisfies the SDE. $\square$
+                </div>
+
+                <h2 class="mt-5 mb-3">The Ornstein–Uhlenbeck Process</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.2.3 — Ornstein–Uhlenbeck Process</div>
+                    <p>The <strong>Ornstein–Uhlenbeck (OU) process</strong> satisfies the SDE</p>
+                    $$dX_t = \theta(\mu - X_t)\,dt + \sigma\,dW_t, \quad X_0 = x_0,$$
+                    <p class="mb-0">where $\theta > 0$ is the mean-reversion speed, $\mu \in \mathbb{R}$ the long-run mean, and $\sigma > 0$ the diffusion coefficient. This is the canonical linear SDE with additive noise, widely used in interest rate modelling (Vasicek model) and physics (velocity in a fluid).</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.2.4 — Explicit Solution of the OU Process</div>
+                    <p>The OU process has the explicit solution</p>
+                    $$X_t = \mu + (x_0 - \mu)e^{-\theta t} + \sigma \int_0^t e^{-\theta(t-s)}\,dW_s.$$
+                    <p>Consequently, $X_t$ is Gaussian with</p>
+                    $$\mathbb{E}[X_t] = \mu + (x_0 - \mu)e^{-\theta t}, \qquad \mathrm{Var}(X_t) = \frac{\sigma^2}{2\theta}\bigl(1 - e^{-2\theta t}\bigr).$$
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof via Integrating Factor</div>
+                    <p>Multiply both sides of the SDE by the integrating factor $e^{\theta t}$ and apply Itô's product rule to $Y_t = e^{\theta t} X_t$:</p>
+                    $$dY_t = \theta e^{\theta t} X_t\,dt + e^{\theta t}\,dX_t = e^{\theta t}\bigl[\theta X_t\,dt + \theta(\mu - X_t)\,dt + \sigma\,dW_t\bigr] = \theta\mu e^{\theta t}\,dt + \sigma e^{\theta t}\,dW_t.$$
+                    Integrating from $0$ to $t$:
+                    $$Y_t - x_0 = \mu(e^{\theta t} - 1) + \sigma\int_0^t e^{\theta s}\,dW_s.$$
+                    Dividing by $e^{\theta t}$ gives the result. $\square$
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark 4.2.5 — Stationary Distribution</div>
+                    <p class="mb-0">As $t \to \infty$, $\mathbb{E}[X_t] \to \mu$ and $\mathrm{Var}(X_t) \to \frac{\sigma^2}{2\theta}$. The process converges in distribution to $\mathcal{N}\!\left(\mu, \frac{\sigma^2}{2\theta}\right)$, which is the unique stationary distribution of the OU process. This makes it the prototypical mean-reverting diffusion.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 4.2.6 — General Inhomogeneous Linear SDE</div>
+                    <p>For the full equation $dX = (aX + b)\,dt + (cX + d)\,dW$, define the fundamental solution $\Phi_t$ by $d\Phi = a\Phi\,dt + c\Phi\,dW$, $\Phi_0 = 1$, i.e.,</p>
+                    $$\Phi_t = \exp\!\left(\bigl(a - \tfrac{1}{2}c^2\bigr)t + cW_t\right).$$
+                    Then by the variation-of-constants formula:
+                    $$X_t = \Phi_t\!\left[x_0 + \int_0^t \Phi_s^{-1}(b - cd)\,ds + \int_0^t \Phi_s^{-1} d\,dW_s\right].$$
+                    This reduces to the OU formula when $c = 0$ and generalises it to the multiplicative noise case.
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-existence-and-uniqueness/" class="btn btn-outline-custom">&larr; 4.1 Existence and Uniqueness</a>
+                    <a href="../03-geometric-brownian-motion/" class="btn btn-custom">4.3 Geometric Brownian Motion &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

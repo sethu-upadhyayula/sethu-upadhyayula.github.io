@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.2 Time Discretisation — Finite Element Methods</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to FEM</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Finite Element Methods</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-variational-formulation">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-variational-formulation/" class="toc-chapter-link"><strong>1.</strong> Variational Formulation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-variational-formulation/01-weak-form-of-bvps/">1.1 Weak Form of BVPs</a>
+                        <a href="../../01-variational-formulation/02-function-spaces-for-bvps/">1.2 Function Spaces for BVPs</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-galerkin-method">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-galerkin-method/" class="toc-chapter-link"><strong>2.</strong> Galerkin Method</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-galerkin-method/01-abstract-galerkin-framework/">2.1 Abstract Galerkin Framework</a>
+                        <a href="../../02-galerkin-method/02-lax-milgram-theorem/">2.2 Lax–Milgram Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-finite-element-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-finite-element-spaces/" class="toc-chapter-link"><strong>3.</strong> Finite Element Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-finite-element-spaces/01-triangulations-and-meshes/">3.1 Triangulations and Meshes</a>
+                        <a href="../../03-finite-element-spaces/02-lagrange-elements/">3.2 Lagrange Elements</a>
+                        <a href="../../03-finite-element-spaces/03-reference-elements-and-mapping/">3.3 Reference Elements and Mapping</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-assembly-and-implementation">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-assembly-and-implementation/" class="toc-chapter-link"><strong>4.</strong> Assembly and Implementation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-assembly-and-implementation/01-stiffness-matrix-and-load-vector/">4.1 Stiffness Matrix and Load Vector</a>
+                        <a href="../../04-assembly-and-implementation/02-boundary-conditions/">4.2 Boundary Conditions</a>
+                        <a href="../../04-assembly-and-implementation/03-solvers-for-linear-systems/">4.3 Solvers for Linear Systems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-error-analysis">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-error-analysis/" class="toc-chapter-link"><strong>5.</strong> Error Analysis</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-error-analysis/01-ceas-lemma/">5.1 Céa's Lemma</a>
+                        <a href="../../05-error-analysis/02-interpolation-error/">5.2 Interpolation Error</a>
+                        <a href="../../05-error-analysis/03-a-priori-error-estimates/">5.3 A Priori Error Estimates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-applications-to-elliptic-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-applications-to-elliptic-problems/" class="toc-chapter-link"><strong>6.</strong> Applications to Elliptic Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-applications-to-elliptic-problems/01-poissons-equation/">6.1 Poisson's Equation</a>
+                        <a href="../../06-applications-to-elliptic-problems/02-elasticity/">6.2 Elasticity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-time-dependent-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-time-dependent-problems/" class="toc-chapter-link"><strong>7.</strong> Time-Dependent Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-time-dependent-problems/01-semi-discrete-formulation/">7.1 Semi-Discrete Formulation</a>
+                        <a href="../../07-time-dependent-problems/02-time-discretisation/">7.2 Time Discretisation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to FEM</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Finite Element Methods</a> ›
+                <a href="../">7. Time-Dependent Problems</a> ›
+                <span>7.2 Time Discretisation</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">7.2 Time Discretisation</h1>
+
+                <p>To complete the numerical scheme, we discretise the semi-discrete ODE system $M\dot{\mathbf{u}} + K\mathbf{u} = \mathbf{f}(t)$ in time. A uniform partition $0 = t_0 < t_1 < \cdots < t_n = T$ with step $\Delta t = T/n$ is used. We denote by $\mathbf{u}^m$ the approximation to $\mathbf{u}(t_m)$.</p>
+
+                <h2 class="mt-4 mb-3">The $\theta$-Scheme</h2>
+
+                <p>The <strong>$\theta$-scheme</strong> is a one-parameter family of one-step methods that unifies the three most commonly used time-steppers. Replace the time derivative by a backward difference and evaluate the spatial operator at a weighted average of the current and next time levels:</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — $\theta$-Scheme</div>
+                    <p class="mb-0">Given $\mathbf{u}^n$, find $\mathbf{u}^{n+1}$ such that
+                    $$M\,\frac{\mathbf{u}^{n+1} - \mathbf{u}^n}{\Delta t} + K\bigl[\theta\,\mathbf{u}^{n+1} + (1-\theta)\,\mathbf{u}^n\bigr] = \theta\,\mathbf{f}^{n+1} + (1-\theta)\,\mathbf{f}^n,$$
+                    where $\mathbf{f}^m = \mathbf{f}(t_m)$ and $\theta \in [0,1]$. Rearranging, this is the linear system
+                    $$(M + \theta\Delta t\, K)\,\mathbf{u}^{n+1} = (M - (1-\theta)\Delta t\, K)\,\mathbf{u}^n + \Delta t\,(\theta\,\mathbf{f}^{n+1} + (1-\theta)\,\mathbf{f}^n).$$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Special Cases</h2>
+
+                <div class="math-box">
+                    <div class="math-box-label">Special Cases of the $\theta$-Scheme</div>
+                    <div class="table-responsive">
+                    <table class="table table-sm table-bordered mb-0" style="font-size:0.92em;">
+                        <thead>
+                            <tr>
+                                <th>$\theta$</th>
+                                <th>Scheme</th>
+                                <th>System to solve</th>
+                                <th>Stability</th>
+                                <th>Temporal order</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$\theta = 0$</td>
+                                <td>Explicit Euler</td>
+                                <td>$M\mathbf{u}^{n+1} = (M - \Delta t\,K)\mathbf{u}^n + \Delta t\,\mathbf{f}^n$</td>
+                                <td>Conditionally stable: $\Delta t \leq Ch^2$</td>
+                                <td>$O(\Delta t)$</td>
+                            </tr>
+                            <tr>
+                                <td>$\theta = 1$</td>
+                                <td>Implicit Euler</td>
+                                <td>$(M + \Delta t\,K)\mathbf{u}^{n+1} = M\mathbf{u}^n + \Delta t\,\mathbf{f}^{n+1}$</td>
+                                <td>Unconditionally stable</td>
+                                <td>$O(\Delta t)$</td>
+                            </tr>
+                            <tr>
+                                <td>$\theta = \tfrac{1}{2}$</td>
+                                <td>Crank–Nicolson</td>
+                                <td>$(M + \tfrac{\Delta t}{2}K)\mathbf{u}^{n+1} = (M - \tfrac{\Delta t}{2}K)\mathbf{u}^n + \tfrac{\Delta t}{2}(\mathbf{f}^{n+1}+\mathbf{f}^n)$</td>
+                                <td>Unconditionally stable</td>
+                                <td>$O(\Delta t^2)$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+
+                <h2 class="mt-5 mb-3">Stability Analysis via Eigenvalues</h2>
+
+                <p>Consider the homogeneous case $\mathbf{f} = 0$. Since $M$ and $K$ are simultaneously diagonalisable (via the generalised eigenproblem $K\mathbf{v} = \lambda M\mathbf{v}$, which has positive eigenvalues $0 < \lambda_1 \leq \lambda_2 \leq \cdots$), we can analyse stability mode by mode. For eigenvalue $\lambda_j$, the $\theta$-scheme reduces to the scalar recurrence
+                $$u^{n+1} = \frac{1 - (1-\theta)\Delta t\,\lambda_j}{1 + \theta\Delta t\,\lambda_j}\,u^n =: g_j\, u^n.$$
+                The amplification factor is $g_j = \frac{1-(1-\theta)\mu}{1+\theta\mu}$ where $\mu = \Delta t\,\lambda_j > 0$. For stability we need $|g_j| \leq 1$.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Stability of the $\theta$-Scheme</div>
+                    <p class="mb-0"><ul class="mb-0">
+                        <li>For $\theta \geq 1/2$: $|g_j| < 1$ for all $\mu > 0$, so the scheme is <strong>unconditionally stable</strong>.</li>
+                        <li>For $0 \leq \theta < 1/2$: $|g_j| \leq 1$ requires $\mu \leq \frac{2}{1-2\theta}$, i.e., $\Delta t\,\lambda_{\max} \leq \frac{2}{1-2\theta}$. Since the largest eigenvalue satisfies $\lambda_{\max} \sim Ch^{-2}$ for FEM on quasi-uniform meshes, this gives the <strong>CFL condition</strong> $\Delta t \leq C'h^2$.</li>
+                    </ul></p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Fully Discrete Error Estimates</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Fully Discrete Error</div>
+                    <p>Let $u(x,t_n)$ be the exact solution and $u_h^n$ the fully discrete approximation from the $\theta$-scheme with $P_1$ FEM. Under sufficient regularity of $u$:
+                    <ul class="mb-0">
+                        <li><strong>Implicit Euler ($\theta=1$):</strong> $\|u(t_n) - u_h^n\|_{L^2} \leq C\bigl(h^2 + \Delta t\bigr)$.</li>
+                        <li><strong>Crank–Nicolson ($\theta=\tfrac{1}{2}$):</strong> $\|u(t_n) - u_h^n\|_{L^2} \leq C\bigl(h^2 + \Delta t^2\bigr)$.</li>
+                    </ul>
+                    To balance the spatial and temporal errors for $P_1$ elements, choose $\Delta t \sim h^2$ for implicit Euler (first-order accuracy in $\Delta t$ matches $h^2$ only if $\Delta t \sim h^2$), and $\Delta t \sim h$ for Crank–Nicolson (second-order in time matches $h^2$ if $\Delta t \sim h$).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Higher-Order Time Integration: Runge–Kutta Methods</h2>
+
+                <p>The semi-discrete system $M\dot{\mathbf{u}} = -K\mathbf{u} + \mathbf{f}(t)$ can be integrated with any Runge–Kutta (RK) method. The combination of FEM in space with a $p$-stage RK method in time is called a <strong>method of lines</strong> discretisation. The accuracy in time is $O(\Delta t^p)$ for a $p$th-order RK scheme.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Stiffness and Implicit RK</div>
+                    <p class="mb-0">For fine meshes, the eigenvalues $\lambda_j$ of $M^{-1}K$ span a wide range up to $O(h^{-2})$, making the semi-discrete system <strong>stiff</strong>. Explicit RK methods require $\Delta t = O(h^2)$ for stability (same as explicit Euler), which is prohibitively small. Implicit or IMEX (implicit-explicit) RK methods are preferred: they allow larger time steps while treating the stiff diffusion term implicitly and any non-stiff terms (e.g., nonlinear reactions) explicitly.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-semi-discrete-formulation/" class="btn btn-outline-custom">&larr; 7.1 Semi-Discrete Formulation</a>
+                    <a href="../../" class="btn btn-custom">FEM Subject Index &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

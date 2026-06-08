@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.3 Eigenfunction Expansions — Ordinary Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to ODEs</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Ordinary Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-first-order-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-first-order-odes/" class="toc-chapter-link"><strong>1.</strong> First-Order ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-first-order-odes/01-separable-equations/">1.1 Separable Equations</a>
+                        <a href="../../01-first-order-odes/02-linear-first-order-equations/">1.2 Linear First-Order Equations</a>
+                        <a href="../../01-first-order-odes/03-exact-equations/">1.3 Exact Equations</a>
+                        <a href="../../01-first-order-odes/04-existence-and-uniqueness/">1.4 Existence and Uniqueness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-second-order-linear-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-second-order-linear-odes/" class="toc-chapter-link"><strong>2.</strong> Second-Order Linear ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-second-order-linear-odes/01-constant-coefficient-equations/">2.1 Constant Coefficient Equations</a>
+                        <a href="../../02-second-order-linear-odes/02-reduction-of-order/">2.2 Reduction of Order</a>
+                        <a href="../../02-second-order-linear-odes/03-variation-of-parameters/">2.3 Variation of Parameters</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-systems-of-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-systems-of-odes/" class="toc-chapter-link"><strong>3.</strong> Systems of ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-systems-of-odes/01-linear-systems/">3.1 Linear Systems</a>
+                        <a href="../../03-systems-of-odes/02-phase-plane-analysis/">3.2 Phase Plane Analysis</a>
+                        <a href="../../03-systems-of-odes/03-equilibria-and-stability/">3.3 Equilibria and Stability</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-series-solutions">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-series-solutions/" class="toc-chapter-link"><strong>4.</strong> Series Solutions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-series-solutions/01-power-series-solutions/">4.1 Power Series Solutions</a>
+                        <a href="../../04-series-solutions/02-regular-singular-points/">4.2 Regular Singular Points</a>
+                        <a href="../../04-series-solutions/03-bessel-and-legendre-equations/">4.3 Bessel and Legendre Equations</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-laplace-transforms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-laplace-transforms/" class="toc-chapter-link"><strong>5.</strong> Laplace Transforms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-laplace-transforms/01-definition-and-properties/">5.1 Definition and Properties</a>
+                        <a href="../../05-laplace-transforms/02-solving-odes-via-laplace/">5.2 Solving ODEs via Laplace</a>
+                        <a href="../../05-laplace-transforms/03-convolution/">5.3 Convolution</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-stability-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-stability-theory/" class="toc-chapter-link"><strong>6.</strong> Stability Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-stability-theory/01-lyapunov-stability/">6.1 Lyapunov Stability</a>
+                        <a href="../../06-stability-theory/02-lyapunov-functions/">6.2 Lyapunov Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-boundary-value-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-boundary-value-problems/" class="toc-chapter-link"><strong>7.</strong> Boundary Value Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-boundary-value-problems/01-two-point-boundary-problems/">7.1 Two-Point Boundary Problems</a>
+                        <a href="../../07-boundary-value-problems/02-sturm-liouville-theory/">7.2 Sturm–Liouville Theory</a>
+                        <a href="../../07-boundary-value-problems/03-eigenfunction-expansions/">7.3 Eigenfunction Expansions</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to ODEs</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Ordinary Differential Equations</a> ›
+                <a href="../">7. Boundary Value Problems</a> ›
+                <span>7.3 Eigenfunction Expansions</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">7.3 Eigenfunction Expansions</h1>
+
+                <p>The completeness of Sturm–Liouville eigenfunctions guarantees that arbitrary functions in the appropriate $L^2$ space can be expanded as infinite series. This section develops the general theory of such expansions and illustrates it with the three classical cases: Fourier sine series, Fourier–Bessel series, and Fourier–Legendre series.</p>
+
+                <h2 class="mt-5 mb-3">Generalised Fourier Series</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.3.1 — Eigenfunction Expansion</div>
+                    <p>Let $\{\phi_n\}_{n=1}^\infty$ be the orthogonal eigenfunctions of a regular SL problem on $(a,b)$ with weight $w$. The <strong>eigenfunction expansion</strong> (generalised Fourier series) of $f \in L^2_w(a,b)$ is
+                    $$f(x) \sim \sum_{n=1}^\infty c_n\,\phi_n(x),$$
+                    where the coefficients are
+                    $$c_n = \frac{\langle f, \phi_n\rangle_w}{\|\phi_n\|^2_w} = \frac{\displaystyle\int_a^b f(x)\,\phi_n(x)\,w(x)\,dx}{\displaystyle\int_a^b [\phi_n(x)]^2\,w(x)\,dx}.$$</p>
+                    <p class="mb-0">The $\sim$ becomes equality in $L^2_w(a,b)$: the partial sums converge to $f$ in the mean-square sense, and under mild smoothness conditions (piecewise $C^1$), pointwise convergence holds at continuity points.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.3.2 — $L^2$ Convergence and Parseval's Identity</div>
+                    <p>If $\{\phi_n\}$ is a complete orthogonal set in $L^2_w(a,b)$, then for every $f \in L^2_w(a,b)$:
+                    $$\left\|f - \sum_{n=1}^N c_n\phi_n\right\|^2_w \to 0 \quad \text{as } N\to\infty.$$
+                    Moreover, <strong>Parseval's identity</strong> (Bessel's equality in the limit) holds:
+                    $$\|f\|^2_w = \sum_{n=1}^\infty |c_n|^2\,\|\phi_n\|^2_w, \quad \text{i.e., } \int_a^b [f(x)]^2 w(x)\,dx = \sum_{n=1}^\infty c_n^2\,\|\phi_n\|^2_w.$$</p>
+                    <p class="mb-0">Parseval's identity is the analogue of the Pythagorean theorem in infinite dimensions: the "squared length" of $f$ equals the sum of squared "components" in each eigenfunction direction.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.3.3 — Completeness of SL Eigenfunctions</div>
+                    <p class="mb-0">The eigenfunctions of a regular SL problem form a <strong>complete</strong> orthogonal basis of $L^2_w(a,b)$: the only function in $L^2_w$ orthogonal to every eigenfunction is the zero function. Equivalently, $\sum_{n=1}^\infty |c_n|^2\|\phi_n\|^2_w = \|f\|^2_w$ for all $f \in L^2_w$. Completeness is proved via the spectral theory of compact self-adjoint operators (the resolvent of $\mathcal{L}$ is compact on $L^2_w$).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Fourier Sine Series</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.3.4 — Fourier Sine Series</div>
+                    <p>SL problem: $-y'' = \lambda y$, $y(0)=0$, $y(L)=0$ (i.e., $p=w=1$, $q=0$). Eigenfunctions: $\phi_n(x) = \sin(n\pi x/L)$, eigenvalues $\lambda_n = (n\pi/L)^2$. Norms: $\|\phi_n\|^2 = L/2$. The expansion of $f \in L^2(0,L)$ is the <strong>Fourier sine series</strong>:
+                    $$f(x) = \sum_{n=1}^\infty b_n \sin\!\frac{n\pi x}{L}, \qquad b_n = \frac{2}{L}\int_0^L f(x)\sin\!\frac{n\pi x}{L}\,dx.$$</p>
+                    <p class="mb-0">For $f(x) = 1$ on $(0,L)$: $b_n = \frac{2}{L}\int_0^L\sin\frac{n\pi x}{L}\,dx = \frac{2}{n\pi}(1-\cos n\pi) = \begin{cases}4/(n\pi) & n\text{ odd},\\0 & n\text{ even}.\end{cases}$
+                    So $1 = \frac{4}{\pi}\!\left(\sin\frac{\pi x}{L} + \frac{1}{3}\sin\frac{3\pi x}{L} + \cdots\right)$ on $(0,L)$.
+                    Parseval: $\int_0^L 1\,dx = L = \sum_{n\text{ odd}}\frac{16}{n^2\pi^2}\cdot\frac{L}{2}$, giving $\sum_{n=0}^\infty\frac{1}{(2n+1)^2} = \frac{\pi^2}{8}$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Fourier–Bessel Series</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.3.5 — Fourier–Bessel Series</div>
+                    <p>SL problem: Bessel equation of order $\nu \geq 0$ on $(0,R)$ with $p(x)=x$, $q=\nu^2/x$, $w=x$, BCs: boundedness at $0$ and $y(R)=0$. Eigenfunctions: $\phi_n(x) = J_\nu(\mu_n x)$ where $\mu_n = j_{\nu,n}/R$ and $j_{\nu,n}$ is the $n$-th positive zero of $J_\nu$. The squared norm is $\|\phi_n\|^2_w = \frac{R^2}{2}[J_{\nu+1}(j_{\nu,n})]^2$.</p>
+                    <p>The <strong>Fourier–Bessel expansion</strong> is
+                    $$f(x) = \sum_{n=1}^\infty c_n\,J_\nu(\mu_n x), \qquad c_n = \frac{2}{R^2[J_{\nu+1}(j_{\nu,n})]^2}\int_0^R f(x)\,J_\nu(\mu_n x)\,x\,dx.$$</p>
+                    <p class="mb-0">This arises when solving the heat equation or wave equation on a disk by separation of variables in polar coordinates: the radial part leads to the Bessel equation, and the angular-independent solution is expanded in this series.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Fourier–Legendre Series</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.3.6 — Fourier–Legendre Series</div>
+                    <p>SL problem: Legendre equation on $(-1,1)$ with $p=1-x^2$, $q=0$, $w=1$, bounded solutions. Eigenfunctions: $P_n(x)$ (Legendre polynomials), eigenvalues $\lambda_n = n(n+1)$. Norms: $\|P_n\|^2 = \frac{2}{2n+1}$.</p>
+                    <p>The <strong>Fourier–Legendre expansion</strong> is
+                    $$f(x) = \sum_{n=0}^\infty c_n\,P_n(x), \qquad c_n = \frac{2n+1}{2}\int_{-1}^1 f(x)\,P_n(x)\,dx.$$</p>
+                    <p>The Legendre polynomials are given by <strong>Rodrigues' formula</strong>:
+                    $$P_n(x) = \frac{1}{2^n n!}\frac{d^n}{dx^n}(x^2-1)^n.$$
+                    Thus $c_n = \frac{2n+1}{2}\int_{-1}^1 f(x)\,\frac{1}{2^n n!}\frac{d^n}{dx^n}(x^2-1)^n\,dx$. Integrating by parts $n$ times to shift derivatives from $P_n$ to $f$ is the standard technique to evaluate these integrals for smooth $f$.</p>
+                    <p class="mb-0">Example: $f(x) = x^2$. Since $P_0=1$, $P_1=x$, $P_2=\frac{1}{2}(3x^2-1)$, we write $x^2 = \frac{1}{3}P_0 + \frac{2}{3}P_2$ (exact two-term expansion since $x^2$ is a degree-2 polynomial).</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Completeness and PDE Applications</div>
+                    <p class="mb-0">The completeness of SL eigenfunctions is the mathematical foundation for the method of separation of variables applied to PDEs. When solving $u_t = u_{xx}$ on $[0,L]$ with $u(0,t)=u(L,t)=0$, the ansatz $u = X(x)T(t)$ leads to the SL problem $-X'' = \lambda X$ with the same BCs. The general solution is $u(x,t) = \sum_{n=1}^\infty b_n e^{-\lambda_n t}\sin(n\pi x/L)$, and completeness ensures every $L^2$ initial datum $u(x,0)=f(x)$ can be matched by an appropriate choice of $\{b_n\}$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-sturm-liouville-theory/" class="btn btn-outline-custom">&larr; 7.2 Sturm–Liouville Theory</a>
+                    <a href="../../" class="btn btn-custom">Back to ODEs &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

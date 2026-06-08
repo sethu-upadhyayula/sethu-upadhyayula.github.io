@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.2 Phase Plane Analysis — Ordinary Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to ODEs</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Ordinary Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-first-order-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-first-order-odes/" class="toc-chapter-link"><strong>1.</strong> First-Order ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-first-order-odes/01-separable-equations/">1.1 Separable Equations</a>
+                        <a href="../../01-first-order-odes/02-linear-first-order-equations/">1.2 Linear First-Order Equations</a>
+                        <a href="../../01-first-order-odes/03-exact-equations/">1.3 Exact Equations</a>
+                        <a href="../../01-first-order-odes/04-existence-and-uniqueness/">1.4 Existence and Uniqueness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-second-order-linear-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-second-order-linear-odes/" class="toc-chapter-link"><strong>2.</strong> Second-Order Linear ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-second-order-linear-odes/01-constant-coefficient-equations/">2.1 Constant Coefficient Equations</a>
+                        <a href="../../02-second-order-linear-odes/02-reduction-of-order/">2.2 Reduction of Order</a>
+                        <a href="../../02-second-order-linear-odes/03-variation-of-parameters/">2.3 Variation of Parameters</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-systems-of-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-systems-of-odes/" class="toc-chapter-link"><strong>3.</strong> Systems of ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-systems-of-odes/01-linear-systems/">3.1 Linear Systems</a>
+                        <a href="../../03-systems-of-odes/02-phase-plane-analysis/">3.2 Phase Plane Analysis</a>
+                        <a href="../../03-systems-of-odes/03-equilibria-and-stability/">3.3 Equilibria and Stability</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-series-solutions">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-series-solutions/" class="toc-chapter-link"><strong>4.</strong> Series Solutions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-series-solutions/01-power-series-solutions/">4.1 Power Series Solutions</a>
+                        <a href="../../04-series-solutions/02-regular-singular-points/">4.2 Regular Singular Points</a>
+                        <a href="../../04-series-solutions/03-bessel-and-legendre-equations/">4.3 Bessel and Legendre Equations</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-laplace-transforms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-laplace-transforms/" class="toc-chapter-link"><strong>5.</strong> Laplace Transforms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-laplace-transforms/01-definition-and-properties/">5.1 Definition and Properties</a>
+                        <a href="../../05-laplace-transforms/02-solving-odes-via-laplace/">5.2 Solving ODEs via Laplace</a>
+                        <a href="../../05-laplace-transforms/03-convolution/">5.3 Convolution</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-stability-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-stability-theory/" class="toc-chapter-link"><strong>6.</strong> Stability Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-stability-theory/01-lyapunov-stability/">6.1 Lyapunov Stability</a>
+                        <a href="../../06-stability-theory/02-lyapunov-functions/">6.2 Lyapunov Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-boundary-value-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-boundary-value-problems/" class="toc-chapter-link"><strong>7.</strong> Boundary Value Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-boundary-value-problems/01-two-point-boundary-problems/">7.1 Two-Point Boundary Problems</a>
+                        <a href="../../07-boundary-value-problems/02-sturm-liouville-theory/">7.2 Sturm–Liouville Theory</a>
+                        <a href="../../07-boundary-value-problems/03-eigenfunction-expansions/">7.3 Eigenfunction Expansions</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to ODEs</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Ordinary Differential Equations</a> ›
+                <a href="../">3. Systems of ODEs</a> ›
+                <span>3.2 Phase Plane Analysis</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 Phase Plane Analysis</h1>
+
+                <p>For a two-dimensional autonomous system $x' = f(x,y)$, $y' = g(x,y)$, the <em>phase plane</em> is the $(x,y)$-plane where each point represents the state of the system. A trajectory (orbit) is a curve traced by the solution $(x(t), y(t))$ as $t$ varies. Phase plane analysis reveals global behaviour without solving explicitly.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 3.2.1 — Phase Portrait</div>
+                    <p class="mb-0">The <strong>phase portrait</strong> of the system $(x', y') = (f(x,y), g(x,y))$ is the collection of all orbits in the phase plane, together with arrows indicating the direction of increasing $t$. Orbits are the level curves of $dy/dx = g(x,y)/f(x,y)$ (when $f \neq 0$).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Nullclines and Direction Fields</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 3.2.2 — Nullclines</div>
+                    <p class="mb-0">The <strong>$x$-nullcline</strong> is the set $\{f(x,y) = 0\}$ where $x' = 0$ (trajectories cross vertically). The <strong>$y$-nullcline</strong> is $\{g(x,y) = 0\}$ where $y' = 0$ (trajectories cross horizontally). Their intersections are the equilibrium points.</p>
+                </div>
+
+                <p>The direction field assigns the vector $(f(x,y), g(x,y))$ at each point. Trajectories are tangent to the direction field everywhere. Between nullclines, $f$ and $g$ maintain constant sign, giving a consistent direction of motion in each region.</p>
+
+                <h2 class="mt-5 mb-3">Classification of Equilibria for Linear Systems</h2>
+
+                <p>For the linear system $\mathbf{x}' = A\mathbf{x}$ near $\mathbf{0}$, the type of equilibrium is determined entirely by the eigenvalues $\lambda_1, \lambda_2$ of $A$. Let $\tau = \text{tr}(A) = \lambda_1 + \lambda_2$ and $\delta = \det(A) = \lambda_1 \lambda_2$.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 3.2.3 — Classification by Eigenvalues</div>
+                    <p>The equilibrium $\mathbf{0}$ of $\mathbf{x}' = A\mathbf{x}$ is classified as follows:</p>
+                    <ul class="mb-0">
+                        <li><strong>Saddle:</strong> $\delta < 0$, i.e., $\lambda_1 < 0 < \lambda_2$ (real, opposite signs). Unstable.</li>
+                        <li><strong>Unstable node:</strong> $\delta > 0$, $\tau > 0$, $\tau^2 - 4\delta \geq 0$ (both real, positive). Trajectories diverge.</li>
+                        <li><strong>Stable node:</strong> $\delta > 0$, $\tau < 0$, $\tau^2 - 4\delta \geq 0$ (both real, negative). Trajectories converge.</li>
+                        <li><strong>Unstable spiral:</strong> $\tau^2 - 4\delta < 0$, $\tau > 0$ (complex with positive real part). Spirals outward.</li>
+                        <li><strong>Stable spiral:</strong> $\tau^2 - 4\delta < 0$, $\tau < 0$ (complex with negative real part). Spirals inward.</li>
+                        <li><strong>Centre:</strong> $\tau = 0$, $\delta > 0$ (purely imaginary eigenvalues). Closed orbits (periodic solutions).</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Saddle Points</h2>
+
+                <p>For a saddle, $A$ has real eigenvalues $\lambda_1 < 0 < \lambda_2$ with eigenvectors $\mathbf{v}_1, \mathbf{v}_2$. The <strong>stable manifold</strong> (solutions approaching $\mathbf{0}$ as $t \to +\infty$) is the line through $\mathbf{v}_1$; the <strong>unstable manifold</strong> is the line through $\mathbf{v}_2$. All other trajectories approach the unstable manifold as $t \to +\infty$ and the stable manifold as $t \to -\infty$.</p>
+
+                <h2 class="mt-5 mb-3">Nodes</h2>
+
+                <p>For a stable node, both eigenvalues are negative. If $\lambda_1 < \lambda_2 < 0$, trajectories approach $\mathbf{0}$ tangent to the $\mathbf{v}_2$ direction (the slow eigendirection). For an improper (star) node where $\lambda_1 = \lambda_2$, trajectories approach radially if $A = \lambda I$, or tangent to the single eigenvector if $A$ has a non-trivial Jordan block.</p>
+
+                <h2 class="mt-5 mb-3">Spirals and Centres</h2>
+
+                <p>With complex eigenvalues $\lambda = \alpha \pm i\beta$, trajectories rotate. The angular speed is $\beta/r$ (approximately, near the origin) and the radius grows like $e^{\alpha t}$: inward if $\alpha < 0$, outward if $\alpha > 0$, and constant (closed ellipses) if $\alpha = 0$. The sense of rotation (clockwise or counterclockwise) is determined by the sign of the off-diagonal entries of $A$.</p>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 3.2.4 — Simple Pendulum (Linearised)</div>
+                    <p>The nonlinear pendulum equation $\theta'' + \sin\theta = 0$ becomes the system $x' = y$, $y' = -\sin x$. Nullclines: $y' = 0$ on $x = n\pi$, $x' = 0$ on $y = 0$.</p>
+                    <p class="mb-0">Near $x = 0$: $\sin x \approx x$, giving the linear system with $A = \begin{pmatrix}0&1\\-1&0\end{pmatrix}$. Eigenvalues $\pm i$: this is a centre — the linearised pendulum has periodic orbits. Near $x = \pi$ (unstable equilibrium): $\sin x \approx -(x-\pi)$, giving $A = \begin{pmatrix}0&1\\1&0\end{pmatrix}$ with eigenvalues $\pm 1$ — a saddle.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 3.2.5 — Bendixson's Criterion</div>
+                    <p class="mb-0">If $\partial f/\partial x + \partial g/\partial y$ is not identically zero and does not change sign in a simply connected region $D \subset \mathbb{R}^2$, then the system $x' = f$, $y' = g$ has no closed orbits in $D$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 3.2.6 — Poincaré–Bendixson Theorem</div>
+                    <p class="mb-0">If a trajectory of a planar autonomous system remains in a bounded closed region $D$ for all $t \geq t_0$, and $D$ contains only finitely many equilibria, then the $\omega$-limit set of the trajectory is either an equilibrium point, a closed orbit, or a heteroclinic/homoclinic orbit connecting equilibria.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-linear-systems/" class="btn btn-outline-custom">&larr; 3.1 Linear Systems</a>
+                    <a href="../03-equilibria-and-stability/" class="btn btn-custom">3.3 Equilibria and Stability &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

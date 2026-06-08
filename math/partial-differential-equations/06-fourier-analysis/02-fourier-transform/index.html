@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.2 Fourier Transform — Partial Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Partial Differential Equations</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Partial Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-introduction-and-classification"><div class="toc-chapter-header"><a href="../../01-introduction-and-classification/" class="toc-chapter-link"><strong>1.</strong> Introduction and Classification</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../01-introduction-and-classification/01-first-and-second-order-pdes/">1.1 First- and Second-Order PDEs</a><a href="../../01-introduction-and-classification/02-classification/">1.2 Classification</a><a href="../../01-introduction-and-classification/03-well-posed-problems/">1.3 Well-Posed Problems</a></div></div>
+                <div class="toc-chapter" data-chapter="02-first-order-pdes"><div class="toc-chapter-header"><a href="../../02-first-order-pdes/" class="toc-chapter-link"><strong>2.</strong> First-Order PDEs</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../02-first-order-pdes/01-method-of-characteristics/">2.1 Method of Characteristics</a><a href="../../02-first-order-pdes/02-linear-and-quasilinear-equations/">2.2 Linear and Quasilinear Equations</a><a href="../../02-first-order-pdes/03-conservation-laws/">2.3 Conservation Laws</a></div></div>
+                <div class="toc-chapter" data-chapter="03-the-wave-equation"><div class="toc-chapter-header"><a href="../../03-the-wave-equation/" class="toc-chapter-link"><strong>3.</strong> The Wave Equation</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../03-the-wave-equation/01-dalemberts-formula/">3.1 d'Alembert's Formula</a><a href="../../03-the-wave-equation/02-separation-of-variables/">3.2 Separation of Variables</a><a href="../../03-the-wave-equation/03-energy-methods/">3.3 Energy Methods</a></div></div>
+                <div class="toc-chapter" data-chapter="04-the-heat-equation"><div class="toc-chapter-header"><a href="../../04-the-heat-equation/" class="toc-chapter-link"><strong>4.</strong> The Heat Equation</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../04-the-heat-equation/01-maximum-principle/">4.1 Maximum Principle</a><a href="../../04-the-heat-equation/02-fundamental-solution/">4.2 Fundamental Solution</a><a href="../../04-the-heat-equation/03-fourier-series-solution/">4.3 Fourier Series Solution</a></div></div>
+                <div class="toc-chapter" data-chapter="05-laplace-and-poisson-equations"><div class="toc-chapter-header"><a href="../../05-laplace-and-poisson-equations/" class="toc-chapter-link"><strong>5.</strong> Laplace and Poisson Equations</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../05-laplace-and-poisson-equations/01-harmonic-functions/">5.1 Harmonic Functions</a><a href="../../05-laplace-and-poisson-equations/02-greens-functions/">5.2 Green's Functions</a><a href="../../05-laplace-and-poisson-equations/03-mean-value-property/">5.3 Mean Value Property</a></div></div>
+                <div class="toc-chapter" data-chapter="06-fourier-analysis"><div class="toc-chapter-header"><a href="../../06-fourier-analysis/" class="toc-chapter-link"><strong>6.</strong> Fourier Analysis</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../06-fourier-analysis/01-fourier-series/">6.1 Fourier Series</a><a href="../../06-fourier-analysis/02-fourier-transform/">6.2 Fourier Transform</a><a href="../../06-fourier-analysis/03-applications/">6.3 Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="07-weak-solutions-and-distributions"><div class="toc-chapter-header"><a href="../../07-weak-solutions-and-distributions/" class="toc-chapter-link"><strong>7.</strong> Weak Solutions and Distributions</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../07-weak-solutions-and-distributions/01-distributions/">7.1 Distributions</a><a href="../../07-weak-solutions-and-distributions/02-weak-derivatives/">7.2 Weak Derivatives</a><a href="../../07-weak-solutions-and-distributions/03-sobolev-spaces/">7.3 Sobolev Spaces</a></div></div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Partial Differential Equations</a></div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> › <a href="../../">Partial Differential Equations</a> › <a href="../">6. Fourier Analysis</a> › <span>6.2 Fourier Transform</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">6.2 Fourier Transform</h1>
+                <p>The Fourier transform extends Fourier series from periodic functions to functions on all of $\mathbb{R}^n$. It diagonalises constant-coefficient differential operators — replacing differentiation by multiplication — and provides the natural framework for analysing PDEs on unbounded domains.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 6.2.1 — Fourier Transform on $L^1(\mathbb{R})$</div>
+                    <p>For $f \in L^1(\mathbb{R})$, the <strong>Fourier transform</strong> of $f$ is</p>
+                    $$\hat{f}(\xi) = \mathcal{F}\{f\}(\xi) = \int_{-\infty}^{\infty} f(x)\, e^{-2\pi i \xi x}\,dx, \quad \xi \in \mathbb{R}.$$
+                    <p>The <strong>inverse Fourier transform</strong> is</p>
+                    $$f(x) = \mathcal{F}^{-1}\{\hat{f}\}(x) = \int_{-\infty}^{\infty} \hat{f}(\xi)\, e^{2\pi i \xi x}\,d\xi.$$
+                    <p class="mb-0">The Fourier inversion theorem holds whenever $f \in L^1(\mathbb{R})$ and $\hat{f} \in L^1(\mathbb{R})$, giving $f(x) = \int \hat{f}(\xi) e^{2\pi i\xi x}\,d\xi$ at every continuity point of $f$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Basic Properties</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 6.2.2 — Differentiation and Translation</div>
+                    <p>For $f \in \mathcal{S}(\mathbb{R})$ (Schwartz class) or whenever the expressions are defined:</p>
+                    <p><strong>(Derivative rule):</strong> $\widehat{f'}(\xi) = 2\pi i \xi \,\hat{f}(\xi)$, and more generally $\widehat{D^k f}(\xi) = (2\pi i\xi)^k \hat{f}(\xi)$.</p>
+                    <p><strong>(Frequency shift):</strong> $\widehat{e^{2\pi i x_0 \xi_0} f(x)}(\xi) = \hat{f}(\xi - \xi_0)$.</p>
+                    <p><strong>(Translation):</strong> $\widehat{f(x-x_0)}(\xi) = e^{-2\pi i x_0 \xi}\hat{f}(\xi)$.</p>
+                    <p><strong>(Scaling):</strong> $\widehat{f(ax)}(\xi) = \frac{1}{|a|}\hat{f}(\xi/a)$ for $a \neq 0$.</p>
+                    <p class="mb-0"><strong>(Conjugation):</strong> $\widehat{\overline{f}}(\xi) = \overline{\hat{f}(-\xi)}$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Schwartz Space and Tempered Distributions</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 6.2.3 — Schwartz Space $\mathcal{S}(\mathbb{R}^n)$</div>
+                    <p>The <strong>Schwartz space</strong> consists of all rapidly decreasing smooth functions:</p>
+                    $$\mathcal{S}(\mathbb{R}^n) = \left\{ f \in C^\infty(\mathbb{R}^n) : \sup_{x \in \mathbb{R}^n} |x^\alpha D^\beta f(x)| < \infty \text{ for all multi-indices } \alpha, \beta \right\}.$$
+                    <p>Equivalently, $f \in \mathcal{S}$ if $f$ and all its derivatives decay faster than any polynomial. The Fourier transform is a topological isomorphism $\mathcal{F}: \mathcal{S}(\mathbb{R}^n) \to \mathcal{S}(\mathbb{R}^n)$.</p>
+                    <p class="mb-0">A <strong>tempered distribution</strong> is a continuous linear functional $T: \mathcal{S}(\mathbb{R}^n) \to \mathbb{C}$. The space of tempered distributions $\mathcal{S}'(\mathbb{R}^n)$ includes all $L^p$ functions and polynomially growing functions. The Fourier transform extends to $\mathcal{S}'$ by duality: $\hat{T}[\phi] = T[\hat\phi]$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Plancherel's Theorem and Convolution</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.2.4 — Plancherel's Theorem</div>
+                    <p>The Fourier transform extends uniquely to a unitary isomorphism $\mathcal{F}: L^2(\mathbb{R}^n) \to L^2(\mathbb{R}^n)$, satisfying</p>
+                    $$\|\hat{f}\|_{L^2} = \|f\|_{L^2}, \quad \text{i.e.} \quad \int_{\mathbb{R}^n} |\hat{f}(\xi)|^2\,d\xi = \int_{\mathbb{R}^n} |f(x)|^2\,dx.$$
+                    <p class="mb-0">More generally (Parseval's formula): $\langle \hat{f}, \hat{g}\rangle_{L^2} = \langle f, g\rangle_{L^2}$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.2.5 — Convolution Theorem</div>
+                    <p>For $f, g \in L^1(\mathbb{R}^n)$, define the convolution $(f * g)(x) = \int_{\mathbb{R}^n} f(x-y)g(y)\,dy$. Then $f * g \in L^1(\mathbb{R}^n)$ and</p>
+                    $$\widehat{f * g}(\xi) = \hat{f}(\xi)\cdot\hat{g}(\xi).$$
+                    <p class="mb-0">Dually, $\widehat{fg}(\xi) = (\hat{f} * \hat{g})(\xi)$. This transforms convolution equations into pointwise algebraic equations in frequency space.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Key Examples</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 6.2.6 — Gaussian Self-Duality</div>
+                    <p>The Gaussian $f(x) = e^{-\pi x^2}$ is its own Fourier transform: $\hat{f}(\xi) = e^{-\pi\xi^2}$.</p>
+                    <p><strong>Proof:</strong> Let $I(\xi) = \int_{-\infty}^\infty e^{-\pi x^2} e^{-2\pi i \xi x}\,dx$. Differentiate under the integral: $I'(\xi) = -2\pi i \int x e^{-\pi x^2}e^{-2\pi i\xi x}\,dx$. Integration by parts gives $I'(\xi) = -2\pi\xi I(\xi)$. Thus $I(\xi) = I(0)e^{-\pi\xi^2}$. Since $I(0) = \int e^{-\pi x^2}\,dx = 1$, we have $\hat{f}(\xi) = e^{-\pi\xi^2}$. $\square$</p>
+                    <p class="mb-0">More generally, $\mathcal{F}\{e^{-ax^2}\}(\xi) = \sqrt{\pi/a}\,e^{-\pi^2\xi^2/a}$ for $\text{Re}(a) > 0$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 6.2.7 — Rectangular Pulse and Sinc Function</div>
+                    <p>The rectangular pulse $\text{rect}(x) = \mathbf{1}_{[-1/2,1/2]}(x)$ has Fourier transform</p>
+                    $$\widehat{\text{rect}}(\xi) = \int_{-1/2}^{1/2} e^{-2\pi i\xi x}\,dx = \frac{\sin(\pi\xi)}{\pi\xi} = \text{sinc}(\xi).$$
+                    <p class="mb-0">By the inversion theorem, $\widehat{\text{sinc}}(\xi) = \text{rect}(\xi)$. Note that $\text{sinc} \in L^2(\mathbb{R})$ but not $L^1(\mathbb{R})$, illustrating that the Fourier inversion must be interpreted in the $L^2$ sense.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-fourier-series/" class="btn btn-outline-custom">&larr; 6.1 Fourier Series</a>
+                    <a href="../03-applications/" class="btn btn-custom">6.3 Applications &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links"><a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a><a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a></div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1 Open Sets and Topologies — Topology</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Topology</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Topology</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-topological-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-topological-spaces/" class="toc-chapter-link"><strong>1.</strong> Topological Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-topological-spaces/01-open-sets-and-topologies/" class="active">1.1 Open Sets and Topologies</a>
+                        <a href="../../01-topological-spaces/02-basis-and-subbasis/">1.2 Basis and Subbasis</a>
+                        <a href="../../01-topological-spaces/03-subspaces/">1.3 Subspaces</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-continuity-and-homeomorphisms">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-continuity-and-homeomorphisms/" class="toc-chapter-link"><strong>2.</strong> Continuity and Homeomorphisms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-continuity-and-homeomorphisms/01-continuous-functions/">2.1 Continuous Functions</a>
+                        <a href="../../02-continuity-and-homeomorphisms/02-homeomorphisms/">2.2 Homeomorphisms</a>
+                        <a href="../../02-continuity-and-homeomorphisms/03-topological-properties/">2.3 Topological Properties</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-connectedness">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-connectedness/" class="toc-chapter-link"><strong>3.</strong> Connectedness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-connectedness/01-connected-spaces/">3.1 Connected Spaces</a>
+                        <a href="../../03-connectedness/02-path-connectedness/">3.2 Path Connectedness</a>
+                        <a href="../../03-connectedness/03-components/">3.3 Components</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-compactness">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-compactness/" class="toc-chapter-link"><strong>4.</strong> Compactness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-compactness/01-compact-spaces/">4.1 Compact Spaces</a>
+                        <a href="../../04-compactness/02-heine-borel-theorem/">4.2 Heine–Borel Theorem</a>
+                        <a href="../../04-compactness/03-applications/">4.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-separation-axioms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-separation-axioms/" class="toc-chapter-link"><strong>5.</strong> Separation Axioms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-separation-axioms/01-t0-to-t4/">5.1 T&#x2080; to T&#x2084; Axioms</a>
+                        <a href="../../05-separation-axioms/02-urysohns-lemma/">5.2 Urysohn's Lemma</a>
+                        <a href="../../05-separation-axioms/03-tietze-extension-theorem/">5.3 Tietze Extension Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-product-and-quotient-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-product-and-quotient-spaces/" class="toc-chapter-link"><strong>6.</strong> Product and Quotient Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-product-and-quotient-spaces/01-product-topology/">6.1 Product Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/02-quotient-topology/">6.2 Quotient Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/03-examples/">6.3 Examples</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-homotopy-and-fundamental-group">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-homotopy-and-fundamental-group/" class="toc-chapter-link"><strong>7.</strong> Homotopy and the Fundamental Group</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-homotopy-and-fundamental-group/01-homotopy/">7.1 Homotopy</a>
+                        <a href="../../07-homotopy-and-fundamental-group/02-the-fundamental-group/">7.2 The Fundamental Group</a>
+                        <a href="../../07-homotopy-and-fundamental-group/03-van-kampens-theorem/">7.3 van Kampen's Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Topology</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Topology</a> ›
+                <a href="../">1. Topological Spaces</a> ›
+                <span>1.1 Open Sets and Topologies</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">1.1 Open Sets and Topologies</h1>
+
+                <p>A topology on a set formalises the intuitive notion of "nearness" without reference to any metric. By declaring which subsets are open, we obtain a framework in which continuity, convergence, and all of point-set topology can be developed axiomatically.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Topological Space</div>
+                    <p>A <strong>topological space</strong> is a pair $(X, \tau)$ where $X$ is a set and $\tau \subseteq \mathcal{P}(X)$ is a collection of subsets of $X$, called the <em>open sets</em>, satisfying:</p>
+                    <ol>
+                        <li>$\emptyset \in \tau$ and $X \in \tau$.</li>
+                        <li>If $\{U_\alpha\}_{\alpha \in A} \subseteq \tau$, then $\bigcup_{\alpha \in A} U_\alpha \in \tau$ (arbitrary unions).</li>
+                        <li>If $U_1, \ldots, U_n \in \tau$, then $U_1 \cap \cdots \cap U_n \in \tau$ (finite intersections).</li>
+                    </ol>
+                    <p class="mb-0">The collection $\tau$ is called a <strong>topology</strong> on $X$. The finiteness restriction on intersections is essential: an infinite intersection of open sets need not be open (e.g., $\bigcap_{n=1}^\infty (-1/n, 1/n) = \{0\}$, which is not open in $\mathbb{R}$).</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Discrete Topology</div>
+                    <p class="mb-0">The <strong>discrete topology</strong> on $X$ is $\tau = \mathcal{P}(X)$, i.e., every subset of $X$ is open. This is the finest possible topology on $X$: it has the most open sets. Every function $f: X \to Y$ from a discrete space is continuous.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Indiscrete Topology</div>
+                    <p class="mb-0">The <strong>indiscrete topology</strong> (or <em>trivial topology</em>) on $X$ is $\tau = \{\emptyset, X\}$, the coarsest possible topology. A function $f: Y \to X$ into an indiscrete space is always continuous. An indiscrete space with more than one point is not $T_1$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Standard Topology on $\mathbb{R}$</div>
+                    <p>The <strong>standard topology</strong> on $\mathbb{R}$ is generated by the open intervals $(a, b)$, $a < b$. A set $U \subseteq \mathbb{R}$ is open if and only if for every $x \in U$ there exists $\varepsilon > 0$ such that $(x - \varepsilon, x + \varepsilon) \subseteq U$.</p>
+                    <p class="mb-0">More generally, the standard topology on $\mathbb{R}^n$ is generated by open balls $B(x, r) = \{y \in \mathbb{R}^n : \|y - x\| < r\}$. A set is open if and only if it is a neighbourhood of each of its points.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Cofinite Topology</div>
+                    <p class="mb-0">The <strong>cofinite topology</strong> on an infinite set $X$ declares $U \in \tau$ if and only if $U = \emptyset$ or $X \setminus U$ is finite. One verifies the axioms: $X \setminus X = \emptyset$ and $X \setminus \emptyset = X$, and finite intersections of cofinite sets are cofinite (the complement of $U_1 \cap \cdots \cap U_n$ is $(X \setminus U_1) \cup \cdots \cup (X \setminus U_n)$, a finite union of finite sets). The cofinite topology on $\mathbb{R}$ is strictly coarser than the standard topology.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Closed Sets</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Closed Sets</div>
+                    <p class="mb-0">A subset $C \subseteq X$ is <strong>closed</strong> if its complement $X \setminus C$ is open. By De Morgan's laws, the closed sets satisfy: $\emptyset$ and $X$ are closed; arbitrary intersections of closed sets are closed; finite unions of closed sets are closed. Note that "closed" and "open" are not mutually exclusive: $\emptyset$ and $X$ are both open and closed (clopen).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Closure, Interior, and Boundary</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Interior</div>
+                    <p class="mb-0">The <strong>interior</strong> of $A \subseteq X$ is
+                    $$\operatorname{Int}(A) = \bigcup \{ U \in \tau : U \subseteq A \},$$
+                    the largest open set contained in $A$. A point $x$ belongs to $\operatorname{Int}(A)$ if and only if some open neighbourhood of $x$ is entirely contained in $A$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Closure</div>
+                    <p class="mb-0">The <strong>closure</strong> of $A \subseteq X$ is
+                    $$\overline{A} = \bigcap \{ C \subseteq X : C \text{ closed},\, A \subseteq C \},$$
+                    the smallest closed set containing $A$. A point $x \in \overline{A}$ if and only if every open neighbourhood of $x$ meets $A$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Boundary</div>
+                    <p class="mb-0">The <strong>boundary</strong> of $A$ is $\partial A = \overline{A} \setminus \operatorname{Int}(A)$. A point $x \in \partial A$ if and only if every open neighbourhood of $x$ meets both $A$ and $X \setminus A$. We have $\overline{A} = \operatorname{Int}(A) \sqcup \partial A$ (disjoint union).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Limit Points and Dense Sets</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Limit Point</div>
+                    <p class="mb-0">A point $x \in X$ is a <strong>limit point</strong> (or accumulation point) of $A \subseteq X$ if every open neighbourhood of $x$ contains a point of $A$ <em>other than $x$ itself</em>. The set of all limit points of $A$ is the <strong>derived set</strong> $A'$. Then $\overline{A} = A \cup A'$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Dense Subset</div>
+                    <p class="mb-0">A subset $D \subseteq X$ is <strong>dense</strong> in $X$ if $\overline{D} = X$, equivalently if every non-empty open set meets $D$. A space is <strong>separable</strong> if it has a countable dense subset.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — $\mathbb{Q}$ is Dense in $\mathbb{R}$</div>
+                    <p class="mb-0">The rationals $\mathbb{Q}$ are dense in $\mathbb{R}$ with the standard topology: every open interval $(a, b)$ contains a rational number (by the Archimedean property). Hence $\overline{\mathbb{Q}} = \mathbb{R}$, and $\mathbb{R}$ is separable. By contrast, $\mathbb{Q}$ with the subspace topology is itself dense in $\mathbb{R}$ but has empty interior as a subset of $\mathbb{R}$, since every open interval contains irrationals.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Kuratowski Closure Axioms</div>
+                    <p>The closure operator $A \mapsto \overline{A}$ on a topological space satisfies:</p>
+                    <ol>
+                        <li>$\overline{\emptyset} = \emptyset$.</li>
+                        <li>$A \subseteq \overline{A}$ for all $A$.</li>
+                        <li>$\overline{\overline{A}} = \overline{A}$ (idempotency).</li>
+                        <li>$\overline{A \cup B} = \overline{A} \cup \overline{B}$.</li>
+                    </ol>
+                    <p class="mb-0">Conversely, any operator satisfying these four axioms defines a unique topology on $X$ for which the operator is the closure. This provides an alternative, equivalent axiomatisation of topological spaces.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 1. Topological Spaces</a>
+                    <a href="../02-basis-and-subbasis/" class="btn btn-custom">1.2 Basis and Subbasis &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

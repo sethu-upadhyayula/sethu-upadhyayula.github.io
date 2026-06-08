@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.1 Lyapunov Stability — Ordinary Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to ODEs</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Ordinary Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-first-order-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-first-order-odes/" class="toc-chapter-link"><strong>1.</strong> First-Order ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-first-order-odes/01-separable-equations/">1.1 Separable Equations</a>
+                        <a href="../../01-first-order-odes/02-linear-first-order-equations/">1.2 Linear First-Order Equations</a>
+                        <a href="../../01-first-order-odes/03-exact-equations/">1.3 Exact Equations</a>
+                        <a href="../../01-first-order-odes/04-existence-and-uniqueness/">1.4 Existence and Uniqueness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-second-order-linear-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-second-order-linear-odes/" class="toc-chapter-link"><strong>2.</strong> Second-Order Linear ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-second-order-linear-odes/01-constant-coefficient-equations/">2.1 Constant Coefficient Equations</a>
+                        <a href="../../02-second-order-linear-odes/02-reduction-of-order/">2.2 Reduction of Order</a>
+                        <a href="../../02-second-order-linear-odes/03-variation-of-parameters/">2.3 Variation of Parameters</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-systems-of-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-systems-of-odes/" class="toc-chapter-link"><strong>3.</strong> Systems of ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-systems-of-odes/01-linear-systems/">3.1 Linear Systems</a>
+                        <a href="../../03-systems-of-odes/02-phase-plane-analysis/">3.2 Phase Plane Analysis</a>
+                        <a href="../../03-systems-of-odes/03-equilibria-and-stability/">3.3 Equilibria and Stability</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-series-solutions">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-series-solutions/" class="toc-chapter-link"><strong>4.</strong> Series Solutions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-series-solutions/01-power-series-solutions/">4.1 Power Series Solutions</a>
+                        <a href="../../04-series-solutions/02-regular-singular-points/">4.2 Regular Singular Points</a>
+                        <a href="../../04-series-solutions/03-bessel-and-legendre-equations/">4.3 Bessel and Legendre Equations</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-laplace-transforms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-laplace-transforms/" class="toc-chapter-link"><strong>5.</strong> Laplace Transforms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-laplace-transforms/01-definition-and-properties/">5.1 Definition and Properties</a>
+                        <a href="../../05-laplace-transforms/02-solving-odes-via-laplace/">5.2 Solving ODEs via Laplace</a>
+                        <a href="../../05-laplace-transforms/03-convolution/">5.3 Convolution</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-stability-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-stability-theory/" class="toc-chapter-link"><strong>6.</strong> Stability Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-stability-theory/01-lyapunov-stability/">6.1 Lyapunov Stability</a>
+                        <a href="../../06-stability-theory/02-lyapunov-functions/">6.2 Lyapunov Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-boundary-value-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-boundary-value-problems/" class="toc-chapter-link"><strong>7.</strong> Boundary Value Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-boundary-value-problems/01-two-point-boundary-problems/">7.1 Two-Point Boundary Problems</a>
+                        <a href="../../07-boundary-value-problems/02-sturm-liouville-theory/">7.2 Sturm–Liouville Theory</a>
+                        <a href="../../07-boundary-value-problems/03-eigenfunction-expansions/">7.3 Eigenfunction Expansions</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to ODEs</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Ordinary Differential Equations</a> ›
+                <a href="../">6. Stability Theory</a> ›
+                <span>6.1 Lyapunov Stability</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">6.1 Lyapunov Stability</h1>
+
+                <p>We consider the autonomous system $\mathbf{x}' = \mathbf{f}(\mathbf{x})$ in $\mathbb{R}^n$, where $\mathbf{f}: \Omega \subset \mathbb{R}^n \to \mathbb{R}^n$ is $C^1$. An <strong>equilibrium</strong> (or fixed point) is a point $\mathbf{x}^*$ with $\mathbf{f}(\mathbf{x}^*) = \mathbf{0}$; without loss of generality we shift coordinates so $\mathbf{x}^* = \mathbf{0}$.</p>
+
+                <h2 class="mt-5 mb-3">Definitions of Stability</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 6.1.1 — Lyapunov Stability</div>
+                    <p>The equilibrium $\mathbf{0}$ is <strong>Lyapunov stable</strong> (stable in the sense of Lyapunov) if:
+                    $$\forall\,\varepsilon > 0,\;\exists\,\delta > 0 \text{ such that } \|\mathbf{x}(0)\| < \delta \implies \|\mathbf{x}(t)\| < \varepsilon \quad \forall\, t \geq 0.$$
+                    In words: solutions starting sufficiently close to $\mathbf{0}$ remain close for all future time.</p>
+                    <p>The equilibrium is <strong>asymptotically stable</strong> if it is Lyapunov stable and additionally
+                    $$\exists\,\delta_0 > 0 \text{ such that } \|\mathbf{x}(0)\| < \delta_0 \implies \lim_{t\to\infty}\mathbf{x}(t) = \mathbf{0}.$$</p>
+                    <p>The equilibrium is <strong>globally asymptotically stable (GAS)</strong> if it is asymptotically stable with $\delta_0 = \infty$, i.e., $\lim_{t\to\infty}\mathbf{x}(t) = \mathbf{0}$ for <em>every</em> initial condition.</p>
+                    <p class="mb-0">The equilibrium is <strong>unstable</strong> if it is not Lyapunov stable: there exist $\varepsilon > 0$ and a sequence of initial conditions $\mathbf{x}_n(0) \to \mathbf{0}$ whose orbits exit the ball $\|\mathbf{x}\| < \varepsilon$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Stability vs Asymptotic Stability</div>
+                    <p class="mb-0">Lyapunov stability alone does not require attraction to the equilibrium — a stable spiral is also asymptotically stable, but a centre (pure oscillation) is Lyapunov stable without being asymptotically stable. Asymptotic stability is the stronger, more useful property for engineering applications.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Linearisation</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 6.1.2 — Linearisation at an Equilibrium</div>
+                    <p class="mb-0">Let $\mathbf{f}$ be $C^1$ near $\mathbf{x}^* = \mathbf{0}$. Write $\mathbf{x} = \mathbf{u}$ (perturbation). Taylor expanding:
+                    $$\mathbf{u}' = \mathbf{f}(\mathbf{u}) = D\mathbf{f}(\mathbf{0})\,\mathbf{u} + O(\|\mathbf{u}\|^2),$$
+                    where $D\mathbf{f}(\mathbf{0})$ is the <strong>Jacobian matrix</strong> (the matrix of partial derivatives $\partial f_i/\partial x_j$ evaluated at $\mathbf{0}$). The <strong>linearisation</strong> is $\mathbf{u}' = A\mathbf{u}$, $A = D\mathbf{f}(\mathbf{0})$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.1.3 — Hartman–Grobman Theorem</div>
+                    <p>Suppose all eigenvalues $\lambda_1, \ldots, \lambda_n$ of $A = D\mathbf{f}(\mathbf{0})$ satisfy $\text{Re}(\lambda_i) \neq 0$. Then in a neighbourhood of $\mathbf{0}$, the nonlinear flow of $\mathbf{x}' = \mathbf{f}(\mathbf{x})$ is <strong>topologically conjugate</strong> (homeomorphic) to the linear flow of $\mathbf{u}' = A\mathbf{u}$. In particular:</p>
+                    <ul>
+                        <li>If all $\text{Re}(\lambda_i) < 0$: $\mathbf{0}$ is asymptotically stable (nonlinearly).</li>
+                        <li>If some $\text{Re}(\lambda_i) > 0$: $\mathbf{0}$ is unstable (nonlinearly).</li>
+                    </ul>
+                    <p class="mb-0">Equilibria satisfying $\text{Re}(\lambda_i) \neq 0$ for all $i$ are called <strong>hyperbolic</strong>. When eigenvalues lie on the imaginary axis (non-hyperbolic case, e.g. a centre), linearisation alone cannot determine stability and Lyapunov methods (Section 6.2) are required.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Examples</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 6.1.4 — Simple Pendulum</div>
+                    <p>The equation of motion for an undamped pendulum is $\theta'' + \sin\theta = 0$. Writing $x_1 = \theta$, $x_2 = \theta'$:
+                    $$x_1' = x_2, \qquad x_2' = -\sin x_1.$$
+                    Equilibria: $(0,0)$ (hanging down) and $(\pi, 0)$ (inverted). Jacobian:
+                    $$A = D\mathbf{f} = \begin{pmatrix}0 & 1\\-\cos x_1 & 0\end{pmatrix}.$$
+                    At $(0,0)$: $A = \bigl(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\bigr)$, eigenvalues $\pm i$. Non-hyperbolic: linearisation gives a centre; the nonlinear system also has a centre (conserved energy $E = \frac{1}{2}x_2^2 + (1-\cos x_1)$), so $(0,0)$ is Lyapunov stable but not asymptotically stable.</p>
+                    <p class="mb-0">At $(\pi, 0)$: $A = \bigl(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\bigr)$, eigenvalues $\pm 1$. Hyperbolic saddle: $(\pi,0)$ is unstable.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 6.1.5 — Van der Pol Oscillator</div>
+                    <p>The Van der Pol equation $\ddot{x} - \mu(1-x^2)\dot{x} + x = 0$ ($\mu > 0$) in phase-plane form:
+                    $$x_1' = x_2, \qquad x_2' = \mu(1-x_1^2)x_2 - x_1.$$
+                    The only equilibrium is $(0,0)$. Jacobian there:
+                    $$A = \begin{pmatrix}0 & 1\\ -1 & \mu\end{pmatrix}, \qquad \text{tr}(A) = \mu > 0, \quad \det(A) = 1 > 0.$$
+                    Both eigenvalues have positive real part (since trace $> 0$ and determinant $> 0$). By Hartman–Grobman, the origin is an <strong>unstable</strong> focus. Trajectories starting near the origin spiral outward and are attracted to the unique stable limit cycle (Poincaré–Bendixson + Bendixson–Dulac).</p>
+                    <p class="mb-0">This illustrates that an unstable equilibrium can coexist with a globally attracting limit cycle.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 6.1.6 — Stability via Eigenvalues (Linear Systems)</div>
+                    <p class="mb-0">For the linear system $\mathbf{x}' = A\mathbf{x}$: the origin is asymptotically stable if and only if all eigenvalues of $A$ have strictly negative real part; it is Lyapunov stable (but not asymptotically stable) if all eigenvalues have non-positive real part and every purely imaginary eigenvalue is semisimple (i.e., its geometric multiplicity equals its algebraic multiplicity); otherwise it is unstable.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 6. Stability Theory</a>
+                    <a href="../02-lyapunov-functions/" class="btn btn-custom">6.2 Lyapunov Functions &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

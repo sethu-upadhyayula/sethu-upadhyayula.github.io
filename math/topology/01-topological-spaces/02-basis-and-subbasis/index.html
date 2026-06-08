@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.2 Basis and Subbasis — Topology</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Topology</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Topology</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-topological-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-topological-spaces/" class="toc-chapter-link"><strong>1.</strong> Topological Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-topological-spaces/01-open-sets-and-topologies/">1.1 Open Sets and Topologies</a>
+                        <a href="../../01-topological-spaces/02-basis-and-subbasis/" class="active">1.2 Basis and Subbasis</a>
+                        <a href="../../01-topological-spaces/03-subspaces/">1.3 Subspaces</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-continuity-and-homeomorphisms">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-continuity-and-homeomorphisms/" class="toc-chapter-link"><strong>2.</strong> Continuity and Homeomorphisms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-continuity-and-homeomorphisms/01-continuous-functions/">2.1 Continuous Functions</a>
+                        <a href="../../02-continuity-and-homeomorphisms/02-homeomorphisms/">2.2 Homeomorphisms</a>
+                        <a href="../../02-continuity-and-homeomorphisms/03-topological-properties/">2.3 Topological Properties</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-connectedness">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-connectedness/" class="toc-chapter-link"><strong>3.</strong> Connectedness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-connectedness/01-connected-spaces/">3.1 Connected Spaces</a>
+                        <a href="../../03-connectedness/02-path-connectedness/">3.2 Path Connectedness</a>
+                        <a href="../../03-connectedness/03-components/">3.3 Components</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-compactness">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-compactness/" class="toc-chapter-link"><strong>4.</strong> Compactness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-compactness/01-compact-spaces/">4.1 Compact Spaces</a>
+                        <a href="../../04-compactness/02-heine-borel-theorem/">4.2 Heine–Borel Theorem</a>
+                        <a href="../../04-compactness/03-applications/">4.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-separation-axioms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-separation-axioms/" class="toc-chapter-link"><strong>5.</strong> Separation Axioms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-separation-axioms/01-t0-to-t4/">5.1 T&#x2080; to T&#x2084; Axioms</a>
+                        <a href="../../05-separation-axioms/02-urysohns-lemma/">5.2 Urysohn's Lemma</a>
+                        <a href="../../05-separation-axioms/03-tietze-extension-theorem/">5.3 Tietze Extension Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-product-and-quotient-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-product-and-quotient-spaces/" class="toc-chapter-link"><strong>6.</strong> Product and Quotient Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-product-and-quotient-spaces/01-product-topology/">6.1 Product Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/02-quotient-topology/">6.2 Quotient Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/03-examples/">6.3 Examples</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-homotopy-and-fundamental-group">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-homotopy-and-fundamental-group/" class="toc-chapter-link"><strong>7.</strong> Homotopy and the Fundamental Group</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-homotopy-and-fundamental-group/01-homotopy/">7.1 Homotopy</a>
+                        <a href="../../07-homotopy-and-fundamental-group/02-the-fundamental-group/">7.2 The Fundamental Group</a>
+                        <a href="../../07-homotopy-and-fundamental-group/03-van-kampens-theorem/">7.3 van Kampen's Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Topology</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Topology</a> ›
+                <a href="../">1. Topological Spaces</a> ›
+                <span>1.2 Basis and Subbasis</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">1.2 Basis and Subbasis</h1>
+
+                <p>Specifying a topology by listing all open sets is usually impractical. A <em>basis</em> is a smaller, more natural collection from which all open sets can be recovered by taking unions. A <em>subbasis</em> is even more economical: one takes all finite intersections, then all unions.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Basis for a Topology</div>
+                    <p>A collection $\mathcal{B} \subseteq \mathcal{P}(X)$ is a <strong>basis</strong> for a topology on $X$ if:</p>
+                    <ol>
+                        <li><strong>Covering:</strong> For every $x \in X$, there exists $B \in \mathcal{B}$ with $x \in B$.</li>
+                        <li><strong>Intersection condition:</strong> For every $B_1, B_2 \in \mathcal{B}$ and every $x \in B_1 \cap B_2$, there exists $B_3 \in \mathcal{B}$ with $x \in B_3 \subseteq B_1 \cap B_2$.</li>
+                    </ol>
+                    <p class="mb-0">The <strong>topology generated by $\mathcal{B}$</strong> is $\tau(\mathcal{B}) = \{ U \subseteq X : \forall\, x \in U,\, \exists\, B \in \mathcal{B},\, x \in B \subseteq U\}$. Equivalently, the open sets are precisely the arbitrary unions of elements of $\mathcal{B}$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Characterisation of the Generated Topology</div>
+                    <p class="mb-0">If $\mathcal{B}$ is a basis for a topology on $X$, then $\tau(\mathcal{B})$ is indeed a topology, and $\mathcal{B}$ is a basis for it in the sense that every $U \in \tau(\mathcal{B})$ is a union of elements of $\mathcal{B}$. Moreover, $\tau(\mathcal{B})$ is the unique topology for which $\mathcal{B}$ is a basis.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Open Intervals on $\mathbb{R}$</div>
+                    <p class="mb-0">The collection $\mathcal{B} = \{(a, b) : a < b,\, a, b \in \mathbb{R}\}$ is a basis for the standard topology on $\mathbb{R}$. The covering condition is clear. For the intersection condition: $(a_1, b_1) \cap (a_2, b_2) = (\max(a_1,a_2), \min(b_1,b_2))$, which is itself an open interval (or empty) and hence in $\mathcal{B}$. The rational-endpoint intervals $\{(a,b) : a, b \in \mathbb{Q}\}$ also form a countable basis for the same topology.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Open Balls on $\mathbb{R}^n$</div>
+                    <p class="mb-0">The open balls $\mathcal{B} = \{B(x, r) : x \in \mathbb{R}^n,\, r > 0\}$ form a basis for the standard topology on $\mathbb{R}^n$. A countable basis is given by balls with rational centres and rational radii: $\{B(q, r) : q \in \mathbb{Q}^n,\, r \in \mathbb{Q}_{>0}\}$, demonstrating that $\mathbb{R}^n$ is second-countable.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Comparing Topologies via Bases</div>
+                    <p>Let $\mathcal{B}_1$ and $\mathcal{B}_2$ be bases generating topologies $\tau_1$ and $\tau_2$ on $X$. Then $\tau_1 \subseteq \tau_2$ (i.e., $\tau_2$ is finer) if and only if for every $B_1 \in \mathcal{B}_1$ and every $x \in B_1$, there exists $B_2 \in \mathcal{B}_2$ with $x \in B_2 \subseteq B_1$.</p>
+                    <p class="mb-0">In particular, $\tau_1 = \tau_2$ if and only if both bases are refinements of each other in this sense.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Subbasis</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Subbasis</div>
+                    <p>A <strong>subbasis</strong> for a topology on $X$ is any collection $\mathcal{S} \subseteq \mathcal{P}(X)$ such that $\bigcup_{S \in \mathcal{S}} S = X$. The topology generated by $\mathcal{S}$ is:</p>
+                    $$\tau(\mathcal{S}) = \text{all unions of finite intersections of elements of } \mathcal{S}.$$
+                    <p class="mb-0">The collection of all finite intersections of $\mathcal{S}$-elements forms a basis for $\tau(\mathcal{S})$. Note that $\mathcal{S}$ need not satisfy the basis intersection condition — the passage through finite intersections compensates for this.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Subbasis for the Standard Topology on $\mathbb{R}$</div>
+                    <p class="mb-0">The collection $\mathcal{S} = \{(-\infty, b) : b \in \mathbb{R}\} \cup \{(a, \infty) : a \in \mathbb{R}\}$ is a subbasis for the standard topology on $\mathbb{R}$. Indeed, finite intersections give exactly the open intervals: $(-\infty, b) \cap (a, \infty) = (a, b)$ for $a < b$, and arbitrary unions of these generate all open sets.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Sorgenfrey Line</div>
+                    <p class="mb-0">The <strong>Sorgenfrey line</strong> $\mathbb{R}_\ell$ is $\mathbb{R}$ with the basis $\mathcal{B} = \{[a, b) : a < b\}$. This topology is strictly finer than the standard topology (every standard open set is $\mathbb{R}_\ell$-open, but $[0,1)$ is $\mathbb{R}_\ell$-open and not standard-open). The Sorgenfrey line is $T_{3\frac{1}{2}}$ but not second-countable, and the Sorgenfrey plane $\mathbb{R}_\ell \times \mathbb{R}_\ell$ is not normal — a famous counterexample.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Neighbourhood Basis</div>
+                    <p class="mb-0">A <strong>neighbourhood basis</strong> (or <em>local basis</em>) at a point $x \in X$ is a collection $\mathcal{B}_x$ of open neighbourhoods of $x$ such that every open neighbourhood of $x$ contains some element of $\mathcal{B}_x$. A space is <em>first-countable</em> if every point has a countable neighbourhood basis; it is <em>second-countable</em> if the entire topology has a countable basis. Second-countable implies first-countable.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-open-sets-and-topologies/" class="btn btn-outline-custom">&larr; 1.1 Open Sets and Topologies</a>
+                    <a href="../03-subspaces/" class="btn btn-custom">1.3 Subspaces &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

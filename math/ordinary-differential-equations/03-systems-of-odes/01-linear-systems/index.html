@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.1 Linear Systems — Ordinary Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to ODEs</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Ordinary Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-first-order-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-first-order-odes/" class="toc-chapter-link"><strong>1.</strong> First-Order ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-first-order-odes/01-separable-equations/">1.1 Separable Equations</a>
+                        <a href="../../01-first-order-odes/02-linear-first-order-equations/">1.2 Linear First-Order Equations</a>
+                        <a href="../../01-first-order-odes/03-exact-equations/">1.3 Exact Equations</a>
+                        <a href="../../01-first-order-odes/04-existence-and-uniqueness/">1.4 Existence and Uniqueness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-second-order-linear-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-second-order-linear-odes/" class="toc-chapter-link"><strong>2.</strong> Second-Order Linear ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-second-order-linear-odes/01-constant-coefficient-equations/">2.1 Constant Coefficient Equations</a>
+                        <a href="../../02-second-order-linear-odes/02-reduction-of-order/">2.2 Reduction of Order</a>
+                        <a href="../../02-second-order-linear-odes/03-variation-of-parameters/">2.3 Variation of Parameters</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-systems-of-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-systems-of-odes/" class="toc-chapter-link"><strong>3.</strong> Systems of ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-systems-of-odes/01-linear-systems/">3.1 Linear Systems</a>
+                        <a href="../../03-systems-of-odes/02-phase-plane-analysis/">3.2 Phase Plane Analysis</a>
+                        <a href="../../03-systems-of-odes/03-equilibria-and-stability/">3.3 Equilibria and Stability</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-series-solutions">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-series-solutions/" class="toc-chapter-link"><strong>4.</strong> Series Solutions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-series-solutions/01-power-series-solutions/">4.1 Power Series Solutions</a>
+                        <a href="../../04-series-solutions/02-regular-singular-points/">4.2 Regular Singular Points</a>
+                        <a href="../../04-series-solutions/03-bessel-and-legendre-equations/">4.3 Bessel and Legendre Equations</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-laplace-transforms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-laplace-transforms/" class="toc-chapter-link"><strong>5.</strong> Laplace Transforms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-laplace-transforms/01-definition-and-properties/">5.1 Definition and Properties</a>
+                        <a href="../../05-laplace-transforms/02-solving-odes-via-laplace/">5.2 Solving ODEs via Laplace</a>
+                        <a href="../../05-laplace-transforms/03-convolution/">5.3 Convolution</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-stability-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-stability-theory/" class="toc-chapter-link"><strong>6.</strong> Stability Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-stability-theory/01-lyapunov-stability/">6.1 Lyapunov Stability</a>
+                        <a href="../../06-stability-theory/02-lyapunov-functions/">6.2 Lyapunov Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-boundary-value-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-boundary-value-problems/" class="toc-chapter-link"><strong>7.</strong> Boundary Value Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-boundary-value-problems/01-two-point-boundary-problems/">7.1 Two-Point Boundary Problems</a>
+                        <a href="../../07-boundary-value-problems/02-sturm-liouville-theory/">7.2 Sturm–Liouville Theory</a>
+                        <a href="../../07-boundary-value-problems/03-eigenfunction-expansions/">7.3 Eigenfunction Expansions</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to ODEs</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Ordinary Differential Equations</a> ›
+                <a href="../">3. Systems of ODEs</a> ›
+                <span>3.1 Linear Systems</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">3.1 Linear Systems</h1>
+
+                <p>A first-order linear system of ODEs has the form $\mathbf{x}' = A(t)\mathbf{x} + \mathbf{b}(t)$, where $\mathbf{x}(t) \in \mathbb{R}^n$ and $A(t)$ is an $n \times n$ matrix. When $A$ is constant and $\mathbf{b} = \mathbf{0}$, the system is <em>autonomous homogeneous</em> and admits a complete explicit solution via eigenvalue analysis.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 3.1.1 — Linear Autonomous System</div>
+                    <p class="mb-0">A <strong>linear autonomous system</strong> is
+                    $$\mathbf{x}' = A\mathbf{x}, \qquad \mathbf{x}(0) = \mathbf{x}_0,$$
+                    where $A \in M_n(\mathbb{R})$ is a constant matrix. The solution is $\mathbf{x}(t) = e^{At}\mathbf{x}_0$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Eigenvalue Method</h2>
+
+                <p>We seek solutions of the form $\mathbf{x}(t) = e^{\lambda t}\mathbf{v}$ for some scalar $\lambda$ and vector $\mathbf{v} \neq \mathbf{0}$. Substituting gives $\lambda e^{\lambda t}\mathbf{v} = Ae^{\lambda t}\mathbf{v}$, so $A\mathbf{v} = \lambda\mathbf{v}$: $\lambda$ must be an eigenvalue and $\mathbf{v}$ an eigenvector of $A$.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 3.1.2 — General Solution (Distinct Eigenvalues)</div>
+                    <p class="mb-0">If $A$ has $n$ distinct eigenvalues $\lambda_1, \ldots, \lambda_n$ with corresponding eigenvectors $\mathbf{v}_1, \ldots, \mathbf{v}_n$, then the general solution of $\mathbf{x}' = A\mathbf{x}$ is
+                    $$\mathbf{x}(t) = c_1 e^{\lambda_1 t}\mathbf{v}_1 + c_2 e^{\lambda_2 t}\mathbf{v}_2 + \cdots + c_n e^{\lambda_n t}\mathbf{v}_n,$$
+                    where $c_1, \ldots, c_n$ are arbitrary constants determined by initial conditions.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Fundamental Matrix and Matrix Exponential</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 3.1.3 — Fundamental Matrix</div>
+                    <p class="mb-0">A <strong>fundamental matrix</strong> $\Phi(t)$ for $\mathbf{x}' = A\mathbf{x}$ is an $n \times n$ matrix whose columns are $n$ linearly independent solutions. The <strong>principal fundamental matrix</strong> satisfies $\Phi(0) = I$ and equals the matrix exponential $e^{At}$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 3.1.4 — Matrix Exponential</div>
+                    <p class="mb-0">For $A \in M_n(\mathbb{R})$, the <strong>matrix exponential</strong> is defined by the convergent power series
+                    $$e^{At} = \sum_{k=0}^{\infty} \frac{(At)^k}{k!} = I + At + \frac{A^2 t^2}{2!} + \frac{A^3 t^3}{3!} + \cdots$$
+                    This series converges absolutely for all $t$ and all matrices $A$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 3.1.5 — Properties of $e^{At}$</div>
+                    <p>The matrix exponential satisfies:</p>
+                    <ul class="mb-0">
+                        <li>$\frac{d}{dt}e^{At} = Ae^{At} = e^{At}A$</li>
+                        <li>$e^{A \cdot 0} = I$</li>
+                        <li>$(e^{At})^{-1} = e^{-At}$</li>
+                        <li>If $AB = BA$, then $e^{(A+B)t} = e^{At}e^{Bt}$</li>
+                        <li>If $A = PDP^{-1}$ (diagonalisable), then $e^{At} = Pe^{Dt}P^{-1}$</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Complex Eigenvalues</h2>
+
+                <p>If $A$ is real and $\lambda = \alpha + i\beta$ (with $\beta \neq 0$) is a complex eigenvalue with eigenvector $\mathbf{v} = \mathbf{a} + i\mathbf{b}$, then $\bar{\lambda} = \alpha - i\beta$ is also an eigenvalue with eigenvector $\bar{\mathbf{v}}$. The corresponding real solutions are:</p>
+                $$\mathbf{x}_1(t) = e^{\alpha t}(\mathbf{a}\cos\beta t - \mathbf{b}\sin\beta t), \qquad \mathbf{x}_2(t) = e^{\alpha t}(\mathbf{a}\sin\beta t + \mathbf{b}\cos\beta t).$$
+
+                <h2 class="mt-5 mb-3">Repeated Eigenvalues and Jordan Form</h2>
+
+                <p>When an eigenvalue $\lambda$ has algebraic multiplicity $m$ but geometric multiplicity $k < m$, there are not enough eigenvectors. We need <em>generalised eigenvectors</em> satisfying $(A - \lambda I)^j \mathbf{v} = \mathbf{0}$ for $j \leq m$.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 3.1.6 — Generalised Eigenvector</div>
+                    <p class="mb-0">A vector $\mathbf{v}_k$ is a <strong>generalised eigenvector of rank $k$</strong> for eigenvalue $\lambda$ if $(A-\lambda I)^k \mathbf{v}_k = \mathbf{0}$ but $(A - \lambda I)^{k-1}\mathbf{v}_k \neq \mathbf{0}$. The chain $\mathbf{v}_1 = (A-\lambda I)\mathbf{v}_2, \ldots$ forms a Jordan chain.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 3.1.7 — Solution via Jordan Block</div>
+                    <p class="mb-0">For a Jordan block $J = \lambda I + N$ (where $N$ is the nilpotent shift matrix), the matrix exponential is
+                    $$e^{Jt} = e^{\lambda t}\begin{pmatrix}1 & t & \frac{t^2}{2!} & \cdots \\ 0 & 1 & t & \cdots \\ \vdots & & \ddots & \\ 0 & \cdots & 0 & 1\end{pmatrix}.$$
+                    This produces solutions of the form $e^{\lambda t}(c_0 + c_1 t + \cdots + c_{m-1}t^{m-1})$ multiplied by eigenvectors and generalised eigenvectors.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 3.1.8 — $2\times 2$ System with Repeated Eigenvalue</div>
+                    <p>Consider $A = \begin{pmatrix}3 & 1 \\ 0 & 3\end{pmatrix}$. The only eigenvalue is $\lambda = 3$ with eigenvector $\mathbf{v}_1 = (1,0)^T$. To find the generalised eigenvector, solve $(A - 3I)\mathbf{v}_2 = \mathbf{v}_1$:
+                    $$\begin{pmatrix}0 & 1 \\ 0 & 0\end{pmatrix}\mathbf{v}_2 = \begin{pmatrix}1 \\ 0\end{pmatrix} \implies \mathbf{v}_2 = \begin{pmatrix}0 \\ 1\end{pmatrix}.$$</p>
+                    <p class="mb-0">The general solution is
+                    $$\mathbf{x}(t) = e^{3t}\left[c_1\begin{pmatrix}1\\0\end{pmatrix} + c_2\left(t\begin{pmatrix}1\\0\end{pmatrix}+\begin{pmatrix}0\\1\end{pmatrix}\right)\right] = e^{3t}\begin{pmatrix}c_1 + c_2 t \\ c_2\end{pmatrix}.$$</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Variation of Parameters for Non-Homogeneous Systems</div>
+                    <p class="mb-0">For $\mathbf{x}' = A\mathbf{x} + \mathbf{b}(t)$, the solution with $\mathbf{x}(0) = \mathbf{x}_0$ is given by the variation of parameters formula:
+                    $$\mathbf{x}(t) = e^{At}\mathbf{x}_0 + \int_0^t e^{A(t-s)}\mathbf{b}(s)\,ds.$$
+                    This generalises the scalar integrating factor formula to systems.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 3. Systems of ODEs</a>
+                    <a href="../02-phase-plane-analysis/" class="btn btn-custom">3.2 Phase Plane Analysis &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1 Floating-Point Representation — Numerical Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Numerical Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Numerical Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-floating-point-arithmetic">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-floating-point-arithmetic/" class="toc-chapter-link"><strong>1.</strong> Floating-Point Arithmetic</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-floating-point-representation/">1.1 Floating-Point Representation</a>
+                        <a href="../02-rounding-and-cancellation-errors/">1.2 Rounding and Cancellation Errors</a>
+                        <a href="../03-condition-numbers/">1.3 Condition Numbers</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-root-finding">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-root-finding/" class="toc-chapter-link"><strong>2.</strong> Root Finding</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-root-finding/01-bisection-method/">2.1 Bisection Method</a>
+                        <a href="../../02-root-finding/02-newton-raphson-method/">2.2 Newton–Raphson Method</a>
+                        <a href="../../02-root-finding/03-secant-method/">2.3 Secant Method</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-linear-systems">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-linear-systems/" class="toc-chapter-link"><strong>3.</strong> Linear Systems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-linear-systems/01-gaussian-elimination/">3.1 Gaussian Elimination</a>
+                        <a href="../../03-linear-systems/02-lu-factorisation/">3.2 LU Factorisation</a>
+                        <a href="../../03-linear-systems/03-iterative-methods/">3.3 Iterative Methods (Jacobi, Gauss–Seidel)</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-interpolation">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-interpolation/" class="toc-chapter-link"><strong>4.</strong> Interpolation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-interpolation/01-polynomial-interpolation/">4.1 Polynomial Interpolation</a>
+                        <a href="../../04-interpolation/02-divided-differences/">4.2 Divided Differences</a>
+                        <a href="../../04-interpolation/03-spline-interpolation/">4.3 Spline Interpolation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-numerical-integration">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-numerical-integration/" class="toc-chapter-link"><strong>5.</strong> Numerical Integration</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-numerical-integration/01-newton-cotes-formulas/">5.1 Newton–Cotes Formulas</a>
+                        <a href="../../05-numerical-integration/02-gaussian-quadrature/">5.2 Gaussian Quadrature</a>
+                        <a href="../../05-numerical-integration/03-adaptive-integration/">5.3 Adaptive Integration</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-numerical-ode-methods">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-numerical-ode-methods/" class="toc-chapter-link"><strong>6.</strong> Numerical ODE Methods</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-numerical-ode-methods/01-eulers-method/">6.1 Euler's Method</a>
+                        <a href="../../06-numerical-ode-methods/02-runge-kutta-methods/">6.2 Runge–Kutta Methods</a>
+                        <a href="../../06-numerical-ode-methods/03-stability-and-stiffness/">6.3 Stability and Stiffness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-eigenvalue-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-eigenvalue-problems/" class="toc-chapter-link"><strong>7.</strong> Eigenvalue Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-eigenvalue-problems/01-power-iteration/">7.1 Power Iteration</a>
+                        <a href="../../07-eigenvalue-problems/02-qr-algorithm/">7.2 QR Algorithm</a>
+                        <a href="../../07-eigenvalue-problems/03-svd-computation/">7.3 SVD Computation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Numerical Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Numerical Analysis</a> ›
+                <a href="../">1. Floating-Point Arithmetic</a> ›
+                <span>1.1 Floating-Point Representation</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">1.1 Floating-Point Representation</h1>
+                <p>Real numbers are infinite objects; computers store only finite approximations. The IEEE 754 standard governs how virtually all modern hardware represents and computes with floating-point numbers. Understanding its structure — sign, exponent, mantissa — is the foundation for analysing numerical error.</p>
+
+                <h2 class="mt-4 mb-3">IEEE 754 Double Precision</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — IEEE 754 Double Precision</div>
+                    <p>A <strong>double-precision</strong> floating-point number occupies 64 bits partitioned as:</p>
+                    <ul>
+                        <li>1 sign bit $s \in \{0,1\}$</li>
+                        <li>11 exponent bits, encoding a biased exponent $e$ with bias 1023</li>
+                        <li>52 fraction bits $f_1 f_2 \cdots f_{52}$</li>
+                    </ul>
+                    <p class="mb-0">For a normalised number the represented value is:
+                    $$x = (-1)^s \cdot 2^{e-1023} \cdot (1.f_1 f_2 \cdots f_{52})_2 = (-1)^s \cdot 2^{e-1023} \cdot \left(1 + \sum_{i=1}^{52} f_i \cdot 2^{-i}\right).$$
+                    The leading 1 is implicit and not stored, giving an effective 53-bit significand (precision $p = 53$ binary digits).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Normalised Form and Range</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Normalised Floating-Point Number</div>
+                    <p class="mb-0">A floating-point number $x \ne 0$ is <strong>normalised</strong> when its significand satisfies $1 \le |m| < 2$ (base 2). In double precision, normalised numbers span the range:
+                    $$|x| \in [2^{-1022},\; (2-2^{-52})\cdot 2^{1023}] \approx [2.2\times 10^{-308},\; 1.8\times 10^{308}].$$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Machine Epsilon</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Machine Epsilon</div>
+                    <p class="mb-0"><strong>Machine epsilon</strong> $\varepsilon_{\text{mach}}$ is the smallest positive floating-point number such that $\text{fl}(1 + \varepsilon_{\text{mach}}) > 1$. For IEEE 754 double precision with round-to-nearest:
+                    $$\varepsilon_{\text{mach}} = 2^{-52} \approx 2.22 \times 10^{-16}.$$
+                    Equivalently, for any real $x$ in the normalised range, its floating-point representation $\text{fl}(x)$ satisfies $|\text{fl}(x) - x| \le \tfrac{1}{2}\varepsilon_{\text{mach}}|x|$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Relative Error Bound</div>
+                    <p class="mb-0">The fundamental property of floating-point arithmetic is that each basic operation $\circ \in \{+,-,\times,\div\}$ satisfies $\text{fl}(x \circ y) = (x \circ y)(1+\delta)$ for some $|\delta| \le \varepsilon_{\text{mach}}$, provided no overflow or underflow occurs. This is the <em>unit roundoff</em> model.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Subnormal Numbers</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Subnormal (Denormalised) Numbers</div>
+                    <p class="mb-0">When the exponent field is all zeros, the leading bit is taken as 0 rather than 1, giving <strong>subnormal</strong> numbers:
+                    $$x = (-1)^s \cdot 2^{-1022} \cdot (0.f_1\cdots f_{52})_2.$$
+                    Subnormals fill the gap between 0 and the smallest normalised number, enabling <em>gradual underflow</em> down to $2^{-1074} \approx 5\times 10^{-324}$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Overflow, Underflow, and Special Values</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Special Values</div>
+                    <p><strong>Overflow</strong> occurs when a result exceeds $(2 - 2^{-52})\cdot 2^{1023}$; the result is set to $\pm\infty$.</p>
+                    <p><strong>Underflow</strong> occurs when a positive result is smaller than $2^{-1022}$; gradual underflow produces a subnormal, and <em>flush-to-zero</em> underflow sets the result to 0.</p>
+                    <p class="mb-0">IEEE 754 defines four special values via reserved bit patterns:
+                    <ul>
+                        <li>$+\infty$ and $-\infty$: exponent all-ones, fraction all-zeros.</li>
+                        <li><strong>NaN</strong> (Not a Number): exponent all-ones, nonzero fraction. Produced by $0/0$, $\infty - \infty$, $\sqrt{-1}$, etc. NaN propagates through arithmetic: any operation involving NaN returns NaN.</li>
+                        <li>$\pm 0$: exponent and fraction all-zeros. $+0 = -0$ for comparison purposes, but $1/(+0) = +\infty$ while $1/(-0) = -\infty$.</li>
+                    </ul></p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Floating-Point Density</h2>
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Distribution of Floating-Point Numbers</div>
+                    <p class="mb-0">In each binade $[2^k, 2^{k+1})$, there are exactly $2^{52}$ normalised double-precision numbers uniformly spaced with gap $2^{k-52}$. The spacing therefore doubles as the magnitude doubles: large numbers are more sparsely represented than small numbers, which is why relative error (not absolute) is the natural measure.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Exact Representation</div>
+                    <p>The number $0.1$ has no exact binary representation. In double precision:
+                    $$\text{fl}(0.1) = 0.1000000000000000055511151231257827021181583404541015625\ldots$$
+                    This is an error of roughly $5.6 \times 10^{-18}$, well within $\tfrac{1}{2}\varepsilon_{\text{mach}} \times 0.1 \approx 1.1 \times 10^{-17}$.</p>
+                    <p class="mb-0">In contrast, $0.5 = 2^{-1}$ and $0.25 = 2^{-2}$ are represented exactly, as are all integers up to $2^{53} = 9{,}007{,}199{,}254{,}740{,}992$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3">
+                    <a href="../" class="btn btn-outline-custom">&larr; 1. Floating-Point Arithmetic</a>
+                    <a href="../02-rounding-and-cancellation-errors/" class="btn btn-custom">1.2 Rounding and Cancellation Errors &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

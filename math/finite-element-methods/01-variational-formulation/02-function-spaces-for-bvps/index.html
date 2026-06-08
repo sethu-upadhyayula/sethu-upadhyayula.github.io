@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.2 Function Spaces for BVPs — Finite Element Methods</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to FEM</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Finite Element Methods</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-variational-formulation">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-variational-formulation/" class="toc-chapter-link"><strong>1.</strong> Variational Formulation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-variational-formulation/01-weak-form-of-bvps/">1.1 Weak Form of BVPs</a>
+                        <a href="../../01-variational-formulation/02-function-spaces-for-bvps/">1.2 Function Spaces for BVPs</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-galerkin-method">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-galerkin-method/" class="toc-chapter-link"><strong>2.</strong> Galerkin Method</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-galerkin-method/01-abstract-galerkin-framework/">2.1 Abstract Galerkin Framework</a>
+                        <a href="../../02-galerkin-method/02-lax-milgram-theorem/">2.2 Lax–Milgram Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-finite-element-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-finite-element-spaces/" class="toc-chapter-link"><strong>3.</strong> Finite Element Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-finite-element-spaces/01-triangulations-and-meshes/">3.1 Triangulations and Meshes</a>
+                        <a href="../../03-finite-element-spaces/02-lagrange-elements/">3.2 Lagrange Elements</a>
+                        <a href="../../03-finite-element-spaces/03-reference-elements-and-mapping/">3.3 Reference Elements and Mapping</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-assembly-and-implementation">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-assembly-and-implementation/" class="toc-chapter-link"><strong>4.</strong> Assembly and Implementation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-assembly-and-implementation/01-stiffness-matrix-and-load-vector/">4.1 Stiffness Matrix and Load Vector</a>
+                        <a href="../../04-assembly-and-implementation/02-boundary-conditions/">4.2 Boundary Conditions</a>
+                        <a href="../../04-assembly-and-implementation/03-solvers-for-linear-systems/">4.3 Solvers for Linear Systems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-error-analysis">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-error-analysis/" class="toc-chapter-link"><strong>5.</strong> Error Analysis</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-error-analysis/01-ceas-lemma/">5.1 Céa's Lemma</a>
+                        <a href="../../05-error-analysis/02-interpolation-error/">5.2 Interpolation Error</a>
+                        <a href="../../05-error-analysis/03-a-priori-error-estimates/">5.3 A Priori Error Estimates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-applications-to-elliptic-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-applications-to-elliptic-problems/" class="toc-chapter-link"><strong>6.</strong> Applications to Elliptic Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-applications-to-elliptic-problems/01-poissons-equation/">6.1 Poisson's Equation</a>
+                        <a href="../../06-applications-to-elliptic-problems/02-elasticity/">6.2 Elasticity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-time-dependent-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-time-dependent-problems/" class="toc-chapter-link"><strong>7.</strong> Time-Dependent Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-time-dependent-problems/01-semi-discrete-formulation/">7.1 Semi-Discrete Formulation</a>
+                        <a href="../../07-time-dependent-problems/02-time-discretisation/">7.2 Time Discretisation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to FEM</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Finite Element Methods</a> ›
+                <a href="../">1. Variational Formulation</a> ›
+                <span>1.2 Function Spaces for BVPs</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">1.2 Function Spaces for BVPs</h1>
+
+                <p>The rigorous analysis of the finite element method rests on the theory of Sobolev spaces. These spaces capture precisely the regularity needed for the weak formulation: square-integrable functions whose weak derivatives are also square-integrable.</p>
+
+                <h2 class="mt-4 mb-3">The Space $L^2(\Omega)$</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — $L^2(\Omega)$</div>
+                    <p>Let $\Omega \subset \mathbb{R}^d$ be a bounded domain. The space
+                    $$L^2(\Omega) = \left\{ u : \Omega \to \mathbb{R} \;\Big|\; \int_\Omega u^2\,dx < \infty \right\}$$
+                    (where functions equal almost everywhere are identified) is a Hilbert space with inner product and norm
+                    $$(u,v)_{L^2} = \int_\Omega u\,v\,dx, \qquad \|u\|_{L^2} = \left(\int_\Omega u^2\,dx\right)^{1/2}.$$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Sobolev Space $H^1(\Omega)$</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Weak Derivative</div>
+                    <p>A function $g \in L^2(\Omega)$ is the <strong>weak partial derivative</strong> $\partial u / \partial x_i$ of $u \in L^2(\Omega)$ if
+                    $$\int_\Omega g\,\varphi\,dx = -\int_\Omega u\,\frac{\partial\varphi}{\partial x_i}\,dx \quad \forall\,\varphi \in C^\infty_0(\Omega).$$
+                    This generalises the classical derivative via integration by parts without requiring pointwise differentiability.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — $H^1(\Omega)$</div>
+                    <p>The first-order Sobolev space is
+                    $$H^1(\Omega) = \{ u \in L^2(\Omega) : \nabla u \in L^2(\Omega)^d \},$$
+                    equipped with the inner product and norm
+                    $$(u,v)_{H^1} = \int_\Omega uv\,dx + \int_\Omega \nabla u \cdot \nabla v\,dx, \qquad \|u\|_{H^1}^2 = \|u\|_{L^2}^2 + \|\nabla u\|_{L^2}^2.$$
+                    The <strong>seminorm</strong> $|u|_{H^1} = \|\nabla u\|_{L^2}$ measures only the gradient.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Space $H^1_0(\Omega)$ and the Trace</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — $H^1_0(\Omega)$</div>
+                    <p>The space $H^1_0(\Omega)$ is the closure of $C^\infty_0(\Omega)$ (smooth functions compactly supported in $\Omega$) in the $H^1$ norm:
+                    $$H^1_0(\Omega) = \overline{C^\infty_0(\Omega)}^{\|\cdot\|_{H^1}}.$$
+                    Equivalently, by the trace theorem, $H^1_0(\Omega) = \{ u \in H^1(\Omega) : \gamma_0 u = 0 \text{ on } \partial\Omega \}$, where $\gamma_0: H^1(\Omega) \to L^2(\partial\Omega)$ is the trace (boundary restriction) operator.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why $H^1_0$?</div>
+                    <p class="mb-0">Functions in $H^1_0(\Omega)$ satisfy homogeneous Dirichlet conditions in the sense of traces. This is the correct space for the variational formulation of $-\Delta u = f$ with $u|_{\partial\Omega} = 0$: both the solution $u$ and the test functions $v$ live in $H^1_0(\Omega)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Poincaré Inequality</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Poincaré Inequality</div>
+                    <p>Let $\Omega \subset \mathbb{R}^d$ be a bounded domain. There exists a constant $C_P = C_P(\Omega) > 0$ such that
+                    $$\|u\|_{L^2(\Omega)} \leq C_P \|\nabla u\|_{L^2(\Omega)} \quad \forall\, u \in H^1_0(\Omega).$$
+                    The constant $C_P$ depends only on $\Omega$ (specifically, on its diameter in one direction). For a domain of diameter $D$, one can take $C_P = D/\pi$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Consequence: Equivalent Norm</div>
+                    <p class="mb-0">The Poincaré inequality implies that on $H^1_0(\Omega)$, the seminorm $|\cdot|_{H^1} = \|\nabla\cdot\|_{L^2}$ is in fact a norm equivalent to $\|\cdot\|_{H^1}$:
+                    $$\|\nabla u\|_{L^2} \leq \|u\|_{H^1} \leq \sqrt{1 + C_P^2}\,\|\nabla u\|_{L^2}.$$
+                    This allows us to use $\|\nabla u\|_{L^2}$ as the energy norm on $H^1_0(\Omega)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Coercivity and Continuity of $a(\cdot,\cdot)$</h2>
+
+                <p>The bilinear form $a(u,v) = \int_\Omega \nabla u \cdot \nabla v\,dx$ has two key properties that ensure the Lax–Milgram theorem applies.</p>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Coercivity</div>
+                    <p class="mb-0">For all $u \in H^1_0(\Omega)$:
+                    $$a(u,u) = \|\nabla u\|_{L^2}^2 \geq \frac{1}{1+C_P^2}\|u\|_{H^1}^2.$$
+                    Setting $\alpha = (1+C_P^2)^{-1} > 0$, we have $a(u,u) \geq \alpha \|u\|_{H^1}^2$.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Continuity (Boundedness)</div>
+                    <p class="mb-0">For all $u, v \in H^1_0(\Omega)$, by the Cauchy–Schwarz inequality:
+                    $$|a(u,v)| = \left|\int_\Omega \nabla u \cdot \nabla v\,dx\right| \leq \|\nabla u\|_{L^2}\|\nabla v\|_{L^2} \leq \|u\|_{H^1}\|v\|_{H^1}.$$
+                    Thus $a$ is continuous with continuity constant $M = 1$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Well-Posedness via Lax–Milgram</div>
+                    <p class="mb-0">Since $a$ is coercive and continuous on $H^1_0(\Omega)$, and $\ell(v) = \int_\Omega fv\,dx$ is a bounded linear functional ($|\ell(v)| \leq \|f\|_{L^2}\|v\|_{L^2} \leq \|f\|_{L^2}C_P\|v\|_{H^1}$ by Cauchy–Schwarz and Poincaré), the Lax–Milgram theorem guarantees existence and uniqueness of $u \in H^1_0(\Omega)$ satisfying $a(u,v) = \ell(v)$ for all $v \in H^1_0(\Omega)$, with stability estimate $\|u\|_{H^1} \leq \|f\|_{L^2} C_P / \alpha$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Higher-Order Sobolev Spaces</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — $H^k(\Omega)$</div>
+                    <p class="mb-0">For integer $k \geq 0$, the Sobolev space $H^k(\Omega)$ consists of functions $u \in L^2(\Omega)$ whose weak partial derivatives of all orders $|\alpha| \leq k$ belong to $L^2(\Omega)$:
+                    $$H^k(\Omega) = \{ u \in L^2(\Omega) : D^\alpha u \in L^2(\Omega) \;\forall\, |\alpha| \leq k \},$$
+                    with norm $\|u\|_{H^k}^2 = \sum_{|\alpha|\leq k}\|D^\alpha u\|_{L^2}^2$ and seminorm $|u|_{H^k}^2 = \sum_{|\alpha|=k}\|D^\alpha u\|_{L^2}^2$. The spaces satisfy $H^k \hookrightarrow H^{k-1} \hookrightarrow \cdots \hookrightarrow L^2$, with all inclusions continuous and dense.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-weak-form-of-bvps/" class="btn btn-outline-custom">&larr; 1.1 Weak Form of BVPs</a>
+                    <a href="../../02-galerkin-method/" class="btn btn-custom">2. Galerkin Method &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

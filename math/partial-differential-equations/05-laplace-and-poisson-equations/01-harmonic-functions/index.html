@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.1 Harmonic Functions — Partial Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Partial Differential Equations</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Partial Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-introduction-and-classification"><div class="toc-chapter-header"><a href="../../01-introduction-and-classification/" class="toc-chapter-link"><strong>1.</strong> Introduction and Classification</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../01-introduction-and-classification/01-first-and-second-order-pdes/">1.1 First- and Second-Order PDEs</a><a href="../../01-introduction-and-classification/02-classification/">1.2 Classification</a><a href="../../01-introduction-and-classification/03-well-posed-problems/">1.3 Well-Posed Problems</a></div></div>
+                <div class="toc-chapter" data-chapter="02-first-order-pdes"><div class="toc-chapter-header"><a href="../../02-first-order-pdes/" class="toc-chapter-link"><strong>2.</strong> First-Order PDEs</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../02-first-order-pdes/01-method-of-characteristics/">2.1 Method of Characteristics</a><a href="../../02-first-order-pdes/02-linear-and-quasilinear-equations/">2.2 Linear and Quasilinear Equations</a><a href="../../02-first-order-pdes/03-conservation-laws/">2.3 Conservation Laws</a></div></div>
+                <div class="toc-chapter" data-chapter="03-the-wave-equation"><div class="toc-chapter-header"><a href="../../03-the-wave-equation/" class="toc-chapter-link"><strong>3.</strong> The Wave Equation</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../03-the-wave-equation/01-dalemberts-formula/">3.1 d'Alembert's Formula</a><a href="../../03-the-wave-equation/02-separation-of-variables/">3.2 Separation of Variables</a><a href="../../03-the-wave-equation/03-energy-methods/">3.3 Energy Methods</a></div></div>
+                <div class="toc-chapter" data-chapter="04-the-heat-equation"><div class="toc-chapter-header"><a href="../../04-the-heat-equation/" class="toc-chapter-link"><strong>4.</strong> The Heat Equation</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../04-the-heat-equation/01-maximum-principle/">4.1 Maximum Principle</a><a href="../../04-the-heat-equation/02-fundamental-solution/">4.2 Fundamental Solution</a><a href="../../04-the-heat-equation/03-fourier-series-solution/">4.3 Fourier Series Solution</a></div></div>
+                <div class="toc-chapter" data-chapter="05-laplace-and-poisson-equations"><div class="toc-chapter-header"><a href="../../05-laplace-and-poisson-equations/" class="toc-chapter-link"><strong>5.</strong> Laplace and Poisson Equations</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../05-laplace-and-poisson-equations/01-harmonic-functions/">5.1 Harmonic Functions</a><a href="../../05-laplace-and-poisson-equations/02-greens-functions/">5.2 Green's Functions</a><a href="../../05-laplace-and-poisson-equations/03-mean-value-property/">5.3 Mean Value Property</a></div></div>
+                <div class="toc-chapter" data-chapter="06-fourier-analysis"><div class="toc-chapter-header"><a href="../../06-fourier-analysis/" class="toc-chapter-link"><strong>6.</strong> Fourier Analysis</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../06-fourier-analysis/01-fourier-series/">6.1 Fourier Series</a><a href="../../06-fourier-analysis/02-fourier-transform/">6.2 Fourier Transform</a><a href="../../06-fourier-analysis/03-applications/">6.3 Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="07-weak-solutions-and-distributions"><div class="toc-chapter-header"><a href="../../07-weak-solutions-and-distributions/" class="toc-chapter-link"><strong>7.</strong> Weak Solutions and Distributions</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../07-weak-solutions-and-distributions/01-distributions/">7.1 Distributions</a><a href="../../07-weak-solutions-and-distributions/02-weak-derivatives/">7.2 Weak Derivatives</a><a href="../../07-weak-solutions-and-distributions/03-sobolev-spaces/">7.3 Sobolev Spaces</a></div></div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Partial Differential Equations</a></div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> › <a href="../../">Partial Differential Equations</a> › <a href="../">5. Laplace and Poisson Equations</a> › <span>5.1 Harmonic Functions</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">5.1 Harmonic Functions</h1>
+                <p>A function $u \in C^2(\Omega)$ is <strong>harmonic</strong> on an open set $\Omega \subset \mathbb{R}^n$ if it satisfies the Laplace equation $\Delta u = 0$ identically on $\Omega$. Harmonic functions arise as steady-state temperature distributions, gravitational and electrostatic potentials, and as the real and imaginary parts of holomorphic functions in the plane. Their most striking feature is the mean value property, from which almost all other properties follow.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 5.1.1 — Harmonic Function</div>
+                    <p>Let $\Omega \subset \mathbb{R}^n$ be open. A function $u \in C^2(\Omega)$ is <strong>harmonic</strong> on $\Omega$ if</p>
+                    $$\Delta u(x) = \sum_{i=1}^n \frac{\partial^2 u}{\partial x_i^2}(x) = 0 \quad \text{for all } x \in \Omega.$$
+                    <p class="mb-0">More generally, $u$ is a solution of the <strong>Poisson equation</strong> if $-\Delta u = f$ for some given $f \in C(\Omega)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Mean Value Property</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.1.2 — Mean Value Property</div>
+                    <p>Let $u$ be harmonic in $\Omega$. For any ball $B(x_0,r) \subset\subset \Omega$:</p>
+                    <p><strong>(Spherical mean value):</strong></p>
+                    $$u(x_0) = \frac{1}{|\partial B(x_0,r)|} \int_{\partial B(x_0,r)} u \, dS = \frac{1}{n\omega_n r^{n-1}} \int_{\partial B(x_0,r)} u \, dS.$$
+                    <p><strong>(Ball mean value):</strong></p>
+                    $$u(x_0) = \frac{1}{|B(x_0,r)|} \int_{B(x_0,r)} u \, dy = \frac{n}{\omega_n r^n} \int_{B(x_0,r)} u \, dy.$$
+                    <p class="mb-0">Here $\omega_n$ denotes the volume of the unit ball in $\mathbb{R}^n$, so $|\partial B(x_0,r)| = n\omega_n r^{n-1}$ and $|B(x_0,r)| = \omega_n r^n$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p>Define $\phi(r) = \frac{1}{|\partial B(x_0,r)|}\int_{\partial B(x_0,r)} u \, dS$. By the change of variables $y = x_0 + rz$ with $z \in \partial B(0,1)$:</p>
+                    $$\phi(r) = \frac{1}{n\omega_n} \int_{\partial B(0,1)} u(x_0 + rz)\, dS(z).$$
+                    <p>Differentiating under the integral sign and applying the divergence theorem:</p>
+                    $$\phi'(r) = \frac{1}{n\omega_n} \int_{\partial B(0,1)} \nabla u(x_0+rz)\cdot z \, dS(z) = \frac{1}{n\omega_n r^{n-1}} \int_{\partial B(x_0,r)} \frac{\partial u}{\partial \nu} \, dS = \frac{r}{n} \fint_{B(x_0,r)} \Delta u \, dy = 0,$$
+                    <p>since $\Delta u = 0$. Thus $\phi$ is constant. As $r \to 0^+$, $\phi(r) \to u(x_0)$ by continuity, so $\phi(r) = u(x_0)$ for all $r$. The ball mean value follows by integrating the spherical formula in $r$. $\square$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Maximum Principle</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.1.3 — Weak Maximum Principle</div>
+                    <p>Let $\Omega$ be bounded and $u \in C^2(\Omega) \cap C(\overline{\Omega})$ harmonic. Then</p>
+                    $$\max_{\overline{\Omega}} u = \max_{\partial \Omega} u \quad \text{and} \quad \min_{\overline{\Omega}} u = \min_{\partial \Omega} u.$$
+                    <p class="mb-0"><strong>Proof sketch:</strong> If $u$ attains its maximum at an interior point $x_0$, then $u(x_0) = \fint_{B(x_0,r)} u \, dy \leq u(x_0)$ by the mean value property, forcing $u \equiv u(x_0)$ on $B(x_0,r)$. By connectedness, $u$ is constant on $\Omega$, and the boundary maximum equals the interior value. $\square$</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.1.4 — Strong Maximum Principle</div>
+                    <p class="mb-0">Let $\Omega$ be connected and bounded, and $u \in C^2(\Omega)\cap C(\overline\Omega)$ harmonic. If $u$ attains its maximum (or minimum) at an interior point, then $u$ is constant throughout $\Omega$. In particular, a non-constant harmonic function can only attain its extrema on $\partial\Omega$.</p>
+                </div>
+
+                <div class="math-box corollary">
+                    <div class="math-box-label">Corollary 5.1.5 — Uniqueness of Dirichlet Problem</div>
+                    <p>The Dirichlet problem $\Delta u = 0$ in $\Omega$, $u = g$ on $\partial\Omega$, has at most one solution $u \in C^2(\Omega)\cap C(\overline\Omega)$.</p>
+                    <p class="mb-0"><strong>Proof:</strong> If $u$ and $v$ both solve the problem, $w = u - v$ is harmonic with zero boundary data. By the maximum principle, $\max_{\overline\Omega} w = 0$ and $\min_{\overline\Omega} w = 0$, so $w \equiv 0$. $\square$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Liouville's Theorem</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.1.6 — Liouville's Theorem for Harmonic Functions</div>
+                    <p class="mb-0">If $u$ is harmonic and bounded on all of $\mathbb{R}^n$, then $u$ is constant.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p>For any two points $x, y \in \mathbb{R}^n$ and any $r > |x - y|$, the mean value property gives</p>
+                    $$u(x) - u(y) = \frac{n}{\omega_n r^n}\left(\int_{B(x,r)} u\, dz - \int_{B(y,r)} u\, dz\right).$$
+                    <p>The symmetric difference $B(x,r) \triangle B(y,r)$ has volume $O(r^{n-1}|x-y|)$, so</p>
+                    $$|u(x) - u(y)| \leq \frac{n \|u\|_\infty}{\omega_n r^n} \cdot C r^{n-1} |x-y| = \frac{C\|u\|_\infty |x-y|}{r}.$$
+                    <p class="mb-0">Sending $r \to \infty$ gives $u(x) = u(y)$. $\square$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Harmonic Functions in 2D</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 5.1.7 — Real and Imaginary Parts of Holomorphic Functions</div>
+                    <p>If $f = u + iv$ is holomorphic on an open set $\Omega \subset \mathbb{C} \cong \mathbb{R}^2$, then both $u$ and $v$ are harmonic on $\Omega$.</p>
+                    <p class="mb-0"><strong>Proof:</strong> The Cauchy–Riemann equations give $u_x = v_y$ and $u_y = -v_x$. Differentiating: $\Delta u = u_{xx} + u_{yy} = (v_y)_x + (-v_x)_y = v_{yx} - v_{xy} = 0$ by equality of mixed partials. Similarly $\Delta v = 0$. $\square$</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 5.1.8 — Basic Harmonic Functions</div>
+                    <p>In $\mathbb{R}^2$: $u = x$, $u = x^2 - y^2$, $u = e^x \cos y$, $u = \log|x|$ (away from origin).</p>
+                    <p>In $\mathbb{R}^n$ ($n \geq 3$): $u = |x|^{2-n}$ is harmonic on $\mathbb{R}^n \setminus \{0\}$. To verify: using $|x|^2 = x_1^2 + \cdots + x_n^2$,</p>
+                    $$\frac{\partial}{\partial x_i}|x|^{2-n} = (2-n)|x|^{-n} x_i, \quad \frac{\partial^2}{\partial x_i^2}|x|^{2-n} = (2-n)|x|^{-n} + (2-n)(-n)x_i^2|x|^{-n-2}.$$
+                    <p class="mb-0">Summing over $i$: $\Delta(|x|^{2-n}) = (2-n)n|x|^{-n} + (2-n)(-n)|x|^{-n} = 0$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 5. Laplace and Poisson Equations</a>
+                    <a href="../02-greens-functions/" class="btn btn-custom">5.2 Green's Functions &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links"><a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a><a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a></div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

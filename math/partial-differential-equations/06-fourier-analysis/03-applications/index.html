@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.3 Applications to PDEs — Partial Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Partial Differential Equations</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Partial Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-introduction-and-classification"><div class="toc-chapter-header"><a href="../../01-introduction-and-classification/" class="toc-chapter-link"><strong>1.</strong> Introduction and Classification</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../01-introduction-and-classification/01-first-and-second-order-pdes/">1.1 First- and Second-Order PDEs</a><a href="../../01-introduction-and-classification/02-classification/">1.2 Classification</a><a href="../../01-introduction-and-classification/03-well-posed-problems/">1.3 Well-Posed Problems</a></div></div>
+                <div class="toc-chapter" data-chapter="02-first-order-pdes"><div class="toc-chapter-header"><a href="../../02-first-order-pdes/" class="toc-chapter-link"><strong>2.</strong> First-Order PDEs</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../02-first-order-pdes/01-method-of-characteristics/">2.1 Method of Characteristics</a><a href="../../02-first-order-pdes/02-linear-and-quasilinear-equations/">2.2 Linear and Quasilinear Equations</a><a href="../../02-first-order-pdes/03-conservation-laws/">2.3 Conservation Laws</a></div></div>
+                <div class="toc-chapter" data-chapter="03-the-wave-equation"><div class="toc-chapter-header"><a href="../../03-the-wave-equation/" class="toc-chapter-link"><strong>3.</strong> The Wave Equation</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../03-the-wave-equation/01-dalemberts-formula/">3.1 d'Alembert's Formula</a><a href="../../03-the-wave-equation/02-separation-of-variables/">3.2 Separation of Variables</a><a href="../../03-the-wave-equation/03-energy-methods/">3.3 Energy Methods</a></div></div>
+                <div class="toc-chapter" data-chapter="04-the-heat-equation"><div class="toc-chapter-header"><a href="../../04-the-heat-equation/" class="toc-chapter-link"><strong>4.</strong> The Heat Equation</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../04-the-heat-equation/01-maximum-principle/">4.1 Maximum Principle</a><a href="../../04-the-heat-equation/02-fundamental-solution/">4.2 Fundamental Solution</a><a href="../../04-the-heat-equation/03-fourier-series-solution/">4.3 Fourier Series Solution</a></div></div>
+                <div class="toc-chapter" data-chapter="05-laplace-and-poisson-equations"><div class="toc-chapter-header"><a href="../../05-laplace-and-poisson-equations/" class="toc-chapter-link"><strong>5.</strong> Laplace and Poisson Equations</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../05-laplace-and-poisson-equations/01-harmonic-functions/">5.1 Harmonic Functions</a><a href="../../05-laplace-and-poisson-equations/02-greens-functions/">5.2 Green's Functions</a><a href="../../05-laplace-and-poisson-equations/03-mean-value-property/">5.3 Mean Value Property</a></div></div>
+                <div class="toc-chapter" data-chapter="06-fourier-analysis"><div class="toc-chapter-header"><a href="../../06-fourier-analysis/" class="toc-chapter-link"><strong>6.</strong> Fourier Analysis</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../06-fourier-analysis/01-fourier-series/">6.1 Fourier Series</a><a href="../../06-fourier-analysis/02-fourier-transform/">6.2 Fourier Transform</a><a href="../../06-fourier-analysis/03-applications/">6.3 Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="07-weak-solutions-and-distributions"><div class="toc-chapter-header"><a href="../../07-weak-solutions-and-distributions/" class="toc-chapter-link"><strong>7.</strong> Weak Solutions and Distributions</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../07-weak-solutions-and-distributions/01-distributions/">7.1 Distributions</a><a href="../../07-weak-solutions-and-distributions/02-weak-derivatives/">7.2 Weak Derivatives</a><a href="../../07-weak-solutions-and-distributions/03-sobolev-spaces/">7.3 Sobolev Spaces</a></div></div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Partial Differential Equations</a></div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> › <a href="../../">Partial Differential Equations</a> › <a href="../">6. Fourier Analysis</a> › <span>6.3 Applications to PDEs</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">6.3 Applications to PDEs</h1>
+                <p>The Fourier transform converts PDEs on $\mathbb{R}^n$ into ODEs or algebraic equations in frequency space. Solutions in physical space are then recovered by the convolution theorem, yielding explicit integral representations. We illustrate this for the heat and wave equations, and prove the Poisson summation formula.</p>
+
+                <h2 class="mt-5 mb-3">Heat Equation on $\mathbb{R}^n$</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.3.1 — Solution via Heat Kernel</div>
+                    <p>Consider the initial value problem $u_t = \Delta u$ on $\mathbb{R}^n \times (0,\infty)$ with $u(\cdot, 0) = u_0 \in \mathcal{S}(\mathbb{R}^n)$. Taking the Fourier transform in $x$ gives</p>
+                    $$\hat{u}_t(\xi,t) = -4\pi^2|\xi|^2 \hat{u}(\xi,t), \quad \hat{u}(\xi,0) = \hat{u}_0(\xi).$$
+                    <p>This ODE in $t$ has the explicit solution $\hat{u}(\xi,t) = \hat{u}_0(\xi)\,e^{-4\pi^2|\xi|^2 t}$. Since $e^{-4\pi^2|\xi|^2 t}$ is the Fourier transform of the <strong>heat kernel</strong></p>
+                    $$G_t(x) = \frac{1}{(4\pi t)^{n/2}} e^{-|x|^2/(4t)},$$
+                    <p>the convolution theorem gives</p>
+                    $$u(x,t) = (G_t * u_0)(x) = \frac{1}{(4\pi t)^{n/2}}\int_{\mathbb{R}^n} e^{-|x-y|^2/(4t)} u_0(y)\,dy.$$
+                    <p class="mb-0">For $t > 0$, $u(\cdot,t) \in \mathcal{S}(\mathbb{R}^n)$ even if $u_0$ is merely bounded and measurable (instant smoothing). The heat kernel satisfies $\int_{\mathbb{R}^n} G_t(x)\,dx = 1$ and $G_t \to \delta_0$ as $t \to 0^+$ in the sense of distributions.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Wave Equation on $\mathbb{R}$</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.3.2 — d'Alembert's Formula via Fourier Transform</div>
+                    <p>For $u_{tt} = c^2 u_{xx}$ on $\mathbb{R}\times(0,\infty)$ with $u(x,0)=f(x)$, $u_t(x,0)=g(x)$, taking the Fourier transform in $x$ gives</p>
+                    $$\hat{u}_{tt} = -4\pi^2 c^2 \xi^2 \hat{u},$$
+                    <p>an ODE with solution $\hat{u}(\xi,t) = \hat{f}(\xi)\cos(2\pi c|\xi|t) + \hat{g}(\xi)\frac{\sin(2\pi c|\xi|t)}{2\pi c|\xi|}$. Inverting via the convolution theorem:</p>
+                    $$u(x,t) = \frac{f(x+ct)+f(x-ct)}{2} + \frac{1}{2c}\int_{x-ct}^{x+ct} g(y)\,dy,$$
+                    <p class="mb-0">which is d'Alembert's formula. In $\mathbb{R}^n$ for $n \geq 2$, the analogous formula involves spherical means and exhibits Huygens' principle for odd $n \geq 3$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Poisson Summation Formula</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.3.3 — Poisson Summation Formula</div>
+                    <p>Let $f \in \mathcal{S}(\mathbb{R})$. Then</p>
+                    $$\sum_{n=-\infty}^{\infty} f(n) = \sum_{n=-\infty}^{\infty} \hat{f}(n).$$
+                    <p>More generally, for the lattice $\Lambda = \mathbb{Z}^d \subset \mathbb{R}^d$:</p>
+                    $$\sum_{\mathbf{n} \in \mathbb{Z}^d} f(\mathbf{n}) = \sum_{\mathbf{m} \in \mathbb{Z}^d} \hat{f}(\mathbf{m}).$$
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p>Define $F(x) = \sum_{n \in \mathbb{Z}} f(x+n)$. Since $f \in \mathcal{S}$, this sum converges absolutely and uniformly to a $1$-periodic smooth function. The Fourier coefficients of $F$ are</p>
+                    $$\hat{F}(k) = \int_0^1 F(x) e^{-2\pi ikx}\,dx = \int_0^1 \sum_{n\in\mathbb{Z}} f(x+n) e^{-2\pi ikx}\,dx = \int_{-\infty}^\infty f(x)e^{-2\pi ikx}\,dx = \hat{f}(k).$$
+                    <p>By the Fourier series of $F$, $F(x) = \sum_{k\in\mathbb{Z}} \hat{f}(k) e^{2\pi ikx}$. Evaluating at $x=0$:</p>
+                    $$\sum_{n\in\mathbb{Z}} f(n) = F(0) = \sum_{k\in\mathbb{Z}} \hat{f}(k). \quad \square$$
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 6.3.4 — Jacobi Theta Function Identity</div>
+                    <p>Apply Poisson summation to $f(x) = e^{-\pi t x^2}$ (for $t > 0$), whose Fourier transform is $\hat{f}(\xi) = t^{-1/2} e^{-\pi\xi^2/t}$. The formula gives the <strong>Jacobi theta function identity</strong>:</p>
+                    $$\sum_{n=-\infty}^\infty e^{-\pi t n^2} = \frac{1}{\sqrt{t}} \sum_{n=-\infty}^\infty e^{-\pi n^2/t}, \quad t > 0.$$
+                    <p class="mb-0">This identity is fundamental in the theory of modular forms and the proof of the functional equation of the Riemann zeta function.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Shannon Sampling Theorem</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.3.5 — Shannon–Nyquist Sampling Theorem (Statement)</div>
+                    <p>Let $f \in L^2(\mathbb{R})$ be <strong>band-limited</strong> with bandwidth $B$: $\hat{f}(\xi) = 0$ for $|\xi| > B$. Then $f$ is completely determined by its sample values $\{f(n/(2B))\}_{n\in\mathbb{Z}}$, and</p>
+                    $$f(x) = \sum_{n=-\infty}^\infty f\!\left(\frac{n}{2B}\right) \text{sinc}(2Bx - n),$$
+                    <p class="mb-0">where $\text{sinc}(y) = \sin(\pi y)/(\pi y)$. The sampling rate $2B$ (samples per unit time) is the <em>Nyquist rate</em>; sampling below this rate causes aliasing, an irreversible loss of information.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-fourier-transform/" class="btn btn-outline-custom">&larr; 6.2 Fourier Transform</a>
+                    <a href="../../07-weak-solutions-and-distributions/" class="btn btn-custom">7. Weak Solutions and Distributions &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links"><a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a><a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a></div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

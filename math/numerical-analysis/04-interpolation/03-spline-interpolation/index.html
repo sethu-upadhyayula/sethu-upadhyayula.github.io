@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.3 Spline Interpolation — Numerical Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Numerical Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Numerical Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-floating-point-arithmetic">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-floating-point-arithmetic/" class="toc-chapter-link"><strong>1.</strong> Floating-Point Arithmetic</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-floating-point-arithmetic/01-floating-point-representation/">1.1 Floating-Point Representation</a>
+                        <a href="../../01-floating-point-arithmetic/02-rounding-and-cancellation-errors/">1.2 Rounding and Cancellation Errors</a>
+                        <a href="../../01-floating-point-arithmetic/03-condition-numbers/">1.3 Condition Numbers</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-root-finding">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-root-finding/" class="toc-chapter-link"><strong>2.</strong> Root Finding</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-root-finding/01-bisection-method/">2.1 Bisection Method</a>
+                        <a href="../../02-root-finding/02-newton-raphson-method/">2.2 Newton–Raphson Method</a>
+                        <a href="../../02-root-finding/03-secant-method/">2.3 Secant Method</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-linear-systems">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-linear-systems/" class="toc-chapter-link"><strong>3.</strong> Linear Systems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-linear-systems/01-gaussian-elimination/">3.1 Gaussian Elimination</a>
+                        <a href="../../03-linear-systems/02-lu-factorisation/">3.2 LU Factorisation</a>
+                        <a href="../../03-linear-systems/03-iterative-methods/">3.3 Iterative Methods (Jacobi, Gauss–Seidel)</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-interpolation">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-interpolation/" class="toc-chapter-link"><strong>4.</strong> Interpolation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-polynomial-interpolation/">4.1 Polynomial Interpolation</a>
+                        <a href="../02-divided-differences/">4.2 Divided Differences</a>
+                        <a href="../03-spline-interpolation/">4.3 Spline Interpolation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-numerical-integration">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-numerical-integration/" class="toc-chapter-link"><strong>5.</strong> Numerical Integration</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-numerical-integration/01-newton-cotes-formulas/">5.1 Newton–Cotes Formulas</a>
+                        <a href="../../05-numerical-integration/02-gaussian-quadrature/">5.2 Gaussian Quadrature</a>
+                        <a href="../../05-numerical-integration/03-adaptive-integration/">5.3 Adaptive Integration</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-numerical-ode-methods">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-numerical-ode-methods/" class="toc-chapter-link"><strong>6.</strong> Numerical ODE Methods</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-numerical-ode-methods/01-eulers-method/">6.1 Euler's Method</a>
+                        <a href="../../06-numerical-ode-methods/02-runge-kutta-methods/">6.2 Runge–Kutta Methods</a>
+                        <a href="../../06-numerical-ode-methods/03-stability-and-stiffness/">6.3 Stability and Stiffness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-eigenvalue-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-eigenvalue-problems/" class="toc-chapter-link"><strong>7.</strong> Eigenvalue Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-eigenvalue-problems/01-power-iteration/">7.1 Power Iteration</a>
+                        <a href="../../07-eigenvalue-problems/02-qr-algorithm/">7.2 QR Algorithm</a>
+                        <a href="../../07-eigenvalue-problems/03-svd-computation/">7.3 SVD Computation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Numerical Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Numerical Analysis</a> ›
+                <a href="../">4. Interpolation</a> ›
+                <span>4.3 Spline Interpolation</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">4.3 Spline Interpolation</h1>
+                <p>Splines replace a single high-degree polynomial with piecewise low-degree polynomials joined smoothly at the data points (knots). The cubic spline achieves $C^2$ smoothness — making it visually smooth and physically meaningful — while avoiding the Runge phenomenon entirely and attaining fourth-order convergence.</p>
+
+                <h2 class="mt-4 mb-3">Cubic Spline Definition</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Cubic Spline</div>
+                    <p>Given nodes $a = x_0 < x_1 < \cdots < x_n = b$ and values $y_i = f(x_i)$, a <strong>cubic spline</strong> $S$ satisfies:</p>
+                    <ol>
+                        <li>$S(x_i) = y_i$ for all $i = 0, 1, \ldots, n$ (interpolation).</li>
+                        <li>$S|_{[x_{i-1},x_i]}$ is a polynomial of degree $\le 3$ for each $i = 1,\ldots,n$.</li>
+                        <li>$S$, $S'$, and $S''$ are continuous on $[a,b]$ (i.e., $S \in C^2[a,b]$).</li>
+                    </ol>
+                    <p class="mb-0">This leaves 2 free parameters, requiring 2 additional boundary conditions to determine $S$ uniquely.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Natural and Clamped Boundary Conditions</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Boundary Conditions</div>
+                    <ul class="mb-0">
+                        <li><strong>Natural (free) spline:</strong> $S''(x_0) = S''(x_n) = 0$. This minimises $\int_a^b [S''(x)]^2\,dx$ among all interpolants, giving the physically natural "relaxed ruler" shape.</li>
+                        <li><strong>Clamped spline:</strong> $S'(x_0) = f'(x_0)$, $S'(x_n) = f'(x_n)$. Requires knowing the derivative at the endpoints; gives better approximation when $f'$ is available.</li>
+                        <li><strong>Not-a-knot:</strong> forces $S'''$ to be continuous at $x_1$ and $x_{n-1}$, eliminating two interior knots. This is the default in many software packages.</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Tridiagonal System for Second Derivatives</h2>
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Construction via Second Derivatives</div>
+                    <p>Let $M_i = S''(x_i)$ and $h_i = x_i - x_{i-1}$. The $C^2$ continuity conditions lead to the tridiagonal system (for the natural spline with $M_0 = M_n = 0$):</p>
+                    $$h_i M_{i-1} + 2(h_i + h_{i+1})M_i + h_{i+1}M_{i+1} = 6\left(\frac{y_{i+1}-y_i}{h_{i+1}} - \frac{y_i - y_{i-1}}{h_i}\right), \quad i=1,\ldots,n-1.$$
+                    <p class="mb-0">This is a strictly diagonally dominant tridiagonal system, solvable in $O(n)$ by the Thomas algorithm. Once the $M_i$ are found, each cubic piece is determined on $[x_{i-1},x_i]$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Approximation Error</h2>
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Fourth-Order Convergence</div>
+                    <p>If $f \in C^4[a,b]$ and $S$ is the natural or clamped cubic spline with uniform mesh spacing $h = (b-a)/n$, then:</p>
+                    $$\|f - S\|_\infty \le C h^4 \|f^{(4)}\|_\infty,$$
+                    <p class="mb-0">for a constant $C$ depending on the boundary conditions. This optimal $O(h^4)$ rate matches that of fourth-degree polynomial interpolation, but is achieved robustly without Runge oscillations for any smooth $f$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">B-Splines</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — B-Spline Basis</div>
+                    <p>The <strong>B-spline basis functions</strong> $B_{i,k}(x)$ of degree $k$ are defined recursively via the Cox–de Boor formula:</p>
+                    $$B_{i,0}(x) = \begin{cases}1 & x_{i} \le x < x_{i+1}\\ 0 & \text{otherwise}\end{cases},$$
+                    $$B_{i,k}(x) = \frac{x - x_i}{x_{i+k}-x_i}B_{i,k-1}(x) + \frac{x_{i+k+1}-x}{x_{i+k+1}-x_{i+1}}B_{i+1,k-1}(x).$$
+                    <p class="mb-0">Each $B_{i,k}$ has compact support $[x_i, x_{i+k+1}]$ and $B_{i,k} \ge 0$. The basis is numerically stable (the condition number of the B-spline collocation matrix is $O(1)$ regardless of $n$), unlike the monomial or Lagrange bases. The <strong>de Boor algorithm</strong> evaluates $\sum_i c_i B_{i,k}(x)$ in $O(k^2)$ operations via a triangular recurrence, analogous to Horner's method.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — NURBS</div>
+                    <p class="mb-0"><strong>NURBS</strong> (Non-Uniform Rational B-Splines) extend B-splines by allowing non-uniform knot vectors and rational (weighted) control points: $C(x) = \sum_i w_i c_i B_{i,k}(x) / \sum_i w_i B_{i,k}(x)$. NURBS can represent conic sections and other algebraic curves exactly, making them the standard curve representation in CAD software (IGES, STEP) and computer graphics (OpenGL, DirectX surface patches).</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3">
+                    <a href="../02-divided-differences/" class="btn btn-outline-custom">&larr; 4.2 Divided Differences</a>
+                    <a href="../../05-numerical-integration/" class="btn btn-custom">5. Numerical Integration &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.2 Lagrange Elements — Finite Element Methods</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to FEM</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Finite Element Methods</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-variational-formulation">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-variational-formulation/" class="toc-chapter-link"><strong>1.</strong> Variational Formulation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-variational-formulation/01-weak-form-of-bvps/">1.1 Weak Form of BVPs</a>
+                        <a href="../../01-variational-formulation/02-function-spaces-for-bvps/">1.2 Function Spaces for BVPs</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-galerkin-method">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-galerkin-method/" class="toc-chapter-link"><strong>2.</strong> Galerkin Method</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-galerkin-method/01-abstract-galerkin-framework/">2.1 Abstract Galerkin Framework</a>
+                        <a href="../../02-galerkin-method/02-lax-milgram-theorem/">2.2 Lax–Milgram Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-finite-element-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-finite-element-spaces/" class="toc-chapter-link"><strong>3.</strong> Finite Element Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-finite-element-spaces/01-triangulations-and-meshes/">3.1 Triangulations and Meshes</a>
+                        <a href="../../03-finite-element-spaces/02-lagrange-elements/">3.2 Lagrange Elements</a>
+                        <a href="../../03-finite-element-spaces/03-reference-elements-and-mapping/">3.3 Reference Elements and Mapping</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-assembly-and-implementation">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-assembly-and-implementation/" class="toc-chapter-link"><strong>4.</strong> Assembly and Implementation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-assembly-and-implementation/01-stiffness-matrix-and-load-vector/">4.1 Stiffness Matrix and Load Vector</a>
+                        <a href="../../04-assembly-and-implementation/02-boundary-conditions/">4.2 Boundary Conditions</a>
+                        <a href="../../04-assembly-and-implementation/03-solvers-for-linear-systems/">4.3 Solvers for Linear Systems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-error-analysis">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-error-analysis/" class="toc-chapter-link"><strong>5.</strong> Error Analysis</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-error-analysis/01-ceas-lemma/">5.1 Céa's Lemma</a>
+                        <a href="../../05-error-analysis/02-interpolation-error/">5.2 Interpolation Error</a>
+                        <a href="../../05-error-analysis/03-a-priori-error-estimates/">5.3 A Priori Error Estimates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-applications-to-elliptic-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-applications-to-elliptic-problems/" class="toc-chapter-link"><strong>6.</strong> Applications to Elliptic Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-applications-to-elliptic-problems/01-poissons-equation/">6.1 Poisson's Equation</a>
+                        <a href="../../06-applications-to-elliptic-problems/02-elasticity/">6.2 Elasticity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-time-dependent-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-time-dependent-problems/" class="toc-chapter-link"><strong>7.</strong> Time-Dependent Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-time-dependent-problems/01-semi-discrete-formulation/">7.1 Semi-Discrete Formulation</a>
+                        <a href="../../07-time-dependent-problems/02-time-discretisation/">7.2 Time Discretisation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to FEM</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Finite Element Methods</a> ›
+                <a href="../">3. Finite Element Spaces</a> ›
+                <span>3.2 Lagrange Elements</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 Lagrange Elements</h1>
+
+                <p>Lagrange elements are the most widely used finite elements. The key idea is the <strong>nodal basis</strong>: basis functions are uniquely determined by the requirement that each function equals 1 at one node and 0 at all other nodes — a natural generalisation of Lagrange interpolation to two and three dimensions.</p>
+
+                <h2 class="mt-4 mb-3">$P_1$ Linear Elements</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — $P_1$ Basis Functions (Hat Functions)</div>
+                    <p>On a triangulation $\mathcal{T}_h$, number the vertices (nodes) globally as $x_1, \ldots, x_N$. The <strong>$P_1$ nodal basis function</strong> $\varphi_i$ associated with node $x_i$ is the unique continuous, piecewise linear function satisfying
+                    $$\varphi_i(x_j) = \delta_{ij} = \begin{cases} 1 & i = j, \\ 0 & i \neq j. \end{cases}$$
+                    On each triangle $K$, $\varphi_i|_K$ is the unique linear polynomial with these values at the three vertices of $K$. These are sometimes called <strong>tent functions</strong> or <strong>hat functions</strong> because of their shape in 1D.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Support and Global Continuity</div>
+                    <p class="mb-0">The support of $\varphi_i$ is the union of all triangles sharing node $x_i$:
+                    $$\operatorname{supp}(\varphi_i) = \bigcup_{\substack{K \in \mathcal{T}_h \\ x_i \in K}} K.$$
+                    The compactness of this support is essential for the sparsity of the stiffness matrix: $K_{ij} = a(\varphi_j, \varphi_i) \neq 0$ only when $\operatorname{supp}(\varphi_i) \cap \operatorname{supp}(\varphi_j) \neq \emptyset$, which happens only when $x_i$ and $x_j$ are connected by an edge in $\mathcal{T}_h$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Barycentric Coordinates</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Barycentric Coordinates</div>
+                    <p class="mb-0">For a triangle $K$ with vertices $a_1, a_2, a_3$, the <strong>barycentric coordinates</strong> $\lambda_1, \lambda_2, \lambda_3$ of a point $x \in K$ are the unique non-negative reals satisfying
+                    $$x = \lambda_1 a_1 + \lambda_2 a_2 + \lambda_3 a_3, \qquad \lambda_1 + \lambda_2 + \lambda_3 = 1.$$
+                    The local $P_1$ basis functions on $K$ are simply $\hat\varphi_i = \lambda_i$. These are linear, satisfy the Kronecker property, and have unit sum, i.e.\ $\sum_i \lambda_i = 1$ (partition of unity).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">$P_2$ Quadratic Elements</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — $P_2$ Nodes and Basis</div>
+                    <p>The $P_2$ space on a triangle $K$ has $\dim P_2 = 6$. The 6 nodes are:
+                    <ul>
+                        <li>the 3 <strong>vertex nodes</strong> $a_1, a_2, a_3$, and</li>
+                        <li>the 3 <strong>edge midpoint nodes</strong> $m_{12} = \frac{a_1+a_2}{2}$, $m_{23} = \frac{a_2+a_3}{2}$, $m_{31} = \frac{a_3+a_1}{2}$.</li>
+                    </ul>
+                    In terms of barycentric coordinates, the 6 local basis functions are:
+                    $$\hat\varphi_1 = \lambda_1(2\lambda_1 - 1),\quad \hat\varphi_2 = \lambda_2(2\lambda_2 - 1),\quad \hat\varphi_3 = \lambda_3(2\lambda_3 - 1),$$
+                    $$\hat\varphi_{12} = 4\lambda_1\lambda_2,\quad \hat\varphi_{23} = 4\lambda_2\lambda_3,\quad \hat\varphi_{31} = 4\lambda_3\lambda_1.$$
+                    Each function equals 1 at its node and 0 at all others (Kronecker property).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Nodal Interpolation and Interpolation Error</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Nodal Interpolant</div>
+                    <p class="mb-0">Given $u \in C^0(\bar\Omega)$ (or $u \in H^2(\Omega) \hookrightarrow C^0(\bar\Omega)$ by Sobolev embedding in 2D), the <strong>nodal interpolant</strong> $I_h u \in V_h$ is defined by
+                    $$I_h u = \sum_{i=1}^N u(x_i)\,\varphi_i,$$
+                    where the $x_i$ are the nodes of the space. It satisfies $(I_h u)(x_i) = u(x_i)$ at every node.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Interpolation Error Estimate</div>
+                    <p>Let $K$ be a shape-regular triangle with diameter $h_K$. For $u \in H^{k+1}(K)$ and $0 \leq m \leq k+1$, the local $P_k$ nodal interpolant satisfies
+                    $$|u - I_h u|_{H^m(K)} \leq C\, h_K^{k+1-m}\, |u|_{H^{k+1}(K)},$$
+                    where $C > 0$ depends on $k$, $m$, and the shape-regularity constant $\sigma$, but not on $h_K$ or $u$.</p>
+                    <p class="mb-0">For $P_1$ elements ($k=1$), this gives: $\|u - I_h u\|_{L^2(K)} \leq Ch_K^2|u|_{H^2(K)}$ and $|u - I_h u|_{H^1(K)} \leq Ch_K|u|_{H^2(K)}$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Global Interpolation Error</div>
+                    <p class="mb-0">Summing element contributions over the mesh: $\|u - I_h u\|_{H^m(\Omega)}^2 = \sum_K |u - I_h u|_{H^m(K)}^2 \leq C^2 h^{2(k+1-m)} |u|_{H^{k+1}(\Omega)}^2$. This gives the global estimate $\|u - I_h u\|_{H^m(\Omega)} \leq Ch^{k+1-m}\|u\|_{H^{k+1}(\Omega)}$, which feeds directly into the a priori error analysis of Chapter 5.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Global Assembly</div>
+                    <p class="mb-0">To assemble the global stiffness matrix $K$ for $P_1$ elements: loop over each triangle $K$, compute the $3 \times 3$ element stiffness matrix $K^e$ using the local gradients $\nabla\varphi_i|_K$, then scatter entries to global positions using the element-to-global DOF map. The global $\varphi_i$ is the sum over all element contributions from triangles sharing node $i$. See Section 4.1 for the assembly algorithm in detail.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-triangulations-and-meshes/" class="btn btn-outline-custom">&larr; 3.1 Triangulations and Meshes</a>
+                    <a href="../03-reference-elements-and-mapping/" class="btn btn-custom">3.3 Reference Elements and Mapping &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

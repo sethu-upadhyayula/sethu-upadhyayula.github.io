@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.2 Solving ODEs via Laplace — Ordinary Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to ODEs</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Ordinary Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-first-order-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-first-order-odes/" class="toc-chapter-link"><strong>1.</strong> First-Order ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-first-order-odes/01-separable-equations/">1.1 Separable Equations</a>
+                        <a href="../../01-first-order-odes/02-linear-first-order-equations/">1.2 Linear First-Order Equations</a>
+                        <a href="../../01-first-order-odes/03-exact-equations/">1.3 Exact Equations</a>
+                        <a href="../../01-first-order-odes/04-existence-and-uniqueness/">1.4 Existence and Uniqueness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-second-order-linear-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-second-order-linear-odes/" class="toc-chapter-link"><strong>2.</strong> Second-Order Linear ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-second-order-linear-odes/01-constant-coefficient-equations/">2.1 Constant Coefficient Equations</a>
+                        <a href="../../02-second-order-linear-odes/02-reduction-of-order/">2.2 Reduction of Order</a>
+                        <a href="../../02-second-order-linear-odes/03-variation-of-parameters/">2.3 Variation of Parameters</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-systems-of-odes">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-systems-of-odes/" class="toc-chapter-link"><strong>3.</strong> Systems of ODEs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-systems-of-odes/01-linear-systems/">3.1 Linear Systems</a>
+                        <a href="../../03-systems-of-odes/02-phase-plane-analysis/">3.2 Phase Plane Analysis</a>
+                        <a href="../../03-systems-of-odes/03-equilibria-and-stability/">3.3 Equilibria and Stability</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-series-solutions">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-series-solutions/" class="toc-chapter-link"><strong>4.</strong> Series Solutions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-series-solutions/01-power-series-solutions/">4.1 Power Series Solutions</a>
+                        <a href="../../04-series-solutions/02-regular-singular-points/">4.2 Regular Singular Points</a>
+                        <a href="../../04-series-solutions/03-bessel-and-legendre-equations/">4.3 Bessel and Legendre Equations</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-laplace-transforms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-laplace-transforms/" class="toc-chapter-link"><strong>5.</strong> Laplace Transforms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-laplace-transforms/01-definition-and-properties/">5.1 Definition and Properties</a>
+                        <a href="../../05-laplace-transforms/02-solving-odes-via-laplace/">5.2 Solving ODEs via Laplace</a>
+                        <a href="../../05-laplace-transforms/03-convolution/">5.3 Convolution</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-stability-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-stability-theory/" class="toc-chapter-link"><strong>6.</strong> Stability Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-stability-theory/01-lyapunov-stability/">6.1 Lyapunov Stability</a>
+                        <a href="../../06-stability-theory/02-lyapunov-functions/">6.2 Lyapunov Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-boundary-value-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-boundary-value-problems/" class="toc-chapter-link"><strong>7.</strong> Boundary Value Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-boundary-value-problems/01-two-point-boundary-problems/">7.1 Two-Point Boundary Problems</a>
+                        <a href="../../07-boundary-value-problems/02-sturm-liouville-theory/">7.2 Sturm–Liouville Theory</a>
+                        <a href="../../07-boundary-value-problems/03-eigenfunction-expansions/">7.3 Eigenfunction Expansions</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to ODEs</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Ordinary Differential Equations</a> ›
+                <a href="../">5. Laplace Transforms</a> ›
+                <span>5.2 Solving ODEs via Laplace</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">5.2 Solving ODEs via Laplace</h1>
+
+                <p>The general strategy for solving a linear constant-coefficient IVP via the Laplace transform is: (1) transform the ODE to an algebraic equation in $Y(s)$; (2) solve for $Y(s)$ in closed form; (3) decompose by partial fractions; (4) apply the inverse transform term by term. Initial conditions enter at step (1) and require no further adjustment.</p>
+
+                <h2 class="mt-5 mb-3">The Method</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 5.2.1 — Inverse Laplace Transform</div>
+                    <p class="mb-0">The inverse Laplace transform $\mathcal{L}^{-1}\{F\}(t)$ is defined by the Bromwich inversion integral
+                    $$f(t) = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty} e^{st}F(s)\,ds, \quad t > 0,$$
+                    where the vertical contour $\text{Re}(s) = c$ lies to the right of all singularities of $F$. In practice, inversion is performed by matching $F(s)$ (after partial fractions) to entries in the standard table.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Heaviside Step Function and Dirac Delta</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 5.2.2 — Heaviside Function and Dirac Delta</div>
+                    <p>The <strong>Heaviside unit step</strong> is
+                    $$H(t-a) = \begin{cases}0 & t < a,\\ 1 & t \geq a,\end{cases} \qquad a \geq 0.$$
+                    Its Laplace transform is $\mathcal{L}\{H(t-a)\}(s) = e^{-as}/s$.</p>
+                    <p>The <strong>Dirac delta</strong> $\delta(t-a)$ is the distributional derivative of $H(t-a)$. It satisfies $\int_{-\infty}^\infty \varphi(t)\delta(t-a)\,dt = \varphi(a)$ for any continuous test function $\varphi$. Its transform is
+                    $$\mathcal{L}\{\delta(t-a)\}(s) = e^{-as}, \qquad a \geq 0.$$
+                    For $a=0$: $\mathcal{L}\{\delta(t)\}(s) = 1$.</p>
+                    <p class="mb-0">Physically, $\delta(t-a)$ models an impulsive force applied instantaneously at $t=a$; $H(t-a)$ switches on a forcing term at $t=a$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example: Resonance</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 5.2.3 — $y'' + 4y = \sin 2t$, $y(0) = 0$, $y'(0) = 1$</div>
+                    <p>Taking the Laplace transform of both sides:
+                    $$(s^2 Y - sy(0) - y'(0)) + 4Y = \frac{2}{s^2+4}.$$
+                    Inserting $y(0)=0$, $y'(0)=1$:
+                    $$(s^2+4)Y = 1 + \frac{2}{s^2+4},$$
+                    $$Y(s) = \frac{1}{s^2+4} + \frac{2}{(s^2+4)^2}.$$
+                    From the table, $\mathcal{L}^{-1}\!\left\{\dfrac{1}{s^2+4}\right\} = \dfrac{1}{2}\sin 2t$.
+                    For the second term, use the identity $\mathcal{L}^{-1}\!\left\{\dfrac{2\omega s}{(s^2+\omega^2)^2}\right\} = t\sin\omega t$ (differentiate $\mathcal{L}\{\sin\omega t\}$ with respect to $\omega$, then adjust). Here
+                    $$\frac{2}{(s^2+4)^2} = \frac{1}{2}\cdot\frac{4}{(s^2+4)^2}.$$
+                    Using $\mathcal{L}\!\left\{\dfrac{\sin\omega t - \omega t\cos\omega t}{2\omega^3}\right\}(s) = \dfrac{1}{(s^2+\omega^2)^2}$ with $\omega=2$:
+                    $$\mathcal{L}^{-1}\!\left\{\frac{2}{(s^2+4)^2}\right\} = \frac{1}{2}\cdot\frac{\sin 2t - 2t\cos 2t}{4} = \frac{\sin 2t - 2t\cos 2t}{8}.$$
+                    Therefore
+                    $$y(t) = \frac{1}{2}\sin 2t + \frac{\sin 2t - 2t\cos 2t}{8} = \frac{5\sin 2t}{8} - \frac{t\cos 2t}{4}.$$
+                    The term $-\tfrac{t}{4}\cos 2t$ is the resonant response — it grows linearly in amplitude because the forcing frequency $\omega=2$ matches the natural frequency $\sqrt{4}=2$.</p>
+                    <p class="mb-0"><em>Verification:</em> $y(0) = 0$ ✓; $y'(t) = \tfrac{5}{4}\cos 2t - \tfrac{1}{4}\cos 2t + \tfrac{1}{2}t\sin 2t$, so $y'(0) = 1$ ✓.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Piecewise Forcing with the Heaviside Function</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 5.2.4 — Switch-on Forcing</div>
+                    <p>Solve $y'' + y = f(t)$, $y(0)=0$, $y'(0)=0$, where
+                    $$f(t) = \begin{cases}1 & 0 \leq t < \pi,\\ 0 & t \geq \pi.\end{cases}$$
+                    Write $f(t) = 1 - H(t-\pi)$. Then
+                    $$F(s) = \frac{1}{s} - \frac{e^{-\pi s}}{s}.$$
+                    Transforming the ODE: $(s^2+1)Y = F(s)$, so
+                    $$Y(s) = \frac{1}{s(s^2+1)} - \frac{e^{-\pi s}}{s(s^2+1)}.$$
+                    Partial fractions: $\dfrac{1}{s(s^2+1)} = \dfrac{1}{s} - \dfrac{s}{s^2+1}$.
+                    Hence
+                    $$y_1(t) = \mathcal{L}^{-1}\!\left\{\frac{1}{s} - \frac{s}{s^2+1}\right\} = 1 - \cos t.$$
+                    By the second shift theorem, $\mathcal{L}^{-1}\!\left\{\dfrac{e^{-\pi s}}{s(s^2+1)}\right\} = H(t-\pi)[1-\cos(t-\pi)] = H(t-\pi)[1+\cos t].$
+                    Therefore
+                    $$y(t) = (1-\cos t) - H(t-\pi)(1+\cos t) = \begin{cases}1-\cos t, & 0 \leq t < \pi,\\ -2\cos t, & t \geq \pi.\end{cases}$$</p>
+                    <p class="mb-0">The solution transitions smoothly at $t=\pi$: $y(\pi^-)=1-(-1)=2=y(\pi^+)$ ✓ and $y'(\pi^-)=\sin\pi=0=y'(\pi^+)$ ✓.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Partial Fractions Strategy</div>
+                    <p class="mb-0">After solving $(a_n s^n + \cdots + a_0)Y(s) = G(s)$, the rational function $Y(s)$ is decomposed by partial fractions: real poles $s=r$ contribute $A/(s-r)$ terms (giving $Ae^{rt}$); repeated poles $s=r$ of multiplicity $k$ contribute $A_j/(s-r)^j$ terms (giving $A_j t^{j-1}e^{rt}/(j-1)!$); complex conjugate pairs $s = \alpha\pm i\beta$ contribute damped sinusoids $e^{\alpha t}(B\cos\beta t + C\sin\beta t)$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-definition-and-properties/" class="btn btn-outline-custom">&larr; 5.1 Definition and Properties</a>
+                    <a href="../03-convolution/" class="btn btn-custom">5.3 Convolution &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

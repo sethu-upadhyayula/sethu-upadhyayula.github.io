@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.1 Newton–Cotes Formulas — Numerical Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Numerical Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Numerical Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-floating-point-arithmetic">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-floating-point-arithmetic/" class="toc-chapter-link"><strong>1.</strong> Floating-Point Arithmetic</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-floating-point-arithmetic/01-floating-point-representation/">1.1 Floating-Point Representation</a>
+                        <a href="../../01-floating-point-arithmetic/02-rounding-and-cancellation-errors/">1.2 Rounding and Cancellation Errors</a>
+                        <a href="../../01-floating-point-arithmetic/03-condition-numbers/">1.3 Condition Numbers</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-root-finding">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-root-finding/" class="toc-chapter-link"><strong>2.</strong> Root Finding</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-root-finding/01-bisection-method/">2.1 Bisection Method</a>
+                        <a href="../../02-root-finding/02-newton-raphson-method/">2.2 Newton–Raphson Method</a>
+                        <a href="../../02-root-finding/03-secant-method/">2.3 Secant Method</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-linear-systems">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-linear-systems/" class="toc-chapter-link"><strong>3.</strong> Linear Systems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-linear-systems/01-gaussian-elimination/">3.1 Gaussian Elimination</a>
+                        <a href="../../03-linear-systems/02-lu-factorisation/">3.2 LU Factorisation</a>
+                        <a href="../../03-linear-systems/03-iterative-methods/">3.3 Iterative Methods (Jacobi, Gauss–Seidel)</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-interpolation">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-interpolation/" class="toc-chapter-link"><strong>4.</strong> Interpolation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-interpolation/01-polynomial-interpolation/">4.1 Polynomial Interpolation</a>
+                        <a href="../../04-interpolation/02-divided-differences/">4.2 Divided Differences</a>
+                        <a href="../../04-interpolation/03-spline-interpolation/">4.3 Spline Interpolation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-numerical-integration">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-numerical-integration/" class="toc-chapter-link"><strong>5.</strong> Numerical Integration</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-newton-cotes-formulas/">5.1 Newton–Cotes Formulas</a>
+                        <a href="../02-gaussian-quadrature/">5.2 Gaussian Quadrature</a>
+                        <a href="../03-adaptive-integration/">5.3 Adaptive Integration</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-numerical-ode-methods">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-numerical-ode-methods/" class="toc-chapter-link"><strong>6.</strong> Numerical ODE Methods</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-numerical-ode-methods/01-eulers-method/">6.1 Euler's Method</a>
+                        <a href="../../06-numerical-ode-methods/02-runge-kutta-methods/">6.2 Runge–Kutta Methods</a>
+                        <a href="../../06-numerical-ode-methods/03-stability-and-stiffness/">6.3 Stability and Stiffness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-eigenvalue-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-eigenvalue-problems/" class="toc-chapter-link"><strong>7.</strong> Eigenvalue Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-eigenvalue-problems/01-power-iteration/">7.1 Power Iteration</a>
+                        <a href="../../07-eigenvalue-problems/02-qr-algorithm/">7.2 QR Algorithm</a>
+                        <a href="../../07-eigenvalue-problems/03-svd-computation/">7.3 SVD Computation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Numerical Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Numerical Analysis</a> ›
+                <a href="../">5. Numerical Integration</a> ›
+                <span>5.1 Newton–Cotes Formulas</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">5.1 Newton–Cotes Formulas</h1>
+                <p>Newton–Cotes formulas approximate $\int_a^b f(x)\,dx$ by integrating the polynomial that interpolates $f$ at equally spaced nodes on $[a,b]$. The three classical rules — midpoint, trapezoidal, and Simpson's — form the foundation, and their composite versions with error analysis guide the choice of step size.</p>
+
+                <h2 class="mt-5 mb-3">Basic Rules on a Single Interval</h2>
+                <p>Let $m = \tfrac{a+b}{2}$ denote the midpoint of $[a,b]$.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Midpoint Rule</div>
+                    <p class="mb-0">The <strong>midpoint rule</strong> approximates the integral by the rectangle of height $f(m)$:
+                    $$M(f) = (b-a)\,f(m).$$</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Midpoint Rule Error</div>
+                    <p class="mb-0">If $f \in C^2[a,b]$, then
+                    $$\int_a^b f(x)\,dx - M(f) = \frac{(b-a)^3}{24}\,f''(\xi)$$
+                    for some $\xi \in (a,b)$. The midpoint rule is exact for polynomials of degree $\le 1$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Trapezoidal Rule</div>
+                    <p class="mb-0">The <strong>trapezoidal rule</strong> uses the linear interpolant through $(a,f(a))$ and $(b,f(b))$:
+                    $$T(f) = \frac{b-a}{2}\bigl(f(a)+f(b)\bigr).$$</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Trapezoidal Rule Error</div>
+                    <p class="mb-0">If $f \in C^2[a,b]$, then
+                    $$\int_a^b f(x)\,dx - T(f) = -\frac{(b-a)^3}{12}\,f''(\xi)$$
+                    for some $\xi \in (a,b)$. The trapezoidal rule is also exact for degree $\le 1$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Simpson's Rule</div>
+                    <p class="mb-0">Simpson's rule integrates the quadratic interpolant through $(a,f(a))$, $(m,f(m))$, $(b,f(b))$:
+                    $$S(f) = \frac{b-a}{6}\bigl(f(a)+4f(m)+f(b)\bigr).$$</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Simpson's Rule Error</div>
+                    <p class="mb-0">If $f \in C^4[a,b]$, then
+                    $$\int_a^b f(x)\,dx - S(f) = -\frac{(b-a)^5}{2880}\,f^{(4)}(\xi)$$
+                    for some $\xi \in (a,b)$. Simpson's rule is exact for polynomials of degree $\le 3$ — one degree higher than expected from a 3-point rule — because the error term for degree 3 vanishes by symmetry.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Composite Rules</h2>
+                <p>To integrate over $[a,b]$, partition it into $n$ equal subintervals of length $h = (b-a)/n$, with nodes $x_i = a + ih$.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Composite Trapezoidal Rule</div>
+                    <p class="mb-0">$$T_n(f) = h\left[\frac{f(a)}{2} + f(x_1)+\cdots+f(x_{n-1}) + \frac{f(b)}{2}\right] = \frac{h}{2}\sum_{i=0}^{n-1}\bigl(f(x_i)+f(x_{i+1})\bigr).$$</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Composite Trapezoidal Error</div>
+                    <p class="mb-0">If $f\in C^2[a,b]$,
+                    $$\int_a^b f(x)\,dx - T_n(f) = -\frac{(b-a)}{12}\,h^2\,f''(\xi)$$
+                    for some $\xi\in(a,b)$. The global error is $O(h^2)$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Composite Simpson's Rule</div>
+                    <p>Requires $n$ even. With midpoints $m_i = x_{i-1}+h/2$ of each subinterval:
+                    $$S_n(f) = \frac{h}{6}\sum_{i=1}^{n}\bigl(f(x_{i-1})+4f(m_i)+f(x_i)\bigr) = \frac{h}{3}\left[f(x_0)+4f(x_1)+2f(x_2)+\cdots+4f(x_{n-1})+f(x_n)\right]$$
+                    (with alternating coefficients 4, 2 on interior nodes when written over $2n$ subintervals of length $h/2$).</p>
+                    <p class="mb-0">The global error is $O(h^4)$: if $f\in C^4[a,b]$, the error is $-\tfrac{(b-a)}{180}h^4 f^{(4)}(\xi)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Richardson Extrapolation and the Romberg Method</h2>
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Euler–Maclaurin Error Expansion</div>
+                    <p class="mb-0">The composite trapezoidal rule satisfies the asymptotic expansion
+                    $$\int_a^b f\,dx = T_n(f) + c_2 h^2 + c_4 h^4 + c_6 h^6 + \cdots$$
+                    where the constants $c_{2k}$ depend on $f$ and its derivatives at the endpoints but are independent of $h$. This is the <strong>Euler–Maclaurin formula</strong>.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Richardson Extrapolation</div>
+                    <p class="mb-0">Given two trapezoidal approximations $T_n$ (step $h$) and $T_{2n}$ (step $h/2$), the leading $h^2$ error term can be eliminated:
+                    $$R = \frac{4\,T_{2n} - T_n}{3} = S_{2n}.$$
+                    This is precisely the composite Simpson's rule on the combined grid, exact to $O(h^4)$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Romberg Triangle</div>
+                    <p>The Romberg method applies Richardson extrapolation recursively. Define $R(n,0) = T_{2^n}$. Then
+                    $$R(n,k) = \frac{4^k\,R(n,k-1) - R(n-1,k-1)}{4^k - 1}, \quad k \ge 1.$$
+                    Each column of the Romberg triangle has error one order higher: $R(n,k) = O(h^{2k+2})$ where $h = (b-a)/2^n$.</p>
+                    <table class="table table-bordered table-sm text-center mt-3 small">
+                        <thead><tr><th>$n$</th><th>$k=0$ ($O(h^2)$)</th><th>$k=1$ ($O(h^4)$)</th><th>$k=2$ ($O(h^6)$)</th></tr></thead>
+                        <tbody>
+                            <tr><td>0</td><td>$R(0,0)$</td><td></td><td></td></tr>
+                            <tr><td>1</td><td>$R(1,0)$</td><td>$R(1,1)$</td><td></td></tr>
+                            <tr><td>2</td><td>$R(2,0)$</td><td>$R(2,1)$</td><td>$R(2,2)$</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="mb-0">The diagonal $R(n,n)$ converges rapidly, and if $f$ is infinitely smooth the method can achieve spectral accuracy.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Example: $\int_0^1 e^x\,dx$</h2>
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Integrating $e^x$ on $[0,1]$</div>
+                    <p>The exact value is $e - 1 \approx 1.71828182845905$. Applying the composite trapezoidal rule with $n$ subintervals gives:</p>
+                    <table class="table table-bordered table-sm text-center mt-2 small">
+                        <thead><tr><th>$n$</th><th>$h$</th><th>$T_n$</th><th>Error</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td>1</td><td>1.85914</td><td>$1.41 \times 10^{-1}$</td></tr>
+                            <tr><td>2</td><td>0.5</td><td>1.75340</td><td>$3.51 \times 10^{-2}$</td></tr>
+                            <tr><td>4</td><td>0.25</td><td>1.72722</td><td>$8.93 \times 10^{-3}$</td></tr>
+                            <tr><td>8</td><td>0.125</td><td>1.72051</td><td>$2.23 \times 10^{-3}$</td></tr>
+                        </tbody>
+                    </table>
+                    <p>Each halving of $h$ reduces the error by a factor $\approx 4$, confirming $O(h^2)$. Simpson's rule with $n=1$ gives $S = \tfrac{1}{6}(1+4e^{0.5}+e)\approx 1.71886$, error $5.8\times 10^{-4}$. One Richardson extrapolation step on $T_1$ and $T_2$ gives $(4 T_2 - T_1)/3 = 1.71886 \approx S_2$.</p>
+                    <p class="mb-0">The Romberg iterate $R(3,3)$ achieves error below $10^{-13}$ using only $2^3+1=9$ function evaluations.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3">
+                    <a href="../" class="btn btn-outline-custom">&larr; 5. Numerical Integration</a>
+                    <a href="../02-gaussian-quadrature/" class="btn btn-custom">5.2 Gaussian Quadrature &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

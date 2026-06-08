@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.2 Boundary Conditions — Finite Element Methods</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to FEM</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Finite Element Methods</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-variational-formulation">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-variational-formulation/" class="toc-chapter-link"><strong>1.</strong> Variational Formulation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-variational-formulation/01-weak-form-of-bvps/">1.1 Weak Form of BVPs</a>
+                        <a href="../../01-variational-formulation/02-function-spaces-for-bvps/">1.2 Function Spaces for BVPs</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-galerkin-method">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-galerkin-method/" class="toc-chapter-link"><strong>2.</strong> Galerkin Method</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-galerkin-method/01-abstract-galerkin-framework/">2.1 Abstract Galerkin Framework</a>
+                        <a href="../../02-galerkin-method/02-lax-milgram-theorem/">2.2 Lax–Milgram Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-finite-element-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-finite-element-spaces/" class="toc-chapter-link"><strong>3.</strong> Finite Element Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-finite-element-spaces/01-triangulations-and-meshes/">3.1 Triangulations and Meshes</a>
+                        <a href="../../03-finite-element-spaces/02-lagrange-elements/">3.2 Lagrange Elements</a>
+                        <a href="../../03-finite-element-spaces/03-reference-elements-and-mapping/">3.3 Reference Elements and Mapping</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-assembly-and-implementation">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-assembly-and-implementation/" class="toc-chapter-link"><strong>4.</strong> Assembly and Implementation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-assembly-and-implementation/01-stiffness-matrix-and-load-vector/">4.1 Stiffness Matrix and Load Vector</a>
+                        <a href="../../04-assembly-and-implementation/02-boundary-conditions/">4.2 Boundary Conditions</a>
+                        <a href="../../04-assembly-and-implementation/03-solvers-for-linear-systems/">4.3 Solvers for Linear Systems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-error-analysis">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-error-analysis/" class="toc-chapter-link"><strong>5.</strong> Error Analysis</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-error-analysis/01-ceas-lemma/">5.1 Céa's Lemma</a>
+                        <a href="../../05-error-analysis/02-interpolation-error/">5.2 Interpolation Error</a>
+                        <a href="../../05-error-analysis/03-a-priori-error-estimates/">5.3 A Priori Error Estimates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-applications-to-elliptic-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-applications-to-elliptic-problems/" class="toc-chapter-link"><strong>6.</strong> Applications to Elliptic Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-applications-to-elliptic-problems/01-poissons-equation/">6.1 Poisson's Equation</a>
+                        <a href="../../06-applications-to-elliptic-problems/02-elasticity/">6.2 Elasticity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-time-dependent-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-time-dependent-problems/" class="toc-chapter-link"><strong>7.</strong> Time-Dependent Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-time-dependent-problems/01-semi-discrete-formulation/">7.1 Semi-Discrete Formulation</a>
+                        <a href="../../07-time-dependent-problems/02-time-discretisation/">7.2 Time Discretisation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to FEM</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Finite Element Methods</a> ›
+                <a href="../">4. Assembly and Implementation</a> ›
+                <span>4.2 Boundary Conditions</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 Boundary Conditions</h1>
+
+                <p>After global assembly, the unconstrained stiffness matrix $K$ is positive semi-definite — it has a non-trivial null space spanned by the constant function. Boundary conditions are required to eliminate this degeneracy and produce a well-posed system. Different types of boundary conditions require different treatment in the discrete system.</p>
+
+                <h2 class="mt-4 mb-3">Essential (Dirichlet) Boundary Conditions</h2>
+
+                <p>A Dirichlet condition $u = g$ on $\partial\Omega_D$ is called <strong>essential</strong> because it must be built into the trial space. For homogeneous Dirichlet ($g = 0$), the assembly restricts to interior DOFs from the start. For non-homogeneous Dirichlet data, there are two standard implementation strategies.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Elimination Method</div>
+                    <p>Let $\mathcal{I}$ denote the set of interior (free) DOF indices and $\mathcal{B}$ the set of boundary DOF indices. The assembled system $K\mathbf{u} = \mathbf{f}$ partitions as:
+                    $$\begin{pmatrix} K_{\mathcal{I}\mathcal{I}} & K_{\mathcal{I}\mathcal{B}} \\ K_{\mathcal{B}\mathcal{I}} & K_{\mathcal{B}\mathcal{B}} \end{pmatrix} \begin{pmatrix} \mathbf{u}_\mathcal{I} \\ \mathbf{g}_\mathcal{B} \end{pmatrix} = \begin{pmatrix} \mathbf{f}_\mathcal{I} \\ \mathbf{f}_\mathcal{B} \end{pmatrix},$$
+                    where $\mathbf{g}_\mathcal{B}$ is the vector of prescribed boundary values $g(x_i)$ at boundary nodes $i \in \mathcal{B}$. The interior unknowns satisfy the reduced system:
+                    $$K_{\mathcal{I}\mathcal{I}}\,\mathbf{u}_\mathcal{I} = \mathbf{f}_\mathcal{I} - K_{\mathcal{I}\mathcal{B}}\,\mathbf{g}_\mathcal{B}.$$
+                    The matrix $K_{\mathcal{I}\mathcal{I}}$ is SPD (for a coercive symmetric form) and the system is uniquely solvable.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Penalty Method</div>
+                    <p class="mb-0">The <strong>penalty method</strong> keeps the full $N \times N$ system and enforces Dirichlet conditions approximately by adding a large penalty $M \gg \|K\|$: for each boundary DOF $i \in \mathcal{B}$, replace
+                    $$K_{ii} \leftarrow K_{ii} + M, \qquad f_i \leftarrow f_i + M\cdot g(x_i).$$
+                    The solution satisfies $u_i \approx g(x_i)$ with error $O(\|K\|/M)$. Advantage: simple to implement without reindexing. Disadvantage: introduces ill-conditioning ($\kappa(K) \sim M$), requiring careful choice of $M$ (typically $M \sim h^{-d}\|K\|$ for optimal accuracy).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Natural (Neumann) Boundary Conditions</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Neumann Condition in the Load Vector</div>
+                    <p>A Neumann condition $\partial u/\partial n = g$ on $\partial\Omega_N$ is <strong>natural</strong>: it arises from integration by parts in the weak form and enters the load vector as a boundary integral. For a boundary edge $e \subset \partial\Omega_N$ shared by element $K$, the contribution to $\mathbf{f}$ is:
+                    $$f_i^{\partial} = \int_e g\,\varphi_i\,dS,$$
+                    assembled via a 1D quadrature rule on the edge $e$. For $P_1$ elements and constant $g$: $f_i^{\partial} = g\cdot|e|/2$ for each endpoint node of $e$. No modification to $K$ is needed; the condition is automatically incorporated.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Robin Boundary Conditions</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Robin Condition</div>
+                    <p class="mb-0">A Robin (or mixed) condition $\alpha u + \partial u/\partial n = g$ on $\partial\Omega_R$ modifies both the bilinear form and the load vector. The weak contribution is:
+                    $$a_R(u,v) = \int_{\partial\Omega_R} \alpha\,u\,v\,dS, \qquad \ell_R(v) = \int_{\partial\Omega_R} g\,v\,dS.$$
+                    The total bilinear form becomes $a(u,v) + a_R(u,v)$, which is still continuous and coercive (for $\alpha > 0$). This adds a boundary mass matrix $M_{\partial}$ to $K$: $K \leftarrow K + \alpha M_{\partial}$, with $M_{\partial}$ assembled from boundary edge integrals $\int_e \varphi_j\varphi_i\,dS$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Mixed Boundary Conditions</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Mixed BCs in Practice</div>
+                    <p class="mb-0">When $\partial\Omega = \Gamma_D \cup \Gamma_N \cup \Gamma_R$ (disjoint parts), apply each condition to the corresponding boundary DOFs and edges:
+                    <ul class="mb-0">
+                        <li>Nodes on $\Gamma_D$: apply Dirichlet (elimination or penalty).</li>
+                        <li>Edges on $\Gamma_N$: add Neumann flux to load vector.</li>
+                        <li>Edges on $\Gamma_R$: add Robin mass matrix to $K$ and Robin term to $\mathbf{f}$.</li>
+                    </ul>
+                    The assembly loop can handle all cases by checking, for each boundary edge, which type of condition is imposed. The final system remains SPD (or at least non-singular) provided $|\Gamma_D| > 0$ or the Robin coefficient $\alpha > 0$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Enforcing Homogeneous Dirichlet by Exclusion</div>
+                    <p class="mb-0">The simplest and most efficient strategy for homogeneous Dirichlet is to <em>never assemble</em> DOFs on $\partial\Omega$. The global assembly loop simply maps boundary local DOFs to a sentinel (e.g.\ index $-1$) and skips contributions to/from those DOFs. The resulting global matrix is already $K_{\mathcal{I}\mathcal{I}}$, SPD by construction, with no post-processing required. This is the standard approach in most FEM codes (FEniCS, deal.II, etc.).</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-stiffness-matrix-and-load-vector/" class="btn btn-outline-custom">&larr; 4.1 Stiffness Matrix and Load Vector</a>
+                    <a href="../03-solvers-for-linear-systems/" class="btn btn-custom">4.3 Solvers for Linear Systems &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

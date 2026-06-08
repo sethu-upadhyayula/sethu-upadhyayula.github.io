@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.1 Semi-Discrete Formulation — Finite Element Methods</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to FEM</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Finite Element Methods</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-variational-formulation">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-variational-formulation/" class="toc-chapter-link"><strong>1.</strong> Variational Formulation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-variational-formulation/01-weak-form-of-bvps/">1.1 Weak Form of BVPs</a>
+                        <a href="../../01-variational-formulation/02-function-spaces-for-bvps/">1.2 Function Spaces for BVPs</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-galerkin-method">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-galerkin-method/" class="toc-chapter-link"><strong>2.</strong> Galerkin Method</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-galerkin-method/01-abstract-galerkin-framework/">2.1 Abstract Galerkin Framework</a>
+                        <a href="../../02-galerkin-method/02-lax-milgram-theorem/">2.2 Lax–Milgram Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-finite-element-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-finite-element-spaces/" class="toc-chapter-link"><strong>3.</strong> Finite Element Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-finite-element-spaces/01-triangulations-and-meshes/">3.1 Triangulations and Meshes</a>
+                        <a href="../../03-finite-element-spaces/02-lagrange-elements/">3.2 Lagrange Elements</a>
+                        <a href="../../03-finite-element-spaces/03-reference-elements-and-mapping/">3.3 Reference Elements and Mapping</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-assembly-and-implementation">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-assembly-and-implementation/" class="toc-chapter-link"><strong>4.</strong> Assembly and Implementation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-assembly-and-implementation/01-stiffness-matrix-and-load-vector/">4.1 Stiffness Matrix and Load Vector</a>
+                        <a href="../../04-assembly-and-implementation/02-boundary-conditions/">4.2 Boundary Conditions</a>
+                        <a href="../../04-assembly-and-implementation/03-solvers-for-linear-systems/">4.3 Solvers for Linear Systems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-error-analysis">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-error-analysis/" class="toc-chapter-link"><strong>5.</strong> Error Analysis</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-error-analysis/01-ceas-lemma/">5.1 Céa's Lemma</a>
+                        <a href="../../05-error-analysis/02-interpolation-error/">5.2 Interpolation Error</a>
+                        <a href="../../05-error-analysis/03-a-priori-error-estimates/">5.3 A Priori Error Estimates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-applications-to-elliptic-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-applications-to-elliptic-problems/" class="toc-chapter-link"><strong>6.</strong> Applications to Elliptic Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-applications-to-elliptic-problems/01-poissons-equation/">6.1 Poisson's Equation</a>
+                        <a href="../../06-applications-to-elliptic-problems/02-elasticity/">6.2 Elasticity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-time-dependent-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-time-dependent-problems/" class="toc-chapter-link"><strong>7.</strong> Time-Dependent Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-time-dependent-problems/01-semi-discrete-formulation/">7.1 Semi-Discrete Formulation</a>
+                        <a href="../../07-time-dependent-problems/02-time-discretisation/">7.2 Time Discretisation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to FEM</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Finite Element Methods</a> ›
+                <a href="../">7. Time-Dependent Problems</a> ›
+                <span>7.1 Semi-Discrete Formulation</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">7.1 Semi-Discrete Formulation</h1>
+
+                <p>The <strong>method of lines</strong> (or <strong>semi-discrete</strong> approach) applies FEM discretisation in space only, leaving time as a continuous variable. The result is a system of ODEs for the time-dependent nodal values, which can then be integrated by any suitable ODE solver.</p>
+
+                <h2 class="mt-4 mb-3">The Heat Equation</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Model Problem — Heat Equation</div>
+                    <p>Find $u: \Omega \times (0,T] \to \mathbb{R}$ satisfying
+                    $$\frac{\partial u}{\partial t} - \Delta u = f(x,t) \quad \text{in } \Omega \times (0,T],$$
+                    $$u = 0 \quad \text{on } \partial\Omega \times (0,T], \qquad u(\cdot,0) = u_0 \quad \text{in } \Omega.$$
+                    The weak form at each time $t$: find $u(t) \in H^1_0(\Omega)$ such that
+                    $$\left(\frac{\partial u}{\partial t},\, v\right)_{L^2} + a(u(t),v) = \ell(v;t) \quad \forall\, v \in H^1_0(\Omega),$$
+                    where $a(u,v) = \int_\Omega \nabla u \cdot \nabla v\,dx$ and $\ell(v;t) = \int_\Omega f(x,t)\,v\,dx$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Galerkin Discretisation in Space</h2>
+
+                <p>Let $V_h = \operatorname{span}\{\varphi_1, \ldots, \varphi_N\} \subset H^1_0(\Omega)$ be a finite element space of dimension $N$ (the number of interior nodes). Seek an approximate solution of the form
+                $$u_h(x,t) = \sum_{j=1}^N u_j(t)\,\varphi_j(x),$$
+                where the coefficients $\mathbf{u}(t) = (u_1(t),\ldots,u_N(t))^\top$ are now functions of time. Substituting into the weak form and testing with each basis function $\varphi_i$:</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Semi-Discrete System</div>
+                    <p class="mb-0">The Galerkin spatial discretisation of the heat equation yields the ODE system
+                    $$M\frac{d\mathbf{u}}{dt}(t) + K\mathbf{u}(t) = \mathbf{f}(t), \qquad \mathbf{u}(0) = \mathbf{u}_0,$$
+                    where the <strong>mass matrix</strong> $M \in \mathbb{R}^{N \times N}$, <strong>stiffness matrix</strong> $K \in \mathbb{R}^{N \times N}$, and <strong>load vector</strong> $\mathbf{f}(t) \in \mathbb{R}^N$ are given by
+                    $$M_{ij} = \int_\Omega \varphi_i\,\varphi_j\,dx, \qquad K_{ij} = \int_\Omega \nabla\varphi_i \cdot \nabla\varphi_j\,dx, \qquad f_i(t) = \int_\Omega f(x,t)\,\varphi_i\,dx,$$
+                    and $(\mathbf{u}_0)_j = (u_0, \varphi_j)_{L^2} / (\varphi_j, \varphi_j)_{L^2}$ approximates the initial condition.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Properties of the Mass Matrix</h2>
+
+                <p>The mass matrix $M$ is <strong>symmetric positive definite</strong>: symmetry is immediate; positive definiteness follows because $\mathbf{v}^\top M\mathbf{v} = \|v_h\|_{L^2}^2 > 0$ for any nonzero $\mathbf{v}$ (where $v_h = \sum v_j \varphi_j$). Since $M$ is SPD, the ODE system can be written as $\dot{\mathbf{u}} = -M^{-1}K\mathbf{u} + M^{-1}\mathbf{f}(t)$, which is a linear ODE with coefficient matrix $-M^{-1}K$. Since $K$ is also SPD, all eigenvalues of $M^{-1}K$ are positive, confirming that the semi-discrete system is stable (solutions decay for $f=0$).</p>
+
+                <h2 class="mt-5 mb-3">Lumped Mass Matrix</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Lumped Mass Matrix</div>
+                    <p class="mb-0">The <strong>lumped mass matrix</strong> $M_L$ is the diagonal matrix obtained by replacing each row of $M$ by a single diagonal entry equal to the row sum:
+                    $$(M_L)_{ii} = \sum_j M_{ij} = \int_\Omega \varphi_i\,dx.$$
+                    Since $\sum_j \varphi_j = 1$ on the mesh, this gives $(M_L)_{ii} = \int_\Omega \varphi_i \cdot 1\,dx$. The advantage of $M_L$ is that it is trivially invertible ($M_L^{-1}$ is just a scaling), making explicit time-stepping schemes cheap — no linear system needs to be solved at each time step.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Semi-Discrete Error Estimate</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Semi-Discrete Error Estimate</div>
+                    <p class="mb-0">Let $u$ be the exact solution of the heat equation and $u_h(t)$ the semi-discrete Galerkin solution with $P_1$ elements. Assume $u \in L^2(0,T; H^2(\Omega))$ and $u_0 \in H^2(\Omega)$. Then
+                    $$\|u(\cdot,t) - u_h(\cdot,t)\|_{L^2(\Omega)} \leq C h^2 \bigl(\|u_0\|_{H^2(\Omega)} + \|u\|_{L^2(0,t; H^2(\Omega))}\bigr).$$
+                    The spatial convergence rate is the same $O(h^2)$ as for the stationary problem, valid uniformly in $t \in [0,T]$. For $P_k$ elements, the rate improves to $O(h^{k+1})$ in $L^2$ under sufficient regularity.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Parabolic Regularity</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Parabolic Smoothing</div>
+                    <p class="mb-0">A remarkable property of parabolic equations is instantaneous regularisation: even if the initial data $u_0 \in L^2(\Omega)$ (not in $H^2$), the solution $u(\cdot,t) \in H^2(\Omega)$ for any $t > 0$, with the bound $\|u(t)\|_{H^2} \leq C t^{-1}\|u_0\|_{L^2}$ (parabolic regularity). This means initial singularities are smoothed out and the FEM error estimate remains valid for $t > 0$, though the constant may blow up as $t \to 0^+$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 7. Time-Dependent Problems</a>
+                    <a href="../02-time-discretisation/" class="btn btn-custom">7.2 Time Discretisation &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

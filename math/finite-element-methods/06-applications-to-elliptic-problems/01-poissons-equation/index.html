@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.1 Poisson's Equation — Finite Element Methods</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to FEM</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Finite Element Methods</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-variational-formulation">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-variational-formulation/" class="toc-chapter-link"><strong>1.</strong> Variational Formulation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-variational-formulation/01-weak-form-of-bvps/">1.1 Weak Form of BVPs</a>
+                        <a href="../../01-variational-formulation/02-function-spaces-for-bvps/">1.2 Function Spaces for BVPs</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-galerkin-method">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-galerkin-method/" class="toc-chapter-link"><strong>2.</strong> Galerkin Method</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-galerkin-method/01-abstract-galerkin-framework/">2.1 Abstract Galerkin Framework</a>
+                        <a href="../../02-galerkin-method/02-lax-milgram-theorem/">2.2 Lax–Milgram Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-finite-element-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-finite-element-spaces/" class="toc-chapter-link"><strong>3.</strong> Finite Element Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-finite-element-spaces/01-triangulations-and-meshes/">3.1 Triangulations and Meshes</a>
+                        <a href="../../03-finite-element-spaces/02-lagrange-elements/">3.2 Lagrange Elements</a>
+                        <a href="../../03-finite-element-spaces/03-reference-elements-and-mapping/">3.3 Reference Elements and Mapping</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-assembly-and-implementation">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-assembly-and-implementation/" class="toc-chapter-link"><strong>4.</strong> Assembly and Implementation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-assembly-and-implementation/01-stiffness-matrix-and-load-vector/">4.1 Stiffness Matrix and Load Vector</a>
+                        <a href="../../04-assembly-and-implementation/02-boundary-conditions/">4.2 Boundary Conditions</a>
+                        <a href="../../04-assembly-and-implementation/03-solvers-for-linear-systems/">4.3 Solvers for Linear Systems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-error-analysis">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-error-analysis/" class="toc-chapter-link"><strong>5.</strong> Error Analysis</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-error-analysis/01-ceas-lemma/">5.1 Céa's Lemma</a>
+                        <a href="../../05-error-analysis/02-interpolation-error/">5.2 Interpolation Error</a>
+                        <a href="../../05-error-analysis/03-a-priori-error-estimates/">5.3 A Priori Error Estimates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-applications-to-elliptic-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-applications-to-elliptic-problems/" class="toc-chapter-link"><strong>6.</strong> Applications to Elliptic Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-applications-to-elliptic-problems/01-poissons-equation/">6.1 Poisson's Equation</a>
+                        <a href="../../06-applications-to-elliptic-problems/02-elasticity/">6.2 Elasticity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-time-dependent-problems">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-time-dependent-problems/" class="toc-chapter-link"><strong>7.</strong> Time-Dependent Problems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-time-dependent-problems/01-semi-discrete-formulation/">7.1 Semi-Discrete Formulation</a>
+                        <a href="../../07-time-dependent-problems/02-time-discretisation/">7.2 Time Discretisation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to FEM</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Finite Element Methods</a> ›
+                <a href="../">6. Applications to Elliptic Problems</a> ›
+                <span>6.1 Poisson's Equation</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">6.1 Poisson's Equation</h1>
+
+                <p>We work through the complete finite element solution of Poisson's equation on the unit square — from the variational formulation to the assembled linear system to numerical convergence verification. This is the canonical benchmark for FEM implementations.</p>
+
+                <h2 class="mt-4 mb-3">Problem Statement</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Model Problem</div>
+                    <p class="mb-0">Find $u: \Omega \to \mathbb{R}$ satisfying
+                    $$-\Delta u = 1 \quad \text{in } \Omega = (0,1)^2, \qquad u = 0 \quad \text{on } \partial\Omega.$$
+                    The weak form is: find $u \in H^1_0(\Omega)$ such that
+                    $$\int_\Omega \nabla u \cdot \nabla v\,dx = \int_\Omega v\,dx \quad \forall\, v \in H^1_0(\Omega).$$
+                    No closed-form solution exists on the square; the solution is approximated by its Fourier series $u(x,y) = \sum_{m,n \geq 1, \text{ odd}} \frac{16}{\pi^4 mn(m^2+n^2)}\sin(m\pi x)\sin(n\pi y)$, which converges rapidly and provides an effectively exact reference.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Triangulation and Degrees of Freedom</h2>
+
+                <p>Divide $(0,1)^2$ into a uniform $N \times N$ grid of squares, each split into two triangles by a diagonal. For mesh size $h = 1/N$, the resulting triangulation $\mathcal{T}_h$ has $2N^2$ triangles and $(N+1)^2$ nodes. After imposing homogeneous Dirichlet conditions, the number of <strong>interior (free) degrees of freedom</strong> is $(N-1)^2$.</p>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — $h = 1/4$ ($N=4$)</div>
+                    <p class="mb-0">With $h = 1/4$: the mesh has $2 \cdot 16 = 32$ triangles and $25$ nodes. After removing the $16$ boundary nodes, there are $(4-1)^2 = 9$ interior nodes, yielding a $9 \times 9$ linear system $K\mathbf{u} = \mathbf{f}$. The stiffness matrix $K$ is symmetric positive definite and sparse (at most 7 nonzeros per row for interior nodes).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Assembly of the Linear System</h2>
+
+                <p>The global stiffness matrix is assembled element by element. For each triangle $K$ with vertices $(x_1,y_1), (x_2,y_2), (x_3,y_3)$ and area $|K| = h^2/2$, the local stiffness matrix is
+                $$K^K_{ij} = \int_K \nabla \varphi_i \cdot \nabla \varphi_j\,dx,$$
+                where $\varphi_i$ are the local $P_1$ basis functions (hat functions). Since $P_1$ basis functions have constant gradients on each element, these integrals are computed exactly:
+                $$\nabla \varphi_i = \frac{1}{2|K|}\begin{pmatrix} y_j - y_k \\ x_k - x_j \end{pmatrix}$$
+                (where $\{i,j,k\}$ is a cyclic permutation of $\{1,2,3\}$). The local load vector is
+                $$f^K_i = \int_K \varphi_i\,dx = \frac{|K|}{3} \cdot 1 = \frac{h^2}{6}.$$
+                After assembly and application of Dirichlet boundary conditions (zeroing rows/columns and setting diagonal to 1), the system $K\mathbf{u} = \mathbf{f}$ is solved by a direct or iterative solver.</p>
+
+                <h2 class="mt-5 mb-3">Numerical Convergence Study</h2>
+
+                <p>We compute the FEM solution on a sequence of uniformly refined meshes and measure the $H^1$ semi-error and $L^2$ error against the reference Fourier-series solution. The errors are computed as
+                $$\|u - u_h\|_{H^1}^2 = \sum_K \int_K |\nabla(u - u_h)|^2\,dx, \qquad \|u - u_h\|_{L^2}^2 = \sum_K \int_K (u - u_h)^2\,dx,$$
+                approximated by numerical quadrature on each element. The convergence rate between consecutive meshes is estimated as $r = \log_2(e_h / e_{h/2})$.</p>
+
+                <div class="math-box">
+                    <div class="math-box-label">Table — Convergence of $P_1$ FEM for $-\Delta u = 1$ on $(0,1)^2$</div>
+                    <table class="table table-sm table-bordered mb-0" style="font-size:0.92em;">
+                        <thead>
+                            <tr>
+                                <th>$h$</th>
+                                <th>DOFs</th>
+                                <th>$\|u - u_h\|_{H^1}$</th>
+                                <th>$H^1$ rate</th>
+                                <th>$\|u - u_h\|_{L^2}$</th>
+                                <th>$L^2$ rate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$1/2$</td>
+                                <td>1</td>
+                                <td>$4.63 \times 10^{-2}$</td>
+                                <td>—</td>
+                                <td>$6.11 \times 10^{-3}$</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>$1/4$</td>
+                                <td>9</td>
+                                <td>$2.32 \times 10^{-2}$</td>
+                                <td>$1.00$</td>
+                                <td>$1.55 \times 10^{-3}$</td>
+                                <td>$1.98$</td>
+                            </tr>
+                            <tr>
+                                <td>$1/8$</td>
+                                <td>49</td>
+                                <td>$1.16 \times 10^{-2}$</td>
+                                <td>$1.00$</td>
+                                <td>$3.88 \times 10^{-4}$</td>
+                                <td>$2.00$</td>
+                            </tr>
+                            <tr>
+                                <td>$1/16$</td>
+                                <td>225</td>
+                                <td>$5.80 \times 10^{-3}$</td>
+                                <td>$1.00$</td>
+                                <td>$9.71 \times 10^{-5}$</td>
+                                <td>$2.00$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="mt-3">The observed rates confirm the theoretical predictions: $\|u - u_h\|_{H^1} = O(h)$ and $\|u - u_h\|_{L^2} = O(h^2)$ for $P_1$ elements, as established in Section 5.3. The $H^1$ rate is exactly 1.00 and the $L^2$ rate converges to 2.00, validating both Céa's lemma and the Aubin–Nitsche argument.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Pre-asymptotic Regime</div>
+                    <p class="mb-0">For very coarse meshes (e.g., $h = 1/2$, which gives only 1 interior DOF), the solution is in the pre-asymptotic regime where the mesh is too coarse to resolve the solution. Convergence rates are only reliable once $h$ is small enough that $u$ is well-resolved. The table shows the asymptotic regime is reached by $h = 1/4$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 6. Applications to Elliptic Problems</a>
+                    <a href="../02-elasticity/" class="btn btn-custom">6.2 Elasticity &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>
