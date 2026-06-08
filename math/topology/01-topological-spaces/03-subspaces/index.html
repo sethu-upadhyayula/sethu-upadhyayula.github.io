@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.3 Subspaces — Topology</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Topology</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Topology</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-topological-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-topological-spaces/" class="toc-chapter-link"><strong>1.</strong> Topological Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-topological-spaces/01-open-sets-and-topologies/">1.1 Open Sets and Topologies</a>
+                        <a href="../../01-topological-spaces/02-basis-and-subbasis/">1.2 Basis and Subbasis</a>
+                        <a href="../../01-topological-spaces/03-subspaces/" class="active">1.3 Subspaces</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-continuity-and-homeomorphisms">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-continuity-and-homeomorphisms/" class="toc-chapter-link"><strong>2.</strong> Continuity and Homeomorphisms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-continuity-and-homeomorphisms/01-continuous-functions/">2.1 Continuous Functions</a>
+                        <a href="../../02-continuity-and-homeomorphisms/02-homeomorphisms/">2.2 Homeomorphisms</a>
+                        <a href="../../02-continuity-and-homeomorphisms/03-topological-properties/">2.3 Topological Properties</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-connectedness">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-connectedness/" class="toc-chapter-link"><strong>3.</strong> Connectedness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-connectedness/01-connected-spaces/">3.1 Connected Spaces</a>
+                        <a href="../../03-connectedness/02-path-connectedness/">3.2 Path Connectedness</a>
+                        <a href="../../03-connectedness/03-components/">3.3 Components</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-compactness">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-compactness/" class="toc-chapter-link"><strong>4.</strong> Compactness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-compactness/01-compact-spaces/">4.1 Compact Spaces</a>
+                        <a href="../../04-compactness/02-heine-borel-theorem/">4.2 Heine–Borel Theorem</a>
+                        <a href="../../04-compactness/03-applications/">4.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-separation-axioms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-separation-axioms/" class="toc-chapter-link"><strong>5.</strong> Separation Axioms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-separation-axioms/01-t0-to-t4/">5.1 T&#x2080; to T&#x2084; Axioms</a>
+                        <a href="../../05-separation-axioms/02-urysohns-lemma/">5.2 Urysohn's Lemma</a>
+                        <a href="../../05-separation-axioms/03-tietze-extension-theorem/">5.3 Tietze Extension Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-product-and-quotient-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-product-and-quotient-spaces/" class="toc-chapter-link"><strong>6.</strong> Product and Quotient Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-product-and-quotient-spaces/01-product-topology/">6.1 Product Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/02-quotient-topology/">6.2 Quotient Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/03-examples/">6.3 Examples</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-homotopy-and-fundamental-group">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-homotopy-and-fundamental-group/" class="toc-chapter-link"><strong>7.</strong> Homotopy and the Fundamental Group</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-homotopy-and-fundamental-group/01-homotopy/">7.1 Homotopy</a>
+                        <a href="../../07-homotopy-and-fundamental-group/02-the-fundamental-group/">7.2 The Fundamental Group</a>
+                        <a href="../../07-homotopy-and-fundamental-group/03-van-kampens-theorem/">7.3 van Kampen's Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Topology</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Topology</a> ›
+                <a href="../">1. Topological Spaces</a> ›
+                <span>1.3 Subspaces</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">1.3 Subspaces</h1>
+
+                <p>Given a topological space $(X, \tau)$ and a subset $A \subseteq X$, there is a canonical way to make $A$ into a topological space in its own right by "restricting" the topology of $X$ to $A$. The resulting space is called the <strong>subspace</strong> (or <em>induced</em> or <em>relative</em> space) of $X$ on $A$.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Subspace Topology</div>
+                    <p>Let $(X, \tau)$ be a topological space and $A \subseteq X$. The <strong>subspace topology</strong> on $A$ is
+                    $$\tau_A = \{ U \cap A : U \in \tau \}.$$
+                    The pair $(A, \tau_A)$ is called a <strong>topological subspace</strong> of $(X, \tau)$.</p>
+                    <p class="mb-0">One readily verifies the topology axioms: $\emptyset = \emptyset \cap A \in \tau_A$ and $A = X \cap A \in \tau_A$; arbitrary unions $\bigcup_\alpha (U_\alpha \cap A) = (\bigcup_\alpha U_\alpha) \cap A \in \tau_A$; and finite intersections $(U_1 \cap A) \cap (U_2 \cap A) = (U_1 \cap U_2) \cap A \in \tau_A$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Inclusion Map</div>
+                    <p class="mb-0">The subspace topology is precisely the coarsest topology on $A$ making the inclusion map $\iota: A \hookrightarrow X$, $\iota(a) = a$, continuous. Equivalently, $\tau_A$ is characterised by the universal property: a map $f: Z \to A$ is continuous if and only if $\iota \circ f: Z \to X$ is continuous.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Open and Closed Sets in Subspaces</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Open Sets in Subspaces</div>
+                    <p>Let $A \subseteq X$. A set $V \subseteq A$ is open in $(A, \tau_A)$ if and only if $V = U \cap A$ for some $U$ open in $X$.</p>
+                    <p class="mb-0">In particular, if $A$ is itself open in $X$, then $V \subseteq A$ is open in $A$ if and only if $V$ is open in $X$: the subspace topology on an open subspace coincides with the restriction of the ambient topology.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Closed Sets in Subspaces</div>
+                    <p>A set $C \subseteq A$ is closed in $(A, \tau_A)$ if and only if $C = F \cap A$ for some closed set $F$ in $X$.</p>
+                    <p class="mb-0"><em>Proof.</em> $C$ is closed in $A$ iff $A \setminus C$ is open in $A$ iff $A \setminus C = U \cap A$ for some open $U \subseteq X$ iff $C = A \setminus (U \cap A) = A \cap (X \setminus U) = (X \setminus U) \cap A$, and $X \setminus U$ is closed in $X$. $\square$</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — $(0,1)$ as a Subspace of $\mathbb{R}$</div>
+                    <p>Consider $A = (0,1) \subseteq \mathbb{R}$ with the subspace topology inherited from the standard topology on $\mathbb{R}$. The open sets of $(0,1)$ are all sets of the form $U \cap (0,1)$ for $U$ open in $\mathbb{R}$. For instance:</p>
+                    <ul>
+                        <li>$(0, \tfrac{1}{2})$ is open in $(0,1)$ (it equals $(-1, \tfrac{1}{2}) \cap (0,1)$).</li>
+                        <li>$(0, \tfrac{1}{2}]$ is <em>not</em> open in $\mathbb{R}$, but is it open in $(0,1)$? No: any open set $U \ni \tfrac{1}{2}$ contains an interval $(\tfrac{1}{2}-\varepsilon, \tfrac{1}{2}+\varepsilon)$, so $U \cap (0,1)$ contains $(\tfrac{1}{2}, \tfrac{1}{2}+\varepsilon)$, which is not a subset of $(0, \tfrac{1}{2}]$.</li>
+                        <li>However, $(0, \tfrac{1}{2}]$ is closed in $(0,1)$ because $[\tfrac{1}{2}, 1]$ is closed in $\mathbb{R}$ and $[\tfrac{1}{2},1] \cap (0,1) = [\tfrac{1}{2},1)$... wait — more precisely, $(0,\tfrac{1}{2}] = (-\infty, \tfrac{1}{2}] \cap (0,1)$, and $(-\infty, \tfrac{1}{2}]$ is closed in $\mathbb{R}$, so $(0,\tfrac{1}{2}]$ is closed in $(0,1)$.</li>
+                    </ul>
+                    <p class="mb-0">This illustrates that a set may be closed in a subspace without being closed in the ambient space.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Closure and Interior in Subspaces</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Closure in Subspaces</div>
+                    <p class="mb-0">If $B \subseteq A \subseteq X$, the closure of $B$ in $(A, \tau_A)$ is $\overline{B}^A = \overline{B}^X \cap A$, where $\overline{B}^X$ denotes closure in $X$. In other words, the closure is computed in $X$ and then intersected with $A$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Closure Depends on Ambient Space</div>
+                    <p class="mb-0">Let $A = (0,2)$ and $B = (0,1)$, both subsets of $\mathbb{R}$. The closure of $B$ in $\mathbb{R}$ is $[0,1]$. The closure of $B$ in $(0,2)$ is $[0,1] \cap (0,2) = (0,1]$. Thus $0$ is a limit point of $B$ in $\mathbb{R}$ but is "invisible" in the subspace $(0,2)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Hereditary Properties</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Hereditary Property</div>
+                    <p class="mb-0">A topological property $P$ is <strong>hereditary</strong> if every subspace of a space with property $P$ also has property $P$. It is <strong>closed-hereditary</strong> if every closed subspace inherits $P$, and <strong>open-hereditary</strong> if every open subspace inherits $P$.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Examples of Hereditary Properties</div>
+                    <p>The following properties are hereditary:</p>
+                    <ul>
+                        <li>$T_0$, $T_1$, $T_2$ (Hausdorff), $T_3$ (regular), $T_{3\frac{1}{2}}$ (Tychonoff).</li>
+                        <li>First countability and second countability.</li>
+                        <li>Metrisability.</li>
+                    </ul>
+                    <p class="mb-0">Compactness is <em>not</em> hereditary (e.g., $(0,1)$ is not compact even though $[0,1]$ is), but it is closed-hereditary: every closed subspace of a compact space is compact. Connectedness is not hereditary: $[0,1]$ is connected but $[0, \tfrac{1}{3}) \cup (\tfrac{2}{3}, 1]$, as a subspace, is not.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Transitivity of Subspaces</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Subspace of a Subspace</div>
+                    <p class="mb-0">If $B \subseteq A \subseteq X$, then the subspace topology on $B$ inherited from $(A, \tau_A)$ equals the subspace topology on $B$ inherited directly from $(X, \tau)$. Indeed, $\{V \cap B : V \in \tau_A\} = \{(U \cap A) \cap B : U \in \tau\} = \{U \cap B : U \in \tau\}$ since $B \subseteq A$ implies $(U \cap A) \cap B = U \cap B$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-basis-and-subbasis/" class="btn btn-outline-custom">&larr; 1.2 Basis and Subbasis</a>
+                    <a href="../../02-continuity-and-homeomorphisms/" class="btn btn-custom">2. Continuity and Homeomorphisms &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

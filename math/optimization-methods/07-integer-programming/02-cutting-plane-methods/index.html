@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.2 Cutting Plane Methods — Optimization Methods</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Optimization Methods</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Optimization Methods</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-convex-analysis">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-convex-analysis/" class="toc-chapter-link"><strong>1.</strong> Convex Analysis</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-convex-analysis/01-convex-sets/">1.1 Convex Sets</a>
+                        <a href="../../01-convex-analysis/02-convex-functions/">1.2 Convex Functions</a>
+                        <a href="../../01-convex-analysis/03-separation-theorems/">1.3 Separation Theorems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-unconstrained-optimization">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-unconstrained-optimization/" class="toc-chapter-link"><strong>2.</strong> Unconstrained Optimisation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-unconstrained-optimization/01-optimality-conditions/">2.1 Optimality Conditions</a>
+                        <a href="../../02-unconstrained-optimization/02-gradient-descent/">2.2 Gradient Descent</a>
+                        <a href="../../02-unconstrained-optimization/03-newtons-method/">2.3 Newton's Method</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-constrained-optimization">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-constrained-optimization/" class="toc-chapter-link"><strong>3.</strong> Constrained Optimisation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-constrained-optimization/01-equality-constraints-and-lagrange/">3.1 Equality Constraints and Lagrange Multipliers</a>
+                        <a href="../../03-constrained-optimization/02-inequality-constraints-and-kkt/">3.2 Inequality Constraints and KKT Conditions</a>
+                        <a href="../../03-constrained-optimization/03-constraint-qualifications/">3.3 Constraint Qualifications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-linear-programming">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-linear-programming/" class="toc-chapter-link"><strong>4.</strong> Linear Programming</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-linear-programming/01-standard-form/">4.1 Standard Form</a>
+                        <a href="../../04-linear-programming/02-the-simplex-method/">4.2 The Simplex Method</a>
+                        <a href="../../04-linear-programming/03-revised-simplex-and-big-m/">4.3 Revised Simplex and Big-M</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-duality">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-duality/" class="toc-chapter-link"><strong>5.</strong> Duality</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-duality/01-lagrangian-duality/">5.1 Lagrangian Duality</a>
+                        <a href="../../05-duality/02-strong-and-weak-duality/">5.2 Strong and Weak Duality</a>
+                        <a href="../../05-duality/03-complementary-slackness/">5.3 Complementary Slackness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-interior-point-methods">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-interior-point-methods/" class="toc-chapter-link"><strong>6.</strong> Interior Point Methods</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-interior-point-methods/01-barrier-functions/">6.1 Barrier Functions</a>
+                        <a href="../../06-interior-point-methods/02-primal-dual-methods/">6.2 Primal–Dual Methods</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-integer-programming">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-integer-programming/" class="toc-chapter-link"><strong>7.</strong> Integer Programming</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-integer-programming/01-branch-and-bound/">7.1 Branch and Bound</a>
+                        <a href="../../07-integer-programming/02-cutting-plane-methods/">7.2 Cutting Plane Methods</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Optimization Methods</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Optimization Methods</a> ›
+                <a href="../">7. Integer Programming</a> ›
+                <span>7.2 Cutting Plane Methods</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">7.2 Cutting Plane Methods</h1>
+
+                <p>Cutting plane methods improve the LP relaxation by adding <em>valid inequalities</em> (cuts) that are satisfied by all integer feasible solutions but violated by the current fractional LP solution. Iterating this process tightens the LP bound until it equals the IP optimum.</p>
+
+                <h2 class="mt-4 mb-3">Valid Inequalities</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.2.1 — Valid Inequality</div>
+                    <p>An inequality $\pi^\top x \le \pi_0$ is <strong>valid</strong> for the IP if it is satisfied by all integer feasible solutions $x \in \{x : Ax \le b,\, x \ge 0,\, x_j \in \mathbb{Z}\;\forall j \in \mathcal{I}\}$.</p>
+                    <p class="mb-0">A valid inequality is a <strong>cut</strong> (or <strong>cutting plane</strong>) if the current LP optimal solution $x^*_{\mathrm{LP}}$ violates it: $\pi^\top x^*_{\mathrm{LP}} > \pi_0$. Adding the cut to the LP eliminates $x^*_{\mathrm{LP}}$ and forces a new (tighter) LP optimal. The goal is to approximate the <strong>integer hull</strong> $\mathrm{conv}(\{x \in \mathcal{F}_{\mathrm{IP}}\})$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Gomory Cuts</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.2.2 — Gomory Fractional Cut</div>
+                    <p>Let $x^*$ be the LP optimal BFS with basis $B$. Consider a basic variable $x_i = (A_B^{-1}b)_i = \bar{b}_i \notin \mathbb{Z}$. The $i$-th row of the optimal tableau is:
+                    $$x_i + \sum_{j \in N} \bar{a}_{ij} x_j = \bar{b}_i.$$
+                    Write $\bar{b}_i = \lfloor\bar{b}_i\rfloor + f_i$ and $\bar{a}_{ij} = \lfloor\bar{a}_{ij}\rfloor + f_{ij}$ with fractional parts $f_i, f_{ij} \in [0,1)$. The <strong>Gomory cut</strong> is:
+                    $$\sum_{j \in N} f_{ij} x_j \ge f_i.$$</p>
+                    <p><em>Validity:</em> For any integer solution, $x_i + \sum_{j \in N} \bar{a}_{ij} x_j = \bar{b}_i \in \mathbb{Z}$, so $\sum_{j \in N} f_{ij} x_j - f_i \in \mathbb{Z}$. Since $x_j \ge 0$ and $f_{ij} \ge 0$, this integer is $\ge 0$, i.e., $\sum f_{ij} x_j \ge f_i$. $\square$</p>
+                    <p class="mb-0"><em>Violation at $x^*$:</em> At $x^* = (x_B, 0)$, all non-basic $x_j = 0$, so LHS $= 0 < f_i$ (since $f_i > 0$). The cut is violated. Adding it eliminates $x^*$ from the LP.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Lift-and-Project and Cover Inequalities</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.2.3 — Cover Inequalities</div>
+                    <p>For a 0-1 knapsack constraint $\sum_{j=1}^n a_j x_j \le b$ with $x_j \in \{0,1\}$, a set $C \subseteq \{1,\ldots,n\}$ is a <strong>cover</strong> if $\sum_{j \in C} a_j > b$ (the items in $C$ cannot all fit). The <strong>cover inequality</strong> is:
+                    $$\sum_{j \in C} x_j \le |C| - 1.$$</p>
+                    <p class="mb-0">Cover inequalities are valid (at most $|C|-1$ items from $C$ can be selected) and often provide strong cuts for binary programmes. <strong>Lifted covers</strong> extend them to include variables not in $C$, yielding facet-defining inequalities.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.2.4 — Lift-and-Project</div>
+                    <p>The <strong>lift-and-project</strong> procedure (Balas, Ceria, Cornuéjols) generates cuts for binary variables by working in a higher-dimensional space. For a variable $x_j \in \{0,1\}$, multiply constraints by $x_j$ and $(1-x_j)$, forming the lifted set. Projecting back to the original space yields a cut that can be stronger than Gomory cuts.</p>
+                    <p class="mb-0">Lift-and-project is equivalent to rank-1 Chvátal–Gomory cuts and provides a systematic way to generate the convex hull of mixed-integer feasible solutions for structured problems.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Branch-and-Cut</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.2.5 — Branch-and-Cut</div>
+                    <p><strong>Branch-and-cut</strong> combines branch-and-bound (Section 7.1) with cutting planes: at each B&amp;B node, after solving the LP relaxation, attempt to add cuts before branching. If violated cuts are found, add them and re-solve the LP (tightening the bound without branching). Branch only when no more useful cuts can be found at a node.</p>
+                    <p class="mb-0">The MIP solving pipeline in modern solvers (CPLEX, Gurobi, HiGHS) typically proceeds: presolve (remove redundancies, fix variables), add cuts at the root node (clique, cover, Gomory, MIR cuts), then branch-and-cut with heuristics for primal feasible solutions. This pipeline can solve MIPs with millions of variables.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Mixed-Integer Rounding (MIR) Cuts</div>
+                    <p>Mixed-integer rounding (MIR) cuts generalise Gomory cuts to mixed-integer problems. For a constraint $\sum_j a_j x_j \le b$ with some integer and some continuous variables, the MIR cut is derived by rounding down coefficients and applying a similar fractional analysis.</p>
+                    <p class="mb-0">MIR cuts, together with clique cuts (from the conflict graph of binary variables) and flow cover cuts (from network structure), are the most important classes in practice. The separation problem — finding the most violated cut of a given class — is itself an optimisation problem that must be solved efficiently within the B&amp;C framework.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-branch-and-bound/" class="btn btn-outline-custom">&larr; 7.1 Branch and Bound</a>
+                    <a href="../../../../math/" class="btn btn-custom">Back to Math &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

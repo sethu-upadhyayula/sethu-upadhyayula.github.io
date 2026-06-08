@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.1 Compact Spaces — Topology</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Topology</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Topology</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-topological-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-topological-spaces/" class="toc-chapter-link"><strong>1.</strong> Topological Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-topological-spaces/01-open-sets-and-topologies/">1.1 Open Sets and Topologies</a>
+                        <a href="../../01-topological-spaces/02-basis-and-subbasis/">1.2 Basis and Subbasis</a>
+                        <a href="../../01-topological-spaces/03-subspaces/">1.3 Subspaces</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-continuity-and-homeomorphisms">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-continuity-and-homeomorphisms/" class="toc-chapter-link"><strong>2.</strong> Continuity and Homeomorphisms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-continuity-and-homeomorphisms/01-continuous-functions/">2.1 Continuous Functions</a>
+                        <a href="../../02-continuity-and-homeomorphisms/02-homeomorphisms/">2.2 Homeomorphisms</a>
+                        <a href="../../02-continuity-and-homeomorphisms/03-topological-properties/">2.3 Topological Properties</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-connectedness">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-connectedness/" class="toc-chapter-link"><strong>3.</strong> Connectedness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-connectedness/01-connected-spaces/">3.1 Connected Spaces</a>
+                        <a href="../../03-connectedness/02-path-connectedness/">3.2 Path Connectedness</a>
+                        <a href="../../03-connectedness/03-components/">3.3 Components</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-compactness">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-compactness/" class="toc-chapter-link"><strong>4.</strong> Compactness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-compactness/01-compact-spaces/" class="active">4.1 Compact Spaces</a>
+                        <a href="../../04-compactness/02-heine-borel-theorem/">4.2 Heine–Borel Theorem</a>
+                        <a href="../../04-compactness/03-applications/">4.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-separation-axioms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-separation-axioms/" class="toc-chapter-link"><strong>5.</strong> Separation Axioms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-separation-axioms/01-t0-to-t4/">5.1 T&#x2080; to T&#x2084; Axioms</a>
+                        <a href="../../05-separation-axioms/02-urysohns-lemma/">5.2 Urysohn's Lemma</a>
+                        <a href="../../05-separation-axioms/03-tietze-extension-theorem/">5.3 Tietze Extension Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-product-and-quotient-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-product-and-quotient-spaces/" class="toc-chapter-link"><strong>6.</strong> Product and Quotient Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-product-and-quotient-spaces/01-product-topology/">6.1 Product Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/02-quotient-topology/">6.2 Quotient Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/03-examples/">6.3 Examples</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-homotopy-and-fundamental-group">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-homotopy-and-fundamental-group/" class="toc-chapter-link"><strong>7.</strong> Homotopy and the Fundamental Group</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-homotopy-and-fundamental-group/01-homotopy/">7.1 Homotopy</a>
+                        <a href="../../07-homotopy-and-fundamental-group/02-the-fundamental-group/">7.2 The Fundamental Group</a>
+                        <a href="../../07-homotopy-and-fundamental-group/03-van-kampens-theorem/">7.3 van Kampen's Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Topology</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Topology</a> ›
+                <a href="../">4. Compactness</a> ›
+                <span>4.1 Compact Spaces</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Compact Spaces</h1>
+
+                <p>Compactness is defined via open covers and is the topological generalisation of finiteness. Many key theorems of analysis rely on compactness in an essential way.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Compact Space</div>
+                    <p>A topological space $X$ is <strong>compact</strong> if every open cover of $X$ has a finite subcover: whenever $X = \bigcup_{\alpha \in A} U_\alpha$ with each $U_\alpha$ open, there exist finitely many indices $\alpha_1, \ldots, \alpha_n$ such that $X = U_{\alpha_1} \cup \cdots \cup U_{\alpha_n}$.</p>
+                    <p class="mb-0">A subset $K \subseteq X$ is compact if it is compact as a topological space with the subspace topology, equivalently if every cover of $K$ by open sets of $X$ has a finite subcover.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Fundamental Theorems</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Closed Subsets of Compact Spaces are Compact</div>
+                    <p><em>Proof.</em> Let $K \subseteq X$ compact and $C \subseteq K$ closed in $K$ (or equivalently, $C$ closed in $X$ and $C \subseteq K$). Let $\{U_\alpha\}$ be an open cover of $C$. Then $\{U_\alpha\} \cup \{X \setminus C\}$ is an open cover of $K$. By compactness of $K$, finitely many sets cover $K$, and removing $X \setminus C$ gives a finite cover of $C$. $\square$</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Compact Subsets of Hausdorff Spaces are Closed</div>
+                    <p><em>Proof.</em> Let $K \subseteq X$ be compact with $X$ Hausdorff. We show $X \setminus K$ is open. Fix $x \in X \setminus K$. For each $k \in K$, find disjoint open $U_k \ni x$ and $V_k \ni k$. Then $\{V_k\}$ covers $K$; extract a finite subcover $V_{k_1}, \ldots, V_{k_n}$. Then $U = U_{k_1} \cap \cdots \cap U_{k_n}$ is an open neighbourhood of $x$ disjoint from $V_{k_1} \cup \cdots \cup V_{k_n} \supseteq K$. $\square$</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Continuous Image of Compact is Compact</div>
+                    <p><em>Proof.</em> Let $f: X \to Y$ continuous, $X$ compact. Any open cover $\{V_\alpha\}$ of $f(X)$ gives an open cover $\{f^{-1}(V_\alpha)\}$ of $X$. Extract a finite subcover $f^{-1}(V_{\alpha_1}), \ldots, f^{-1}(V_{\alpha_n})$; then $V_{\alpha_1}, \ldots, V_{\alpha_n}$ cover $f(X)$. $\square$</p>
+                    <p class="mb-0">Corollary: a continuous bijection from a compact space to a Hausdorff space is a homeomorphism (the image is compact, hence closed, so the inverse is continuous).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Tychonoff's Theorem</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Tychonoff's Theorem</div>
+                    <p class="mb-0">An arbitrary product of compact spaces is compact: if $\{X_\alpha\}_{\alpha \in A}$ are compact topological spaces, then $\prod_{\alpha \in A} X_\alpha$ with the product topology is compact. For finite products this follows by induction from the tube lemma (§4.3). The general case requires the Axiom of Choice (specifically Zorn's Lemma) and is one of the most important theorems in topology. Tychonoff's theorem is in fact equivalent to the Axiom of Choice.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Compactness</a>
+                    <a href="../02-heine-borel-theorem/" class="btn btn-custom">4.2 Heine–Borel Theorem &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

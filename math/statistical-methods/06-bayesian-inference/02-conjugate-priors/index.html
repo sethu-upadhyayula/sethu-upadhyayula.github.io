@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.2 Conjugate Priors — Statistical Methods</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Statistical Methods</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Statistical Methods</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-descriptive-statistics">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-descriptive-statistics/" class="toc-chapter-link"><strong>1.</strong> Descriptive Statistics</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-descriptive-statistics/01-measures-of-location/">1.1 Measures of Location</a>
+                        <a href="../../01-descriptive-statistics/02-measures-of-spread/">1.2 Measures of Spread</a>
+                        <a href="../../01-descriptive-statistics/03-exploratory-data-analysis/">1.3 Exploratory Data Analysis</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-point-estimation">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-point-estimation/" class="toc-chapter-link"><strong>2.</strong> Point Estimation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-point-estimation/01-maximum-likelihood-estimation/">2.1 Maximum Likelihood Estimation</a>
+                        <a href="../../02-point-estimation/02-method-of-moments/">2.2 Method of Moments</a>
+                        <a href="../../02-point-estimation/03-properties-of-estimators/">2.3 Properties of Estimators</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-interval-estimation">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-interval-estimation/" class="toc-chapter-link"><strong>3.</strong> Interval Estimation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-interval-estimation/01-confidence-intervals/">3.1 Confidence Intervals</a>
+                        <a href="../../03-interval-estimation/02-pivotal-quantities/">3.2 Pivotal Quantities</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-hypothesis-testing">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-hypothesis-testing/" class="toc-chapter-link"><strong>4.</strong> Hypothesis Testing</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-hypothesis-testing/01-null-and-alternative-hypotheses/">4.1 Null and Alternative Hypotheses</a>
+                        <a href="../../04-hypothesis-testing/02-type-i-and-type-ii-errors/">4.2 Type I and Type II Errors</a>
+                        <a href="../../04-hypothesis-testing/03-common-tests/">4.3 Common Tests</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-linear-regression">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-linear-regression/" class="toc-chapter-link"><strong>5.</strong> Linear Regression</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-linear-regression/01-simple-linear-regression/">5.1 Simple Linear Regression</a>
+                        <a href="../../05-linear-regression/02-multiple-regression/">5.2 Multiple Regression</a>
+                        <a href="../../05-linear-regression/03-model-diagnostics/">5.3 Model Diagnostics</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-bayesian-inference">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-bayesian-inference/" class="toc-chapter-link"><strong>6.</strong> Bayesian Inference</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-bayesian-inference/01-prior-and-posterior/">6.1 Prior and Posterior</a>
+                        <a href="../../06-bayesian-inference/02-conjugate-priors/">6.2 Conjugate Priors</a>
+                        <a href="../../06-bayesian-inference/03-bayesian-estimation/">6.3 Bayesian Estimation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-non-parametric-methods">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-non-parametric-methods/" class="toc-chapter-link"><strong>7.</strong> Non-Parametric Methods</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-non-parametric-methods/01-rank-tests/">7.1 Rank Tests</a>
+                        <a href="../../07-non-parametric-methods/02-bootstrap/">7.2 Bootstrap</a>
+                        <a href="../../07-non-parametric-methods/03-kernel-density-estimation/">7.3 Kernel Density Estimation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Statistical Methods</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Statistical Methods</a> ›
+                <a href="../">6. Bayesian Inference</a> ›
+                <span>6.2 Conjugate Priors</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">6.2 Conjugate Priors</h1>
+                <p>A <strong>conjugate prior</strong> is one for which the posterior belongs to the same parametric family as the prior. Conjugacy yields closed-form posteriors and often admits intuitive interpretations of the hyperparameters as "pseudo-observations."</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 6.2.1 — Conjugate Family</div>
+                    <p class="mb-0">A family of priors $\mathcal{P}$ is <strong>conjugate</strong> to a likelihood family $\{p(x\mid\theta)\}$ if for every prior $p(\theta) \in \mathcal{P}$ and every observed $x$, the posterior $p(\theta \mid x) \in \mathcal{P}$.</p>
+                </div>
+
+                <h2 class="mt-5">Beta-Binomial Model</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.2.2 — Beta-Binomial Conjugacy</div>
+                    <p>Let $X \mid \theta \sim \mathrm{Bin}(n,\theta)$ and $\theta \sim \mathrm{Beta}(\alpha,\beta)$. Then
+                    $$\theta \mid X = x \sim \mathrm{Beta}(\alpha + x,\; \beta + n - x).$$</p>
+                    <p class="mb-0">The prior hyperparameters $\alpha$ and $\beta$ act as pseudo-successes and pseudo-failures. The posterior mean is $(\alpha+x)/(\alpha+\beta+n)$, a weighted average of the prior mean $\alpha/(\alpha+\beta)$ and the MLE $x/n$. As $n\to\infty$, the posterior mean converges to the MLE.</p>
+                </div>
+
+                <h2 class="mt-5">Normal-Normal Model (Known $\sigma^2$)</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.2.3 — Normal-Normal Conjugacy</div>
+                    <p>Let $X_1,\ldots,X_n \mid \mu \stackrel{\text{iid}}{\sim} N(\mu, \sigma^2)$ with $\sigma^2$ known, and $\mu \sim N(\mu_0, \tau_0^2)$. Then
+                    $$\mu \mid \mathbf{x} \sim N(\mu_n, \tau_n^2), \quad \text{where}$$
+                    $$\frac{1}{\tau_n^2} = \frac{1}{\tau_0^2} + \frac{n}{\sigma^2}, \qquad \mu_n = \tau_n^2\!\left(\frac{\mu_0}{\tau_0^2} + \frac{n\bar{x}}{\sigma^2}\right).$$</p>
+                    <p class="mb-0">The posterior mean $\mu_n$ is a precision-weighted average of the prior mean and the sample mean. As $n\to\infty$, $\mu_n \to \bar{x}$ and $\tau_n^2 \to 0$: the data overwhelm the prior.</p>
+                </div>
+
+                <h2 class="mt-5">Gamma-Poisson Model</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.2.4 — Gamma-Poisson Conjugacy</div>
+                    <p class="mb-0">Let $X_1,\ldots,X_n \mid \lambda \stackrel{\text{iid}}{\sim} \mathrm{Poisson}(\lambda)$ and $\lambda \sim \mathrm{Gamma}(a, b)$ (shape $a$, rate $b$). Then
+                    $$\lambda \mid \mathbf{x} \sim \mathrm{Gamma}\!\left(a + \sum_{i=1}^n x_i,\; b + n\right).$$
+                    The posterior mean is $(a + \sum x_i)/(b+n)$. The prior acts as $b$ pseudo-observations with total count $a$.</p>
+                </div>
+
+                <h2 class="mt-5">Dirichlet-Multinomial Model</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.2.5 — Dirichlet-Multinomial Conjugacy</div>
+                    <p class="mb-0">Let $\mathbf{X} \mid \boldsymbol{\pi} \sim \mathrm{Multinomial}(n, \boldsymbol{\pi})$ over $k$ categories and $\boldsymbol{\pi} \sim \mathrm{Dirichlet}(\boldsymbol{\alpha})$. Then
+                    $$\boldsymbol{\pi} \mid \mathbf{x} \sim \mathrm{Dirichlet}(\alpha_1+x_1, \ldots, \alpha_k+x_k).$$
+                    The Dirichlet is the multivariate generalisation of the Beta; setting all $\alpha_j = 1$ gives a uniform prior over the simplex.</p>
+                </div>
+
+                <h2 class="mt-5">Exponential Family and Conjugacy</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 6.2.6 — Conjugate Priors for the Exponential Family</div>
+                    <p>Every member of the exponential family $p(x\mid\boldsymbol{\eta}) = h(x)\exp(\boldsymbol{\eta}^\top T(x) - A(\boldsymbol{\eta}))$ has a natural conjugate prior
+                    $$p(\boldsymbol{\eta} \mid \boldsymbol{\chi}, \nu) \propto \exp(\boldsymbol{\eta}^\top\boldsymbol{\chi} - \nu A(\boldsymbol{\eta})),$$</p>
+                    <p class="mb-0">where $\nu > 0$ and $\boldsymbol{\chi}$ are hyperparameters. After observing $n$ i.i.d.\ observations with sufficient statistic $\sum T(x_i)$, the posterior hyperparameters update to $\boldsymbol{\chi}' = \boldsymbol{\chi} + \sum T(x_i)$ and $\nu' = \nu + n$ — a simple additive update regardless of the specific family.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-prior-and-posterior/" class="btn btn-outline-custom">&larr; 6.1 Prior and Posterior</a>
+                    <a href="../03-bayesian-estimation/" class="btn btn-custom">6.3 Bayesian Estimation &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

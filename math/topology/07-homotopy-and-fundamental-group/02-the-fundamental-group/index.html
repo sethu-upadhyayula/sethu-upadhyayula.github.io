@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.2 The Fundamental Group — Topology</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Topology</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Topology</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-topological-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-topological-spaces/" class="toc-chapter-link"><strong>1.</strong> Topological Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-topological-spaces/01-open-sets-and-topologies/">1.1 Open Sets and Topologies</a>
+                        <a href="../../01-topological-spaces/02-basis-and-subbasis/">1.2 Basis and Subbasis</a>
+                        <a href="../../01-topological-spaces/03-subspaces/">1.3 Subspaces</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-continuity-and-homeomorphisms">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-continuity-and-homeomorphisms/" class="toc-chapter-link"><strong>2.</strong> Continuity and Homeomorphisms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-continuity-and-homeomorphisms/01-continuous-functions/">2.1 Continuous Functions</a>
+                        <a href="../../02-continuity-and-homeomorphisms/02-homeomorphisms/">2.2 Homeomorphisms</a>
+                        <a href="../../02-continuity-and-homeomorphisms/03-topological-properties/">2.3 Topological Properties</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-connectedness">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-connectedness/" class="toc-chapter-link"><strong>3.</strong> Connectedness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-connectedness/01-connected-spaces/">3.1 Connected Spaces</a>
+                        <a href="../../03-connectedness/02-path-connectedness/">3.2 Path Connectedness</a>
+                        <a href="../../03-connectedness/03-components/">3.3 Components</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-compactness">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-compactness/" class="toc-chapter-link"><strong>4.</strong> Compactness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-compactness/01-compact-spaces/">4.1 Compact Spaces</a>
+                        <a href="../../04-compactness/02-heine-borel-theorem/">4.2 Heine–Borel Theorem</a>
+                        <a href="../../04-compactness/03-applications/">4.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-separation-axioms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-separation-axioms/" class="toc-chapter-link"><strong>5.</strong> Separation Axioms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-separation-axioms/01-t0-to-t4/">5.1 T&#x2080; to T&#x2084; Axioms</a>
+                        <a href="../../05-separation-axioms/02-urysohns-lemma/">5.2 Urysohn's Lemma</a>
+                        <a href="../../05-separation-axioms/03-tietze-extension-theorem/">5.3 Tietze Extension Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-product-and-quotient-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-product-and-quotient-spaces/" class="toc-chapter-link"><strong>6.</strong> Product and Quotient Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-product-and-quotient-spaces/01-product-topology/">6.1 Product Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/02-quotient-topology/">6.2 Quotient Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/03-examples/">6.3 Examples</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-homotopy-and-fundamental-group">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-homotopy-and-fundamental-group/" class="toc-chapter-link"><strong>7.</strong> Homotopy and the Fundamental Group</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-homotopy-and-fundamental-group/01-homotopy/">7.1 Homotopy</a>
+                        <a href="../../07-homotopy-and-fundamental-group/02-the-fundamental-group/" class="active">7.2 The Fundamental Group</a>
+                        <a href="../../07-homotopy-and-fundamental-group/03-van-kampens-theorem/">7.3 van Kampen's Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Topology</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Topology</a> ›
+                <a href="../">7. Homotopy and the Fundamental Group</a> ›
+                <span>7.2 The Fundamental Group</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">7.2 The Fundamental Group</h1>
+
+                <p>The fundamental group captures the first-order homotopic structure of a space by classifying loops up to continuous deformation. It is the simplest algebraic invariant in algebraic topology.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Loop and Based Loop Space</div>
+                    <p>A <strong>loop</strong> based at $x_0 \in X$ is a path $\gamma: [0,1] \to X$ with $\gamma(0) = \gamma(1) = x_0$. Two loops $\gamma, \delta$ based at $x_0$ are <strong>homotopic rel $\{0,1\}$</strong> (or homotopic as loops) if there is a continuous $H: [0,1] \times [0,1] \to X$ with $H(s,0) = \gamma(s)$, $H(s,1) = \delta(s)$, and $H(0,t) = H(1,t) = x_0$ for all $s, t$.</p>
+                    <p class="mb-0">This is an equivalence relation; the equivalence class of $\gamma$ is written $[\gamma]$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Fundamental Group</div>
+                    <p>The <strong>fundamental group</strong> $\pi_1(X, x_0)$ is the set of homotopy classes of loops based at $x_0$, with group operation given by <em>path concatenation</em>:
+                    $$(\gamma * \delta)(s) = \begin{cases} \gamma(2s) & 0 \leq s \leq \tfrac{1}{2} \\ \delta(2s-1) & \tfrac{1}{2} \leq s \leq 1. \end{cases}$$
+                    The group operation on homotopy classes is $[\gamma][\delta] = [\gamma * \delta]$.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Group Axioms</div>
+                    <p>$(\pi_1(X, x_0), *)$ is a group:</p>
+                    <ul>
+                        <li><strong>Associativity:</strong> $[\gamma * (\delta * \eta)] = [(\gamma * \delta) * \eta]$ (reparametrisation homotopy).</li>
+                        <li><strong>Identity:</strong> $[e_{x_0}]$, where $e_{x_0}(s) = x_0$ is the constant loop.</li>
+                        <li><strong>Inverse:</strong> $[\gamma]^{-1} = [\bar{\gamma}]$, where $\bar{\gamma}(s) = \gamma(1-s)$ is the reversed loop.</li>
+                    </ul>
+                    <p class="mb-0">In general $\pi_1(X, x_0)$ need not be abelian.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Fundamental Groups of Key Spaces</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Simply Connected Spaces</div>
+                    <p class="mb-0">$\pi_1(\mathbb{R}^n, 0) = 0$ (trivial group) for all $n \geq 0$, since $\mathbb{R}^n$ is contractible (§7.1). More generally, $\pi_1(X, x_0) = 0$ for any contractible space. A path-connected space with trivial fundamental group is called <strong>simply connected</strong>. Examples: $S^n$ for $n \geq 2$, $\mathbb{R}^n$, convex sets.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — $\pi_1(S^1) \cong \mathbb{Z}$</div>
+                    <p>This is one of the most important results in algebraic topology. The isomorphism sends the homotopy class of a loop to its <em>winding number</em>: the loop $\gamma_n(t) = e^{2\pi i n t}$ wraps around the circle $n$ times and corresponds to $n \in \mathbb{Z}$.</p>
+                    <p class="mb-0">The proof uses the theory of covering spaces: the exponential map $p: \mathbb{R} \to S^1$, $p(t) = e^{2\pi i t}$, is the universal cover of $S^1$, and $\pi_1(S^1) \cong \mathrm{Deck}(\mathbb{R}/S^1) \cong \mathbb{Z}$ (the group of deck transformations, which are integer translations of $\mathbb{R}$).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Change of Basepoint</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Basepoint Independence</div>
+                    <p class="mb-0">If $X$ is path-connected and $x_0, x_1 \in X$, then $\pi_1(X, x_0) \cong \pi_1(X, x_1)$. Given any path $\alpha$ from $x_0$ to $x_1$, the map $[\gamma] \mapsto [\bar{\alpha} * \gamma * \alpha]$ defines an isomorphism $\pi_1(X, x_0) \to \pi_1(X, x_1)$. The isomorphism depends on the choice of $\alpha$, but the groups are abstractly isomorphic. For a path-connected space, one therefore speaks of "the" fundamental group $\pi_1(X)$ without specifying basepoint.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-homotopy/" class="btn btn-outline-custom">&larr; 7.1 Homotopy</a>
+                    <a href="../03-van-kampens-theorem/" class="btn btn-custom">7.3 van Kampen's Theorem &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

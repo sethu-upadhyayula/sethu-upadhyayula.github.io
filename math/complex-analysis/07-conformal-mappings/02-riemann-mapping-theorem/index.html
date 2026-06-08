@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.2 Riemann Mapping Theorem — Complex Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Complex Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Complex Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-complex-numbers">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-complex-numbers/" class="toc-chapter-link"><strong>1.</strong> Complex Numbers</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-complex-numbers/01-the-complex-field/">1.1 The Complex Field</a>
+                        <a href="../../01-complex-numbers/02-geometry-of-complex-numbers/">1.2 Geometry of Complex Numbers</a>
+                        <a href="../../01-complex-numbers/03-complex-exponential-and-eulers-formula/">1.3 Complex Exponential and Euler's Formula</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-analytic-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-analytic-functions/" class="toc-chapter-link"><strong>2.</strong> Analytic Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-analytic-functions/01-limits-and-continuity/">2.1 Limits and Continuity</a>
+                        <a href="../../02-analytic-functions/02-differentiability-and-cauchy-riemann/">2.2 Differentiability and the Cauchy–Riemann Equations</a>
+                        <a href="../../02-analytic-functions/03-harmonic-functions/">2.3 Harmonic Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-elementary-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-elementary-functions/" class="toc-chapter-link"><strong>3.</strong> Elementary Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-elementary-functions/01-exponential-and-trigonometric/">3.1 Exponential and Trigonometric Functions</a>
+                        <a href="../../03-elementary-functions/02-logarithm-and-power-functions/">3.2 Logarithm and Power Functions</a>
+                        <a href="../../03-elementary-functions/03-branch-cuts/">3.3 Branch Cuts</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-complex-integration">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-complex-integration/" class="toc-chapter-link"><strong>4.</strong> Complex Integration</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-complex-integration/01-contour-integrals/">4.1 Contour Integrals</a>
+                        <a href="../../04-complex-integration/02-cauchys-theorem/">4.2 Cauchy's Theorem</a>
+                        <a href="../../04-complex-integration/03-cauchys-integral-formula/">4.3 Cauchy's Integral Formula</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-series-representations">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-series-representations/" class="toc-chapter-link"><strong>5.</strong> Series Representations</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-series-representations/01-taylor-series/">5.1 Taylor Series</a>
+                        <a href="../../05-series-representations/02-laurent-series/">5.2 Laurent Series</a>
+                        <a href="../../05-series-representations/03-classification-of-singularities/">5.3 Classification of Singularities</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-residue-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-residue-theory/" class="toc-chapter-link"><strong>6.</strong> Residue Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-residue-theory/01-the-residue-theorem/">6.1 The Residue Theorem</a>
+                        <a href="../../06-residue-theory/02-evaluation-of-real-integrals/">6.2 Evaluation of Real Integrals</a>
+                        <a href="../../06-residue-theory/03-argument-principle/">6.3 Argument Principle</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-conformal-mappings">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-conformal-mappings/" class="toc-chapter-link"><strong>7.</strong> Conformal Mappings</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-conformal-mappings/01-mobius-transformations/">7.1 Möbius Transformations</a>
+                        <a href="../../07-conformal-mappings/02-riemann-mapping-theorem/">7.2 Riemann Mapping Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Complex Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Complex Analysis</a> ›
+                <a href="../">7. Conformal Mappings</a> ›
+                <span>7.2 Riemann Mapping Theorem</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">7.2 Riemann Mapping Theorem</h1>
+
+                <p>The Riemann mapping theorem is one of the most profound existence results in mathematics: every simply connected proper open subset of $\mathbb{C}$ is conformally equivalent to the unit disk. It reduces the study of harmonic functions on arbitrary simply connected domains to the study on the disk, and underpins the theory of conformal geometry.</p>
+
+                <h2 class="mt-5 mb-3">Conformal Maps</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.2.1 — Conformal Map and Biholomorphism</div>
+                    <p>An analytic function $f : D \to D'$ is <strong>conformal</strong> at $z_0$ if $f'(z_0) \neq 0$; it then preserves the angle and orientation between curves through $z_0$. A <strong>biholomorphism</strong> (conformal equivalence) from $D$ to $D'$ is a bijective analytic map $f : D \to D'$ whose inverse is also analytic (equivalently, $f$ is analytic, bijective, with $f' \neq 0$ on $D$).</p>
+                    <p class="mb-0">Two domains $D$ and $D'$ are <strong>conformally equivalent</strong> if there exists a biholomorphism between them. This is an equivalence relation.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Angle Preservation</div>
+                    <p class="mb-0">If $f'(z_0) \neq 0$, then $f$ acts locally as a rotation by $\arg f'(z_0)$ and a dilation by $|f'(z_0)|$. In particular, the angle between any two smooth curves at $z_0$ is preserved. This is the geometric meaning of conformality.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Riemann Mapping Theorem</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.2.2 — Riemann Mapping Theorem</div>
+                    <p>Let $D \subsetneq \mathbb{C}$ be a simply connected domain (i.e., a simply connected open proper subset of $\mathbb{C}$). Then $D$ is conformally equivalent to the open unit disk $\mathbb{D} = \{z : |z| < 1\}$.</p>
+                    <p class="mb-0">More precisely: for any $z_0 \in D$, there exists a unique biholomorphism $f : D \to \mathbb{D}$ satisfying $f(z_0) = 0$ and $f'(z_0) > 0$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Hypothesis $D \neq \mathbb{C}$ is Essential</div>
+                    <p class="mb-0">The full complex plane $\mathbb{C}$ is simply connected but is <em>not</em> conformally equivalent to $\mathbb{D}$: by Liouville's theorem, any bounded entire function is constant, so any biholomorphism $\mathbb{C} \to \mathbb{D}$ would be bounded and entire, hence constant — a contradiction. The Riemann mapping theorem thus draws a sharp dichotomy: simply connected domains are either $\mathbb{C}$, $\hat{\mathbb{C}}$, or conformally the disk.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.2.3 — Uniqueness</div>
+                    <p class="mb-0">The biholomorphism $f : D \to \mathbb{D}$ with $f(z_0) = 0$ and $f'(z_0) > 0$ is unique. The conformal automorphisms of $\mathbb{D}$ (biholomorphisms $\mathbb{D} \to \mathbb{D}$) form a group, and each is a Möbius transformation of the form $z \mapsto e^{i\theta}(z - a)/(1 - \bar{a}z)$ with $|a| < 1$ and $\theta \in \mathbb{R}$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Upper Half-Plane and the Disk</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.2.4 — Upper Half-Plane $\leftrightarrow$ Unit Disk</div>
+                    <p>The map $f : \mathbb{H} \to \mathbb{D}$ defined by $f(z) = (z-i)/(z+i)$ is a biholomorphism from the upper half-plane $\mathbb{H} = \{\mathrm{Im}(z) > 0\}$ to $\mathbb{D}$. Its inverse is $f^{-1}(w) = i(1+w)/(1-w)$.</p>
+                    <p class="mb-0">Since $\mathbb{H}$ is simply connected and proper, this is consistent with the Riemann mapping theorem. The real axis (boundary of $\mathbb{H}$) maps to the unit circle (boundary of $\mathbb{D}$).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Schwarz–Christoffel Mapping</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.2.5 — Schwarz–Christoffel Formula</div>
+                    <p>A conformal map from $\mathbb{H}$ (or $\mathbb{D}$) to a polygon with interior angles $\alpha_k \pi$ at vertices $w_k$ is given by
+                    $$f(z) = A \int^z \prod_{k=1}^n (t - x_k)^{\alpha_k - 1}\,dt + B,$$
+                    where $x_1 < x_2 < \cdots < x_n$ are the preimages of the vertices on the real axis, and $A, B \in \mathbb{C}$ are constants determined by normalisation.</p>
+                    <p class="mb-0">This provides an explicit construction of the Riemann mapping for polygonal domains, with applications to electrostatics, fluid dynamics, and potential theory.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.2.6 — Mapping a Half-Strip</div>
+                    <p>The map $f(z) = \sin z$ sends the half-strip $\{-\pi/2 < \mathrm{Re}(z) < \pi/2,\ \mathrm{Im}(z) > 0\}$ conformally onto $\mathbb{H}$. Combined with the Cayley map, this gives a conformal equivalence of the half-strip with $\mathbb{D}$.</p>
+                    <p class="mb-0">Such explicit maps arise frequently in potential theory: solving Laplace's equation on $D$ reduces to solving it on $\mathbb{D}$ via the Riemann map, where the Poisson integral formula applies.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../07-conformal-mappings/01-mobius-transformations/" class="btn btn-outline-custom">&larr; 7.1 Möbius Transformations</a>
+                    <a href="../../" class="btn btn-custom">Complex Analysis &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.1 Homotopy — Topology</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Topology</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Topology</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-topological-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-topological-spaces/" class="toc-chapter-link"><strong>1.</strong> Topological Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-topological-spaces/01-open-sets-and-topologies/">1.1 Open Sets and Topologies</a>
+                        <a href="../../01-topological-spaces/02-basis-and-subbasis/">1.2 Basis and Subbasis</a>
+                        <a href="../../01-topological-spaces/03-subspaces/">1.3 Subspaces</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-continuity-and-homeomorphisms">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-continuity-and-homeomorphisms/" class="toc-chapter-link"><strong>2.</strong> Continuity and Homeomorphisms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-continuity-and-homeomorphisms/01-continuous-functions/">2.1 Continuous Functions</a>
+                        <a href="../../02-continuity-and-homeomorphisms/02-homeomorphisms/">2.2 Homeomorphisms</a>
+                        <a href="../../02-continuity-and-homeomorphisms/03-topological-properties/">2.3 Topological Properties</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-connectedness">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-connectedness/" class="toc-chapter-link"><strong>3.</strong> Connectedness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-connectedness/01-connected-spaces/">3.1 Connected Spaces</a>
+                        <a href="../../03-connectedness/02-path-connectedness/">3.2 Path Connectedness</a>
+                        <a href="../../03-connectedness/03-components/">3.3 Components</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-compactness">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-compactness/" class="toc-chapter-link"><strong>4.</strong> Compactness</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-compactness/01-compact-spaces/">4.1 Compact Spaces</a>
+                        <a href="../../04-compactness/02-heine-borel-theorem/">4.2 Heine–Borel Theorem</a>
+                        <a href="../../04-compactness/03-applications/">4.3 Applications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-separation-axioms">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-separation-axioms/" class="toc-chapter-link"><strong>5.</strong> Separation Axioms</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-separation-axioms/01-t0-to-t4/">5.1 T&#x2080; to T&#x2084; Axioms</a>
+                        <a href="../../05-separation-axioms/02-urysohns-lemma/">5.2 Urysohn's Lemma</a>
+                        <a href="../../05-separation-axioms/03-tietze-extension-theorem/">5.3 Tietze Extension Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-product-and-quotient-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-product-and-quotient-spaces/" class="toc-chapter-link"><strong>6.</strong> Product and Quotient Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-product-and-quotient-spaces/01-product-topology/">6.1 Product Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/02-quotient-topology/">6.2 Quotient Topology</a>
+                        <a href="../../06-product-and-quotient-spaces/03-examples/">6.3 Examples</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-homotopy-and-fundamental-group">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-homotopy-and-fundamental-group/" class="toc-chapter-link"><strong>7.</strong> Homotopy and the Fundamental Group</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-homotopy-and-fundamental-group/01-homotopy/" class="active">7.1 Homotopy</a>
+                        <a href="../../07-homotopy-and-fundamental-group/02-the-fundamental-group/">7.2 The Fundamental Group</a>
+                        <a href="../../07-homotopy-and-fundamental-group/03-van-kampens-theorem/">7.3 van Kampen's Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Topology</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Topology</a> ›
+                <a href="../">7. Homotopy and the Fundamental Group</a> ›
+                <span>7.1 Homotopy</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">7.1 Homotopy</h1>
+
+                <p>Homotopy formalises the idea of continuously deforming one map into another. It provides an equivalence relation on maps that is coarser than equality but finer than mere continuity, capturing the topological "shape" of a mapping.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Homotopy</div>
+                    <p>Let $f, g: X \to Y$ be continuous maps. A <strong>homotopy</strong> from $f$ to $g$ is a continuous map $H: X \times [0,1] \to Y$ such that $H(x, 0) = f(x)$ and $H(x, 1) = g(x)$ for all $x \in X$.</p>
+                    <p class="mb-0">If such an $H$ exists, $f$ and $g$ are said to be <strong>homotopic</strong>, written $f \simeq g$. Homotopy is an equivalence relation on the set of continuous maps $X \to Y$; the equivalence class of $f$ is its <em>homotopy class</em> $[f]$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Homotopy Equivalence</div>
+                    <p>A continuous map $f: X \to Y$ is a <strong>homotopy equivalence</strong> if there exists a continuous $g: Y \to X$ such that $g \circ f \simeq \mathrm{id}_X$ and $f \circ g \simeq \mathrm{id}_Y$. In this case $X$ and $Y$ are said to be <strong>homotopy equivalent</strong> (or have the same <em>homotopy type</em>), written $X \simeq Y$.</p>
+                    <p class="mb-0">Homotopy equivalence is a coarser equivalence than homeomorphism: homeomorphic spaces are homotopy equivalent, but not conversely. For example, $\mathbb{R}^n \simeq \{*\}$ (a point) for all $n$, even though they are not homeomorphic for $n \geq 1$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Deformation Retracts</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Deformation Retract</div>
+                    <p>A subspace $A \subseteq X$ is a <strong>deformation retract</strong> of $X$ if there exists a continuous map $r: X \to A$ (a <em>retraction</em>) such that $r|_A = \mathrm{id}_A$ and the inclusion $\iota: A \hookrightarrow X$ satisfies $\iota \circ r \simeq \mathrm{id}_X$ via a homotopy that fixes $A$ pointwise throughout. Explicitly, there is a homotopy $H: X \times [0,1] \to X$ with $H(x,0) = x$, $H(x,1) \in A$ for all $x$, and $H(a,t) = a$ for all $a \in A$ and $t \in [0,1]$.</p>
+                    <p class="mb-0">If $A$ is a deformation retract of $X$, then $A \simeq X$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — $S^1$ is a Deformation Retract of $\mathbb{R}^2 \setminus \{0\}$</div>
+                    <p class="mb-0">Define $H: (\mathbb{R}^2 \setminus \{0\}) \times [0,1] \to \mathbb{R}^2 \setminus \{0\}$ by $H(x,t) = \frac{x}{(1-t)\|x\| + t}$. At $t=0$, $H(x,0) = x/\|x\| \cdot \|x\| = x$; wait — more precisely, $H(x,t) = (1-t)x + t \cdot x/\|x\|$. At $t=0$, $H(x,0) = x$. At $t=1$, $H(x,1) = x/\|x\| \in S^1$. For $x \in S^1$, $H(x,t) = x$ for all $t$. Thus $S^1$ is a deformation retract of $\mathbb{R}^2 \setminus \{0\}$, and the two spaces are homotopy equivalent.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Contractible Spaces</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Contractible Space</div>
+                    <p class="mb-0">A space $X$ is <strong>contractible</strong> if it is homotopy equivalent to a single point, i.e., the identity map $\mathrm{id}_X$ is homotopic to a constant map $x \mapsto x_0$. Contractible spaces have trivial fundamental group (and trivial all higher homotopy groups).</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — $\mathbb{R}^n$ is Contractible</div>
+                    <p class="mb-0">Define $H: \mathbb{R}^n \times [0,1] \to \mathbb{R}^n$ by $H(x, t) = (1-t)x$. Then $H(x,0) = x = \mathrm{id}(x)$ and $H(x,1) = 0$, the constant map to the origin. Thus $\mathrm{id}_{\mathbb{R}^n} \simeq c_0$, so $\mathbb{R}^n$ is contractible. More generally, any convex subset of $\mathbb{R}^n$ is contractible (by the straight-line homotopy to any fixed point in the set).</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — $S^1$ is Not Contractible</div>
+                    <p class="mb-0">$S^1$ is not contractible because its fundamental group $\pi_1(S^1) \cong \mathbb{Z}$ is non-trivial (computed in §7.2). A contractible space has trivial fundamental group, so $S^1$ cannot be contractible. Informally, a loop that winds once around the circle cannot be continuously shrunk to a point while staying in $S^1$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 7. Homotopy and the Fundamental Group</a>
+                    <a href="../02-the-fundamental-group/" class="btn btn-custom">7.2 The Fundamental Group &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.2 Logarithm and Power Functions — Complex Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Complex Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Complex Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-complex-numbers">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-complex-numbers/" class="toc-chapter-link"><strong>1.</strong> Complex Numbers</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-complex-numbers/01-the-complex-field/">1.1 The Complex Field</a>
+                        <a href="../../01-complex-numbers/02-geometry-of-complex-numbers/">1.2 Geometry of Complex Numbers</a>
+                        <a href="../../01-complex-numbers/03-complex-exponential-and-eulers-formula/">1.3 Complex Exponential and Euler's Formula</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-analytic-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-analytic-functions/" class="toc-chapter-link"><strong>2.</strong> Analytic Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-analytic-functions/01-limits-and-continuity/">2.1 Limits and Continuity</a>
+                        <a href="../../02-analytic-functions/02-differentiability-and-cauchy-riemann/">2.2 Differentiability and the Cauchy–Riemann Equations</a>
+                        <a href="../../02-analytic-functions/03-harmonic-functions/">2.3 Harmonic Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-elementary-functions">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-elementary-functions/" class="toc-chapter-link"><strong>3.</strong> Elementary Functions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-elementary-functions/01-exponential-and-trigonometric/">3.1 Exponential and Trigonometric Functions</a>
+                        <a href="../../03-elementary-functions/02-logarithm-and-power-functions/">3.2 Logarithm and Power Functions</a>
+                        <a href="../../03-elementary-functions/03-branch-cuts/">3.3 Branch Cuts</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-complex-integration">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-complex-integration/" class="toc-chapter-link"><strong>4.</strong> Complex Integration</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-complex-integration/01-contour-integrals/">4.1 Contour Integrals</a>
+                        <a href="../../04-complex-integration/02-cauchys-theorem/">4.2 Cauchy's Theorem</a>
+                        <a href="../../04-complex-integration/03-cauchys-integral-formula/">4.3 Cauchy's Integral Formula</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-series-representations">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-series-representations/" class="toc-chapter-link"><strong>5.</strong> Series Representations</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-series-representations/01-taylor-series/">5.1 Taylor Series</a>
+                        <a href="../../05-series-representations/02-laurent-series/">5.2 Laurent Series</a>
+                        <a href="../../05-series-representations/03-classification-of-singularities/">5.3 Classification of Singularities</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-residue-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-residue-theory/" class="toc-chapter-link"><strong>6.</strong> Residue Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-residue-theory/01-the-residue-theorem/">6.1 The Residue Theorem</a>
+                        <a href="../../06-residue-theory/02-evaluation-of-real-integrals/">6.2 Evaluation of Real Integrals</a>
+                        <a href="../../06-residue-theory/03-argument-principle/">6.3 Argument Principle</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-conformal-mappings">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-conformal-mappings/" class="toc-chapter-link"><strong>7.</strong> Conformal Mappings</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-conformal-mappings/01-mobius-transformations/">7.1 Möbius Transformations</a>
+                        <a href="../../07-conformal-mappings/02-riemann-mapping-theorem/">7.2 Riemann Mapping Theorem</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Complex Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Complex Analysis</a> ›
+                <a href="../">3. Elementary Functions</a> ›
+                <span>3.2 Logarithm and Power Functions</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 Logarithm and Power Functions</h1>
+
+                <p>Since $e^z$ is $2\pi i$-periodic, its inverse — the complex logarithm — is inevitably multi-valued. Making rigorous sense of $\log z$ and $z^\alpha$ requires choosing a branch, and the resulting analytic functions depend on this choice.</p>
+
+                <h2 class="mt-5 mb-3">The Multi-Valued Logarithm</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 3.2.1 — Complex Logarithm</div>
+                    <p>For $z \neq 0$, we define $\log z$ as the set of all $w \in \mathbb{C}$ satisfying $e^w = z$. Writing $z = |z|e^{i\arg z}$:
+                    $$\log z = \ln|z| + i\arg(z) = \ln|z| + i(\theta + 2\pi k), \quad k \in \mathbb{Z},$$
+                    where $\theta$ is any argument of $z$ and $\ln|z|$ is the real natural logarithm.</p>
+                    <p class="mb-0">Thus $\log z$ is an infinite discrete set — a genuinely multi-valued function.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 3.2.2 — Principal Branch $\operatorname{Log} z$</div>
+                    <p class="mb-0">The <strong>principal branch</strong> of the logarithm is
+                    $$\operatorname{Log} z = \ln|z| + i\operatorname{Arg}(z), \quad z \in \mathbb{C} \setminus (-\infty, 0],$$
+                    where $\operatorname{Arg}(z) \in (-\pi, \pi]$ is the principal argument. The function $\operatorname{Log} z$ is analytic on $\mathbb{C} \setminus (-\infty, 0]$ with derivative
+                    $$(\operatorname{Log} z)' = \frac{1}{z}.$$</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Discontinuity on the Negative Real Axis</div>
+                    <p class="mb-0">$\operatorname{Log} z$ fails to be continuous (let alone analytic) along the branch cut $(-\infty, 0]$. As $z \to -1$ from above, $\operatorname{Arg}(z) \to \pi$; from below, $\operatorname{Arg}(z) \to -\pi$. Different branches of $\log z$ differ by $2\pi i k$ for integer $k$; each branch is analytic once a branch cut is fixed.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Complex Powers</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 3.2.3 — General Power Function</div>
+                    <p class="mb-0">For $\alpha \in \mathbb{C}$ and $z \neq 0$, define
+                    $$z^\alpha = e^{\alpha \log z}.$$
+                    Since $\log z$ is multi-valued, so is $z^\alpha$ in general, with different values differing by factors of $e^{2\pi i \alpha k}$ for $k \in \mathbb{Z}$. The <strong>principal value</strong> uses $\operatorname{Log} z$:
+                    $$z^\alpha = e^{\alpha \operatorname{Log} z}, \quad z \in \mathbb{C} \setminus (-\infty, 0].$$
+                    This branch is analytic on $\mathbb{C} \setminus (-\infty, 0]$ with $(z^\alpha)' = \alpha z^{\alpha - 1}$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 3.2.4 — $i^i$</div>
+                    <p>$\operatorname{Log}(i) = \ln 1 + i\cdot\tfrac{\pi}{2} = \tfrac{i\pi}{2}$. Hence the principal value is
+                    $$i^i = e^{i \cdot \operatorname{Log}(i)} = e^{i \cdot i\pi/2} = e^{-\pi/2} \approx 0.2079.$$</p>
+                    <p class="mb-0">This is a real number! The other values are $e^{-\pi/2 + 2\pi k}$ for $k \in \mathbb{Z}$ — a discrete set of positive reals.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">$n$-th Roots</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 3.2.5 — $n$-th Roots</div>
+                    <p>For $z = re^{i\theta} \neq 0$ and $n \in \mathbb{N}$, the $n$ distinct $n$-th roots of $z$ are
+                    $$z^{1/n} = r^{1/n} e^{i(\theta + 2\pi k)/n}, \quad k = 0, 1, \ldots, n-1,$$
+                    where $r^{1/n} > 0$ is the positive real $n$-th root of $r$. These are the $n$ values of $e^{(\log z)/n}$. They form the vertices of a regular $n$-gon inscribed in the circle $|w| = r^{1/n}$.</p>
+                    <p class="mb-0">Each $n$-th root defines an analytic branch on $\mathbb{C}$ minus a branch cut from $0$ to $\infty$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 3.2.6 — Square Roots of $-4$</div>
+                    <p>$-4 = 4e^{i\pi}$. The two square roots are $4^{1/2}e^{i\pi/2} = 2i$ and $4^{1/2}e^{i3\pi/2} = -2i$, confirming $(\pm 2i)^2 = -4$.</p>
+                    <p class="mb-0">The principal square root of $z$ is $\sqrt{z} = e^{\frac{1}{2}\operatorname{Log} z}$, analytic on $\mathbb{C} \setminus (-\infty, 0]$. For $-4$: $e^{\frac{1}{2}(\ln 4 + i\pi)} = e^{\ln 2 + i\pi/2} = 2e^{i\pi/2} = 2i$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../03-elementary-functions/01-exponential-and-trigonometric/" class="btn btn-outline-custom">&larr; 3.1 Exponential and Trigonometric Functions</a>
+                    <a href="../../03-elementary-functions/03-branch-cuts/" class="btn btn-custom">3.3 Branch Cuts &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

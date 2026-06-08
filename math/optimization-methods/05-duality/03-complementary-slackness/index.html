@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.3 Complementary Slackness — Optimization Methods</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Optimization Methods</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Optimization Methods</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-convex-analysis">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-convex-analysis/" class="toc-chapter-link"><strong>1.</strong> Convex Analysis</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-convex-analysis/01-convex-sets/">1.1 Convex Sets</a>
+                        <a href="../../01-convex-analysis/02-convex-functions/">1.2 Convex Functions</a>
+                        <a href="../../01-convex-analysis/03-separation-theorems/">1.3 Separation Theorems</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-unconstrained-optimization">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-unconstrained-optimization/" class="toc-chapter-link"><strong>2.</strong> Unconstrained Optimisation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-unconstrained-optimization/01-optimality-conditions/">2.1 Optimality Conditions</a>
+                        <a href="../../02-unconstrained-optimization/02-gradient-descent/">2.2 Gradient Descent</a>
+                        <a href="../../02-unconstrained-optimization/03-newtons-method/">2.3 Newton's Method</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-constrained-optimization">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-constrained-optimization/" class="toc-chapter-link"><strong>3.</strong> Constrained Optimisation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-constrained-optimization/01-equality-constraints-and-lagrange/">3.1 Equality Constraints and Lagrange Multipliers</a>
+                        <a href="../../03-constrained-optimization/02-inequality-constraints-and-kkt/">3.2 Inequality Constraints and KKT Conditions</a>
+                        <a href="../../03-constrained-optimization/03-constraint-qualifications/">3.3 Constraint Qualifications</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-linear-programming">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-linear-programming/" class="toc-chapter-link"><strong>4.</strong> Linear Programming</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-linear-programming/01-standard-form/">4.1 Standard Form</a>
+                        <a href="../../04-linear-programming/02-the-simplex-method/">4.2 The Simplex Method</a>
+                        <a href="../../04-linear-programming/03-revised-simplex-and-big-m/">4.3 Revised Simplex and Big-M</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-duality">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-duality/" class="toc-chapter-link"><strong>5.</strong> Duality</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-duality/01-lagrangian-duality/">5.1 Lagrangian Duality</a>
+                        <a href="../../05-duality/02-strong-and-weak-duality/">5.2 Strong and Weak Duality</a>
+                        <a href="../../05-duality/03-complementary-slackness/">5.3 Complementary Slackness</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-interior-point-methods">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-interior-point-methods/" class="toc-chapter-link"><strong>6.</strong> Interior Point Methods</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-interior-point-methods/01-barrier-functions/">6.1 Barrier Functions</a>
+                        <a href="../../06-interior-point-methods/02-primal-dual-methods/">6.2 Primal–Dual Methods</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-integer-programming">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-integer-programming/" class="toc-chapter-link"><strong>7.</strong> Integer Programming</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-integer-programming/01-branch-and-bound/">7.1 Branch and Bound</a>
+                        <a href="../../07-integer-programming/02-cutting-plane-methods/">7.2 Cutting Plane Methods</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Optimization Methods</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Optimization Methods</a> ›
+                <a href="../">5. Duality</a> ›
+                <span>5.3 Complementary Slackness</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">5.3 Complementary Slackness</h1>
+
+                <p>Complementary slackness (CS) conditions are necessary and sufficient optimality conditions expressed in terms of the primal-dual pair. They state that at optimality, a constraint's slack and its dual variable cannot both be positive simultaneously — one must be zero.</p>
+
+                <h2 class="mt-4 mb-3">CS Conditions</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.3.1 — Complementary Slackness</div>
+                    <p>Let $x^*$ be primal feasible and $y^*$ dual feasible for the LP pair (P) $\min c^\top x$ s.t. $Ax \ge b$, $x \ge 0$ and (D) $\max b^\top y$ s.t. $A^\top y \le c$, $y \ge 0$. Then $x^*$ and $y^*$ are both optimal if and only if:
+                    $$y_i^*(A_i x^* - b_i) = 0 \quad \forall i, \qquad x_j^*(c_j - (A^\top y^*)_j) = 0 \quad \forall j.$$</p>
+                    <p><em>Proof.</em> By weak duality, $c^\top x^* \ge b^\top y^*$. Expanding the gap:
+                    $$c^\top x^* - b^\top y^* = (c - A^\top y^*)^\top x^* + y^{*\top}(Ax^* - b).$$
+                    Both terms are non-negative (dual feasibility and primal feasibility with $x^*, y^* \ge 0$). The gap equals zero (strong duality) if and only if each term is zero, which gives the CS conditions. $\square$</p>
+                    <p class="mb-0">The CS conditions are the LP specialisation of the KKT conditions from Section 3.2.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Interpretation: Shadow Prices</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 5.3.2 — Shadow Prices</div>
+                    <p>The dual variable $y_i^*$ is the <strong>shadow price</strong> (or marginal value) of the $i$-th constraint: it equals the rate of change of the optimal primal objective with respect to the right-hand side $b_i$:
+                    $$y_i^* = \frac{\partial p^*(b)}{\partial b_i}\bigg|_{b = b^*},$$
+                    provided the optimal basis does not change (i.e., we are within the range of the parametric analysis).</p>
+                    <p class="mb-0">By CS: $y_i^* > 0$ implies $A_i x^* = b_i$ (the constraint is active/binding). Conversely, if a constraint is slack ($A_i x^* > b_i$), its shadow price is zero — relaxing it further has no effect on the optimal value.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">LP Complementary Slackness in Standard Form</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 5.3.3 — CS for Standard Form LP</div>
+                    <p>For the standard form LP $\min c^\top x$ s.t. $Ax = b$, $x \ge 0$ with dual $\max b^\top y$ (unconstrained $y$) s.t. $A^\top y \le c$, define reduced costs $\bar{c} = c - A^\top y$. The CS conditions reduce to:
+                    $$x_j^* \bar{c}_j^* = 0 \quad \forall j.$$</p>
+                    <p class="mb-0">This means: a non-basic variable ($x_j = 0$) can have any $\bar{c}_j \ge 0$, and a basic variable ($x_j > 0$) must have $\bar{c}_j = 0$. At a BFS, the basic variables automatically satisfy $\bar{c}_j = 0$ (by definition of reduced costs), so CS reduces exactly to the simplex optimality condition $\bar{c}_j \ge 0$ for non-basic $j$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Sensitivity Analysis</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Sensitivity Analysis via Shadow Prices</div>
+                    <p>Sensitivity analysis uses the shadow prices and CS conditions to answer: "How does the optimal value change if we perturb the problem data?" For the LP $\min c^\top x$ s.t. $Ax \ge b$, $x \ge 0$:</p>
+                    <ul>
+                        <li><strong>RHS ranging:</strong> If $b_i$ increases by $\delta$, then $p^* \approx p^* - y_i^* \delta$ (since $y_i^*$ measures decrease per unit of $b_i$; a larger $b_i$ tightens the constraint, so $p^*$ increases for minimisation).</li>
+                        <li><strong>Cost ranging:</strong> The optimal basis remains unchanged as long as all reduced costs remain non-negative. The range of $c_j$ for which the current basis is optimal can be computed from the simplex tableau.</li>
+                    </ul>
+                    <p class="mb-0">These analyses are performed without re-solving the LP — they use the basis inverse $A_B^{-1}$ already computed at optimality.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Verifying Optimality via CS</div>
+                    <p>Consider $\min\; x_1 + 2x_2$ s.t. $x_1 + x_2 \ge 3$, $x_2 \ge 1$, $x_1, x_2 \ge 0$. Dual: $\max\; 3y_1 + y_2$ s.t. $y_1 \le 1$, $y_1 + y_2 \le 2$, $y_1, y_2 \ge 0$.</p>
+                    <p>Claim: $x^* = (2, 1)$ is primal optimal with $p^* = 4$. Dual solution: $y_1^* = 1$, $y_2^* = 1$, $d^* = 4$. Check CS:
+                    $$y_1^*(x_1^* + x_2^* - 3) = 1 \cdot 0 = 0\;\checkmark,\quad y_2^*(x_2^* - 1) = 1 \cdot 0 = 0\;\checkmark.$$
+                    $$x_1^*(1 - y_1^*) = 2 \cdot 0 = 0\;\checkmark,\quad x_2^*(2 - y_1^* - y_2^*) = 1 \cdot 0 = 0\;\checkmark.$$</p>
+                    <p class="mb-0">All CS conditions hold and $p^* = d^* = 4$, confirming optimality.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-strong-and-weak-duality/" class="btn btn-outline-custom">&larr; 5.2 Strong and Weak Duality</a>
+                    <a href="../../06-interior-point-methods/" class="btn btn-custom">6. Interior Point Methods &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>
