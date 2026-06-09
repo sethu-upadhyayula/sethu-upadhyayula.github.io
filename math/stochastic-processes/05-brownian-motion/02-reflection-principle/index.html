@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.2 Reflection Principle — Stochastic Processes</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Stochastic Processes</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Stochastic Processes</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-markov-chains">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-markov-chains/" class="toc-chapter-link"><strong>1.</strong> Markov Chains</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-markov-chains/01-transition-matrices/">1.1 Transition Matrices</a>
+                        <a href="../../01-markov-chains/02-classification-of-states/">1.2 Classification of States</a>
+                        <a href="../../01-markov-chains/03-stationary-distributions/">1.3 Stationary Distributions</a>
+                        <a href="../../01-markov-chains/04-ergodic-theorem/">1.4 Ergodic Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-poisson-processes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-poisson-processes/" class="toc-chapter-link"><strong>2.</strong> Poisson Processes</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-poisson-processes/01-definition-and-properties/">2.1 Definition and Properties</a>
+                        <a href="../../02-poisson-processes/02-interarrival-times/">2.2 Interarrival Times</a>
+                        <a href="../../02-poisson-processes/03-compound-poisson-processes/">2.3 Compound Poisson Processes</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-continuous-time-markov-chains">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-continuous-time-markov-chains/" class="toc-chapter-link"><strong>3.</strong> Continuous-Time Markov Chains</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-continuous-time-markov-chains/01-generator-matrix/">3.1 Generator Matrix</a>
+                        <a href="../../03-continuous-time-markov-chains/02-kolmogorov-equations/">3.2 Kolmogorov Equations</a>
+                        <a href="../../03-continuous-time-markov-chains/03-stationary-distributions/">3.3 Stationary Distributions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-renewal-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-renewal-theory/" class="toc-chapter-link"><strong>4.</strong> Renewal Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-renewal-theory/01-renewal-processes/">4.1 Renewal Processes</a>
+                        <a href="../../04-renewal-theory/02-renewal-reward-theorem/">4.2 Renewal Reward Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-brownian-motion">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-brownian-motion/" class="toc-chapter-link"><strong>5.</strong> Brownian Motion</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-brownian-motion/01-construction-and-properties/">5.1 Construction and Properties</a>
+                        <a href="../../05-brownian-motion/02-reflection-principle/">5.2 Reflection Principle</a>
+                        <a href="../../05-brownian-motion/03-brownian-motion-as-a-limit/">5.3 Brownian Motion as a Limit</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-martingales-in-continuous-time">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-martingales-in-continuous-time/" class="toc-chapter-link"><strong>6.</strong> Martingales in Continuous Time</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-martingales-in-continuous-time/01-continuous-time-martingales/">6.1 Continuous-Time Martingales</a>
+                        <a href="../../06-martingales-in-continuous-time/02-optional-stopping/">6.2 Optional Stopping</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-stationary-processes">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-stationary-processes/" class="toc-chapter-link"><strong>7.</strong> Stationary Processes</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-stationary-processes/01-stationarity-and-ergodicity/">7.1 Stationarity and Ergodicity</a>
+                        <a href="../../07-stationary-processes/02-spectral-representation/">7.2 Spectral Representation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Stochastic Processes</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Stochastic Processes</a> ›
+                <a href="../">5. Brownian Motion</a> ›
+                <span>5.2 Reflection Principle</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">5.2 Reflection Principle</h1>
+
+                <p>The reflection principle exploits the spatial symmetry and Markov property of Brownian motion to compute the distribution of the running maximum and of first-passage times. It is one of the most elegant tools in the study of BM.</p>
+
+                <h2 class="mt-4 mb-3">The Markov Property</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.2.1 — Markov Property</div>
+                    <p>Let $(B_t)_{t \ge 0}$ be a standard BM and let $\mathcal{F}_s = \sigma(B_u : u \le s)$ be the natural filtration. For $s \ge 0$, the process $\tilde{B}_t = B_{s+t} - B_s$ ($t \ge 0$) is a standard BM that is <strong>independent</strong> of $\mathcal{F}_s$.</p>
+                    <p class="mb-0">Equivalently, the conditional distribution of $(B_{s+t})_{t \ge 0}$ given $\mathcal{F}_s$ is that of $B_s + \tilde{B}_t$ where $\tilde{B}$ is an independent BM starting at 0. In other words, BM "restarts" from its current position at any fixed time $s$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.2.2 — Strong Markov Property</div>
+                    <p>Let $\tau$ be a <strong>stopping time</strong> with respect to $(\mathcal{F}_t)$ (i.e., $\{\tau \le t\} \in \mathcal{F}_t$ for all $t$) with $P(\tau < \infty) > 0$. On the event $\{\tau < \infty\}$, the process $\tilde{B}_t = B_{\tau+t} - B_\tau$ ($t \ge 0$) is a standard BM independent of $\mathcal{F}_\tau$.</p>
+                    <p class="mb-0">This strengthens the ordinary Markov property by allowing the restart time to be a random stopping time rather than a fixed time. The strong Markov property is essential for the reflection principle because first-passage times are stopping times, not deterministic times.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Reflection Principle</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.2.3 — Reflection Principle</div>
+                    <p>For $a > 0$ and $t > 0$, define the running maximum $M_t = \max_{0 \le s \le t} B_s$ and the first-passage time $T_a = \inf\{s \ge 0 : B_s = a\}$. Then:
+                    $$P(M_t \ge a) = P(T_a \le t) = 2P(B_t \ge a) = 2\left(1 - \Phi\!\left(\frac{a}{\sqrt{t}}\right)\right),$$
+                    where $\Phi$ is the standard normal CDF.</p>
+                    <p><em>Proof sketch.</em> The events $\{M_t \ge a\} = \{T_a \le t\}$ are identical since BM has continuous paths. On the event $\{T_a \le t\}$, at the first time $T_a$ the process hits $a$, and by the strong Markov property the future increment $B_t - B_{T_a}$ is an independent BM increment. By symmetry ($B_{T_a} = a$ and the future increment is symmetric about 0):
+                    $$P(B_t \ge a \mid T_a \le t) = \frac{1}{2}.$$
+                    Therefore $P(B_t \ge a) = P(B_t \ge a, T_a \le t) = \frac{1}{2} P(T_a \le t)$, giving $P(T_a \le t) = 2P(B_t \ge a)$. $\square$</p>
+                </div>
+
+                <div class="math-box corollary">
+                    <div class="math-box-label">Corollary 5.2.4 — Distribution of Running Maximum</div>
+                    <p>The running maximum $M_t = \max_{0 \le s \le t} B_s$ has the distribution:
+                    $$P(M_t \le x) = 2\Phi\!\left(\frac{x}{\sqrt{t}}\right) - 1 = \operatorname{erf}\!\left(\frac{x}{\sqrt{2t}}\right), \quad x \ge 0,$$
+                    with density $f_{M_t}(x) = \sqrt{\frac{2}{\pi t}} e^{-x^2/(2t)}$ for $x \ge 0$.</p>
+                    <p class="mb-0">In particular, $E[M_t] = \sqrt{2t/\pi}$ and $\operatorname{Var}(M_t) = t(1 - 2/\pi)$. More generally, $(M_t, B_t)$ has joint density $f(m,b) = \frac{2(2m-b)}{t\sqrt{2\pi t}} e^{-(2m-b)^2/(2t)}$ for $m \ge \max(b, 0)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">First Passage Times</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 5.2.5 — First Passage Time</div>
+                    <p>For $a \in \mathbb{R}$, the <strong>first passage time</strong> to level $a$ is
+                    $$T_a = \inf\{t \ge 0 : B_t = a\}.$$</p>
+                    <p class="mb-0">By convention $\inf \emptyset = +\infty$. For BM starting at 0 and $a \ne 0$, $T_a$ is a stopping time with respect to the natural filtration $(\mathcal{F}_t)$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.2.6 — Distribution of First Passage Time</div>
+                    <p>For $a > 0$, the first passage time $T_a$ has the <strong>inverse Gaussian (Lévy) distribution</strong>:
+                    $$P(T_a \le t) = 2\left(1 - \Phi\!\left(\frac{a}{\sqrt{t}}\right)\right), \quad t > 0,$$
+                    with density
+                    $$f_{T_a}(t) = \frac{a}{\sqrt{2\pi t^3}} e^{-a^2/(2t)}, \quad t > 0.$$</p>
+                    <p>The mean and variance of $T_a$ are:
+                    $$E[T_a] = +\infty, \qquad P(T_a < \infty) = 1.$$</p>
+                    <p class="mb-0">The infinite mean reflects the heavy tail: the density decays as $t^{-3/2}$ for large $t$, which is not integrable after multiplying by $t$. Yet $P(T_a < \infty) = 1$ since $\lim_{t\to\infty} 2(1-\Phi(a/\sqrt{t})) = 1$, i.e., standard BM is recurrent in 1D.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 5.2.7 — Recurrence of Brownian Motion</div>
+                    <p>One-dimensional standard Brownian motion is <strong>recurrent</strong>: for every $a \in \mathbb{R}$,
+                    $$P(T_a < \infty) = 1.$$
+                    Moreover, $B_t$ visits every level infinitely often a.s.; in particular, $\limsup_{t\to\infty} B_t = +\infty$ and $\liminf_{t\to\infty} B_t = -\infty$ a.s.</p>
+                    <p class="mb-0">In contrast, $d$-dimensional BM ($d \ge 3$) is <strong>transient</strong>: $|B_t| \to \infty$ a.s. as $t \to \infty$. Two-dimensional BM is recurrent (it visits every open set infinitely often) but does not return to any fixed point a.s.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Gambler's Ruin for Brownian Motion</div>
+                    <p>A Brownian motion starting at $x \in (0, b)$ exits the interval $(0, b)$ at time $\tau = T_0 \wedge T_b$. By the optional stopping theorem for the martingale $B_t$ (Section 6.2):
+                    $$P(B_\tau = b) = \frac{x}{b}, \qquad P(B_\tau = 0) = \frac{b-x}{b}.$$</p>
+                    <p class="mb-0">This is the continuous analogue of the gambler's ruin formula. The expected exit time $E[\tau] = x(b-x)$, obtained by the optional stopping theorem applied to $B_t^2 - t$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-construction-and-properties/" class="btn btn-outline-custom">&larr; 5.1 Construction and Properties</a>
+                    <a href="../03-brownian-motion-as-a-limit/" class="btn btn-custom">5.3 Brownian Motion as a Limit &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

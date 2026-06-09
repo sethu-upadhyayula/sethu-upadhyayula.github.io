@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.2 Optional Stopping — Stochastic Processes</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Stochastic Processes</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Stochastic Processes</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-markov-chains">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-markov-chains/" class="toc-chapter-link"><strong>1.</strong> Markov Chains</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-markov-chains/01-transition-matrices/">1.1 Transition Matrices</a>
+                        <a href="../../01-markov-chains/02-classification-of-states/">1.2 Classification of States</a>
+                        <a href="../../01-markov-chains/03-stationary-distributions/">1.3 Stationary Distributions</a>
+                        <a href="../../01-markov-chains/04-ergodic-theorem/">1.4 Ergodic Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-poisson-processes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-poisson-processes/" class="toc-chapter-link"><strong>2.</strong> Poisson Processes</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-poisson-processes/01-definition-and-properties/">2.1 Definition and Properties</a>
+                        <a href="../../02-poisson-processes/02-interarrival-times/">2.2 Interarrival Times</a>
+                        <a href="../../02-poisson-processes/03-compound-poisson-processes/">2.3 Compound Poisson Processes</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-continuous-time-markov-chains">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-continuous-time-markov-chains/" class="toc-chapter-link"><strong>3.</strong> Continuous-Time Markov Chains</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-continuous-time-markov-chains/01-generator-matrix/">3.1 Generator Matrix</a>
+                        <a href="../../03-continuous-time-markov-chains/02-kolmogorov-equations/">3.2 Kolmogorov Equations</a>
+                        <a href="../../03-continuous-time-markov-chains/03-stationary-distributions/">3.3 Stationary Distributions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-renewal-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-renewal-theory/" class="toc-chapter-link"><strong>4.</strong> Renewal Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-renewal-theory/01-renewal-processes/">4.1 Renewal Processes</a>
+                        <a href="../../04-renewal-theory/02-renewal-reward-theorem/">4.2 Renewal Reward Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-brownian-motion">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-brownian-motion/" class="toc-chapter-link"><strong>5.</strong> Brownian Motion</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-brownian-motion/01-construction-and-properties/">5.1 Construction and Properties</a>
+                        <a href="../../05-brownian-motion/02-reflection-principle/">5.2 Reflection Principle</a>
+                        <a href="../../05-brownian-motion/03-brownian-motion-as-a-limit/">5.3 Brownian Motion as a Limit</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-martingales-in-continuous-time">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-martingales-in-continuous-time/" class="toc-chapter-link"><strong>6.</strong> Martingales in Continuous Time</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-martingales-in-continuous-time/01-continuous-time-martingales/">6.1 Continuous-Time Martingales</a>
+                        <a href="../../06-martingales-in-continuous-time/02-optional-stopping/">6.2 Optional Stopping</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-stationary-processes">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-stationary-processes/" class="toc-chapter-link"><strong>7.</strong> Stationary Processes</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-stationary-processes/01-stationarity-and-ergodicity/">7.1 Stationarity and Ergodicity</a>
+                        <a href="../../07-stationary-processes/02-spectral-representation/">7.2 Spectral Representation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Stochastic Processes</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Stochastic Processes</a> ›
+                <a href="../">6. Martingales in Continuous Time</a> ›
+                <span>6.2 Optional Stopping</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">6.2 Optional Stopping</h1>
+
+                <p>The optional stopping theorem (OST) is one of the most powerful tools derived from martingale theory. It says that under appropriate conditions, the martingale property is preserved when a fixed time is replaced by a random stopping time — you cannot gain an advantage over a fair game by choosing a clever stopping rule.</p>
+
+                <h2 class="mt-4 mb-3">Stopping Times</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 6.2.1 — Stopping Time</div>
+                    <p>A random variable $\tau : \Omega \to [0, \infty]$ is a <strong>stopping time</strong> with respect to filtration $(\mathcal{F}_t)$ if
+                    $$\{\tau \le t\} \in \mathcal{F}_t \quad \text{for all } t \ge 0.$$</p>
+                    <p>Equivalently (for right-continuous filtrations), $\{\tau < t\} \in \mathcal{F}_t$ for all $t$, or $\{\tau = t\} \in \mathcal{F}_t$ for all $t$.</p>
+                    <p class="mb-0">The <strong>stopped $\sigma$-algebra</strong> is $\mathcal{F}_\tau = \{A \in \mathcal{F} : A \cap \{\tau \le t\} \in \mathcal{F}_t \text{ for all } t\}$. It represents the information available at the (random) time $\tau$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — First Passage Times are Stopping Times</div>
+                    <p>For Brownian motion $(B_t)$ adapted to $(\mathcal{F}_t)$ and $a \in \mathbb{R}$, the first passage time $T_a = \inf\{t \ge 0 : B_t = a\}$ is a stopping time. Indeed, since $B$ has continuous paths, $\{T_a \le t\} = \{\sup_{0 \le s \le t} (a - B_s) \le 0 \text{ if } a > 0\} \in \mathcal{F}_t$. Similarly, the exit time $\tau = \inf\{t : B_t \notin (c, d)\}$ from an interval is a stopping time.</p>
+                    <p class="mb-0">On the other hand, the <em>last</em> time a process is at a given level is generally not a stopping time, since one would need to know the future to determine when the process last visited a level.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Optional Stopping Theorem</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.2.2 — Optional Stopping Theorem</div>
+                    <p>Let $(M_t)_{t \ge 0}$ be a right-continuous martingale and $\tau$ a stopping time. Then $E[M_\tau] = E[M_0]$ under any of the following conditions:</p>
+                    <ol>
+                        <li>$\tau \le T$ a.s. for some deterministic constant $T < \infty$ (bounded stopping time).</li>
+                        <li>$(M_{t \wedge \tau})_{t \ge 0}$ is uniformly integrable.</li>
+                        <li>$E[\tau] < \infty$ and $|M_t - M_{t-}| \le C$ a.s. for some constant $C$ (bounded increments and finite mean stopping time).</li>
+                    </ol>
+                    <p class="mb-0">The result also holds in conditional form: if $\sigma \le \tau$ are stopping times satisfying the above conditions, then $E[M_\tau \mid \mathcal{F}_\sigma] = M_\sigma$ a.s.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Failure of OST without Conditions</div>
+                    <p class="mb-0">Without additional conditions, $E[M_\tau] = E[M_0]$ can fail. Classic counterexample: BM hits level 1 at time $T_1$ with $P(T_1 < \infty) = 1$, so $B_{T_1} = 1$, giving $E[B_{T_1}] = 1 \ne 0 = E[B_0]$. The OST fails because $T_1$ has infinite mean and the stopped process is not uniformly integrable. The bounded stopping time version avoids this: $E[B_{T_1 \wedge t}] = 0$ for all $t$, but taking $t \to \infty$ requires uniform integrability to swap limit and expectation.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Wald's Identities for Brownian Motion</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.2.3 — Wald's Identities for BM</div>
+                    <p>Let $\tau$ be a stopping time with $E[\tau] < \infty$. Then:</p>
+                    <ol>
+                        <li>$E[B_\tau] = 0$ (first Wald identity).</li>
+                        <li>$E[B_\tau^2] = E[\tau]$ (second Wald identity).</li>
+                    </ol>
+                    <p><em>Proof.</em> (1) Apply OST to the martingale $B_t$: under $E[\tau] < \infty$ and continuity of BM, the stopped process is uniformly integrable, giving $E[B_\tau] = E[B_0] = 0$.</p>
+                    <p>(2) Apply OST to the martingale $B_t^2 - t$: $E[B_\tau^2 - \tau] = E[B_0^2 - 0] = 0$, so $E[B_\tau^2] = E[\tau]$. $\square$</p>
+                    <p class="mb-0">These identities are the continuous-time analogues of Wald's equations for sums of i.i.d. random variables. They allow us to compute $E[\tau]$ from $E[B_\tau^2]$ — often the latter is easier to determine from the geometry of the stopping region.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Applications</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Gambler's Ruin for BM</div>
+                    <p>Let $B_0 = x \in (0, b)$ and $\tau = \inf\{t : B_t \notin (0, b)\} = T_0 \wedge T_b$. Since $B$ has continuous paths, $B_\tau \in \{0, b\}$. By OST applied to the martingale $B_t$:
+                    $$x = E[B_0] = E[B_\tau] = b \cdot P(B_\tau = b) + 0 \cdot P(B_\tau = 0),$$
+                    so $P(B_\tau = b) = x/b$ and $P(B_\tau = 0) = (b-x)/b$.</p>
+                    <p>For the exit time, apply OST to $B_t^2 - t$:
+                    $$x^2 = E[B_\tau^2] - E[\tau] \cdot (-1) \implies E[\tau] = E[B_\tau^2] - x^2.$$
+                    Computing $E[B_\tau^2] = b^2 \cdot (x/b) + 0 = bx$, so $E[\tau] = bx - x^2 = x(b-x)$.</p>
+                    <p class="mb-0">The expected exit time $x(b-x)$ is maximised at $x = b/2$, giving $E[\tau] = b^2/4$. This matches the solution of the ODE $\frac{1}{2} u''(x) = -1$, $u(0) = u(b) = 0$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — First Passage Time via Exponential Martingale</div>
+                    <p>For $a > 0$, find $E[e^{-\lambda T_a}]$ (the Laplace transform of $T_a$). Consider the exponential martingale $M_t = e^{\theta B_t - \theta^2 t/2}$ with $\theta > 0$. Apply OST at $\tau = T_a \wedge t$:
+                    $$1 = E[M_0] = E[M_{T_a \wedge t}] = E[e^{\theta B_{T_a \wedge t} - \theta^2 (T_a \wedge t)/2}].$$
+                    Taking $t \to \infty$ and using dominated convergence (the stopped process is bounded in the appropriate sense):
+                    $$1 = E[e^{\theta a - \theta^2 T_a/2}] = e^{\theta a} E[e^{-\theta^2 T_a /2}].$$
+                    Setting $\lambda = \theta^2/2$ (so $\theta = \sqrt{2\lambda}$):
+                    $$E[e^{-\lambda T_a}] = e^{-a\sqrt{2\lambda}}.$$</p>
+                    <p class="mb-0">This is the Laplace transform of the inverse Gaussian (Lévy) distribution with density $f(t) = \frac{a}{\sqrt{2\pi t^3}} e^{-a^2/(2t)}$, confirming Section 5.2.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — BM Hitting Time for an Interval</div>
+                    <p>More generally, let $\tau = T_{-b} \wedge T_a$ for $a, b > 0$ (BM starts at 0 and exits $(-b, a)$). By the OST for $B_t$: $E[B_\tau] = 0 = a \cdot P(B_\tau = a) - b \cdot P(B_\tau = -b)$. Combined with $P(B_\tau = a) + P(B_\tau = -b) = 1$:
+                    $$P(B_\tau = a) = \frac{b}{a+b}, \quad P(B_\tau = -b) = \frac{a}{a+b}.$$
+                    By OST for $B_t^2 - t$: $E[\tau] = E[B_\tau^2] = a^2 \cdot \frac{b}{a+b} + b^2 \cdot \frac{a}{a+b} = ab.$</p>
+                    <p class="mb-0">The expected exit time is $ab$, symmetric in $a$ and $b$. Setting $a = b$ (symmetric exit from $(-a,a)$) gives $E[\tau] = a^2$, consistent with scaling: if $\tau_1$ is the exit time from $(-1,1)$ then the exit time from $(-a,a)$ has the same distribution as $a^2 \tau_1$ by BM scaling.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-continuous-time-martingales/" class="btn btn-outline-custom">&larr; 6.1 Continuous-Time Martingales</a>
+                    <a href="../../07-stationary-processes/" class="btn btn-custom">7. Stationary Processes &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

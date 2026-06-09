@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.1 Spectrum of an Operator — Functional Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Functional Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Functional Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-normed-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-normed-spaces/" class="toc-chapter-link"><strong>1.</strong> Normed Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-normed-spaces/01-norms-and-banach-spaces/">1.1 Norms and Banach Spaces</a>
+                        <a href="../../01-normed-spaces/02-finite-dimensional-spaces/">1.2 Finite-Dimensional Spaces</a>
+                        <a href="../../01-normed-spaces/03-bounded-linear-operators/">1.3 Bounded Linear Operators</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-hilbert-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-hilbert-spaces/" class="toc-chapter-link"><strong>2.</strong> Hilbert Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-hilbert-spaces/01-inner-products-and-hilbert-spaces/">2.1 Inner Products and Hilbert Spaces</a>
+                        <a href="../../02-hilbert-spaces/02-orthonormal-bases/">2.2 Orthonormal Bases</a>
+                        <a href="../../02-hilbert-spaces/03-projection-theorem/">2.3 Projection Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fundamental-theorems">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-fundamental-theorems/" class="toc-chapter-link"><strong>3.</strong> Fundamental Theorems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-fundamental-theorems/01-hahn-banach-theorem/">3.1 Hahn–Banach Theorem</a>
+                        <a href="../../03-fundamental-theorems/02-open-mapping-theorem/">3.2 Open Mapping Theorem</a>
+                        <a href="../../03-fundamental-theorems/03-closed-graph-theorem/">3.3 Closed Graph Theorem</a>
+                        <a href="../../03-fundamental-theorems/04-uniform-boundedness-principle/">3.4 Uniform Boundedness Principle</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-dual-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-dual-spaces/" class="toc-chapter-link"><strong>4.</strong> Dual Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-dual-spaces/01-the-dual-of-a-normed-space/">4.1 The Dual of a Normed Space</a>
+                        <a href="../../04-dual-spaces/02-weak-and-weak-star-topologies/">4.2 Weak and Weak* Topologies</a>
+                        <a href="../../04-dual-spaces/03-reflexivity/">4.3 Reflexivity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-spectral-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-spectral-theory/" class="toc-chapter-link"><strong>5.</strong> Spectral Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-spectral-theory/01-spectrum-of-an-operator/">5.1 Spectrum of an Operator</a>
+                        <a href="../../05-spectral-theory/02-spectral-theorem/">5.2 Spectral Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-compact-operators">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-compact-operators/" class="toc-chapter-link"><strong>6.</strong> Compact Operators</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-compact-operators/01-compact-operators/">6.1 Compact Operators</a>
+                        <a href="../../06-compact-operators/02-fredholm-theory/">6.2 Fredholm Theory</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Functional Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Functional Analysis</a> ›
+                <a href="../">5. Spectral Theory</a> ›
+                <span>5.1 Spectrum of an Operator</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">5.1 Spectrum of an Operator</h1>
+
+                <p>The spectrum of a bounded linear operator on a Banach space generalizes the notion of eigenvalues from finite-dimensional linear algebra. In infinite dimensions, the spectrum is richer — it decomposes into three parts with quite different characters — and is always a non-empty compact subset of $\mathbb{C}$.</p>
+
+                <h2 class="mt-4 mb-3">Resolvent and Spectrum</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 5.1.1 — Resolvent Set and Spectrum</div>
+                    <p>Let $X$ be a complex Banach space and $T \in B(X)$. The <em>resolvent set</em> of $T$ is</p>
+                    $$\rho(T) = \{\lambda \in \mathbb{C} : (\lambda I - T) \text{ is bijective, i.e., has a bounded inverse}\}.$$
+                    <p>For $\lambda \in \rho(T)$, the <em>resolvent operator</em> is $R(\lambda, T) = (\lambda I - T)^{-1} \in B(X)$.</p>
+                    <p class="mb-0">The <em>spectrum</em> of $T$ is the complement $\sigma(T) = \mathbb{C} \setminus \rho(T)$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Automatic Boundedness</div>
+                    <p class="mb-0">By the bounded inverse theorem (Corollary 3.2.2), if $\lambda I - T$ is bijective then its inverse is automatically bounded. So $\lambda \in \rho(T)$ iff $\lambda I - T$ is a bijection, equivalently a bijective bounded linear operator with bounded inverse.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Decomposition of the Spectrum</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 5.1.2 — Three Parts of the Spectrum</div>
+                    <p>The spectrum $\sigma(T)$ decomposes into three disjoint parts:</p>
+                    <ul>
+                        <li><strong>Point spectrum</strong> $\sigma_p(T)$: values $\lambda$ for which $\lambda I - T$ is <em>not injective</em>. These are the eigenvalues: $Tx = \lambda x$ for some $x \ne 0$.</li>
+                        <li><strong>Continuous spectrum</strong> $\sigma_c(T)$: values $\lambda$ for which $\lambda I - T$ is injective with dense but non-closed range.</li>
+                        <li><strong>Residual spectrum</strong> $\sigma_r(T)$: values $\lambda$ for which $\lambda I - T$ is injective but whose range is not dense.</li>
+                    </ul>
+                    <p class="mb-0">Thus $\sigma(T) = \sigma_p(T) \sqcup \sigma_c(T) \sqcup \sigma_r(T)$. For self-adjoint operators on Hilbert spaces, the residual spectrum is empty.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Basic Properties</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.1.3 — Properties of the Spectrum</div>
+                    <ol>
+                        <li><strong>Boundedness:</strong> $\sigma(T) \subseteq \overline{B}(0, \|T\|)$. If $|\lambda| > \|T\|$ then $\lambda I - T$ is invertible by Neumann series: $(\lambda I - T)^{-1} = \frac{1}{\lambda}\sum_{n=0}^\infty \left(\frac{T}{\lambda}\right)^n$.</li>
+                        <li><strong>Closedness:</strong> $\sigma(T)$ is closed (equivalently, $\rho(T)$ is open). The resolvent map $\lambda \mapsto R(\lambda, T)$ is analytic on $\rho(T)$.</li>
+                        <li class="mb-0"><strong>Non-emptiness:</strong> For a complex Banach space, $\sigma(T) \ne \emptyset$. (If $\sigma(T) = \emptyset$, the entire-function $\lambda \mapsto R(\lambda,T)$ would be bounded and hence constant by Liouville, contradicting $\|R(\lambda,T)\| \to 0$ as $|\lambda| \to \infty$.)</li>
+                    </ol>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 5.1.4 — Spectrum of the Shift Operator</div>
+                    <p>On $\ell^2$, let $S$ be the right shift: $S(x_1, x_2, \ldots) = (0, x_1, x_2, \ldots)$.</p>
+                    <ul>
+                        <li><strong>Point spectrum:</strong> $\sigma_p(S) = \emptyset$. If $Sx = \lambda x$, then $0 = \lambda x_1$, $x_1 = \lambda x_2$, $x_2 = \lambda x_3$, etc. For $|\lambda| < 1$, the only solution is $x = 0$; for $|\lambda| \ge 1$, $x \notin \ell^2$.</li>
+                        <li><strong>Spectrum:</strong> $\sigma(S) = \overline{\mathbb{D}} = \{\lambda : |\lambda| \le 1\}$ (the closed unit disk).</li>
+                        <li class="mb-0">For $|\lambda| < 1$: $\lambda \in \sigma_c(S)$. The range of $\lambda I - S$ is dense but not all of $\ell^2$.</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Spectral Radius</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.1.5 — Spectral Radius Formula</div>
+                    <p>The <em>spectral radius</em> $r(T) = \sup\{|\lambda| : \lambda \in \sigma(T)\}$ satisfies</p>
+                    $$r(T) = \lim_{n \to \infty} \|T^n\|^{1/n} = \inf_{n \ge 1} \|T^n\|^{1/n}.$$
+                    <p class="mb-0">Note that $r(T) \le \|T\|$ always, and equality can fail. For normal operators on Hilbert spaces, $r(T) = \|T\|$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof Sketch</div>
+                    <p>The Neumann series shows $\sigma(T) \subseteq \overline{B}(0, \|T^n\|^{1/n})$ for each $n$, giving $r(T) \le \inf_n \|T^n\|^{1/n}$. The Laurent expansion of $R(\lambda, T)$ about $\infty$ shows that $R(\lambda,T)$ has a pole or essential singularity at every point $\lambda$ with $|\lambda| = r(T)$, so $r(T)$ is the actual radius of convergence of the Neumann series, giving $r(T) = \lim_{n} \|T^n\|^{1/n}$. $\square$</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 5. Spectral Theory</a>
+                    <a href="../02-spectral-theorem/" class="btn btn-custom">5.2 Spectral Theorem &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.3 Reflexivity — Functional Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Functional Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Functional Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-normed-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-normed-spaces/" class="toc-chapter-link"><strong>1.</strong> Normed Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-normed-spaces/01-norms-and-banach-spaces/">1.1 Norms and Banach Spaces</a>
+                        <a href="../../01-normed-spaces/02-finite-dimensional-spaces/">1.2 Finite-Dimensional Spaces</a>
+                        <a href="../../01-normed-spaces/03-bounded-linear-operators/">1.3 Bounded Linear Operators</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-hilbert-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-hilbert-spaces/" class="toc-chapter-link"><strong>2.</strong> Hilbert Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-hilbert-spaces/01-inner-products-and-hilbert-spaces/">2.1 Inner Products and Hilbert Spaces</a>
+                        <a href="../../02-hilbert-spaces/02-orthonormal-bases/">2.2 Orthonormal Bases</a>
+                        <a href="../../02-hilbert-spaces/03-projection-theorem/">2.3 Projection Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fundamental-theorems">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-fundamental-theorems/" class="toc-chapter-link"><strong>3.</strong> Fundamental Theorems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-fundamental-theorems/01-hahn-banach-theorem/">3.1 Hahn–Banach Theorem</a>
+                        <a href="../../03-fundamental-theorems/02-open-mapping-theorem/">3.2 Open Mapping Theorem</a>
+                        <a href="../../03-fundamental-theorems/03-closed-graph-theorem/">3.3 Closed Graph Theorem</a>
+                        <a href="../../03-fundamental-theorems/04-uniform-boundedness-principle/">3.4 Uniform Boundedness Principle</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-dual-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-dual-spaces/" class="toc-chapter-link"><strong>4.</strong> Dual Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-dual-spaces/01-the-dual-of-a-normed-space/">4.1 The Dual of a Normed Space</a>
+                        <a href="../../04-dual-spaces/02-weak-and-weak-star-topologies/">4.2 Weak and Weak* Topologies</a>
+                        <a href="../../04-dual-spaces/03-reflexivity/">4.3 Reflexivity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-spectral-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-spectral-theory/" class="toc-chapter-link"><strong>5.</strong> Spectral Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-spectral-theory/01-spectrum-of-an-operator/">5.1 Spectrum of an Operator</a>
+                        <a href="../../05-spectral-theory/02-spectral-theorem/">5.2 Spectral Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-compact-operators">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-compact-operators/" class="toc-chapter-link"><strong>6.</strong> Compact Operators</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-compact-operators/01-compact-operators/">6.1 Compact Operators</a>
+                        <a href="../../06-compact-operators/02-fredholm-theory/">6.2 Fredholm Theory</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Functional Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Functional Analysis</a> ›
+                <a href="../">4. Dual Spaces</a> ›
+                <span>4.3 Reflexivity</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">4.3 Reflexivity</h1>
+
+                <p>A Banach space is reflexive if it "looks the same from both sides of the duality pairing" — the natural embedding into the bidual is surjective. Reflexivity is a rich structural property with important geometric and analytic consequences, including weak compactness of the unit ball.</p>
+
+                <h2 class="mt-4 mb-3">Definition and Characterization</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.3.1 — Reflexive Banach Space</div>
+                    <p>A Banach space $X$ is <em>reflexive</em> if the canonical embedding $J: X \to X^{**}$ is surjective (hence an isometric isomorphism). Equivalently, every element of $X^{**}$ is of the form $\phi \mapsto \phi(x)$ for some $x \in X$.</p>
+                    <p class="mb-0">Note: it is not sufficient that $X \cong X^{**}$ via some isomorphism; reflexivity specifically requires $J$ to be surjective.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.3.2 — Kakutani's Theorem</div>
+                    <p class="mb-0">A Banach space $X$ is reflexive if and only if the closed unit ball $B_X = \{x \in X : \|x\| \le 1\}$ is weakly compact (compact in the weak topology).</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof Sketch</div>
+                    <p>($\Rightarrow$) If $X$ is reflexive, then $J(B_X) = B_{X^{**}}$. By the Banach–Alaoglu theorem, $B_{X^{**}}$ is weak* compact in $X^{**}$. Under the isomorphism $J$, the weak* topology on $X^{**}$ pulls back to the weak topology on $X$. Hence $B_X$ is weakly compact.</p>
+                    <p class="mb-0">($\Leftarrow$) If $B_X$ is weakly compact, one shows that $J(B_X)$ is weak* dense in $B_{X^{**}}$ (by Goldstine's theorem) and weakly compact, hence weak* closed. Thus $J(B_X) = B_{X^{**}}$, giving surjectivity of $J$. $\square$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Examples</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 4.3.3 — Reflexive Spaces</div>
+                    <ul>
+                        <li><strong>Hilbert spaces:</strong> Every Hilbert space $H$ is reflexive. By the Riesz representation theorem, $H^* \cong H$ and $H^{**} \cong H^* \cong H$. The canonical embedding is surjective.</li>
+                        <li><strong>$L^p$ spaces ($1 < p < \infty$):</strong> For a $\sigma$-finite measure space, $L^p(\mu)$ is reflexive. The dual chain is $(L^p)^* \cong L^q$ and $(L^p)^{**} \cong (L^q)^* \cong L^p$.</li>
+                        <li><strong>$\ell^p$ ($1 < p < \infty$):</strong> Reflexive, for the same reason.</li>
+                        <li class="mb-0"><strong>Finite-dimensional spaces:</strong> All finite-dimensional normed spaces are reflexive.</li>
+                    </ul>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 4.3.4 — Non-Reflexive Spaces</div>
+                    <ul>
+                        <li><strong>$L^1(\mu)$:</strong> Not reflexive (for infinite measure spaces). We have $(L^1)^* \cong L^\infty$ but $(L^\infty)^*$ is strictly larger than $L^1$ — it contains functionals corresponding to finitely additive measures that are not $\sigma$-additive. Hence $J(L^1) \subsetneq (L^1)^{**}$.</li>
+                        <li><strong>$L^\infty(\mu)$:</strong> Not reflexive (for non-atomic infinite measure spaces), as $(L^\infty)^* \not\cong L^\infty$ in general.</li>
+                        <li><strong>$c_0$ (sequences converging to 0):</strong> Not reflexive. $(c_0)^* \cong \ell^1$ and $(\ell^1)^* \cong \ell^\infty \not\cong c_0$.</li>
+                        <li class="mb-0"><strong>$C[0,1]$:</strong> Not reflexive. Its dual is the space of regular signed Borel measures, which is much larger.</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Consequences of Reflexivity</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 4.3.5 — Weak Sequential Compactness</div>
+                    <p class="mb-0">If $X$ is a reflexive Banach space, then every bounded sequence in $X$ has a weakly convergent subsequence. This is the Eberlein–Smulian theorem restricted to sequences. It is extremely useful in variational methods: one extracts weakly convergent subsequences from minimizing sequences.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 4.3.6 — Closed Subspaces of Reflexive Spaces</div>
+                    <p class="mb-0">Every closed subspace of a reflexive Banach space is reflexive. Every quotient of a reflexive Banach space by a closed subspace is reflexive.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — James's Theorem</div>
+                    <p class="mb-0">A deep theorem of R.C. James (1964) gives an intrinsic characterization: a Banach space $X$ is reflexive if and only if every continuous linear functional on $X$ attains its supremum on the closed unit ball. This connects reflexivity to optimization and geometry of Banach spaces.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-weak-and-weak-star-topologies/" class="btn btn-outline-custom">&larr; 4.2 Weak and Weak* Topologies</a>
+                    <a href="../../05-spectral-theory/" class="btn btn-custom">5. Spectral Theory &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

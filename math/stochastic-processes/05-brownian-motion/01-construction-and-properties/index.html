@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.1 Construction and Properties — Stochastic Processes</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Stochastic Processes</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Stochastic Processes</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-markov-chains">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-markov-chains/" class="toc-chapter-link"><strong>1.</strong> Markov Chains</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-markov-chains/01-transition-matrices/">1.1 Transition Matrices</a>
+                        <a href="../../01-markov-chains/02-classification-of-states/">1.2 Classification of States</a>
+                        <a href="../../01-markov-chains/03-stationary-distributions/">1.3 Stationary Distributions</a>
+                        <a href="../../01-markov-chains/04-ergodic-theorem/">1.4 Ergodic Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-poisson-processes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-poisson-processes/" class="toc-chapter-link"><strong>2.</strong> Poisson Processes</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-poisson-processes/01-definition-and-properties/">2.1 Definition and Properties</a>
+                        <a href="../../02-poisson-processes/02-interarrival-times/">2.2 Interarrival Times</a>
+                        <a href="../../02-poisson-processes/03-compound-poisson-processes/">2.3 Compound Poisson Processes</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-continuous-time-markov-chains">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-continuous-time-markov-chains/" class="toc-chapter-link"><strong>3.</strong> Continuous-Time Markov Chains</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-continuous-time-markov-chains/01-generator-matrix/">3.1 Generator Matrix</a>
+                        <a href="../../03-continuous-time-markov-chains/02-kolmogorov-equations/">3.2 Kolmogorov Equations</a>
+                        <a href="../../03-continuous-time-markov-chains/03-stationary-distributions/">3.3 Stationary Distributions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-renewal-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-renewal-theory/" class="toc-chapter-link"><strong>4.</strong> Renewal Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-renewal-theory/01-renewal-processes/">4.1 Renewal Processes</a>
+                        <a href="../../04-renewal-theory/02-renewal-reward-theorem/">4.2 Renewal Reward Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-brownian-motion">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-brownian-motion/" class="toc-chapter-link"><strong>5.</strong> Brownian Motion</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-brownian-motion/01-construction-and-properties/">5.1 Construction and Properties</a>
+                        <a href="../../05-brownian-motion/02-reflection-principle/">5.2 Reflection Principle</a>
+                        <a href="../../05-brownian-motion/03-brownian-motion-as-a-limit/">5.3 Brownian Motion as a Limit</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-martingales-in-continuous-time">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-martingales-in-continuous-time/" class="toc-chapter-link"><strong>6.</strong> Martingales in Continuous Time</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-martingales-in-continuous-time/01-continuous-time-martingales/">6.1 Continuous-Time Martingales</a>
+                        <a href="../../06-martingales-in-continuous-time/02-optional-stopping/">6.2 Optional Stopping</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-stationary-processes">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-stationary-processes/" class="toc-chapter-link"><strong>7.</strong> Stationary Processes</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-stationary-processes/01-stationarity-and-ergodicity/">7.1 Stationarity and Ergodicity</a>
+                        <a href="../../07-stationary-processes/02-spectral-representation/">7.2 Spectral Representation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Stochastic Processes</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Stochastic Processes</a> ›
+                <a href="../">5. Brownian Motion</a> ›
+                <span>5.1 Construction and Properties</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">5.1 Construction and Properties</h1>
+
+                <p>Standard Brownian motion (also called the Wiener process) is characterised by a small set of axioms that uniquely pin down a Gaussian process with continuous paths. We begin with its definition, then discuss existence, and finally explore its remarkable analytical properties.</p>
+
+                <h2 class="mt-4 mb-3">Definition</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 5.1.1 — Standard Brownian Motion</div>
+                    <p>A stochastic process $(B_t)_{t \ge 0}$ defined on a probability space $(\Omega, \mathcal{F}, P)$ is a <strong>standard Brownian motion</strong> (or <strong>Wiener process</strong>) if:</p>
+                    <ol>
+                        <li>$B_0 = 0$ almost surely.</li>
+                        <li><strong>Independent increments:</strong> For $0 \le t_0 < t_1 < \cdots < t_n$, the increments $B_{t_1}-B_{t_0}, B_{t_2}-B_{t_1}, \ldots, B_{t_n}-B_{t_{n-1}}$ are mutually independent.</li>
+                        <li><strong>Stationary Gaussian increments:</strong> For $s, t \ge 0$, $B_{t+s} - B_t \sim \mathcal{N}(0, s)$.</li>
+                        <li><strong>Continuous paths:</strong> The function $t \mapsto B_t(\omega)$ is continuous for almost every $\omega \in \Omega$.</li>
+                    </ol>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Uniqueness of Distribution</div>
+                    <p class="mb-0">Conditions (1)–(3) determine all finite-dimensional distributions of $(B_t)$. By the Kolmogorov extension theorem, there exists a probability measure on $\mathbb{R}^{[0,\infty)}$ with these finite-dimensional marginals. The non-trivial content is that this measure can be supported on the space of continuous functions — this is Wiener's 1923 result.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Existence: Lévy–Ciesielski Construction</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.1.2 — Existence of Brownian Motion</div>
+                    <p>Standard Brownian motion exists. One explicit construction on $[0,1]$ proceeds via the <strong>Lévy–Ciesielski</strong> (Haar/Schauder) series:</p>
+                    $$B_t = Z_0 t + \sum_{n=0}^{\infty} \sum_{k=0}^{2^n - 1} Z_{n,k}\, H_{n,k}(t),$$
+                    <p>where $Z_0, Z_{n,k}$ are i.i.d. $\mathcal{N}(0,1)$ and $H_{n,k}$ are the Schauder functions (integrated Haar wavelets). The series converges uniformly a.s., yielding a continuous process with the correct distribution.</p>
+                    <p class="mb-0">Alternatively, the Kolmogorov–Chentsov theorem provides path continuity from the moment criterion: since $E[|B_t - B_s|^{2k}] = (2k-1)!! \cdot |t-s|^k$ (moments of a Gaussian), choosing $k \ge 2$ gives a Hölder-continuous modification with exponent $\alpha < 1/2$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Covariance Structure</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 5.1.3 — Covariance of Brownian Motion</div>
+                    <p>For $s, t \ge 0$:
+                    $$E[B_t] = 0, \qquad \operatorname{Var}(B_t) = t, \qquad \operatorname{Cov}(B_s, B_t) = E[B_s B_t] = \min(s,t).$$</p>
+                    <p><em>Proof.</em> WLOG $s \le t$. Write $B_t = B_s + (B_t - B_s)$. By independence of increments, $E[B_s(B_t - B_s)] = E[B_s] \cdot E[B_t-B_s] = 0$. Hence
+                    $$E[B_s B_t] = E[B_s^2] + E[B_s(B_t-B_s)] = s + 0 = s = \min(s,t). \quad\square$$</p>
+                    <p class="mb-0">Thus $(B_t)$ is a <strong>Gaussian process</strong> with mean function $m(t)=0$ and covariance kernel $K(s,t)=\min(s,t)$. Conversely, any centred Gaussian process with this covariance kernel and continuous paths is a standard BM.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Path Properties</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.1.4 — Hölder Continuity</div>
+                    <p>Brownian motion paths are locally Hölder continuous of any exponent $\alpha < 1/2$: for each $T > 0$ and $\alpha < 1/2$, there exists a random $C(\omega) < \infty$ such that
+                    $$|B_t(\omega) - B_s(\omega)| \le C(\omega)\, |t-s|^\alpha \quad \text{for all } s,t \in [0,T].$$</p>
+                    <p class="mb-0">However, Brownian paths are <strong>not</strong> Hölder-$1/2$: a.s., $\limsup_{h \to 0} |B_{t+h} - B_t|/\sqrt{h} = \infty$ for every $t$ (Lévy's modulus of continuity).</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.1.5 — Non-Differentiability</div>
+                    <p>With probability 1, Brownian motion is <strong>nowhere differentiable</strong>: for almost every $\omega$, the function $t \mapsto B_t(\omega)$ is not differentiable at any point $t \ge 0$.</p>
+                    <p><em>Sketch.</em> If $B$ were differentiable at $t_0$, then $|B_{t_0+h}-B_{t_0}| = O(h)$. But $B_{t_0+h} - B_{t_0} \sim \mathcal{N}(0,h)$, so $(B_{t_0+h}-B_{t_0})/h \sim \mathcal{N}(0,1/h) \to \infty$ in distribution, a contradiction. A rigorous argument uses the Borel–Cantelli lemma applied to dyadic intervals.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 5.1.6 — Quadratic Variation</div>
+                    <p>For a partition $\Pi_n = \{0 = t_0 < t_1 < \cdots < t_n = t\}$ with mesh $|\Pi_n| \to 0$, the <strong>quadratic variation</strong> of $B$ on $[0,t]$ is
+                    $$[B]_t = \lim_{|\Pi_n| \to 0} \sum_{i=1}^n (B_{t_i} - B_{t_{i-1}})^2.$$</p>
+                    <p class="mb-0">For Brownian motion, $[B]_t = t$ almost surely (and in $L^2$). This is written $d[B]_t = dt$, or informally $(dB_t)^2 = dt$. This identity — that BM accumulates $t$ units of quadratic variation by time $t$ — is fundamental to Itô's formula.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof — Quadratic Variation equals $t$</div>
+                    <p>Let $Q_n = \sum_{i=1}^n (B_{t_i}-B_{t_{i-1}})^2$ for a partition with $t_i = it/n$. Each term has mean $t/n$ and variance $2(t/n)^2$ (since $(B_{t_i}-B_{t_{i-1}})^2 - t/n$ are i.i.d. with mean 0). Thus
+                    $$E[Q_n] = t, \qquad \operatorname{Var}(Q_n) = n \cdot 2(t/n)^2 = \frac{2t^2}{n} \to 0.$$</p>
+                    <p class="mb-0">Hence $Q_n \to t$ in $L^2$, and a subsequence argument gives a.s. convergence along dyadic partitions. $\square$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Scaling and Symmetry Properties</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 5.1.7 — Scaling Properties</div>
+                    <p>The following processes are also standard Brownian motions:</p>
+                    <ul>
+                        <li><strong>Scaling:</strong> For $c > 0$, $\tilde{B}_t = c^{-1/2} B_{ct}$ is a standard BM.</li>
+                        <li><strong>Time reversal:</strong> $\tilde{B}_t = B_{T-t} - B_T$ is a standard BM on $[0,T]$ (for fixed $T$).</li>
+                        <li><strong>Reflection:</strong> $\tilde{B}_t = -B_t$ is a standard BM.</li>
+                        <li><strong>Time inversion:</strong> $\tilde{B}_t = t B_{1/t}$ (with $\tilde{B}_0 = 0$) is a standard BM.</li>
+                    </ul>
+                    <p class="mb-0">Each property follows by verifying the four defining conditions. Scaling expresses the <strong>self-similarity</strong> of BM: under the map $t \mapsto ct$, the process scales as $c^{1/2}$, making BM a self-similar process of index $H = 1/2$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Brownian Bridge</div>
+                    <p>The <strong>Brownian bridge</strong> from 0 to 0 on $[0,1]$ is the process $X_t = B_t - t B_1$, which is a centred Gaussian process with covariance $\operatorname{Cov}(X_s, X_t) = \min(s,t) - st$ and $X_0 = X_1 = 0$ a.s.</p>
+                    <p class="mb-0">It arises as the conditional distribution of $(B_t)_{0 \le t \le 1}$ given $B_1 = 0$. The Brownian bridge is the object that appears in the Kolmogorov–Smirnov statistic for testing goodness of fit.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 5. Brownian Motion</a>
+                    <a href="../02-reflection-principle/" class="btn btn-custom">5.2 Reflection Principle &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.1 Continuous-Time Martingales — Stochastic Processes</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Stochastic Processes</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Stochastic Processes</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-markov-chains">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-markov-chains/" class="toc-chapter-link"><strong>1.</strong> Markov Chains</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-markov-chains/01-transition-matrices/">1.1 Transition Matrices</a>
+                        <a href="../../01-markov-chains/02-classification-of-states/">1.2 Classification of States</a>
+                        <a href="../../01-markov-chains/03-stationary-distributions/">1.3 Stationary Distributions</a>
+                        <a href="../../01-markov-chains/04-ergodic-theorem/">1.4 Ergodic Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-poisson-processes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-poisson-processes/" class="toc-chapter-link"><strong>2.</strong> Poisson Processes</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-poisson-processes/01-definition-and-properties/">2.1 Definition and Properties</a>
+                        <a href="../../02-poisson-processes/02-interarrival-times/">2.2 Interarrival Times</a>
+                        <a href="../../02-poisson-processes/03-compound-poisson-processes/">2.3 Compound Poisson Processes</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-continuous-time-markov-chains">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-continuous-time-markov-chains/" class="toc-chapter-link"><strong>3.</strong> Continuous-Time Markov Chains</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-continuous-time-markov-chains/01-generator-matrix/">3.1 Generator Matrix</a>
+                        <a href="../../03-continuous-time-markov-chains/02-kolmogorov-equations/">3.2 Kolmogorov Equations</a>
+                        <a href="../../03-continuous-time-markov-chains/03-stationary-distributions/">3.3 Stationary Distributions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-renewal-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-renewal-theory/" class="toc-chapter-link"><strong>4.</strong> Renewal Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-renewal-theory/01-renewal-processes/">4.1 Renewal Processes</a>
+                        <a href="../../04-renewal-theory/02-renewal-reward-theorem/">4.2 Renewal Reward Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-brownian-motion">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-brownian-motion/" class="toc-chapter-link"><strong>5.</strong> Brownian Motion</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-brownian-motion/01-construction-and-properties/">5.1 Construction and Properties</a>
+                        <a href="../../05-brownian-motion/02-reflection-principle/">5.2 Reflection Principle</a>
+                        <a href="../../05-brownian-motion/03-brownian-motion-as-a-limit/">5.3 Brownian Motion as a Limit</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-martingales-in-continuous-time">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-martingales-in-continuous-time/" class="toc-chapter-link"><strong>6.</strong> Martingales in Continuous Time</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-martingales-in-continuous-time/01-continuous-time-martingales/">6.1 Continuous-Time Martingales</a>
+                        <a href="../../06-martingales-in-continuous-time/02-optional-stopping/">6.2 Optional Stopping</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-stationary-processes">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-stationary-processes/" class="toc-chapter-link"><strong>7.</strong> Stationary Processes</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-stationary-processes/01-stationarity-and-ergodicity/">7.1 Stationarity and Ergodicity</a>
+                        <a href="../../07-stationary-processes/02-spectral-representation/">7.2 Spectral Representation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Stochastic Processes</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Stochastic Processes</a> ›
+                <a href="../">6. Martingales in Continuous Time</a> ›
+                <span>6.1 Continuous-Time Martingales</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">6.1 Continuous-Time Martingales</h1>
+
+                <p>Continuous-time martingales extend the discrete martingale concept to uncountably many time indices. The theory requires a careful setup of filtrations and regularity conditions on paths, but the essential intuition — that a martingale is a "fair game" with no drift — remains the same.</p>
+
+                <h2 class="mt-4 mb-3">Filtrations and Adapted Processes</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 6.1.1 — Filtration and Adapted Process</div>
+                    <p>A <strong>filtration</strong> $(\mathcal{F}_t)_{t \ge 0}$ is an increasing family of sub-$\sigma$-algebras of $\mathcal{F}$: $\mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F}$ for $s \le t$. Intuitively, $\mathcal{F}_t$ encodes all information available up to time $t$.</p>
+                    <p>A stochastic process $(X_t)_{t \ge 0}$ is <strong>adapted</strong> to $(\mathcal{F}_t)$ if $X_t$ is $\mathcal{F}_t$-measurable for each $t \ge 0$.</p>
+                    <p class="mb-0">The <strong>natural filtration</strong> of a process $(X_t)$ is $\mathcal{F}_t^X = \sigma(X_s : s \le t)$. A filtration satisfies the <strong>usual conditions</strong> if it is right-continuous ($\mathcal{F}_t = \mathcal{F}_{t+} := \bigcap_{s>t} \mathcal{F}_s$) and complete (each $\mathcal{F}_t$ contains all $P$-null sets of $\mathcal{F}$). We always assume the usual conditions hold.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 6.1.2 — Continuous-Time Martingale</div>
+                    <p>An adapted process $(M_t)_{t \ge 0}$ with $E[|M_t|] < \infty$ for all $t$ is a <strong>martingale</strong> with respect to $(\mathcal{F}_t)$ if
+                    $$E[M_t \mid \mathcal{F}_s] = M_s \quad \text{for all } 0 \le s \le t.$$</p>
+                    <p>It is a <strong>supermartingale</strong> if $E[M_t \mid \mathcal{F}_s] \le M_s$ and a <strong>submartingale</strong> if $E[M_t \mid \mathcal{F}_s] \ge M_s$.</p>
+                    <p class="mb-0">Equivalently, for a martingale: $E[M_t] = E[M_0]$ for all $t$ (constant mean), and the process has no drift on average. A submartingale tends to increase on average; a supermartingale tends to decrease.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Brownian Martingales</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 6.1.3 — Fundamental Brownian Martingales</div>
+                    <p>Let $(B_t)_{t \ge 0}$ be standard Brownian motion adapted to $(\mathcal{F}_t)$. The following are martingales with respect to $(\mathcal{F}_t)$:</p>
+                    <ol>
+                        <li>$M_t = B_t$ (since $E[B_t \mid \mathcal{F}_s] = B_s$ by the independent increment property).</li>
+                        <li>$M_t = B_t^2 - t$ (the "compensated square": $B^2$ is a submartingale and $t$ is its compensator).</li>
+                        <li>$M_t = e^{\theta B_t - \theta^2 t/2}$ for any $\theta \in \mathbb{R}$ (the <strong>exponential martingale</strong> or Doléans-Dade exponential).</li>
+                    </ol>
+                    <p><em>Verification for (3):</em> $E[e^{\theta B_t} \mid \mathcal{F}_s] = e^{\theta B_s} \cdot E[e^{\theta(B_t - B_s)}] = e^{\theta B_s} \cdot e^{\theta^2(t-s)/2}$. Multiplying by $e^{-\theta^2 t/2}$ gives $e^{\theta B_s - \theta^2 s/2}$. $\square$</p>
+                    <p class="mb-0">The exponential martingale is crucial in Girsanov's theorem: it provides the Radon–Nikodym derivative for a change of measure that turns a drifted BM into a standard BM.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Path Regularity: Càdlàg Processes</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 6.1.4 — Càdlàg Processes</div>
+                    <p>A process $(X_t)_{t \ge 0}$ is <strong>càdlàg</strong> (from French: <em>continu à droite, limites à gauche</em>) if almost every sample path is right-continuous with left limits: for all $t \ge 0$,
+                    $$X_{t+} := \lim_{s \downarrow t} X_s = X_t \quad \text{a.s.,} \qquad X_{t-} := \lim_{s \uparrow t} X_s \text{ exists a.s.}$$</p>
+                    <p class="mb-0">Every martingale with respect to a filtration satisfying the usual conditions has a càdlàg modification (Doob's regularity theorem). For continuous processes (like BM-driven stochastic integrals), càdlàg reduces to continuous. The space of càdlàg functions on $[0,T]$ is denoted $D[0,T]$ and equipped with the Skorokhod topology.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Local Martingales</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 6.1.5 — Local Martingale</div>
+                    <p>An adapted càdlàg process $(M_t)_{t \ge 0}$ is a <strong>local martingale</strong> if there exists an increasing sequence of stopping times $\tau_n \uparrow \infty$ a.s. such that each stopped process $M^{\tau_n}_t := M_{t \wedge \tau_n}$ is a (true) martingale.</p>
+                    <p class="mb-0">Every $L^2$-bounded martingale is a local martingale; the converse fails. Stochastic integrals $\int_0^t H_s\,dB_s$ are local martingales but may fail to be true martingales if $H$ is not square-integrable. The distinction matters: Novikov's condition $E[\exp(\frac{1}{2}\int_0^T H_s^2\,ds)] < \infty$ is a standard sufficient condition for the exponential local martingale to be a true martingale.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Martingale Convergence</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.1.6 — Martingale Convergence Theorem</div>
+                    <p>Let $(M_t)_{t \ge 0}$ be a right-continuous martingale. If $\sup_{t \ge 0} E[|M_t|] < \infty$ (i.e., $(M_t)$ is $L^1$-bounded), then $M_\infty := \lim_{t \to \infty} M_t$ exists a.s. and $E[|M_\infty|] < \infty$.</p>
+                    <p class="mb-0">Stronger: if $(M_t)$ is $L^p$-bounded for some $p > 1$, then $M_t \to M_\infty$ in $L^p$ and $M_t = E[M_\infty \mid \mathcal{F}_t]$ for all $t$ (the martingale is uniformly integrable). The $L^1$ case requires an additional uniform integrability assumption for $L^1$ convergence.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.1.7 — Doob's Maximal Inequality</div>
+                    <p>For a non-negative submartingale $(X_t)_{0 \le t \le T}$ and $\lambda > 0$:
+                    $$P\!\left(\sup_{0 \le t \le T} X_t \ge \lambda\right) \le \frac{E[X_T]}{\lambda}.$$</p>
+                    <p>For a martingale $(M_t)$ and $p > 1$, Doob's $L^p$ inequality gives:
+                    $$E\!\left[\sup_{0 \le t \le T} |M_t|^p\right] \le \left(\frac{p}{p-1}\right)^p E[|M_T|^p].$$</p>
+                    <p class="mb-0">These inequalities control the running maximum and are fundamental for stochastic integration theory. For BM, $M_t = B_t$ is a martingale, so $P(\sup_{0 \le s \le t} |B_s| \ge \lambda) \le E[B_t^2]/\lambda^2 = t/\lambda^2$ by the $L^2$ version.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Lévy's Characterisation of Brownian Motion</div>
+                    <p>A continuous local martingale $(M_t)_{t \ge 0}$ with $M_0 = 0$ and quadratic variation $[M]_t = t$ is a standard Brownian motion. More precisely, if $(M_t)$ is a continuous local martingale with $[M]_t = t$ a.s., then $M$ has the same distribution as standard BM.</p>
+                    <p class="mb-0">This is Lévy's characterisation theorem. It is the converse to the fact that BM is a continuous martingale with $[B]_t = t$. It is used to identify BM in practice: any continuous local martingale with deterministic quadratic variation $t$ must be BM (up to distribution).</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 6. Martingales in Continuous Time</a>
+                    <a href="../02-optional-stopping/" class="btn btn-custom">6.2 Optional Stopping &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.1 Definition and Examples — Probability Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Probability Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Probability Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-probability-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-probability-spaces/" class="toc-chapter-link"><strong>1.</strong> Probability Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-probability-spaces/01-sample-spaces-and-events/">1.1 Sample Spaces and Events</a>
+                        <a href="../../01-probability-spaces/02-probability-measures/">1.2 Probability Measures</a>
+                        <a href="../../01-probability-spaces/03-conditional-probability-and-independence/">1.3 Conditional Probability and Independence</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-random-variables">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-random-variables/" class="toc-chapter-link"><strong>2.</strong> Random Variables</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-random-variables/01-discrete-random-variables/">2.1 Discrete Random Variables</a>
+                        <a href="../../02-random-variables/02-continuous-random-variables/">2.2 Continuous Random Variables</a>
+                        <a href="../../02-random-variables/03-cumulative-distribution-functions/">2.3 Cumulative Distribution Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-expectation">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-expectation/" class="toc-chapter-link"><strong>3.</strong> Expectation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-expectation/01-expected-value/">3.1 Expected Value</a>
+                        <a href="../../03-expectation/02-variance-and-covariance/">3.2 Variance and Covariance</a>
+                        <a href="../../03-expectation/03-moment-generating-functions/">3.3 Moment Generating Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-common-distributions">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-common-distributions/" class="toc-chapter-link"><strong>4.</strong> Common Distributions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-common-distributions/01-discrete-distributions/">4.1 Discrete Distributions</a>
+                        <a href="../../04-common-distributions/02-continuous-distributions/">4.2 Continuous Distributions</a>
+                        <a href="../../04-common-distributions/03-multivariate-distributions/">4.3 Multivariate Distributions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-limit-theorems">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-limit-theorems/" class="toc-chapter-link"><strong>5.</strong> Limit Theorems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-limit-theorems/01-law-of-large-numbers/">5.1 Law of Large Numbers</a>
+                        <a href="../../05-limit-theorems/02-central-limit-theorem/">5.2 Central Limit Theorem</a>
+                        <a href="../../05-limit-theorems/03-large-deviations/">5.3 Large Deviations</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-conditional-expectation">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-conditional-expectation/" class="toc-chapter-link"><strong>6.</strong> Conditional Expectation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-conditional-expectation/01-conditional-expectation/">6.1 Conditional Expectation</a>
+                        <a href="../../06-conditional-expectation/02-conditional-distributions/">6.2 Conditional Distributions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-martingales">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-martingales/" class="toc-chapter-link"><strong>7.</strong> Martingales</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-martingales/01-definition-and-examples/">7.1 Definition and Examples</a>
+                        <a href="../../07-martingales/02-optional-stopping-theorem/">7.2 Optional Stopping Theorem</a>
+                        <a href="../../07-martingales/03-convergence-theorems/">7.3 Convergence Theorems</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Probability Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Probability Theory</a> ›
+                <a href="../">7. Martingales</a> ›
+                <span>7.1 Definition and Examples</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">7.1 Definition and Examples</h1>
+
+                <p>A martingale formalises the concept of a fair game: given all information to date, the expected future value equals the present value. The key inputs are a filtration (representing the flow of information) and an adapted process.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.1.1 — Filtration and Adapted Process</div>
+                    <p>A <em>filtration</em> is an increasing family $(\mathcal{F}_n)_{n \ge 0}$ of sub-$\sigma$-algebras of $\mathcal{F}$: $\mathcal{F}_0 \subseteq \mathcal{F}_1 \subseteq \cdots \subseteq \mathcal{F}$. Intuitively, $\mathcal{F}_n$ is the information available at time $n$.</p>
+                    <p class="mb-0">A stochastic process $(M_n)_{n \ge 0}$ is <em>adapted</em> to $(\mathcal{F}_n)$ if $M_n$ is $\mathcal{F}_n$-measurable for each $n$. The <em>natural filtration</em> of $(M_n)$ is $\mathcal{F}_n^M = \sigma(M_0, M_1, \ldots, M_n)$.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.1.2 — Martingale, Submartingale, Supermartingale</div>
+                    <p>An adapted integrable process $(M_n, \mathcal{F}_n)$ is a:
+                    <ul>
+                        <li><strong>Martingale</strong> if $E[M_{n+1} \mid \mathcal{F}_n] = M_n$ a.s. for all $n \ge 0$;</li>
+                        <li><strong>Submartingale</strong> if $E[M_{n+1} \mid \mathcal{F}_n] \ge M_n$ a.s. (tends to increase);</li>
+                        <li><strong>Supermartingale</strong> if $E[M_{n+1} \mid \mathcal{F}_n] \le M_n$ a.s. (tends to decrease).</li>
+                    </ul></p>
+                    <p class="mb-0">Note: a martingale is both a sub- and supermartingale. If $(M_n)$ is a martingale then $E[M_n] = E[M_0]$ for all $n$ (constant mean).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Standard Examples</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.1.3 — Simple Random Walk</div>
+                    <p>Let $\xi_1, \xi_2, \ldots$ be i.i.d. with $P(\xi_i = +1) = P(\xi_i = -1) = 1/2$ and $S_n = \xi_1 + \cdots + \xi_n$, $S_0 = 0$. With $\mathcal{F}_n = \sigma(\xi_1,\ldots,\xi_n)$:
+                    <ul>
+                        <li>$S_n$ is a martingale: $E[S_{n+1}\mid\mathcal{F}_n] = S_n + E[\xi_{n+1}] = S_n$.</li>
+                        <li>$M_n = S_n^2 - n$ is a martingale: $E[S_{n+1}^2 - (n+1)\mid\mathcal{F}_n] = S_n^2 + 1 - (n+1) = S_n^2 - n$.</li>
+                        <li>For $\theta \ne 0$, $Z_n = e^{\theta S_n}/(\cosh\theta)^n$ is a martingale (the exponential martingale).</li>
+                    </ul></p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.1.4 — Product Martingale</div>
+                    <p>Let $Y_1, Y_2, \ldots$ be i.i.d. with $E[Y_i] = 1$ and $Y_i \ge 0$. Define $M_0 = 1$ and $M_n = Y_1 Y_2 \cdots Y_n$. Then
+                    $$E[M_{n+1}\mid\mathcal{F}_n] = M_n \cdot E[Y_{n+1}] = M_n,$$
+                    so $(M_n)$ is a non-negative martingale. This is the Radon-Nikodym derivative of a tilted measure with respect to the original measure, and arises in likelihood ratio tests and sequential analysis.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.1.5 — Doob Martingale</div>
+                    <p>Let $X \in L^1(\mathcal{F})$ and $(\mathcal{F}_n)$ a filtration with $\mathcal{F}_n \nearrow \mathcal{F}$. Define
+                    $$M_n = E[X \mid \mathcal{F}_n].$$
+                    By the tower property, $E[M_{n+1}\mid\mathcal{F}_n] = E[E[X\mid\mathcal{F}_{n+1}]\mid\mathcal{F}_n] = E[X\mid\mathcal{F}_n] = M_n$, so $(M_n)$ is a martingale.</p>
+                    <p class="mb-0">The Doob martingale is the fundamental construction linking martingales to conditional expectation. Lévy's upward theorem says $M_n \to X$ a.s. and in $L^1$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Stopped Processes</h2>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 7.1.6 — Optional Sampling</div>
+                    <p>Let $\tau$ be a stopping time. The <em>stopped process</em> $M^\tau_n = M_{\min(n,\tau)}$ is also a martingale (resp. sub/supermartingale) whenever $(M_n)$ is. This follows because
+                    $$M^\tau_{n+1} - M^\tau_n = (M_{n+1} - M_n)\mathbf{1}_{\tau > n},$$
+                    and $\mathbf{1}_{\tau > n}$ is $\mathcal{F}_n$-measurable (since $\tau$ is a stopping time).</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 7. Martingales</a>
+                    <a href="../02-optional-stopping-theorem/" class="btn btn-custom">7.2 Optional Stopping Theorem &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

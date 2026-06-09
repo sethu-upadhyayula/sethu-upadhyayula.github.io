@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.3 Convergence Theorems — Probability Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Probability Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Probability Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-probability-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-probability-spaces/" class="toc-chapter-link"><strong>1.</strong> Probability Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-probability-spaces/01-sample-spaces-and-events/">1.1 Sample Spaces and Events</a>
+                        <a href="../../01-probability-spaces/02-probability-measures/">1.2 Probability Measures</a>
+                        <a href="../../01-probability-spaces/03-conditional-probability-and-independence/">1.3 Conditional Probability and Independence</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-random-variables">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-random-variables/" class="toc-chapter-link"><strong>2.</strong> Random Variables</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-random-variables/01-discrete-random-variables/">2.1 Discrete Random Variables</a>
+                        <a href="../../02-random-variables/02-continuous-random-variables/">2.2 Continuous Random Variables</a>
+                        <a href="../../02-random-variables/03-cumulative-distribution-functions/">2.3 Cumulative Distribution Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-expectation">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-expectation/" class="toc-chapter-link"><strong>3.</strong> Expectation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-expectation/01-expected-value/">3.1 Expected Value</a>
+                        <a href="../../03-expectation/02-variance-and-covariance/">3.2 Variance and Covariance</a>
+                        <a href="../../03-expectation/03-moment-generating-functions/">3.3 Moment Generating Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-common-distributions">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-common-distributions/" class="toc-chapter-link"><strong>4.</strong> Common Distributions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-common-distributions/01-discrete-distributions/">4.1 Discrete Distributions</a>
+                        <a href="../../04-common-distributions/02-continuous-distributions/">4.2 Continuous Distributions</a>
+                        <a href="../../04-common-distributions/03-multivariate-distributions/">4.3 Multivariate Distributions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-limit-theorems">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-limit-theorems/" class="toc-chapter-link"><strong>5.</strong> Limit Theorems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-limit-theorems/01-law-of-large-numbers/">5.1 Law of Large Numbers</a>
+                        <a href="../../05-limit-theorems/02-central-limit-theorem/">5.2 Central Limit Theorem</a>
+                        <a href="../../05-limit-theorems/03-large-deviations/">5.3 Large Deviations</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-conditional-expectation">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-conditional-expectation/" class="toc-chapter-link"><strong>6.</strong> Conditional Expectation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-conditional-expectation/01-conditional-expectation/">6.1 Conditional Expectation</a>
+                        <a href="../../06-conditional-expectation/02-conditional-distributions/">6.2 Conditional Distributions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-martingales">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-martingales/" class="toc-chapter-link"><strong>7.</strong> Martingales</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-martingales/01-definition-and-examples/">7.1 Definition and Examples</a>
+                        <a href="../../07-martingales/02-optional-stopping-theorem/">7.2 Optional Stopping Theorem</a>
+                        <a href="../../07-martingales/03-convergence-theorems/">7.3 Convergence Theorems</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Probability Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Probability Theory</a> ›
+                <a href="../">7. Martingales</a> ›
+                <span>7.3 Convergence Theorems</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">7.3 Convergence Theorems</h1>
+
+                <p>The martingale convergence theorems are among the deepest results in probability. They give sufficient conditions for a martingale to converge, and include as special cases both the Strong Law of Large Numbers and many results in ergodic theory.</p>
+
+                <h2 class="mt-4 mb-3">Doob's Upcrossing Inequality</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Upcrossings</div>
+                    <p class="mb-0">Given a sequence $(M_n)$ and $a < b$, an <em>upcrossing</em> of $[a,b]$ by time $N$ is a pair of times $s < t \le N$ with $M_s \le a$ and $M_t \ge b$. Let $U_N[a,b]$ denote the number of complete upcrossings of $[a,b]$ by time $N$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.3.1 — Doob's Upcrossing Inequality</div>
+                    <p>If $(M_n)$ is a supermartingale, then for all $a < b$ and $N \ge 1$:
+                    $$(b-a)\,E[U_N[a,b]] \le E[(M_N - a)^-] \le E[|M_N|] + |a|.$$</p>
+                    <p class="mb-0">This is the key lemma: it bounds the expected number of oscillations of the process across any interval $[a,b]$ in terms of $E[|M_N|]$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Almost Sure Convergence</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.3.2 — Martingale Convergence Theorem (a.s.)</div>
+                    <p>Let $(M_n)$ be a supermartingale with $\sup_n E[M_n^-] < \infty$ (equivalently, $\sup_n E[|M_n|] < \infty$ for $L^1$-bounded supermartingales). Then there exists an integrable random variable $M_\infty$ such that
+                    $$M_n \xrightarrow{a.s.} M_\infty \quad \text{as } n \to \infty.$$</p>
+                    <p class="mb-0">Proof sketch: By the upcrossing inequality, $E[U_\infty[a,b]] < \infty$ for every $a < b$. On the event $\{\liminf M_n < a < b < \limsup M_n\}$, the process upcrosses $[a,b]$ infinitely often, which has probability zero. Taking a countable union over rationals $a < b$ gives $P(\lim M_n \text{ does not exist}) = 0$. $\square$</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Without $L^1$ Convergence</div>
+                    <p class="mb-0">Almost sure convergence does not imply $L^1$ convergence. Example: the simple random walk martingale $S_n$ converges a.s. on the event $\{S_n \to -\infty\}$ (which has probability 1 if $S_n \to -\infty$), but $E[S_n] = 0$ while $S_n$ does not converge in $L^1$ to any finite limit. A non-negative martingale (like $M_n = e^{\theta S_n}/(\cosh\theta)^n$) converges a.s. but may converge to $0$ with probability 1.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">$L^p$ Convergence</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.3.3 — $L^p$ Martingale Convergence ($p > 1$)</div>
+                    <p>Let $(M_n)$ be a martingale with $\sup_n E[|M_n|^p] < \infty$ for some $p > 1$. Then $M_n \to M_\infty$ both a.s. and in $L^p$. Moreover, $E[|M_\infty|^p] < \infty$ and $M_n = E[M_\infty \mid \mathcal{F}_n]$.</p>
+                    <p class="mb-0">Proof uses Doob's maximal inequality: $E[\sup_{n \le N}|M_n|^p] \le (p/(p-1))^p E[|M_N|^p]$, which gives uniform integrability of $(|M_n|^p)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Uniform Integrability and $L^1$ Convergence</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.3.4 — UI Martingale Convergence</div>
+                    <p>For a martingale $(M_n)$, the following are equivalent:
+                    <ol>
+                        <li>$(M_n)$ is uniformly integrable;</li>
+                        <li>$M_n \to M_\infty$ in $L^1$;</li>
+                        <li>There exists $X \in L^1$ with $M_n = E[X \mid \mathcal{F}_n]$ for all $n$.</li>
+                    </ol>
+                    When these hold, $M_\infty = E[X \mid \mathcal{F}_\infty]$ where $\mathcal{F}_\infty = \sigma(\bigcup_n \mathcal{F}_n)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Backward Martingales and the SLLN</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.3.5 — Lévy's Downward Theorem</div>
+                    <p>Let $(\mathcal{F}_n)_{n \le 0}$ be a <em>decreasing</em> filtration (i.e. $\mathcal{F}_{-1} \supseteq \mathcal{F}_{-2} \supseteq \cdots$) and $X \in L^1$. Then
+                    $$E[X \mid \mathcal{F}_{-n}] \xrightarrow{a.s. \text{ and } L^1} E[X \mid \mathcal{F}_{-\infty}], \quad \mathcal{F}_{-\infty} = \bigcap_n \mathcal{F}_{-n}.$$</p>
+                    <p class="mb-0">Backward martingales are automatically uniformly integrable (since $E[|M_n|] \le E[|X|] < \infty$ for all $n$).</p>
+                </div>
+
+                <div class="math-box corollary">
+                    <div class="math-box-label">Corollary 7.3.6 — SLLN via Backward Martingales</div>
+                    <p>Let $X_1, X_2, \ldots$ be i.i.d. with $E[|X_1|] < \infty$. Set $\mathcal{G}_n = \sigma(X_n, X_{n+1}, \ldots)$ (the tail $\sigma$-algebra of the future). Define the backward martingale $M_n = E[X_1 \mid \mathcal{G}_n] = \frac{X_1 + \cdots + X_n}{n}$ (by exchangeability). By Lévy's downward theorem, $\bar{X}_n \to E[X_1 \mid \mathcal{G}_\infty]$ a.s. By the Hewitt-Savage 0-1 law, $\mathcal{G}_\infty$ is trivial, so $\bar{X}_n \to E[X_1] = \mu$ a.s. $\square$</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.3.7 — Lévy's Upward Theorem</div>
+                    <p class="mb-0">If $X \in L^1$ and $\mathcal{F}_n \nearrow \mathcal{F}_\infty$, then $E[X \mid \mathcal{F}_n] \to E[X \mid \mathcal{F}_\infty]$ both a.s. and in $L^1$. In particular, if $\mathcal{F}_\infty = \mathcal{F}$, then $E[X \mid \mathcal{F}_n] \to X$ a.s. and in $L^1$. This justifies the Doob martingale as a genuine approximation to $X$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-optional-stopping-theorem/" class="btn btn-outline-custom">&larr; 7.2 Optional Stopping Theorem</a>
+                    <a href="../../" class="btn btn-custom">Back to Probability Theory &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

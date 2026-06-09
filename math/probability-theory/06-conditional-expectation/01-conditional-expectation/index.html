@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.1 Conditional Expectation — Probability Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Probability Theory</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Probability Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-probability-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-probability-spaces/" class="toc-chapter-link"><strong>1.</strong> Probability Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-probability-spaces/01-sample-spaces-and-events/">1.1 Sample Spaces and Events</a>
+                        <a href="../../01-probability-spaces/02-probability-measures/">1.2 Probability Measures</a>
+                        <a href="../../01-probability-spaces/03-conditional-probability-and-independence/">1.3 Conditional Probability and Independence</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-random-variables">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-random-variables/" class="toc-chapter-link"><strong>2.</strong> Random Variables</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-random-variables/01-discrete-random-variables/">2.1 Discrete Random Variables</a>
+                        <a href="../../02-random-variables/02-continuous-random-variables/">2.2 Continuous Random Variables</a>
+                        <a href="../../02-random-variables/03-cumulative-distribution-functions/">2.3 Cumulative Distribution Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-expectation">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-expectation/" class="toc-chapter-link"><strong>3.</strong> Expectation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-expectation/01-expected-value/">3.1 Expected Value</a>
+                        <a href="../../03-expectation/02-variance-and-covariance/">3.2 Variance and Covariance</a>
+                        <a href="../../03-expectation/03-moment-generating-functions/">3.3 Moment Generating Functions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-common-distributions">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-common-distributions/" class="toc-chapter-link"><strong>4.</strong> Common Distributions</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-common-distributions/01-discrete-distributions/">4.1 Discrete Distributions</a>
+                        <a href="../../04-common-distributions/02-continuous-distributions/">4.2 Continuous Distributions</a>
+                        <a href="../../04-common-distributions/03-multivariate-distributions/">4.3 Multivariate Distributions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-limit-theorems">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-limit-theorems/" class="toc-chapter-link"><strong>5.</strong> Limit Theorems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-limit-theorems/01-law-of-large-numbers/">5.1 Law of Large Numbers</a>
+                        <a href="../../05-limit-theorems/02-central-limit-theorem/">5.2 Central Limit Theorem</a>
+                        <a href="../../05-limit-theorems/03-large-deviations/">5.3 Large Deviations</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-conditional-expectation">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-conditional-expectation/" class="toc-chapter-link"><strong>6.</strong> Conditional Expectation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-conditional-expectation/01-conditional-expectation/">6.1 Conditional Expectation</a>
+                        <a href="../../06-conditional-expectation/02-conditional-distributions/">6.2 Conditional Distributions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-martingales">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-martingales/" class="toc-chapter-link"><strong>7.</strong> Martingales</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-martingales/01-definition-and-examples/">7.1 Definition and Examples</a>
+                        <a href="../../07-martingales/02-optional-stopping-theorem/">7.2 Optional Stopping Theorem</a>
+                        <a href="../../07-martingales/03-convergence-theorems/">7.3 Convergence Theorems</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Probability Theory</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Probability Theory</a> ›
+                <a href="../">6. Conditional Expectation</a> ›
+                <span>6.1 Conditional Expectation</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">6.1 Conditional Expectation</h1>
+
+                <p>The elementary definition $E[X \mid A] = E[X \mathbf{1}_A]/P(A)$ works for a single event but fails when conditioning on a continuous random variable (since $P(Y=y)=0$). The measure-theoretic framework resolves this by defining conditional expectation as a random variable, not a number.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 6.1.1 — Conditional Expectation</div>
+                    <p>Let $(\Omega, \mathcal{F}, P)$ be a probability space and $\mathcal{G} \subseteq \mathcal{F}$ a sub-$\sigma$-algebra. For $X \in L^1(\Omega, \mathcal{F}, P)$, the <em>conditional expectation</em> $E[X \mid \mathcal{G}]$ is any random variable $Y$ satisfying:
+                    <ol>
+                        <li>$Y$ is $\mathcal{G}$-measurable;</li>
+                        <li>$\displaystyle\int_A Y\,dP = \int_A X\,dP$ for all $A \in \mathcal{G}$.</li>
+                    </ol>
+                    Such $Y$ exists and is unique $P$-a.s. (by the Radon-Nikodym theorem applied to the signed measure $A \mapsto \int_A X\,dP$ dominated by $P|_\mathcal{G}$).</p>
+                    <p class="mb-0">We write $E[X \mid Y] := E[X \mid \sigma(Y)]$ when conditioning on a random variable $Y$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Existence via Radon-Nikodym</h2>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof of Existence</div>
+                    <p>Define the signed measure $\nu(A) = \int_A X\,dP$ for $A \in \mathcal{G}$. Then $\nu \ll P|_\mathcal{G}$. By the Radon-Nikodym theorem, there exists a $\mathcal{G}$-measurable $Y$ with $\nu(A) = \int_A Y\,dP$ for all $A \in \mathcal{G}$. This is $E[X\mid\mathcal{G}]$.</p>
+                    <p class="mb-0">Uniqueness: if $Y$ and $Y'$ both satisfy the defining conditions, then $\int_A (Y-Y')\,dP = 0$ for all $A \in \mathcal{G}$. Taking $A = \{Y - Y' > \varepsilon\}$ gives $P(Y \ne Y') = 0$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Properties</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 6.1.2 — Properties of Conditional Expectation</div>
+                    <p>Let $X, Y \in L^1$ and $\mathcal{H} \subseteq \mathcal{G} \subseteq \mathcal{F}$. Then:
+                    <ol>
+                        <li><strong>Linearity:</strong> $E[aX + bY \mid \mathcal{G}] = aE[X\mid\mathcal{G}] + bE[Y\mid\mathcal{G}]$ a.s.</li>
+                        <li><strong>Tower property:</strong> $E[E[X\mid\mathcal{G}]\mid\mathcal{H}] = E[X\mid\mathcal{H}]$ a.s.</li>
+                        <li><strong>Taking out what is known:</strong> If $Z$ is $\mathcal{G}$-measurable and $ZX \in L^1$, then $E[ZX\mid\mathcal{G}] = Z\,E[X\mid\mathcal{G}]$ a.s.</li>
+                        <li><strong>Independence:</strong> If $X$ is independent of $\mathcal{G}$, then $E[X\mid\mathcal{G}] = E[X]$ a.s.</li>
+                        <li><strong>Monotonicity:</strong> $X \le Y$ a.s. $\Rightarrow$ $E[X\mid\mathcal{G}] \le E[Y\mid\mathcal{G}]$ a.s.</li>
+                        <li><strong>Jensen's inequality:</strong> For convex $\varphi$, $\varphi(E[X\mid\mathcal{G}]) \le E[\varphi(X)\mid\mathcal{G}]$ a.s.</li>
+                        <li><strong>$L^2$ contraction:</strong> $\|E[X\mid\mathcal{G}]\|_2 \le \|X\|_2$.</li>
+                    </ol></p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Geometric Interpretation in $L^2$</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Orthogonal Projection</div>
+                    <p>The space $L^2(\mathcal{G}) = \{Z \in L^2 : Z \text{ is } \mathcal{G}\text{-measurable}\}$ is a closed subspace of $L^2(\mathcal{F})$. The map $X \mapsto E[X\mid\mathcal{G}]$ is the orthogonal projection $\Pi_\mathcal{G}: L^2(\mathcal{F}) \to L^2(\mathcal{G})$, i.e.
+                    $$E[X\mid\mathcal{G}] = \arg\min_{Z \in L^2(\mathcal{G})} E[(X-Z)^2].$$
+                    The projection property says $E[(X - E[X\mid\mathcal{G}])Z] = 0$ for all $\mathcal{G}$-measurable $Z \in L^2$.</p>
+                    <p class="mb-0">This geometric view makes many identities immediate: the tower property is transitivity of projections onto nested subspaces; the $L^2$ contraction is the Pythagorean theorem.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Conditioning on a Discrete Random Variable</div>
+                    <p>Let $Y$ take values $y_1, y_2, \ldots$ with positive probability. Then $\mathcal{G} = \sigma(Y)$ is generated by the partition $\{Y = y_k\}$, and
+                    $$E[X \mid Y] = \sum_k E[X \mid Y = y_k]\,\mathbf{1}_{\{Y = y_k\}}, \quad E[X \mid Y=y_k] = \frac{E[X\,\mathbf{1}_{\{Y=y_k\}}]}{P(Y=y_k)}.$$</p>
+                    <p class="mb-0">The result is a function of $Y$: $E[X\mid Y] = g(Y)$ where $g(y_k) = E[X\mid Y=y_k]$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 6. Conditional Expectation</a>
+                    <a href="../02-conditional-distributions/" class="btn btn-custom">6.2 Conditional Distributions &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

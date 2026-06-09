@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.2 Spectral Theorem — Functional Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Functional Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Functional Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-normed-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-normed-spaces/" class="toc-chapter-link"><strong>1.</strong> Normed Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-normed-spaces/01-norms-and-banach-spaces/">1.1 Norms and Banach Spaces</a>
+                        <a href="../../01-normed-spaces/02-finite-dimensional-spaces/">1.2 Finite-Dimensional Spaces</a>
+                        <a href="../../01-normed-spaces/03-bounded-linear-operators/">1.3 Bounded Linear Operators</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-hilbert-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-hilbert-spaces/" class="toc-chapter-link"><strong>2.</strong> Hilbert Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-hilbert-spaces/01-inner-products-and-hilbert-spaces/">2.1 Inner Products and Hilbert Spaces</a>
+                        <a href="../../02-hilbert-spaces/02-orthonormal-bases/">2.2 Orthonormal Bases</a>
+                        <a href="../../02-hilbert-spaces/03-projection-theorem/">2.3 Projection Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fundamental-theorems">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-fundamental-theorems/" class="toc-chapter-link"><strong>3.</strong> Fundamental Theorems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-fundamental-theorems/01-hahn-banach-theorem/">3.1 Hahn–Banach Theorem</a>
+                        <a href="../../03-fundamental-theorems/02-open-mapping-theorem/">3.2 Open Mapping Theorem</a>
+                        <a href="../../03-fundamental-theorems/03-closed-graph-theorem/">3.3 Closed Graph Theorem</a>
+                        <a href="../../03-fundamental-theorems/04-uniform-boundedness-principle/">3.4 Uniform Boundedness Principle</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-dual-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-dual-spaces/" class="toc-chapter-link"><strong>4.</strong> Dual Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-dual-spaces/01-the-dual-of-a-normed-space/">4.1 The Dual of a Normed Space</a>
+                        <a href="../../04-dual-spaces/02-weak-and-weak-star-topologies/">4.2 Weak and Weak* Topologies</a>
+                        <a href="../../04-dual-spaces/03-reflexivity/">4.3 Reflexivity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-spectral-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-spectral-theory/" class="toc-chapter-link"><strong>5.</strong> Spectral Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-spectral-theory/01-spectrum-of-an-operator/">5.1 Spectrum of an Operator</a>
+                        <a href="../../05-spectral-theory/02-spectral-theorem/">5.2 Spectral Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-compact-operators">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-compact-operators/" class="toc-chapter-link"><strong>6.</strong> Compact Operators</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-compact-operators/01-compact-operators/">6.1 Compact Operators</a>
+                        <a href="../../06-compact-operators/02-fredholm-theory/">6.2 Fredholm Theory</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Functional Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Functional Analysis</a> ›
+                <a href="../">5. Spectral Theory</a> ›
+                <span>5.2 Spectral Theorem</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">5.2 Spectral Theorem</h1>
+
+                <p>The spectral theorem is a profound generalization of the diagonalization theorem from linear algebra to infinite-dimensional Hilbert spaces. It asserts that self-adjoint (and more generally normal) operators can be "diagonalized" in a suitable sense, revealing their structure through eigenvalues or a spectral measure.</p>
+
+                <h2 class="mt-4 mb-3">Compact Self-Adjoint Operators</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.2.1 — Spectral Theorem for Compact Self-Adjoint Operators</div>
+                    <p>Let $H$ be a Hilbert space and $T: H \to H$ a compact self-adjoint operator ($T^* = T$ and $T$ compact). Then:</p>
+                    <ol>
+                        <li>All eigenvalues of $T$ are real.</li>
+                        <li>Eigenvectors corresponding to distinct eigenvalues are orthogonal.</li>
+                        <li>The spectrum $\sigma(T) = \{0\} \cup \{\lambda_n\}$ where $(\lambda_n)$ is a sequence (finite or countably infinite) of eigenvalues with $\lambda_n \to 0$.</li>
+                        <li>There exists an orthonormal system $(e_n)$ of eigenvectors of $T$ such that for all $x \in H$:</li>
+                    </ol>
+                    $$Tx = \sum_n \lambda_n \langle x, e_n \rangle e_n.$$
+                    <p class="mb-0">If $H$ is separable and $\ker T = \{0\}$, then $(e_n)$ is an orthonormal basis of $H$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof Outline</div>
+                    <p><strong>Eigenvalues are real:</strong> If $Tv = \lambda v$ with $v \ne 0$: $\lambda\|v\|^2 = \langle Tv, v\rangle = \langle v, Tv\rangle = \bar\lambda\|v\|^2$, so $\lambda = \bar\lambda$.</p>
+                    <p><strong>Existence of a first eigenvalue:</strong> $\|T\| = r(T) = \sup\{|\langle Tx,x\rangle| : \|x\|=1\}$ for self-adjoint $T$. This supremum is attained (by compactness, extract a convergent subsequence from a maximizing sequence), and the maximizer is an eigenvector with eigenvalue $\pm\|T\|$.</p>
+                    <p><strong>Induction:</strong> The orthogonal complement of each eigenspace is $T$-invariant (by self-adjointness). Restrict $T$ and repeat. Each eigenspace is finite-dimensional (since $T$ is compact). The eigenvalues must accumulate only at $0$.</p>
+                    <p class="mb-0"><strong>Completeness:</strong> Any $x$ orthogonal to all eigenvectors lies in $\ker T$ (by the above), giving the decomposition. $\square$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Spectral Theorem for Bounded Self-Adjoint Operators</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.2.2 — Spectral Theorem (Spectral Measure Form)</div>
+                    <p>Let $H$ be a Hilbert space and $T \in B(H)$ self-adjoint. Then there exists a unique <em>projection-valued measure</em> (or spectral measure) $E$ on the Borel $\sigma$-algebra of $\mathbb{R}$, supported on $\sigma(T) \subseteq [-\|T\|, \|T\|]$, such that</p>
+                    $$T = \int_{\sigma(T)} \lambda\, dE(\lambda).$$
+                    <p class="mb-0">Here $E(B)$ is an orthogonal projection for each Borel set $B$, and the integral is interpreted as a strong operator limit of approximating sums. Moreover $E(\sigma(T)) = I$ and $E(B_1)E(B_2) = E(B_1 \cap B_2)$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Point vs. Continuous Spectrum</div>
+                    <p class="mb-0">In the spectral measure form, isolated points $\{\lambda\}$ in $\sigma(T)$ with $E(\{\lambda\}) \ne 0$ correspond to eigenvalues. If $\sigma(T)$ is purely continuous (no isolated points with nonzero measure), there are no eigenvectors — a feature impossible in finite dimensions but generic in infinite dimensions (e.g., the position operator $Xf(x) = xf(x)$ on $L^2(\mathbb{R})$ has only continuous spectrum).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Functional Calculus</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 5.2.3 — Continuous Functional Calculus</div>
+                    <p>Let $T \in B(H)$ be self-adjoint with spectral measure $E$. For any bounded Borel function $f: \sigma(T) \to \mathbb{C}$, define</p>
+                    $$f(T) = \int_{\sigma(T)} f(\lambda)\, dE(\lambda).$$
+                    <p>This gives a $C^*$-algebra homomorphism from bounded Borel functions on $\sigma(T)$ to $B(H)$ satisfying:</p>
+                    <ul>
+                        <li>$(\text{id})(T) = T$ (where $\mathrm{id}(\lambda) = \lambda$),</li>
+                        <li>$(fg)(T) = f(T)g(T)$,</li>
+                        <li>$\overline{f}(T) = f(T)^*$,</li>
+                        <li class="mb-0">$\|f(T)\| \le \|f\|_\infty$.</li>
+                    </ul>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 5.2.4 — Square Root and Absolute Value</div>
+                    <p>For a positive self-adjoint operator $T \ge 0$ (i.e., $\langle Tx,x\rangle \ge 0$ for all $x$, equivalently $\sigma(T) \subseteq [0,\infty)$), the functional calculus defines the positive square root $T^{1/2} = \int \sqrt{\lambda}\,dE(\lambda)$. This is the unique positive self-adjoint operator with $(T^{1/2})^2 = T$.</p>
+                    <p class="mb-0">For general $T = T^*$, the absolute value $|T| = (T^2)^{1/2} = \int |\lambda|\,dE(\lambda)$ is defined. One then gets the polar decomposition $T = U|T|$ where $U$ is a partial isometry.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-spectrum-of-an-operator/" class="btn btn-outline-custom">&larr; 5.1 Spectrum of an Operator</a>
+                    <a href="../../06-compact-operators/" class="btn btn-custom">6. Compact Operators &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

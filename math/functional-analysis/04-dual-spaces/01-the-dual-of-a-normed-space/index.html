@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.1 The Dual of a Normed Space — Functional Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Functional Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Functional Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-normed-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-normed-spaces/" class="toc-chapter-link"><strong>1.</strong> Normed Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-normed-spaces/01-norms-and-banach-spaces/">1.1 Norms and Banach Spaces</a>
+                        <a href="../../01-normed-spaces/02-finite-dimensional-spaces/">1.2 Finite-Dimensional Spaces</a>
+                        <a href="../../01-normed-spaces/03-bounded-linear-operators/">1.3 Bounded Linear Operators</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-hilbert-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-hilbert-spaces/" class="toc-chapter-link"><strong>2.</strong> Hilbert Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-hilbert-spaces/01-inner-products-and-hilbert-spaces/">2.1 Inner Products and Hilbert Spaces</a>
+                        <a href="../../02-hilbert-spaces/02-orthonormal-bases/">2.2 Orthonormal Bases</a>
+                        <a href="../../02-hilbert-spaces/03-projection-theorem/">2.3 Projection Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fundamental-theorems">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-fundamental-theorems/" class="toc-chapter-link"><strong>3.</strong> Fundamental Theorems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-fundamental-theorems/01-hahn-banach-theorem/">3.1 Hahn–Banach Theorem</a>
+                        <a href="../../03-fundamental-theorems/02-open-mapping-theorem/">3.2 Open Mapping Theorem</a>
+                        <a href="../../03-fundamental-theorems/03-closed-graph-theorem/">3.3 Closed Graph Theorem</a>
+                        <a href="../../03-fundamental-theorems/04-uniform-boundedness-principle/">3.4 Uniform Boundedness Principle</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-dual-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-dual-spaces/" class="toc-chapter-link"><strong>4.</strong> Dual Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-dual-spaces/01-the-dual-of-a-normed-space/">4.1 The Dual of a Normed Space</a>
+                        <a href="../../04-dual-spaces/02-weak-and-weak-star-topologies/">4.2 Weak and Weak* Topologies</a>
+                        <a href="../../04-dual-spaces/03-reflexivity/">4.3 Reflexivity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-spectral-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-spectral-theory/" class="toc-chapter-link"><strong>5.</strong> Spectral Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-spectral-theory/01-spectrum-of-an-operator/">5.1 Spectrum of an Operator</a>
+                        <a href="../../05-spectral-theory/02-spectral-theorem/">5.2 Spectral Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-compact-operators">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-compact-operators/" class="toc-chapter-link"><strong>6.</strong> Compact Operators</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-compact-operators/01-compact-operators/">6.1 Compact Operators</a>
+                        <a href="../../06-compact-operators/02-fredholm-theory/">6.2 Fredholm Theory</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Functional Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Functional Analysis</a> ›
+                <a href="../">4. Dual Spaces</a> ›
+                <span>4.1 The Dual of a Normed Space</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 The Dual of a Normed Space</h1>
+
+                <p>The dual space $X^*$ consists of all bounded linear functionals on $X$. It is itself a Banach space (even if $X$ is only a normed space), and identifying $X^*$ concretely for classical spaces is one of the central results of functional analysis.</p>
+
+                <h2 class="mt-4 mb-3">Definition and Basic Properties</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.1.1 — Dual Space</div>
+                    <p>Let $X$ be a normed space over $\mathbb{K}$ (where $\mathbb{K} = \mathbb{R}$ or $\mathbb{C}$). The <em>dual space</em> (or <em>conjugate space</em>) of $X$ is</p>
+                    $$X^* = B(X, \mathbb{K}) = \{\phi: X \to \mathbb{K} : \phi \text{ is linear and bounded}\},$$
+                    <p class="mb-0">equipped with the operator norm $\|\phi\| = \sup_{\|x\| \le 1} |\phi(x)|$. Elements of $X^*$ are called <em>bounded linear functionals</em> or <em>continuous linear functionals</em>.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 4.1.2 — $X^*$ Is Always Banach</div>
+                    <p class="mb-0">For any normed space $X$, the dual space $X^*$ is a Banach space. This holds even if $X$ itself is not complete, because $\mathbb{K}$ is complete and the pointwise limit of a Cauchy sequence of functionals is again a bounded linear functional.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Duals of Classical Spaces</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.1.3 — Dual of $\ell^p$ for $1 \le p < \infty$</div>
+                    <p>Let $1 < p < \infty$ with conjugate exponent $q$ satisfying $\frac{1}{p} + \frac{1}{q} = 1$. Then $(\ell^p)^* \cong \ell^q$ isometrically: every $\phi \in (\ell^p)^*$ has the form</p>
+                    $$\phi(x) = \sum_{n=1}^\infty y_n x_n$$
+                    <p>for a unique $y = (y_n) \in \ell^q$, and $\|\phi\| = \|y\|_q$. For $p = 1$: $(\ell^1)^* \cong \ell^\infty$ via the same formula.</p>
+                    <p class="mb-0">The isometric isomorphism $\ell^q \to (\ell^p)^*$ is given by $y \mapsto \phi_y$ where $\phi_y(x) = \sum y_n x_n$. Boundedness follows from Hölder's inequality; surjectivity follows by evaluating $\phi$ on basis vectors $e_n$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.1.4 — Dual of $L^p(\mu)$ for $1 \le p < \infty$</div>
+                    <p>Let $(\Omega, \mathcal{F}, \mu)$ be a $\sigma$-finite measure space. For $1 < p < \infty$ with $\frac{1}{p}+\frac{1}{q}=1$:</p>
+                    $$(L^p(\mu))^* \cong L^q(\mu)$$
+                    <p>isometrically, via $g \in L^q \mapsto \phi_g \in (L^p)^*$ where $\phi_g(f) = \int f\, g\, d\mu$. For $p = 1$: $(L^1(\mu))^* \cong L^\infty(\mu)$.</p>
+                    <p class="mb-0">Note: $(L^\infty)^*$ is strictly larger than $L^1$ — it includes finitely additive measures that are not $\sigma$-additive. This asymmetry foreshadows the failure of reflexivity for $L^1$ and $L^\infty$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.1.5 — Dual of $C[0,1]$ (Riesz Representation)</div>
+                    <p>Every bounded linear functional $\phi$ on $C[0,1]$ has the form</p>
+                    $$\phi(f) = \int_0^1 f\, d\mu$$
+                    <p class="mb-0">for a unique regular signed Borel measure $\mu$ on $[0,1]$, and $\|\phi\| = |\mu|([0,1])$ (the total variation). Thus $C[0,1]^* \cong M[0,1]$, the space of regular signed Borel measures.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Canonical Embedding</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.1.6 — Canonical Embedding into $X^{**}$</div>
+                    <p>The <em>bidual</em> $X^{**} = (X^*)^*$ is the dual of the dual. Define the <em>canonical embedding</em> $J: X \to X^{**}$ by</p>
+                    $$J(x)(\phi) = \phi(x) \quad \text{for all } \phi \in X^*, x \in X.$$
+                    <p class="mb-0">That is, $J(x)$ is the evaluation functional at $x$: it sends a functional $\phi$ to the number $\phi(x)$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.1.7 — $J$ Is an Isometric Embedding</div>
+                    <p>The canonical embedding $J: X \to X^{**}$ is a linear isometry: $\|J(x)\|_{X^{**}} = \|x\|_X$ for all $x \in X$.</p>
+                    <p class="mb-0"><em>Proof:</em> Clearly $|J(x)(\phi)| = |\phi(x)| \le \|\phi\|\|x\|$ so $\|J(x)\| \le \|x\|$. By the Hahn–Banach theorem (Corollary 3.1.3), there exists $\phi \in X^*$ with $\|\phi\| = 1$ and $\phi(x) = \|x\|$. Then $J(x)(\phi) = \phi(x) = \|x\|$, giving $\|J(x)\| \ge \|x\|$. $\square$</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Reflexivity</div>
+                    <p class="mb-0">Although $J$ is always an isometric embedding, it need not be surjective: in general $X$ only embeds isometrically into $X^{**}$ but does not equal it. When $J$ is surjective (an isometric isomorphism), $X$ is called <em>reflexive</em>. This is studied in detail in Section 4.3.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Dual Spaces</a>
+                    <a href="../02-weak-and-weak-star-topologies/" class="btn btn-custom">4.2 Weak and Weak* Topologies &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.3 Closed Graph Theorem — Functional Analysis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Functional Analysis</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Functional Analysis</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-normed-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-normed-spaces/" class="toc-chapter-link"><strong>1.</strong> Normed Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-normed-spaces/01-norms-and-banach-spaces/">1.1 Norms and Banach Spaces</a>
+                        <a href="../../01-normed-spaces/02-finite-dimensional-spaces/">1.2 Finite-Dimensional Spaces</a>
+                        <a href="../../01-normed-spaces/03-bounded-linear-operators/">1.3 Bounded Linear Operators</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-hilbert-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-hilbert-spaces/" class="toc-chapter-link"><strong>2.</strong> Hilbert Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-hilbert-spaces/01-inner-products-and-hilbert-spaces/">2.1 Inner Products and Hilbert Spaces</a>
+                        <a href="../../02-hilbert-spaces/02-orthonormal-bases/">2.2 Orthonormal Bases</a>
+                        <a href="../../02-hilbert-spaces/03-projection-theorem/">2.3 Projection Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fundamental-theorems">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-fundamental-theorems/" class="toc-chapter-link"><strong>3.</strong> Fundamental Theorems</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-fundamental-theorems/01-hahn-banach-theorem/">3.1 Hahn–Banach Theorem</a>
+                        <a href="../../03-fundamental-theorems/02-open-mapping-theorem/">3.2 Open Mapping Theorem</a>
+                        <a href="../../03-fundamental-theorems/03-closed-graph-theorem/">3.3 Closed Graph Theorem</a>
+                        <a href="../../03-fundamental-theorems/04-uniform-boundedness-principle/">3.4 Uniform Boundedness Principle</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-dual-spaces">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-dual-spaces/" class="toc-chapter-link"><strong>4.</strong> Dual Spaces</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-dual-spaces/01-the-dual-of-a-normed-space/">4.1 The Dual of a Normed Space</a>
+                        <a href="../../04-dual-spaces/02-weak-and-weak-star-topologies/">4.2 Weak and Weak* Topologies</a>
+                        <a href="../../04-dual-spaces/03-reflexivity/">4.3 Reflexivity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-spectral-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-spectral-theory/" class="toc-chapter-link"><strong>5.</strong> Spectral Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-spectral-theory/01-spectrum-of-an-operator/">5.1 Spectrum of an Operator</a>
+                        <a href="../../05-spectral-theory/02-spectral-theorem/">5.2 Spectral Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-compact-operators">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-compact-operators/" class="toc-chapter-link"><strong>6.</strong> Compact Operators</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-compact-operators/01-compact-operators/">6.1 Compact Operators</a>
+                        <a href="../../06-compact-operators/02-fredholm-theory/">6.2 Fredholm Theory</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Functional Analysis</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Functional Analysis</a> ›
+                <a href="../">3. Fundamental Theorems</a> ›
+                <span>3.3 Closed Graph Theorem</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">3.3 Closed Graph Theorem</h1>
+
+                <p>The closed graph theorem provides a powerful criterion for boundedness of linear operators: instead of directly estimating $\|Tx\|$, one need only check that the graph of $T$ is a closed subset of the product space. This is often easier to verify in practice, particularly for differential operators.</p>
+
+                <h2 class="mt-4 mb-3">The Graph of an Operator</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 3.3.1 — Graph of a Linear Operator</div>
+                    <p>Let $T: X \to Y$ be a linear operator between normed spaces. The <em>graph</em> of $T$ is the subset of $X \times Y$ defined by</p>
+                    $$\Gamma(T) = \{(x, Tx) : x \in X\} \subseteq X \times Y.$$
+                    <p class="mb-0">The product space $X \times Y$ is a normed space under $\|(x,y)\| = \|x\|_X + \|y\|_Y$ (or any equivalent product norm). We say $T$ has a <em>closed graph</em> if $\Gamma(T)$ is closed in $X \times Y$.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition 3.3.2 — Sequential Characterization</div>
+                    <p class="mb-0">A linear operator $T: X \to Y$ has closed graph if and only if: whenever $x_n \to x$ in $X$ and $Tx_n \to y$ in $Y$, it follows that $y = Tx$. In other words, $T$ cannot be "tricked" by sequences that converge both in domain and range to different limits.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Closed vs. Continuous</div>
+                    <p>Every continuous (bounded) linear operator has closed graph: if $x_n \to x$ then $Tx_n \to Tx$ by continuity, so the limit must be $Tx$. The closed graph theorem says that for operators between Banach spaces, the converse holds too.</p>
+                    <p class="mb-0">For incomplete spaces, the converse can fail. The classic example is the derivative operator $T: C^1[0,1] \to C[0,1]$, $Tf = f'$, under the $\sup$ norm on both spaces: $T$ has closed graph but is unbounded (the domain $C^1[0,1]$ is not complete under $\|\cdot\|_\infty$).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Theorem</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 3.3.3 — Closed Graph Theorem</div>
+                    <p>Let $X$ and $Y$ be Banach spaces, and let $T: X \to Y$ be a linear operator. Then $T$ is bounded if and only if its graph $\Gamma(T)$ is closed in $X \times Y$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p>We already noted ($\Rightarrow$): bounded implies closed graph.</p>
+                    <p>($\Leftarrow$) Suppose $\Gamma(T)$ is closed in $X \times Y$. Since $X$ and $Y$ are Banach spaces, $X \times Y$ is also a Banach space. The subspace $\Gamma(T)$ is closed in a Banach space, hence itself a Banach space.</p>
+                    <p>Define the projection maps $\pi_X: \Gamma(T) \to X$ by $\pi_X(x, Tx) = x$ and $\pi_Y: \Gamma(T) \to Y$ by $\pi_Y(x, Tx) = Tx$. Both are bounded (in fact, $\|\pi_X\| \le 1$ and $\|\pi_Y\| \le 1$ under the product norm $\|(x,y)\| = \|x\| + \|y\|$). Moreover, $\pi_X$ is a bounded bijection from the Banach space $\Gamma(T)$ onto the Banach space $X$.</p>
+                    <p>By the bounded inverse theorem (Corollary 3.2.2), $\pi_X^{-1}: X \to \Gamma(T)$ is bounded. Now</p>
+                    $$T = \pi_Y \circ \pi_X^{-1}: X \to \Gamma(T) \to Y$$
+                    <p class="mb-0">is a composition of bounded operators, hence bounded. $\square$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Applications</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 3.3.4 — Checking Boundedness via Sequences</div>
+                    <p>Consider the multiplication operator $M_\phi: L^2[0,1] \to L^2[0,1]$ defined by $(M_\phi f)(x) = \phi(x) f(x)$ for a measurable function $\phi$. To check boundedness, suppose $f_n \to f$ in $L^2$ and $M_\phi f_n \to g$ in $L^2$. We need $g = \phi f$ a.e.</p>
+                    <p>Passing to a subsequence, $f_{n_k} \to f$ a.e. and $\phi f_{n_k} \to g$ a.e. So $\phi(x) f(x) = g(x)$ a.e. The graph is closed. By the closed graph theorem, $M_\phi$ is bounded if and only if the graph is closed — and here we've verified closure, so boundedness follows provided $\phi \in L^\infty[0,1]$.</p>
+                    <p class="mb-0">This argument is cleaner than directly estimating $\|M_\phi f\|_{L^2}$, though in this case both approaches work.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 3.3.5 — Symmetric Operators on Hilbert Spaces</div>
+                    <p>Let $H$ be a Hilbert space and $T: H \to H$ a linear operator. If $T$ is everywhere defined and symmetric (i.e., $\langle Tx, y \rangle = \langle x, Ty \rangle$ for all $x, y$), then $T$ is bounded.</p>
+                    <p class="mb-0"><em>Proof sketch:</em> Suppose $x_n \to x$ and $Tx_n \to y$. For any $z \in H$: $\langle y, z \rangle = \lim \langle Tx_n, z \rangle = \lim \langle x_n, Tz \rangle = \langle x, Tz \rangle = \langle Tx, z \rangle$. Since $z$ is arbitrary, $y = Tx$. So $T$ has closed graph, and by the closed graph theorem, $T$ is bounded.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-open-mapping-theorem/" class="btn btn-outline-custom">&larr; 3.2 Open Mapping Theorem</a>
+                    <a href="../04-uniform-boundedness-principle/" class="btn btn-custom">3.4 Uniform Boundedness Principle &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

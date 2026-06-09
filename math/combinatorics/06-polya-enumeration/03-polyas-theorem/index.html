@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.3 Pólya's Theorem — Combinatorics</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+<aside class="math-toc" id="math-toc">
+<a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Combinatorics</a>
+<nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+<a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Combinatorics</a>
+<hr>
+<div class="toc-chapter" data-chapter="01-basic-counting">
+  <div class="toc-chapter-header">
+    <a href="../../01-basic-counting/" class="toc-chapter-link"><strong>1.</strong> Basic Counting</a>
+    <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+  </div>
+  <div class="toc-subsections">
+    <a href="../../01-basic-counting/01-addition-and-multiplication-principles/">1.1 Addition and Multiplication Principles</a>
+    <a href="../../01-basic-counting/02-permutations-and-combinations/">1.2 Permutations and Combinations</a>
+    <a href="../../01-basic-counting/03-binomial-theorem/">1.3 Binomial Theorem</a>
+    <a href="../../01-basic-counting/04-inclusion-exclusion/">1.4 Inclusion–Exclusion</a>
+  </div>
+</div>
+<div class="toc-chapter" data-chapter="02-generating-functions">
+  <div class="toc-chapter-header">
+    <a href="../../02-generating-functions/" class="toc-chapter-link"><strong>2.</strong> Generating Functions</a>
+    <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+  </div>
+  <div class="toc-subsections">
+    <a href="../../02-generating-functions/01-ordinary-generating-functions/">2.1 Ordinary Generating Functions</a>
+    <a href="../../02-generating-functions/02-exponential-generating-functions/">2.2 Exponential Generating Functions</a>
+    <a href="../../02-generating-functions/03-applications/">2.3 Applications</a>
+  </div>
+</div>
+<div class="toc-chapter" data-chapter="03-recurrence-relations">
+  <div class="toc-chapter-header">
+    <a href="../../03-recurrence-relations/" class="toc-chapter-link"><strong>3.</strong> Recurrence Relations</a>
+    <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+  </div>
+  <div class="toc-subsections">
+    <a href="../../03-recurrence-relations/01-linear-recurrences/">3.1 Linear Recurrences</a>
+    <a href="../../03-recurrence-relations/02-characteristic-roots/">3.2 Characteristic Roots</a>
+    <a href="../../03-recurrence-relations/03-divide-and-conquer-recurrences/">3.3 Divide-and-Conquer Recurrences</a>
+  </div>
+</div>
+<div class="toc-chapter" data-chapter="04-pigeonhole-and-ramsey">
+  <div class="toc-chapter-header">
+    <a href="../../04-pigeonhole-and-ramsey/" class="toc-chapter-link"><strong>4.</strong> Pigeonhole and Ramsey Theory</a>
+    <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+  </div>
+  <div class="toc-subsections">
+    <a href="../../04-pigeonhole-and-ramsey/01-pigeonhole-principle/">4.1 Pigeonhole Principle</a>
+    <a href="../../04-pigeonhole-and-ramsey/02-ramsey-theory/">4.2 Ramsey Theory</a>
+  </div>
+</div>
+<div class="toc-chapter" data-chapter="05-designs-and-codes">
+  <div class="toc-chapter-header">
+    <a href="../../05-designs-and-codes/" class="toc-chapter-link"><strong>5.</strong> Designs and Codes</a>
+    <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+  </div>
+  <div class="toc-subsections">
+    <a href="../../05-designs-and-codes/01-block-designs/">5.1 Block Designs</a>
+    <a href="../../05-designs-and-codes/02-latin-squares/">5.2 Latin Squares</a>
+    <a href="../../05-designs-and-codes/03-error-correcting-codes/">5.3 Error-Correcting Codes</a>
+  </div>
+</div>
+<div class="toc-chapter" data-chapter="06-polya-enumeration">
+  <div class="toc-chapter-header">
+    <a href="../../06-polya-enumeration/" class="toc-chapter-link"><strong>6.</strong> Pólya Enumeration</a>
+    <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+  </div>
+  <div class="toc-subsections">
+    <a href="../../06-polya-enumeration/01-group-actions-on-sets/">6.1 Group Actions on Sets</a>
+    <a href="../../06-polya-enumeration/02-burnsides-lemma/">6.2 Burnside's Lemma</a>
+    <a href="../../06-polya-enumeration/03-polyas-theorem/">6.3 Pólya's Theorem</a>
+  </div>
+</div>
+</nav></aside>
+<section class="math-content">
+<div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Combinatorics</a></div>
+<nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">6. Pólya Enumeration</a> › <span>6.3 Pólya's Theorem</span></nav>
+<article><h1 class="text-accent mb-4">6.3 Pólya's Theorem</h1>
+
+<p>Pólya's enumeration theorem (1937) extends Burnside's lemma by encoding not just the number of orbits, but the <em>inventory</em> of each equivalence class — how many use each colour, each weight, etc. The key algebraic object is the <strong>cycle index</strong> of the group.</p>
+
+<div class="math-box definition"><div class="math-box-label">Definition — Cycle Index</div>
+<p>Let $G$ be a permutation group acting on a set $[n] = \{1,\ldots,n\}$. For $g \in G$, let $c_k(g)$ denote the number of $k$-cycles in the cycle decomposition of $g$ (as a permutation of $[n]$). The <strong>cycle index</strong> of $G$ is the polynomial</p>
+$$Z(G; a_1, a_2, \ldots, a_n) = \frac{1}{|G|} \sum_{g \in G} a_1^{c_1(g)} a_2^{c_2(g)} \cdots a_n^{c_n(g)}$$
+</div>
+
+<div class="math-box example"><div class="math-box-label">Example — Cycle Index of $\mathbb{Z}_4$</div>
+<p>The cyclic group $\mathbb{Z}_4 = \{e, r, r^2, r^3\}$ acts on $[4]$ by rotation. Cycle types:</p>
+<ul>
+  <li>$e = (1)(2)(3)(4)$: four 1-cycles. Contributes $a_1^4$.</li>
+  <li>$r = (1234)$: one 4-cycle. Contributes $a_4^1$.</li>
+  <li>$r^2 = (13)(24)$: two 2-cycles. Contributes $a_2^2$.</li>
+  <li>$r^3 = (1432)$: one 4-cycle. Contributes $a_4^1$.</li>
+</ul>
+$$Z(\mathbb{Z}_4) = \frac{1}{4}(a_1^4 + a_4 + a_2^2 + a_4) = \frac{1}{4}(a_1^4 + a_2^2 + 2a_4)$$
+</div>
+
+<div class="math-box theorem"><div class="math-box-label">Theorem — Pólya's Enumeration Theorem</div>
+<p>Let $G$ act on positions $[n]$, and let $C$ be a set of $m$ colours. The number of distinct colourings of $[n]$ with colours from $C$, up to the action of $G$, equals</p>
+$$Z(G; m, m, \ldots, m)$$
+obtained by substituting $a_k = m$ for all $k$ in the cycle index.
+</div>
+
+<div class="math-box proof"><div class="math-box-label">Proof Sketch</div>
+<p>By Burnside's lemma, the number of orbits is $\frac{1}{|G|}\sum_{g \in G}|\mathrm{Fix}(g)|$. A colouring $f: [n] \to C$ is fixed by $g$ iff $f$ is constant on each cycle of $g$. If $g$ has cycle type $(c_1(g), c_2(g), \ldots)$, then the number of fixed colourings is $m^{c_1(g)+c_2(g)+\cdots} = m^{\sum_k c_k(g)}$. This equals $Z(G;m,\ldots,m)$ after averaging.</p>
+</div>
+
+<div class="math-box example"><div class="math-box-label">Example — Necklaces with 4 Beads and 3 Colours</div>
+<p>Using $G = \mathbb{Z}_4$ and $m = 3$ colours:</p>
+$$Z(\mathbb{Z}_4; 3,3,3,3) = \frac{1}{4}(3^4 + 3^2 + 2 \cdot 3) = \frac{81 + 9 + 6}{4} = \frac{96}{4} = 24$$
+<p>There are 24 distinct 3-coloured necklaces with 4 beads (up to rotation).</p>
+</div>
+
+<div class="math-box definition"><div class="math-box-label">Definition — Weighted Enumeration</div>
+<p>To count colourings by colour inventory, assign a <em>weight</em> $w_i$ to colour $i$. Substitute $a_k = \sum_i w_i^k$ into the cycle index. The resulting polynomial in the $w_i$ has coefficient of $w_1^{e_1}w_2^{e_2}\cdots$ equal to the number of orbits that use colour $i$ exactly $e_i$ times.</p>
+$$\text{Inventory generating function} = Z\!\left(G;\, \sum_i w_i,\, \sum_i w_i^2,\, \ldots,\, \sum_i w_i^n\right)$$
+</div>
+
+<div class="math-box example"><div class="math-box-label">Example — Weighted Necklaces</div>
+<p>For $G = \mathbb{Z}_4$ and two colours $\{R, B\}$ with weights $r$ and $b$:</p>
+$$Z(\mathbb{Z}_4;\, r+b,\, r^2+b^2,\, r^3+b^3,\, r^4+b^4) = \frac{1}{4}\bigl((r+b)^4 + (r^2+b^2)^2 + 2(r^4+b^4)\bigr)$$
+<p>Expanding $(r+b)^4 = r^4 + 4r^3b + 6r^2b^2 + 4rb^3 + b^4$ and $(r^2+b^2)^2 = r^4 + 2r^2b^2 + b^4$:</p>
+$$= \frac{1}{4}(r^4+4r^3b+6r^2b^2+4rb^3+b^4 + r^4+2r^2b^2+b^4 + 2r^4+2b^4)$$
+$$= r^4 + r^3b + 2r^2b^2 + rb^3 + b^4$$
+<p>So: 1 all-red, 1 with 3 red 1 blue, 2 with 2 red 2 blue, 1 with 1 red 3 blue, 1 all-blue — a total of 6 distinct necklaces, consistent with our earlier Burnside calculation.</p>
+</div>
+
+<div class="math-box remark"><div class="math-box-label">Application — Counting Graphs</div>
+<p>To count non-isomorphic graphs on $n$ labelled vertices, take $G = S_n$ acting on the $\binom{n}{2}$ edges (each edge is a 2-element subset of vertices). The cycle index of $S_n$ acting on edges can be computed from the cycle index of $S_n$ acting on vertices. Substituting $m=2$ (each edge present or absent) gives the number of non-isomorphic graphs on $n$ vertices. For $n=4$: there are 11 non-isomorphic simple graphs on 4 vertices.</p>
+</div>
+
+<hr class="my-5">
+<div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+<a href="../02-burnsides-lemma/" class="btn btn-outline-custom">&larr; 6.2 Burnside's Lemma</a>
+<a href="../../" class="btn btn-custom">Back to Combinatorics &rarr;</a>
+</div></article></section></main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>
