@@ -1,0 +1,172 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Racing Kings</title>
+<link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../css/styles.css">
+<style>
+.chess-board-placeholder{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:2px solid var(--border-color,#555);width:fit-content;margin:1rem auto;}
+.chess-board-placeholder .sq{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
+.chess-board-placeholder .light{background:#f0d9b5;}
+.chess-board-placeholder .dark{background:#b58863;}
+.chess-board-placeholder .goal{background:#2980b9 !important;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main><div class="container py-4">
+<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Variants</a> › <span>Racing Kings</span></nav>
+
+<h1 class="mb-3">Racing Kings</h1>
+<p class="lead mb-4">Racing Kings strips chess down to its purest race: both players start on the bottom two ranks with all pieces except pawns, and the goal is simply to be the first to move your king to the 8th rank. There are no pawns, no checks allowed, and every move must leave the opponent's king completely safe. It is chess as a sprint.</p>
+
+<!-- RULES -->
+<section class="hero-card p-4 mb-4">
+  <h2>1. Rules of Racing Kings</h2>
+
+  <h3>Starting Position</h3>
+  <p>Both sides begin with their pieces packed into the bottom two ranks — no pawns at all. The specific starting arrangement places the pieces to avoid any immediate checks:</p>
+
+  <div class="chess-board-placeholder" id="board-start"></div>
+  <script>(function(){
+    var b=document.getElementById('board-start');
+    var files='abcdefgh';
+    // Racing Kings starting position
+    // Rank 1: ♜♞♝♛♚♝♞♜ (Black pieces)  Rank 2: ♟♟♟♟♟♟♟♟ — no, RK has:
+    // Standard Racing Kings: rank1=black heavy pieces, rank2=white heavy pieces
+    // Exact: rank 1 (bottom): Ka1 Qa2... actually the standard is:
+    // a1=♜ b1=♞ c1=♝ d1=♛ e1=♚ f1=♝ g1=♞ h1=♜  (Black)
+    // a2=♖ b2=♘ c2=♗ d2=♕ e2=♔ f2=♗ g2=♘ h2=♖  (White)
+    var rank1={a1:'♜',b1:'♞',c1:'♝',d1:'♛',e1:'♚',f1:'♝',g1:'♞',h1:'♜'};
+    var rank2={a2:'♖',b2:'♘',c2:'♗',d2:'♕',e2:'♔',f2:'♗',g2:'♘',h2:'♖'};
+    var goalRank=['a8','b8','c8','d8','e8','f8','g8','h8'];
+    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
+      var s=document.createElement('div');
+      var sq=files[c]+(r+1);
+      var isGoal=(r===7);
+      s.className='sq '+((r+c)%2===0?'dark':'light')+(isGoal?' goal':'');
+      if(rank1[sq])s.textContent=rank1[sq];
+      else if(rank2[sq])s.textContent=rank2[sq];
+      b.appendChild(s);
+    }
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>Racing Kings starting position. Blue rank 8 is the goal. Black pieces on rank 1, White on rank 2. First king to rank 8 wins.</small></p>
+
+  <h3>The No-Check Rule</h3>
+  <p>Racing Kings has one unique and critical constraint: <strong>no move may place the opponent's king in check</strong>. Every legal move must leave the opponent's king completely safe — not just your own king as in standard chess. This means:</p>
+  <ul>
+    <li>You cannot move a piece to a square that attacks the opponent's king.</li>
+    <li>You cannot uncover a discovered check.</li>
+    <li>You cannot move in a way that exposes the opponent's king to attack from another piece.</li>
+    <li>A move that would give check is simply <em>illegal</em> — it is not a win, it is not allowed.</li>
+  </ul>
+  <p>There are no pawns in Racing Kings. All pieces are the standard chess pieces minus pawns.</p>
+
+  <h3>Winning and the Black Draw Rule</h3>
+  <ul>
+    <li><strong>Win:</strong> Be the first player to move your king onto any square of the 8th rank (a8 through h8).</li>
+    <li><strong>Draw:</strong> If White moves their king to the 8th rank, and Black can <em>immediately</em> also move their king to the 8th rank on the very next move, the game is a draw. This rule prevents White from having an unfair advantage from moving first — Black always gets a chance to equalise on the same move.</li>
+    <li><strong>Illegal move with no alternatives:</strong> If a player has no legal moves (all moves would give check), the game is a draw.</li>
+  </ul>
+</section>
+
+<!-- STRATEGY -->
+<section class="hero-card p-4 mb-4">
+  <h2>2. Strategic Ideas</h2>
+
+  <h3>Race Your King Forward</h3>
+  <p>The primary goal is advancing your king up the board as quickly as possible. A king can move one square per turn, so the minimum number of moves from rank 2 to rank 8 is <strong>six king moves</strong>. The player who can advance their king six ranks without interruption wins. In practice, the other pieces create blocking and defensive complications that slow the race down.</p>
+
+  <h3>The No-Check Constraint Creates Defensive Duties</h3>
+  <p>The no-check rule means your pieces must serve a dual purpose:</p>
+  <ul>
+    <li><strong>Clearing the path</strong> for your own king to advance (moving pieces out of the way).</li>
+    <li><strong>Blocking the opponent's king</strong> by controlling squares on the 8th rank or intercepting the opponent's march.</li>
+    <li><strong>Not giving check</strong> — a piece that naturally covers a square the opponent's king needs to pass through cannot be placed there if doing so would check the opponent's king. This creates non-obvious constraints on piece placement.</li>
+  </ul>
+
+  <h3>Pieces as Blockers</h3>
+  <p>The most powerful strategic tool in Racing Kings is using your pieces to block the opponent's king's path. A rook on c8 blocks the opponent's king from reaching b8, c8, or d8. A bishop covering a diagonal to the 8th rank forces the opponent to reroute. Piece placement for blocking is often more important than advancing your own king.</p>
+
+  <div class="chess-board-placeholder" id="board-race"></div>
+  <script>(function(){
+    var b=document.getElementById('board-race');
+    var files='abcdefgh';
+    var goal=['a8','b8','c8','d8','e8','f8','g8','h8'];
+    var board={e5:'♔',e6:'♚',f8:'♖',b7:'♝'};
+    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
+      var s=document.createElement('div');
+      var sq=files[c]+(r+1);
+      s.className='sq '+((r+c)%2===0?'dark':'light')+(goal.indexOf(sq)>=0?' goal':'');
+      if(board[sq])s.textContent=board[sq];
+      b.appendChild(s);
+    }
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>White king on e5, one move from the goal. Black king on e6 is also close. White rook on f8 is blocking key 8th rank squares.</small></p>
+</section>
+
+<!-- TACTICAL MOTIFS -->
+<section class="hero-card p-4 mb-4">
+  <h2>3. Tactical Motifs</h2>
+
+  <h3>Tempo Moves and Zugzwang</h3>
+  <p>Because every move must be legal (not giving check), there are positions where all available moves are suboptimal — every move either brings you no closer to the 8th rank or actively helps the opponent. Zugzwang-like situations arise where the player to move is at a disadvantage simply because it is their turn.</p>
+
+  <h3>The Race Calculation</h3>
+  <p>The core Racing Kings calculation is: how many moves does each king need to reach rank 8, accounting for the pieces in between? This requires counting minimum path lengths and identifying which pieces (yours and your opponent's) are blocking or facilitating each path. The player who can accurately count that their king arrives one move ahead wins.</p>
+
+  <h3>Deflection and Interference</h3>
+  <p>Advanced Racing Kings tactics involve deflection — forcing the opponent to move a key blocking piece away from the critical path. If the opponent's rook is guarding the 8th rank, a queen sacrifice to force its capture can open the winning lane for the racing king.</p>
+
+  <h3>The Check-Block Paradox</h3>
+  <p>Sometimes you want to move a piece to a square that would "normally" check the opponent's king — but you cannot, because the move is illegal. This creates the fascinating situation where a powerful-looking piece move is forbidden, and you must find an indirect route. Learning to see which moves are "pseudo-illegal" due to the no-check rule is a key skill in Racing Kings.</p>
+</section>
+
+<!-- PRACTICAL TIPS -->
+<section class="hero-card p-4 mb-4">
+  <h2>4. Practical Tips and Typical Patterns</h2>
+
+  <h3>Opening Strategy</h3>
+  <p>In the opening moves, priorities are:</p>
+  <ol>
+    <li><strong>Move your king immediately</strong> — every turn the king doesn't advance is a wasted tempo in the race.</li>
+    <li><strong>Clear the path</strong> — move pieces that block your king's direct march first.</li>
+    <li><strong>Establish a blocker</strong> — getting a rook or queen to the 8th rank early to control those squares denies the opponent easy access.</li>
+  </ol>
+
+  <h3>The Draw Mechanism in Practice</h3>
+  <p>The Black draw rule creates a fascinating dynamic: White often needs to be <em>two</em> moves ahead of Black to actually win rather than draw. If White reaches the 8th rank while Black's king is already on the 7th rank, Black can step up to the 8th rank immediately and draw. White must either reach the 8th rank when Black's king is still far away, or find a way to block Black from reaching the 8th rank even after White gets there.</p>
+
+  <div class="notation-box">
+    Example: White Ke8 (wins the race). If Black king is on d6 — Black cannot reach rank 8 in one move — White wins.<br>
+    But if Black king is on d7 — Black plays Kd8 or Ke8 (if unoccupied) — game is drawn.<br><br>
+    This means White must win the race by at least 2 moves, or block Black's access to rank 8.
+  </div>
+
+  <h3>Endgame Races</h3>
+  <p>When both kings are deep in the board and close to the 8th rank, the calculation becomes precise and thrilling. Count every square, every tempo. A single unnecessary piece move can cost the race. Racing Kings endgames are some of the most exciting positions in any chess variant — pure calculation, pure geometry, no positional ambiguity.</p>
+</section>
+
+</div></main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../js/script.js"></script>
+</body></html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIBOR Market Model (LMM)</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Rates</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rates-fundamentals">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rates-fundamentals/" class="toc-chapter-link"><strong>1.</strong> Interest Rates Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rates-fundamentals/01-discount-factors-and-spot-rates/">1.1 Discount Factors and Spot Rates</a>
+                        <a href="../../01-interest-rates-fundamentals/02-forward-rates/">1.2 Forward Rates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-yield-curve-construction">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-yield-curve-construction/" class="toc-chapter-link"><strong>2.</strong> Yield Curve Construction</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-yield-curve-construction/01-bootstrapping/">2.1 Bootstrapping</a>
+                        <a href="../../02-yield-curve-construction/02-interpolation-methods/">2.2 Interpolation Methods</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-interest-rate-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-interest-rate-swaps/" class="toc-chapter-link"><strong>3.</strong> Interest Rate Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-interest-rate-swaps/01-vanilla-interest-rate-swaps/">3.1 Vanilla Interest Rate Swaps</a>
+                        <a href="../../03-interest-rate-swaps/02-ois-and-sofr-discounting/">3.2 OIS and SOFR Discounting</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-interest-rate-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-interest-rate-options/" class="toc-chapter-link"><strong>4.</strong> Interest Rate Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-interest-rate-options/01-caps-and-floors/">4.1 Caps and Floors</a>
+                        <a href="../../04-interest-rate-options/02-swaptions/">4.2 Swaptions</a>
+                        <a href="../../04-interest-rate-options/03-sabr-model/">4.3 SABR Model</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-short-rate-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-short-rate-models/" class="toc-chapter-link"><strong>5.</strong> Short Rate Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-short-rate-models/01-vasicek-and-hull-white/">5.1 Vasicek and Hull-White</a>
+                        <a href="../../05-short-rate-models/02-hjm-framework/">5.2 HJM Framework</a>
+                        <a href="../../05-short-rate-models/03-lmm/">5.3 LMM (LIBOR Market Model)</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../../quant/">Quant</a> › <a href="../../">Rates</a> › <a href="../">5. Short Rate Models</a> › <span>LIBOR Market Model (LMM)</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">5.3 LIBOR Market Model (LMM)</h1>
+
+                <p>The HJM framework models the continuous instantaneous forward curve, but traded instruments — caps, floors, swaptions — reference discrete forward rates over standard tenors (3-month, 6-month forward LIBOR or term SOFR). The LIBOR Market Model (LMM), also known as the BGM model after Brace, Gatarek, and Musiela (1997), is the discretised special case of HJM that models exactly these discrete forward rates directly as lognormal (or displaced-lognormal) processes — making it directly consistent with Black's formula, the market standard for quoting cap and swaption volatilities.</p>
+
+                <h2 class="mt-5 mb-3">Modelling Discrete Forward Rates</h2>
+
+                <p>Fix a tenor structure $0 = T_0 < T_1 < \cdots < T_N$ with accrual fractions $\delta_i = T_{i+1}-T_i$, and let $F_i(t) = F(t;T_i,T_{i+1})$ denote the simply-compounded forward rate for the period $[T_i,T_{i+1}]$, observed at time $t \leq T_i$.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — LMM (Lognormal Forward-Rate) Dynamics</div>
+                    <p class="mb-0">Under its own associated forward measure $\mathbb{Q}^{T_{i+1}}$ (the measure with numeraire $P(\cdot,T_{i+1})$), each forward rate $F_i(t)$ is modelled as driftless lognormal:
+                    $$dF_i(t) = \sigma_i(t)\,F_i(t)\,dW_i^{T_{i+1}}(t), \qquad t \leq T_i$$
+                    where $\sigma_i(t)$ is a (deterministic) instantaneous volatility function, and $dW_i^{T_{i+1}}\,dW_j^{T_{i+1}} = \rho_{ij}\,dt$ defines a correlation structure $\{\rho_{ij}\}$ between different forward rates.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Consistency with Black's Caplet Formula</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — LMM Recovers Black's Formula</div>
+                    <p class="mb-0">Because $F_i(t)$ is, by construction, a martingale under $\mathbb{Q}^{T_{i+1}}$ with driftless lognormal dynamics, $F_i(T_i)$ is exactly lognormally distributed conditional on $F_i(t)$, with
+                    $$\text{Var}\left[\ln\frac{F_i(T_i)}{F_i(t)}\right] = \int_t^{T_i}\sigma_i(s)^2\,ds =: \bar\sigma_i^2(T_i-t)$$
+                    Pricing the $i$-th caplet under $\mathbb{Q}^{T_{i+1}}$ then gives <em>exactly</em> Black's caplet formula (Section 4.1) with implied volatility $\bar\sigma_i = \sqrt{\frac{1}{T_i-t}\int_t^{T_i}\sigma_i(s)^2\,ds}$. This is the central appeal of LMM: it is the simplest arbitrage-free model under which the market-standard Black caplet formula is not an approximation, but the model's exact price.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Drift Problem Under a Single Measure</div>
+                    <p class="mb-0">The subtlety is that each $F_i(t)$ is driftless only under <em>its own</em> forward measure $\mathbb{Q}^{T_{i+1}}$. To simulate the joint evolution of all forward rates $F_0,\ldots,F_{N-1}$ together (needed for any multi-rate product), all rates must be expressed under a single, common measure — e.g., the terminal measure $\mathbb{Q}^{T_N}$ or the spot LIBOR measure. Under such a common measure, each $F_i(t)$ for $i < N-1$ acquires a non-zero drift determined by a no-arbitrage relationship analogous to the HJM drift condition:
+                    $$dF_i(t) = \sigma_i(t)F_i(t)\left(-\sum_{j=i+1}^{N-1}\frac{\delta_j\rho_{ij}\sigma_j(t)F_j(t)}{1+\delta_jF_j(t)}\right)dt + \sigma_i(t)F_i(t)\,dW_i^{T_N}(t)$$
+                    These drift terms are state-dependent (depend on the current levels $F_j(t)$ of other forward rates), which is why LMM, despite being built from individually lognormal rates, does not admit closed-form prices for most multi-rate products and requires Monte Carlo simulation.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Displaced Diffusion and SABR-LMM</h2>
+
+                <p>Pure lognormal LMM, like Black's model for a single caplet, implies a flat (strike-independent) implied volatility for each forward rate — it cannot reproduce the volatility smile observed in the market. Two standard extensions introduce skew and smile.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Displaced-Diffusion LMM</div>
+                    <p class="mb-0">Displaced diffusion shifts each forward rate by a constant $\beta_i \geq 0$ before applying lognormal dynamics:
+                    $$d(F_i(t)+\beta_i) = \sigma_i(t)\,(F_i(t)+\beta_i)\,dW_i(t) \quad\Longleftrightarrow\quad dF_i(t) = \sigma_i(t)(F_i(t)+\beta_i)\,dW_i(t)$$
+                    This is mathematically equivalent to a CEV-type model interpolating between normal ($\beta_i \to \infty$, relative to $F_i$) and lognormal ($\beta_i=0$) dynamics, and produces a downward-sloping (skewed) implied volatility curve in $K$ — qualitatively similar to SABR with $\rho<0$ — while remaining analytically tractable (closed-form caplet prices via a shifted Black formula).</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — SABR-LMM</div>
+                    <p class="mb-0">SABR-LMM augments each forward rate with its own SABR-style stochastic volatility process:
+                    $$dF_i(t) = \alpha_i(t)\,(F_i(t)+\beta_i)^{\beta}\,dW_i(t), \qquad d\alpha_i(t) = \nu_i\,\alpha_i(t)\,dZ_i(t)$$
+                    with correlations between $W_i$, $Z_i$, and across different forward rates' drivers. This combines LMM's correct multi-rate, no-arbitrage drift structure with SABR's ability to fit a full smile (not just a skew) at each expiry, at the cost of a much higher-dimensional and more computationally expensive simulation, since stochastic volatility states must be tracked for every forward rate.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Monte Carlo Simulation and Bermudan Pricing (LSM)</h2>
+
+                <p>Because the LMM drift terms are state-dependent and the model is high-dimensional (one state variable per forward rate, plus correlations), Monte Carlo simulation is the standard pricing method, typically using a log-Euler discretisation of each $F_i(t)$ under the chosen common measure.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Pricing Bermudan Swaptions via Least-Squares Monte Carlo (LSM)</div>
+                    <p class="mb-0">Standard Monte Carlo computes expectations of payoffs at fixed future dates, but Bermudan products require determining, at each exercise date, whether immediate exercise or continuation is optimal — a backward-induction problem that is naturally suited to PDE/lattice methods but not to forward-simulated Monte Carlo. The Longstaff-Schwartz least-squares Monte Carlo (LSM) algorithm resolves this: simulate forward paths of all relevant forward rates under LMM, then work backward from the final exercise date, at each exercise date $T_0^{(k)}$ regressing the (simulated, discounted) continuation value onto a set of basis functions of the current state (e.g., the current swap rate, polynomial terms), and using the fitted regression to estimate the continuation value along each path — comparing it to the immediate exercise value to determine the (approximately) optimal exercise strategy. LMM combined with LSM is the industry-standard approach for pricing and risk-managing Bermudan swaptions, callable range accruals, and other path-dependent, multi-exercise-date interest rate products.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Correlation Structure Between Forward Rates</h2>
+
+                <p>The correlation matrix $\{\rho_{ij}\}$ between different forward rates is a key driver of the value of products sensitive to the joint distribution of multiple rates — most importantly swaptions (whose underlying swap rate is itself a complex function of a basket of forward rates) and CMS spread products.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Parametric Correlation Structures</div>
+                    <p class="mb-0">Rather than calibrate an arbitrary $N\times N$ correlation matrix (which would have $O(N^2)$ free parameters and could fail to be positive semi-definite), practitioners use low-parameter parametric forms. A common choice is the exponentially decaying form:
+                    $$\rho_{ij} = \exp\big(-\beta\,|T_i - T_j|\big), \qquad \beta > 0$$
+                    which guarantees a positive semi-definite matrix and captures the empirical fact that nearby forward rates (e.g., the 1y and 1.25y forward rates) are highly correlated, while distant ones (e.g., 1y and 30y) are much less so. More flexible forms add a second parameter to control the correlation between very-short and very-long rates independently, or use a low-rank factor decomposition $\rho_{ij} = \sum_{k=1}^M b_{ik}b_{jk}$ for a small number of factors $M \ll N$, directly linking LMM's correlation structure to the multi-factor decomposition discussed for HJM.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — LMM in Context</div>
+                    <p class="mb-0">This concludes our tour of interest rate term-structure models. Short-rate models (Vasicek/Hull-White) offer tractability and closed-form prices for simple products at the cost of unrealistic single-factor curve dynamics. The HJM framework provides the general no-arbitrage theory under which any forward-rate volatility specification is consistent, but is typically too unwieldy for direct implementation. The LIBOR Market Model occupies the practical sweet spot: it is the discretisation of HJM that matches how the market actually quotes cap and swaption volatilities (via Black's formula), supports realistic multi-factor correlation structures, and — combined with displaced-diffusion or SABR extensions for the smile and Monte Carlo/LSM for early exercise — remains the dominant framework for pricing exotic interest rate derivatives at most institutions.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-hjm-framework/" class="btn btn-outline-custom">&larr; 5.2 HJM Framework</a>
+                    <a href="../../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

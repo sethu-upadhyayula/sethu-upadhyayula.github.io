@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro Problems</title>
+<link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../css/styles.css">
+<style>
+.chess-board-placeholder{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:2px solid var(--border-color,#555);width:fit-content;margin:1rem auto;}
+.chess-board-placeholder .sq{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
+.chess-board-placeholder .light{background:#f0d9b5;}
+.chess-board-placeholder .dark{background:#b58863;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main><div class="container py-4">
+<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Compositions</a> › <span>Retro Problems</span></nav>
+
+<h1 class="mb-3">Retro Problems</h1>
+<p class="lead mb-4">Retrograde analysis — "retros" — asks not what will happen next, but what <em>must</em> have happened before. Given a position on the board, can you reconstruct the game that led to it? Retros occupy the intersection of chess and logic puzzles, demanding that solvers reason about legality, history, and the laws of the game with mathematical precision.</p>
+
+<!-- DEFINITION -->
+<section class="hero-card p-4 mb-4">
+  <h2>1. What Is Retrograde Analysis?</h2>
+  <p>In most chess problems, you are given a position and asked what will happen going forward. In a retrograde analysis problem, you are given a position and asked: <strong>what sequence of legal chess moves could have produced this position?</strong></p>
+  <p>The fundamental principle is <strong>legality</strong>: every position in a chess problem must be reachable from the starting position (White king on e1, etc.) by a sequence of legal chess moves. Positions that look plausible can turn out to be illegal — impossible to reach — and this illegality is often the key to the puzzle.</p>
+  <p>Retros are unique in chess composition because they require knowledge not just of the rules of play but of the <em>history</em> of the position: who has moved their kings, whether castling rights are retained, whether an en passant capture is available, and how many times each piece has moved.</p>
+</section>
+
+<!-- TYPES -->
+<section class="hero-card p-4 mb-4">
+  <h2>2. Types of Retro Problems</h2>
+
+  <h3>Proof Games (PG)</h3>
+  <p>A proof game asks: <em>starting from the initial position, reach the given position in exactly n moves (for each side).</em> The solution is a specific sequence of legal chess moves from the opening array to the given diagram. The challenge is that many positions can be reached in multiple ways — finding the unique path in exactly n moves requires careful exclusion of alternatives.</p>
+  <p>Example stipulation: <strong>PG 7.5</strong> means the position was reached after 7 moves by White and 7 moves by Black (7.5 means White has just played move 8). Proof games are the most compositionally active retro genre today.</p>
+
+  <h3>Shortest Proof Games (SPG)</h3>
+  <p>A variant where the stipulation is simply "reach this position in the <em>fewest</em> possible moves." The solver must find the minimum-length game leading to the position. SPGs are often published without stating the move count — finding the number is part of the puzzle.</p>
+
+  <h3>Last Move Problems</h3>
+  <p>The problem asks: <em>what was the last move played?</em> Often the last move is highly constrained — perhaps only one move can account for all the features of the position. These problems test understanding of check, capture, and pawn promotion logic.</p>
+
+  <h3>Castling and En Passant Right Analysis</h3>
+  <p>Many positions contain a forward-play problem (typically a mate in n) where the correct solution depends on whether castling or en passant is legal. The retro analysis determines — from the position's history — whether the right exists. The classic convention: castling and en passant are assumed legal unless they can be proved illegal by retrograde analysis.</p>
+  <p>Example: White wants to castle kingside as the key move of a twomover. But has the White king previously moved? Retrograde analysis of the position may prove that the king <em>must</em> have moved to reach the current configuration — therefore castling is illegal, and a different key must be found.</p>
+
+  <h3>Illegal Position Problems</h3>
+  <p>Sam Loyd famously published positions that appear to show a legal chess game but are in fact impossible to reach by legal play. Identifying why a position is illegal — which piece could not have gotten there — is itself the puzzle. These problems require deep understanding of chess rules: pawns cannot pass through occupied squares, pieces cannot escape from closed pawn formations, and so on.</p>
+</section>
+
+<!-- SAM LOYD -->
+<section class="hero-card p-4 mb-4">
+  <h2>3. Sam Loyd and the Birth of Retro Problems</h2>
+  <p>Sam Loyd (1841–1911) was the first composer to systematically exploit retrograde analysis as an artistic medium. His most famous retro challenge presented a position with the question: <em>"White to play and mate in n — but first, can you prove what the last move was?"</em></p>
+  <p>Loyd discovered that positions can be constructed so that the last move is provably unique — even though many moves look plausible at first glance. His "Trick and Trap" problems often disguised a retro element within an otherwise ordinary-looking mate-in-n problem, catching solvers who ignored the historical dimension of the position.</p>
+  <p>One of Loyd's most celebrated retro questions: given a position, prove that a specific pawn capture <em>must</em> have been an en passant capture (because no other sequence of legal moves can account for the pawn's current position). This proof then establishes that the en passant right exists in the forward-play problem.</p>
+</section>
+
+<!-- PROOF GAMES IN DETAIL -->
+<section class="hero-card p-4 mb-4">
+  <h2>4. Proof Games in Detail</h2>
+  <p>Modern proof game composition has become extraordinarily sophisticated, with dedicated solving programs (Popeye, Natch) and an active international community. The artistic goals of proof games include:</p>
+
+  <h3>Captured Pieces</h3>
+  <p>In the diagram, some pieces that were on the starting array are missing. Accounting for these captures — which piece captured which, and on which square — is often the hardest part of verifying a proof game. The captures must be consistent with the pawn structure (pawns can only reach certain squares via captures) and the piece positions.</p>
+
+  <h3>Tempo Moves</h3>
+  <p>Sometimes one side must "waste" moves to synchronise the position. A knight making a round trip (moving to a square and back) to use an extra tempo is a classic proof game device. Identifying where the tempo move occurs is often the key insight.</p>
+
+  <h3>Switchback</h3>
+  <p>A piece moves away from its starting square and then returns to it. In a proof game, this accounts for a precise move count while leaving the piece where it started. Switchbacks are intentional artistic devices — the piece's round trip serves a necessary function.</p>
+
+  <h3>Excelsior in Proof Games</h3>
+  <p>A pawn promotes, and the promoted piece is a specific piece (not the queen) in a position where a queen would be expected. The question "why did Black promote to a knight (rather than a queen)?" is a classic proof game challenge — the answer invariably involves stalemate avoidance or some other forced consideration.</p>
+</section>
+
+<!-- DIAGRAM -->
+<section class="hero-card p-4 mb-4">
+  <h2>5. An Illustrative Position</h2>
+  <p>This position illustrates a castling-rights retro. The forward problem is a twomover, but its solution depends on whether White can castle.</p>
+
+  <p><strong>Position:</strong> White: ♔e1, ♕d3, ♖h1, ♗c4, ♘f3 &nbsp;|&nbsp; Black: ♚e8, ♜a8, ♛d8, ♝c8, ♟e5, ♟f7</p>
+  <p><em>White to play and mate in 2 — but can White castle?</em></p>
+
+  <div class="chess-board-placeholder" id="board-retro"></div>
+  <script>(function(){
+    var pieces={
+      'e1':'♔','d3':'♕','h1':'♖','c4':'♗','f3':'♘',
+      'e8':'♚','a8':'♜','d8':'♛','c8':'♝','e5':'♟','f7':'♟'
+    };
+    var b=document.getElementById('board-retro');
+    var files='abcdefgh';
+    for(var r=7;r>=0;r--){for(var c=0;c<8;c++){
+      var s=document.createElement('div');
+      var sq=files[c]+(r+1);
+      s.className='sq '+((r+c)%2===0?'dark':'light');
+      if(pieces[sq])s.textContent=pieces[sq];
+      b.appendChild(s);
+    }}
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>Retro problem — castling rights must be established by retrograde analysis</small></p>
+
+  <h3 class="mt-3">Retro Analysis</h3>
+  <div class="notation-box">
+    <strong>Question:</strong> Can White castle kingside (0-0) as the key move?<br><br>
+    <strong>Analysis:</strong> The White rook is on h1 (its starting square) and the White king<br>
+    is on e1 (its starting square). No piece stands between them. On the surface,<br>
+    castling appears legal.<br><br>
+    <strong>Retro check:</strong> Examine whether the king or rook must have moved to reach<br>
+    this position. If the position can be reached without either king or rook moving,<br>
+    castling rights are retained (by convention). If the only legal path to the position<br>
+    requires a king or rook move, castling is illegal.<br><br>
+    <strong>Result:</strong> In a well-constructed retro problem of this type, the analysis<br>
+    proves exactly one answer — and that answer determines whether 0-0 is the key<br>
+    (and the twomover has one solution) or is illegal (requiring a different key).
+  </div>
+</section>
+
+<!-- SOLVING -->
+<section class="hero-card p-4 mb-4">
+  <h2>6. How to Solve Retro Problems</h2>
+  <ol>
+    <li><strong>Establish legality.</strong> The first question is always: is this position legal? Can it be reached from the starting position? Sometimes it cannot, and the illegality is the entire puzzle.</li>
+    <li><strong>Account for all pieces.</strong> Count each side's pieces. Any pieces missing from the starting array must have been captured. How? By which enemy piece, on which square? Pawn structures severely constrain this.</li>
+    <li><strong>Work backward from the position.</strong> What was the last move? Uncapture pieces, unpromote pawns (when a piece is on the last rank), and reverse king/rook moves. Which last moves are legal?</li>
+    <li><strong>Apply the convention.</strong> Castling and en passant are assumed legal unless proven illegal. If your retro analysis proves they are illegal, that is the solution. If the analysis cannot prove illegality, they are assumed legal.</li>
+    <li><strong>Verify the proof game.</strong> For proof game problems, the solution must be a fully legal sequence from the starting position, with no alternative paths of the same length.</li>
+  </ol>
+  <p>Retro problems reward chess knowledge at the deepest level — understanding not just how pieces move, but the logical constraints on what configurations are physically reachable by legal play. They are perhaps the most intellectually demanding genre in all of chess composition.</p>
+</section>
+
+</div></main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../js/script.js"></script>
+</body></html>

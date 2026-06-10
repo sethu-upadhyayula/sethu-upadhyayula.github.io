@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King of the Hill</title>
+<link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../css/styles.css">
+<style>
+.chess-board-placeholder{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:2px solid var(--border-color,#555);width:fit-content;margin:1rem auto;}
+.chess-board-placeholder .sq{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
+.chess-board-placeholder .light{background:#f0d9b5;}
+.chess-board-placeholder .dark{background:#b58863;}
+.chess-board-placeholder .hill{background:#27ae60 !important;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main><div class="container py-4">
+<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Variants</a> › <span>King of the Hill</span></nav>
+
+<h1 class="mb-3">King of the Hill</h1>
+<p class="lead mb-4">King of the Hill adds a second winning condition to standard chess: march your king to the centre of the board. This single rule transforms the most timid piece in chess into a bold, marauding attacker — and turns every game into a frantic race for the four central squares.</p>
+
+<!-- RULES -->
+<section class="hero-card p-4 mb-4">
+  <h2>1. Rules and Winning Conditions</h2>
+  <p>King of the Hill is played exactly like standard chess with one additional winning condition:</p>
+  <ul>
+    <li><strong>Standard win:</strong> Checkmate the opponent's king.</li>
+    <li><strong>King of the Hill win:</strong> Move your king to one of the four central squares — <strong>e4, d4, e5, or d5</strong> — and your opponent cannot immediately win in response.</li>
+  </ul>
+
+  <h3>The Hill Squares</h3>
+  <p>The four "hill" squares are exactly the same squares that classical chess theory identifies as the most important — the central four. But in King of the Hill, reaching them with your king is an immediate win, not just a strategic advantage.</p>
+
+  <div class="chess-board-placeholder" id="board-hill"></div>
+  <script>(function(){
+    var b=document.getElementById('board-hill');
+    var files='abcdefgh';
+    var hill=['d4','e4','d5','e5'];
+    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
+      var s=document.createElement('div');
+      var sq=files[c]+(r+1);
+      var isHill=hill.indexOf(sq)>=0;
+      s.className='sq '+((r+c)%2===0?'dark':'light')+(isHill?' hill':'');
+      b.appendChild(s);
+    }
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>The four green "hill" squares: d4, e4, d5, e5. Move your king here to win instantly.</small></p>
+
+  <h3>The Simultaneous Threat Rule</h3>
+  <p>There is one important caveat: if your king reaches a hill square but is <em>immediately</em> in checkmate or your opponent can win on their next move (e.g., capture your king or reach the hill themselves on the very next move), the game continues or the opponent wins. You must reach the hill safely, not just reach it.</p>
+</section>
+
+<!-- STRATEGIC IMPACT -->
+<section class="hero-card p-4 mb-4">
+  <h2>2. Strategic Impact: The King Race</h2>
+  <p>The king-to-the-hill condition creates a completely different strategic landscape compared to standard chess.</p>
+
+  <h3>King Safety Is Inverted</h3>
+  <p>In classical chess, keeping your king safe behind a pawn shelter is one of the most fundamental principles. In King of the Hill, a king that hides passively on the back rank is losing slowly — it needs to march forward toward the centre. This inversion is radical: the very thing you avoid in classical chess (king in the centre) becomes your primary goal.</p>
+
+  <h3>Both Players Race Simultaneously</h3>
+  <p>Since both kings need to reach the centre, the game typically features:</p>
+  <ul>
+    <li><strong>Rapid piece exchanges:</strong> Clearing the path for the king to advance requires removing blockers. Games often see early, aggressive trading.</li>
+    <li><strong>King marches:</strong> Players begin walking their kings toward d4/e4 (or d5/e5) from very early in the game — sometimes as early as move 10–15 in fast time controls.</li>
+    <li><strong>Blocking the opponent's king:</strong> Placing pieces in the path of the enemy king, or occupying or controlling the hill squares, is a key defensive strategy.</li>
+  </ul>
+
+  <h3>Centre Control Is Doubly Important</h3>
+  <p>Classical chess values centre control because central pieces have greater mobility. King of the Hill adds a literal winning condition to the mix — controlling d4/d5/e4/e5 now means denying the opponent their victory condition, not just gaining space. A knight on e4 that blocks the enemy king from reaching the hill is simultaneously well-placed AND serving a critical defensive function.</p>
+</section>
+
+<!-- TACTICAL MOTIFS -->
+<section class="hero-card p-4 mb-4">
+  <h2>3. Tactical Patterns</h2>
+
+  <h3>The King March</h3>
+  <p>The most distinctive tactical pattern in KOTH is the king march — a sequence of king moves toward the centre that must be executed quickly enough to outrace the opponent. A typical march might look like: Ke1–e2–e3–e4 (win!), but each step must be safe from attack and checks.</p>
+
+  <div class="chess-board-placeholder" id="board-march"></div>
+  <script>(function(){
+    var b=document.getElementById('board-march');
+    var files='abcdefgh';
+    var hill=['d4','e4','d5','e5'];
+    var board={e2:'♔',e8:'♚',d1:'♕',d8:'♛'};
+    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
+      var s=document.createElement('div');
+      var sq=files[c]+(r+1);
+      var isHill=hill.indexOf(sq)>=0;
+      s.className='sq '+((r+c)%2===0?'dark':'light')+(isHill?' hill':'');
+      if(board[sq])s.textContent=board[sq];
+      b.appendChild(s);
+    }
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>White king on e2, two steps from the hill. The race is on.</small></p>
+
+  <h3>Blocking and Deflection</h3>
+  <p>When the opponent's king is one step from the hill, you must either:</p>
+  <ul>
+    <li><strong>Check the enemy king</strong> to divert its march — forcing it to spend a move stepping away from check is often the only way to stop it.</li>
+    <li><strong>Control the hill squares</strong> with your own pieces so the enemy king cannot legally move there (a king cannot move to a square controlled by an enemy piece).</li>
+    <li><strong>Deliver checkmate</strong> before the king arrives — sometimes the fastest winning line is a mating attack rather than your own king march.</li>
+  </ul>
+
+  <h3>The Trade-off: Checkmate vs. Hill Race</h3>
+  <p>One of the deepest strategic tensions in KOTH is deciding whether to race for the hill or launch a mating attack. A player who has opened lines toward the enemy king might find a checkmate faster than their own king can march — while the opponent, who is closer to the hill, might ignore the attack and simply win by king march. Correct evaluation of which threat is faster is the key skill.</p>
+</section>
+
+<!-- TYPICAL GAME PATTERNS -->
+<section class="hero-card p-4 mb-4">
+  <h2>4. Typical Game Patterns and Practical Advice</h2>
+
+  <h3>Opening Play</h3>
+  <p>Standard opening principles apply in the early moves — develop pieces, control the centre, don't leave your king unsafe. However, from around move 10 onwards, both players typically begin looking for king march opportunities. Opening systems that quickly neutralise the centre and allow early king activation are popular.</p>
+
+  <h3>Endgame Considerations</h3>
+  <p>King and pawn endgames in KOTH are fascinating. In a standard chess ending, you activate your king to support pawns. In KOTH, you activate your king and it might simply win by walking to e4 — so the defending side must constantly monitor the king's proximity to the hill, not just count pawns.</p>
+
+  <h3>Key Principle</h3>
+  <p>If you are significantly ahead in material, the hill race becomes a fallback win condition — even if your opponent has a complex attack, reaching e4 or d4 with your king can end the game before the attack lands. Conversely, if you are behind in material, the hill race becomes your salvation — you can ignore material imbalances entirely if your king is closer to the goal. This makes KOTH a truly balanced variant even in seemingly lopsided positions.</p>
+</section>
+
+</div></main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../js/script.js"></script>
+</body></html>

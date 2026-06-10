@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volatility Surface: Risk Reversals and Butterflies</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Foreign Exchange</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-fx-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-fx-markets/" class="toc-chapter-link"><strong>1.</strong> FX Markets</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-fx-markets/01-fx-spot/">1.1 FX Spot</a>
+                        <a href="../../01-fx-markets/02-quoting-conventions/">1.2 Quoting Conventions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-fx-forwards-and-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-fx-forwards-and-swaps/" class="toc-chapter-link"><strong>2.</strong> FX Forwards and Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-fx-forwards-and-swaps/01-fx-forwards-and-interest-rate-parity/">2.1 FX Forwards and Interest Rate Parity</a>
+                        <a href="../../02-fx-forwards-and-swaps/02-fx-swaps/">2.2 FX Swaps</a>
+                        <a href="../../02-fx-forwards-and-swaps/03-cross-currency-basis-swaps/">2.3 Cross-Currency Basis Swaps</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fx-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-fx-options/" class="toc-chapter-link"><strong>3.</strong> FX Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-fx-options/01-garman-kohlhagen/">3.1 Garman-Kohlhagen Model</a>
+                        <a href="../../03-fx-options/02-delta-and-hedging-conventions/">3.2 Delta and Hedging Conventions</a>
+                        <a href="../../03-fx-options/03-volatility-surface-rr-and-bf/">3.3 Volatility Surface: RR and BF</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-exotic-fx-products">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-exotic-fx-products/" class="toc-chapter-link"><strong>4.</strong> Exotic FX Products</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-exotic-fx-products/01-barrier-options/">4.1 Barrier Options</a>
+                        <a href="../../04-exotic-fx-products/02-target-redemption-forwards/">4.2 Target Redemption Forwards</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../../quant/">Quant</a> › <a href="../../">Foreign Exchange</a> › <a href="../">3. FX Options</a> › <span>Volatility Surface: RR and BF</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.3 Volatility Surface: Risk Reversals and Butterflies</h1>
+
+                <p>The Garman-Kohlhagen model assumes a single constant volatility $\sigma$, yet market option prices imply different volatilities for options of different strikes and maturities — the volatility smile or skew. In FX, the implied volatility surface is not parameterised directly by strike, as in equities, but by <em>delta</em>, and is constructed from three market-quoted instruments at each tenor: the at-the-money (ATM) volatility, the risk reversal, and the butterfly.</p>
+
+                <h2 class="mt-5 mb-3">Quoting Conventions: Delta-Based Strikes</h2>
+
+                <p>Recall from the previous section that FX options are quoted by delta rather than strike. For a given tenor, the market quotes implied volatilities for a small number of standard delta points — typically the 25-delta put, the at-the-money, and the 25-delta call, with 10-delta points also common in liquid pairs for the wings of the smile.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — ATM, Risk Reversal, Butterfly</div>
+                    <p class="mb-0">For a given tenor and a delta level $\Delta$ (e.g., 25 or 10), define:</p>
+                    <ul class="mb-0 mt-2">
+                        <li>$\sigma_{\text{ATM}}$: the at-the-money volatility (typically the delta-neutral straddle volatility).</li>
+                        <li>$\sigma_{\Delta\text{C}}$: the implied volatility of the $\Delta$-delta call.</li>
+                        <li>$\sigma_{\Delta\text{P}}$: the implied volatility of the $\Delta$-delta put (equivalently, the $-\Delta$-delta put).</li>
+                    </ul>
+                    <p class="mt-2 mb-0">The risk reversal and butterfly at delta $\Delta$ are defined as:</p>
+                    <p class="mb-0">$$\text{RR}_\Delta = \sigma_{\Delta\text{C}} - \sigma_{\Delta\text{P}}, \qquad \text{BF}_\Delta = \frac{\sigma_{\Delta\text{C}} + \sigma_{\Delta\text{P}}}{2} - \sigma_{\text{ATM}}$$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Risk Reversal: A Measure of Skew</h2>
+
+                <p>The risk reversal is the difference in implied volatility between an out-of-the-money call and an out-of-the-money put of the same delta. It measures the asymmetry — or skew — of the smile: which side of the distribution the market prices with relatively higher volatility, and hence which direction of currency move the market regards as relatively more likely or more feared.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Interpreting the Risk Reversal</div>
+                    <p>A positive risk reversal ($\text{RR}_\Delta > 0$) means OTM calls trade at a higher implied volatility than OTM puts of the same delta — the market assigns relatively more value (and perceives more risk) to a sharp upward move in the base currency. A negative risk reversal means the opposite: puts are richer than calls, reflecting greater fear of (or demand for protection against) a sharp depreciation of the base currency.</p>
+                    <p class="mb-0">Risk reversals are themselves directly traded as a single instrument: a risk reversal position is long the OTM call and short the OTM put (or vice versa) of the same delta and tenor, isolating the skew exposure with the bulk of the vega and gamma exposure of the two legs offsetting.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — USD/JPY Risk Reversal</div>
+                    <p class="mb-0">Suppose the 1-month 25-delta risk reversal for USD/JPY is quoted at $-1.5\%$ (often written "USD calls over JPY calls" is negative here, i.e. JPY calls/USD puts are richer). This indicates the market is paying up for protection against a sharp JPY appreciation (USD depreciation) — consistent with JPY's traditional role as a safe-haven currency that tends to strengthen sharply during risk-off episodes.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Butterfly: A Measure of Convexity</h2>
+
+                <p>The butterfly measures the curvature, or convexity, of the smile: how much richer the wings (both OTM calls and OTM puts) are relative to the ATM volatility, on average. A positive butterfly means both wings trade above the ATM vol — a "smile" in the literal sense — reflecting the market's view that large moves in either direction are more likely than a lognormal (constant-vol) model would suggest.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Market-Quoted "Smile-Strangle"</div>
+                    <p class="mb-0">In practice, the butterfly is not traded directly using the simple average above — the market-traded butterfly (sometimes the "smile strangle" or "vega-weighted butterfly") is constructed so that a butterfly trade (long the OTM call and put, short two ATM straddles in appropriate proportions) is approximately vega- and delta-neutral at inception. The simple average definition above is the "broker-quote" or "smile" butterfly used for surface construction; converting between quoting conventions is a standard but important market-microstructure detail.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Constructing the Smile</h2>
+
+                <p>Given $\sigma_{\text{ATM}}$, $\text{RR}_{25}$, and $\text{BF}_{25}$ (and similarly for the 10-delta points if quoted), the implied volatilities at the 25-delta call and put strikes can be recovered:</p>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Recovering Wing Volatilities</div>
+                    <p class="mb-0">From the definitions of RR and BF:</p>
+                    <p>$$\sigma_{25\text{C}} = \sigma_{\text{ATM}} + \text{BF}_{25} + \tfrac{1}{2}\text{RR}_{25}, \qquad \sigma_{25\text{P}} = \sigma_{\text{ATM}} + \text{BF}_{25} - \tfrac{1}{2}\text{RR}_{25}$$</p>
+                    <p class="mb-0">Each of these volatilities corresponds to a delta, not a strike. To plot the smile against strike (or to use it in a pricing model), each delta must first be converted to the corresponding strike via the Garman-Kohlhagen delta formula — itself a function of the volatility at that point, requiring an iterative or analytic inversion (see the previous section on delta conventions).</p>
+                </div>
+
+                <p>With three (or five, including 10-delta) volatility points per tenor, a smooth interpolation — common choices include cubic splines in delta-space, the SABR model, or the Vanna-Volga method — is used to obtain implied volatilities at arbitrary strikes for pricing exotic structures. The Vanna-Volga approach is particularly popular in FX because it has an intuitive interpretation: it adjusts the Garman-Kohlhagen (Black-Scholes) price of an exotic by the cost of hedging its vanna and volga (vega convexity) exposures using the three liquid market instruments — the ATM straddle, the risk reversal, and the butterfly.</p>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — A Typical EUR/USD Surface</div>
+                    <p>A representative 3-month EUR/USD surface might be quoted as:</p>
+                    <ul class="mb-0">
+                        <li>$\sigma_{\text{ATM}} = 7.50\%$</li>
+                        <li>$\text{RR}_{25} = -0.30\%$ (puts slightly richer than calls — modest EUR downside skew)</li>
+                        <li>$\text{BF}_{25} = 0.20\%$ (mild positive convexity)</li>
+                    </ul>
+                    <p class="mt-2 mb-0">This gives $\sigma_{25\text{C}} = 7.50 + 0.20 - 0.15 = 7.55\%$ and $\sigma_{25\text{P}} = 7.50 + 0.20 + 0.15 = 7.85\%$ — a smile that is slightly higher on the put wing, consistent with the negative risk reversal.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">From Vanilla Surfaces to Exotics</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Looking Ahead</div>
+                    <p class="mb-0">The vanilla volatility surface constructed from ATM, RR, and BF quotes is the primary input for pricing FX exotics — barrier options, digitals, and target redemption structures — all of which are highly sensitive to the shape of the smile, particularly in the wings. The next chapter introduces these exotic products and the additional modelling considerations (such as smile dynamics and barrier monitoring conventions) they require beyond the static vanilla surface.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-delta-and-hedging-conventions/" class="btn btn-outline-custom">&larr; 3.2 Delta and Hedging Conventions</a>
+                    <a href="../../04-exotic-fx-products/" class="btn btn-custom">4. Exotic FX Products &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

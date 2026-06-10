@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basics of Chess</title>
+<link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../css/styles.css">
+<style>
+.chess-board-placeholder{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:2px solid var(--border-color,#555);width:fit-content;margin:1rem auto;}
+.chess-board-placeholder .sq{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
+.chess-board-placeholder .light{background:#f0d9b5;}
+.chess-board-placeholder .dark{background:#b58863;}
+.piece-table td,.piece-table th{padding:.5rem .75rem;vertical-align:middle;}
+.piece-symbol{font-size:1.6rem;line-height:1;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main><div class="container py-4">
+<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Regular Chess</a></div>
+<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Regular Chess</a> › <span>Basics of Chess</span></nav>
+
+<h1 class="mb-3">Basics of Chess</h1>
+<p class="lead mb-4">Chess is a two-player strategy board game played on an 8×8 grid. Understanding the board, the pieces, and the fundamental rules is the starting point for every chess journey — from beginner to grandmaster.</p>
+
+<!-- THE BOARD -->
+<section class="hero-card p-4 mb-4">
+  <h2>1. The Board</h2>
+  <p>The chessboard consists of <strong>64 squares</strong> arranged in an 8×8 grid, alternating between light and dark colours. The board is always oriented so that each player has a <strong>light square in the bottom-right corner</strong> ("light on right").</p>
+
+  <h3>Files, Ranks, and Squares</h3>
+  <ul>
+    <li><strong>Files</strong> run vertically (columns) and are labelled <strong>a through h</strong> from left to right from White's perspective.</li>
+    <li><strong>Ranks</strong> run horizontally (rows) and are numbered <strong>1 through 8</strong> from White's side of the board.</li>
+    <li>Every square is identified by its file letter followed by its rank number. For example, <strong>e4</strong> is the square on the e-file, 4th rank — the most common first move in chess.</li>
+    <li><strong>Diagonals</strong> run at 45° angles across the board and are important for bishop and queen movement.</li>
+  </ul>
+
+  <h3>Light and Dark Squares</h3>
+  <p>There are exactly 32 light squares and 32 dark squares. Squares of the same colour share diagonals but never share ranks or files. This distinction is critically important for bishop movement and endgame fortress positions.</p>
+
+  <div class="chess-board-placeholder" id="board-empty"></div>
+  <script>(function(){var b=document.getElementById('board-empty');var files='abcdefgh';for(var r=7;r>=0;r--)for(var c=0;c<8;c++){var s=document.createElement('div');s.className='sq '+((r+c)%2===0?'dark':'light');s.title=files[c]+(r+1);b.appendChild(s);}})();</script>
+  <p class="text-center text-muted mt-2"><small>Empty chessboard — light square always bottom-right (h1 is light)</small></p>
+
+  <h3>Key Central Squares</h3>
+  <p>The four central squares — <strong>e4, d4, e5, d5</strong> — are the most strategically important squares on the board. Controlling the centre gives your pieces maximum mobility and restricts your opponent's options. The extended centre also includes c3, d3, e3, f3 and their mirror squares.</p>
+</section>
+
+<!-- THE PIECES -->
+<section class="hero-card p-4 mb-4">
+  <h2>2. The Pieces</h2>
+  <p>Each player starts with <strong>16 pieces</strong>: 1 king, 1 queen, 2 rooks, 2 bishops, 2 knights, and 8 pawns. White always moves first.</p>
+
+  <div class="table-responsive">
+    <table class="table piece-table">
+      <thead>
+        <tr><th>Piece</th><th>Symbol</th><th>Value</th><th>Starting Squares</th><th>Movement</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>King</strong></td>
+          <td><span class="piece-symbol">♔ ♚</span></td>
+          <td>∞ (priceless)</td>
+          <td>e1 / e8</td>
+          <td>One square in any direction (horizontally, vertically, or diagonally). Cannot move into check. Most important piece — losing it means losing the game.</td>
+        </tr>
+        <tr>
+          <td><strong>Queen</strong></td>
+          <td><span class="piece-symbol">♕ ♛</span></td>
+          <td>~9 points</td>
+          <td>d1 / d8</td>
+          <td>Any number of squares along a rank, file, or diagonal. The most powerful piece on the board. Combines rook and bishop movement.</td>
+        </tr>
+        <tr>
+          <td><strong>Rook</strong></td>
+          <td><span class="piece-symbol">♖ ♜</span></td>
+          <td>~5 points</td>
+          <td>a1, h1 / a8, h8</td>
+          <td>Any number of squares horizontally or vertically (along ranks and files). Cannot jump over pieces. Most powerful in open files and the 7th rank.</td>
+        </tr>
+        <tr>
+          <td><strong>Bishop</strong></td>
+          <td><span class="piece-symbol">♗ ♝</span></td>
+          <td>~3 points</td>
+          <td>c1, f1 / c8, f8</td>
+          <td>Any number of squares diagonally. Always remains on the same colour it started on. One bishop covers light squares, the other covers dark squares.</td>
+        </tr>
+        <tr>
+          <td><strong>Knight</strong></td>
+          <td><span class="piece-symbol">♘ ♞</span></td>
+          <td>~3 points</td>
+          <td>b1, g1 / b8, g8</td>
+          <td>L-shaped: 2 squares in one direction, then 1 square perpendicular (or vice versa). The <em>only</em> piece that can jump over other pieces. Always lands on the opposite colour from its starting square.</td>
+        </tr>
+        <tr>
+          <td><strong>Pawn</strong></td>
+          <td><span class="piece-symbol">♙ ♟</span></td>
+          <td>~1 point</td>
+          <td>a2–h2 / a7–h7</td>
+          <td>Moves forward one square (or two squares from its starting position on the 2nd/7th rank). Captures diagonally forward one square. Cannot move backward. The "soul of chess" (Philidor).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Material Values and Exchanges</h3>
+  <p>The material values above are rough guides for evaluating exchanges. Key principles:</p>
+  <ul>
+    <li>Queen (~9) ≈ Rook (~5) + Bishop (~3) + one pawn (with some positional bonus)</li>
+    <li>Trading a rook for a bishop or knight is called "winning/losing the exchange"</li>
+    <li>Two bishops together (the "bishop pair") are often worth slightly more than a bishop and knight</li>
+    <li>In the endgame, the king becomes an active piece and should be used aggressively</li>
+  </ul>
+
+  <h3>The Knight's Movement</h3>
+  <p>The knight moves in an L-shape: exactly 2 squares in one orthogonal direction, then 1 square perpendicular. From the centre of the board (e.g., d4), a knight controls 8 squares. From the corner (a1), it only controls 2. This is why "A knight on the rim is dim" — always aim to centralise your knights.</p>
+</section>
+
+<!-- SPECIAL RULES -->
+<section class="hero-card p-4 mb-4">
+  <h2>3. Special Rules</h2>
+
+  <h3>Castling</h3>
+  <p>Castling is a special move involving the king and a rook. The king moves <strong>two squares toward a rook</strong>, and the rook jumps over the king to the square on the king's other side. It is the only move in chess where two pieces move simultaneously.</p>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <h4>Kingside Castling (0-0)</h4>
+      <p>King moves from e1 to g1; rook moves from h1 to f1. (For Black: e8 to g8, rook h8 to f8.)</p>
+    </div>
+    <div class="col-md-6">
+      <h4>Queenside Castling (0-0-0)</h4>
+      <p>King moves from e1 to c1; rook moves from a1 to d1. (For Black: e8 to c8, rook a8 to d8.)</p>
+    </div>
+  </div>
+
+  <h4>Conditions for Castling</h4>
+  <ul>
+    <li>Neither the king nor the chosen rook has previously moved</li>
+    <li>There are no pieces between the king and the rook</li>
+    <li>The king is not currently in check</li>
+    <li>The king does not pass through a square that is attacked by an opponent's piece</li>
+    <li>The king does not land on a square that is in check</li>
+  </ul>
+  <p><strong>Note:</strong> The rook may pass through an attacked square; only the king's path matters.</p>
+
+  <div class="chess-board-placeholder" id="board-castle"></div>
+  <script>(function(){
+    var b=document.getElementById('board-castle');
+    var pieces={e1:'♔',h1:'♖',a1:'♖',e8:'♚',a8:'♜',h8:'♜',d1:'♕',d8:'♛',c1:'♗',f1:'♗',c8:'♝',f8:'♝',b1:'♘',g1:'♘',b8:'♞',g8:'♞'};
+    // Show pre-castling position for white: only king and rooks, clear f1,g1
+    var board={e1:'♔',h1:'♖',a1:'♖'};
+    var files='abcdefgh';
+    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
+      var s=document.createElement('div');s.className='sq '+((r+c)%2===0?'dark':'light');
+      var sq=files[c]+(r+1);
+      if(board[sq])s.textContent=board[sq];
+      b.appendChild(s);
+    }
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>White can castle both sides: king on e1, rooks on a1 and h1</small></p>
+
+  <h3>En Passant</h3>
+  <p>En passant (French: "in passing") is a special pawn capture. If a pawn advances two squares from its starting position and lands beside an opponent's pawn, the opponent's pawn may capture it <strong>as if it had only moved one square</strong>. This capture must be made <em>immediately</em> on the very next move — the right to capture en passant expires after one move.</p>
+
+  <p><strong>Example:</strong> White pawn on e5, Black plays d7–d5 (landing on d5 next to the e5 pawn). White may capture: exd6, with the white pawn ending up on d6 and the black pawn on d5 removed from the board.</p>
+
+  <div class="chess-board-placeholder" id="board-ep"></div>
+  <script>(function(){
+    var b=document.getElementById('board-ep');
+    var files='abcdefgh';
+    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
+      var s=document.createElement('div');s.className='sq '+((r+c)%2===0?'dark':'light');
+      var sq=files[c]+(r+1);
+      if(sq==='e5')s.textContent='♙';
+      if(sq==='d5')s.textContent='♟';
+      b.appendChild(s);
+    }
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>En passant: White pawn on e5, Black just played d7–d5. White can capture exd6.</small></p>
+
+  <h3>Promotion</h3>
+  <p>When a pawn reaches the opposite end of the board (the 8th rank for White, 1st rank for Black), it <strong>must be promoted</strong> to another piece: queen, rook, bishop, or knight. The player chooses which piece. Promotion to a queen (called "queening") is by far the most common choice, as the queen is the most powerful piece. Occasionally, promoting to a knight ("underpromotion") is the correct move to avoid stalemate or to deliver an immediate fork.</p>
+</section>
+
+<!-- CHECK, CHECKMATE, STALEMATE -->
+<section class="hero-card p-4 mb-4">
+  <h2>4. Check, Checkmate, Stalemate, and Draws</h2>
+
+  <h3>Check</h3>
+  <p>A king is in <strong>check</strong> when it is directly attacked by one or more of the opponent's pieces. When in check, the player <em>must</em> resolve the check on their next move. There are exactly three ways to escape check:</p>
+  <ol>
+    <li><strong>Move the king</strong> to a safe square</li>
+    <li><strong>Block the check</strong> by interposing a friendly piece between the attacker and the king (only possible against sliding pieces — rooks, bishops, queens)</li>
+    <li><strong>Capture the attacking piece</strong></li>
+  </ol>
+  <p>A player cannot make a move that leaves or places their own king in check. Check is notated with a <strong>+</strong> symbol (e.g., Qh5+).</p>
+
+  <h3>Checkmate</h3>
+  <p><strong>Checkmate</strong> occurs when a king is in check and there is no legal move to escape. The game ends immediately — the player who delivered checkmate wins. Checkmate is notated with <strong>#</strong> (e.g., Qh7#). The goal of chess is to checkmate the opponent's king.</p>
+
+  <div class="chess-board-placeholder" id="board-mate"></div>
+  <script>(function(){
+    var b=document.getElementById('board-mate');
+    var files='abcdefgh';
+    // Scholar's mate position: Black king checkmated by Qf7# (simplified)
+    var board={e8:'♚',f7:'♕',e1:'♔',h5:'♗'};
+    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
+      var s=document.createElement('div');s.className='sq '+((r+c)%2===0?'dark':'light');
+      var sq=files[c]+(r+1);
+      if(board[sq])s.textContent=board[sq];
+      b.appendChild(s);
+    }
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>Checkmate: Black king on e8 has no escape from Qf7#</small></p>
+
+  <h3>Stalemate</h3>
+  <p><strong>Stalemate</strong> occurs when a player has <em>no legal moves</em> and their king is <em>not</em> in check. The game ends as a <strong>draw</strong>. This is a crucial distinction: stalemate is not a loss, it is a draw! A player on the verge of losing can sometimes force stalemate as a last resort. Conversely, a winning player must avoid accidentally stalemating their opponent.</p>
+
+  <h3>Other Ways to Draw</h3>
+  <ul>
+    <li><strong>Insufficient Material:</strong> Neither player has enough pieces to force checkmate (e.g., K vs K, K+B vs K, K+N vs K).</li>
+    <li><strong>50-Move Rule:</strong> If 50 consecutive moves pass without a pawn move or a capture, either player may claim a draw.</li>
+    <li><strong>Threefold Repetition:</strong> If the same position occurs three times (with the same player to move and same castling/en passant rights), either player may claim a draw.</li>
+    <li><strong>Mutual Agreement:</strong> Both players may agree to a draw at any point during the game.</li>
+  </ul>
+</section>
+
+<!-- ALGEBRAIC NOTATION -->
+<section class="hero-card p-4 mb-4">
+  <h2>5. Algebraic Notation</h2>
+  <p>Algebraic notation is the standard method for recording chess moves. Every serious chess player should learn to read and write it — it allows you to study games, solve puzzles, and communicate with other players worldwide.</p>
+
+  <h3>Piece Identifiers</h3>
+  <div class="notation-box mb-3">
+    K = King &nbsp;&nbsp; Q = Queen &nbsp;&nbsp; R = Rook &nbsp;&nbsp; B = Bishop &nbsp;&nbsp; N = Knight &nbsp;&nbsp; (Pawn has no letter)
+  </div>
+
+  <h3>Basic Move Notation</h3>
+  <ul>
+    <li><strong>Pawn moves:</strong> just the destination square — <code>e4</code>, <code>d5</code>, <code>c6</code></li>
+    <li><strong>Piece moves:</strong> piece letter + destination square — <code>Nf3</code> (knight to f3), <code>Bb5</code> (bishop to b5)</li>
+    <li><strong>Captures:</strong> insert <code>x</code> before the destination — <code>Nxe5</code> (knight captures on e5), <code>dxe5</code> (d-pawn captures on e5)</li>
+    <li><strong>Check:</strong> append <code>+</code> — <code>Qh5+</code></li>
+    <li><strong>Checkmate:</strong> append <code>#</code> — <code>Qf7#</code></li>
+    <li><strong>Kingside castling:</strong> <code>0-0</code></li>
+    <li><strong>Queenside castling:</strong> <code>0-0-0</code></li>
+    <li><strong>Pawn promotion:</strong> destination square + piece letter — <code>e8=Q</code> (pawn promotes to queen on e8)</li>
+    <li><strong>En passant:</strong> notated as a regular capture — <code>exd6</code> (en passant implied by context)</li>
+  </ul>
+
+  <h3>Disambiguation</h3>
+  <p>When two identical pieces can move to the same square, the notation must specify which piece moves:</p>
+  <ul>
+    <li>If they are on different files: add the file letter — <code>Rab1</code> (rook on the a-file moves to b1)</li>
+    <li>If they are on the same file but different ranks: add the rank number — <code>R1b3</code></li>
+    <li>If both are needed: add both file and rank — <code>Qd1e2</code></li>
+  </ul>
+
+  <h3>Annotation Symbols</h3>
+  <div class="table-responsive">
+    <table class="table">
+      <thead><tr><th>Symbol</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><code>!</code></td><td>Good move</td></tr>
+        <tr><td><code>!!</code></td><td>Brilliant move (often a sacrifice or surprising idea)</td></tr>
+        <tr><td><code>?</code></td><td>Mistake</td></tr>
+        <tr><td><code>??</code></td><td>Blunder (a serious error, often losing material or the game)</td></tr>
+        <tr><td><code>!?</code></td><td>Interesting or speculative move</td></tr>
+        <tr><td><code>?!</code></td><td>Dubious move (questionable, probably not best)</td></tr>
+        <tr><td><code>⩲</code> or <code>+/=</code></td><td>White has a slight advantage</td></tr>
+        <tr><td><code>⩱</code> or <code>=/+</code></td><td>Black has a slight advantage</td></tr>
+        <tr><td><code>±</code></td><td>White has a clear advantage</td></tr>
+        <tr><td><code>∓</code></td><td>Black has a clear advantage</td></tr>
+        <tr><td><code>+-</code></td><td>White is winning</td></tr>
+        <tr><td><code>-+</code></td><td>Black is winning</td></tr>
+        <tr><td><code>=</code></td><td>Equal position / draw</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Sample Game Notation</h3>
+  <div class="notation-box">
+    1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Ba4 Nf6 5.0-0 Be7 6.Re1 b5 7.Bb3 d6 8.c3 0-0
+    <br><em>— The Ruy López (Spanish Opening), a classic sequence reaching the main line</em>
+  </div>
+  <p class="mt-2">In this notation, White's move and Black's reply share the same move number (e.g., 1.e4 = White plays e4, e5 = Black replies with e5).</p>
+</section>
+
+</div></main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../js/script.js"></script>
+</body></html>

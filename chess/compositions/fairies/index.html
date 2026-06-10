@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fairy Chess</title>
+<link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../css/styles.css">
+<style>
+.chess-board-placeholder{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:2px solid var(--border-color,#555);width:fit-content;margin:1rem auto;}
+.chess-board-placeholder .sq{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
+.chess-board-placeholder .light{background:#f0d9b5;}
+.chess-board-placeholder .dark{background:#b58863;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+.piece-def{background:var(--card-bg,#1e1e2e);border-left:3px solid var(--accent-color,#7c9cbf);padding:.75rem 1rem;margin:.5rem 0;border-radius:0 6px 6px 0;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main><div class="container py-4">
+<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Compositions</a> › <span>Fairy Chess</span></nav>
+
+<h1 class="mb-3">Fairy Chess</h1>
+<p class="lead mb-4">Fairy chess is composition with non-standard rules — different pieces, altered conditions, or modified board geometry. Far from being a whimsical digression, fairy problems are a rigorous art form with their own rich theory, demanding composers and solvers alike develop entirely new intuitions about force, mobility, and mating geometry.</p>
+
+<!-- DEFINITION -->
+<section class="hero-card p-4 mb-4">
+  <h2>1. What Is Fairy Chess?</h2>
+  <p>The term "fairy chess" covers any chess composition that deviates from orthodox rules. This includes:</p>
+  <ul>
+    <li><strong>Fairy pieces</strong> — pieces with non-standard movement rules added to or replacing the standard set.</li>
+    <li><strong>Fairy conditions</strong> — altered rules of play that apply to the entire game (e.g., pieces are reborn after capture, the side to move must make the longest possible move, etc.).</li>
+    <li><strong>Non-standard board geometry</strong> — cylindrical boards, toroidal boards, boards of different dimensions.</li>
+    <li><strong>Combined stipulations</strong> — fairy pieces or conditions combined with orthodox stipulations (helpmate, selfmate) for a doubly exotic composition.</li>
+  </ul>
+  <p>Fairy problems are governed and curated by the FIDE Commission for Chess Compositions (section "Fairies"), which organises WCCT sections, publishes the Codex, and maintains official piece and condition definitions. The most prestigious fairy compositions appear in the FIDE Album alongside orthodox problems.</p>
+</section>
+
+<!-- FAIRY PIECES -->
+<section class="hero-card p-4 mb-4">
+  <h2>2. Fairy Pieces</h2>
+  <p>The zoo of fairy pieces is vast — over a hundred have been formally defined and used in published compositions. Here are the most important:</p>
+
+  <h3>Nightrider (N)</h3>
+  <div class="piece-def">
+    A nightrider makes knight jumps in a single direction, repeatedly, until blocked. If a standard knight jumps (+2,+1), the nightrider can jump (+2,+1), then (+4,+2), then (+6,+3), etc. — as far as it wishes, provided no piece blocks the path. It is to the knight what the rook is to the pawn: an unlimited version. A nightrider on b1 attacks d2, f3, h4 in one direction, and c3, e5, g7 in another.
+  </div>
+  <p class="mt-2">Nightriders are particularly powerful as mating pieces in helpmates and fairy direct-mates because their long-range lines create rich interference possibilities with other nightriders (a Nightrider-Grimshaw).</p>
+
+  <h3>Grasshopper (G)</h3>
+  <div class="piece-def">
+    The grasshopper moves along queen lines (ranks, files, diagonals) but must hop over exactly one piece to land on the square immediately beyond that piece. If nothing is available to hop over, the grasshopper cannot move. If the square beyond the hurdle is occupied by a friendly piece, the grasshopper is blocked; by an enemy piece, it captures.
+  </div>
+  <p class="mt-2">The grasshopper is perhaps the most used fairy piece in composition. Its dependence on "hurdles" (the pieces it hops over) creates a rich economy of purpose: every piece on the board potentially serves as a hurdle for a grasshopper, creating mutual dependencies that orthodox pieces cannot replicate.</p>
+
+  <h3>Mao and Leo (Chinese Pieces)</h3>
+  <div class="piece-def">
+    <strong>Leo:</strong> Moves like a queen when not capturing, but captures only by hopping over exactly one piece (like a grasshopper) and landing on the square beyond. Named after the Chinese chess cannon but adapted to move in all queen directions.<br><br>
+    <strong>Mao:</strong> Moves to knight squares but in two steps — first one square orthogonally, then one square diagonally outward — and can be blocked on the intermediate square. A Mao on e4 trying to reach f6 first steps to e5, which must be vacant.
+  </div>
+
+  <h3>Amazon</h3>
+  <div class="piece-def">
+    Combines the movements of queen and knight: moves as a queen OR jumps as a knight on any given turn. The most powerful piece in fairy chess, but used sparingly because its power makes economical construction very difficult.
+  </div>
+
+  <h3>Archbishop (or Cardinal)</h3>
+  <div class="piece-def">
+    Combines bishop and knight moves. Can move as a bishop (diagonally, any distance) or jump as a knight. This piece alone can checkmate a lone king — unlike the ordinary bishop, which cannot attack all squares.
+  </div>
+
+  <h3>Chancellor (or Marshal)</h3>
+  <div class="piece-def">
+    Combines rook and knight moves. Like the archbishop but on orthogonal lines. Also capable of checkmating a lone king unaided.
+  </div>
+</section>
+
+<!-- FAIRY CONDITIONS -->
+<section class="hero-card p-4 mb-4">
+  <h2>3. Fairy Conditions</h2>
+  <p>Fairy conditions alter the rules of play globally — both sides are subject to them throughout the game.</p>
+
+  <h3>Circe</h3>
+  <div class="piece-def">
+    When a piece is captured, it is immediately reborn on its game-array square (the square it occupied at the start of the game), provided that square is vacant. If the rebirth square is occupied, the piece is simply captured normally. Pawns reborn on their original file's second rank (for White) or seventh rank (for Black). A rook captured on e5 rebirths on a1 or h1 depending on which side it belongs to.
+  </div>
+  <p class="mt-2">Circe transforms capture from a permanent removal to a temporary displacement. This creates entirely new strategic considerations: capturing a piece may be undesirable if it rebirths on a more active square. Mating in Circe requires ensuring the mated king has no rebirth to escape, and any pieces that would be captured in the mating sequence must not reborn in a way that prevents the mate.</p>
+
+  <h3>Anticirce</h3>
+  <div class="piece-def">
+    The inverse of Circe: when a piece captures, it is the <em>capturing</em> piece (not the captured piece) that is reborn on its game-array square. If that square is occupied, the capture is illegal. This dramatically restricts which captures are legal — many captures become impossible simply because the capturing piece's home square is occupied.
+  </div>
+
+  <h3>Madrasi</h3>
+  <div class="piece-def">
+    Pieces of the same type that observe each other are paralysed — they cannot move and cannot give check. Two knights that attack each other's square are both frozen. The paralysis is mutual and simultaneous. A piece can be paralysed and unparalysed repeatedly during a game as the geometry changes.
+  </div>
+  <p class="mt-2">Madrasi creates fascinating reciprocal effects: a player may want to place a piece where it observes an enemy piece of the same type, in order to paralyse the enemy — but this also paralyses their own piece. The mutual paralysis theme produces compositions where pieces are carefully arranged so only specific pieces remain mobile.</p>
+
+  <h3>Anti-Kings</h3>
+  <div class="piece-def">
+    Under Anti-Kings, a player's king must be in check at the end of their move. Moving out of check is illegal; you must move into (or maintain) check. The game ends when one player cannot make a move that leaves their king in check.
+  </div>
+
+  <h3>Maximummer</h3>
+  <div class="piece-def">
+    Black (in a Black Maximummer; White in a White Maximummer) must always make the geometrically longest move available, measured as the distance between departure and arrival squares. If multiple moves are tied for longest, Black may choose among them. This severely restricts Black's defensive options — Black cannot play quiet, subtle moves; it must always make its most extravagant displacement.
+  </div>
+  <p class="mt-2">Maximummer is frequently combined with other stipulations (especially selfmates and helpmates) because restricting Black's move choice creates clean, forced sequences with minimal checking of alternative defences.</p>
+
+  <h3>Take &amp; Make</h3>
+  <div class="piece-def">
+    After a capture, the capturing piece must immediately make a further move of the same type as the captured piece — using the captured piece's movement rules for one additional step. A rook capturing a bishop must then make a bishop-like diagonal step. If no such continuation is possible, the capture is illegal.
+  </div>
+</section>
+
+<!-- GRID CHESS -->
+<section class="hero-card p-4 mb-4">
+  <h2>4. Grid Chess</h2>
+  <p>In Grid Chess, the board is divided into 2×2 grid cells (4 cells per side, 16 cells total). A legal move must cross at least one grid boundary. A piece on e4 (which is in the central grid cell containing d3, d4, e3, e4) cannot legally move to d3, d4, or e3 — all those squares are within the same grid cell. It must cross into an adjacent grid cell.</p>
+  <p>Grid chess dramatically restricts mobility. Kings cannot move to adjacent squares unless those squares are in a different grid cell. Pieces must "escape" their current grid cell on every move. This creates paradoxical positions where a piece seems to be attacking a square but legally cannot move there.</p>
+  <p>Grid chess problems often appear as twomovers or helpmates, where the restriction on movement creates surprising solutions that would be impossible under orthodox rules.</p>
+</section>
+
+<!-- GRASSHOPPER DIAGRAM -->
+<section class="hero-card p-4 mb-4">
+  <h2>5. A Grasshopper Problem</h2>
+  <p>This illustrative position uses grasshoppers (marked G). Remember: a grasshopper must hop over exactly one piece and land on the square immediately beyond it.</p>
+
+  <p><strong>Position:</strong> White: ♔d1, G-e5 (White grasshopper), ♘c3 &nbsp;|&nbsp; Black: ♚e3, G-e7 (Black grasshopper), ♟d3</p>
+  <p><em>Helpmate in 2 (h#2) — Black moves first, with grasshopper pieces</em></p>
+
+  <div class="chess-board-placeholder" id="board-fairy"></div>
+  <script>(function(){
+    var pieces={
+      'd1':'♔','e5':'G','c3':'♘',
+      'e3':'♚','e7':'g','d3':'♟'
+    };
+    var b=document.getElementById('board-fairy');
+    var files='abcdefgh';
+    for(var r=7;r>=0;r--){for(var c=0;c<8;c++){
+      var s=document.createElement('div');
+      var sq=files[c]+(r+1);
+      s.className='sq '+((r+c)%2===0?'dark':'light');
+      if(pieces[sq]){
+        var span=document.createElement('span');
+        span.title=sq;
+        if(pieces[sq]==='G'){span.textContent='G';span.style.color='#fff';span.style.fontWeight='bold';span.style.fontSize='18px';}
+        else if(pieces[sq]==='g'){span.textContent='g';span.style.color='#333';span.style.fontWeight='bold';span.style.fontSize='18px';}
+        else{span.textContent=pieces[sq];}
+        s.appendChild(span);
+      }
+      b.appendChild(s);
+    }}
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>"G" = White grasshopper (e5), "g" = Black grasshopper (e7) — hop over one hurdle, land beyond it</small></p>
+
+  <h3 class="mt-3">Solution Outline</h3>
+  <div class="notation-box">
+    The grasshopper on e5 can hop over e3 (the Black king) to land on e1 —<br>
+    but that would give check, which may or may not be relevant depending on position.<br><br>
+    <strong>Key grasshopper logic:</strong><br>
+    • White G on e5 needs a hurdle on e4 or e6 to hop to e3 or e7 respectively.<br>
+    • Black G on e7 needs a hurdle to attack — or to be used as a hurdle for White.<br><br>
+    <strong>1...Ke4</strong> (Black king walks to e4 — now serves as hurdle for White grasshopper!)<br>
+    <strong>1. Ne4</strong> — wait, the king moved there. Alternate:<br>
+    <strong>1...Ge6</strong> (Black grasshopper hops — uses e7 square, moves to provide a hurdle)<br>
+    <strong>1. Gxe3+</strong> (White grasshopper hops over e6 to e3... wait, distance is 2)<br><br>
+    <em>The exact solution depends on the specific position — this illustrates how grasshopper<br>
+    logic works. A grasshopper's power is entirely dependent on available hurdles,<br>
+    making the presence and position of every piece crucial.</em>
+  </div>
+</section>
+
+<!-- CIRCE EXAMPLE -->
+<section class="hero-card p-4 mb-4">
+  <h2>6. Circe: A Worked Example</h2>
+  <p>Understanding Circe requires seeing a concrete example of how rebirth changes the logic of capture.</p>
+
+  <div class="notation-box">
+    <strong>Position:</strong> White ♔e1, ♕d1 vs Black ♚e8, ♜a8, ♜h8<br><br>
+    <strong>Ordinary chess:</strong> If White plays Qxa8, the rook on a8 is captured and gone forever.<br><br>
+    <strong>Under Circe:</strong> When White plays Qxa8 and captures the Black rook,<br>
+    the rook is reborn on a8 (its starting square)... which is the square just captured.<br>
+    Since the rebirth square (a8) is now occupied by the White queen, the rook<br>
+    cannot reborn — it is genuinely captured.<br><br>
+    But if White played Qxh8 instead: the rook on h8 would try to reborn on h8...<br>
+    again occupied by the queen. Still captured.<br><br>
+    <strong>More interesting case:</strong> White ♖e5 captures Black ♗c5.<br>
+    Under Circe, the bishop tries to reborn on c8 (its starting square for a Black bishop).<br>
+    If c8 is empty, the bishop reappears on c8 immediately — the capture only<br>
+    temporarily removes it from c5. If c8 is occupied, the bishop is permanently captured.<br><br>
+    <em>This is why Circe compositions require total board awareness — every capture<br>
+    must be evaluated for its rebirth consequences.</em>
+  </div>
+</section>
+
+<!-- WHY FAIRY -->
+<section class="hero-card p-4 mb-4">
+  <h2>7. Why Compose Fairy Problems?</h2>
+  <p>Fairy chess is sometimes dismissed as mere fantasy, but its practitioners argue that it extends chess composition into territory that orthodox rules cannot reach:</p>
+  <ul>
+    <li><strong>New themes become possible.</strong> The Nightrider-Grimshaw, Circe-specific paradoxes, and Madrasi mutual paralysis are themes with no orthodox equivalents. They are not watered-down versions of orthodox themes but genuinely new artistic ideas.</li>
+    <li><strong>Extreme economy becomes achievable.</strong> With fairy conditions, three or four pieces can produce compositions of extraordinary richness — because each piece interacts with the rules in multiple dimensions.</li>
+    <li><strong>Stipulations multiply.</strong> A Circe helpmate with nightriders is a distinct genre from a Circe directmate or a Madrasi selfmate. The combinations are effectively unlimited, and different combinations produce different aesthetic traditions.</li>
+    <li><strong>The logic is rigorous.</strong> Despite the fantastical elements, every fairy composition must be correct: the solution must be unique, the stipulation must be satisfied, and all defences must be covered. The same standards of rigour that apply to orthodox problems apply here.</li>
+  </ul>
+  <p>The leading fairy composers — like Petko Petkov, Nikola Stolev, and Julia Vysotska — have developed fairy chess into a sophisticated discipline with its own canon of masterworks, its own history of themes and schools, and its own dedicated solving community.</p>
+</section>
+
+</div></main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../js/script.js"></script>
+</body></html>

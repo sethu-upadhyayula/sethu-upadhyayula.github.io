@@ -1,0 +1,177 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crazyhouse</title>
+<link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../css/styles.css">
+<style>
+.chess-board-placeholder{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:2px solid var(--border-color,#555);width:fit-content;margin:1rem auto;}
+.chess-board-placeholder .sq{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
+.chess-board-placeholder .light{background:#f0d9b5;}
+.chess-board-placeholder .dark{background:#b58863;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+.drop-pocket{display:flex;gap:.5rem;align-items:center;background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:.75rem 1rem;margin:.5rem 0;font-size:1.5rem;}
+.drop-pocket .label{font-size:.85rem;color:var(--text-muted,#888);margin-right:.5rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main><div class="container py-4">
+<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Variants</a> › <span>Crazyhouse</span></nav>
+
+<h1 class="mb-3">Crazyhouse</h1>
+<p class="lead mb-4">Crazyhouse is chess where captured pieces switch sides and can be dropped back onto the board as your own piece. Material is never permanently lost — every capture feeds the opponent's arsenal. This single rule transforms chess into a faster, sharper, more chaotic game where attack is everything and defence is always temporary.</p>
+
+<!-- RULES -->
+<section class="hero-card p-4 mb-4">
+  <h2>1. Rules of Crazyhouse</h2>
+
+  <h3>The Drop Rule</h3>
+  <p>Crazyhouse follows all standard chess rules with one fundamental addition: <strong>captured pieces join the capturing player's "pocket" and can be dropped onto any empty square as a move</strong>.</p>
+  <ul>
+    <li>When you capture an opponent's piece, it converts to your colour and goes into your pocket.</li>
+    <li>On any future move, instead of moving a piece on the board, you may <strong>drop</strong> a piece from your pocket onto any empty square.</li>
+    <li>A dropped piece is immediately active — it can give check or threaten captures on the very move it lands.</li>
+  </ul>
+
+  <h3>Drop Restrictions</h3>
+  <ul>
+    <li><strong>Pawns cannot be dropped on rank 1 or rank 8</strong> — only ranks 2 through 7 are valid pawn drop squares.</li>
+    <li><strong>A drop cannot give check unless it is checkmate</strong> — you may not drop a piece to put the opponent's king in check unless that check is immediately checkmate (i.e., there is no legal escape). However, on Lichess (the most popular platform), drops that give check <em>are</em> allowed as long as it is not an illegal position — always check the platform rules.</li>
+    <li>You cannot drop a piece onto an occupied square.</li>
+    <li>Promoted pawns that are captured return to the capturer's pocket as <strong>pawns</strong>, not as the promoted piece.</li>
+  </ul>
+
+  <h3>The Pocket</h3>
+  <p>Each player's pocket is displayed alongside the board, showing all captured pieces available for dropping:</p>
+
+  <div class="drop-pocket">
+    <span class="label">White pocket:</span>
+    <span>♟</span><span>♟</span><span>♞</span><span>♝</span>
+  </div>
+  <div class="drop-pocket">
+    <span class="label">Black pocket:</span>
+    <span>♙</span><span>♖</span>
+  </div>
+  <p class="text-muted"><small>Example mid-game pockets: White has captured 2 pawns, a knight and bishop. Black has captured a pawn and rook. Both can drop any of these pieces on their next move.</small></p>
+</section>
+
+<!-- STRATEGIC DIFFERENCES -->
+<section class="hero-card p-4 mb-4">
+  <h2>2. How Drops Change Strategy</h2>
+
+  <h3>Material Is Never Gone</h3>
+  <p>The most profound strategic shift in Crazyhouse is that <strong>material is never permanently lost</strong>. In classical chess, losing your queen is catastrophic — you simply have less firepower for the rest of the game. In Crazyhouse, losing your queen means your opponent now has a queen in their pocket, ready to be dropped anywhere on the board at the worst possible moment. This changes the calculation completely:</p>
+  <ul>
+    <li>Winning material can be as dangerous as losing it — you hand the opponent powerful drops.</li>
+    <li>Exchanges that look equal on the board may be unequal in pocket — a rook for two bishops, for instance, gives the opponent two flexible drop pieces.</li>
+    <li>The player whose pocket pieces are more useful in the current position has the advantage.</li>
+  </ul>
+
+  <h3>Attack Is Paramount</h3>
+  <p>Because any piece can appear anywhere at any moment, Crazyhouse rewards relentless attacking play. A quiet positional game can be shattered in one move by a piece dropping next to the king. The best Crazyhouse players maintain constant attacking pressure, never giving the opponent a quiet moment to set up a devastating drop.</p>
+
+  <h3>King Safety Is Critical and Fragile</h3>
+  <p>King safety in Crazyhouse is far more precarious than in classical chess. In classical chess, a castled king behind three pawns and no open files is very safe. In Crazyhouse, a pawn can be dropped right next to the king's shelter, a bishop can appear to cover the king's flight squares, and a queen can drop for checkmate — all in one sequence of moves. Every weakening of the king's pawn cover must be evaluated not just as a structural weakness but as a potential drop site for enemy pieces.</p>
+
+  <div class="chess-board-placeholder" id="board-drop"></div>
+  <script>(function(){
+    var b=document.getElementById('board-drop');
+    var files='abcdefgh';
+    // Show a position where Black can drop a queen for mate
+    var board={g1:'♔',f1:'♖',h1:'♖',g2:'♙',h2:'♙',f2:'♙',e8:'♚',h7:'♜'};
+    // Black has ♛ in pocket and can drop Qh2#
+    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
+      var s=document.createElement('div');s.className='sq '+((r+c)%2===0?'dark':'light');
+      var sq=files[c]+(r+1);
+      if(board[sq])s.textContent=board[sq];
+      // Mark h3 as the drop square
+      if(sq==='h3'){s.textContent='♛';s.style.opacity='0.5';}
+      b.appendChild(s);
+    }
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>Black drops ♛ on h3 (shown faded) — check! The White king on g1 has no escape: f1 and h1 are occupied, g2/h2/f2 are covered. Drop checkmate.</small></p>
+</section>
+
+<!-- TACTICAL PATTERNS -->
+<section class="hero-card p-4 mb-4">
+  <h2>3. Tactical Patterns</h2>
+
+  <h3>The Drop Checkmate</h3>
+  <p>The most spectacular tactic in Crazyhouse is the drop checkmate — dropping a piece directly to deliver an inescapable check. Drop checkmates typically require:</p>
+  <ul>
+    <li>The enemy king with limited flight squares (often tucked in a corner behind pawns).</li>
+    <li>A piece in your pocket that can cover all escape routes when dropped adjacent to the king.</li>
+    <li>All of the king's escape squares blocked by either the king's own pieces or your other pieces.</li>
+  </ul>
+  <p>The most common drop checkmates involve queens or rooks dropped next to a cornered king, but knight drops are particularly feared because their L-shape attacks squares that straight-line pieces cannot easily cover.</p>
+
+  <h3>Defensive Drops</h3>
+  <p>Drops are not only for attacking — defensive drops are equally important. When your position is under attack:</p>
+  <ul>
+    <li>Drop a pawn to block a check instead of moving the king — this saves a tempo and often counter-threatens.</li>
+    <li>Drop a piece to interpose against a dangerous pin or skewer.</li>
+    <li>Drop a pawn to shore up a weakened king shelter — a pawn dropped on g3 can close a dangerous diagonal at the cost of one move.</li>
+  </ul>
+
+  <h3>The Pawn Drop in the Opening</h3>
+  <p>Pawn drops in the opponent's position during the opening and middlegame are a unique Crazyhouse weapon. Dropping a pawn on e6 (behind the opponent's pawn chain) can shatter the structure, create passed pawns, and disrupt the opponent's coordination — all without any preparation.</p>
+
+  <div class="notation-box mb-3">
+    1.e4 e5 2.Nf3 Nc6 3.Bc4 Nf6 4.Ng5 d5 5.exd5 Nxd5 6.Nxf7! Kxf7 7.Qf3+ — White captures on f7, drops the knight in pocket.
+    Later: @f7+ (drop knight on f7 check) — sudden reappearance of the captured knight!
+  </div>
+
+  <h3>Material Counting in Crazyhouse</h3>
+  <p>Material evaluation in Crazyhouse requires tracking not just what is on the board but what is in each player's pocket. A standard evaluation might read: "White is a knight ahead on the board, but Black has a rook and two pawns in pocket to White's nothing." The pockets are part of the position, and a large pocket of useful pieces often outweighs material on the board.</p>
+</section>
+
+<!-- OPENING PRINCIPLES -->
+<section class="hero-card p-4 mb-4">
+  <h2>4. Opening Principles and Practical Advice</h2>
+
+  <h3>Fast Development Is Less Critical</h3>
+  <p>In classical chess, piece development in the opening is paramount — every undeveloped piece is a tempo lost. In Crazyhouse, development is still important but less urgent because pieces can appear on the board instantly via drops. A player who lags slightly in development but has a powerful pocket is not necessarily worse. This subtly changes opening priorities:</p>
+  <ul>
+    <li>Accepting early piece sacrifices (even queens) can be correct if the compensation in pocket drops is strong enough.</li>
+    <li>Maintaining king safety is even more important — there is no "I'll castle next move" safety margin when the opponent can drop a piece next to your king right now.</li>
+  </ul>
+
+  <h3>Piece Activity Over All</h3>
+  <p>The single most important principle in Crazyhouse is <strong>piece activity</strong>. Active pieces create threats, win material, build up the pocket, and generate attacking opportunities. Passive, defensive pieces are useless even in a structurally sound position — the opponent will build up their pocket from your activity on other parts of the board and then drop for checkmate.</p>
+
+  <h3>Famous Crazyhouse Pattern: The Perpetual Drop Threat</h3>
+  <p>A player with a queen in pocket and opponent's king exposed can often win by the threat of dropping the queen for checkmate — even without actually dropping it. The opponent must spend moves defending against the threatened drop, giving the attacker time to improve their position further. The mere presence of a powerful piece in pocket creates real, concrete threats every turn.</p>
+
+  <h3>Playing Crazyhouse Well</h3>
+  <p>The best Crazyhouse players combine:</p>
+  <ul>
+    <li>Tactical sharpness to spot drop checkmates before they happen (for both attack and defence).</li>
+    <li>Pocket awareness — always knowing what each player has available and how it can be used.</li>
+    <li>Aggressive initiative — in Crazyhouse, the player who attacks first and maintains pressure rarely loses, because the defender's position continuously weakens under the onslaught of both board moves and drop threats.</li>
+    <li>Strategic calmness to not panic when the opponent has a powerful pocket — finding the right defensive drop or counter-attack is always the answer.</li>
+  </ul>
+</section>
+
+</div></main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../js/script.js"></script>
+</body></html>

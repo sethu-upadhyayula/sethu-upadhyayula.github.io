@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antichess (Losing Chess)</title>
+<link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../css/styles.css">
+<style>
+.chess-board-placeholder{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:2px solid var(--border-color,#555);width:fit-content;margin:1rem auto;}
+.chess-board-placeholder .sq{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
+.chess-board-placeholder .light{background:#f0d9b5;}
+.chess-board-placeholder .dark{background:#b58863;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main><div class="container py-4">
+<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Variants</a> › <span>Antichess</span></nav>
+
+<h1 class="mb-3">Antichess <small class="text-muted fs-5">(Losing Chess)</small></h1>
+<p class="lead mb-4">Antichess turns chess completely upside down: the goal is to lose all your pieces, or be stalemated. Captures are mandatory when available, the king has no special status, and every piece you still own at the end is a liability. It is one of the most deeply solved and theoretically rich variants in existence.</p>
+
+<!-- RULES -->
+<section class="hero-card p-4 mb-4">
+  <h2>1. The Rules of Antichess</h2>
+  <p>Antichess (also called Losing Chess, Suicide Chess, or Giveaway Chess depending on the platform) follows these rules:</p>
+
+  <h3>Core Rule Changes</h3>
+  <ul>
+    <li><strong>Goal:</strong> Be the first player to lose all your pieces, or be stalemated (having no legal moves). Both conditions are a win.</li>
+    <li><strong>Captures are mandatory:</strong> If you can capture one or more of your opponent's pieces, you <em>must</em> make a capture on that move. If multiple captures are available, you may choose which one to make.</li>
+    <li><strong>The king has no special status:</strong> The king is just another piece. It can be captured normally, it does not need to escape check, and there is no concept of check or checkmate. The king can walk into any square, including ones attacked by the opponent.</li>
+    <li><strong>No castling:</strong> Castling is not available in Antichess.</li>
+    <li><strong>Promotion:</strong> Pawns that reach the back rank must be promoted, but the player can promote to <em>any</em> piece including a king. Promoting to a king is sometimes strategically correct in Antichess.</li>
+  </ul>
+
+  <h3>Winning and Losing</h3>
+  <ul>
+    <li><strong>Win:</strong> You have no pieces left on the board, OR you have no legal moves (stalemate — including because all your moves are blocked).</li>
+    <li><strong>Loss:</strong> Your opponent achieves either of the above conditions first.</li>
+  </ul>
+  <p><strong>Draws:</strong> If the same position repeats three times or 50 moves pass without a pawn move or capture, the game is drawn — but draws are rare in Antichess because the forcing nature of mandatory captures tends to resolve positions quickly.</p>
+</section>
+
+<!-- STRATEGY -->
+<section class="hero-card p-4 mb-4">
+  <h2>2. Strategic Ideas</h2>
+
+  <h3>Force the Opponent to Capture Your Pieces</h3>
+  <p>The fundamental strategy of Antichess is to <strong>place your pieces en prise</strong> — where your opponent is forced to capture them. Since captures are mandatory, a piece placed where it can be taken must be taken. The player who can engineer forced capture sequences faster wins.</p>
+
+  <h3>Avoid Capturing Unless It Helps You</h3>
+  <p>Paradoxically, capturing is often bad for you in Antichess — it removes an opponent's piece that you wanted to keep on the board (so it could take your pieces in the future). The best positions are ones where you are constantly offering pieces and your opponent is constantly being forced to take them.</p>
+
+  <h3>The Value of Pieces Is Inverted</h3>
+  <p>Material values are completely reversed in Antichess:</p>
+  <ul>
+    <li><strong>Having fewer pieces is better.</strong> A player with 15 pieces and their opponent with 3 is losing badly.</li>
+    <li><strong>Queens are liabilities</strong> — they are hard to force the opponent to capture because they can be avoided. Knights are useful because they jump, creating unexpected capture threats the opponent cannot easily dodge.</li>
+    <li><strong>Pawns are dangerous to keep</strong> — a pawn chain that cannot be captured wastes time while you need to eliminate your other pieces.</li>
+  </ul>
+
+  <div class="chess-board-placeholder" id="board-anti"></div>
+  <script>(function(){
+    var b=document.getElementById('board-anti');
+    var files='abcdefgh';
+    // Show a position where White has offered a piece en prise and Black MUST take
+    var board={d4:'♙',d5:'♟',e4:'♙',c4:'♙',e2:'♔',e7:'♚'};
+    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
+      var s=document.createElement('div');s.className='sq '+((r+c)%2===0?'dark':'light');
+      var sq=files[c]+(r+1);
+      if(board[sq])s.textContent=board[sq];
+      b.appendChild(s);
+    }
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>Black pawn on d5 can capture White pawns on c4 or e4 — it must capture one. White is systematically forcing Black to take pieces.</small></p>
+</section>
+
+<!-- TACTICAL PATTERNS -->
+<section class="hero-card p-4 mb-4">
+  <h2>3. Tactical Patterns</h2>
+
+  <h3>The Forced Capture Chain</h3>
+  <p>The most powerful tactic in Antichess is the forced capture chain — a sequence where every move by one player offers a piece the opponent must take, eliminating your entire army in a cascade:</p>
+
+  <div class="notation-box mb-3">
+    White plays Qd5 (en prise). Black must capture: ...Qxd5.
+    White plays Bb3 (en prise). Black must capture: ...Qxb3.
+    White plays Nc4 (en prise). Black must capture: ...Qxc4.
+    <br><em>White has shed three pieces in three moves by forcing Black to take each one.</em>
+  </div>
+
+  <h3>Creating Zugzwang — Reversed</h3>
+  <p>In classical chess, zugzwang means being forced to make a move that worsens your position. In Antichess, a form of reverse zugzwang occurs when your opponent has many pieces and no forced captures available — they must make passive moves while you manoeuvre to set up sacrificial sequences. Getting your opponent into a position with many pieces and few capture options is a winning strategy.</p>
+
+  <h3>The Pawn Rush</h3>
+  <p>Advancing pawns toward promotion is a common Antichess technique. A pawn that queens — or promotes to a king — can then serve as bait for opponent captures. Promoting to a king is specifically useful because the king piece in Antichess is just a normal piece that the opponent must capture if no other capture is available.</p>
+
+  <h3>Stalemate as a Win</h3>
+  <p>Remember that stalemate (having no legal moves) is also a win in Antichess. A player who gets all their pieces blockaded — with no captures available and no moves — has technically run out of pieces to move, which counts as a win. This occasionally leads to unusual endgame scenarios where a player tries to manoeuvre into a blocked position rather than losing pieces directly.</p>
+</section>
+
+<!-- PARADOXES AND CURIOSITIES -->
+<section class="hero-card p-4 mb-4">
+  <h2>4. Paradoxes and Deep Theory</h2>
+
+  <h3>Antichess Is Solved</h3>
+  <p>Antichess has been proven to be a <strong>first-player win</strong> — with perfect play, White wins. The proof was completed in 2016 by Mark Watkins using computer analysis. The winning first move for White is <strong>1.e3</strong>. This makes Antichess one of the few board games at grandmaster level where the theoretical result of perfect play is known.</p>
+
+  <h3>Intuition Breaks Down Completely</h3>
+  <p>Antichess produces some of the most counter-intuitive positions in any chess variant:</p>
+  <ul>
+    <li>Promoting a pawn to a <em>weaker</em> piece (or a king) is often better than queening.</li>
+    <li>Moving a piece to a square where it can be captured is often the best move, not a blunder.</li>
+    <li>Protecting your own pieces is actively harmful — you want them taken.</li>
+    <li>An extra queen is a massive disadvantage.</li>
+  </ul>
+
+  <h3>Why It Tests Real Chess Understanding</h3>
+  <p>Despite being a complete inversion, Antichess still rewards geometric thinking, pattern recognition, and calculation depth. A player who can visualise three moves ahead — anticipating which captures become forced and in what order — dominates the variant. The mandatory capture rule means that forced sequences are far more common than in classical chess, making calculation both simpler (the tree is narrower) and deeper (chains can be long).</p>
+</section>
+
+</div></main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../js/script.js"></script>
+</body></html>
