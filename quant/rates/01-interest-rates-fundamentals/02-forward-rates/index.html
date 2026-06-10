@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forward Rates — Rates</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Rates</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Rates</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rates-fundamentals">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rates-fundamentals/" class="toc-chapter-link"><strong>1.</strong> Interest Rates Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rates-fundamentals/01-discount-factors-and-spot-rates/">1.1 Discount Factors and Spot Rates</a>
+                        <a href="../../01-interest-rates-fundamentals/02-forward-rates/">1.2 Forward Rates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-yield-curve-construction">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-yield-curve-construction/" class="toc-chapter-link"><strong>2.</strong> Yield Curve Construction</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-yield-curve-construction/01-bootstrapping/">2.1 Bootstrapping</a>
+                        <a href="../../02-yield-curve-construction/02-interpolation-methods/">2.2 Interpolation Methods</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-interest-rate-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-interest-rate-swaps/" class="toc-chapter-link"><strong>3.</strong> Interest Rate Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-interest-rate-swaps/01-vanilla-interest-rate-swaps/">3.1 Vanilla Interest Rate Swaps</a>
+                        <a href="../../03-interest-rate-swaps/02-ois-and-sofr-discounting/">3.2 OIS and SOFR Discounting</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-interest-rate-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-interest-rate-options/" class="toc-chapter-link"><strong>4.</strong> Interest Rate Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-interest-rate-options/01-caps-and-floors/">4.1 Caps and Floors</a>
+                        <a href="../../04-interest-rate-options/02-swaptions/">4.2 Swaptions</a>
+                        <a href="../../04-interest-rate-options/03-sabr-model/">4.3 SABR Model</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-short-rate-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-short-rate-models/" class="toc-chapter-link"><strong>5.</strong> Short Rate Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-short-rate-models/01-vasicek-and-hull-white/">5.1 Vasicek and Hull-White</a>
+                        <a href="../../05-short-rate-models/02-hjm-framework/">5.2 HJM Framework</a>
+                        <a href="../../05-short-rate-models/03-lmm/">5.3 LMM (LIBOR Market Model)</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Rates</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../../quant/">Quant</a> › <a href="../../">Rates</a> › <a href="../">1. Interest Rates Fundamentals</a> › <span>Forward Rates</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">1.2 Forward Rates</h1>
+
+                <p>A forward rate is an interest rate, agreed today, that applies to a future period. While the spot rate $r(0,T)$ describes the rate for borrowing or lending from today until $T$, a forward rate describes the rate for a loan that begins at some future date $t_1 > 0$ and ends at a later date $t_2 > t_1$. Forward rates are not predictions of future spot rates — they are rates that can be locked in today using only instruments observable today, via a replication (no-arbitrage) argument.</p>
+
+                <h2 class="mt-5 mb-3">Defining the Forward Rate</h2>
+
+                <p>Consider an investor who, at time $0$, wants to guarantee a fixed rate of return on money invested between times $t_1$ and $t_2$. This can be achieved by combining two zero-coupon bond positions: buy one unit of the $t_1$-maturity zero-coupon bond's worth of the $t_2$-maturity bond... more precisely, the replication is: short $P(0,t_2)/P(0,t_1)$ units of the $t_1$-bond's notional position and go long the $t_2$-bond, structured so that the net cash flow at time $0$ is zero. This produces a known cash outflow of $1$ at $t_1$ and a known cash inflow of $P(0,t_1)/P(0,t_2)$ at $t_2$ — a forward loan.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Simple Forward Rate</div>
+                    <p class="mb-0">The simply-compounded forward rate $f(t_1, t_2)$, set at time $0$ for the period $[t_1, t_2]$, is the rate such that investing $1$ unit at $t_1$ and receiving $1 + f(t_1,t_2)(t_2 - t_1)$ at $t_2$ has the same value as the zero-coupon replication above. By no-arbitrage:
+                    $$\frac{P(0,t_1)}{P(0,t_2)} = 1 + f(t_1,t_2)(t_2-t_1)$$
+                    so that
+                    $$f(t_1,t_2) = \frac{1}{t_2-t_1}\left(\frac{P(0,t_1)}{P(0,t_2)} - 1\right)$$
+                    When $t_1 = 0$, this reduces to the spot simple rate $L(0,t_2)$, consistent with the definition of discount factors under simple compounding.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Continuously Compounded Forward Rate</div>
+                    <p class="mb-0">Under continuous compounding, the forward rate $f(t_1,t_2)$ for the period $[t_1,t_2]$ satisfies:
+                    $$P(0,t_2) = P(0,t_1)\, e^{-f(t_1,t_2)(t_2-t_1)}$$
+                    so that
+                    $$f(t_1,t_2) = \frac{\ln P(0,t_1) - \ln P(0,t_2)}{t_2-t_1} = \frac{r(0,t_2)\,t_2 - r(0,t_1)\,t_1}{t_2-t_1}$$
+                    The continuously compounded forward rate is the slope of the log-discount curve over $[t_1,t_2]$, and equivalently a weighted difference of the spot rates at $t_1$ and $t_2$.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p class="mb-0">Substitute $P(0,t_1) = e^{-r(0,t_1)t_1}$ and $P(0,t_2) = e^{-r(0,t_2)t_2}$ into $f(t_1,t_2) = \frac{\ln P(0,t_1)-\ln P(0,t_2)}{t_2-t_1}$:
+                    $$f(t_1,t_2) = \frac{-r(0,t_1)t_1 - (-r(0,t_2)t_2)}{t_2-t_1} = \frac{r(0,t_2)t_2 - r(0,t_1)t_1}{t_2-t_1}.\qquad\blacksquare$$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Instantaneous Forward Rate</h2>
+
+                <p>Letting the forward period shrink to zero, $t_2 \to t_1$, the forward rate converges to the <em>instantaneous forward rate</em> — the annualised rate, agreed today, for an infinitesimally short loan starting at $t_1$. This is one of the most fundamental objects in interest rate modelling, since the entire discount curve can be recovered by integrating it.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Instantaneous Forward Rate</div>
+                    <p class="mb-0">The instantaneous forward rate at time $t$, observed at time $0$, is:
+                    $$f(t) = \lim_{\Delta \to 0} f(t, t+\Delta) = -\frac{\partial}{\partial T}\ln P(0,T)\bigg|_{T=t} = -\frac{\partial_T P(0,T)}{P(0,T)}\bigg|_{T=t}$$
+                    Conversely, the discount curve can be recovered from the instantaneous forward curve by:
+                    $$P(0,T) = \exp\left(-\int_0^T f(u)\,du\right)$$
+                    and the spot rate is the average of instantaneous forwards over $[0,T]$:
+                    $$r(0,T) = \frac{1}{T}\int_0^T f(u)\,du$$</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Spot, Forward, and Instantaneous Forward Curves</div>
+                    <p class="mb-0">The spot rate curve is a moving average of the instantaneous forward curve, which is why the spot curve is always smoother than the forward curve. When the spot curve is upward-sloping (normal), the instantaneous forward curve lies above the spot curve; when the spot curve is downward-sloping (inverted), the forward curve lies below it. The forward curve crosses the spot curve at the point where the spot curve is locally flat.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Forward Rate Agreements (FRAs)</h2>
+
+                <p>A Forward Rate Agreement is the over-the-counter instrument that directly trades forward rates. It is the building block from which the no-arbitrage forward rate formula derives its market relevance.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Forward Rate Agreement</div>
+                    <p class="mb-0">An FRA with notional $N$, fixing date $t_1$, payment/maturity date $t_2$, and contract rate $K$ pays, at time $t_2$ (or, more commonly in practice, discounted at $t_1$):
+                    $$N \cdot (L(t_1,t_2) - K)\cdot(t_2-t_1)$$
+                    where $L(t_1,t_2)$ is the realised simply-compounded reference rate (e.g. SOFR or term IBOR) observed at $t_1$ for the period $[t_1,t_2]$. The FRA's <em>fair</em> or <em>par</em> rate, set at inception so the contract has zero value, is exactly the no-arbitrage forward rate:
+                    $$K^* = f(t_1,t_2) = \frac{1}{t_2-t_1}\left(\frac{P(0,t_1)}{P(0,t_2)}-1\right)$$</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof — Why the Par FRA Rate is the Forward Rate</div>
+                    <p class="mb-0">Consider the static replication: at time $0$, buy $\frac{1}{P(0,t_2)}$ units of the $t_2$-bond's worth of zero-coupon bonds maturing at $t_1$ for cost $\frac{P(0,t_1)}{P(0,t_2)}$, financed by issuing one zero-coupon bond maturing at $t_2$ (raising $P(0,t_2)$, costing $1$ at $t_2$). At $t_1$, the $t_1$-bonds pay $\frac{P(0,t_1)}{P(0,t_2)}$, which is reinvested at the realised rate $L(t_1,t_2)$ to $t_2$, yielding $\frac{P(0,t_1)}{P(0,t_2)}\left(1 + L(t_1,t_2)(t_2-t_1)\right)$ at $t_2$. The net payoff at $t_2$ is this amount minus the $1$ owed on the issued bond. If $K = f(t_1,t_2)$ as defined above, $\frac{P(0,t_1)}{P(0,t_2)} = 1 + K(t_2-t_1)$, so the strategy was set up at zero net cost at time $0$ and produces a payoff of $(L(t_1,t_2)-K)(t_2-t_1)$ at $t_2$ — exactly the FRA payoff. Since the replication costs nothing today, no-arbitrage requires the fair FRA rate to equal $f(t_1,t_2)$. $\blacksquare$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">No-Arbitrage Relationship: Spot, Forward, Discount Factors</h2>
+
+                <p>Spot rates, forward rates, and discount factors are three equivalent representations of the same information — the term structure — connected by no-arbitrage identities. Given any one, the other two are determined.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Equivalence of Representations</div>
+                    <p class="mb-0">For $0 < t_1 < t_2$, the following identities hold and are mutually consistent:
+                    $$P(0,t_2) = P(0,t_1)\cdot \frac{1}{1+f(t_1,t_2)(t_2-t_1)} = P(0,t_1)\,e^{-f(t_1,t_2)(t_2-t_1)}$$
+                    $$r(0,t_2) = \frac{r(0,t_1)t_1 + f(t_1,t_2)(t_2-t_1)}{t_2}$$
+                    The second identity shows the spot rate to $t_2$ is a time-weighted average of the spot rate to $t_1$ and the forward rate over $[t_1,t_2]$. Chaining this relationship across consecutive periods $[0,t_1], [t_1,t_2], \ldots, [t_{n-1},t_n]$ allows the entire discount curve to be reconstructed from a sequence of forward rates and an initial discount factor — the basis of curve bootstrapping (Chapter 2).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Computing a Forward Rate from Discount Factors</div>
+                    <p>Suppose the 1-year and 2-year discount factors are $P(0,1) = 0.9524$ and $P(0,2) = 0.9057$.</p>
+                    <p><strong>Simple forward rate</strong> for the period $[1,2]$:
+                    $$f(1,2) = \frac{1}{2-1}\left(\frac{0.9524}{0.9057}-1\right) = \frac{0.9524}{0.9057}-1 = 1.05156 - 1 = 5.156\%$$</p>
+                    <p><strong>Continuously compounded forward rate</strong> for the same period:
+                    $$f(1,2) = \frac{\ln(0.9524) - \ln(0.9057)}{1} = (-0.04875) - (-0.09907) = 5.03\%$$</p>
+                    <p class="mb-0">As expected, the simple and continuous forward rates are close but not identical — the simple rate is always slightly higher than the continuous rate for positive rates, since $\ln(1+x) < x$. An FRA on the 1-year-into-2-year period (a "$1\times2$ FRA") would be quoted at a fair rate close to $5.16\%$ on an Act/360 simple basis, consistent with the simple forward rate computed above (subject to day-count adjustments).</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-discount-factors-and-spot-rates/" class="btn btn-outline-custom">&larr; 1.1 Discount Factors and Spot Rates</a>
+                    <a href="../../02-yield-curve-construction/" class="btn btn-custom">2. Yield Curve Construction &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

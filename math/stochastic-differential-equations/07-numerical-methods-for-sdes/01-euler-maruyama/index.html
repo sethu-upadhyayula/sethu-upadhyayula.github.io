@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.1 Euler–Maruyama Method — Stochastic Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Math</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Stochastic Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-brownian-motion-and-filtrations"><div class="toc-chapter-header"><a href="../../01-brownian-motion-and-filtrations/" class="toc-chapter-link"><strong>1.</strong> Brownian Motion and Filtrations</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../01-brownian-motion-and-filtrations/01-brownian-motion/">1.1 Brownian Motion</a><a href="../../01-brownian-motion-and-filtrations/02-filtrations-and-adaptedness/">1.2 Filtrations and Adaptedness</a></div></div>
+                <div class="toc-chapter" data-chapter="02-stochastic-integration"><div class="toc-chapter-header"><a href="../../02-stochastic-integration/" class="toc-chapter-link"><strong>2.</strong> Stochastic Integration</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../02-stochastic-integration/01-ito-integral/">2.1 Itô Integral</a><a href="../../02-stochastic-integration/02-properties-of-the-ito-integral/">2.2 Properties of the Itô Integral</a><a href="../../02-stochastic-integration/03-ito-isometry/">2.3 Itô Isometry</a></div></div>
+                <div class="toc-chapter" data-chapter="03-itos-formula"><div class="toc-chapter-header"><a href="../../03-itos-formula/" class="toc-chapter-link"><strong>3.</strong> Itô's Formula</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../03-itos-formula/01-one-dimensional-ito-formula/">3.1 One-Dimensional Itô Formula</a><a href="../../03-itos-formula/02-multi-dimensional-ito-formula/">3.2 Multi-Dimensional Itô Formula</a><a href="../../03-itos-formula/03-applications/">3.3 Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="04-stochastic-differential-equations"><div class="toc-chapter-header"><a href="../../04-stochastic-differential-equations/" class="toc-chapter-link"><strong>4.</strong> Stochastic Differential Equations</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../04-stochastic-differential-equations/01-existence-and-uniqueness/">4.1 Existence and Uniqueness</a><a href="../../04-stochastic-differential-equations/02-linear-sdes/">4.2 Linear SDEs</a><a href="../../04-stochastic-differential-equations/03-geometric-brownian-motion/">4.3 Geometric Brownian Motion</a></div></div>
+                <div class="toc-chapter" data-chapter="05-feynman-kac-formula"><div class="toc-chapter-header"><a href="../../05-feynman-kac-formula/" class="toc-chapter-link"><strong>5.</strong> The Feynman–Kac Formula</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../05-feynman-kac-formula/01-connections-to-pdes/">5.1 Connections to PDEs</a><a href="../../05-feynman-kac-formula/02-feynman-kac/">5.2 Feynman–Kac</a></div></div>
+                <div class="toc-chapter" data-chapter="06-change-of-measure"><div class="toc-chapter-header"><a href="../../06-change-of-measure/" class="toc-chapter-link"><strong>6.</strong> Change of Measure</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../06-change-of-measure/01-girsanovs-theorem/">6.1 Girsanov's Theorem</a><a href="../../06-change-of-measure/02-applications/">6.2 Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="07-numerical-methods-for-sdes"><div class="toc-chapter-header"><a href="../../07-numerical-methods-for-sdes/" class="toc-chapter-link"><strong>7.</strong> Numerical Methods for SDEs</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../../07-numerical-methods-for-sdes/01-euler-maruyama/">7.1 Euler–Maruyama Scheme</a><a href="../../07-numerical-methods-for-sdes/02-milstein-scheme/">7.2 Milstein Scheme</a></div></div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Math</a></div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> › <a href="../../">Stochastic Differential Equations</a> › <a href="../">7. Numerical Methods for SDEs</a> › <span>7.1 Euler–Maruyama Method</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">7.1 Euler–Maruyama Method</h1>
+                <p>Consider an SDE on $[0,T]$</p>
+                $$dX_t = \mu(X_t,t)\,dt + \sigma(X_t,t)\,dW_t, \qquad X_0 = x_0,$$
+                <p>where $\mu$ is the drift coefficient and $\sigma$ the diffusion coefficient. Except in special cases (linear SDEs, geometric Brownian motion, Ornstein–Uhlenbeck), no closed-form expression for $X_t$ exists. The <strong>Euler–Maruyama method</strong> is the most direct way to approximate $X_t$ by discretizing time and replacing $dW_t$ with the actual Brownian increments.</p>
+
+                <h2 class="mt-5 mb-3">The Scheme</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 7.1.1 — Euler–Maruyama Scheme</div>
+                    <p>Partition $[0,T]$ into $N$ subintervals with grid points $t_n = n\Delta t$, $\Delta t = T/N$, $n = 0,\dots,N$. Let $\Delta W_n = W_{t_{n+1}} - W_{t_n} \sim N(0,\Delta t)$ be independent Gaussian increments. The Euler–Maruyama approximation $Y_n \approx X_{t_n}$ is defined recursively by</p>
+                    $$Y_0 = x_0, \qquad Y_{n+1} = Y_n + \mu(Y_n,t_n)\,\Delta t + \sigma(Y_n,t_n)\,\Delta W_n.$$
+                    <p class="mb-0">In simulation, $\Delta W_n = \sqrt{\Delta t}\,Z_n$ where $Z_n \sim N(0,1)$ are i.i.d. standard normals. The scheme is the direct stochastic analogue of the explicit Euler method for ODEs, obtained by freezing the coefficients $\mu, \sigma$ at the left endpoint $t_n$ of each subinterval.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark 7.1.2 — Origin of the Scheme</div>
+                    <p class="mb-0">The scheme follows from the integral form of the SDE,</p>
+                    $$X_{t_{n+1}} = X_{t_n} + \int_{t_n}^{t_{n+1}} \mu(X_s,s)\,ds + \int_{t_n}^{t_{n+1}} \sigma(X_s,s)\,dW_s,$$
+                    <p class="mb-0">by approximating both integrands as constant and equal to their values at $t_n$: $\int_{t_n}^{t_{n+1}}\mu(X_s,s)\,ds \approx \mu(X_{t_n},t_n)\Delta t$ and $\int_{t_n}^{t_{n+1}}\sigma(X_s,s)\,dW_s \approx \sigma(X_{t_n},t_n)\Delta W_n$, exploiting the Itô isometry to control the error of the second approximation.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Convergence</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.1.3 — Strong Convergence of Euler–Maruyama</div>
+                    <p class="mb-0">Suppose $\mu,\sigma$ satisfy global Lipschitz and linear growth conditions. Then the Euler–Maruyama approximation converges <strong>strongly with order $\gamma = 0.5$</strong>:</p>
+                    $$E\left[\max_{0\leq n\leq N}\left|X_{t_n} - Y_n\right|\right] \leq C(\Delta t)^{1/2},$$
+                    <p class="mb-0">for a constant $C$ independent of $\Delta t$. Halving the step size reduces the pathwise error by a factor of only $\sqrt{2} \approx 1.41$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 7.1.4 — Weak Convergence of Euler–Maruyama</div>
+                    <p class="mb-0">Under the same conditions, plus sufficient smoothness of $\mu,\sigma$ and of the test function $g$, the Euler–Maruyama approximation converges <strong>weakly with order $\beta = 1.0$</strong>:</p>
+                    $$\left|E[g(X_T)] - E[g(Y_N)]\right| \leq C(\Delta t).$$
+                    <p class="mb-0">The weak order exceeds the strong order because the dominant pathwise error term, arising from the difference between $\Delta W_n$ and the higher-order Itô–Taylor corrections, has mean zero and so does not contribute to the error in expectations at leading order.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Heuristic for the Strong Order $1/2$</div>
+                    <p>Over one step, the local error in approximating $\sigma(X_s,s)$ by $\sigma(X_{t_n},t_n)$ for $s \in [t_n,t_{n+1}]$ is itself $O(\sqrt{\Delta t})$ in the $L^2$ sense, since $X_s - X_{t_n} = O(\sqrt{\Delta t})$ pathwise (by the scaling of Brownian increments). Multiplying this $O(\sqrt{\Delta t})$ coefficient error by the increment $\Delta W_n = O(\sqrt{\Delta t})$ gives a local strong error of order $\Delta t$. Accumulating $N = T/\Delta t$ such independent-ish errors in an $L^2$ sense (square-root accumulation) yields a global strong error of order $\sqrt{\Delta t \cdot N \cdot (\Delta t)^2}\big/\Delta t \sim \sqrt{\Delta t}$, i.e. order $1/2$. $\square$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example: Geometric Brownian Motion</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 7.1.5 — Simulating $dS_t = \mu S_t\,dt + \sigma S_t\,dW_t$</div>
+                    <p>For geometric Brownian motion, $\mu(S,t) = \mu S$ and $\sigma(S,t) = \sigma S$. The Euler–Maruyama recursion is</p>
+                    $$S_{n+1} = S_n + \mu S_n \Delta t + \sigma S_n \Delta W_n = S_n\left(1 + \mu\Delta t + \sigma\Delta W_n\right).$$
+                    <p>The exact solution is $S_T = S_0\exp\left((\mu - \sigma^2/2)T + \sigma W_T\right)$. Comparing the two: the exact solution involves $\exp(\sigma\Delta W_n - \frac{1}{2}\sigma^2\Delta t)$ over a step, which expands as $1 + \sigma\Delta W_n + \frac{1}{2}\sigma^2\left((\Delta W_n)^2 - \Delta t\right) + O((\Delta t)^{3/2})$.</p>
+                    <p class="mb-0">The Euler–Maruyama step $1 + \mu\Delta t + \sigma\Delta W_n$ is missing exactly the $\frac{1}{2}\sigma^2\left((\Delta W_n)^2 - \Delta t\right)$ term — an $O(\Delta t)$ quantity with zero mean. This is precisely the term that the Milstein scheme (Section 7.2) adds back in, improving the strong order from $0.5$ to $1.0$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Stability Remarks</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark 7.1.6 — Step Size and Stability</div>
+                    <p class="mb-0">As with deterministic ODE solvers, the explicit Euler–Maruyama scheme can be numerically unstable for stiff SDEs (e.g., mean-reverting processes with large reversion speed) unless $\Delta t$ is chosen sufficiently small relative to the relevant time scale of the drift. Implicit variants (e.g., the drift-implicit or "backward" Euler–Maruyama scheme, $Y_{n+1} = Y_n + \mu(Y_{n+1},t_{n+1})\Delta t + \sigma(Y_n,t_n)\Delta W_n$) trade extra computational cost per step for improved stability, and are preferred for stiff systems. Additionally, for processes with non-negativity constraints (e.g., interest rate or volatility models such as CIR), the additive Gaussian noise in Euler–Maruyama can produce negative values; truncation or reflection schemes are commonly used to address this in practice.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 7. Numerical Methods for SDEs</a>
+                    <a href="../02-milstein-scheme/" class="btn btn-custom">7.2 Milstein Scheme &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links"><a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a><a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a></div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

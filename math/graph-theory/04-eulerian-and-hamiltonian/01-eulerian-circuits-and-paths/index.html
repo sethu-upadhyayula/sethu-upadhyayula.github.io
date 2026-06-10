@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.1 Eulerian Circuits and Paths — Graph Theory</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <label class="theme-switch" for="desktop-theme-toggle">
+                                <input type="checkbox" id="desktop-theme-toggle">
+                                <span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Math</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Graph Theory</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-basic-concepts">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-basic-concepts/" class="toc-chapter-link"><strong>1.</strong> Basic Concepts</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-basic-concepts/01-graphs-and-digraphs/">1.1 Graphs and Digraphs</a>
+                        <a href="../../01-basic-concepts/02-degree-sequences/">1.2 Degree Sequences</a>
+                        <a href="../../01-basic-concepts/03-paths-and-cycles/">1.3 Paths and Cycles</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-trees">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-trees/" class="toc-chapter-link"><strong>2.</strong> Trees</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-trees/01-trees-and-forests/">2.1 Trees and Forests</a>
+                        <a href="../../02-trees/02-spanning-trees/">2.2 Spanning Trees</a>
+                        <a href="../../02-trees/03-minimum-spanning-trees/">2.3 Minimum Spanning Trees</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-connectivity">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-connectivity/" class="toc-chapter-link"><strong>3.</strong> Connectivity</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-connectivity/01-vertex-and-edge-connectivity/">3.1 Vertex and Edge Connectivity</a>
+                        <a href="../../03-connectivity/02-mengers-theorem/">3.2 Menger's Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-eulerian-and-hamiltonian">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-eulerian-and-hamiltonian/" class="toc-chapter-link"><strong>4.</strong> Eulerian and Hamiltonian Graphs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-eulerian-and-hamiltonian/01-eulerian-circuits-and-paths/">4.1 Eulerian Circuits and Paths</a>
+                        <a href="../../04-eulerian-and-hamiltonian/02-hamiltonian-cycles/">4.2 Hamiltonian Cycles</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-planar-graphs">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-planar-graphs/" class="toc-chapter-link"><strong>5.</strong> Planar Graphs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-planar-graphs/01-eulers-formula/">5.1 Euler's Formula</a>
+                        <a href="../../05-planar-graphs/02-kuratowskis-theorem/">5.2 Kuratowski's Theorem</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="06-graph-coloring">
+                    <div class="toc-chapter-header">
+                        <a href="../../06-graph-coloring/" class="toc-chapter-link"><strong>6.</strong> Graph Coloring</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../06-graph-coloring/01-chromatic-number/">6.1 Chromatic Number</a>
+                        <a href="../../06-graph-coloring/02-four-color-theorem/">6.2 Four Color Theorem</a>
+                        <a href="../../06-graph-coloring/03-edge-colorings/">6.3 Edge Colorings</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="07-matchings-and-flows">
+                    <div class="toc-chapter-header">
+                        <a href="../../07-matchings-and-flows/" class="toc-chapter-link"><strong>7.</strong> Matchings and Flows</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../07-matchings-and-flows/01-matchings-and-halls-theorem/">7.1 Matchings and Hall's Theorem</a>
+                        <a href="../../07-matchings-and-flows/02-network-flows-and-max-flow-min-cut/">7.2 Network Flows and Max-Flow Min-Cut</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="08-spectral-graph-theory">
+                    <div class="toc-chapter-header">
+                        <a href="../../08-spectral-graph-theory/" class="toc-chapter-link"><strong>8.</strong> Spectral Graph Theory</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../08-spectral-graph-theory/01-adjacency-matrix/">8.1 Adjacency Matrix</a>
+                        <a href="../../08-spectral-graph-theory/02-laplacian/">8.2 Laplacian</a>
+                        <a href="../../08-spectral-graph-theory/03-spectral-bounds/">8.3 Spectral Bounds</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Math</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../../math/">Math</a> ›
+                <a href="../../">Graph Theory</a> ›
+                <a href="../">4. Eulerian and Hamiltonian Graphs</a> ›
+                <span>4.1 Eulerian Circuits and Paths</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Eulerian Circuits and Paths</h1>
+
+                <p>In 1736, Leonhard Euler settled the question of the seven bridges of K&ouml;nigsberg, founding what we now call graph theory. The underlying question is purely combinatorial: can a graph be traversed by a closed walk that uses every edge exactly once? The answer turns out to depend only on the degrees of the vertices.</p>
+
+                <h2 class="mt-5 mb-3">Definitions</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition 4.1.1 — Eulerian Circuit and Eulerian Path</div>
+                    <p>An <strong>Eulerian circuit</strong> (or Euler tour) of a graph $G$ is a closed walk that traverses every edge of $G$ exactly once (vertices may be repeated).</p>
+                    <p>An <strong>Eulerian path</strong> (or Euler trail) is an open walk that traverses every edge exactly once but starts and ends at different vertices.</p>
+                    <p class="mb-0">A graph is called <strong>Eulerian</strong> if it has an Eulerian circuit, and <strong>semi-Eulerian</strong> if it has an Eulerian path but not an Eulerian circuit.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example 4.1.2 — The Seven Bridges of K&ouml;nigsberg</div>
+                    <p>The city of K&ouml;nigsberg had two islands in the river Pregel, connected to each other and to the two banks by seven bridges. Euler modeled the four landmasses as vertices $A,B,C,D$ and the bridges as (multi-)edges between them. The question — is there a walk crossing each bridge exactly once and returning to the start? — is exactly the question of an Eulerian circuit.</p>
+                    <p class="mb-0">In Euler's graph, every vertex has odd degree ($\deg A = \deg C = \deg D = 3$, $\deg B = 5$). Since more than two vertices have odd degree, by Theorem 4.1.4 (and even Theorem 4.1.6) <strong>no Eulerian circuit or path exists</strong>. This was Euler's negative resolution of the puzzle.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Euler's Theorem</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Lemma 4.1.3 — Even Degree Necessary</div>
+                    <p class="mb-0">If $G$ has an Eulerian circuit, then every vertex of $G$ has even degree. If $G$ has an Eulerian path between distinct vertices $u$ and $v$, then $u$ and $v$ have odd degree and every other vertex has even degree.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p class="mb-0">Each time the circuit (or path) passes through an internal vertex $w$, it uses one edge to enter and one to leave, contributing $2$ to $\deg(w)$. Over the whole traversal these contributions partition the edges incident to $w$ into pairs, so $\deg(w)$ is even — unless $w$ is an endpoint of an open trail, in which case one edge is left unpaired and $\deg(w)$ is odd. For a circuit, every vertex is "internal" (the start/end vertex is entered and left the same number of times), so all degrees are even. $\square$</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.1.4 — Euler's Theorem (Circuits)</div>
+                    <p class="mb-0">A connected graph $G$ (with at least one edge) has an Eulerian circuit if and only if every vertex of $G$ has even degree.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof</div>
+                    <p>($\Rightarrow$) This is Lemma 4.1.3.</p>
+                    <p>($\Leftarrow$) Suppose $G$ is connected and every vertex has even degree. We argue by induction on $|E(G)|$. Since every degree is even and $\ge 2$ (connectivity with $\ge 1$ edge forces $\delta(G) \ge 2$ when even and positive), $G$ contains a cycle $C$ — start at any vertex and keep walking along unused edges; since every vertex has even degree, whenever we enter a vertex (other than possibly the start) we can always leave, so the walk must eventually return to its starting vertex, forming a closed walk $C$ with no repeated edges.</p>
+                    <p>Remove the edges of $C$ from $G$ to get $G' = G - E(C)$. Every vertex still has even degree in $G'$ (we removed $0$ or $2$ edges at each vertex of $C$). Each connected component of $G'$ with at least one edge is connected with all-even degrees and fewer edges than $G$, so by the induction hypothesis each has an Eulerian circuit. Moreover, each such component shares at least one vertex with $C$ (since $G$ is connected).</p>
+                    <p class="mb-0">Splice these component circuits into $C$ at their shared vertices: walk along $C$, and whenever we reach a vertex shared with a component's circuit (not yet traversed), detour around that entire circuit before continuing along $C$. The result is a closed walk using every edge of $G$ exactly once — an Eulerian circuit. $\square$</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.1.5 — Euler's Theorem (Paths)</div>
+                    <p class="mb-0">A connected graph $G$ (with at least one edge) has an Eulerian path (and is not Eulerian) if and only if exactly two vertices of $G$ have odd degree. In this case, every Eulerian path must start at one odd-degree vertex and end at the other.</p>
+                </div>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof Sketch</div>
+                    <p class="mb-0">($\Rightarrow$) follows from Lemma 4.1.3, since exactly the two endpoints contribute an unpaired edge. ($\Leftarrow$) If $u,v$ are the two odd-degree vertices, add a new edge $\{u,v\}$ (or a path through a new vertex if $u,v$ already adjacent and the graph is simple) to form $G^+$, in which every vertex now has even degree and $G^+$ remains connected. By Theorem 4.1.4, $G^+$ has an Eulerian circuit; deleting the added edge from this circuit yields an Eulerian path of $G$ from $u$ to $v$. $\square$</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Theorem 4.1.6 — Summary Criterion</div>
+                    <p class="mb-0">Let $G$ be connected. Then:</p>
+                    <ul class="mb-0">
+                        <li>$G$ has an Eulerian circuit $\iff$ the number of odd-degree vertices is $0$.</li>
+                        <li>$G$ has an Eulerian path but no Eulerian circuit $\iff$ the number of odd-degree vertices is exactly $2$.</li>
+                        <li>$G$ has neither $\iff$ the number of odd-degree vertices is $> 2$ (note this number is always even, by the handshake lemma).</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Algorithms</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Algorithm 4.1.7 — Fleury's Algorithm</div>
+                    <p>Starting from a vertex of odd degree (or any vertex, if all degrees are even), repeatedly traverse an unused edge, choosing a <strong>bridge</strong> (cut edge) of the remaining unused-edge graph only if there is no alternative.</p>
+                    <p class="mb-0">The "don't burn bridges unless forced to" rule ensures the remaining unused edges always stay connected to the current vertex, so the walk can always be extended until all edges are used. Fleury's algorithm is conceptually elegant but requires repeated bridge-detection, costing $O(E^2)$ in the naive implementation.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Algorithm 4.1.8 — Hierholzer's Algorithm</div>
+                    <p>A linear-time $O(E)$ alternative:</p>
+                    <ol>
+                        <li>Starting from any vertex (an odd-degree vertex if seeking an Eulerian path), follow unused edges until returning to a vertex already on the current walk, forming a closed sub-tour.</li>
+                        <li>While some vertex on the current tour still has unused incident edges, splice in a new closed sub-tour starting and ending at that vertex (found the same way).</li>
+                        <li>Repeat until no unused edges remain. The resulting spliced walk is an Eulerian circuit (or path).</li>
+                    </ol>
+                    <p class="mb-0">This is essentially the constructive proof of Theorem 4.1.4 turned into an algorithm, implemented efficiently with a stack.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Directed Graphs</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem 4.1.9 — Eulerian Digraphs</div>
+                    <p class="mb-0">A connected digraph $D$ has a directed Eulerian circuit if and only if $\text{in-deg}(v) = \text{out-deg}(v)$ for every vertex $v$. It has a directed Eulerian path (start $\ne$ end) if and only if there is exactly one vertex $u$ with $\text{out-deg}(u) - \text{in-deg}(u) = 1$, exactly one vertex $v$ with $\text{in-deg}(v) - \text{out-deg}(v) = 1$, and all other vertices have equal in- and out-degree.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Applications</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Applications</div>
+                    <p class="mb-0">Eulerian circuits underlie the <strong>Chinese Postman Problem</strong> (route inspection problem): finding a minimum-length closed walk traversing every edge at least once, solved in polynomial time by adding minimum-weight duplicate edges to make all degrees even and then finding an Eulerian circuit. De Bruijn sequences, used in genome assembly and combinatorial generation, correspond to Eulerian circuits in de Bruijn graphs. Eulerian path criteria are also used in circuit board drilling and network traffic analysis.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Eulerian and Hamiltonian Graphs</a>
+                    <a href="../02-hamiltonian-cycles/" class="btn btn-custom">4.2 Hamiltonian Cycles &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body>
+</html>

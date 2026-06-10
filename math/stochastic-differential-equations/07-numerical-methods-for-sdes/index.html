@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Numerical Methods for SDEs — Stochastic Differential Equations</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header>
+        <nav class="navbar navbar-expand-lg site-header">
+            <div class="container">
+                <a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../math/">Math</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../chess/">Chess</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+                        <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Math</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Stochastic Differential Equations</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-brownian-motion-and-filtrations"><div class="toc-chapter-header"><a href="../01-brownian-motion-and-filtrations/" class="toc-chapter-link"><strong>1.</strong> Brownian Motion and Filtrations</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../01-brownian-motion-and-filtrations/01-brownian-motion/">1.1 Brownian Motion</a><a href="../01-brownian-motion-and-filtrations/02-filtrations-and-adaptedness/">1.2 Filtrations and Adaptedness</a></div></div>
+                <div class="toc-chapter" data-chapter="02-stochastic-integration"><div class="toc-chapter-header"><a href="../02-stochastic-integration/" class="toc-chapter-link"><strong>2.</strong> Stochastic Integration</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../02-stochastic-integration/01-ito-integral/">2.1 Itô Integral</a><a href="../02-stochastic-integration/02-properties-of-the-ito-integral/">2.2 Properties of the Itô Integral</a><a href="../02-stochastic-integration/03-ito-isometry/">2.3 Itô Isometry</a></div></div>
+                <div class="toc-chapter" data-chapter="03-itos-formula"><div class="toc-chapter-header"><a href="../03-itos-formula/" class="toc-chapter-link"><strong>3.</strong> Itô's Formula</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../03-itos-formula/01-one-dimensional-ito-formula/">3.1 One-Dimensional Itô Formula</a><a href="../03-itos-formula/02-multi-dimensional-ito-formula/">3.2 Multi-Dimensional Itô Formula</a><a href="../03-itos-formula/03-applications/">3.3 Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="04-stochastic-differential-equations"><div class="toc-chapter-header"><a href="../04-stochastic-differential-equations/" class="toc-chapter-link"><strong>4.</strong> Stochastic Differential Equations</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../04-stochastic-differential-equations/01-existence-and-uniqueness/">4.1 Existence and Uniqueness</a><a href="../04-stochastic-differential-equations/02-linear-sdes/">4.2 Linear SDEs</a><a href="../04-stochastic-differential-equations/03-geometric-brownian-motion/">4.3 Geometric Brownian Motion</a></div></div>
+                <div class="toc-chapter" data-chapter="05-feynman-kac-formula"><div class="toc-chapter-header"><a href="../05-feynman-kac-formula/" class="toc-chapter-link"><strong>5.</strong> The Feynman–Kac Formula</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../05-feynman-kac-formula/01-connections-to-pdes/">5.1 Connections to PDEs</a><a href="../05-feynman-kac-formula/02-feynman-kac/">5.2 Feynman–Kac</a></div></div>
+                <div class="toc-chapter" data-chapter="06-change-of-measure"><div class="toc-chapter-header"><a href="../06-change-of-measure/" class="toc-chapter-link"><strong>6.</strong> Change of Measure</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../06-change-of-measure/01-girsanovs-theorem/">6.1 Girsanov's Theorem</a><a href="../06-change-of-measure/02-applications/">6.2 Applications</a></div></div>
+                <div class="toc-chapter" data-chapter="07-numerical-methods-for-sdes"><div class="toc-chapter-header"><a href="../07-numerical-methods-for-sdes/" class="toc-chapter-link"><strong>7.</strong> Numerical Methods for SDEs</a><button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button></div><div class="toc-subsections"><a href="../07-numerical-methods-for-sdes/01-euler-maruyama/">7.1 Euler–Maruyama Scheme</a><a href="../07-numerical-methods-for-sdes/02-milstein-scheme/">7.2 Milstein Scheme</a></div></div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Math</a></div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../math/">Math</a> › <a href="../">Stochastic Differential Equations</a> › <span>7. Numerical Methods for SDEs</span>
+            </nav>
+            <article>
+                <h1 class="text-accent mb-4">Chapter 7: Numerical Methods for SDEs</h1>
+                <p>Most stochastic differential equations encountered in practice — beyond a handful of solvable cases such as linear SDEs and geometric Brownian motion — admit no closed-form solution. To compute quantities like $E[f(X_T)]$ or to simulate sample paths of $X_t$, we must discretize the SDE in time and approximate the solution numerically. This chapter introduces the two foundational discretization schemes, Euler–Maruyama and Milstein, and the notions of strong and weak convergence used to assess their accuracy.</p>
+
+                <h2 class="mt-5 mb-3">Strong vs. Weak Convergence</h2>
+
+                <p>Given an SDE $dX_t = \mu(X_t,t)\,dt + \sigma(X_t,t)\,dW_t$ on $[0,T]$, a numerical scheme produces an approximation $Y^{\Delta t}_n \approx X_{t_n}$ on a time grid $t_n = n\Delta t$. There are two natural ways to measure how good this approximation is.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Strong Convergence</div>
+                    <p class="mb-0">A scheme converges <strong>strongly</strong> with order $\gamma$ if there is a constant $C$, independent of $\Delta t$, such that</p>
+                    $$E\left[\left|X_T - Y^{\Delta t}_N\right|\right] \leq C(\Delta t)^\gamma$$
+                    <p class="mb-0">for sufficiently small $\Delta t$. Strong convergence measures pathwise accuracy — how close individual simulated trajectories are to the true solution driven by the same Brownian path. It matters for applications like hedging simulations and pathwise sensitivity analysis.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Weak Convergence</div>
+                    <p class="mb-0">A scheme converges <strong>weakly</strong> with order $\beta$ if for every sufficiently smooth function $g$ there is a constant $C$, independent of $\Delta t$, such that</p>
+                    $$\left|E[g(X_T)] - E[g(Y^{\Delta t}_N)]\right| \leq C(\Delta t)^\beta.$$
+                    <p class="mb-0">Weak convergence measures accuracy of distributional quantities — expectations, moments, option prices — and does not require matching individual sample paths. It is typically achievable to higher order than strong convergence, since errors in the noise term can partially cancel in expectation.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Chapter Overview</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">7.1 — Euler–Maruyama Method</div>
+                    <p class="mb-0">The simplest discretization, directly analogous to the Euler method for ODEs: $X_{n+1} = X_n + \mu(X_n,t_n)\Delta t + \sigma(X_n,t_n)\Delta W_n$. It achieves strong order $0.5$ and weak order $1.0$, and is the workhorse scheme for Monte Carlo simulation of SDEs due to its simplicity.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">7.2 — Milstein Scheme</div>
+                    <p class="mb-0">By including the next term in the stochastic Taylor (Itô–Taylor) expansion, the Milstein scheme adds a correction term involving $\sigma\sigma'$ and $(\Delta W_n)^2 - \Delta t$, raising the strong order of convergence to $1.0$. This improves pathwise accuracy at the cost of requiring the derivative $\sigma'$ of the diffusion coefficient.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../06-change-of-measure/02-applications/" class="btn btn-outline-custom">&larr; 6.2 Applications</a>
+                    <a href="01-euler-maruyama/" class="btn btn-custom">7.1 Euler–Maruyama Method &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links"><a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a><a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a></div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

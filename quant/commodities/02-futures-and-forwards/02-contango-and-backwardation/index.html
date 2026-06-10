@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contango and Backwardation — Commodities</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Commodities</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Commodities</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-commodity-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-commodity-markets/" class="toc-chapter-link"><strong>1.</strong> Commodity Markets</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-commodity-markets/01-market-structure/">1.1 Market Structure</a>
+                        <a href="../../01-commodity-markets/02-spot-prices-and-convenience-yield/">1.2 Spot Prices and Convenience Yield</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-futures-and-forwards">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-futures-and-forwards/" class="toc-chapter-link"><strong>2.</strong> Futures and Forwards</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-futures-and-forwards/01-cost-of-carry/">2.1 Cost of Carry Model</a>
+                        <a href="../../02-futures-and-forwards/02-contango-and-backwardation/">2.2 Contango and Backwardation</a>
+                        <a href="../../02-futures-and-forwards/03-basis-risk/">2.3 Basis Risk</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-commodity-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-commodity-options/" class="toc-chapter-link"><strong>3.</strong> Commodity Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-commodity-options/01-black-76/">3.1 Black-76 Model</a>
+                        <a href="../../03-commodity-options/02-volatility-surfaces/">3.2 Volatility Surfaces</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-energy-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-energy-markets/" class="toc-chapter-link"><strong>4.</strong> Energy Markets</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-energy-markets/01-oil-markets/">4.1 Oil Markets</a>
+                        <a href="../../04-energy-markets/02-natural-gas-and-electricity/">4.2 Natural Gas and Electricity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="05-metals-and-agriculture">
+                    <div class="toc-chapter-header">
+                        <a href="../../05-metals-and-agriculture/" class="toc-chapter-link"><strong>5.</strong> Metals and Agriculture</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../05-metals-and-agriculture/01-precious-and-base-metals/">5.1 Precious and Base Metals</a>
+                        <a href="../../05-metals-and-agriculture/02-agricultural-commodities/">5.2 Agricultural Commodities</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Commodities</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../../quant/">Quant</a> › <a href="../../">Commodities</a> › <a href="../">2. Futures and Forwards</a> › <span>Contango and Backwardation</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2.2 Contango and Backwardation</h1>
+
+                <p>The shape of the futures curve — whether prices rise or fall with maturity — is one of the most closely watched signals in commodity markets. The two canonical shapes, contango and backwardation, are not merely descriptive labels: they encode information about inventory levels, hedging pressure, and the expected path of future spot prices, and they have a direct, mechanical impact on the returns earned by commodity index investors.</p>
+
+                <h2 class="mt-5 mb-3">Formal Definitions</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Contango and Backwardation</div>
+                    <p>The futures curve is said to be in <strong>contango</strong> at time $t$ if futures prices increase with maturity:</p>
+                    <p>$$F(t,T_1) < F(t,T_2) \quad \text{for } T_1 < T_2$$</p>
+                    <p>so that, in particular, $F(t,T) > S_t$ for $T > t$ (the curve slopes upward from the spot price).</p>
+                    <p>The futures curve is said to be in <strong>backwardation</strong> at time $t$ if futures prices decrease with maturity:</p>
+                    <p class="mb-0">$$F(t,T_1) > F(t,T_2) \quad \text{for } T_1 < T_2$$</p>
+                    <p class="mb-0">so that, in particular, $F(t,T) < S_t$ for $T > t$ (the curve slopes downward from the spot price). A curve can also be in contango over part of its maturity range and backwardation over another (a "humped" curve).</p>
+                </div>
+
+                <p>From the cost-of-carry relationship $F(t,T) = S_t e^{(r+u-y)(T-t)}$, the curve is in contango when $y < r+u$ (convenience yield is low relative to financing-and-storage costs — typically when inventories are ample) and in backwardation when $y > r+u$ (convenience yield is high — typically when inventories are tight).</p>
+
+                <h2 class="mt-5 mb-3">Normal Backwardation: Keynes's Theory</h2>
+
+                <p>Long before the theory of storage, John Maynard Keynes proposed an alternative explanation for why futures prices might systematically sit below expected future spot prices, rooted in the hedging behaviour of producers rather than inventory economics.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Normal Backwardation (Keynes, 1930)</div>
+                    <p>Producers of a commodity (e.g., farmers, oil producers) are natural hedgers who wish to lock in a price for their future output by selling futures contracts. Speculators, who take the offsetting long position, will only do so if they are compensated with an expected profit. This requires the futures price to be set <em>below</em> the expected future spot price:</p>
+                    <p>$$F(t,T) < \mathbb{E}_t[S_T]$$</p>
+                    <p class="mb-0">As $T \to t$, $F(t,T) \to S_t$, so this relationship implies that the futures price tends to <em>rise</em> toward the eventual spot price as maturity approaches — a pattern Keynes termed "normal backwardation." Speculators earn a positive expected return (a risk premium) for providing this insurance to producer-hedgers.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Normal Backwardation vs. Market Backwardation</div>
+                    <p class="mb-0">It is important to distinguish two related but distinct concepts. <em>Market backwardation</em> is an observable property of the futures curve at a point in time: $F(t,T) < S_t$. <em>Normal backwardation</em> is a statement about the relationship between the futures price and the <em>expected future spot price</em>, $F(t,T) < \mathbb{E}_t[S_T]$, which is not directly observable. A curve can exhibit market contango ($F(t,T) > S_t$) while still satisfying normal backwardation, if the expected future spot price is even higher than $F(t,T)$. In practice, the convenience-yield-based theory of storage and the hedging-pressure-based theory of normal backwardation are complementary: both inventory tightness and hedging imbalances contribute to the observed slope of the curve.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Convenience Yield, Roll Yield, and Curve Shape</h2>
+
+                <p>For an investor who holds a long futures position and rolls it forward before expiry (as commodity index funds do), the realised return decomposes into the change in spot price plus a <strong>roll yield</strong> — the gain or loss from selling an expiring contract and buying a more deferred one.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Roll Yield</div>
+                    <p class="mb-0">When rolling a long futures position from a near contract at price $F(t,T_1)$ into a deferred contract at price $F(t,T_2)$ with $T_2 > T_1$, the roll yield over the period is approximately</p>
+                    <p class="mb-0">$$\text{Roll Yield} \approx \frac{F(t,T_1) - F(t,T_2)}{F(t,T_1)}$$</p>
+                    <p class="mb-0">In <strong>backwardation</strong> ($F(t,T_1) > F(t,T_2)$), roll yield is <strong>positive</strong> — the fund sells the more expensive near contract and buys the cheaper deferred contract, then (assuming the futures price converges toward spot as maturity approaches) profits as the deferred contract's price rises toward the now-higher spot level. In <strong>contango</strong> ($F(t,T_1) < F(t,T_2)$), roll yield is <strong>negative</strong> — the fund sells low and buys high on each roll, a persistent drag on returns.</p>
+                </div>
+
+                <p>Because $r+u-y$ determines the slope of the curve, roll yield is directly linked to the convenience yield: high convenience yield (tight inventories, backwardation) produces positive roll yield for long investors, while low convenience yield (ample inventories, contango) produces negative roll yield. Over long horizons, roll yield has historically been the dominant component of total return for passive commodity index strategies — often larger in magnitude than the spot price return itself.</p>
+
+                <h2 class="mt-5 mb-3">Examples from Energy Markets</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Crude Oil: Contango and Backwardation Regimes</div>
+                    <p>Crude oil markets oscillate between the two regimes depending on the balance of OPEC+ supply policy, global demand, and inventory levels at key storage hubs (e.g., Cushing, Oklahoma for WTI). During periods of oversupply — such as the early stages of a demand shock when production has not yet adjusted — inventories build rapidly, convenience yield collapses toward zero, and the curve moves into steep contango, with deferred contracts trading well above the prompt month. The April 2020 episode (negative WTI prices for the expiring May contract while later contracts traded near $20) is an extreme example of contango driven by a physical storage capacity constraint.</p>
+                    <p class="mb-0">Conversely, during supply-constrained periods — for example, when OPEC+ production cuts draw down inventories faster than demand can be satisfied — convenience yield rises, the curve flips into backwardation, and long futures positions earn positive roll yield as contracts are rolled forward. Backwardation in crude oil is often viewed by traders as a signal of a structurally tight, healthy market for producers.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Natural Gas: Seasonal Curve Shapes</div>
+                    <p class="mb-0">Natural gas exhibits a strongly seasonal futures curve rather than a simple monotonic contango or backwardation. Winter contracts (covering peak heating demand, e.g., January and February) typically trade at a premium to "shoulder season" contracts (spring and autumn), reflecting the high convenience yield of having gas in storage ahead of winter demand spikes — effectively a form of localized backwardation relative to nearby shoulder months. Summer contracts can trade at a premium to immediately preceding months when injection-season demand for storage capacity is strong. This seasonality means that "contango" and "backwardation" for natural gas are often best assessed month-to-month within the seasonal pattern, rather than as a single curve-wide property.</p>
+                </div>
+
+                <p>Understanding curve shape — and its drivers in inventory dynamics, hedging pressure, and seasonality — is essential not only for interpreting market sentiment but for managing the practical risks of hedging with futures, which is rarely a perfect substitute for the underlying physical exposure. This imperfection, known as basis risk, is the subject of the next section.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-cost-of-carry/" class="btn btn-outline-custom">&larr; 2.1 Cost of Carry Model</a>
+                    <a href="../03-basis-risk/" class="btn btn-custom">2.3 Basis Risk &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>
