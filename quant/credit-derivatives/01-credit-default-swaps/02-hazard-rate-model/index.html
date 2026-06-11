@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazard Rate Model</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Credit Derivatives</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-credit-default-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-credit-default-swaps/" class="toc-chapter-link"><strong>1.</strong> Credit Default Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-credit-default-swaps/01-cds-basics/">1.1 CDS Structure</a>
+                        <a href="../../01-credit-default-swaps/02-hazard-rate-model/">1.2 Hazard Rate Model</a>
+                        <a href="../../01-credit-default-swaps/03-cds-pricing/">1.3 CDS Pricing</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-cds-indices">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-cds-indices/" class="toc-chapter-link"><strong>2.</strong> CDS Indices</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-cds-indices/01-index-composition/">2.1 Index Composition</a>
+                        <a href="../../02-cds-indices/02-index-pricing/">2.2 Index Pricing</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Credit Derivatives</a> › <a href="../">1. Credit Default Swaps</a> › <span>Hazard Rate Model</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">1.2 Hazard Rate Model</h1>
+
+                <p>The reduced-form (intensity-based) approach to credit risk models the default time $\tau$ of the reference entity directly as a random time, governed by a "hazard rate" or "default intensity" process, without modelling the underlying causes of default (e.g., the firm's asset value falling below its liabilities, as in structural models). This approach is the workhorse of CDS pricing because it produces tractable, closed-form expressions for survival probabilities directly calibrated to market CDS spreads.</p>
+
+                <h2 class="mt-5 mb-3">The Hazard Rate</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Hazard Rate and Survival Probability</div>
+                    <p class="mb-0">Let $\tau$ denote the random default time. The hazard rate (or default intensity) $\lambda(t)$ is defined such that, conditional on survival to time $t$, the probability of default in the next instant $dt$ is $\lambda(t)\,dt$:</p>
+                    <p class="mb-0">$$\mathbb{P}(\tau \in [t, t+dt) \mid \tau > t) = \lambda(t)\,dt$$</p>
+                    <p class="mb-0">The survival probability to time $T$ is then given by:</p>
+                    <p class="mb-0">$$Q(T) = \mathbb{P}(\tau > T) = \exp\left(-\int_0^T \lambda(u)\,du\right)$$</p>
+                    <p class="mb-0">In the simplest case where $\lambda(t) = \lambda$ is constant ("flat hazard rate"), this reduces to $Q(T) = e^{-\lambda T}$, so $\tau$ is exponentially distributed with rate $\lambda$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Relating Hazard Rate to CDS Spread</h2>
+
+                <p>Under a flat hazard rate and a flat risk-free rate $r$, a simple approximation relates the CDS spread $s$, the hazard rate $\lambda$, and the recovery rate $R$:</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Credit Triangle</div>
+                    <p class="mb-0">In the continuous-time limit (continuous premium accrual, immediate protection payment on default), the fair CDS spread satisfies:</p>
+                    <p class="mb-0">$$s \approx \lambda (1 - R)$$</p>
+                    <p class="mb-0">This relationship — often called the "credit triangle" — links the three quantities: spread, hazard rate, and loss given default $(1-R)$. It allows a quick back-of-envelope conversion: a 5-year CDS trading at $s = 100$bp with an assumed recovery of $R = 40\%$ implies a hazard rate of $\lambda = 0.0100 / 0.60 \approx 1.67\%$ per annum, i.e., roughly a 1.67% annual probability of default.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Bootstrapping the Hazard Rate Curve</h2>
+
+                <p>In practice, CDS spreads are quoted at multiple maturities (1Y, 3Y, 5Y, 7Y, 10Y), and a term structure of hazard rates $\lambda(t)$ — typically piecewise constant between these tenors — is bootstrapped so that each quoted spread is exactly reproduced by the corresponding CDS pricing formula (see <a href="../03-cds-pricing/">CDS Pricing</a>).</p>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Piecewise-Constant Bootstrap</div>
+                    <p class="mb-0">Suppose 1Y and 3Y CDS spreads are observed. The hazard rate $\lambda_1$ on $[0,1]$ is first chosen so that the 1Y CDS prices to par (zero upfront) given the 1Y spread. Then, holding $\lambda_1$ fixed, the hazard rate $\lambda_2$ on $(1,3]$ is chosen so that the 3Y CDS prices to par given the 3Y spread, with survival probabilities on $[0,1]$ already pinned down by $\lambda_1$. This sequential procedure is repeated outward across all quoted maturities, exactly analogous to bootstrapping a discount curve from swap rates.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Default Correlation and Copulas</h2>
+
+                <p>For single-name CDS, only the marginal distribution of $\tau$ matters. When pricing instruments referencing multiple names — such as CDS index tranches — the joint distribution of default times across names becomes critical, and is typically modelled via a copula function applied to the marginal hazard-rate-implied survival distributions; see <a href="../../../structured-credit/">Structured Credit</a> for the Gaussian copula approach.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../01-credit-default-swaps/01-cds-basics/" class="btn btn-outline-custom">&larr; 1.1 CDS Structure</a>
+                    <a href="../../01-credit-default-swaps/03-cds-pricing/" class="btn btn-custom">1.3 CDS Pricing &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

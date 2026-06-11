@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theoretical Endgames</title>
+<link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../css/styles.css">
+<link rel="stylesheet" href="../../../css/chess-board.css">
+<script src="../../../js/chess-board.js"></script>
+<style>
+.endgame-note{background:rgba(108,142,191,0.12);border-left:4px solid var(--accent-color,#6c8ebf);padding:.75rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;}
+.technique-card{border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;margin-bottom:1rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main><div class="container py-4">
+<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Regular Chess</a></div>
+<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Regular Chess</a> › <span>Theoretical Endgames</span></nav>
+
+<h1 class="mb-3">Theoretical Endgames</h1>
+<p class="lead mb-4">Theoretical endgames are positions whose outcome — win, draw, or loss — has been precisely worked out, often centuries ago, and whose techniques apply whenever the same material balance arises. Knowing these positions cold means you can steer toward a known win or a known draw with confidence, rather than calculating everything from scratch under time pressure. This page covers the core theoretical material balances every serious player should know.</p>
+
+<!-- KING AND PAWN ENDGAMES -->
+<section class="hero-card p-4 mb-4">
+  <h2>1. King and Pawn Endgames</h2>
+  <p>King and pawn endgames are the foundation of all endgame study. They are deceptively simple — just kings and pawns — yet they contain profound strategic and tactical depth. Every pawn endgame is essentially a race, and knowing precisely who wins requires understanding opposition, key squares, and the rule of the square.</p>
+
+  <h3>Opposition</h3>
+  <p><strong>Opposition</strong> is the relationship between two kings facing each other on the same file, rank, or diagonal with an odd number of squares between them. The player who does <em>not</em> have to move is said to "have the opposition." Having the opposition is a decisive advantage in king and pawn endgames because the opposing king must give way.</p>
+
+  <div class="technique-card">
+    <h4>Direct Opposition</h4>
+    <p>Kings face each other on the same file or rank with exactly one square between them. The player to move must step aside, allowing the other king to advance.</p>
+    <h4>Distant Opposition</h4>
+    <p>Kings face each other with 3 or 5 squares between them (always an odd number). The player to move must eventually concede direct opposition. Understanding when distant opposition transitions to direct opposition is crucial in complex king and pawn endings.</p>
+  </div>
+
+  <h3>Key Squares</h3>
+  <p><strong>Key squares</strong> are the specific squares the attacking king must reach to guarantee pawn promotion, regardless of where the defending king is. For a central pawn (e-pawn, d-pawn), the key squares are two ranks ahead of the pawn on the same file and adjacent files. For edge pawns, the key squares are different (and there are fewer of them — which is why edge pawns are often drawn even with an extra pawn).</p>
+
+  <h3>Rule of the Square</h3>
+  <p>The <strong>rule of the square</strong> (or "the square rule") is a quick method to determine whether a defending king can catch a passed pawn without using the king. Draw a diagonal from the pawn to the promotion square, then extend the same distance sideways — if the defending king is inside this square when it is their turn to move, they can catch the pawn. If outside, the pawn queens.</p>
+
+  <div class="chess-board" id="board-kp"></div>
+  <script>renderChessBoard('board-kp', {e5:'wK',e4:'wP',e7:'bK'});</script>
+  <p class="text-center text-muted mt-2"><small>K+P endgame: White king e5, pawn e4, Black king e7. Direct opposition — Black to move must give way, White wins. White to move is a draw.</small></p>
+
+  <h3>a/h-Pawn Exception</h3>
+  <p>Rook-file pawns (a-pawn and h-pawn) are special cases. Even with a king and pawn vs lone king, the game is a draw if the defending king can reach the corner square (a8 or h8 for the a-pawn or h-pawn). This is because the attacking king cannot drive the defending king out of the corner without stalemating it. For example: White has Ka6 and a-pawn on a5 vs Black Ka8 — Black plays Ka8 and cannot be driven away; Stalemate is inevitable if White pushes the pawn.</p>
+
+  <h3>Zugzwang</h3>
+  <p><strong>Zugzwang</strong> (German: "compulsion to move") occurs when every legal move for the player to move makes their position worse, but they are forced to move. In king and pawn endgames, zugzwang is a constant tactical theme — the side in zugzwang must move their king to a worse square or advance a pawn into a losing position.</p>
+</section>
+
+<!-- ROOK ENDGAMES -->
+<section class="hero-card p-4 mb-4">
+  <h2>2. Rook Endgames</h2>
+  <p>Rook endgames are the most common type of endgame in practice, appearing in roughly 20–30% of all tournament games. They are also technically demanding — countless games that were theoretically drawn have been lost, and positions that looked drawn have been won, due to inaccurate rook endgame technique.</p>
+
+  <div class="technique-card">
+    <h3>The Lucena Position — The Winning Method</h3>
+    <p>The <strong>Lucena position</strong> (named after the 15th-century author, though actually worked out later) is the most important winning position in rook endgames: the attacking side has a pawn on the 7th rank, the attacking king is on the 8th rank in front of the pawn, and the attacking rook is somewhere flexible.</p>
+    <p><strong>The "bridge-building" technique:</strong></p>
+    <ol>
+      <li>The attacking rook moves to a file far away from the pawn (e.g., to the a-file from the g-file)</li>
+      <li>The attacking king comes down toward the 4th rank, step by step</li>
+      <li>When the defending rook checks from behind, the attacking rook interposes, blocking the checks</li>
+      <li>The king is sheltered from checks — the pawn queens</li>
+    </ol>
+    <p>This "rook cutting off the king" method (building a bridge) is essential knowledge for every serious player.</p>
+  </div>
+
+  <div class="technique-card">
+    <h3>The Philidor Position — The Drawing Method</h3>
+    <p>The <strong>Philidor position</strong> (named after the legendary 18th-century player François-André Philidor) is the fundamental drawing method when defending a rook endgame with one extra pawn for the opponent.</p>
+    <p><strong>The technique:</strong></p>
+    <ol>
+      <li>Place the defending rook on the 3rd rank (or 6th rank if Black is defending), cutting off the attacking king</li>
+      <li>Wait for the attacking side to advance the pawn to the 6th rank</li>
+      <li>Once the pawn advances to the 6th rank, switch the rook to the back rank and give perpetual checks from behind</li>
+    </ol>
+    <p>The key insight: the defending rook on the 3rd rank is a waiting move that prevents the attacking king from advancing. When the pawn advances, the rook switches to the back rank for eternal harassment from behind. The attacker cannot shelter the king from the checks without abandoning the pawn.</p>
+  </div>
+
+  <div class="chess-board" id="board-rook"></div>
+  <script>renderChessBoard('board-rook', {e1:'wK',e6:'wP',e8:'bK',a3:'wR',a8:'bR'});</script>
+  <p class="text-center text-muted mt-2"><small>Rook endgame: White rook on a3 cuts off the enemy king — Philidor defensive technique</small></p>
+
+  <h3>Active vs Passive Rook</h3>
+  <p>The most important practical principle in rook endgames: <strong>keep your rook active</strong>. A passive rook that does nothing but defend a pawn is a disaster — your opponent's active rook will pick off your pawns while your rook sits idle. Even in defending positions, look for active counterplay: attack the opponent's pawns, get your rook behind the passed pawn, or harass the enemy king with checks.</p>
+
+  <div class="endgame-note">
+    <strong>Capablanca's rule:</strong> "In rook endgames, rooks belong on the 7th rank." If you can get your rook to the 7th rank, do so. Two rooks on the 7th rank are almost always decisive.
+  </div>
+
+  <h3>The Vancura Position</h3>
+  <p>The <strong>Vancura position</strong> is a key drawing technique against a rook-pawn (a- or h-pawn) on the 7th rank, even when the defending king is far away — a situation where the Philidor technique above does not apply because the pawn is already too advanced. The defending rook goes to the 6th rank (the b6 square against an a-pawn, for example) to harass the attacking king from the side, while a second rook check from behind picks off the pawn at the right moment. The Vancura position is drawn even though the defending king may be cut off on the back rank, far from the action — a surprising and important practical resource.</p>
+</section>
+
+<!-- MINOR PIECE ENDGAMES -->
+<section class="hero-card p-4 mb-4">
+  <h2>3. Minor Piece Endgames</h2>
+  <p>Minor piece endgames — those with bishops and knights alongside pawns — require understanding how the unique movement patterns of these pieces interact with pawn structure.</p>
+
+  <h3>Bishop vs Knight</h3>
+  <p>The classic positional battle:</p>
+  <ul>
+    <li><strong>Bishops prefer open positions</strong> with pawns on both sides of the board and open diagonals. In an open endgame, a bishop can control both flanks from a single position — something a knight cannot do.</li>
+    <li><strong>Knights prefer closed positions</strong> with fixed pawn chains. A knight on a strong outpost square in a locked position can be worth as much as a rook. Knights can also access squares of both colours, unlike a single bishop.</li>
+    <li><strong>Practical rule:</strong> If you have a bishop and your opponent has a knight, try to open the position with pawn breaks. If you have the knight, try to lock the position and create an outpost for your knight.</li>
+  </ul>
+
+  <h3>Opposite-Colour Bishops</h3>
+  <p>When each player has one bishop and they control different colours, the position has a <strong>strong drawing tendency</strong>. Even with two extra pawns in some positions, the game may be drawn because the defending bishop simply cannot be driven off. Classic rule: "Opposite-colour bishop endgames are drawn." </p>
+  <p>However, this is an overstatement. With rooks still on the board, the side with extra material often wins because the rooks can attack regardless of square colour. In pure OPP bishop endgames, the drawing tendencies are very real.</p>
+
+  <h3>Same-Colour Bishops</h3>
+  <p>When both bishops cover the same colour, the stronger player can often win by advancing pawns and using the bishop to support them. The key concepts are the bishop's reach (can it attack the opponent's pawns from afar?) and whether the king can support the pawns' advance.</p>
+
+  <h3>Knight Endgames Resemble Pawn Endgames</h3>
+  <p>A key practical insight: knight endgames are similar to king-and-pawn endgames. Knights cannot control from afar — they must be close to the action. Zugzwang is common, and the knight's inability to "waste" a move (as a bishop can by moving along a diagonal and back) makes the positions sharper and more decisive than they might appear.</p>
+
+  <h3>Bishop vs Rook</h3>
+  <p>A lone bishop generally cannot stop a rook pawn supported by its king, but <strong>rook vs bishop with no pawns</strong> is one of the famous theoretical draws — the side with the rook cannot make progress against correct defence, similar in spirit to K+R vs K+B. When pawns are added, the result depends heavily on which side the pawns are on relative to the bishop's colour: a bishop defending against a rook and pawn(s) draws more easily if it can reach the queening square's colour or set up a fortress in the corner matching its own colour.</p>
+
+  <h3>Queen Endgames</h3>
+  <p>Queen endgames (Q+P vs Q, or Q vs Q with extra pawns) are notoriously difficult to play correctly, even for grandmasters, because of the queen's enormous mobility and the constant danger of perpetual check. A few guiding ideas:</p>
+  <ul>
+    <li><strong>Queen and pawn vs queen</strong> is frequently a draw if the defending king can reach a "safe" zone near the pawn (particularly for central pawns); the stronger side must navigate a minefield of perpetual check ideas while advancing the king.</li>
+    <li><strong>Centralise the queen</strong>: a centralised queen covers more squares and is far less likely to allow perpetual check than one on the edge of the board.</li>
+    <li><strong>King safety remains paramount</strong> — a king caught in the open in a queen endgame is in constant danger of perpetual check or worse, even when materially ahead.</li>
+    <li>With extra pawns and no immediate perpetual, technique typically involves trading down to a winning king-and-pawn endgame at the right moment.</li>
+  </ul>
+
+  <h3>Two Rooks vs Queen</h3>
+  <p>Materially, two rooks (10 points) slightly exceed a queen (9 points), and in the endgame <strong>two coordinated rooks are usually at least equal to, and often better than, a queen</strong> — especially with pawns on the board. The rooks can create mutual protection and mating nets that a lone queen struggles to break through, while the queen's checking power is the main defensive resource for the weaker side. With no pawns at all, two rooks vs queen is generally winning for the rooks if they can avoid being forked, though precise technique (keeping the rooks defended and mutually protected) is required.</p>
+</section>
+
+<!-- CHECKMATE TECHNIQUES -->
+<section class="hero-card p-4 mb-4">
+  <h2>4. Checkmate Techniques</h2>
+  <p>Knowing how to force checkmate with limited material is essential. These are the basic mates every serious player must know cold — in timed games, losing on time from a winning position because you don't know the technique is heartbreaking and avoidable.</p>
+
+  <div class="technique-card">
+    <h3>K+Q vs K — Staircase and Fence</h3>
+    <p>The king and queen easily mate the lone king, but you must avoid accidental stalemate. The technique:</p>
+    <ol>
+      <li><strong>Drive the king to the edge:</strong> Use the queen to fence in the king step by step. After each queen move, the king's territory shrinks.</li>
+      <li><strong>Bring your king in:</strong> Use the king to assist in the final mating pattern.</li>
+      <li><strong>Deliver mate on the edge/corner:</strong> Standard mating patterns include Qd7+ Ke1 Kc2# or similar queen-and-king coordination.</li>
+      <li><strong>Watch for stalemate!</strong> If the enemy king has no moves and is not in check, it is stalemate. Always check before moving.</li>
+    </ol>
+    <p>The "staircase method": use the queen to progressively reduce the king's territory, moving from the centre toward a corner. Maximum 10 moves required with correct play.</p>
+
+    <div class="chess-board" id="board-kq"></div>
+    <script>renderChessBoard('board-kq', {c6:'wK',d5:'wQ',a8:'bK'});</script>
+    <p class="text-center text-muted mt-2"><small>K+Q vs K: White queen on d5 restricts the Black king; White king advances to finish the mating net</small></p>
+  </div>
+
+  <div class="technique-card">
+    <h3>K+R vs K — The Lawnmower / Box Method</h3>
+    <p>King and rook vs lone king is also a forced win, but it takes more moves (up to 16) and more technique than K+Q. Stalemate avoidance is again essential.</p>
+    <p><strong>The box method:</strong></p>
+    <ol>
+      <li>Use the rook to cut off the enemy king along a rank or file — place the rook to reduce the king's available territory to a "box."</li>
+      <li>Move the rook to shrink the box one rank (or file) at a time — hence "lawnmower" or box reduction.</li>
+      <li>Use your king to assist, driving the enemy king to the edge.</li>
+      <li>Deliver checkmate on the back rank once the enemy king reaches the edge.</li>
+    </ol>
+    <p>The key: always keep the defending king from approaching your rook. If the defending king gets close to your rook, reposition the rook further away before continuing the box reduction.</p>
+
+    <div class="chess-board" id="board-kr"></div>
+    <script>renderChessBoard('board-kr', {d5:'wK',h4:'wR',d8:'bK'});</script>
+    <p class="text-center text-muted mt-2"><small>K+R vs K: White rook on h4 cuts off the Black king below the 4th rank; White king advances to escort</small></p>
+  </div>
+
+  <div class="technique-card">
+    <h3>K+2B vs K — Drive to Any Corner</h3>
+    <p>Two bishops mate the lone king within 19 moves. The key: drive the king to any corner of the board using the combined power of both bishops and the king. The two bishops together can cover all squares and cooperate to progressively restrict the lone king. Standard method: create a "triangle" with the bishops that gradually shrinks the king's territory.</p>
+    <p>Unlike K+B+N vs K, any corner will do — you do not need to worry about which colour corner to use.</p>
+  </div>
+
+  <div class="technique-card">
+    <h3>K+B+N vs K — The Hardest Basic Mate</h3>
+    <p>King, bishop, and knight vs lone king is the most difficult of the basic mates. It requires up to 33 moves with correct play and demands precise technique. The key principle: <strong>the king must be mated in a corner of the same colour as the bishop</strong>. Mating in the wrong-colour corner is much harder and typically requires manoeuvring the king from one corner to another.</p>
+    <p><strong>The KBNK technique (simplified):</strong></p>
+    <ol>
+      <li>Use the bishop and knight to cut off the enemy king and drive it toward the edge.</li>
+      <li>Drive the king toward a corner of the bishop's colour.</li>
+      <li>Use the knight to cover the escape squares; the king and bishop assist.</li>
+      <li>The mating position typically has the lone king in a corner with knight, bishop, and king cooperating to give checkmate.</li>
+    </ol>
+    <p>Many grandmasters cannot execute this technique perfectly under time pressure. It is worth studying even if you never encounter it in practice, as the coordination of king, bishop, and knight teaches profound lessons about piece harmony.</p>
+  </div>
+
+  <div class="technique-card">
+    <h3>K+P vs K — All Key Positions</h3>
+    <p>Beyond what was covered in the King and Pawn Endgames section, the main positions to know are:</p>
+    <ul>
+      <li><strong>King in front of pawn by two squares:</strong> Win if it is not the a/h-pawn</li>
+      <li><strong>King directly in front of pawn:</strong> Win with opposition, draw without</li>
+      <li><strong>King one square in front of pawn, side by side:</strong> Depends on whose move — use the concept of key squares to determine</li>
+      <li><strong>a/h-pawn with defending king in the corner:</strong> Always draw</li>
+      <li><strong>Pawn races:</strong> Use the rule of the square to determine who promotes first; if both promote simultaneously, determine who gives check first</li>
+    </ul>
+    <p>The study of king and pawn endings is the most important foundation in endgame training. Every endgame ultimately reduces to a pawn endgame when pieces are exchanged.</p>
+  </div>
+
+  <div class="technique-card">
+    <h3>K+2N vs K — and the K+2N vs K+P Exception</h3>
+    <p>King and two knights cannot force checkmate against a bare lone king — the defending king can always reach a position of stalemate at the critical moment (this is one of the most famous "drawn" results in basic endgame theory, proven by Centurini in the 19th century). However, if the defending side has even <strong>one extra pawn</strong>, the result can flip dramatically: the pawn provides a "spare tempo," removing the stalemate resource and allowing K+2N to force mate in some positions. This counter-intuitive result — where having an extra pawn can lose for the defender — is a favourite of endgame composers and a useful reminder that material count alone does not determine an endgame's outcome.</p>
+  </div>
+
+  <div class="endgame-note mt-3">
+    <strong>Endgame study resources:</strong> Dvoretsky's Endgame Manual (advanced), Silman's Complete Endgame Course (all levels), and Capablanca's Chess Fundamentals (classical introduction). Solving endgame studies also develops calculation and imagination even when the positions are beyond practical relevance. For broader strategic guidance on the endgame phase, see <a href="../endgame-strategy/">Endgame Strategy</a>.
+  </div>
+</section>
+
+</div></main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../js/script.js"></script>
+</body></html>

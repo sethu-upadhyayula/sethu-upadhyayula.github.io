@@ -1,0 +1,80 @@
+/* Shared chess board diagram styles — used by Chess section pages.
+   Renders an 8x8 board with SVG piece graphics (lichess "cburnett" set)
+   instead of plain Unicode glyphs. New, additive file — does not modify
+   styles.css and is only loaded by pages that opt in. */
+
+.chess-board {
+    display: grid;
+    grid-template-columns: repeat(8, 44px);
+    grid-template-rows: repeat(8, 44px);
+    border: 2px solid var(--border-color, #555);
+    width: fit-content;
+    margin: 1rem auto;
+    user-select: none;
+}
+
+.chess-board .sq {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.chess-board .light {
+    background: #f0d9b5;
+}
+
+.chess-board .dark {
+    background: #b58863;
+}
+
+.chess-board .piece-img {
+    width: 38px;
+    height: 38px;
+    pointer-events: none;
+    display: block;
+}
+
+/* Optional square overlays used by some diagrams */
+.chess-board .sq.highlight::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border: 3px solid rgba(255, 215, 0, 0.75);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.chess-board .sq.exploded {
+    background: #c0392b !important;
+    opacity: 0.75;
+}
+
+.chess-board .sq.target::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(108, 142, 191, 0.65);
+    pointer-events: none;
+}
+
+@media (max-width: 480px) {
+    .chess-board {
+        grid-template-columns: repeat(8, 36px);
+        grid-template-rows: repeat(8, 36px);
+    }
+
+    .chess-board .sq {
+        width: 36px;
+        height: 36px;
+    }
+
+    .chess-board .piece-img {
+        width: 30px;
+        height: 30px;
+    }
+}

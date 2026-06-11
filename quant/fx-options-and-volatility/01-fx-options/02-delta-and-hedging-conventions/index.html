@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta and Hedging Conventions</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">FX Options and Volatility</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-fx-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-fx-options/" class="toc-chapter-link"><strong>1.</strong> FX Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-fx-options/01-garman-kohlhagen/">1.1 Garman-Kohlhagen Model</a>
+                        <a href="../../01-fx-options/02-delta-and-hedging-conventions/">1.2 Delta and Hedging Conventions</a>
+                        <a href="../../01-fx-options/03-volatility-surface-rr-and-bf/">1.3 Volatility Surface: Risk Reversals and Butterflies</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">FX Options and Volatility</a> › <a href="../">1. FX Options</a> › <span>Delta and Hedging Conventions</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">1.2 Delta and Hedging Conventions</h1>
+
+                <p>In equity markets, options are quoted by strike. In FX, options are overwhelmingly quoted by <em>delta</em>: a trader requests a price for "the 25-delta EUR call" rather than "the option struck at 1.1250." This convention exists because delta is a more stable, comparable measure across spot levels and tenors than an absolute strike, and because the delta directly tells the trader how much of the underlying to hold for a hedge. However, "delta" itself is not a single unambiguous quantity in FX — there are several conventions in use, and getting them wrong leads to mis-hedging and mis-marking of the volatility surface.</p>
+
+                <h2 class="mt-5 mb-3">Spot Delta and Forward Delta</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Spot Delta</div>
+                    <p class="mb-0">The spot delta of a Garman-Kohlhagen call is the sensitivity of the option price to a change in the spot rate, holding all else fixed:</p>
+                    $$\Delta_{\text{spot}}^{\text{call}} = \frac{\partial c}{\partial S_0} = e^{-r_f T} N(d_1), \qquad \Delta_{\text{spot}}^{\text{put}} = -e^{-r_f T} N(-d_1)$$
+                    <p class="mt-2 mb-0">This is the quantity of foreign currency (per unit of foreign notional) that a hedger should hold in the spot market against the option position.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Forward Delta</div>
+                    <p class="mb-0">The forward delta is the sensitivity of the option price to a change in the forward rate $F_0$, equivalent to the spot delta scaled by the cost-of-carry factor:</p>
+                    $$\Delta_{\text{fwd}}^{\text{call}} = N(d_1) = e^{r_f T}\,\Delta_{\text{spot}}^{\text{call}}$$
+                    <p class="mt-2 mb-0">Forward delta is the natural hedge ratio if the hedge is executed via an FX forward rather than spot, and it is the convention most commonly used for quoting longer-dated options, where the difference between spot and forward delta can be material.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Premium-Adjusted Delta</h2>
+
+                <p>Both spot and forward delta above implicitly assume the option premium is paid in domestic currency (the currency in which the Garman-Kohlhagen value $c$ is expressed). In FX, however, the premium on an option is often paid in the <em>foreign</em> currency — for example, a EUR/USD option premium quoted "in EUR pips" is settled in EUR. When the premium currency is the foreign currency, holding the raw spot delta as a hedge over-hedges the position, because the premium received (or paid) is itself a foreign-currency amount whose USD value moves with spot.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Premium-Adjusted Delta</div>
+                    <p>If the premium of a call is paid in the foreign currency, the premium-adjusted delta subtracts the sensitivity of the foreign-currency premium itself:</p>
+                    $$\Delta_{\text{pa}}^{\text{call}} = e^{-r_f T} N(d_1) - \frac{c}{S_0} = \frac{K}{S_0}e^{-r_d T}N(d_2)$$
+                    <p class="mb-0">Intuitively: a hedger who has received the premium in foreign currency already holds some exposure to spot through that premium, so the hedge in the underlying must be reduced by exactly that amount. Premium adjustment matters most for ITM options and for currency pairs where the foreign currency is the natural settlement currency for premium (e.g., EUR/USD and GBP/USD premiums are conventionally paid in USD — but USD/JPY and USD/CHF premiums are conventionally paid in the base currency's quote, so premium adjustment is standard for those pairs).</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why It Matters</div>
+                    <p class="mb-0">Premium-adjusted delta is not a small correction for deep ITM options: it can shift the delta by several percentage points, which translates directly into the strike implied by a "25-delta" quote. Failing to premium-adjust where market convention requires it produces a strike that does not match what other market participants mean by "25-delta," causing the volatility surface to be mis-marked and hedges to be systematically off.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Quoting by Delta: Solving for the Strike</h2>
+
+                <p>To quote (or interpret) an option "by delta," one inverts the delta formula to solve for the strike $K$ that produces a target delta $\Delta^*$ given the spot, rates, volatility, and tenor. For the (non-premium-adjusted) call delta:</p>
+
+                $$N(d_1) = e^{r_f T}\Delta^* \quad\Longrightarrow\quad d_1 = N^{-1}(e^{r_f T}\Delta^*)$$
+
+                <p>and then $K$ is recovered from the definition of $d_1$:</p>
+
+                $$K = S_0 \exp\left[(r_d - r_f + \tfrac12\sigma^2)T - d_1 \sigma\sqrt{T}\right]$$
+
+                <p>For premium-adjusted deltas, no closed-form inversion exists in general because $K$ appears on both sides (through $d_2$ and the $K/S_0$ factor); the strike must be found by numerically solving $\Delta_{\text{pa}}^{\text{call}}(K) = \Delta^*$.</p>
+
+                <h2 class="mt-5 mb-3">ATM Conventions</h2>
+
+                <p>The "at-the-money" (ATM) volatility quote — the anchor point of the volatility surface — also has multiple conventions for what "at-the-money" means:</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — ATM Conventions</div>
+                    <ul class="mb-0">
+                        <li><strong>ATM-spot:</strong> $K = S_0$, the strike equals the current spot rate.</li>
+                        <li><strong>ATM-forward:</strong> $K = F_0$, the strike equals the forward rate for the option's maturity. This is the most common convention for FX options beyond very short tenors.</li>
+                        <li><strong>ATM delta-neutral (straddle):</strong> $K$ is chosen so that the call delta and the put delta are equal in magnitude and opposite in sign, i.e. $\Delta^{\text{call}} = -\Delta^{\text{put}}$ (so a long straddle has zero net delta). For non-premium-adjusted deltas this gives $K = F_0 e^{\frac12\sigma^2 T}$, slightly above the forward rate.</li>
+                    </ul>
+                </div>
+
+                <p>The ATM-delta-neutral-straddle convention is the most widely used in the interbank market because it makes the ATM straddle a pure volatility instrument with no initial spot delta exposure, simplifying both quoting and risk management.</p>
+
+                <h2 class="mt-5 mb-3">Worked Example: 25-Delta Quote to Strike</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Converting a 25-Delta Call to a Strike</div>
+                    <p>Suppose for a 3-month EUR/USD option the market quotes a 25-delta call at a volatility of $\sigma = 9.5\%$, with $S_0 = 1.0850$, $r_d = 5.00\%$ (USD), $r_f = 3.50\%$ (EUR), $T = 0.25$, and the convention is forward delta, not premium-adjusted (typical for EUR/USD, where premium is paid in USD).</p>
+                    <p>The target is $\Delta^* = 0.25$, so:</p>
+                    $$d_1 = N^{-1}(0.25) \approx -0.6745$$
+                    <p>Now solve for $K$:</p>
+                    $$K = 1.0850 \exp\left[(0.05 - 0.035 + \tfrac12(0.095)^2)(0.25) - (-0.6745)(0.095)\sqrt{0.25}\right]$$
+                    $$K = 1.0850 \exp\left[0.00525 + 0.03204\right] = 1.0850 \exp(0.03729) \approx 1.0850 \times 1.0380 \approx 1.1262$$
+                    <p class="mb-0">So the "25-delta EUR call" trades at a strike of approximately 1.1262 — about 380 pips above the current spot of 1.0850. A 25-delta put, by symmetry, would be solved using $\Delta^* = -0.25$ and $d_1 = N^{-1}(-0.25 \cdot e^{r_fT}) $, producing a strike below spot. The pair of 25-delta strikes (call and put) together with the ATM strike define the three pillars of the standard FX vol surface, discussed next.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../01-fx-options/01-garman-kohlhagen/" class="btn btn-outline-custom">&larr; 1.1 Garman-Kohlhagen Model</a>
+                    <a href="../../01-fx-options/03-volatility-surface-rr-and-bf/" class="btn btn-custom">1.3 Volatility Surface: Risk Reversals and Butterflies &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

@@ -5,11 +5,9 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="../../../css/styles.css">
+<link rel="stylesheet" href="../../../css/chess-board.css">
+<script src="../../../js/chess-board.js"></script>
 <style>
-.chess-board-placeholder{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:2px solid var(--border-color,#555);width:fit-content;margin:1rem auto;}
-.chess-board-placeholder .sq{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
-.chess-board-placeholder .light{background:#f0d9b5;}
-.chess-board-placeholder .dark{background:#b58863;}
 .notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
 </style>
 </head><body>
@@ -47,32 +45,17 @@
   <h3>Starting Position</h3>
   <p>White's 36 pawns fill ranks 1 through 4 in a specific pattern. Ranks 2, 3, and 4 are completely filled (8 pawns each = 24 pawns), and rank 1 has pawns on b1, c1, f1, g1 (4 pawns), plus two additional pawns placed on a2 and h2 positions of rank 5 — actually the exact configuration has pawns also on b5 and c5 and f5 and g5 to make up 36.</p>
 
-  <div class="chess-board-placeholder" id="board-horde"></div>
+  <div class="chess-board" id="board-horde"></div>
   <script>(function(){
-    var b=document.getElementById('board-horde');
+    var pieces={a8:'bR',b8:'bN',c8:'bB',d8:'bQ',e8:'bK',f8:'bB',g8:'bN',h8:'bR',a7:'bP',b7:'bP',c7:'bP',d7:'bP',e7:'bP',f7:'bP',g7:'bP',h7:'bP'};
+    ['b5','c5','f5','g5'].forEach(function(sq){pieces[sq]='wP';});
     var files='abcdefgh';
-    // Horde starting position: Black has normal pieces on ranks 7-8
-    // White has pawns filling ranks 1-4 plus b5,c5,f5,g5
-    var blackBack={a8:'♜',b8:'♞',c8:'♝',d8:'♛',e8:'♚',f8:'♝',g8:'♞',h8:'♜'};
-    var blackPawns={a7:'♟',b7:'♟',c7:'♟',d7:'♟',e7:'♟',f7:'♟',g7:'♟',h7:'♟'};
-    // White horde pawns
-    var whitePawns={};
-    // Rank 5: b5,c5,f5,g5
-    ['b5','c5','f5','g5'].forEach(function(sq){whitePawns[sq]='♙';});
-    // Ranks 1-4: all 32 squares
     for(var rank=1;rank<=4;rank++){
       for(var fi=0;fi<8;fi++){
-        whitePawns[files[fi]+rank]='♙';
+        pieces[files[fi]+rank]='wP';
       }
     }
-    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
-      var s=document.createElement('div');s.className='sq '+((r+c)%2===0?'dark':'light');
-      var sq=files[c]+(r+1);
-      if(blackBack[sq])s.textContent=blackBack[sq];
-      else if(blackPawns[sq])s.textContent=blackPawns[sq];
-      else if(whitePawns[sq])s.textContent=whitePawns[sq];
-      b.appendChild(s);
-    }
+    renderChessBoard('board-horde', pieces);
   })();</script>
   <p class="text-center text-muted mt-2"><small>Horde starting position: White's 36 pawns (ranks 1–4 plus b5, c5, f5, g5) vs Black's full army.</small></p>
 
@@ -115,18 +98,8 @@
   <h3>Use Knight Outposts</h3>
   <p>Knights are Black's most valuable pieces in Horde Chess. A knight on a strong central outpost deep in the Horde — protected by a pawn and surrounded by enemy pawns it can capture — can eat through the Horde systematically. Knights can jump over pawns, making them uniquely effective against a pawn wall that would stop bishops and rooks.</p>
 
-  <div class="chess-board-placeholder" id="board-knight"></div>
-  <script>(function(){
-    var b=document.getElementById('board-knight');
-    var files='abcdefgh';
-    var board={d4:'♞',c2:'♙',e2:'♙',c4:'♙',e4:'♙',b3:'♙',f3:'♙',e8:'♚'};
-    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
-      var s=document.createElement('div');s.className='sq '+((r+c)%2===0?'dark':'light');
-      var sq=files[c]+(r+1);
-      if(board[sq])s.textContent=board[sq];
-      b.appendChild(s);
-    }
-  })();</script>
+  <div class="chess-board" id="board-knight"></div>
+  <script>renderChessBoard('board-knight', {d4:'bN',c2:'wP',e2:'wP',c4:'wP',e4:'wP',b3:'wP',f3:'wP',e8:'bK'});</script>
   <p class="text-center text-muted mt-2"><small>A Black knight on d4 controls c2, e2, c6, e6, b3, f3, b5, f5 — many of which are occupied by Horde pawns it can capture.</small></p>
 
   <h3>Target Isolated and Weak Pawns</h3>

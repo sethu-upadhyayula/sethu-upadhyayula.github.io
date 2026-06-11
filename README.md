@@ -5,12 +5,11 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
 
 ## TODO / Roadmap
 
-1. **Expand Quant and Chess into chapter-level pages**, mirroring the Math
-   section's structure (subject → chapter → subsection, with a collapsible
-   sidebar TOC). Quant subjects already follow this structure; the
-   remaining work is on Chess, where each section (Regular/Variants/
-   Compositions) is currently a single flat page per topic and could be
-   broken out into chapters/subsections with deeper content.
+1. **Expand Chess into chapter-level pages**, mirroring the Math/Quant
+   section's structure (topic → chapter → subsection, with a collapsible
+   sidebar TOC). Each Chess topic (Regular/Variants/Compositions) is
+   currently a single flat page and could be broken out into
+   chapters/subsections with deeper content.
 2. **Expand the Math section** with more worked proofs, exercises (with
    solutions), and additional examples per subsection.
 3. **Add a site-wide search bar** (likely a static client-side index, e.g.
@@ -21,8 +20,6 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
      see what's new.
    - Cross-link related topics across sections (e.g. Black-Scholes in
      Math/SDE ↔ Quant/Equities, convexity in Math ↔ Quant/Rates).
-   - Add small interactive widgets (e.g. an embeddable chess board for
-     openings/endgame/composition pages).
    - Light visual polish on the About Me page (e.g. background elements).
    - Add more annotated games to Chess → Master Games.
 
@@ -42,15 +39,18 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
   mathematics from foundations (Set Theory, Logic) through advanced topics
   (Measure Theory, Functional Analysis, SDEs, PDEs, Numerical Analysis,
   Financial Mathematics, etc.).
-- **Quant section**: 5 subjects (Commodities, Credit, Equities, Foreign
-  Exchange, Rates), each fully built out with chapters and subsections
-  covering market structure, pricing models, and derivatives — written in
-  the same style/format as the Math section.
-- **Chess section**: split into Regular, Variants, and Compositions, with
-  dedicated pages per topic (openings, middlegame strategy/tactics, endgame,
-  master games, chess variants like Atomic/Crazyhouse/Chess960/etc., and
-  composition genres like studies, helpmates, selfmates, twomovers,
-  threemovers, moremovers, fairies, retros).
+- **Quant section**: 25 subjects across Rates, Credit, Equities,
+  Currencies, and Commodities, each fully built out with chapters and
+  subsections covering market structure, pricing models, and derivatives —
+  written in the same style/format as the Math section.
+- **Chess section**: split into Regular Chess, Variants, and Compositions.
+  Regular Chess covers 8 topics (Basics, Opening Theory, Middlegame
+  Tactics/Strategy, Theoretical Endgames, Endgame Strategy, Master Games,
+  Chess History) with interactive boards rendered via a lichess-style
+  board renderer; Variants covers Atomic, Crazyhouse, Chess960, Antichess,
+  Three Check, King of the Hill, Horde, and Racing Kings; Compositions
+  covers Endgame Studies, Twomovers, Threemovers, Moremovers, Helpmates,
+  Selfmates, Retro Problems, and Fairy Chess.
 - **About Me** and **Contact** pages with social links (email, LinkedIn,
   GitHub).
 
@@ -75,23 +75,32 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
   set-theory, statistical-methods, stochastic-differential-equations,
   stochastic-processes, topology
 
-/quant/                 Quant (5 subjects)
+/quant/                 Quant (25 subjects)
   /quant/<subject>/                       Subject overview
   /quant/<subject>/<chapter>/             Chapter index
   /quant/<subject>/<chapter>/<section>/   Subsection content
 
-  Subjects: commodities, credit, equities, foreign-exchange, rates
+  Rates: rates-fundamentals, interest-rate-swaps, interest-rate-options,
+    term-structure-models, inflation-linked-products
+  Credit: bonds-and-fixed-income, credit-derivatives, structured-credit,
+    loans-and-lending, xva-and-counterparty-risk
+  Equities: equity-markets, equity-derivatives, volatility-trading,
+    exotic-equity-products, convertibles-and-equity-linked
+  Currencies: fx-markets, fx-forwards-and-swaps, fx-options-and-volatility,
+    exotic-fx-products, emerging-markets-fx
+  Commodities: commodity-derivatives, energy-markets, power-and-emissions,
+    metals-and-mining, agriculture
 
 /chess/                 Chess
-  /chess/regular/                Regular Chess
-    basics/, openings/, middlegame-strategy/, middlegame-tactics/,
-    endgame/, master-games/
+  /chess/regular/                Regular Chess (8 topics)
+    basics/, opening-theory/, middlegame-tactics/, middlegame-strategy/,
+    theoretical-endgames/, endgame-strategy/, master-games/, chess-history/
   /chess/variants/               Chess Variants
     antichess/, atomic/, chess960/, crazyhouse/, horde/,
     king-of-the-hill/, racing-kings/, three-check/
   /chess/compositions/           Chess Compositions
-    endgame-studies/, fairies/, helpmates/, moremovers/, retros/,
-    selfmates/, threemovers/, twomovers/
+    endgame-studies/, twomovers/, threemovers/, moremovers/, helpmates/,
+    selfmates/, retros/, fairies/
 ```
 
 ## Tech Stack

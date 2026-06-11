@@ -5,12 +5,10 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="../../../css/styles.css">
+<link rel="stylesheet" href="../../../css/chess-board.css">
+<script src="../../../js/chess-board.js"></script>
 <style>
-.chess-board-placeholder{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:2px solid var(--border-color,#555);width:fit-content;margin:1rem auto;}
-.chess-board-placeholder .sq{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
-.chess-board-placeholder .light{background:#f0d9b5;}
-.chess-board-placeholder .dark{background:#b58863;}
-.chess-board-placeholder .hill{background:#27ae60 !important;}
+.chess-board .sq.hill{background:#27ae60 !important;}
 .notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
 </style>
 </head><body>
@@ -46,19 +44,8 @@
   <h3>The Hill Squares</h3>
   <p>The four "hill" squares are exactly the same squares that classical chess theory identifies as the most important — the central four. But in King of the Hill, reaching them with your king is an immediate win, not just a strategic advantage.</p>
 
-  <div class="chess-board-placeholder" id="board-hill"></div>
-  <script>(function(){
-    var b=document.getElementById('board-hill');
-    var files='abcdefgh';
-    var hill=['d4','e4','d5','e5'];
-    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
-      var s=document.createElement('div');
-      var sq=files[c]+(r+1);
-      var isHill=hill.indexOf(sq)>=0;
-      s.className='sq '+((r+c)%2===0?'dark':'light')+(isHill?' hill':'');
-      b.appendChild(s);
-    }
-  })();</script>
+  <div class="chess-board" id="board-hill"></div>
+  <script>renderChessBoard('board-hill', {}, {highlight:{d4:'hill',e4:'hill',d5:'hill',e5:'hill'}});</script>
   <p class="text-center text-muted mt-2"><small>The four green "hill" squares: d4, e4, d5, e5. Move your king here to win instantly.</small></p>
 
   <h3>The Simultaneous Threat Rule</h3>
@@ -92,21 +79,8 @@
   <h3>The King March</h3>
   <p>The most distinctive tactical pattern in KOTH is the king march — a sequence of king moves toward the centre that must be executed quickly enough to outrace the opponent. A typical march might look like: Ke1–e2–e3–e4 (win!), but each step must be safe from attack and checks.</p>
 
-  <div class="chess-board-placeholder" id="board-march"></div>
-  <script>(function(){
-    var b=document.getElementById('board-march');
-    var files='abcdefgh';
-    var hill=['d4','e4','d5','e5'];
-    var board={e2:'♔',e8:'♚',d1:'♕',d8:'♛'};
-    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
-      var s=document.createElement('div');
-      var sq=files[c]+(r+1);
-      var isHill=hill.indexOf(sq)>=0;
-      s.className='sq '+((r+c)%2===0?'dark':'light')+(isHill?' hill':'');
-      if(board[sq])s.textContent=board[sq];
-      b.appendChild(s);
-    }
-  })();</script>
+  <div class="chess-board" id="board-march"></div>
+  <script>renderChessBoard('board-march', {e2:'wK',e8:'bK',d1:'wQ',d8:'bQ'}, {highlight:{d4:'hill',e4:'hill',d5:'hill',e5:'hill'}});</script>
   <p class="text-center text-muted mt-2"><small>White king on e2, two steps from the hill. The race is on.</small></p>
 
   <h3>Blocking and Deflection</h3>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spot Prices and Convenience Yield</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Commodity Derivatives</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-commodity-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-commodity-markets/" class="toc-chapter-link"><strong>1.</strong> Commodity Markets</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-commodity-markets/01-market-structure/">1.1 Market Structure</a>
+                        <a href="../../01-commodity-markets/02-spot-prices-and-convenience-yield/">1.2 Spot Prices and Convenience Yield</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-futures-and-forwards">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-futures-and-forwards/" class="toc-chapter-link"><strong>2.</strong> Futures and Forwards</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-futures-and-forwards/01-cost-of-carry/">2.1 Cost of Carry Model</a>
+                        <a href="../../02-futures-and-forwards/02-contango-and-backwardation/">2.2 Contango and Backwardation</a>
+                        <a href="../../02-futures-and-forwards/03-basis-risk/">2.3 Basis Risk</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-commodity-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-commodity-options/" class="toc-chapter-link"><strong>3.</strong> Commodity Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-commodity-options/01-black-76/">3.1 Black-76 Model</a>
+                        <a href="../../03-commodity-options/02-volatility-surfaces/">3.2 Volatility Surfaces</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Commodity Derivatives</a> › <a href="../">1. Commodity Markets</a> › <span>Spot Prices and Convenience Yield</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">1.2 Spot Prices and Convenience Yield</h1>
+
+                <p>The relationship between spot and futures prices in commodity markets cannot be explained by interest rates and storage costs alone. A crucial additional ingredient — the <strong>convenience yield</strong> — captures the non-monetary benefit that accrues to the holder of physical inventory, and it is the key to understanding why commodity forward curves so often depart from the simple cost-of-carry relationships familiar from financial markets.</p>
+
+                <h2 class="mt-5 mb-3">Spot Price Formation</h2>
+
+                <p>The spot price $S_t$ of a commodity is determined by the immediate balance of physical supply and demand at a given location and quality specification. Unlike a financial asset, a commodity spot price reflects not only current valuation of future cash flows but also the immediate, localised state of the physical market: how much inventory sits in storage, how close production is running to capacity, and how urgently consumers need to take delivery.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Spot Price Formation</div>
+                    <p class="mb-0">The spot price of a commodity at time $t$ is the price at which the marginal unit of physical supply clears against the marginal unit of physical demand for immediate delivery. Because storage and transportation are costly and time-consuming, spot prices can differ substantially across locations (the basis) and can exhibit short-lived spikes or collapses that are absent from longer-dated futures prices, which embed expectations about the resolution of current imbalances.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Concept of Convenience Yield</h2>
+
+                <p>Consider a refiner holding a tank of crude oil. That inventory is not merely a financial position — it is operational insurance. If a supplier shipment is delayed, the refiner can keep its plant running by drawing down the tank rather than halting production. This option-like benefit of holding the physical good, over and above any cash flow it generates, is the convenience yield.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Convenience Yield</div>
+                    <p class="mb-0">The convenience yield $y$ is the implicit, non-monetary benefit (expressed as an annualised rate) that accrues to the holder of the physical commodity, arising from the ability to profit from temporary local shortages, avoid the costs and disruption of stockouts, and maintain flexibility in production and delivery scheduling. It behaves like a "dividend yield" earned only by holders of the physical good — not by holders of a futures contract.</p>
+                </div>
+
+                <p>Crucially, the convenience yield is <em>not</em> a cash flow that can be captured by an arbitrageur who is short the physical commodity. A trader who sells crude oil short receives no compensation for the operational flexibility that a refiner gives up; this asymmetry is what allows commodity forward curves to behave very differently from those of financial assets.</p>
+
+                <h2 class="mt-5 mb-3">The Cost-of-Carry Relationship with Convenience Yield</h2>
+
+                <p>Incorporating storage costs and convenience yield into the standard cost-of-carry framework gives the fundamental commodity forward pricing relationship.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Forward Price with Storage and Convenience Yield</div>
+                    <p>Let $S_t$ be the spot price at time $t$, $r$ the continuously compounded risk-free rate, $u$ the continuously compounded proportional storage cost, and $y$ the continuously compounded convenience yield. The futures (forward) price for delivery at $T$ satisfies</p>
+                    <p>$$F(t,T) = S_t \, e^{(r+u-y)(T-t)}$$</p>
+                    <p class="mb-0">The convenience yield $y$ enters with a negative sign because it is a benefit accruing to the holder of the spot asset — analogous to a dividend yield reducing the forward price of an equity index, or a foreign interest rate reducing the forward price of a currency.</p>
+                </div>
+
+                <p>Rearranging, the convenience yield can be inferred from observed spot and futures prices:</p>
+
+                <p>$$y = r + u - \frac{1}{T-t}\ln\!\left(\frac{F(t,T)}{S_t}\right)$$</p>
+
+                <p>This makes the convenience yield, in practice, a residual quantity — it is whatever is needed to make the no-arbitrage relationship hold given the observed market prices, storage costs, and financing rates. As such it is best thought of as a summary statistic for the current tightness of the physical market rather than a directly observable cash flow.</p>
+
+                <h2 class="mt-5 mb-3">The Theory of Storage</h2>
+
+                <p>The <strong>theory of storage</strong>, developed by Kaldor, Working, and Brennan, explains the convenience yield as an equilibrium outcome of inventory holding decisions. Market participants hold inventory only when the benefits of doing so (avoiding stockouts, smoothing production, capturing local price spikes) outweigh the costs (storage, insurance, financing). The convenience yield is the market-clearing "price" of this inventory benefit.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Convenience Yield and Inventory Levels</div>
+                    <p>The theory of storage predicts an inverse relationship between the level of physical inventories and the convenience yield:</p>
+                    <ul>
+                        <li><strong>High inventories</strong> &rarr; the marginal unit of inventory provides little extra insurance against stockout &rarr; <strong>low convenience yield</strong> &rarr; $y < r+u$ &rarr; $F(t,T) > S_t$, i.e., the curve is in <em>contango</em>.</li>
+                        <li><strong>Low inventories</strong> &rarr; the marginal unit of inventory is highly valuable for avoiding disruption &rarr; <strong>high convenience yield</strong> &rarr; $y > r+u$ &rarr; $F(t,T) < S_t$, i.e., the curve is in <em>backwardation</em>.</li>
+                    </ul>
+                    <p class="mb-0">In this sense, the shape of the futures curve is a direct, market-based signal of physical inventory tightness, updated continuously as prices move.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Inferring the Convenience Yield</div>
+                    <p>Suppose the spot price of crude oil is $S_0 = \$80$ per barrel, the one-year futures price is $F(0,1) = \$78$, the risk-free rate is $r = 5\%$, and the annual cost of storing a barrel of oil (insurance, tank rental, financing) is $u = 3\%$ of the spot price.</p>
+                    <p>Using the cost-of-carry relationship,</p>
+                    <p>$$y = r + u - \ln\!\left(\frac{F}{S_0}\right) = 0.05 + 0.03 - \ln\!\left(\frac{78}{80}\right)$$</p>
+                    <p>Computing the log term, $\ln(78/80) = \ln(0.975) \approx -0.0253$, so</p>
+                    <p>$$y \approx 0.05 + 0.03 - (-0.0253) = 0.1053$$</p>
+                    <p class="mb-0">The implied convenience yield is approximately $10.5\%$, which exceeds $r+u = 8\%$. This is consistent with the observed backwardation ($F < S_0$): the market is signalling that inventories are tight and the marginal barrel of oil in storage is highly valuable to refiners right now.</p>
+                </div>
+
+                <p>This example illustrates the central insight of this section: convenience yield is not an exotic add-on to commodity pricing models, but the variable that absorbs all the information about physical market conditions that interest rates and storage costs cannot capture. Understanding how it varies — across commodities, over time, and with the level of inventories — is essential for interpreting futures curves, which we turn to next in the cost-of-carry framework for futures and forwards.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../01-commodity-markets/01-market-structure/" class="btn btn-outline-custom">&larr; 1.1 Market Structure</a>
+                    <a href="../../02-futures-and-forwards/" class="btn btn-custom">2. Futures and Forwards &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

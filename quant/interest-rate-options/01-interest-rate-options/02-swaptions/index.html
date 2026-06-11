@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swaptions</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Interest Rate Options</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rate-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rate-options/" class="toc-chapter-link"><strong>1.</strong> Interest Rate Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rate-options/01-caps-and-floors/">1.1 Caps and Floors</a>
+                        <a href="../../01-interest-rate-options/02-swaptions/">1.2 Swaptions</a>
+                        <a href="../../01-interest-rate-options/03-sabr-model/">1.3 SABR Model</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Interest Rate Options</a> › <a href="../">1. Interest Rate Options</a> › <span>Swaptions</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">1.2 Swaptions</h1>
+
+                <p>A swaption (swap option) grants its holder the right, but not the obligation, to enter into an interest rate swap with a predetermined fixed rate at a future date. Swaptions are the workhorse instrument for trading and hedging optionality on the entire forward swap curve, and underlie the structure of callable bonds, mortgage prepayment options, and Bermudan-style structured products.</p>
+
+                <h2 class="mt-5 mb-3">Payer and Receiver Swaptions</h2>
+
+                <p>Consider a forward-starting swap with expiry $T_0$, fixed rate $K$, and a sequence of payment dates $T_1 < T_2 < \cdots < T_n$ defining the swap tenor (length $T_n - T_0$). Let $R(t)$ denote the forward swap rate observed at time $t$ for this swap, and let $A(t) = \sum_{i=1}^n \delta_i P(t,T_i)$ be the corresponding annuity (PVBP).</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Payer and Receiver Swaption</div>
+                    <p>A <em>payer swaption</em> gives the holder the right to enter, at time $T_0$, into a swap in which they pay the fixed rate $K$ and receive floating. Its payoff at $T_0$ is:
+                    $$\text{Payer Swaption Payoff} = N \cdot A(T_0) \cdot \max(R(T_0) - K, 0)$$
+                    A <em>receiver swaption</em> gives the right to enter a swap receiving fixed $K$ and paying floating, with payoff:
+                    $$\text{Receiver Swaption Payoff} = N \cdot A(T_0) \cdot \max(K - R(T_0), 0)$$
+                    A payer swaption is thus a call option on the forward swap rate, and a receiver swaption is a put, both with the annuity $A(T_0)$ playing the role of a stochastic "discount factor" applied to the option payoff.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Notation Convention</div>
+                    <p class="mb-0">Swaptions are quoted by expiry $\times$ tenor, e.g., a "5y10y payer" is an option expiring in 5 years to enter a 10-year payer swap. The full grid of expiries and tenors traded in the market forms the swaption matrix.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Black's Model for Swaption Pricing</h2>
+
+                <p>Pricing proceeds analogously to the caplet case, but using the <em>annuity measure</em> $\mathbb{Q}^A$ (the measure under which the annuity $A(t)$ is the numeraire), under which the forward swap rate $R(t)$ is a martingale.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Forward Swap Rate Dynamics</div>
+                    <p class="mb-0">Under the annuity measure $\mathbb{Q}^A$, assume:
+                    $$dR(t) = \sigma_{\text{swpn}} R(t)\, dW_t^A$$
+                    where $\sigma_{\text{swpn}}$ is the swaption's Black (lognormal) implied volatility, taken constant to expiry $T_0$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Black's Swaption Formula</div>
+                    <p>The time-$t$ price of a payer swaption with strike $K$, expiry $T_0$, and notional $N$ is:
+                    $$V_{\text{pay}}(t) = N \cdot A(t) \left[ R(t)\,\Phi(d_1) - K\,\Phi(d_2) \right]$$
+                    and the receiver swaption price is:
+                    $$V_{\text{rec}}(t) = N \cdot A(t) \left[ K\,\Phi(-d_2) - R(t)\,\Phi(-d_1) \right]$$
+                    where
+                    $$d_{1,2} = \frac{\ln(R(t)/K) \pm \tfrac{1}{2}\sigma_{\text{swpn}}^2(T_0-t)}{\sigma_{\text{swpn}}\sqrt{T_0-t}}$$
+                    The annuity $A(t) = \sum_{i=1}^n \delta_i P(t,T_i)$ is computed from the discount curve and plays the role of "$P(t,T)$" in the Black caplet formula — it converts the option payoff (in units of the floating annuity) into a present value.</p>
+                    <p class="mb-0">Just as for caps, a normal (Bachelier) version of this formula exists, replacing the lognormal dynamics of $R(t)$ with $dR(t) = \sigma^N_{\text{swpn}}\,dW_t^A$, and is the dominant quoting convention for ATM and low/negative-strike swaptions.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — 5y10y Payer Swaption</div>
+                    <p>Suppose the 5y10y forward swap rate is $R(t) = 4.20\%$, the strike is $K=4.50\%$ (out of the money for a payer), $\sigma_{\text{swpn}} = 22\%$, $T_0 - t = 5$, and the annuity $A(t) = 7.85$ (per unit notional, reflecting roughly 10 years of discounted accruals).</p>
+                    <p>Compute $\sigma\sqrt{T_0-t} = 0.22\sqrt{5} \approx 0.4919$. Then $\ln(R/K) = \ln(4.20/4.50) \approx -0.0690$, so:
+                    $$d_1 = \frac{-0.0690 + 0.5(0.4919)^2}{0.4919} \approx 0.1006, \qquad d_2 \approx -0.3913$$
+                    With $\Phi(d_1)\approx 0.5401$ and $\Phi(d_2)\approx 0.3478$:</p>
+                    <p class="mb-0">$$V_{\text{pay}} = N \times 7.85 \times (0.0420 \times 0.5401 - 0.0450 \times 0.3478) \approx N \times 7.85 \times 0.00696 \approx N \times 0.0546$$
+                    For $N = \$10\text{m}$, the payer swaption is worth approximately $\$546{,}000$, or 54.6 bps of notional.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Swaption Volatility Cube</h2>
+
+                <p>Unlike a single equity, the swap market has a volatility surface with three dimensions: option expiry, underlying swap tenor, and strike (relative to the ATM forward). Together these form the <em>swaption volatility cube</em>.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Swaption Volatility Cube</div>
+                    <p class="mb-0">The swaption volatility cube is a function $\sigma(T_0, \tau, K)$ giving the implied volatility for an option of expiry $T_0$ on a swap of tenor $\tau$, struck at $K$. It is built from:</p>
+                    <ul class="mb-0">
+                        <li><strong>The ATM matrix</strong> $\sigma_{\text{ATM}}(T_0,\tau)$ — implied vols for swaptions struck at the prevailing forward swap rate, across a grid of expiries (e.g., 1m to 30y) and tenors (e.g., 1y to 30y).</li>
+                        <li><strong>The smile/skew</strong> for each $(T_0,\tau)$ pair — implied vol as a function of strike offset from ATM, typically quoted at a handful of strikes (e.g., ATM $\pm$ 50bp, $\pm$100bp) or via SABR parameters.</li>
+                    </ul>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why a Cube and Not a Surface</div>
+                    <p class="mb-0">An equity option surface needs only strike and expiry because there is one underlying. A swaption's underlying — the forward swap rate — depends on both the option expiry and the tenor of the swap entered into, giving an extra degree of freedom. Each "slice" of the cube at fixed tenor $\tau$ is itself a 2D volatility surface (expiry $\times$ strike), and the cube stacks these slices across tenors. Interpolation across the cube (especially for non-quoted expiry/tenor/strike combinations) typically relies on a parametric smile model such as SABR (Section 4.3), fit slice-by-slice and then interpolated smoothly in expiry and tenor.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Bermudan Swaptions</h2>
+
+                <p>A Bermudan swaption extends the European swaption by granting the holder the right to enter the underlying swap on any one of a discrete set of exercise dates $T_0^{(1)} < T_0^{(2)} < \cdots < T_0^{(m)}$, rather than only at a single expiry.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Bermudan Swaption</div>
+                    <p class="mb-0">A Bermudan payer swaption with exercise dates $\{T_0^{(k)}\}_{k=1}^m$ allows the holder to exercise into a (possibly shrinking) underlying swap at any $T_0^{(k)}$. Once exercised, the option terminates. The holder optimally exercises at the date that maximises the value of (intrinsic exercise value) + (continuation value of remaining optionality), which requires solving a dynamic programming / optimal stopping problem — Black's formula no longer applies because the decision to exercise early depends on the joint distribution of the swap rate across multiple future dates, not just its marginal distribution at one date.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why Bermudans Matter</div>
+                    <p class="mb-0">Bermudan swaptions are embedded in callable bonds and structured notes (the issuer's right to call the bond early is equivalent to holding a Bermudan swaption) and are a primary hedging instrument for mortgage-backed securities, where homeowners' prepayment options create path-dependent, multi-exercise-date optionality. Pricing Bermudans requires a full term-structure model (e.g., Hull-White, LMM — see Chapter 5) combined with a numerical method such as a PDE lattice or least-squares Monte Carlo (LSM), since a single-date Black model cannot capture the value of the embedded timing option.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Physical vs. Cash Settlement</h2>
+
+                <p>The settlement convention of a swaption affects both its payoff formula and the precise definition of the annuity used for discounting, and differs by currency and market convention.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Settlement Conventions</div>
+                    <p><strong>Physical settlement:</strong> upon exercise, the holder and writer enter into the actual underlying swap at the strike rate $K$. This is the standard convention for USD swaptions. The payoff is naturally valued using the true annuity $A(T_0) = \sum_i \delta_i P(T_0,T_i)$ computed from the prevailing discount curve at exercise.</p>
+                    <p class="mb-0"><strong>Cash settlement:</strong> upon exercise, the writer pays the holder a single cash amount computed using a standardised "cash annuity" formula (based on the swap rate itself, e.g., the ISDA cash-settled annuity $A_{\text{cash}}(T_0) = \sum_{i=1}^n \delta_i (1+R(T_0)\delta)^{-i}$ rather than the true discount-curve-based annuity), avoiding the need to reference the discount curve at settlement. This convention is common in EUR and GBP swaption markets. The choice of annuity introduces a (typically small) "CMS-like" convexity adjustment relative to the physically-settled price, since the cash annuity is itself a function of $R(T_0)$ and is therefore correlated with the option payoff.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../01-interest-rate-options/01-caps-and-floors/" class="btn btn-outline-custom">&larr; 1.1 Caps and Floors</a>
+                    <a href="../../01-interest-rate-options/03-sabr-model/" class="btn btn-custom">1.3 SABR Model &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

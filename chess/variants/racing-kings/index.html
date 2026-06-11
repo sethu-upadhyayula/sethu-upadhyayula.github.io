@@ -5,12 +5,10 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="../../../css/styles.css">
+<link rel="stylesheet" href="../../../css/chess-board.css">
+<script src="../../../js/chess-board.js"></script>
 <style>
-.chess-board-placeholder{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:2px solid var(--border-color,#555);width:fit-content;margin:1rem auto;}
-.chess-board-placeholder .sq{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
-.chess-board-placeholder .light{background:#f0d9b5;}
-.chess-board-placeholder .dark{background:#b58863;}
-.chess-board-placeholder .goal{background:#2980b9 !important;}
+.chess-board .sq.goal{background:#2980b9 !important;}
 .notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
 </style>
 </head><body>
@@ -41,29 +39,8 @@
   <h3>Starting Position</h3>
   <p>Both sides begin with their pieces packed into the bottom two ranks — no pawns at all. The specific starting arrangement places the pieces to avoid any immediate checks:</p>
 
-  <div class="chess-board-placeholder" id="board-start"></div>
-  <script>(function(){
-    var b=document.getElementById('board-start');
-    var files='abcdefgh';
-    // Racing Kings starting position
-    // Rank 1: ♜♞♝♛♚♝♞♜ (Black pieces)  Rank 2: ♟♟♟♟♟♟♟♟ — no, RK has:
-    // Standard Racing Kings: rank1=black heavy pieces, rank2=white heavy pieces
-    // Exact: rank 1 (bottom): Ka1 Qa2... actually the standard is:
-    // a1=♜ b1=♞ c1=♝ d1=♛ e1=♚ f1=♝ g1=♞ h1=♜  (Black)
-    // a2=♖ b2=♘ c2=♗ d2=♕ e2=♔ f2=♗ g2=♘ h2=♖  (White)
-    var rank1={a1:'♜',b1:'♞',c1:'♝',d1:'♛',e1:'♚',f1:'♝',g1:'♞',h1:'♜'};
-    var rank2={a2:'♖',b2:'♘',c2:'♗',d2:'♕',e2:'♔',f2:'♗',g2:'♘',h2:'♖'};
-    var goalRank=['a8','b8','c8','d8','e8','f8','g8','h8'];
-    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
-      var s=document.createElement('div');
-      var sq=files[c]+(r+1);
-      var isGoal=(r===7);
-      s.className='sq '+((r+c)%2===0?'dark':'light')+(isGoal?' goal':'');
-      if(rank1[sq])s.textContent=rank1[sq];
-      else if(rank2[sq])s.textContent=rank2[sq];
-      b.appendChild(s);
-    }
-  })();</script>
+  <div class="chess-board" id="board-start"></div>
+  <script>renderChessBoard('board-start', {a1:'bR',b1:'bN',c1:'bB',d1:'bQ',e1:'bK',f1:'bB',g1:'bN',h1:'bR',a2:'wR',b2:'wN',c2:'wB',d2:'wQ',e2:'wK',f2:'wB',g2:'wN',h2:'wR'}, {highlight:{a8:'goal',b8:'goal',c8:'goal',d8:'goal',e8:'goal',f8:'goal',g8:'goal',h8:'goal'}});</script>
   <p class="text-center text-muted mt-2"><small>Racing Kings starting position. Blue rank 8 is the goal. Black pieces on rank 1, White on rank 2. First king to rank 8 wins.</small></p>
 
   <h3>The No-Check Rule</h3>
@@ -102,20 +79,8 @@
   <h3>Pieces as Blockers</h3>
   <p>The most powerful strategic tool in Racing Kings is using your pieces to block the opponent's king's path. A rook on c8 blocks the opponent's king from reaching b8, c8, or d8. A bishop covering a diagonal to the 8th rank forces the opponent to reroute. Piece placement for blocking is often more important than advancing your own king.</p>
 
-  <div class="chess-board-placeholder" id="board-race"></div>
-  <script>(function(){
-    var b=document.getElementById('board-race');
-    var files='abcdefgh';
-    var goal=['a8','b8','c8','d8','e8','f8','g8','h8'];
-    var board={e5:'♔',e6:'♚',f8:'♖',b7:'♝'};
-    for(var r=7;r>=0;r--)for(var c=0;c<8;c++){
-      var s=document.createElement('div');
-      var sq=files[c]+(r+1);
-      s.className='sq '+((r+c)%2===0?'dark':'light')+(goal.indexOf(sq)>=0?' goal':'');
-      if(board[sq])s.textContent=board[sq];
-      b.appendChild(s);
-    }
-  })();</script>
+  <div class="chess-board" id="board-race"></div>
+  <script>renderChessBoard('board-race', {e5:'wK',e6:'bK',f8:'wR',b7:'bB'}, {highlight:{a8:'goal',b8:'goal',c8:'goal',d8:'goal',e8:'goal',f8:'goal',g8:'goal',h8:'goal'}});</script>
   <p class="text-center text-muted mt-2"><small>White king on e5, one move from the goal. Black king on e6 is also close. White rook on f8 is blocking key 8th rank squares.</small></p>
 </section>
 

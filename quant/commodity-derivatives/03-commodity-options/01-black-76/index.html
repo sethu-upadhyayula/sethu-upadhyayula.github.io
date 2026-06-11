@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black-76 Model</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Commodity Derivatives</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-commodity-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-commodity-markets/" class="toc-chapter-link"><strong>1.</strong> Commodity Markets</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-commodity-markets/01-market-structure/">1.1 Market Structure</a>
+                        <a href="../../01-commodity-markets/02-spot-prices-and-convenience-yield/">1.2 Spot Prices and Convenience Yield</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-futures-and-forwards">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-futures-and-forwards/" class="toc-chapter-link"><strong>2.</strong> Futures and Forwards</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-futures-and-forwards/01-cost-of-carry/">2.1 Cost of Carry Model</a>
+                        <a href="../../02-futures-and-forwards/02-contango-and-backwardation/">2.2 Contango and Backwardation</a>
+                        <a href="../../02-futures-and-forwards/03-basis-risk/">2.3 Basis Risk</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-commodity-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-commodity-options/" class="toc-chapter-link"><strong>3.</strong> Commodity Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-commodity-options/01-black-76/">3.1 Black-76 Model</a>
+                        <a href="../../03-commodity-options/02-volatility-surfaces/">3.2 Volatility Surfaces</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Commodity Derivatives</a> › <a href="../">3. Commodity Options</a> › <span>Black-76 Model</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.1 Black-76 Model</h1>
+
+                <p>Most exchange-traded commodity options are written not on the spot commodity itself, but on a futures contract. A crude oil call option, for example, gives the holder the right to enter a long futures position at the strike price, not to buy a barrel of oil for physical delivery. This single feature — the underlying being a futures price rather than a spot price — is what makes the <strong>Black-76 model</strong> (also called the Black model) the standard pricing framework across commodity options markets.</p>
+
+                <h2 class="mt-5 mb-3">The Futures Price as the Underlying</h2>
+
+                <p>Recall that the futures price $F(t,T)$ for delivery at $T$ already incorporates the cost-of-carry relationship to the spot price $S_t$: financing costs, storage costs, and convenience yield are all embedded in $F(t,T)$. An option on the futures contract therefore does not need to separately model these carry terms — they are already priced into the underlying.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Futures Price Dynamics under the Forward Measure</div>
+                    <p class="mb-0">Under the $T$-forward (or futures) measure $\mathbb{Q}^T$, the futures price $F(t,T)$ for a contract maturing at $T$ is a martingale: $\mathbb{E}^{\mathbb{Q}^T}[F(t_2,T) \mid \mathcal{F}_{t_1}] = F(t_1,T)$ for $t_1 < t_2 \le T$. Assuming $F(t,T)$ follows geometric Brownian motion with zero drift and constant volatility $\sigma$, $$dF(t,T) = \sigma F(t,T)\, dW_t^{\mathbb{Q}^T}.$$</p>
+                </div>
+
+                <p>This is the key simplification relative to the Black-Scholes setting for equities: there is no risk-free rate $r$ or dividend yield $q$ appearing in the drift of $F$, because the futures price is already a "pre-discounted, carry-adjusted" quantity. The only role of the interest rate is in discounting the option's terminal payoff back to today.</p>
+
+                <h2 class="mt-5 mb-3">The Black-76 Formula</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Black-76 Pricing Formula</div>
+                    <p>Consider a European call option with strike $K$ and maturity $T$ on a futures contract with current price $F = F(t,T)$, where the futures price has volatility $\sigma$ and $r$ is the continuously-compounded risk-free rate to maturity $T$. The price of the call is</p>
+                    <p>$$c = e^{-rT}\left[F\,N(d_1) - K\,N(d_2)\right]$$</p>
+                    <p>and the corresponding European put is</p>
+                    <p>$$p = e^{-rT}\left[K\,N(-d_2) - F\,N(-d_1)\right]$$</p>
+                    <p class="mb-0">where</p>
+                    <p class="mb-0">$$d_{1,2} = \frac{\ln(F/K) \pm \frac{1}{2}\sigma^2 T}{\sigma\sqrt{T}}, \qquad d_2 = d_1 - \sigma\sqrt{T}.$$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Derivation Sketch</h2>
+
+                <p>The derivation mirrors the Black-Scholes argument but is carried out under the $T$-forward measure, in which the discount bond $P(t,T)$ is the numéraire. Because $F(t,T)$ is a martingale under $\mathbb{Q}^T$ with zero drift, the call payoff $\max(F(T,T)-K,0) = \max(F_T - K, 0)$ has expected value (under $\mathbb{Q}^T$) given exactly by the Black-Scholes formula applied to a "stock" with current price $F$, zero dividend yield, and zero risk-free rate (since the drift is zero under this measure):</p>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Proof — Sketch via Change of Measure</div>
+                    <p>The price of the call today is $c = P(t,T)\,\mathbb{E}^{\mathbb{Q}^T}\left[\max(F_T - K, 0)\right]$. Since $F_T = F\exp\left(-\frac{1}{2}\sigma^2 T + \sigma\sqrt{T}Z\right)$ for $Z \sim N(0,1)$ under $\mathbb{Q}^T$, the expectation $\mathbb{E}^{\mathbb{Q}^T}[\max(F_T-K,0)]$ is computed exactly as in the Black-Scholes derivation, yielding $F\,N(d_1) - K\,N(d_2)$ with $d_{1,2}$ as above.</p>
+                    <p class="mb-0">Multiplying by the discount factor $P(t,T) = e^{-rT}$ (assuming a flat continuously-compounded rate) gives $c = e^{-rT}[F\,N(d_1) - K\,N(d_2)]$, as claimed. $\blacksquare$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Put-Call Parity for Futures Options</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Put-Call Parity (Black-76)</div>
+                    <p class="mb-0">For European call and put options on the same futures contract with identical strike $K$ and maturity $T$: $$c - p = e^{-rT}(F - K).$$ This follows because a long call and short put with the same strike replicate a long forward position on the futures contract struck at $K$, whose value is $e^{-rT}(F-K)$ — the discounted difference between the current futures price and the strike, since entering a futures position itself requires no upfront payment.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Comparison with Black-Scholes</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Black-76 vs. Black-Scholes</div>
+                    <p>The Black-Scholes formula for a European call on a non-dividend-paying stock is $c = S_0 N(d_1) - Ke^{-rT}N(d_2)$ with $d_{1,2} = \frac{\ln(S_0/K) + (r \pm \frac{1}{2}\sigma^2)T}{\sigma\sqrt{T}}$. Black-76 can be obtained from Black-Scholes by the substitution $S_0 \to F e^{-rT}$ (i.e., treating the futures price as if it were a forward price on a stock paying a continuous dividend yield equal to $r$, so that the prepaid forward price is $Fe^{-rT}$).</p>
+                    <p class="mb-0">Practically, the advantage of Black-76 is that it requires only the observable futures price $F$, not the spot price $S_0$ together with carry assumptions ($r$, storage costs, convenience yield). Since futures prices trade liquidly and transparently while spot prices for many commodities are illiquid or non-existent as tradeable instruments, Black-76 sidesteps the need to model the spot-futures relationship explicitly when pricing options.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example: Crude Oil Call Option</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Pricing a WTI Crude Oil Call</div>
+                    <p>Consider a European call option on the WTI crude oil futures contract with the following parameters:</p>
+                    <p>$F = \$80.00$ per barrel (current futures price), $K = \$85.00$ (strike), $T = 0.25$ years (3 months to expiry), $\sigma = 35\%$ (annualised implied volatility), $r = 5\%$ (continuously-compounded risk-free rate).</p>
+                    <p>First compute $d_1$ and $d_2$:</p>
+                    <p>$$d_1 = \frac{\ln(80/85) + \frac{1}{2}(0.35)^2(0.25)}{0.35\sqrt{0.25}} = \frac{-0.06062 + 0.01531}{0.175} = \frac{-0.04531}{0.175} \approx -0.2589$$</p>
+                    <p>$$d_2 = d_1 - \sigma\sqrt{T} = -0.2589 - 0.175 \approx -0.4339$$</p>
+                    <p>From the standard normal CDF: $N(d_1) \approx N(-0.2589) \approx 0.3979$ and $N(d_2) \approx N(-0.4339) \approx 0.3322$.</p>
+                    <p>The call price is then:</p>
+                    <p>$$c = e^{-0.05 \times 0.25}\left[80 \times 0.3979 - 85 \times 0.3322\right] = e^{-0.0125}\left[31.832 - 28.237\right]$$</p>
+                    <p class="mb-0">$$c \approx 0.9876 \times 3.595 \approx \$3.55 \text{ per barrel}.$$</p>
+                </div>
+
+                <p>This call is out-of-the-money ($F < K$), so its value reflects purely time value driven by volatility — there is meaningful probability that the futures price will rise above $85 by expiry given a 35% annualised volatility over three months. Note that the discount factor $e^{-rT}$ plays a relatively minor role compared to the spread between $N(d_1)$ and $N(d_2)$, which captures the option's moneyness and the volatility-driven probability of exercise.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../03-commodity-options/" class="btn btn-outline-custom">&larr; 3. Commodity Options</a>
+                    <a href="../../03-commodity-options/02-volatility-surfaces/" class="btn btn-custom">3.2 Volatility Surfaces &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

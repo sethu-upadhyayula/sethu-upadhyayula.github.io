@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barrier and Digital Options</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Exotic Equity Products</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-exotic-equity-products">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-exotic-equity-products/" class="toc-chapter-link"><strong>1.</strong> Exotic Equity Products</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-exotic-equity-products/01-barrier-and-digital-options/">1.1 Barrier and Digital Options</a>
+                        <a href="../../01-exotic-equity-products/02-autocallables/">1.2 Autocallables</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Exotic Equity Products</a> › <a href="../">1. Exotic Equity Products</a> › <span>Barrier and Digital Options</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">1.1 Barrier and Digital Options</h1>
+
+                <p>Barrier and digital (binary) options are among the simplest path-dependent and discontinuous-payoff exotics, and serve as building blocks for more complex structured products such as autocallables. Both can be priced in closed form under Black-Scholes assumptions using extensions of the reflection principle for Brownian motion, but their hedging behavior near the barrier or strike is markedly different from vanilla options.</p>
+
+                <h2 class="mt-5 mb-3">Barrier Options</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Knock-Out and Knock-In Options</div>
+                    <p>A barrier option is a vanilla call or put whose existence depends on whether the underlying price touches a pre-specified barrier level $H$ during the option's life.</p>
+                    <p><strong>Knock-out:</strong> the option is extinguished (becomes worthless) if $S_t$ touches $H$ at any time before expiry. An <em>up-and-out</em> option knocks out if $S_t \geq H$ for some $t \in [0,T]$ (with $H > S_0$); a <em>down-and-out</em> option knocks out if $S_t \leq H$ (with $H < S_0$).</p>
+                    <p class="mb-0"><strong>Knock-in:</strong> the option only comes into existence (becomes a vanilla option) if the barrier is touched. <em>Up-and-in</em> and <em>down-and-in</em> are defined analogously. A useful identity: a knock-in plus the corresponding knock-out (same strike, barrier, type) is exactly equal to the vanilla option, since exactly one of the two conditions must occur:
+                    $$\text{Vanilla} = \text{Knock-In} + \text{Knock-Out}$$</p>
+                </div>
+
+                <p>Barrier options are cheaper than the corresponding vanilla option (an out option can only have a payoff less than or equal to the vanilla, and an in option requires an additional event to occur), making them attractive for investors who want to express a directional view while reducing premium — at the cost of giving up the payoff entirely if the barrier is breached (for knock-outs) or if it is never breached (for knock-ins).</p>
+
+                <h2 class="mt-5 mb-3">Pricing via the Reflection Principle</h2>
+
+                <p>Under the Black-Scholes assumption that $\ln S_t$ follows a (drifted) Brownian motion, the joint distribution of the terminal value $S_T$ and the running minimum or maximum of $S_t$ over $[0,T]$ can be computed in closed form using the reflection principle: for a driftless Brownian motion $W_t$ started at $0$, the probability that $W$ reaches a level $H>0$ before time $T$ and finishes at some value below $H$ equals the probability of finishing above the "reflected" value $2H - W_T$.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Down-and-Out Call (No Dividends, $H \le K$)</div>
+                    <p class="mb-0">For a down-and-out call with barrier $H < S_0$ and $H \leq K$, under Black-Scholes with $r$, $\sigma$, the price is:
+                    $$C_{\text{DO}} = C_{\text{BS}}(S_0,K) - \left(\frac{H}{S_0}\right)^{2\lambda}C_{\text{BS}}\!\left(\frac{H^2}{S_0},K\right)$$
+                    where $\lambda = \frac{r+\sigma^2/2}{\sigma^2}$ and $C_{\text{BS}}(S,K)$ denotes the standard Black-Scholes call price as a function of spot $S$. The second term is the "reflected" or "image" option: it subtracts exactly the probability mass corresponding to paths that would have crossed the barrier, using the reflection of the spot price about the barrier, $H^2/S_0$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Hedging Barrier Options</div>
+                    <p><strong>Discontinuous payoff at the barrier:</strong> for a knock-out option, the value drops discontinuously to zero (in the continuous-monitoring idealization) as the spot crosses $H$. This produces extreme gamma and vega near the barrier as expiry approaches — small moves in the underlying can cause large swings in the hedge ratio.</p>
+                    <p class="mb-0"><strong>Discrete monitoring and barrier shifting:</strong> in practice, barriers are often monitored at discrete times (e.g., daily closes) rather than continuously, which makes the option less likely to knock out than the continuous-monitoring formula assumes. Practitioners commonly apply a "barrier shift" — adjusting $H$ by a small amount (related to $\sigma\sqrt{\Delta t}$, where $\Delta t$ is the monitoring interval) — to approximately correct continuous-monitoring formulas for discrete monitoring, an application of the Broadie-Glasserman-Kou correction.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Digital (Binary) Options</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Cash-or-Nothing Digital Option</div>
+                    <p class="mb-0">A cash-or-nothing digital call pays a fixed amount $\$1$ if $S_T > K$ and zero otherwise:
+                    $$\text{Payoff} = \mathbb{1}\{S_T > K\}$$
+                    Under Black-Scholes, its price is the discounted risk-neutral probability of finishing in the money:
+                    $$D_C = e^{-rT}N(d_2), \qquad d_2 = \frac{\ln(S_0/K)+(r-q-\sigma^2/2)T}{\sigma\sqrt{T}}$$
+                    A digital put pays $\$1$ if $S_T < K$, with price $D_P = e^{-rT}N(-d_2) = e^{-rT} - D_C$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Static Replication of Digitals via Call Spreads</h2>
+
+                <p>Because a digital option's payoff is discontinuous, it cannot be replicated by a finite position in a single vanilla option. However, it can be approximated arbitrarily well — and replicated in the limit — by a call spread of vanishing width.</p>
+
+                <div class="math-box proof">
+                    <div class="math-box-label">Replication — Tight Call Spread</div>
+                    <p>Consider a call spread: long $\frac{1}{\epsilon}$ calls struck at $K-\epsilon$ and short $\frac{1}{\epsilon}$ calls struck at $K$, for small $\epsilon > 0$. The payoff of this position is:
+                    $$\frac{1}{\epsilon}\big[\max(S_T-(K-\epsilon),0) - \max(S_T-K,0)\big]$$
+                    For $S_T \leq K-\epsilon$, this is $0$. For $S_T \geq K$, both calls are in the money and the payoff is $\frac{1}{\epsilon}\cdot\epsilon = 1$. For $K-\epsilon < S_T < K$, the payoff ramps linearly from $0$ to $1$. As $\epsilon \to 0$, this ramp converges to the digital's discontinuous step function, and the price of the call spread converges to:
+                    $$\lim_{\epsilon \to 0}\frac{C(K-\epsilon)-C(K)}{\epsilon} = -\frac{\partial C}{\partial K} = e^{-rT}N(d_2)$$
+                    which is exactly the digital call price — recovering the result above directly from static replication, without reference to the risk-neutral probability interpretation.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Skew and Digital Pricing</div>
+                    <p class="mb-0">In practice, $-\partial C/\partial K$ must be evaluated using the market's volatility <em>smile</em> $\sigma_{\text{imp}}(K)$, not a constant volatility — this introduces an additional term:
+                    $$-\frac{\partial C}{\partial K} = e^{-rT}N(d_2) - \frac{\partial C}{\partial \sigma}\frac{\partial \sigma_{\text{imp}}}{\partial K}$$
+                    The first term is the "sticky" Black-Scholes digital price; the second term is a skew correction (vega times the slope of the smile). Because index skew is typically negative (downward sloping), this correction increases the price of digital puts and decreases the price of digital calls relative to the flat-volatility Black-Scholes value — a market maker who prices digitals off a single implied volatility (rather than the local slope of the skew) will be systematically mispriced, which is why digitals are usually hedged with the actual call/put spread implied by the skew rather than relying on the closed-form formula alone.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../01-exotic-equity-products/" class="btn btn-outline-custom">&larr; 1. Exotic Equity Products</a>
+                    <a href="../../01-exotic-equity-products/02-autocallables/" class="btn btn-custom">1.2 Autocallables &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

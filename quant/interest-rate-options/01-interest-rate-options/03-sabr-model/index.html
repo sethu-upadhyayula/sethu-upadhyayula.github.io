@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SABR Model</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Interest Rate Options</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rate-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rate-options/" class="toc-chapter-link"><strong>1.</strong> Interest Rate Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rate-options/01-caps-and-floors/">1.1 Caps and Floors</a>
+                        <a href="../../01-interest-rate-options/02-swaptions/">1.2 Swaptions</a>
+                        <a href="../../01-interest-rate-options/03-sabr-model/">1.3 SABR Model</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Interest Rate Options</a> › <a href="../">1. Interest Rate Options</a> › <span>SABR Model</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">1.3 SABR Model</h1>
+
+                <p>Black's model prices every option on a given underlying with a single volatility parameter, but market prices for caps, floors, and swaptions exhibit a <em>volatility smile</em>: implied volatility varies systematically with strike. The SABR ("Stochastic Alpha, Beta, Rho") model, introduced by Hagan, Kumar, Lesniewski, and Woodward (2002), is the industry-standard parametric model for capturing this smile in a way that is simple to calibrate and yields an analytic approximation for implied volatility.</p>
+
+                <h2 class="mt-5 mb-3">SABR Dynamics</h2>
+
+                <p>SABR models the joint evolution of a forward rate $F(t)$ (e.g., a forward LIBOR/SOFR rate or forward swap rate) and its instantaneous volatility $\alpha(t)$ as a pair of correlated stochastic processes under the relevant forward/annuity measure.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — SABR Model</div>
+                    <p>Under the appropriate forward measure, the forward rate $F_t$ and stochastic volatility $\alpha_t$ evolve as:
+                    $$dF_t = \alpha_t \, F_t^{\beta} \, dW_t^{(1)}$$
+                    $$d\alpha_t = \nu \, \alpha_t \, dW_t^{(2)}$$
+                    $$dW_t^{(1)} dW_t^{(2)} = \rho \, dt$$
+                    with initial conditions $F_0 = f$ (today's forward rate) and $\alpha_0 = \alpha$. The model has four parameters:</p>
+                    <ul class="mb-0">
+                        <li>$\alpha > 0$: the initial level of volatility (sets the overall ATM vol level);</li>
+                        <li>$\beta \in [0,1]$: the CEV exponent, controlling the "backbone" — how the ATM volatility itself moves as $F$ moves;</li>
+                        <li>$\rho \in [-1,1]$: correlation between rate moves and volatility moves, controlling the skew (asymmetry of the smile);</li>
+                        <li>$\nu > 0$: the "vol-of-vol", controlling the curvature (smile convexity).</li>
+                    </ul>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Special Cases of $\beta$</div>
+                    <p class="mb-0">$\beta = 1$ recovers lognormal (Black-type) dynamics for $F_t$ in the absence of stochastic vol; $\beta = 0$ recovers normal (Bachelier-type) dynamics. $\beta = 0.5$ is a common choice for rates (a "square-root" CEV process, similar to CIR). In practice $\beta$ is often fixed exogenously (e.g., $\beta=0.5$ or $\beta=1$) based on historical analysis of how ATM vols move with rate levels, and $\alpha, \rho, \nu$ are calibrated to the smile, since $\beta$ and $\rho$ are not jointly identifiable from a single smile snapshot — both primarily control skew.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Hagan's Asymptotic Implied Volatility Formula</h2>
+
+                <p>The SABR SDEs do not admit a closed-form density in general, but Hagan et al. derived a highly accurate asymptotic expansion for the Black implied volatility produced by the model, valid for short maturities and parameters not too far from typical market values.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Hagan's SABR Implied Volatility (Lognormal)</div>
+                    <p>For strike $K$, forward $f$, and time to expiry $T$, the Black implied volatility under SABR is approximately:
+                    $$\sigma_B(K,f) = \frac{\alpha}{(fK)^{(1-\beta)/2}\left[1 + \frac{(1-\beta)^2}{24}\ln^2(f/K) + \frac{(1-\beta)^4}{1920}\ln^4(f/K)\right]} \cdot \frac{z}{\chi(z)} \cdot \left[1 + \left(\frac{(1-\beta)^2\alpha^2}{24(fK)^{1-\beta}} + \frac{\rho\beta\nu\alpha}{4(fK)^{(1-\beta)/2}} + \frac{2-3\rho^2}{24}\nu^2\right)T\right]$$
+                    where
+                    $$z = \frac{\nu}{\alpha}(fK)^{(1-\beta)/2}\ln(f/K), \qquad \chi(z) = \ln\left(\frac{\sqrt{1-2\rho z + z^2}+z-\rho}{1-\rho}\right)$$
+                    For the at-the-money case $K=f$, this simplifies to:
+                    $$\sigma_B(f,f) \approx \frac{\alpha}{f^{1-\beta}}\left[1 + \left(\frac{(1-\beta)^2\alpha^2}{24f^{2-2\beta}} + \frac{\rho\beta\nu\alpha}{4f^{1-\beta}} + \frac{2-3\rho^2}{24}\nu^2\right)T\right]$$</p>
+                    <p class="mb-0">The formula expresses the implied volatility of any strike directly in terms of the four SABR parameters and the model inputs $(f,T)$, allowing the entire smile for a given expiry/tenor to be generated from just $(\alpha,\beta,\rho,\nu)$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Fitting SABR to the Volatility Smile</h2>
+
+                <p>Calibration takes observed market implied volatilities at several strikes for a given expiry/tenor and finds the SABR parameters that best reproduce them.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — SABR Calibration</div>
+                    <p class="mb-0">Given market quotes $\{\sigma_{\text{mkt}}(K_j)\}_{j=1}^m$ at strikes $K_1,\ldots,K_m$ for fixed $(f,T)$, and with $\beta$ typically fixed exogenously, calibration solves:
+                    $$(\hat\alpha,\hat\rho,\hat\nu) = \arg\min_{\alpha,\rho,\nu} \sum_{j=1}^m w_j \left(\sigma_B(K_j; \alpha,\beta,\rho,\nu) - \sigma_{\text{mkt}}(K_j)\right)^2$$
+                    using a nonlinear least-squares routine (e.g., Levenberg-Marquardt), with weights $w_j$ often chosen to emphasise near-the-money strikes where liquidity is highest. A common refinement is to calibrate $\alpha$ analytically by inverting the ATM formula given a target ATM vol, then optimise only $(\rho,\nu)$ over the off-ATM strikes — this guarantees an exact fit to the (most liquid and important) ATM point.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Typical SABR Smile Shapes</div>
+                    <p>For a swap rate near $f = 4\%$ with $\beta = 0.5$ fixed: a positive $\rho$ (e.g., $\rho = 0.3$) produces a smile that is upward-sloping in strike (call skew) — typical of some commodity or inflation markets. A negative $\rho$ (e.g., $\rho=-0.3$, more typical of rates markets, reflecting that vol tends to rise when rates fall) produces a downward-sloping smile — higher implied vols for low-strike (receiver/floor) options than for high-strike (payer/cap) options.</p>
+                    <p class="mb-0">Increasing $\nu$ (vol-of-vol) steepens the curvature on both wings symmetrically, producing a more pronounced "smile" (U-shape) regardless of the sign of $\rho$. $\alpha$ primarily shifts the overall level of the curve up or down without much affecting its shape.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Backbone and Smile Dynamics</h2>
+
+                <p>A crucial practical consideration is not just how SABR fits today's smile, but how the fitted smile is predicted to move when the underlying forward rate $f$ itself moves — this is the model's "smile dynamics," governed primarily by the exponent $\beta$.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Backbone</div>
+                    <p class="mb-0">The <em>backbone</em> is the locus traced out by the ATM volatility $\sigma_B(f,f)$ as $f$ varies, holding $(\alpha,\beta,\rho,\nu)$ fixed. From the ATM formula, $\sigma_B(f,f) \approx \alpha f^{\beta-1}$ to leading order, so:</p>
+                    <ul class="mb-0">
+                        <li>$\beta = 1$: ATM vol is roughly constant as $f$ moves (lognormal-type backbone) — "sticky strike"-like behaviour for the ATM point.</li>
+                        <li>$\beta = 0$: ATM vol scales like $1/f$ (normal-type backbone) — ATM vol rises sharply as $f \to 0$.</li>
+                        <li>$0 < \beta < 1$: intermediate behaviour.</li>
+                    </ul>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Managing Smile Dynamics in Practice</div>
+                    <p class="mb-0">The choice of $\beta$ has direct hedging implications: it determines how much of the change in an option's value, when the forward moves, is attributed to delta (movement along a fixed smile) versus a shift of the entire smile (vega-like effects from the backbone). A poorly chosen $\beta$ can cause a SABR-based hedge to systematically mis-predict P&L when the underlying rate moves. Desks typically choose $\beta$ based on a historical regression of changes in ATM implied vol against changes in the forward rate, and re-calibrate $(\alpha,\rho,\nu)$ daily while holding $\beta$ fixed over longer periods for hedging consistency.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Limitations of SABR</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Known Limitations</div>
+                    <p>Hagan's formula is an asymptotic expansion and can produce arbitrage (e.g., a non-monotonic or even negative implied density) for very low strikes, very long expiries, or extreme parameter combinations — particularly when $f$ is close to zero and $\beta < 1$, since $(fK)^{(1-\beta)/2}$ and the $\ln(f/K)$ terms become numerically unstable. Practitioners address this with "free" or "shifted" SABR variants (shifting $F$ and $K$ by a constant before applying the formula) or by switching to an arbitrage-free numerical PDE-based SABR implementation for extreme regimes.</p>
+                    <p class="mb-0">SABR is a single-expiry, single-underlying smile model — it does not by itself describe the joint dynamics of the entire forward curve or provide a consistent framework for pricing path-dependent, multi-rate products such as Bermudan swaptions. For these, term-structure models are required: short-rate models, the HJM framework, or the LIBOR Market Model, often combined with SABR-style dynamics for individual forward rates (SABR-LMM) — the subject of Chapter 5.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../01-interest-rate-options/02-swaptions/" class="btn btn-outline-custom">&larr; 1.2 Swaptions</a>
+                    <a href="../../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

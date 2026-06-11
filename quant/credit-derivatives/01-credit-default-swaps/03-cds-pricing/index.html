@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDS Pricing</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Credit Derivatives</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-credit-default-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-credit-default-swaps/" class="toc-chapter-link"><strong>1.</strong> Credit Default Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-credit-default-swaps/01-cds-basics/">1.1 CDS Structure</a>
+                        <a href="../../01-credit-default-swaps/02-hazard-rate-model/">1.2 Hazard Rate Model</a>
+                        <a href="../../01-credit-default-swaps/03-cds-pricing/">1.3 CDS Pricing</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-cds-indices">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-cds-indices/" class="toc-chapter-link"><strong>2.</strong> CDS Indices</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-cds-indices/01-index-composition/">2.1 Index Composition</a>
+                        <a href="../../02-cds-indices/02-index-pricing/">2.2 Index Pricing</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Credit Derivatives</a> › <a href="../">1. Credit Default Swaps</a> › <span>CDS Pricing</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">1.3 CDS Pricing</h1>
+
+                <p>The value of a CDS is the difference between the present value of the protection leg (the contingent default payment) and the present value of the premium leg (the periodic spread payments). The fair spread is the value of $s$ that sets this difference to zero at trade inception.</p>
+
+                <h2 class="mt-5 mb-3">The Premium Leg</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Risky PV01 (RPV01)</div>
+                    <p class="mb-0">The present value of the premium leg, per unit of spread, is the "risky PV01" or "risky annuity":</p>
+                    <p class="mb-0">$$\text{RPV01} = \sum_{i=1}^{n} \Delta_i \, D(t_i) \, Q(t_i) + \text{accrued-on-default adjustment}$$</p>
+                    <p class="mb-0">where $D(t_i) = e^{-r t_i}$ is the risk-free discount factor, $Q(t_i)$ is the survival probability to payment date $t_i$, and $\Delta_i$ is the accrual fraction for period $i$. The "accrued-on-default" term accounts for the fact that if default occurs between two premium dates, the buyer must still pay the accrued premium since the last payment date — typically approximated by adding $\frac{1}{2}\sum_i \Delta_i D(t_i)(Q(t_{i-1}) - Q(t_i))$.</p>
+                    <p class="mb-0">The value of the premium leg is then $s \cdot N \cdot \text{RPV01}$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Protection Leg</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Protection Leg Value</div>
+                    <p class="mb-0">The present value of the protection leg is the expected discounted payoff $N(1-R)$ at the (random) default time $\tau$, conditional on default occurring before maturity $T$:</p>
+                    <p class="mb-0">$$\text{PV}_{\text{protection}} = N(1-R) \int_0^T D(u) \left(-\frac{dQ(u)}{du}\right) du$$</p>
+                    <p class="mb-0">In practice this integral is approximated by discretising $[0,T]$ into small intervals and summing $N(1-R) D(u_k) \left(Q(u_{k-1}) - Q(u_k)\right)$ over the intervals, where $Q(u_{k-1}) - Q(u_k)$ is the probability of default within interval $k$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Fair Spread</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Fair CDS Spread</div>
+                    <p class="mb-0">Setting the present value of the premium leg equal to the present value of the protection leg (zero net value at inception, no upfront), the fair spread is:</p>
+                    <p class="mb-0">$$s = \frac{(1-R)\displaystyle\int_0^T D(u)\left(-\frac{dQ(u)}{du}\right)du}{\text{RPV01}}$$</p>
+                    <p class="mb-0">Given a discount curve $D(\cdot)$ (from the risk-free or OIS curve) and an assumed recovery rate $R$ (conventionally 40% for senior unsecured corporate debt, 25% for subordinated, 25% for sovereigns), this equation is inverted during bootstrapping (see <a href="../02-hazard-rate-model/">Hazard Rate Model</a>) to solve for the survival curve $Q(\cdot)$ that reproduces observed market spreads at each maturity.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Mark-to-Market of an Existing Position</h2>
+
+                <p>Once a CDS has been entered into at a contractual spread $\bar{s}$ (the standardised running coupon), its mark-to-market value to the protection buyer at a later date, given the current fair spread $s_{\text{now}}$ for the remaining maturity, is:</p>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Mark-to-Market</div>
+                    <p class="mb-0">$$\text{MTM}_{\text{buyer}} = N \cdot (s_{\text{now}} - \bar{s}) \cdot \text{RPV01}_{\text{now}}$$</p>
+                    <p class="mb-0">If credit spreads have widened since inception ($s_{\text{now}} > \bar{s}$), the protection buyer's position has gained value — they locked in cheaper protection than the market now requires, and could sell the position (or an offsetting CDS) for a positive upfront payment. This is the basis for marking CDS books to market and for computing P&L on credit views expressed via CDS.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../01-credit-default-swaps/02-hazard-rate-model/" class="btn btn-outline-custom">&larr; 1.2 Hazard Rate Model</a>
+                    <a href="../../02-cds-indices/" class="btn btn-custom">2. CDS Indices &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

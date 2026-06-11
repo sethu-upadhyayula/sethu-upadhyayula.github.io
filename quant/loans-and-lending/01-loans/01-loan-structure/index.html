@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Structure and Pricing</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Loans and Lending</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-loans">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-loans/" class="toc-chapter-link"><strong>1.</strong> Loans</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-loans/01-loan-structure/">1.1 Loan Structure and Pricing</a>
+                        <a href="../../01-loans/02-prepayment/">1.2 Prepayment Modelling</a>
+                        <a href="../../01-loans/03-default/">1.3 Default Modelling</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Loans and Lending</a> › <a href="../">1. Loans</a> › <span>Loan Structure and Pricing</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">1.1 Loan Structure and Pricing</h1>
+
+                <p>A loan is a contractual arrangement in which a lender (or syndicate of lenders) provides capital to a borrower at agreed terms. The key structural features are: facility type, tenor, amortisation schedule, interest basis, and fee structure. Leveraged loans — extended to sub-investment-grade borrowers — are the raw material of CLO portfolios.</p>
+
+                <h2 class="mt-5 mb-3">Facility Types</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Term Loan vs Revolving Credit Facility</div>
+                    <p>A <strong>term loan</strong> is a fully drawn facility where principal reduces on a fixed amortisation schedule until maturity. Term Loan A (TLA) amortises regularly over its life. Term Loan B (TLB), dominant in leveraged finance, has minimal scheduled amortisation (1% per annum) and a bullet repayment at maturity.</p>
+                    <p class="mb-0">A <strong>revolving credit facility (RCF)</strong> is a committed line of credit: the borrower may draw, repay, and re-draw up to a maximum commitment at will during the availability period. The commitment fee accrues on the undrawn portion; the margin applies only to drawn amounts.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Interest Rate and Margin</h2>
+                <p>Most loans price as a floating benchmark rate plus a fixed credit spread (margin). After the LIBOR transition, the dominant reference rates are SOFR (USD), SONIA (GBP), and EURIBOR (EUR).</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Loan All-In Rate</div>
+                    <p>The periodic interest payment on a drawn balance $L$ over a period of length $\delta$ (in years) is:
+                    $$\text{Interest} = L \times (\text{SOFR}_t + s) \times \delta$$
+                    where $\text{SOFR}_t$ is the compounded overnight SOFR over the interest period (or term SOFR at reset) and $s$ is the contractual credit margin. For leveraged loans, the margin typically ranges from 300 to 600 bps over benchmark.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — SOFR Floor</div>
+                    <p class="mb-0">Many leveraged loan agreements include a SOFR floor — a minimum reference rate, typically 0% or 50 bps — so that even in a zero-rate environment the borrower pays at least the margin plus the floor. This floor has option value to the lender and is priced into the all-in margin.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Amortisation Schedule</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Fully Amortising Loan Payment</div>
+                    <p>For a fully amortising loan of principal $L_0$, $n$ equal payment periods, and periodic interest rate $r$ (coupon rate divided by periods per year), the constant periodic payment $A$ is:
+                    $$A = L_0 \cdot \frac{r}{1-(1+r)^{-n}}$$
+                    The outstanding principal after $k$ payments is:
+                    $$L_k = L_0 \cdot \frac{(1+r)^n - (1+r)^k}{(1+r)^n - 1}$$
+                    The interest component of payment $k$ is $I_k = L_{k-1}\cdot r$ and the principal component is $P_k = A - I_k$. Over time, the interest share declines and the principal share grows.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Annual Amortisation Table</div>
+                    <p>A \$1,000 loan at 5% p.a., 3-year fully amortising: $A = 1000 \times 0.05 / (1-1.05^{-3}) = \$367.21$.</p>
+                    <p>Year 1: Interest = \$50.00, Principal = \$317.21, Balance = \$682.79.</p>
+                    <p>Year 2: Interest = \$34.14, Principal = \$333.07, Balance = \$349.72.</p>
+                    <p class="mb-0">Year 3: Interest = \$17.49, Principal = \$349.72, Balance = \$0.00. Total interest paid = \$101.63.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">All-In Yield and OID</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Original Issue Discount and All-In Spread</div>
+                    <p>Leveraged loans are frequently issued at a discount to par — an <em>Original Issue Discount</em> (OID). A loan issued at 98 cents on the dollar has a 2% OID. The all-in spread approximately equals:
+                    $$\text{All-in spread} \approx s + \frac{\text{OID} + \text{Upfront Fee}}{\text{Tenor (years)}}$$
+                    The exact all-in yield (IRR) solves:
+                    $$\text{Issue Price} = \sum_{t} \frac{CF_t}{(1+r)^t}$$
+                    where $CF_t$ includes periodic interest payments, scheduled amortisation, and bullet principal at maturity. IRR is computed numerically.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Commitment Fee and Utilisation Fee</div>
+                    <p class="mb-0">For revolving facilities, the <em>commitment fee</em> (typically 30–50% of the drawn margin) accrues daily on the undrawn commitment. A <em>utilisation fee</em> steps up the effective margin when the drawn utilisation percentage exceeds specified thresholds (commonly 33% and 66%). These fees compensate lenders for maintaining committed capital even when the facility is undrawn.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../01-loans/" class="btn btn-outline-custom">&larr; 1. Loans</a>
+                    <a href="../../01-loans/02-prepayment/" class="btn btn-custom">1.2 Prepayment Modelling &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>
