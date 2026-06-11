@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curve Hedging and Risk Management</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Rates Fundamentals</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rates-fundamentals">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rates-fundamentals/" class="toc-chapter-link"><strong>1.</strong> Interest Rates Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rates-fundamentals/01-discount-factors-and-spot-rates/">1.1 Discount Factors and Spot Rates</a>
+                        <a href="../../01-interest-rates-fundamentals/02-forward-rates/">1.2 Forward Rates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-yield-curve-construction">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-yield-curve-construction/" class="toc-chapter-link"><strong>2.</strong> Yield Curve Construction</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-yield-curve-construction/01-bootstrapping/">2.1 Bootstrapping the Yield Curve</a>
+                        <a href="../../02-yield-curve-construction/02-interpolation-methods/">2.2 Interpolation Methods</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-curve-risk-and-sensitivities">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-curve-risk-and-sensitivities/" class="toc-chapter-link"><strong>3.</strong> Curve Risk and Sensitivities</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-curve-risk-and-sensitivities/01-dv01-and-key-rate-durations/">3.1 DV01 and Key Rate Durations</a>
+                        <a href="../../03-curve-risk-and-sensitivities/02-curve-hedging-and-risk-management/">3.2 Curve Hedging and Risk Management</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-curve-construction-in-practice">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-curve-construction-in-practice/" class="toc-chapter-link"><strong>4.</strong> Curve Construction in Practice</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-curve-construction-in-practice/01-calibration-algorithms/">4.1 Calibration Algorithms</a>
+                        <a href="../../04-curve-construction-in-practice/02-turn-of-year-and-seasonality/">4.2 Turn-of-Year Effects and Seasonality</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Rates Fundamentals</a> › <a href="../">3. Curve Risk and Sensitivities</a> › <span>Curve Hedging and Risk Management</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 Curve Hedging and Risk Management</h1>
+
+                <p>Once a position's risk ladder (Section 3.1) is known, the natural next step is to neutralise it — to construct a portfolio of liquid hedging instruments whose combined sensitivities offset the original position's, leaving the trading desk with a small, well-understood residual risk rather than raw exposure to every point on the curve.</p>
+
+                <h2 class="mt-5 mb-3">Single-Instrument DV01 Hedging</h2>
+
+                <p>The simplest hedge neutralises only the parallel DV01, using a single liquid instrument (often an on-the-run government bond future or a benchmark swap).</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — DV01-Neutral Hedge Ratio</div>
+                    <p class="mb-0">To hedge a position with $\text{DV01}_{\text{pos}}$ using a hedging instrument with $\text{DV01}_{\text{hedge}}$ (per unit notional), the required hedge notional $N_h$ is:
+                    $$N_h = -\frac{\text{DV01}_{\text{pos}}}{\text{DV01}_{\text{hedge}}}$$
+                    The sign of $N_h$ determines whether the hedge is bought or sold (e.g. received or paid in a swap). After the hedge, the combined position has zero parallel DV01: a parallel shift in rates produces (to first order) no P&amp;L.</p>
+                </div>
+
+                <p>A single-instrument hedge only protects against parallel moves. If the hedge instrument's maturity differs materially from the position's, the hedged portfolio retains <strong>curve risk</strong> — exposure to changes in the slope of the curve between the position's maturity and the hedge's maturity.</p>
+
+                <h2 class="mt-5 mb-3">Multi-Bucket Hedging</h2>
+
+                <p>To hedge against non-parallel moves, the desk matches the position's key rate ladder bucket-by-bucket using a set of hedging instruments whose maturities span the relevant pillars.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Matrix Hedge for Multiple Buckets</div>
+                    <p>Suppose the position has key rate '01s $\text{KR01}_1, \ldots, \text{KR01}_m$ at $m$ pillars, and there are $m$ hedging instruments, where instrument $j$ has key rate '01 vector $(h_{1j}, \ldots, h_{mj})$ per unit notional. Let $H$ be the $m\times m$ matrix with entries $h_{ij}$, and $\mathbf{k}=(\text{KR01}_1,\ldots,\text{KR01}_m)^\top$. The hedge notionals $\mathbf{N}=(N_1,\ldots,N_m)^\top$ that exactly zero out every bucket solve:
+                    $$H\mathbf{N} = -\mathbf{k} \quad\Longrightarrow\quad \mathbf{N} = -H^{-1}\mathbf{k}$$</p>
+                    <p class="mb-0">In practice $H$ is often close to (but not exactly) diagonal — a 5-year swap's risk is concentrated near the 5-year bucket but "leaks" into adjacent buckets through interpolation — so the system must be solved jointly rather than bucket-by-bucket.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Hedging a 7-Year Swap with 5-Year and 10-Year Swaps</div>
+                    <p>A trader holds a 7-year receiver swap with $\text{KR01}_{5y} = \$800$ and $\text{KR01}_{10y} = \$1{,}200$ (and negligible exposure elsewhere, since 7y sits between the 5y and 10y pillars). Available hedges are a 5-year payer swap with $(\text{KR01}_{5y}, \text{KR01}_{10y}) = (\$1{,}900, \$0)$ per unit notional, and a 10-year payer swap with $(\$0, \$2{,}500)$ per unit notional.</p>
+                    <p class="mb-0">Solving $H\mathbf{N} = -\mathbf{k}$ with $H$ diagonal gives $N_{5y} = 800/1900 \approx 0.421$ units of the 5-year payer and $N_{10y} = 1200/2500 = 0.48$ units of the 10-year payer. The combined position (original 7y swap plus the two hedges) has zero 5y and 10y key rate '01 — it is hedged against both a parallel shift and a steepening/flattening of the 5y–10y segment, leaving only basis and interpolation risk.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Scenario Analysis: Parallel, Steepener, and Twist</h2>
+
+                <p>Beyond bucketed '01s, risk managers stress portfolios under standardised yield curve scenarios that capture the dominant modes of historical curve movement.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Standard Curve Scenarios</div>
+                    <p><strong>Parallel shift:</strong> every maturity moves by the same amount (e.g. $\pm 25$bp, $\pm 100$bp). Captures level risk; corresponds to total DV01.</p>
+                    <p><strong>Steepener / flattener:</strong> short rates and long rates move in opposite directions (e.g. short rates $-25$bp, long rates $+25$bp for a steepener). Captures slope risk; a barbell and a bullet with identical DV01 will show very different P&amp;L under this scenario.</p>
+                    <p class="mb-0"><strong>Butterfly / twist:</strong> the belly of the curve (e.g. 5y) moves opposite to both the short and long ends. Captures curvature risk, relevant for portfolios with concentrated exposure around a single maturity bucket.</p>
+                </div>
+
+                <p>Empirically, the first three principal components of historical yield curve changes correspond closely to <em>level</em>, <em>slope</em>, and <em>curvature</em> — together explaining the overwhelming majority of the variance in curve moves. This is why level/slope/curvature (or equivalently parallel/steepener/butterfly) scenarios form the backbone of most rates risk frameworks, from desk-level hedging to firm-wide VaR.</p>
+
+                <h2 class="mt-5 mb-3">Basis Risk</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Residual Basis Risk</div>
+                    <p class="mb-0">Even a perfectly bucketed DV01 hedge leaves <strong>basis risk</strong> if the hedging instrument is not identical in type to the position — for example, hedging a SOFR swap with a Treasury future leaves the trade exposed to changes in the swap spread (the difference between swap rates and government bond yields), and hedging across currencies or indices (e.g. SOFR vs. Term SOFR vs. Fed Funds) leaves exposure to the relevant basis. Managing curve risk in practice is therefore a layered exercise: first neutralise the dominant rate-level and slope risk with the most liquid available instruments, then separately monitor and, where economic, hedge the residual basis exposures.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-dv01-and-key-rate-durations/" class="btn btn-outline-custom">&larr; 3.1 DV01 and Key Rate Durations</a>
+                    <a href="../../04-curve-construction-in-practice/" class="btn btn-custom">4. Curve Construction in Practice &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

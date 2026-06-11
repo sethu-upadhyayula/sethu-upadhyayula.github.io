@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calibration Algorithms</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Rates Fundamentals</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rates-fundamentals">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rates-fundamentals/" class="toc-chapter-link"><strong>1.</strong> Interest Rates Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rates-fundamentals/01-discount-factors-and-spot-rates/">1.1 Discount Factors and Spot Rates</a>
+                        <a href="../../01-interest-rates-fundamentals/02-forward-rates/">1.2 Forward Rates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-yield-curve-construction">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-yield-curve-construction/" class="toc-chapter-link"><strong>2.</strong> Yield Curve Construction</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-yield-curve-construction/01-bootstrapping/">2.1 Bootstrapping the Yield Curve</a>
+                        <a href="../../02-yield-curve-construction/02-interpolation-methods/">2.2 Interpolation Methods</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-curve-risk-and-sensitivities">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-curve-risk-and-sensitivities/" class="toc-chapter-link"><strong>3.</strong> Curve Risk and Sensitivities</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-curve-risk-and-sensitivities/01-dv01-and-key-rate-durations/">3.1 DV01 and Key Rate Durations</a>
+                        <a href="../../03-curve-risk-and-sensitivities/02-curve-hedging-and-risk-management/">3.2 Curve Hedging and Risk Management</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-curve-construction-in-practice">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-curve-construction-in-practice/" class="toc-chapter-link"><strong>4.</strong> Curve Construction in Practice</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-curve-construction-in-practice/01-calibration-algorithms/">4.1 Calibration Algorithms</a>
+                        <a href="../../04-curve-construction-in-practice/02-turn-of-year-and-seasonality/">4.2 Turn-of-Year Effects and Seasonality</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Rates Fundamentals</a> › <a href="../">4. Curve Construction in Practice</a> › <span>Calibration Algorithms</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Calibration Algorithms</h1>
+
+                <p>The sequential bootstrap of Section 2.1 solves for one new discount factor per instrument, working strictly from short to long maturities. This works cleanly when each instrument's cash flows depend only on previously-solved discount factors. In practice this assumption breaks down — instruments overlap in maturity, projection curves depend on the discount curve (and sometimes vice versa), and interpolation between pillars means that bumping one quote can change the priced value of <em>every</em> instrument, not just longer-dated ones. Production systems therefore treat curve construction as a <strong>global calibration problem</strong>.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Curve Calibration as Root-Finding</div>
+                    <p class="mb-0">Let $\mathbf{x} = (x_1,\ldots,x_n)$ be the vector of curve pillar values (e.g. zero rates or log-discount factors at each pillar), and let $\mathbf{q}=(q_1,\ldots,q_n)$ be the vector of market quotes (par rates) for the calibrating instruments. Define the pricing function $F_i(\mathbf{x})$ as the model price (par rate, or value relative to par) of instrument $i$ given curve $\mathbf{x}$. Calibration solves the system:
+                    $$F_i(\mathbf{x}) = q_i, \qquad i=1,\ldots,n$$
+                    i.e. find the curve $\mathbf{x}^*$ such that every instrument is priced exactly at its market quote, simultaneously.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Newton's Method and the Jacobian</h2>
+
+                <p>When $n$ is large (a typical curve has 20–40 pillars), the system $F(\mathbf{x})=\mathbf{q}$ is solved by Newton-Raphson iteration, exploiting the fact that the sequential bootstrap provides an excellent starting guess.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Newton Iteration for Curve Calibration</div>
+                    <p class="mb-0">Starting from an initial guess $\mathbf{x}^{(0)}$ (e.g. the result of a sequential bootstrap), Newton's method iterates:
+                    $$\mathbf{x}^{(k+1)} = \mathbf{x}^{(k)} - J(\mathbf{x}^{(k)})^{-1}\big(F(\mathbf{x}^{(k)}) - \mathbf{q}\big)$$
+                    where $J_{ij} = \partial F_i/\partial x_j$ is the Jacobian matrix of instrument prices with respect to curve pillars. Iteration continues until $\|F(\mathbf{x}^{(k)}) - \mathbf{q}\|$ is below a tight tolerance (sub-basis-point repricing error).</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why the Jacobian is (Nearly) Triangular</div>
+                    <p class="mb-0">If instruments are ordered by maturity and interpolation is local (e.g. log-linear or monotone convex), $J$ is close to lower-triangular: instrument $i$'s price depends mainly on pillars $1,\ldots,i$, with small off-diagonal terms from interpolation effects near pillar $i$. This near-triangular structure is why the sequential bootstrap is such a good starting point — it solves the "diagonal" part of the system exactly — and why Newton's method typically converges in only one or two iterations from a bootstrapped initial guess.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Joint Calibration of Multiple Curves</h2>
+
+                <p>The multi-curve framework (Section 2.1) requires calibrating a discount curve and one or more projection curves simultaneously, since instruments used to build a projection curve are themselves discounted on the OIS curve.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Layered vs. Simultaneous Calibration</div>
+                    <p><strong>Layered (sequential) calibration.</strong> Build the OIS discount curve first (from OIS swaps, discounted on themselves), then build each projection curve using the now-fixed OIS curve for discounting. This is simpler and works well when the discount curve does not depend on the projection curves.</p>
+                    <p class="mb-0"><strong>Simultaneous calibration.</strong> When cross-currency basis, single-currency basis swaps, or other instruments create genuine interdependencies (e.g. a basis swap whose value depends on both the SOFR curve and a Term SOFR projection curve, both discounted at OIS), all curves must be solved jointly as one large system $F(\mathbf{x})=\mathbf{q}$ with $\mathbf{x}$ the concatenation of all curves' pillars. The Jacobian is then block-structured, with off-diagonal blocks capturing the cross-curve dependencies.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Sensitivities via the Jacobian: The "Curve Risk Matrix"</h2>
+
+                <p>A useful by-product of global calibration is that the Jacobian $J$ — already computed for Newton's method — directly gives the sensitivity of every curve pillar to every input quote, and hence (via the chain rule) the sensitivity of any priced instrument to every market quote.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Quote Sensitivities from the Calibration Jacobian</div>
+                    <p class="mb-0">Let $V(\mathbf{x})$ be the value of a portfolio as a function of the calibrated curve $\mathbf{x}^*(\mathbf{q})$, which itself depends on the input quotes $\mathbf{q}$ via $F(\mathbf{x}^*(\mathbf{q}))=\mathbf{q}$. Differentiating implicitly, $J\,\partial \mathbf{x}^*/\partial \mathbf{q} = I$, so $\partial \mathbf{x}^*/\partial \mathbf{q} = J^{-1}$. The sensitivity of the portfolio to quote $q_j$ is then:
+                    $$\frac{\partial V}{\partial q_j} = \sum_i \frac{\partial V}{\partial x_i}\frac{\partial x_i}{\partial q_j} = \left(\nabla_{\mathbf{x}} V \cdot J^{-1}\right)_j$$
+                    These quote sensitivities are exactly the key rate '01s of Section 3.1, expressed with respect to the actual hedging instruments (par swap rates) rather than abstract curve pillars — directly usable for hedging and risk reporting.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Curve Construction in Practice</a>
+                    <a href="../02-turn-of-year-and-seasonality/" class="btn btn-custom">4.2 Turn-of-Year Effects and Seasonality &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

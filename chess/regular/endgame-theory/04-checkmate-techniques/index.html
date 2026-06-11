@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkmate Techniques — Endgame Theory</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.endgame-note{background:rgba(108,142,191,0.12);border-left:4px solid var(--accent-color,#6c8ebf);padding:.75rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;}
+.technique-card{border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;margin-bottom:1rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Regular Chess</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Endgame Theory</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-king-and-pawn-endgames"><div class="toc-chapter-header"><a href="../01-king-and-pawn-endgames/" class="toc-chapter-link"><strong>1.</strong> King and Pawn Endgames</a></div></div>
+            <div class="toc-chapter" data-chapter="02-rook-endgames"><div class="toc-chapter-header"><a href="../02-rook-endgames/" class="toc-chapter-link"><strong>2.</strong> Rook Endgames</a></div></div>
+            <div class="toc-chapter" data-chapter="03-minor-piece-endgames"><div class="toc-chapter-header"><a href="../03-minor-piece-endgames/" class="toc-chapter-link"><strong>3.</strong> Minor Piece Endgames</a></div></div>
+            <div class="toc-chapter" data-chapter="04-checkmate-techniques"><div class="toc-chapter-header"><a href="../04-checkmate-techniques/" class="toc-chapter-link"><strong>4.</strong> Checkmate Techniques</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Regular Chess</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Regular Chess</a> › <a href="../">Endgame Theory</a> › <span>4. Checkmate Techniques</span></nav>
+
+        <h1 class="text-accent mb-4">4. Checkmate Techniques</h1>
+  <p>Knowing how to force checkmate with limited material is essential. These are the basic mates every serious player must know cold — in timed games, losing on time from a winning position because you don't know the technique is heartbreaking and avoidable.</p>
+
+  <div class="technique-card">
+    <h3>K+Q vs K — Staircase and Fence</h3>
+    <p>The king and queen easily mate the lone king, but you must avoid accidental stalemate. The technique:</p>
+    <ol>
+      <li><strong>Drive the king to the edge:</strong> Use the queen to fence in the king step by step. After each queen move, the king's territory shrinks.</li>
+      <li><strong>Bring your king in:</strong> Use the king to assist in the final mating pattern.</li>
+      <li><strong>Deliver mate on the edge/corner:</strong> Standard mating patterns include Qd7+ Ke1 Kc2# or similar queen-and-king coordination.</li>
+      <li><strong>Watch for stalemate!</strong> If the enemy king has no moves and is not in check, it is stalemate. Always check before moving.</li>
+    </ol>
+    <p>The "staircase method": use the queen to progressively reduce the king's territory, moving from the centre toward a corner. Maximum 10 moves required with correct play.</p>
+
+    <div class="chess-board" id="board-kq"></div>
+    <script>renderChessBoard('board-kq', {c6:'wK',d5:'wQ',a8:'bK'});</script>
+    <p class="text-center text-muted mt-2"><small>K+Q vs K: White queen on d5 restricts the Black king; White king advances to finish the mating net</small></p>
+  </div>
+
+  <div class="technique-card">
+    <h3>K+R vs K — The Lawnmower / Box Method</h3>
+    <p>King and rook vs lone king is also a forced win, but it takes more moves (up to 16) and more technique than K+Q. Stalemate avoidance is again essential.</p>
+    <p><strong>The box method:</strong></p>
+    <ol>
+      <li>Use the rook to cut off the enemy king along a rank or file — place the rook to reduce the king's available territory to a "box."</li>
+      <li>Move the rook to shrink the box one rank (or file) at a time — hence "lawnmower" or box reduction.</li>
+      <li>Use your king to assist, driving the enemy king to the edge.</li>
+      <li>Deliver checkmate on the back rank once the enemy king reaches the edge.</li>
+    </ol>
+    <p>The key: always keep the defending king from approaching your rook. If the defending king gets close to your rook, reposition the rook further away before continuing the box reduction.</p>
+
+    <div class="chess-board" id="board-kr"></div>
+    <script>renderChessBoard('board-kr', {d5:'wK',h4:'wR',d8:'bK'});</script>
+    <p class="text-center text-muted mt-2"><small>K+R vs K: White rook on h4 cuts off the Black king below the 4th rank; White king advances to escort</small></p>
+  </div>
+
+  <div class="technique-card">
+    <h3>K+2B vs K — Drive to Any Corner</h3>
+    <p>Two bishops mate the lone king within 19 moves. The key: drive the king to any corner of the board using the combined power of both bishops and the king. The two bishops together can cover all squares and cooperate to progressively restrict the lone king. Standard method: create a "triangle" with the bishops that gradually shrinks the king's territory.</p>
+    <p>Unlike K+B+N vs K, any corner will do — you do not need to worry about which colour corner to use.</p>
+  </div>
+
+  <div class="technique-card">
+    <h3>K+B+N vs K — The Hardest Basic Mate</h3>
+    <p>King, bishop, and knight vs lone king is the most difficult of the basic mates. It requires up to 33 moves with correct play and demands precise technique. The key principle: <strong>the king must be mated in a corner of the same colour as the bishop</strong>. Mating in the wrong-colour corner is much harder and typically requires manoeuvring the king from one corner to another.</p>
+    <p><strong>The KBNK technique (simplified):</strong></p>
+    <ol>
+      <li>Use the bishop and knight to cut off the enemy king and drive it toward the edge.</li>
+      <li>Drive the king toward a corner of the bishop's colour.</li>
+      <li>Use the knight to cover the escape squares; the king and bishop assist.</li>
+      <li>The mating position typically has the lone king in a corner with knight, bishop, and king cooperating to give checkmate.</li>
+    </ol>
+    <p>Many grandmasters cannot execute this technique perfectly under time pressure. It is worth studying even if you never encounter it in practice, as the coordination of king, bishop, and knight teaches profound lessons about piece harmony.</p>
+  </div>
+
+  <div class="technique-card">
+    <h3>K+P vs K — All Key Positions</h3>
+    <p>Beyond what was covered in the King and Pawn Endgames section, the main positions to know are:</p>
+    <ul>
+      <li><strong>King in front of pawn by two squares:</strong> Win if it is not the a/h-pawn</li>
+      <li><strong>King directly in front of pawn:</strong> Win with opposition, draw without</li>
+      <li><strong>King one square in front of pawn, side by side:</strong> Depends on whose move — use the concept of key squares to determine</li>
+      <li><strong>a/h-pawn with defending king in the corner:</strong> Always draw</li>
+      <li><strong>Pawn races:</strong> Use the rule of the square to determine who promotes first; if both promote simultaneously, determine who gives check first</li>
+    </ul>
+    <p>The study of king and pawn endings is the most important foundation in endgame training. Every endgame ultimately reduces to a pawn endgame when pieces are exchanged.</p>
+  </div>
+
+  <div class="technique-card">
+    <h3>K+2N vs K — and the K+2N vs K+P Exception</h3>
+    <p>King and two knights cannot force checkmate against a bare lone king — the defending king can always reach a position of stalemate at the critical moment (this is one of the most famous "drawn" results in basic endgame theory, proven by Centurini in the 19th century). However, if the defending side has even <strong>one extra pawn</strong>, the result can flip dramatically: the pawn provides a "spare tempo," removing the stalemate resource and allowing K+2N to force mate in some positions. This counter-intuitive result — where having an extra pawn can lose for the defender — is a favourite of endgame composers and a useful reminder that material count alone does not determine an endgame's outcome.</p>
+  </div>
+
+  <div class="endgame-note mt-3">
+    <strong>Endgame study resources:</strong> Dvoretsky's Endgame Manual (advanced), Silman's Complete Endgame Course (all levels), and Capablanca's Chess Fundamentals (classical introduction). Solving endgame studies also develops calculation and imagination even when the positions are beyond practical relevance. For broader strategic guidance on the endgame phase, see <a href="../../endgame-strategy/">Endgame Strategy</a>.
+  </div>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../03-minor-piece-endgames/" class="btn btn-outline-custom">&larr; 3. Minor Piece Endgames</a>
+            <a href="../../" class="btn btn-custom">Back to Regular Chess &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

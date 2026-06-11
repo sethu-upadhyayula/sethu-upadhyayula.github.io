@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    setTheme(localStorage.getItem("theme") || "dark");
+    setTheme(localStorage.getItem("theme") || "light");
 
     if (desktopToggle) {
         desktopToggle.addEventListener("change", () =>

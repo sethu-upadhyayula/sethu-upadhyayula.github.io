@@ -44,11 +44,11 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
   subsections covering market structure, pricing models, and derivatives —
   written in the same style/format as the Math section.
 - **Chess section**: split into Regular Chess, Variants, and Compositions.
-  Regular Chess covers 8 topics (Basics, Opening Theory, Middlegame
-  Tactics/Strategy, Theoretical Endgames, Endgame Strategy, Master Games,
+  Regular Chess covers 8 topics (Basics, Opening Theory, Tactical Play,
+  Strategic Play, Endgame Theory, Endgame Strategy, Master Games,
   Chess History) with interactive boards rendered via a lichess-style
-  board renderer; Variants covers Atomic, Crazyhouse, Chess960, Antichess,
-  Three Check, King of the Hill, Horde, and Racing Kings; Compositions
+  board renderer; Variants covers Antichess, Atomic, Chess 960, Crazyhouse,
+  Horde, King of the Hill, Racing Kings, and Three Check; Compositions
   covers Endgame Studies, Twomovers, Threemovers, Moremovers, Helpmates,
   Selfmates, Retro Problems, and Fairy Chess.
 - **About Me** and **Contact** pages with social links (email, LinkedIn,
@@ -61,41 +61,47 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
 /about/                 About Me
 /contact/               Contact
 
-/math/                  Math (25 subjects)
+/math/                  Math (5 groups, 25 subjects)
+  /math/<group>/                         Group landing page
   /math/<subject>/                       Subject overview
   /math/<subject>/<chapter>/             Chapter index
   /math/<subject>/<chapter>/<section>/   Subsection content
 
-  Subjects: abstract-algebra, algorithm-design, calculus, combinatorics,
-  complex-analysis, financial-mathematics, finite-element-methods,
-  functional-analysis, geometry, graph-theory, linear-algebra,
-  mathematical-logic, measure-theory, number-theory, numerical-analysis,
-  optimization-methods, ordinary-differential-equations,
-  partial-differential-equations, probability-theory, real-analysis,
-  set-theory, statistical-methods, stochastic-differential-equations,
-  stochastic-processes, topology
+  Foundations (foundations/): mathematical-logic, set-theory, calculus,
+    linear-algebra, geometry
+  Discrete Math (discrete-math/): abstract-algebra, number-theory,
+    combinatorics, graph-theory, algorithm-design
+  Analysis (analysis/): real-analysis, complex-analysis, topology,
+    measure-theory, functional-analysis
+  Math Modelling (mathematical-modelling/): optimization-methods,
+    ordinary-differential-equations, partial-differential-equations,
+    finite-element-methods, numerical-analysis
+  Stochastics (stochastics/): probability-theory, statistical-methods,
+    stochastic-processes, stochastic-differential-equations,
+    financial-mathematics
 
-/quant/                 Quant (25 subjects)
+/quant/                 Quant (5 groups, 25 subjects)
+  /quant/<group>/                         Group landing page
   /quant/<subject>/                       Subject overview
   /quant/<subject>/<chapter>/             Chapter index
   /quant/<subject>/<chapter>/<section>/   Subsection content
 
-  Rates: rates-fundamentals, interest-rate-swaps, interest-rate-options,
-    term-structure-models, inflation-linked-products
-  Credit: bonds-and-fixed-income, credit-derivatives, structured-credit,
-    loans-and-lending, xva-and-counterparty-risk
-  Equities: equity-markets, equity-derivatives, volatility-trading,
-    exotic-equity-products, convertibles-and-equity-linked
-  Currencies: fx-markets, fx-forwards-and-swaps, fx-options-and-volatility,
-    exotic-fx-products, emerging-markets-fx
-  Commodities: commodity-derivatives, energy-markets, power-and-emissions,
-    metals-and-mining, agriculture
+  Rates (rates/): rates-fundamentals, interest-rate-swaps,
+    interest-rate-options, term-structure-models, inflation-linked-products
+  Credit (credit/): bonds-and-fixed-income, credit-derivatives,
+    structured-credit, loans-and-lending, xva-and-counterparty-risk
+  Equities (equities/): equity-markets, equity-derivatives,
+    volatility-trading, exotic-equity-products, convertibles-and-equity-linked
+  Currencies (currencies/): fx-markets, fx-forwards-and-swaps,
+    fx-options-and-volatility, exotic-fx-products, emerging-markets-fx
+  Commodities (commodities/): commodity-derivatives, energy-markets,
+    power-and-emissions, metals-and-mining, agriculture
 
 /chess/                 Chess
   /chess/regular/                Regular Chess (8 topics)
-    basics/, opening-theory/, middlegame-tactics/, middlegame-strategy/,
-    theoretical-endgames/, endgame-strategy/, master-games/, chess-history/
-  /chess/variants/               Chess Variants
+    basics/, opening-theory/, tactical-play/, strategic-play/,
+    endgame-theory/, endgame-strategy/, master-games/, chess-history/
+  /chess/variants/               Chess Variants (alphabetical)
     antichess/, atomic/, chess960/, crazyhouse/, horde/,
     king-of-the-hill/, racing-kings/, three-check/
   /chess/compositions/           Chess Compositions

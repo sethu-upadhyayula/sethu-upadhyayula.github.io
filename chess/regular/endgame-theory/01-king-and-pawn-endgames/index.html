@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King and Pawn Endgames — Endgame Theory</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.endgame-note{background:rgba(108,142,191,0.12);border-left:4px solid var(--accent-color,#6c8ebf);padding:.75rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;}
+.technique-card{border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;margin-bottom:1rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Regular Chess</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Endgame Theory</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-king-and-pawn-endgames"><div class="toc-chapter-header"><a href="../01-king-and-pawn-endgames/" class="toc-chapter-link"><strong>1.</strong> King and Pawn Endgames</a></div></div>
+            <div class="toc-chapter" data-chapter="02-rook-endgames"><div class="toc-chapter-header"><a href="../02-rook-endgames/" class="toc-chapter-link"><strong>2.</strong> Rook Endgames</a></div></div>
+            <div class="toc-chapter" data-chapter="03-minor-piece-endgames"><div class="toc-chapter-header"><a href="../03-minor-piece-endgames/" class="toc-chapter-link"><strong>3.</strong> Minor Piece Endgames</a></div></div>
+            <div class="toc-chapter" data-chapter="04-checkmate-techniques"><div class="toc-chapter-header"><a href="../04-checkmate-techniques/" class="toc-chapter-link"><strong>4.</strong> Checkmate Techniques</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Regular Chess</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Regular Chess</a> › <a href="../">Endgame Theory</a> › <span>1. King and Pawn Endgames</span></nav>
+
+        <h1 class="text-accent mb-4">1. King and Pawn Endgames</h1>
+  <p>King and pawn endgames are the foundation of all endgame study. They are deceptively simple — just kings and pawns — yet they contain profound strategic and tactical depth. Every pawn endgame is essentially a race, and knowing precisely who wins requires understanding opposition, key squares, and the rule of the square.</p>
+
+  <h3>Opposition</h3>
+  <p><strong>Opposition</strong> is the relationship between two kings facing each other on the same file, rank, or diagonal with an odd number of squares between them. The player who does <em>not</em> have to move is said to "have the opposition." Having the opposition is a decisive advantage in king and pawn endgames because the opposing king must give way.</p>
+
+  <div class="technique-card">
+    <h4>Direct Opposition</h4>
+    <p>Kings face each other on the same file or rank with exactly one square between them. The player to move must step aside, allowing the other king to advance.</p>
+    <h4>Distant Opposition</h4>
+    <p>Kings face each other with 3 or 5 squares between them (always an odd number). The player to move must eventually concede direct opposition. Understanding when distant opposition transitions to direct opposition is crucial in complex king and pawn endings.</p>
+  </div>
+
+  <h3>Key Squares</h3>
+  <p><strong>Key squares</strong> are the specific squares the attacking king must reach to guarantee pawn promotion, regardless of where the defending king is. For a central pawn (e-pawn, d-pawn), the key squares are two ranks ahead of the pawn on the same file and adjacent files. For edge pawns, the key squares are different (and there are fewer of them — which is why edge pawns are often drawn even with an extra pawn).</p>
+
+  <h3>Rule of the Square</h3>
+  <p>The <strong>rule of the square</strong> (or "the square rule") is a quick method to determine whether a defending king can catch a passed pawn without using the king. Draw a diagonal from the pawn to the promotion square, then extend the same distance sideways — if the defending king is inside this square when it is their turn to move, they can catch the pawn. If outside, the pawn queens.</p>
+
+  <div class="chess-board" id="board-kp"></div>
+  <script>renderChessBoard('board-kp', {e5:'wK',e4:'wP',e7:'bK'});</script>
+  <p class="text-center text-muted mt-2"><small>K+P endgame: White king e5, pawn e4, Black king e7. Direct opposition — Black to move must give way, White wins. White to move is a draw.</small></p>
+
+  <h3>a/h-Pawn Exception</h3>
+  <p>Rook-file pawns (a-pawn and h-pawn) are special cases. Even with a king and pawn vs lone king, the game is a draw if the defending king can reach the corner square (a8 or h8 for the a-pawn or h-pawn). This is because the attacking king cannot drive the defending king out of the corner without stalemating it. For example: White has Ka6 and a-pawn on a5 vs Black Ka8 — Black plays Ka8 and cannot be driven away; Stalemate is inevitable if White pushes the pawn.</p>
+
+  <h3>Zugzwang</h3>
+  <p><strong>Zugzwang</strong> (German: "compulsion to move") occurs when every legal move for the player to move makes their position worse, but they are forced to move. In king and pawn endgames, zugzwang is a constant tactical theme — the side in zugzwang must move their king to a worse square or advance a pawn into a losing position.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../" class="btn btn-outline-custom">&larr; Back to Endgame Theory</a>
+            <a href="../02-rook-endgames/" class="btn btn-custom">2. Rook Endgames &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

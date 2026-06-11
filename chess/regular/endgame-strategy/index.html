@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="en" data-theme="dark"><head>
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Endgame Strategy</title>
 <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="../../../css/styles.css">
-<style>
-.strategy-note{background:rgba(108,142,191,0.12);border-left:4px solid var(--accent-color,#6c8ebf);padding:.75rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;}
-</style>
+<link rel="stylesheet" href="../../../css/chess-board.css">
+<script src="../../../js/chess-board.js"></script>
+
 </head><body>
 <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
 <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
@@ -22,136 +22,41 @@
 <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
 <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
 </ul></div></div></nav></header>
-<main><div class="container py-4">
-<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Regular Chess</a></div>
-<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Regular Chess</a> › <span>Endgame Strategy</span></nav>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Regular Chess</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <span class="text-accent fw-semibold fs-5">Endgame Strategy</span>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-general-principles"><div class="toc-chapter-header"><a href="01-general-principles/" class="toc-chapter-link"><strong>1.</strong> General Principles of the Endgame</a></div></div>
+            <div class="toc-chapter" data-chapter="02-evaluating-an-endgame"><div class="toc-chapter-header"><a href="02-evaluating-an-endgame/" class="toc-chapter-link"><strong>2.</strong> Evaluating an Endgame</a></div></div>
+            <div class="toc-chapter" data-chapter="03-zugzwang"><div class="toc-chapter-header"><a href="03-zugzwang/" class="toc-chapter-link"><strong>3.</strong> Zugzwang</a></div></div>
+            <div class="toc-chapter" data-chapter="04-converting-an-advantage"><div class="toc-chapter-header"><a href="04-converting-an-advantage/" class="toc-chapter-link"><strong>4.</strong> Converting an Advantage</a></div></div>
+            <div class="toc-chapter" data-chapter="05-minor-piece-endgames"><div class="toc-chapter-header"><a href="05-minor-piece-endgames/" class="toc-chapter-link"><strong>5.</strong> Minor Piece Endgame Strategy</a></div></div>
+            <div class="toc-chapter" data-chapter="06-rook-endgames"><div class="toc-chapter-header"><a href="06-rook-endgames/" class="toc-chapter-link"><strong>6.</strong> Rook Endgame Strategy</a></div></div>
+            <div class="toc-chapter" data-chapter="07-transitioning-to-the-endgame"><div class="toc-chapter-header"><a href="07-transitioning-to-the-endgame/" class="toc-chapter-link"><strong>7.</strong> Transitioning into the Endgame</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Regular Chess</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Regular Chess</a> › <span>Endgame Strategy</span></nav>
 
-<h1 class="mb-3">Endgame Strategy</h1>
-<p class="lead mb-4">The endgame is where games are decided, yet it is the phase most often neglected in study. While <a href="../theoretical-endgames/">Theoretical Endgames</a> catalogues the precise positions you must know cold — King and Pawn endings, Lucena and Philidor positions, and the like — <strong>endgame strategy</strong> is about the broader thinking that applies across all endgames: how to evaluate an endgame, what general principles guide play with reduced material, and how to convert an advantage (or hold a disadvantage) when the board has emptied out.</p>
+        <h1 class="text-accent mb-3">Endgame Strategy</h1>
+        <p class="lead mb-4">The endgame is where games are decided, yet it is the phase most often neglected in study. While <a href="../endgame-theory/">Endgame Theory</a> catalogues the precise positions you must know cold &mdash; King and Pawn endings, Lucena and Philidor positions, and the like &mdash; <strong>endgame strategy</strong> is about the broader thinking that applies across all endgames: how to evaluate an endgame, what general principles guide play with reduced material, and how to convert an advantage (or hold a disadvantage) when the board has emptied out.</p>
 
-<!-- GENERAL PRINCIPLES -->
-<section class="hero-card p-4 mb-4">
-  <h2>1. General Principles of the Endgame</h2>
-  <p>With fewer pieces on the board, the character of the game changes fundamentally. Several principles, often less relevant in the middlegame, become decisive:</p>
+        <p class="mb-5">The seven chapters below build from general endgame principles through evaluation, zugzwang, converting advantages, and piece-specific strategy, finishing with how to think about the transition from the middlegame into the endgame.</p>
 
-  <h3>King Activity</h3>
-  <p>In the middlegame the king hides; in the endgame it becomes a fighting piece. With queens off (or reduced material generally), mating attacks against the king become far less likely, so the king's safety matters less than its <strong>activity</strong>. A centralised king in the endgame is worth roughly as much as a minor piece — it can support pawn advances, attack enemy pawns, and participate directly in the fight.</p>
-  <div class="strategy-note">
-    <strong>Rule of thumb:</strong> The moment major pieces are traded off (or even before, if it is safe), start walking your king toward the centre. A tempo spent activating the king is rarely wasted in an endgame.
-  </div>
-
-  <h3>The Principle of Two Weaknesses</h3>
-  <p>A single weakness in the opponent's position (an isolated pawn, a weak square) can often be defended by a single piece. To make real progress, the stronger side typically needs to create a <strong>second weakness</strong> on the other side of the board, forcing the defender's pieces to be split between two fronts. This is why so many won endgames are converted by transferring play from one wing to the other — the defender simply runs out of pieces to cover everything.</p>
-
-  <h3>Do Not Rush</h3>
-  <p>Many endgames are won not by force but by accumulating small improvements: improving king position, fixing the opponent's pawns on the colour of your bishop, restricting the opponent's pieces. There is often no need to calculate forcing lines immediately — improving your worst-placed piece is almost always a useful move. Zugzwang (discussed below) means that sometimes simply "doing nothing" productively is itself a winning method, because eventually the opponent runs out of useful moves.</p>
-
-  <h3>Keep Tension Where It Helps You</h3>
-  <p>Just as in the middlegame, premature pawn trades and resolutions of tension can release pressure. In endgames this is especially important around passed pawns and pawn majorities — sometimes the threat of an advance is more valuable than the advance itself, because it ties down enemy pieces.</p>
-</section>
-
-<!-- EVALUATING ENDGAMES -->
-<section class="hero-card p-4 mb-4">
-  <h2>2. Evaluating an Endgame</h2>
-  <p>Before deciding on a plan, assess the endgame along these dimensions:</p>
-  <ul>
-    <li><strong>Material balance</strong> — not just the count, but whether the remaining pieces complement each other (e.g., bishop pair, opposite-coloured bishops, knight vs bad bishop).</li>
-    <li><strong>Pawn structure</strong> — who has the better pawn islands, passed pawns, and pawn majorities? A "good" majority (e.g., 4 vs 3 on one side with no doubled pawns) can often produce an outside passed pawn.</li>
-    <li><strong>King position and activity</strong> — whose king is closer to the action, and whose king has more potential to improve?</li>
-    <li><strong>Piece activity</strong> — are rooks behind passed pawns (the "rook belongs behind the passed pawn" rule applies to both sides), are minor pieces well-placed or restricted?</li>
-    <li><strong>Time</strong> — who is "to move," and does that help or hurt (zugzwang considerations)?</li>
-  </ul>
-
-  <h3>Outside Passed Pawns</h3>
-  <p>An <strong>outside passed pawn</strong> — a passed pawn far from the main pawn mass, typically on the a- or h-file — is one of the most powerful endgame assets. In king and pawn endgames especially, an outside passer can decoy the enemy king away from the centre, allowing your own king to infiltrate and win the remaining pawns. Even when material is otherwise level, an outside passed pawn is often a decisive advantage.</p>
-
-  <div class="strategy-note">
-    <strong>Practical tip:</strong> When trading down into an endgame, always ask "who benefits from this structure?" Trading the wrong pawns can convert a winning middlegame into a drawn (or even losing) endgame. The transition from middlegame to endgame is one of the most common places for strong players to go wrong if they evaluate only material and not structure.
-  </div>
-</section>
-
-<!-- THE ROLE OF ZUGZWANG -->
-<section class="hero-card p-4 mb-4">
-  <h2>3. Zugzwang</h2>
-  <p><strong>Zugzwang</strong> (German for "compulsion to move") describes a situation where a player would prefer to pass but is forced to move, and every available move worsens their position. Zugzwang is rare in the middlegame (there are usually enough pieces to make a harmless waiting move) but is a recurring and decisive theme in endgames, especially king and pawn endings.</p>
-
-  <h3>Recognising Zugzwang</h3>
-  <p>A position is a candidate for zugzwang when one side has very few legal moves, and most of those moves concede something — a square, a pawn, or the opposition. King and pawn endgames are full of "mutual zugzwang" positions, where the side <em>not</em> to move would win, but having to move loses (or draws) instead.</p>
-
-  <h3>The Opposition</h3>
-  <p>The <strong>opposition</strong> is the most fundamental zugzwang-related concept: when the two kings face each other with one square between them on the same file, rank, or diagonal, the player <em>not</em> to move is said to "have the opposition." Having the opposition often allows a king to force its way past the opposing king to support a pawn's promotion. Key and corresponding squares, and the parity (odd/even) of the distance between the kings, determine who can win the opposition in a given position — this is the conceptual foundation underlying the King and Pawn endgame theory covered in <a href="../theoretical-endgames/">Theoretical Endgames</a>.</p>
-
-  <h3>Triangulation</h3>
-  <p><strong>Triangulation</strong> is a technique for "passing" the move to the opponent: the king manoeuvres in a triangle (e.g., e3-e2-d2 instead of directly to d2), using one extra tempo so that the same position is reached but with the opponent to move — converting a position where you would be in zugzwang into one where your opponent is.</p>
-</section>
-
-<!-- CONVERTING ADVANTAGES -->
-<section class="hero-card p-4 mb-4">
-  <h2>4. Converting an Advantage</h2>
-
-  <h3>Simplification</h3>
-  <p>When ahead in material, trading pieces (but not necessarily pawns) generally helps the side with the advantage — fewer pieces means fewer chances for the defender to create complications or counterplay. The classic guideline: "If you are up material, trade pieces; if you are down material, trade pawns." Trading pawns when down material increases the relative value of the remaining pieces (more room for activity) and can make a draw easier to reach (e.g., fewer pawns to defend, or reaching a theoretically drawn piece endgame).</p>
-
-  <h3>Do Not Allow Counterplay</h3>
-  <p>A common way to throw away a winning endgame is to allow the opponent's last active piece (often a rook, or a passed pawn of their own) to generate enough activity to compensate for the material or positional deficit. Before pushing forward, always check: "What is my opponent's best counter-resource, and have I neutralised it?"</p>
-
-  <h3>The Fortress</h3>
-  <p>From the defending side, a <strong>fortress</strong> is a defensive setup in which the defender's pieces, though materially inferior, occupy a configuration that the attacker cannot break through regardless of how many extra moves they are given. Recognising fortress positions — and steering the game toward one — is a critical defensive skill, particularly in opposite-coloured bishop endgames and certain rook endgame configurations, where material advantages of one or even two pawns are frequently insufficient to win.</p>
-</section>
-
-<!-- MINOR PIECE ENDGAME STRATEGY -->
-<section class="hero-card p-4 mb-4">
-  <h2>5. Minor Piece Endgame Strategy</h2>
-
-  <h3>Same-Coloured Bishops vs Opposite-Coloured Bishops</h3>
-  <p>Endgames with bishops of the <strong>same colour</strong> behave similarly to other piece endgames: material advantages tend to tell, and a good vs bad bishop imbalance can be decisive on its own.</p>
-  <p>Endgames with <strong>opposite-coloured bishops</strong> are notoriously drawish — each side's bishop controls squares the other cannot influence, making it easy for the defender to blockade passed pawns and set up a fortress. A two-pawn advantage in an opposite-coloured bishop endgame is very often a draw, while the same advantage with same-coloured bishops, knights, or rooks would usually be winning. However, when there are major pieces still on the board (e.g., rooks plus opposite bishops), the drawish tendency reverses — the bishops' opposite control of squares can instead fuel attacking chances for both sides, making such positions sharper than same-coloured bishop endgames.</p>
-
-  <h3>Knight vs Bishop</h3>
-  <p>Whether a knight or a bishop is preferable depends heavily on the pawn structure:</p>
-  <ul>
-    <li><strong>Bishops thrive</strong> in open positions with pawns on both wings, where their long-range mobility outclasses the knight's short hops, and especially when the opponent has weaknesses on one colour of squares.</li>
-    <li><strong>Knights thrive</strong> in closed or blocked positions, and in positions with pawns concentrated on one side of the board, where the knight's ability to reach any square (regardless of colour) and fork weaknesses outweighs its lack of range.</li>
-  </ul>
-
-  <h3>The Wrong-Coloured Bishop</h3>
-  <p>A famous theoretical drawing resource: if the defending side has only a king against a king, a single rook pawn (a- or h-pawn), and a bishop that does <em>not</em> control the promotion square of that pawn (a "wrong-coloured" bishop), the position is a draw — the defending king simply shuttles to the corner square in front of the pawn and cannot be dislodged, regardless of how many extra tempi the attacker has.</p>
-</section>
-
-<!-- ROOK ENDGAME STRATEGY -->
-<section class="hero-card p-4 mb-4">
-  <h2>6. Rook Endgame Strategy</h2>
-  <p>Rook endgames are by far the most common type of endgame in practical play, and entire books are devoted to them. A few strategic guidelines, beyond the specific theoretical positions in <a href="../theoretical-endgames/">Theoretical Endgames</a>:</p>
-  <ul>
-    <li><strong>Activity over material:</strong> A rook endgame a pawn down with a much more active rook is often better — and sometimes winning — compared to being a pawn up with a passive rook. Rook activity is paramount.</li>
-    <li><strong>Rooks belong behind passed pawns</strong> — both your own (to support its advance) and the opponent's (to attack it from behind, where it cannot be driven away as easily). This is one of the most reliable rules in all of chess endgame theory.</li>
-    <li><strong>Cut off the enemy king:</strong> Using your rook to confine the opponent's king to a restricted set of files or ranks is a powerful technique, both in attack (preventing the king from helping its own pawns) and defence (the Lucena and Philidor positions both hinge on king restriction).</li>
-    <li><strong>Checks from behind:</strong> A rook giving checks from behind an advancing king (rather than from the side) often allows the defender to hold draws that would otherwise be lost — the geometry of "checking distance" is a recurring theme.</li>
-  </ul>
-</section>
-
-<!-- TRANSITIONING TO THE ENDGAME -->
-<section class="hero-card p-4 mb-4">
-  <h2>7. Transitioning into the Endgame</h2>
-  <p>The decision of <em>when</em> and <em>how</em> to enter an endgame is itself a strategic choice, often made several moves before the last pieces are traded.</p>
-
-  <h3>Calculating the Resulting Endgame</h3>
-  <p>Before initiating a sequence of trades, calculate not just whether the trades are "safe" tactically, but what the resulting pawn structure and piece configuration will look like — and whether that endgame favours you. A sequence of individually reasonable trades can lead to a structure that is strategically lost, even if no single trade loses material.</p>
-
-  <h3>Trading the Right Pieces</h3>
-  <p>General guidelines for which pieces to trade when transitioning to an endgame:</p>
-  <ul>
-    <li>If you have a strong knight against a bad bishop, avoid trading your knight for the opponent's other pieces — keep the favourable minor-piece imbalance.</li>
-    <li>If you have an attack but the position is simplifying, consider keeping queens on if your king is safer — queen endings are often decided by king safety as much as material.</li>
-    <li>When ahead in material, prefer trades that lead toward "won" theoretical endgames (e.g., simple King and Pawn endings) rather than into endgames with drawing tendencies (opposite-coloured bishops, wrong rook pawn).</li>
-  </ul>
-
-  <div class="strategy-note">
-    <strong>Synthesis:</strong> Endgame strategy is the bridge between the strategic understanding developed in <a href="../middlegame-strategy/">Middlegame Strategy</a> and the precise calculation required for the positions in <a href="../theoretical-endgames/">Theoretical Endgames</a>. Strong endgame play combines general principles (king activity, the two weaknesses, zugzwang awareness) with the willingness to calculate precisely when a position demands it.
-  </div>
-</section>
-
-</div></main>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6"><a href="01-general-principles/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">1. General Principles of the Endgame</h4><p class="mb-0">King activity, the principle of two weaknesses, and not rushing.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="02-evaluating-an-endgame/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">2. Evaluating an Endgame</h4><p class="mb-0">Material, pawn structure, king activity, piece activity, and outside passed pawns.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="03-zugzwang/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">3. Zugzwang</h4><p class="mb-0">The compulsion to move, the opposition, and triangulation.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="04-converting-an-advantage/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">4. Converting an Advantage</h4><p class="mb-0">Simplification, denying counterplay, and the fortress.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="05-minor-piece-endgames/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">5. Minor Piece Endgame Strategy</h4><p class="mb-0">Same vs opposite-coloured bishops, knight vs bishop, and the wrong-coloured bishop.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="06-rook-endgames/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">6. Rook Endgame Strategy</h4><p class="mb-0">Activity over material, rooks behind passed pawns, and cutting off the king.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="07-transitioning-to-the-endgame/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">7. Transitioning into the Endgame</h4><p class="mb-0">Calculating the resulting endgame and trading the right pieces.</p></div></a></div>
+        </div>
+    </section>
+</main>
 <footer class="site-footer"><div class="container text-center"><div class="social-links">
 <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
 <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>

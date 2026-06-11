@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rook Endgames — Endgame Theory</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.endgame-note{background:rgba(108,142,191,0.12);border-left:4px solid var(--accent-color,#6c8ebf);padding:.75rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;}
+.technique-card{border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;margin-bottom:1rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Regular Chess</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Endgame Theory</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-king-and-pawn-endgames"><div class="toc-chapter-header"><a href="../01-king-and-pawn-endgames/" class="toc-chapter-link"><strong>1.</strong> King and Pawn Endgames</a></div></div>
+            <div class="toc-chapter" data-chapter="02-rook-endgames"><div class="toc-chapter-header"><a href="../02-rook-endgames/" class="toc-chapter-link"><strong>2.</strong> Rook Endgames</a></div></div>
+            <div class="toc-chapter" data-chapter="03-minor-piece-endgames"><div class="toc-chapter-header"><a href="../03-minor-piece-endgames/" class="toc-chapter-link"><strong>3.</strong> Minor Piece Endgames</a></div></div>
+            <div class="toc-chapter" data-chapter="04-checkmate-techniques"><div class="toc-chapter-header"><a href="../04-checkmate-techniques/" class="toc-chapter-link"><strong>4.</strong> Checkmate Techniques</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Regular Chess</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Regular Chess</a> › <a href="../">Endgame Theory</a> › <span>2. Rook Endgames</span></nav>
+
+        <h1 class="text-accent mb-4">2. Rook Endgames</h1>
+  <p>Rook endgames are the most common type of endgame in practice, appearing in roughly 20–30% of all tournament games. They are also technically demanding — countless games that were theoretically drawn have been lost, and positions that looked drawn have been won, due to inaccurate rook endgame technique.</p>
+
+  <div class="technique-card">
+    <h3>The Lucena Position — The Winning Method</h3>
+    <p>The <strong>Lucena position</strong> (named after the 15th-century author, though actually worked out later) is the most important winning position in rook endgames: the attacking side has a pawn on the 7th rank, the attacking king is on the 8th rank in front of the pawn, and the attacking rook is somewhere flexible.</p>
+    <p><strong>The "bridge-building" technique:</strong></p>
+    <ol>
+      <li>The attacking rook moves to a file far away from the pawn (e.g., to the a-file from the g-file)</li>
+      <li>The attacking king comes down toward the 4th rank, step by step</li>
+      <li>When the defending rook checks from behind, the attacking rook interposes, blocking the checks</li>
+      <li>The king is sheltered from checks — the pawn queens</li>
+    </ol>
+    <p>This "rook cutting off the king" method (building a bridge) is essential knowledge for every serious player.</p>
+  </div>
+
+  <div class="technique-card">
+    <h3>The Philidor Position — The Drawing Method</h3>
+    <p>The <strong>Philidor position</strong> (named after the legendary 18th-century player François-André Philidor) is the fundamental drawing method when defending a rook endgame with one extra pawn for the opponent.</p>
+    <p><strong>The technique:</strong></p>
+    <ol>
+      <li>Place the defending rook on the 3rd rank (or 6th rank if Black is defending), cutting off the attacking king</li>
+      <li>Wait for the attacking side to advance the pawn to the 6th rank</li>
+      <li>Once the pawn advances to the 6th rank, switch the rook to the back rank and give perpetual checks from behind</li>
+    </ol>
+    <p>The key insight: the defending rook on the 3rd rank is a waiting move that prevents the attacking king from advancing. When the pawn advances, the rook switches to the back rank for eternal harassment from behind. The attacker cannot shelter the king from the checks without abandoning the pawn.</p>
+  </div>
+
+  <div class="chess-board" id="board-rook"></div>
+  <script>renderChessBoard('board-rook', {e1:'wK',e6:'wP',e8:'bK',a3:'wR',a8:'bR'});</script>
+  <p class="text-center text-muted mt-2"><small>Rook endgame: White rook on a3 cuts off the enemy king — Philidor defensive technique</small></p>
+
+  <h3>Active vs Passive Rook</h3>
+  <p>The most important practical principle in rook endgames: <strong>keep your rook active</strong>. A passive rook that does nothing but defend a pawn is a disaster — your opponent's active rook will pick off your pawns while your rook sits idle. Even in defending positions, look for active counterplay: attack the opponent's pawns, get your rook behind the passed pawn, or harass the enemy king with checks.</p>
+
+  <div class="endgame-note">
+    <strong>Capablanca's rule:</strong> "In rook endgames, rooks belong on the 7th rank." If you can get your rook to the 7th rank, do so. Two rooks on the 7th rank are almost always decisive.
+  </div>
+
+  <h3>The Vancura Position</h3>
+  <p>The <strong>Vancura position</strong> is a key drawing technique against a rook-pawn (a- or h-pawn) on the 7th rank, even when the defending king is far away — a situation where the Philidor technique above does not apply because the pawn is already too advanced. The defending rook goes to the 6th rank (the b6 square against an a-pawn, for example) to harass the attacking king from the side, while a second rook check from behind picks off the pawn at the right moment. The Vancura position is drawn even though the defending king may be cut off on the back rank, far from the action — a surprising and important practical resource.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../01-king-and-pawn-endgames/" class="btn btn-outline-custom">&larr; 1. King and Pawn Endgames</a>
+            <a href="../03-minor-piece-endgames/" class="btn btn-custom">3. Minor Piece Endgames &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>
