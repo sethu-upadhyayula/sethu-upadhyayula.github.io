@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Derivatives and Crop Risk Transfer</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Agriculture</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-agricultural-commodities">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-agricultural-commodities/" class="toc-chapter-link"><strong>1.</strong> Agricultural Commodity Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-agricultural-commodities/01-grain-and-oilseed-markets/">1.1 Grain and Oilseed Markets</a>
+                        <a href="../../01-agricultural-commodities/02-seasonality-storage-and-softs/">1.2 Seasonality, Storage Economics, and Soft Commodities</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-futures-basis-and-spreads">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-futures-basis-and-spreads/" class="toc-chapter-link"><strong>2.</strong> Agricultural Futures, Basis, and Spread Trading</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-futures-basis-and-spreads/01-contract-specifications-and-basis-risk/">2.1 Contract Specifications and Basis Risk</a>
+                        <a href="../../02-futures-basis-and-spreads/02-calendar-spreads-and-crop-year-transition/">2.2 Calendar Spreads and the New-Crop/Old-Crop Transition</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-options-and-weather-risk">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-options-and-weather-risk/" class="toc-chapter-link"><strong>3.</strong> Options and Weather Risk in Agricultural Markets</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-options-and-weather-risk/01-options-on-agricultural-futures/">3.1 Options on Agricultural Futures</a>
+                        <a href="../../03-options-and-weather-risk/02-weather-derivatives-and-crop-risk-transfer/">3.2 Weather Derivatives and Crop Risk Transfer</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-hedging-regulation-and-market-structure">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-hedging-regulation-and-market-structure/" class="toc-chapter-link"><strong>4.</strong> Hedging, Regulation, and Market Structure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-hedging-regulation-and-market-structure/01-producer-and-end-user-hedging/">4.1 Producer and End-User Hedging Strategies</a>
+                        <a href="../../04-hedging-regulation-and-market-structure/02-position-limits-and-market-structure/">4.2 Position Limits, Index Investment, and Market Structure</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Agriculture</a> › <a href="../">3. Options and Weather Risk in Agricultural Markets</a> › <span>Weather Derivatives and Crop Risk Transfer</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 Weather Derivatives and Crop Risk Transfer</h1>
+
+                <p>Price options and futures hedge a producer's exposure to the <em>price</em> of a commodity, but a producer's revenue depends on the product of price and <em>yield</em> — and a poor yield due to adverse weather can occur even when prices happen to be favourable (or, worse, prices may fall precisely because a regional weather event is offset by a good harvest elsewhere). Weather derivatives and crop insurance are the principal tools for transferring this yield-side risk, complementing the price-side hedges discussed elsewhere in this chapter.</p>
+
+                <h2 class="mt-5 mb-3">Weather Indices: HDD, CDD, and Rainfall</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Degree Day Indices</div>
+                    <p class="mb-0">A <em>heating degree day</em> (HDD) for a given day is defined as $\max(65°F - T_{avg}, 0)$, and a <em>cooling degree day</em> (CDD) as $\max(T_{avg} - 65°F, 0)$, where $T_{avg}$ is the average of the day's high and low temperatures and $65°F$ is a conventional reference temperature. A cumulative HDD or CDD index over a contract period (e.g., a month or a growing season) is the sum of the daily values:
+                    $$\text{HDD}_{\text{period}} = \sum_{i=1}^{n} \max(65°F - T_{avg,i}, 0)$$
+                    Weather derivatives on these indices originated in the energy sector (hedging demand for heating and cooling fuel) but the same structures — and analogous indices built on cumulative rainfall, growing degree days (GDD, a variant used to track crop development), or frost-day counts — are used to hedge agricultural weather exposure.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Weather Swap and Weather Option</div>
+                    <p class="mb-0">A <em>weather swap</em> pays the buyer $(\text{Index}_{\text{realized}} - \text{Index}_{\text{strike}}) \times \text{Tick Size}$ (and the seller the negative of this amount), exchanging a fixed payment for a payment that varies with the realized weather index over the contract period. A <em>weather option</em> (e.g., a call on a rainfall index) pays $\max(\text{Index}_{\text{realized}} - K, 0) \times \text{Tick Size}$, capped at a maximum payout in many traded contracts. Both structures allow a counterparty whose business is adversely affected by a specific weather outcome (e.g., a corn producer harmed by insufficient rainfall during pollination) to receive a payout precisely when that outcome occurs, regardless of what happens to the price of corn.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Crop Insurance as Risk Transfer</h2>
+
+                <p>In the United States, the dominant mechanism for transferring weather and yield risk away from individual farms is the federal crop insurance program, administered by the USDA's Risk Management Agency and delivered through private insurance companies with federal reinsurance support.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Yield Protection and Revenue Protection</div>
+                    <p><strong>Yield Protection (YP)</strong> policies pay an indemnity when a farmer's actual yield falls below a guaranteed yield (typically a percentage of the farmer's historical average yield), with the indemnity calculated as $(\text{Guaranteed Yield} - \text{Actual Yield}) \times \text{Price Election}$, where the price election is set at a price level chosen near planting time.</p>
+                    <p class="mb-0"><strong>Revenue Protection (RP)</strong> policies, the more widely used product, pay an indemnity when actual revenue (actual yield $\times$ harvest-time price) falls below guaranteed revenue (guaranteed yield $\times$ the higher of the projected or harvest price), protecting against both yield shortfalls and price declines, and against the combination of the two — a particularly important feature, since a small harvest sometimes coincides with higher prices (offsetting some of the revenue loss) while a price decline at harvest may coincide with an average or large harvest.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Crop Insurance and Aggregate Market Behaviour</div>
+                    <p class="mb-0">Because Revenue Protection policies are priced off futures market prices observed near planting and near harvest (the "projected price" and "harvest price" are typically set using average futures settlement prices over a designated pricing window), the futures market and the crop insurance program are directly linked: futures prices during these windows do not just reflect trading activity but also mechanically determine the payouts of a very large insurance program, and conversely the prevalence of Revenue Protection coverage affects how farmers respond to price signals (a farmer with a high RP guarantee has less incentive to pre-sell production via forward contracts or futures, since much of their revenue downside is already insured).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Basis Risk in Weather Hedges</h2>
+
+                <p>Just as a futures hedge leaves a producer exposed to the difference between the futures price and their local cash price (Section 2.1), a weather derivative leaves a producer exposed to the difference between the weather index measured at a reference station and the weather actually experienced on their farm — and, more fundamentally, to the difference between the weather index and the actual yield impact on their crop.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Two Layers of Basis Risk</div>
+                    <p><strong>Geographic basis risk:</strong> weather derivatives are typically written against an index measured at a specific weather station (e.g., a regional airport), while a farm may be located many miles away and experience meaningfully different rainfall or temperature, especially for highly localized events such as convective thunderstorms. A farmer can experience a damaging drought while the reference station — perhaps benefiting from a different, nearby weather system — records near-normal rainfall, in which case the weather derivative would pay little or nothing despite the farmer's real loss.</p>
+                    <p class="mb-0"><strong>Index-to-yield basis risk:</strong> even at a given location, the relationship between a weather index (e.g., cumulative rainfall over a fixed calendar window) and actual crop yield is imperfect — the timing of rainfall relative to the crop's developmental stage matters enormously (rainfall during pollination is far more valuable than the same rainfall two weeks earlier or later), and a simple cumulative index cannot fully capture this. As a result, weather derivatives are generally most useful as a complement to, rather than a complete substitute for, yield- and revenue-based crop insurance: the weather derivative provides a relatively liquid, quickly-settled hedge against a specific, well-defined weather outcome, while crop insurance more directly (if more slowly, since it requires actual yield and price data) addresses the farmer's bottom-line revenue exposure.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../03-options-and-weather-risk/01-options-on-agricultural-futures/" class="btn btn-outline-custom">&larr; 3.1 Options on Agricultural Futures</a>
+                    <a href="../../04-hedging-regulation-and-market-structure/" class="btn btn-custom">4. Hedging, Regulation, and Market Structure &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

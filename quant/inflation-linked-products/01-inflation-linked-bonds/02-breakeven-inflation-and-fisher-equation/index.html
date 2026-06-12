@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breakeven Inflation and the Fisher Equation</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Inflation-Linked Products</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-inflation-linked-bonds">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-inflation-linked-bonds/" class="toc-chapter-link"><strong>1.</strong> Inflation-Linked Bond Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-inflation-linked-bonds/01-indexation-mechanics-and-real-yields/">1.1 Indexation Mechanics and Real Yield Curves</a>
+                        <a href="../../01-inflation-linked-bonds/02-breakeven-inflation-and-fisher-equation/">1.2 Breakeven Inflation and the Fisher Equation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-inflation-derivatives">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-inflation-derivatives/" class="toc-chapter-link"><strong>2.</strong> Inflation Derivatives</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-inflation-derivatives/01-zc-and-yoy-inflation-swaps/">2.1 Zero-Coupon and Year-on-Year Inflation Swaps</a>
+                        <a href="../../02-inflation-derivatives/02-inflation-caps-floors-and-options/">2.2 Inflation Caps, Floors, and Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-real-rates-and-inflation-risk-premia">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-real-rates-and-inflation-risk-premia/" class="toc-chapter-link"><strong>3.</strong> Real Rate and Inflation Risk Premia</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-real-rates-and-inflation-risk-premia/01-decomposing-breakeven-inflation/">3.1 Decomposing Breakevens: Expected Inflation vs Risk Premia</a>
+                        <a href="../../03-real-rates-and-inflation-risk-premia/02-seasonality-and-indexation-lag/">3.2 Seasonality and Indexation Lag Effects</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-portfolio-applications-and-relative-value">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-portfolio-applications-and-relative-value/" class="toc-chapter-link"><strong>4.</strong> Portfolio Applications and Relative Value</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-portfolio-applications-and-relative-value/01-inflation-hedging-for-ldi/">4.1 Inflation Hedging for Liability-Driven Investors</a>
+                        <a href="../../04-portfolio-applications-and-relative-value/02-relative-value-across-the-inflation-curve/">4.2 Relative Value Trades Across the Inflation Curve</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Inflation-Linked Products</a> › <a href="../">1. Inflation-Linked Bond Fundamentals</a> › <span>Breakeven Inflation and the Fisher Equation</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">1.2 Breakeven Inflation and the Fisher Equation</h1>
+
+                <p>The real yield curve developed in Section 1.1 becomes most informative when compared against the nominal yield curve for government bonds of the same currency and maturity. The spread between the two — the breakeven inflation rate — is one of the most widely watched market-implied measures of inflation expectations. This section defines breakeven inflation precisely, develops the Fisher equation that relates nominal, real, and inflation rates, and examines why the simple Fisher relationship is only an approximation in practice.</p>
+
+                <h2 class="mt-5 mb-3">Defining Breakeven Inflation</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Breakeven Inflation Rate</div>
+                    <p class="mb-0">For a given maturity $T$, let $y_n(T)$ denote the nominal zero-coupon yield (from the conventional government bond curve) and $y_r(T)$ the real zero-coupon yield (from the inflation-linked bond curve of Section 1.1). The breakeven inflation rate to maturity $T$ is defined as the spread between the two:
+                    $$\pi_{\text{BE}}(T) \approx y_n(T) - y_r(T)$$
+                    Plotted across maturities, $\pi_{\text{BE}}(T)$ traces out the <em>breakeven inflation curve</em>. It represents the average annual inflation rate over $[0,T]$ at which an investor would be indifferent, on a purely mechanical basis, between holding a nominal bond and an inflation-linked bond of the same maturity.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Breakeven as a Relative-Value Signal</div>
+                    <p class="mb-0">If realised average inflation over $[0,T]$ turns out to exceed $\pi_{\text{BE}}(T)$, the inflation-linked bond outperforms the nominal bond (in total-return terms, holding the real yield curve constant); if realised inflation falls short, the nominal bond outperforms. This makes breakeven inflation simultaneously (i) a market-implied inflation forecast, and (ii) the carry-and-roll-adjusted relative value signal between the nominal and real curves — two interpretations that are explored further in Sections 3.1 and 4.2.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Fisher Equation</h2>
+
+                <p>The relationship between nominal rates, real rates, and inflation has a long history in economics, going back to Irving Fisher. In its exact, compounding-consistent form, the Fisher equation states that one plus the nominal rate equals the product of one plus the real rate and one plus the expected inflation rate:</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — The Fisher Equation</div>
+                    <p class="mb-0">For a single period, let $i$ denote the nominal interest rate, $r$ the real interest rate, and $\pi^e$ the expected inflation rate over the period. The exact Fisher relation is:
+                    $$(1+i) = (1+r)(1+\pi^e)$$
+                    Expanding the product gives $1 + i = 1 + r + \pi^e + r\pi^e$, so that:
+                    $$i = r + \pi^e + r\pi^e$$
+                    The familiar approximation $i \approx r + \pi^e$ drops the cross term $r\pi^e$, which is small (second-order) whenever $r$ and $\pi^e$ are individually small — e.g. for $r = 2\%$ and $\pi^e = 3\%$, the cross term is $0.0006$, or $6$bp, versus a sum of $500$bp.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Exact vs Approximate Fisher Decomposition</div>
+                    <p>Suppose the 10-year nominal yield is $y_n = 4.50\%$ and the 10-year real yield is $y_r = 2.00\%$.</p>
+                    <p><strong>Approximate breakeven:</strong> $\pi_{\text{BE}} \approx y_n - y_r = 4.50\% - 2.00\% = 2.50\%$.</p>
+                    <p><strong>Exact Fisher-implied breakeven</strong> solves $(1+y_n) = (1+y_r)(1+\pi_{\text{BE}})$:
+                    $$\pi_{\text{BE}} = \frac{1+y_n}{1+y_r} - 1 = \frac{1.0450}{1.0200} - 1 = 1.02451 - 1 = 2.451\%$$</p>
+                    <p class="mb-0">The approximate and exact breakevens differ by about $5$bp here — small but not negligible at the level of precision used in relative-value trading, and the discrepancy grows for higher rate levels or longer horizons.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Limitations: Risk Premia, Convexity, and Jensen's Inequality</h2>
+
+                <p>Even the exact Fisher equation describes a relationship that would hold under certainty — if $\pi^e$ were the inflation rate that would actually be realised with probability one. In reality, future inflation is uncertain, and this uncertainty introduces two further effects that drive a wedge between market-implied breakeven inflation and the market's true expectation of average inflation.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Jensen's Inequality and the Inflation Risk Premium</div>
+                    <p class="mb-0">Because the relationship between bond prices and yields is convex, and the inflation-linked bond's payoff is a convex function of the realised price index (it scales multiplicatively with $\text{IR}(T) = \text{CPI}(T)/\text{CPI}(0)$), Jensen's inequality implies that the expected payoff of the inflation-linked bond, evaluated under the true distribution of future CPI, is strictly greater than its payoff evaluated at the <em>expected</em> CPI path. A risk-neutral investor would therefore be willing to accept a slightly lower real yield (pay a slightly higher price) for the inflation-linked bond than the simple Fisher relation would suggest — this convexity effect is sometimes called the <em>inflation convexity</em> or <em>Jensen's inequality</em> adjustment, and tends to push observed breakevens slightly below pure expected inflation, all else equal.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Inflation Risk Premium</div>
+                    <p class="mb-0">Separately, holders of nominal bonds bear inflation risk: an unexpected rise in inflation erodes the real value of fixed nominal coupons, whereas inflation-linked bondholders are insulated from this risk. Risk-averse investors therefore demand compensation — an <em>inflation risk premium</em> ($\text{IRP}$) — for holding nominal rather than real exposure. This premium is embedded in nominal yields and pushes the observed breakeven <em>above</em> pure expected inflation. The two effects above (Jensen's inequality and the inflation risk premium) work in opposite directions and need not cancel, so their net effect on breakevens varies over time and across maturities.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Decomposing the Observed Breakeven</div>
+                    <p class="mb-0">Putting the pieces together, the observed market breakeven can be written, to a first approximation, as:
+                    $$\pi_{\text{BE}}(T) = \mathbb{E}[\pi(T)] + \text{IRP}(T) - \text{Convexity Adj.}(T) - \text{TIPS Liquidity Premium}(T)$$
+                    where $\mathbb{E}[\pi(T)]$ is the market's true expectation of average inflation to $T$, $\text{IRP}(T)$ is the inflation risk premium embedded in nominal yields, the convexity adjustment reflects the Jensen's inequality effect above, and the liquidity premium reflects any additional yield investors demand for holding the less liquid inflation-linked bond relative to the nominal bond. Chapter 3 develops this decomposition further and discusses how each component can be estimated in practice.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Why This Matters</h2>
+
+                <p>The gap between "breakeven inflation" and "expected inflation" is not a theoretical nicety — it has direct practical consequences. Central banks and policymakers who read breakeven inflation as a real-time market survey of inflation expectations must account for the risk-premium and liquidity components, especially during periods of market stress when liquidity premia can move sharply and temporarily dominate the breakeven, as happened to TIPS breakevens in March 2020. Traders who take positions based on breakevens — whether outright or as part of a relative-value strategy (Section 4.2) — are implicitly taking views not just on inflation but on these risk-premium and liquidity dynamics as well.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-indexation-mechanics-and-real-yields/" class="btn btn-outline-custom">&larr; 1.1 Indexation Mechanics and Real Yield Curves</a>
+                    <a href="../../02-inflation-derivatives/" class="btn btn-custom">2. Inflation Derivatives &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

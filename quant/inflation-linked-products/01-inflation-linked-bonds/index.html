@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inflation-Linked Bonds</title>
+    <title>Inflation-Linked Bond Fundamentals</title>
     <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -32,68 +32,57 @@
                 <hr>
                 <div class="toc-chapter" data-chapter="01-inflation-linked-bonds">
                     <div class="toc-chapter-header">
-                        <a href="../01-inflation-linked-bonds/" class="toc-chapter-link"><strong>1.</strong> Inflation-Linked Bonds</a>
+                        <a href="../01-inflation-linked-bonds/" class="toc-chapter-link"><strong>1.</strong> Inflation-Linked Bond Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-inflation-linked-bonds/01-indexation-mechanics-and-real-yields/">1.1 Indexation Mechanics and Real Yield Curves</a>
+                        <a href="../01-inflation-linked-bonds/02-breakeven-inflation-and-fisher-equation/">1.2 Breakeven Inflation and the Fisher Equation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-inflation-derivatives">
+                    <div class="toc-chapter-header">
+                        <a href="../02-inflation-derivatives/" class="toc-chapter-link"><strong>2.</strong> Inflation Derivatives</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../02-inflation-derivatives/01-zc-and-yoy-inflation-swaps/">2.1 Zero-Coupon and Year-on-Year Inflation Swaps</a>
+                        <a href="../02-inflation-derivatives/02-inflation-caps-floors-and-options/">2.2 Inflation Caps, Floors, and Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-real-rates-and-inflation-risk-premia">
+                    <div class="toc-chapter-header">
+                        <a href="../03-real-rates-and-inflation-risk-premia/" class="toc-chapter-link"><strong>3.</strong> Real Rate and Inflation Risk Premia</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../03-real-rates-and-inflation-risk-premia/01-decomposing-breakeven-inflation/">3.1 Decomposing Breakevens: Expected Inflation vs Risk Premia</a>
+                        <a href="../03-real-rates-and-inflation-risk-premia/02-seasonality-and-indexation-lag/">3.2 Seasonality and Indexation Lag Effects</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-portfolio-applications-and-relative-value">
+                    <div class="toc-chapter-header">
+                        <a href="../04-portfolio-applications-and-relative-value/" class="toc-chapter-link"><strong>4.</strong> Portfolio Applications and Relative Value</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../04-portfolio-applications-and-relative-value/01-inflation-hedging-for-ldi/">4.1 Inflation Hedging for Liability-Driven Investors</a>
+                        <a href="../04-portfolio-applications-and-relative-value/02-relative-value-across-the-inflation-curve/">4.2 Relative Value Trades Across the Inflation Curve</a>
                     </div>
                 </div>
             </nav>
         </aside>
         <section class="math-content">
             <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
-            <nav class="breadcrumb-nav"><a href="../../">Quant</a> › <a href="../">Inflation-Linked Products</a> › <span>Inflation-Linked Bonds</span></nav>
+            <nav class="breadcrumb-nav"><a href="../../">Quant</a> › <a href="../">Inflation-Linked Products</a> › <span>Inflation-Linked Bond Fundamentals</span></nav>
             <article>
-                <h1 class="text-accent mb-4">1. Inflation-Linked Bonds</h1>
-
-                <p>Inflation-linked bonds (ILBs) — such as U.S. Treasury Inflation-Protected Securities (TIPS) and UK Index-Linked Gilts — pay coupons and principal that are adjusted for changes in a reference price index (typically a national CPI), protecting investors from the erosion of purchasing power that affects fixed-coupon nominal bonds.</p>
-
-                <h2 class="mt-5 mb-3">Indexation Mechanics</h2>
-
-                <div class="math-box definition">
-                    <div class="math-box-label">Definition — Index Ratio</div>
-                    <p class="mb-0">An inflation-linked bond's principal is adjusted by an index ratio that tracks the cumulative change in a reference CPI since the bond's issuance:</p>
-                    <p class="mb-0">$$\text{Index Ratio}(t) = \frac{\text{CPI}(t)}{\text{CPI}(0)}$$</p>
-                    <p class="mb-0">The inflation-adjusted principal at time $t$ is $F \times \text{Index Ratio}(t)$, where $F$ is the original face value, and each coupon payment is computed as the fixed real coupon rate applied to this adjusted principal: $c \times F \times \text{Index Ratio}(t)$. At maturity, the investor receives the inflation-adjusted principal (subject, for TIPS, to a floor at the original par value in the event of cumulative deflation).</p>
-                </div>
-
-                <p>Because the reference CPI is published with a lag, ILBs use an "indexation lag" (commonly three months for TIPS and UK gilts) — the index ratio applicable on a given date is computed using the CPI level from three months prior, interpolated daily between monthly CPI releases.</p>
-
-                <h2 class="mt-5 mb-3">Real Yields and Breakeven Inflation</h2>
-
-                <div class="math-box definition">
-                    <div class="math-box-label">Definition — Breakeven Inflation Rate</div>
-                    <p class="mb-0">The yield on an inflation-linked bond is a <em>real</em> yield $y_r$ — the return an investor earns above inflation. The yield on a comparable-maturity nominal (fixed-coupon) government bond is a <em>nominal</em> yield $y_n$. The breakeven inflation rate is approximately the difference between the two:</p>
-                    <p class="mb-0">$$\pi_{\text{BE}} \approx y_n - y_r$$</p>
-                    <p class="mb-0">The breakeven rate represents the average inflation rate over the bond's maturity at which an investor would be indifferent between holding the nominal bond and the inflation-linked bond. If realised inflation exceeds the breakeven rate, the inflation-linked bond outperforms; if realised inflation is below the breakeven rate, the nominal bond outperforms.</p>
-                </div>
-
-                <div class="math-box example">
-                    <div class="math-box-label">Example — Reading Breakevens</div>
-                    <p class="mb-0">If the 10-year nominal Treasury yield is $y_n = 4.5\%$ and the 10-year TIPS real yield is $y_r = 2.0\%$, the 10-year breakeven inflation rate is approximately $2.5\%$ — the bond market's implied average annual CPI inflation expectation over the next decade. Breakeven rates are widely watched as a real-time, market-based gauge of inflation expectations, complementing survey-based measures.</p>
-                </div>
-
-                <h2 class="mt-5 mb-3">The Fisher Equation and Its Limitations</h2>
-
-                <p>The relationship $y_n \approx y_r + \pi_{\text{BE}}$ is an application of the Fisher equation, which in its exact form is $(1+y_n) = (1+y_r)(1+\pi_{\text{BE}})$. In practice, the breakeven rate extracted from bond yields is not a pure measure of expected inflation — it also embeds an inflation risk premium (compensation nominal bondholders demand for bearing inflation uncertainty) and a liquidity premium (TIPS and index-linked gilts are generally less liquid than nominal government bonds, so their yields can be distorted by liquidity effects independent of inflation expectations).</p>
-
-                <div class="math-box remark">
-                    <div class="math-box-label">Remark — Decomposing the Breakeven</div>
-                    <p class="mb-0">$$\pi_{\text{BE}} = \mathbb{E}[\pi] + \text{Inflation Risk Premium} - \text{TIPS Liquidity Premium}$$</p>
-                    <p class="mb-0">During periods of market stress (e.g., the early stages of the 2008 and 2020 crises), TIPS liquidity can deteriorate sharply, causing breakeven rates to fall well below any reasonable estimate of expected inflation — not because the market expects deflation, but because TIPS prices fall (real yields rise) due to forced selling and reduced market-making capacity, independent of the inflation outlook.</p>
-                </div>
-
-                <h2 class="mt-5 mb-3">Inflation Swaps</h2>
-
-                <p>Inflation swaps provide a more direct way to trade inflation expectations without the funding and liquidity considerations of holding physical bonds. In a zero-coupon inflation swap, one party pays a fixed rate (the breakeven rate agreed at trade inception) and receives the realised cumulative inflation over the swap's term, with a single net cash flow exchanged at maturity:</p>
-
-                <div class="math-box definition">
-                    <div class="math-box-label">Definition — Zero-Coupon Inflation Swap Payoff</div>
-                    <p class="mb-0">At maturity $T$, the floating-rate payer pays the fixed-rate payer (per unit notional):</p>
-                    <p class="mb-0">$$\left(\frac{\text{CPI}(T)}{\text{CPI}(0)} - 1\right) - \left((1+\pi_{\text{fixed}})^T - 1\right)$$</p>
-                    <p class="mb-0">i.e., the difference between realised cumulative inflation and the cumulative fixed rate agreed at inception. Inflation swaps are widely used by pension funds and insurers to hedge inflation-linked liabilities, and their quoted fixed rates provide another market-based measure of inflation expectations, generally considered cleaner than bond-derived breakevens since they do not embed the TIPS liquidity premium.</p>
-                </div>
+                <h1 class="text-accent mb-4">1. Inflation-Linked Bond Fundamentals</h1>
+                <p>Inflation-linked bonds (ILBs) — such as U.S. Treasury Inflation-Protected Securities (TIPS) and UK Index-Linked Gilts — pay coupons and principal that are adjusted for changes in a reference price index, typically a national CPI, protecting investors from the erosion of purchasing power that affects fixed-coupon nominal bonds. This chapter develops the indexation mechanics that link a bond's cash flows to the price index, the construction of the real yield curve that such bonds trade on, and the breakeven inflation framework that connects real yields to their nominal counterparts.</p>
+                <p>The first section works through index ratio mechanics in detail — the CPI reference lag, daily interpolation between monthly index releases, and the resulting formulas for indexed principal and coupon cash flows — and shows how these cash flows are discounted on a real yield curve. The second section develops breakeven inflation as the wedge between nominal and real yields, introduces the Fisher equation in both its approximate and exact forms, and examines why market-implied breakevens are not a pure measure of expected inflation. Together these two sections provide the essential vocabulary — index ratios, real yields, and breakevens — used throughout the remaining chapters on inflation derivatives, risk premia, and portfolio applications.</p>
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
                     <a href="../../" class="btn btn-outline-custom">&larr; Back to Quant</a>
-                    <a href="../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                    <a href="01-indexation-mechanics-and-real-yields/" class="btn btn-custom">1.1 Indexation Mechanics and Real Yield Curves &rarr;</a>
                 </div>
             </article>
         </section>

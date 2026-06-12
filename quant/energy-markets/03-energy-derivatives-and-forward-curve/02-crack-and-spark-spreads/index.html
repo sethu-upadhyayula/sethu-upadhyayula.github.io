@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crack Spreads, Spark Spreads, and Cross-Commodity Hedges</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Energy Markets</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-oil-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-oil-markets/" class="toc-chapter-link"><strong>1.</strong> Crude Oil Markets and Refining Economics</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-oil-markets/01-crude-benchmarks-and-quality-differentials/">1.1 Crude Benchmarks, Grades, and Quality Differentials</a>
+                        <a href="../../01-oil-markets/02-refining-margins-and-storage-economics/">1.2 Refining Margins, Product Markets, and Storage Economics</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-natural-gas-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-natural-gas-markets/" class="toc-chapter-link"><strong>2.</strong> Natural Gas Markets</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-natural-gas-markets/01-natural-gas-pricing-hubs-and-seasonality/">2.1 Natural Gas Pricing, Hubs, and Seasonality</a>
+                        <a href="../../02-natural-gas-markets/02-lng-and-storage-cycles/">2.2 LNG, Pipeline Economics, and Storage/Injection-Withdrawal Cycles</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-energy-derivatives-and-forward-curve">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-energy-derivatives-and-forward-curve/" class="toc-chapter-link"><strong>3.</strong> Energy Derivatives and the Forward Curve</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-energy-derivatives-and-forward-curve/01-futures-swaps-and-curve-shape/">3.1 Futures, Swaps, and the Shape of the Energy Curve</a>
+                        <a href="../../03-energy-derivatives-and-forward-curve/02-crack-and-spark-spreads/">3.2 Crack Spreads, Spark Spreads, and Cross-Commodity Hedges</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-energy-risk-and-market-structure">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-energy-risk-and-market-structure/" class="toc-chapter-link"><strong>4.</strong> Energy Risk and Market Structure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-energy-risk-and-market-structure/01-opec-and-geopolitical-risk/">4.1 OPEC+, Geopolitical Risk, and Supply Shocks</a>
+                        <a href="../../04-energy-risk-and-market-structure/02-energy-transition-and-carbon-markets/">4.2 Energy Transition, Carbon Markets, and Renewable Risk</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Energy Markets</a> › <a href="../">3. Energy Derivatives and the Forward Curve</a> › <span>Crack Spreads, Spark Spreads, and Cross-Commodity Hedges</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 Crack Spreads, Spark Spreads, and Cross-Commodity Hedges</h1>
+
+                <p>Many of the most economically important risks in the energy industry are not exposures to the absolute level of a single commodity price, but to the <em>spread</em> between the price of an input and the price of an output. A refiner's margin depends on the spread between crude and refined products; a power generator's margin depends on the spread between electricity and fuel. Hedging these margins requires constructing tradable spread positions and computing the hedge ratios that make the spread position track the underlying physical exposure.</p>
+
+                <h2 class="mt-5 mb-3">The Crack Spread as a Hedge</h2>
+
+                <p>Section 1.2 introduced the 3-2-1 crack spread as a measure of refining profitability. From a hedging perspective, a refiner can trade the crack spread directly — going long crude futures and short product futures in the appropriate ratio — to lock in a margin on future production, without needing to separately forecast the level of crude and product prices.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Crack Spread Hedge Structure</div>
+                    <p class="mb-0">A refiner planning to process crude in a future month can hedge its margin by selling (going short) the 3-2-1 crack spread today: buy 3 units of crude futures (locking in the input cost) and sell 2 units of gasoline futures plus 1 unit of distillate futures (locking in the revenue), all for the same delivery month. If, at expiry, the realised crack spread
+                    $$\text{Crack} = \frac{2P_{\text{gasoline}} + P_{\text{distillate}} - 3P_{\text{crude}}}{3}$$
+                    is below the level locked in at the time the hedge was placed, the futures position generates a gain that offsets the refiner's reduced physical margin, and vice versa. The hedge does not eliminate the refiner's exposure to its own operational performance (actual yields, costs, downtime) but it does remove the exposure to the broad market-level crack spread, which is typically the larger and less controllable source of margin volatility.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Spark Spread</h2>
+
+                <p>The analogous concept for power generation is the <strong>spark spread</strong> — the margin a gas-fired power plant earns from converting natural gas into electricity. Because a power plant's fuel cost depends on both the price of gas and the plant's efficiency (how much gas it needs to produce a unit of electricity), the spark spread explicitly incorporates a plant-specific efficiency parameter called the <em>heat rate</em>.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Heat Rate and Spark Spread</div>
+                    <p>The <em>heat rate</em> $H$ of a power plant is the amount of fuel energy (typically in MMBtu) required to produce one unit of electrical energy (typically one MWh). A more efficient plant has a lower heat rate. Combined-cycle gas turbine (CCGT) plants typically have heat rates in the range of 6,500–7,500 Btu/kWh (equivalently MMBtu/MWh), while older or less efficient simple-cycle gas turbines may have heat rates of 9,000–11,000 or higher.</p>
+                    <p class="mb-0">The <em>spark spread</em> for a plant with heat rate $H$ is:
+                    $$\text{Spark Spread} = P_{\text{power}} - H \times P_{\text{gas}}$$
+                    where $P_{\text{power}}$ is the price of electricity (per MWh) and $P_{\text{gas}}$ is the price of natural gas (per MMBtu). The spark spread approximates the gross margin (before non-fuel operating costs) of running the plant for one MWh of generation. A plant operator will run the plant ("dispatch") when the spark spread is positive (covers at least the short-run marginal non-fuel costs) and leave it offline otherwise — the spark spread is therefore closely tied to the economics of dispatch decisions across the generation fleet.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Computing a Spark Spread</div>
+                    <p>Suppose a CCGT plant has a heat rate of $H = 7{,}000$ Btu/kWh $= 7.0$ MMBtu/MWh. Electricity (day-ahead power price at the relevant hub) is trading at $\$45$/MWh, and natural gas (Henry Hub, adjusted for basis to the plant's location) is trading at $\$3.00$/MMBtu.</p>
+                    <p>$$\text{Spark Spread} = 45 - 7.0 \times 3.00 = 45 - 21 = \$24/\text{MWh}$$</p>
+                    <p class="mb-0">If non-fuel variable operating costs (e.g., variable O&amp;M, emissions costs) are below $\$24$/MWh, the plant is economic to run at these prices. If gas prices were instead $\$8.00$/MMBtu (a level not unusual during a winter cold spell) with power unchanged at $\$45$/MWh, the spark spread would fall to $45 - 7.0 \times 8.00 = 45 - 56 = -\$11$/MWh — the plant would lose money on fuel alone and would not dispatch unless power prices rose to reflect the higher marginal cost of generation (which they typically do, since the gas-fired plant is often the marginal unit setting the power price in such conditions).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Cross-Commodity Hedge Ratios</h2>
+
+                <p>Both the crack spread and the spark spread are examples of <em>cross-commodity hedges</em>: positions that combine futures on different (but economically linked) commodities in ratios determined by a physical conversion relationship rather than by a statistical hedge ratio estimated from historical price correlations.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Physical versus Statistical Hedge Ratios</div>
+                    <p class="mb-0">The 2:1:3 ratio in the crack spread and the heat rate $H$ in the spark spread are <em>physical</em> hedge ratios — they reflect the actual conversion technology (a refinery's yield slate, a power plant's fuel efficiency) and are largely stable over time (a given power plant's heat rate does not change from week to week). This contrasts with statistical hedge ratios, which are estimated by regressing changes in one price on changes in another and can be unstable, especially during periods when the underlying economic relationship between the two commodities is itself shifting (e.g., during a structural change in the generation mix that alters which plants are typically on the margin). Where a physical hedge ratio is available — as it is for crack and spark spreads — it is generally preferred, because it directly matches the economic exposure being hedged rather than an estimated historical relationship that may not hold going forward.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Spread Options and Optionality in Dispatch</div>
+                    <p class="mb-0">Because a power plant can choose not to run when the spark spread is negative, the economic value of owning a flexible generation asset resembles a strip of <em>spread options</em> — call options on the spread $P_{\text{power}} - H \times P_{\text{gas}}$ with strike zero, exercisable (dispatched) on each delivery hour. This "real option" framing is the basis for tolling agreements, in which a financial counterparty pays a fixed fee for the right to call on a plant's generation whenever the spark spread is favourable, effectively monetising the plant's operational flexibility as an option premium. The same framing applies to the refiner's crack spread: a refinery's processing capacity can be viewed as a strip of options on the crack spread, exercisable by the decision of how much crude to run.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-futures-swaps-and-curve-shape/" class="btn btn-outline-custom">&larr; 3.1 Futures, Swaps, and the Shape of the Energy Curve</a>
+                    <a href="../../04-energy-risk-and-market-structure/" class="btn btn-custom">4. Energy Risk and Market Structure &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

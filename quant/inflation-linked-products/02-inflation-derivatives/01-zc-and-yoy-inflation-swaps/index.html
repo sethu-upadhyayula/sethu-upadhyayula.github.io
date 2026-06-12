@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero-Coupon and Year-on-Year Inflation Swaps</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Inflation-Linked Products</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-inflation-linked-bonds">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-inflation-linked-bonds/" class="toc-chapter-link"><strong>1.</strong> Inflation-Linked Bond Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-inflation-linked-bonds/01-indexation-mechanics-and-real-yields/">1.1 Indexation Mechanics and Real Yield Curves</a>
+                        <a href="../../01-inflation-linked-bonds/02-breakeven-inflation-and-fisher-equation/">1.2 Breakeven Inflation and the Fisher Equation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-inflation-derivatives">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-inflation-derivatives/" class="toc-chapter-link"><strong>2.</strong> Inflation Derivatives</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-inflation-derivatives/01-zc-and-yoy-inflation-swaps/">2.1 Zero-Coupon and Year-on-Year Inflation Swaps</a>
+                        <a href="../../02-inflation-derivatives/02-inflation-caps-floors-and-options/">2.2 Inflation Caps, Floors, and Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-real-rates-and-inflation-risk-premia">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-real-rates-and-inflation-risk-premia/" class="toc-chapter-link"><strong>3.</strong> Real Rate and Inflation Risk Premia</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-real-rates-and-inflation-risk-premia/01-decomposing-breakeven-inflation/">3.1 Decomposing Breakevens: Expected Inflation vs Risk Premia</a>
+                        <a href="../../03-real-rates-and-inflation-risk-premia/02-seasonality-and-indexation-lag/">3.2 Seasonality and Indexation Lag Effects</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-portfolio-applications-and-relative-value">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-portfolio-applications-and-relative-value/" class="toc-chapter-link"><strong>4.</strong> Portfolio Applications and Relative Value</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-portfolio-applications-and-relative-value/01-inflation-hedging-for-ldi/">4.1 Inflation Hedging for Liability-Driven Investors</a>
+                        <a href="../../04-portfolio-applications-and-relative-value/02-relative-value-across-the-inflation-curve/">4.2 Relative Value Trades Across the Inflation Curve</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Inflation-Linked Products</a> › <a href="../">2. Inflation Derivatives</a> › <span>Zero-Coupon and Year-on-Year Inflation Swaps</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2.1 Zero-Coupon and Year-on-Year Inflation Swaps</h1>
+
+                <p>Inflation swaps are over-the-counter derivatives that exchange a fixed rate for a floating rate linked to realised inflation, with no exchange of principal. The two dominant structures are the zero-coupon (ZC) inflation swap, with a single payment at maturity based on cumulative inflation, and the year-on-year (YoY) inflation swap, with periodic payments each based on inflation realised over the preceding year. Despite their structural similarity, the two contracts have materially different risk profiles, driven by an inflation convexity effect present in the YoY swap but absent from the ZC swap.</p>
+
+                <h2 class="mt-5 mb-3">The Zero-Coupon Inflation Swap</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Zero-Coupon Inflation Swap Payoff</div>
+                    <p class="mb-0">A ZC inflation swap with maturity $T$ and fixed rate $\pi_{\text{fixed}}$ has a single exchange of cash flows at $T$. Per unit notional, the floating-rate payer pays the fixed-rate payer:
+                    $$\left(\frac{\text{CPI}(T)}{\text{CPI}(0)} - 1\right) - \left((1+\pi_{\text{fixed}})^T - 1\right) = \frac{\text{CPI}(T)}{\text{CPI}(0)} - (1+\pi_{\text{fixed}})^T$$
+                    i.e., the difference between realised cumulative inflation (the ratio of the reference CPI at maturity to the reference CPI at inception, using the same lag conventions as Section 1.1) and the cumulative inflation implied by the fixed rate compounded annually over $T$ years.</p>
+                </div>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — The Fair ZC Swap Rate</div>
+                    <p class="mb-0">At inception, the fixed rate $\pi_{\text{fixed}}$ is set so the swap has zero value. Under the standard market convention of valuing the floating leg as the expected value of the CPI ratio under the relevant forward measure — which, absent convexity effects, equals the ratio of forward price index levels implied by the nominal and real discount curves — the fair ZC rate satisfies:
+                    $$(1+\pi_{\text{fixed}})^T = \mathbb{E}\left[\frac{\text{CPI}(T)}{\text{CPI}(0)}\right] \approx \left(\frac{1+y_n(T)}{1+y_r(T)}\right)^T$$
+                    so that $\pi_{\text{fixed}} \approx \dfrac{1+y_n(T)}{1+y_r(T)} - 1$, exactly the exact-Fisher breakeven of Section 1.2. The ZC inflation swap rate and the bond-market breakeven inflation rate are therefore, in principle, the same object — the difference between them in practice (the "inflation swap–breakeven basis") reflects the TIPS liquidity premium and any inflation-swap-specific risk premia.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Year-on-Year Inflation Swap</h2>
+
+                <p>Rather than a single payment based on cumulative inflation over the full term, a YoY inflation swap exchanges a series of payments, each based on the inflation rate realised over a single (usually annual) period.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Year-on-Year Inflation Swap Payoff</div>
+                    <p class="mb-0">A YoY inflation swap with annual payment dates $t_1 < t_2 < \cdots < t_n$ (with $t_0 = 0$) and fixed rate $\pi_{\text{YoY}}$ exchanges, at each $t_k$, the floating-rate payer paying the fixed-rate payer:
+                    $$\left(\frac{\text{CPI}(t_k)}{\text{CPI}(t_{k-1})} - 1\right) - \pi_{\text{YoY}}$$
+                    i.e., the year-on-year inflation rate realised over $[t_{k-1}, t_k]$ less the fixed rate, applied to the notional for that period. Unlike the ZC swap, each payment depends only on the CPI ratio over a single year, not on the cumulative path from time $0$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Inflation Convexity in the YoY Swap</h2>
+
+                <p>The key structural difference between ZC and YoY swaps lies in how each forward CPI ratio is valued. The ZC swap's payoff depends only on $\text{CPI}(T)/\text{CPI}(0)$ — a single ratio, valued under a single forward measure. The YoY swap's payoff is a <em>sum</em> of forward-starting ratios $\text{CPI}(t_k)/\text{CPI}(t_{k-1})$, each of which must be valued under its own forward measure, and each of these forward CPI ratios requires a convexity correction relative to the "naive" forward computed from the ratio of forward price index levels.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why YoY Forwards Need a Convexity Adjustment</div>
+                    <p class="mb-0">The forward price index level $F_k = \mathbb{E}^{Q_{t_k}}[\text{CPI}(t_k)]$ under the $t_k$-forward measure is observable (in principle) from the ZC swap curve. But the YoY leg requires $\mathbb{E}^{Q_{t_k}}\left[\dfrac{\text{CPI}(t_k)}{\text{CPI}(t_{k-1})}\right]$, the expectation of a <em>ratio</em> of two random index levels under the $t_k$-forward measure — and because $\text{CPI}(t_{k-1})$ and $\text{CPI}(t_k)$ are positively correlated and the ratio is a convex/concave function of the joint distribution, this expectation is generally <strong>not</strong> equal to the naive ratio of forwards $F_k/F_{k-1}$. The difference is the <em>YoY inflation convexity adjustment</em>, which depends on the volatility of CPI, the volatility of nominal and real rates, and the correlations between them — typically modelled with a multi-factor model of nominal rates, real rates, and the price index (e.g. a Jarrow–Yildirim-style framework).</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Sign and Magnitude</div>
+                    <p class="mb-0">In most market conditions, the YoY convexity adjustment is small (a few basis points) relative to ZC swap rates of similar maturity, but it grows with CPI volatility and with the tenor of the underlying period, and its sign depends on the correlation structure between the price index and the real and nominal rate curves used to discount each leg. For long-dated YoY swaps or in high-inflation-volatility regimes, ignoring this adjustment can lead to material mispricing relative to the ZC curve, even though both contracts are, in principle, referencing the same underlying inflation process.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example — Pricing a Short-Dated ZC Swap</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Fair ZC Rate from the Real and Nominal Curves</div>
+                    <p>Suppose the 5-year nominal swap rate is $y_n(5) = 4.20\%$ and the 5-year real rate (from the inflation-linked bond curve or, equivalently, the real leg of an asset swap) is $y_r(5) = 1.70\%$. Using the exact Fisher relation from Section 1.2, the fair 5-year ZC inflation swap rate is:
+                    $$\pi_{\text{fixed}} = \frac{1+y_n(5)}{1+y_r(5)} - 1 = \frac{1.0420}{1.0170} - 1 = 1.02458 - 1 = 2.458\%$$</p>
+                    <p>The notional cash flow exchanged at maturity (per $\$100$ notional) is then $100 \times \left[\dfrac{\text{CPI}(5)}{\text{CPI}(0)} - (1.02458)^5\right]$. Since $(1.02458)^5 \approx 1.1293$, the floating-rate payer pays the fixed-rate payer $100 \times \left[\dfrac{\text{CPI}(5)}{\text{CPI}(0)} - 1.1293\right]$ — positive if cumulative realised inflation exceeds about $12.93\%$ over the 5 years, negative otherwise.</p>
+                    <p class="mb-0">In practice this 2.458% would typically trade with a small spread to the ZC swap quoted directly in the market, reflecting the inflation-swap–breakeven basis discussed above, rather than being derived purely from the bond curves.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../" class="btn btn-outline-custom">&larr; 2. Inflation Derivatives</a>
+                    <a href="../02-inflation-caps-floors-and-options/" class="btn btn-custom">2.2 Inflation Caps, Floors, and Options &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

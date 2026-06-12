@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta Hedging and Gamma Trading</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Convertibles and Equity-Linked Products</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-convertible-bonds">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-convertible-bonds/" class="toc-chapter-link"><strong>1.</strong> Convertible Bond Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-convertible-bonds/01-structure-and-decomposition/">1.1 Structure and Decomposition</a>
+                        <a href="../../01-convertible-bonds/02-regimes-and-call-put-features/">1.2 Regimes and Call/Put Features</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-convertible-bond-pricing">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-convertible-bond-pricing/" class="toc-chapter-link"><strong>2.</strong> Convertible Bond Pricing</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-convertible-bond-pricing/01-binomial-and-pde-valuation/">2.1 Binomial and PDE Valuation</a>
+                        <a href="../../02-convertible-bond-pricing/02-credit-risk-and-hazard-rate-models/">2.2 Credit Risk and Hazard-Rate Models</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-convertible-arbitrage-and-greeks">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-convertible-arbitrage-and-greeks/" class="toc-chapter-link"><strong>3.</strong> Convertible Arbitrage and Greeks</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-convertible-arbitrage-and-greeks/01-delta-hedging-and-gamma-trading/">3.1 Delta Hedging and Gamma Trading</a>
+                        <a href="../../03-convertible-arbitrage-and-greeks/02-vega-credit-and-cross-greeks/">3.2 Vega, Credit Spread Risk, and Cross-Greeks</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-other-equity-linked-structures">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-other-equity-linked-structures/" class="toc-chapter-link"><strong>4.</strong> Other Equity-Linked Structures</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-other-equity-linked-structures/01-mandatory-convertibles-and-exchangeables/">4.1 Mandatory Convertibles and Exchangeables</a>
+                        <a href="../../04-other-equity-linked-structures/02-equity-linked-notes-and-structured-products/">4.2 Equity-Linked Notes and Structured Products</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Convertibles and Equity-Linked Products</a> › <a href="../">3. Convertible Arbitrage and Greeks</a> › <span>Delta Hedging and Gamma Trading</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.1 Delta Hedging and Gamma Trading</h1>
+
+                <p>The convertible's value $V(S,t)$ from the lattice or PDE of Chapter 2 is a function of the stock price $S$, among other variables. Its first and second derivatives with respect to $S$ — delta and gamma — describe how the convertible's price responds to small and large moves in the stock, and are the foundation of the classic convertible arbitrage trade.</p>
+
+                <h2 class="mt-5 mb-3">Delta of a Convertible</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Delta</div>
+                    <p class="mb-0">The delta of a convertible bond is its sensitivity to the underlying stock price:
+                    $$\Delta = \frac{\partial V}{\partial S}$$
+                    In lattice terms, $\Delta \approx \frac{V_{1,1} - V_{1,0}}{S_{1,1} - S_{1,0}}$ — the change in convertible value between the up- and down-nodes one step from the root, divided by the corresponding change in stock price. Delta is bounded: $0 \leq \Delta \leq C_r$, since the convertible's payoff is bounded below by the bond floor (insensitive to $S$, so $\Delta \to 0$) and above by $C_r$ shares (so $\Delta \to C_r$ as $S \to \infty$). The three regimes of Section 1.2 correspond to three ranges of delta: bond-like convertibles have $\Delta$ near $0$, hybrids have $\Delta$ roughly between $0.3\,C_r$ and $0.7\,C_r$, and equity-like convertibles have $\Delta$ near $C_r$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Constructing the Delta-Hedged Position</h2>
+
+                <p>A convertible arbitrage position is built by going long the convertible and shorting stock in proportion to its delta, so that the combined position's value is, to first order, insensitive to small moves in the stock price.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Delta-Hedged Convertible Arbitrage Position</div>
+                    <p class="mb-0">For one convertible bond with delta $\Delta$ (expressed in units of shares — i.e. $\Delta$ already incorporates the conversion ratio, so $0 \le \Delta \le C_r$), the delta-hedged position is:
+                    $$\Pi = V(S,t) - \Delta \times S$$
+                    By construction, $\frac{\partial \Pi}{\partial S} = \frac{\partial V}{\partial S} - \Delta = 0$ at the moment the hedge is put on. The position $\Pi$ is "delta-neutral": a small move in $S$ produces (to first order) no change in $\Pi$'s value. The arbitrageur is now exposed primarily to the convertible's other risk factors — gamma (the curvature of $V$ in $S$), credit spread changes, interest rates, and volatility (Section 3.2) — rather than to the direction of the stock.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Gamma and Gamma Trading</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Gamma</div>
+                    <p class="mb-0">Gamma is the convexity of the convertible's value with respect to the stock price:
+                    $$\Gamma = \frac{\partial^2 V}{\partial S^2} = \frac{\partial \Delta}{\partial S}$$
+                    Because $\Delta$ ranges from $0$ to $C_r$ as $S$ increases through the three regimes, $\Gamma > 0$ for a long convertible position — $V$ is a convex function of $S$, just as a call option is. The convertible's $\Gamma$ is largest in the hybrid regime (where $\Delta$ changes most rapidly with $S$) and smallest in the deeply bond-like or equity-like regimes (where $\Delta$ is roughly constant).</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Gamma Trading P&amp;L from Re-Hedging</div>
+                    <p class="mb-0">Because $\Gamma > 0$, as the stock price moves the convertible's delta changes, and the delta-hedged position $\Pi = V - \Delta S$ acquires a small directional exposure that must be re-hedged to remain delta-neutral. Each re-hedge — buying more stock to short after the stock rises (since $\Delta$ has increased), or buying back some of the short after the stock falls — locks in a small profit, because the long-gamma position means $V$ moved by <em>more</em> than $\Delta S$ in either direction. Summed over many re-hedges, this "gamma scalping" P&amp;L over a small time interval $dt$ is approximately:
+                    $$d\Pi_{\text{gamma}} \approx \frac{1}{2}\Gamma\,(dS)^2 - \theta\,dt$$
+                    where $(dS)^2$ reflects the realised variance of the stock over $dt$ and $\theta = -\partial V/\partial t$ is the convertible's time decay (the cost of holding the long-gamma position, analogous to theta on a long option). The position is profitable on average if the stock's <em>realised</em> volatility exceeds the volatility <em>implied</em> by the convertible's market price — i.e. if $\frac{1}{2}\Gamma \,\sigma^2_{\text{realised}} > \theta$ (with $\theta$ itself increasing in $\sigma_{\text{implied}}$), which is the core thesis of convertible arbitrage: that convertibles' embedded optionality is priced cheap relative to the stock's subsequent realised volatility.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example: Gamma Scalping</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — One Day of Gamma Trading</div>
+                    <p>Suppose a convertible has $C_r = 20$, and at the start of the day the stock is at $S_0 = \$50$ with the convertible's delta $\Delta_0 = 10$ shares (i.e. $\Delta_0/C_r = 0.5$, a hybrid convertible). The arbitrageur holds one convertible and is short $10$ shares, so $\Pi_0 = V_0 - 10\times 50 = V_0 - 500$.</p>
+                    <p>During the day, the stock rises to $S_1 = \$52$. The convertible's delta increases (since $\Gamma>0$) to $\Delta_1 = 10.8$ shares. To restore delta-neutrality, the arbitrageur sells an additional $0.8$ shares short at $\$52$, receiving $0.8 \times 52 = \$41.60$.</p>
+                    <p>Later the stock falls back to $S_2 = \$49$ (a 1-point net move below the original $\$50$, but with intraday volatility of $\pm 2$ realised). The delta falls back toward $\Delta_2 \approx 9.6$ shares; the arbitrageur buys back $1.2$ shares (from $10.8$ to $9.6$) at $\$49$, paying $1.2\times 49 = \$58.80$.</p>
+                    <p class="mb-0">Net cash from the two re-hedges: $+\$41.60 - \$58.80 = -\$17.20$ — at first glance a loss on the hedging trades alone. However, the convertible's <em>value</em> $V$ moved by more than $\Delta \times \Delta S$ would suggest over this round trip, precisely because of its positive convexity: the gain on $V$ from the round trip in $S$ (which ends close to where it started, at $\$49$ vs $\$50$) exceeds the $\$17.20$ hedging cost whenever the realised intraday volatility (the $\$50 \to \$52 \to \$49$ swing) is large relative to what the convertible's price implies. This is the gamma-scalping mechanism: frequent re-hedging against a long-gamma position converts realised volatility into P&amp;L, net of the convertible's time decay $\theta\,dt$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 3. Convertible Arbitrage and Greeks</a>
+                    <a href="../02-vega-credit-and-cross-greeks/" class="btn btn-custom">3.2 Vega, Credit Spread Risk, and Cross-Greeks &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

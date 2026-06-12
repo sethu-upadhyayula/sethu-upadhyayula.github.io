@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agricultural Commodities</title>
+    <title>Agricultural Commodity Fundamentals</title>
     <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -32,80 +32,57 @@
                 <hr>
                 <div class="toc-chapter" data-chapter="01-agricultural-commodities">
                     <div class="toc-chapter-header">
-                        <a href="../01-agricultural-commodities/" class="toc-chapter-link"><strong>1.</strong> Agricultural Commodities</a>
+                        <a href="../01-agricultural-commodities/" class="toc-chapter-link"><strong>1.</strong> Agricultural Commodity Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-agricultural-commodities/01-grain-and-oilseed-markets/">1.1 Grain and Oilseed Markets</a>
+                        <a href="../01-agricultural-commodities/02-seasonality-storage-and-softs/">1.2 Seasonality, Storage Economics, and Soft Commodities</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-futures-basis-and-spreads">
+                    <div class="toc-chapter-header">
+                        <a href="../02-futures-basis-and-spreads/" class="toc-chapter-link"><strong>2.</strong> Agricultural Futures, Basis, and Spread Trading</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../02-futures-basis-and-spreads/01-contract-specifications-and-basis-risk/">2.1 Contract Specifications and Basis Risk</a>
+                        <a href="../02-futures-basis-and-spreads/02-calendar-spreads-and-crop-year-transition/">2.2 Calendar Spreads and the New-Crop/Old-Crop Transition</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-options-and-weather-risk">
+                    <div class="toc-chapter-header">
+                        <a href="../03-options-and-weather-risk/" class="toc-chapter-link"><strong>3.</strong> Options and Weather Risk in Agricultural Markets</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../03-options-and-weather-risk/01-options-on-agricultural-futures/">3.1 Options on Agricultural Futures</a>
+                        <a href="../03-options-and-weather-risk/02-weather-derivatives-and-crop-risk-transfer/">3.2 Weather Derivatives and Crop Risk Transfer</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-hedging-regulation-and-market-structure">
+                    <div class="toc-chapter-header">
+                        <a href="../04-hedging-regulation-and-market-structure/" class="toc-chapter-link"><strong>4.</strong> Hedging, Regulation, and Market Structure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../04-hedging-regulation-and-market-structure/01-producer-and-end-user-hedging/">4.1 Producer and End-User Hedging Strategies</a>
+                        <a href="../04-hedging-regulation-and-market-structure/02-position-limits-and-market-structure/">4.2 Position Limits, Index Investment, and Market Structure</a>
                     </div>
                 </div>
             </nav>
         </aside>
         <section class="math-content">
             <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
-            <nav class="breadcrumb-nav"><a href="../../">Quant</a> › <a href="../">Agriculture</a> › <span>Agricultural Commodities</span></nav>
+            <nav class="breadcrumb-nav"><a href="../../">Quant</a> › <a href="../">Agriculture</a> › <span>Agricultural Commodity Fundamentals</span></nav>
             <article>
-                <h1 class="text-accent mb-4">1. Agricultural Commodities</h1>
-
-                <p>Agricultural commodities — grains, oilseeds, and "softs" such as coffee, sugar, and cotton — are produced through biological processes governed by planting and harvest cycles, and are therefore subject to a degree of seasonality and weather sensitivity unmatched by metals or even most energy commodities. This section ties together the seasonal storage dynamics introduced in the convenience yield discussion with the specific institutional features of grain and soft commodity markets.</p>
-
-                <h2 class="mt-5 mb-3">Grain Markets: Corn, Wheat, and Soybeans</h2>
-
-                <div class="math-box definition">
-                    <div class="math-box-label">Definition — The Major Row Crops</div>
-                    <p><strong>Corn</strong> is used primarily as livestock feed and, in the U.S., as a feedstock for ethanol production — a use that links corn prices to energy markets via biofuel mandates and the relative economics of ethanol versus gasoline.</p>
-                    <p><strong>Wheat</strong> is grown in multiple varieties (winter wheat, spring wheat, hard red, soft red, etc.) across many growing regions globally, making global wheat supply highly dependent on weather conditions in several major producing countries (U.S., Russia, Ukraine, EU, Australia, Argentina) simultaneously.</p>
-                    <p class="mb-0"><strong>Soybeans</strong> are crushed into soybean meal (animal feed) and soybean oil (cooking oil and biodiesel feedstock); the relationship between the soybean price and the combined value of its crush products is captured by the "crush spread," analogous in spirit to the crack spread in oil refining.</p>
-                </div>
-
-                <h2 class="mt-5 mb-3">Seasonality: Planting and Harvest Cycles</h2>
-
-                <p>Unlike oil or metals, where production can in principle be adjusted relatively continuously, grain production occurs in discrete annual (or, in the case of some Southern Hemisphere crops, semi-annual) cycles dictated by growing seasons. This produces a highly characteristic seasonal pattern in futures curves and price volatility.</p>
-
-                <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Annual Crop Cycle</div>
-                    <p><strong>Planting season:</strong> prices are sensitive to planting intentions and early-season weather, since adverse conditions can reduce planted acreage or delay planting, with knock-on effects for the eventual harvest.</p>
-                    <p><strong>Growing season:</strong> this is typically the period of highest price volatility, since the size of the eventual harvest remains uncertain and is highly sensitive to weather (drought, excess rainfall, temperature extremes during critical pollination or flowering windows).</p>
-                    <p class="mb-0"><strong>Harvest:</strong> as the crop is harvested and supply uncertainty resolves, prices typically decline (the "harvest low"), and futures curves often exhibit a seasonal pattern where new-crop contracts (for delivery after harvest) trade at a discount to old-crop contracts (for delivery before the new harvest is available), reflecting the step-change in available supply at harvest time.</p>
-                </div>
-
-                <h2 class="mt-5 mb-3">Storage Costs and Convenience Yield Revisited</h2>
-
-                <p>The convenience yield framework introduced for general commodities applies with particular force to grains, where the entire futures curve within a crop year reflects the cost of carrying inventory from harvest until the next harvest.</p>
-
-                <div class="math-box example">
-                    <div class="math-box-label">Example — Carry Within a Crop Year</div>
-                    <p>Immediately after a large harvest, grain elevators are full and the convenience yield on holding additional inventory is low — there is little benefit to holding extra physical grain when supply is abundant. The futures curve for contracts maturing later in the crop year typically reflects close to full carry: $F(t,T) \approx S_t e^{(r+u)(T-t)}$, where $u$ is the physical storage cost (elevator fees), since $y \approx 0$.</p>
-                    <p class="mb-0">As the crop year progresses and stocks are drawn down toward the next harvest, the convenience yield $y$ rises — holders of physical grain value having supply on hand to meet processing or feeding needs without relying on the (increasingly uncertain) availability of new-crop supply. If stocks become tight enough late in the crop year (a "old-crop/new-crop" supply squeeze), the old-crop contract can move into backwardation relative to the new-crop contract, reflecting $y > r + u$.</p>
-                </div>
-
-                <h2 class="mt-5 mb-3">Weather Risk</h2>
-
-                <div class="math-box remark">
-                    <div class="math-box-label">Remark — Weather as the Dominant Supply Shock</div>
-                    <p class="mb-0">Because there is essentially one opportunity per year (per hemisphere) to produce a given crop, weather events during critical growth windows — drought during pollination, excess rain delaying harvest, an early frost — can have outsized and immediate effects on price, since there is no possibility of a rapid supply response analogous to, say, OPEC+ adjusting output or a shale producer drilling additional wells. This makes agricultural futures and options markets highly responsive to weather forecasts during the growing season, and explains the prominence of weather-related news in driving short-term grain price volatility.</p>
-                </div>
-
-                <h2 class="mt-5 mb-3">Softs: Coffee, Sugar, and Cotton</h2>
-
-                <div class="math-box remark">
-                    <div class="math-box-label">Remark — Characteristics of Soft Commodities</div>
-                    <p><strong>Coffee</strong> (arabica traded on ICE, robusta on ICE Europe) is produced primarily in tropical regions (Brazil, Vietnam, Colombia) and is particularly sensitive to frost events in Brazil's growing regions, which can damage trees and affect production for multiple subsequent harvests due to the multi-year growth cycle of coffee plants.</p>
-                    <p><strong>Sugar</strong> markets are heavily influenced by Brazilian production decisions, since Brazilian mills can flexibly allocate sugarcane between sugar production and ethanol production depending on relative prices — linking sugar to both food and energy markets.</p>
-                    <p class="mb-0"><strong>Cotton</strong> demand is tied to textile manufacturing and apparel demand globally, with China, India, and other major textile-producing countries representing key sources of demand, while production is concentrated among a smaller number of major growing countries (U.S., India, China, Brazil).</p>
-                </div>
-
-                <h2 class="mt-5 mb-3">USDA Reports as Market-Moving Events</h2>
-
-                <div class="math-box definition">
-                    <div class="math-box-label">Definition — Key USDA Reports</div>
-                    <p><strong>WASDE (World Agricultural Supply and Demand Estimates):</strong> a monthly report providing the U.S. Department of Agriculture's estimates of supply, demand, and ending stocks for major U.S. and global agricultural commodities. WASDE releases are among the most closely watched scheduled events in agricultural markets and routinely produce sharp price moves when actual figures deviate from analyst expectations.</p>
-                    <p><strong>Acreage and Planting Intentions reports:</strong> released in spring, these surveys of farmer planting intentions provide the market's first concrete estimate of how much land will be devoted to each crop in the coming season, directly affecting expectations for the size of the eventual harvest.</p>
-                    <p class="mb-0"><strong>Crop Progress reports:</strong> released weekly during the growing season, these report the percentage of the crop at each stage of development (planted, emerged, in critical growth stages, harvested) relative to historical averages, allowing the market to track whether the season is running ahead of or behind a normal pace.</p>
-                </div>
-
-                <p>Because these reports are released on a fixed schedule and contain information that can materially shift supply/demand balances, options markets often price elevated implied volatility in the days leading up to a major USDA release, with volatility collapsing ("crushing") once the report is published and its information is incorporated into prices.</p>
-
+                <h1 class="text-accent mb-4">1. Agricultural Commodity Fundamentals</h1>
+                <p>This chapter establishes the institutional and economic foundations of agricultural commodity markets. We begin with the major row crops — corn, wheat, and soybeans — and the oilseed complex, covering contract specifications and the calendar of USDA reports (WASDE, Acreage and Planting Intentions, Crop Progress) that drive scheduled volatility in these markets. Understanding what each report measures, when it is released, and how the market positions ahead of it is essential to trading or hedging in grain markets.</p>
+                <p>The second section ties these institutional features to the pricing framework: the seasonal planting-growing-harvest cycle that shapes the shape of agricultural futures curves, the storage cost and convenience yield model that explains carry and inversions within a crop year, the outsized role of weather as a supply shock, and the distinct characteristics of soft commodities — coffee, sugar, and cotton — whose tropical growing regions and cross-linkages to energy markets (via ethanol) set them apart from temperate-zone grains. Together these two sections provide the indispensable foundation for the futures, basis, options, and hedging material that follows.</p>
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-                    <a href="../../" class="btn btn-outline-custom">&larr; Back to Quant</a>
-                    <a href="../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                    <a href="../" class="btn btn-outline-custom">&larr; Agriculture</a>
+                    <a href="01-grain-and-oilseed-markets/" class="btn btn-custom">1.1 Grain and Oilseed Markets &rarr;</a>
                 </div>
             </article>
         </section>

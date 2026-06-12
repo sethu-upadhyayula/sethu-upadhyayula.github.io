@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining Cost Curves and Producer Hedging</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Metals and Mining</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-precious-and-base-metals">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-precious-and-base-metals/" class="toc-chapter-link"><strong>1.</strong> Precious and Base Metals Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-precious-and-base-metals/01-gold-silver-and-lease-rates/">1.1 Gold and Silver: Monetary Metals, Lease Rates, and Forward Pricing</a>
+                        <a href="../../01-precious-and-base-metals/02-base-metals-and-the-lme/">1.2 Base Metals: Copper, Aluminum, and the LME</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-lme-mechanics-and-curve-trading">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-lme-mechanics-and-curve-trading/" class="toc-chapter-link"><strong>2.</strong> LME Mechanics and Metals Curve Trading</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-lme-mechanics-and-curve-trading/01-lme-contract-structure-and-warehousing/">2.1 LME Contract Structure, Warehousing, and Warrants</a>
+                        <a href="../../02-lme-mechanics-and-curve-trading/02-cash-3m-spreads-and-carry-trades/">2.2 Cash-3M Spreads, Tom-Next, and Carry Trades</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-mining-economics-and-derivatives">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-mining-economics-and-derivatives/" class="toc-chapter-link"><strong>3.</strong> Mining Economics and Metals Derivatives</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-mining-economics-and-derivatives/01-mining-cost-curves-and-producer-hedging/">3.1 Mining Cost Curves and Producer Hedging</a>
+                        <a href="../../03-mining-economics-and-derivatives/02-options-and-structured-products/">3.2 Options and Structured Products in Metals</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-battery-metals-steel-and-bulk-commodities">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-battery-metals-steel-and-bulk-commodities/" class="toc-chapter-link"><strong>4.</strong> Battery Metals, Steel, and Bulk Commodities</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-battery-metals-steel-and-bulk-commodities/01-battery-metals-and-ev-demand/">4.1 Battery Metals: Lithium, Nickel, and Cobalt</a>
+                        <a href="../../04-battery-metals-steel-and-bulk-commodities/02-steel-iron-ore-and-bulk-pricing/">4.2 Steel, Iron Ore, and Bulk Commodity Pricing</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Metals and Mining</a> › <a href="../">3. Mining Economics and Metals Derivatives</a> › <span>Mining Cost Curves and Producer Hedging</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.1 Mining Cost Curves and Producer Hedging</h1>
+
+                <p>A mining company's profitability depends on the spread between the market price of its metal and its own cost of production. Because mines differ enormously in geology, grade, depth, location, and processing requirements, the industry-wide cost of producing a given metal is not a single number but a distribution — the <em>cost curve</em> — and where the prevailing market price sits relative to that distribution determines how much of global production is profitable at any given time.</p>
+
+                <h2 class="mt-5 mb-3">Cash Cost and All-In Sustaining Cost</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — C1 Cash Cost</div>
+                    <p class="mb-0">The <em>C1 cash cost</em> (or simply "cash cost") per unit of metal produced (e.g., per ounce of gold or per tonne of copper) comprises the direct operating costs of mining and processing: mining costs, processing/milling costs, on-site general and administrative costs, and (for base metals produced as by-products of polymetallic ore, such as copper mined alongside gold or silver) net of by-product credits. C1 cash cost excludes capital expenditure, exploration, and corporate overhead, so it represents something close to the short-run marginal cost at which a mine would continue operating once built — a mine operating above C1 cash cost is destroying cash on every unit produced and would typically be placed on care-and-maintenance.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — All-In Sustaining Cost (AISC)</div>
+                    <p class="mb-0">The <em>All-In Sustaining Cost</em> (AISC), a standard introduced industry-wide (notably by the World Gold Council for gold producers) to give a more complete picture of the cost of sustaining current production, adds to the C1 cash cost: sustaining capital expenditure (capex required to maintain current production levels, as opposed to expansion capex), corporate general and administrative costs, exploration and study costs related to existing operations, and reclamation/remediation accretion. AISC therefore approximates the price level needed for a mine to sustain its operations indefinitely without depleting its capital base — a more meaningful "breakeven" for medium-term investment and hedging decisions than C1 cash cost alone.
+                    $$\text{AISC} = \text{C1 cash cost} + \text{sustaining capex} + \text{G\&A} + \text{exploration (sustaining)} + \text{reclamation accretion}$$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Industry Cost Curve</h2>
+
+                <p>Plotting every operating mine's AISC (or cash cost) against its cumulative share of global production, sorted from lowest to highest cost, produces the industry <em>cost curve</em>. The shape and position of this curve relative to the current market price is one of the most important tools for understanding the supply side of a metals market.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Reading the Cost Curve</div>
+                    <p class="mb-0">When the market price sits well above the 90th-percentile point on the cost curve, essentially all global production is profitable, and high-cost, marginal producers continue to operate — supply is "sticky" and unresponsive to further price increases in the short run (new mine supply takes years to develop). When the price falls toward or below the cost curve at, say, the 70-80th percentile, the highest-cost producers begin curtailing production, providing a degree of natural price support: falling prices reduce supply from the highest-cost mines, which (with a lag) tightens the market and supports price. This dynamic is much weaker for gold — where above-ground stocks dominate flow (Section 1.1) — than for base and bulk metals, where current production is a larger fraction of consumption.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Producer Hedging Programs</h2>
+
+                <p>A mining company is, by the nature of its business, structurally long the commodity it produces — its future revenue is a direct function of the future price of its metal. Many producers choose to hedge some portion of forecast production to provide cash flow certainty (e.g., to satisfy debt covenants during construction or expansion, or to lock in economics for a specific project) even though doing so caps the upside if prices rise.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Forward Sale Hedge</div>
+                    <p class="mb-0">In a <em>forward sale</em> hedge, a producer sells a portion of expected future production forward at a fixed price $K$, locking in that price regardless of where the spot price moves by the delivery date. If the spot price at maturity is $S_T$, the producer's effective realized price on the hedged volume is $K$ (vs. $S_T$ unhedged) — the hedge removes both the upside and the downside relative to spot. Forward sales are the simplest and historically most common form of producer hedging, but they were also widely criticized during the strong gold bull markets of the 2000s and 2010s, when producers who had sold forward at much lower prices were forced to deliver into contracts deeply out-of-the-money relative to spot, leading many gold miners to largely abandon forward-sale hedging in favour of unhedged production or option-based structures.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Collar (Hedge) Structure</div>
+                    <p class="mb-0">A <em>collar</em> combines a long put option (giving the producer the right to sell at a floor price $K_{\text{put}}$) with a short call option (obligating the producer to sell at a cap price $K_{\text{call}} > K_{\text{put}}$ if exercised), typically structured so that the premium received from selling the call offsets the premium paid for the put — a "zero-cost collar." The producer's effective realized price at maturity is:
+                    $$\text{Effective price} = \begin{cases} K_{\text{put}} & S_T < K_{\text{put}} \\ S_T & K_{\text{put}} \leq S_T \leq K_{\text{call}} \\ K_{\text{call}} & S_T > K_{\text{call}} \end{cases}$$
+                    A collar protects against downside price moves below $K_{\text{put}}$ while preserving participation in upside up to $K_{\text{call}}$, at the cost of foregoing any price appreciation beyond $K_{\text{call}}$. Collars are widely used by base metals and bulk commodity producers because they provide downside protection without the full opportunity cost of a forward sale.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example: Hedge Economics Relative to AISC</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Copper Producer Collar vs. AISC</div>
+                    <p>A mid-tier copper producer has an AISC of $\$6{,}800$/tonne. Current LME copper trades at $S_t = \$9{,}000$/tonne. The producer's board requires that 40% of next year's expected production of 100,000 tonnes be hedged to ensure debt covenant compliance (minimum realized price of at least $\$7{,}500$/tonne on hedged volume).</p>
+                    <p>The treasury desk structures a zero-cost collar on the hedged 40,000 tonnes with a put strike $K_{\text{put}} = \$7{,}800$/tonne (comfortably above AISC and the covenant floor of $\$7{,}500$) and a call strike $K_{\text{call}} = \$10{,}200$/tonne, chosen so the put premium and call premium are equal.</p>
+                    <table class="table table-sm table-bordered" style="max-width:560px;">
+                        <thead><tr><th>Scenario at maturity</th><th>$S_T$</th><th>Effective price (hedged tonnes)</th><th>Margin over AISC</th></tr></thead>
+                        <tbody>
+                            <tr><td>Price collapse</td><td>$6,500</td><td>$7,800 (put exercised)</td><td>$1,000/t</td></tr>
+                            <tr><td>Price within collar</td><td>$9,000</td><td>$9,000 (no exercise)</td><td>$2,200/t</td></tr>
+                            <tr><td>Price rally</td><td>$11,000</td><td>$10,200 (call exercised)</td><td>$3,400/t</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="mb-0">In every scenario, the hedged tonnes realize a price comfortably above AISC, satisfying the covenant. The unhedged 60,000 tonnes retain full exposure to spot — in the price-collapse scenario, the blended company-wide realized price is $0.4 \times 7800 + 0.6 \times 6500 = 3120 + 3900 = \$7{,}020$/tonne, still above the $\$6{,}800$ AISC, illustrating how even a partial collar materially improves the worst-case outcome relative to a fully unhedged position, at the cost of capping the upside on the hedged portion at $\$10{,}200$/tonne.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 3. Mining Economics and Metals Derivatives</a>
+                    <a href="../02-options-and-structured-products/" class="btn btn-custom">3.2 Options and Structured Products in Metals &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

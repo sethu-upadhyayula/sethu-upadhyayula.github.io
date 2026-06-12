@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emerging Markets Currency Markets</title>
+    <title>EM Currency Market Structure</title>
     <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -32,56 +32,57 @@
                 <hr>
                 <div class="toc-chapter" data-chapter="01-emerging-markets-fx">
                     <div class="toc-chapter-header">
-                        <a href="../01-emerging-markets-fx/" class="toc-chapter-link"><strong>1.</strong> Emerging Markets Currency Markets</a>
+                        <a href="../01-emerging-markets-fx/" class="toc-chapter-link"><strong>1.</strong> EM Currency Market Structure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-emerging-markets-fx/01-non-deliverable-forwards-and-offshore-markets/">1.1 Non-Deliverable Forwards and Offshore Markets</a>
+                        <a href="../01-emerging-markets-fx/02-onshore-offshore-basis-and-capital-controls/">1.2 Onshore-Offshore Basis, Capital Controls, and Fixing Risk</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-fx-regimes-and-central-bank-policy">
+                    <div class="toc-chapter-header">
+                        <a href="../02-fx-regimes-and-central-bank-policy/" class="toc-chapter-link"><strong>2.</strong> EM FX Regimes and Central Bank Policy</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../02-fx-regimes-and-central-bank-policy/01-exchange-rate-regimes/">2.1 Exchange Rate Regimes: Pegs, Bands, and Managed Floats</a>
+                        <a href="../02-fx-regimes-and-central-bank-policy/02-intervention-reserves-and-sterilization/">2.2 Central Bank Intervention, Reserves, and Sterilization</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-carry-risk-premia-and-volatility">
+                    <div class="toc-chapter-header">
+                        <a href="../03-carry-risk-premia-and-volatility/" class="toc-chapter-link"><strong>3.</strong> Carry, Risk Premia, and EM FX Volatility</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../03-carry-risk-premia-and-volatility/01-carry-trade-and-interest-rate-parity/">3.1 The Carry Trade and Interest Rate Parity</a>
+                        <a href="../03-carry-risk-premia-and-volatility/02-risk-reversals-skew-and-em-fx-options/">3.2 Risk Reversals, Skew, and EM FX Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-crises-contagion-and-case-studies">
+                    <div class="toc-chapter-header">
+                        <a href="../04-crises-contagion-and-case-studies/" class="toc-chapter-link"><strong>4.</strong> Crises, Contagion, and Case Studies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../04-crises-contagion-and-case-studies/01-currency-crisis-mechanics/">4.1 Currency Crisis Mechanics and Speculative Attacks</a>
+                        <a href="../04-crises-contagion-and-case-studies/02-historical-case-studies/">4.2 Historical Case Studies</a>
                     </div>
                 </div>
             </nav>
         </aside>
         <section class="math-content">
             <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
-            <nav class="breadcrumb-nav"><a href="../../">Quant</a> › <a href="../">Emerging Markets FX</a> › <span>Emerging Markets Currency Markets</span></nav>
+            <nav class="breadcrumb-nav"><a href="../../">Quant</a> › <a href="../">Emerging Markets FX</a> › <span>EM Currency Market Structure</span></nav>
             <article>
-                <h1 class="text-accent mb-4">1. Emerging Markets Currency Markets</h1>
-
-                <p>Emerging market (EM) currencies trade with distinctive features relative to the major developed-market (G10) currencies: wider bid-offer spreads, capital controls and convertibility restrictions in some jurisdictions, higher sensitivity to global risk sentiment, and — for many EM currencies — an offshore non-deliverable forward (NDF) market that trades alongside (or in place of) deliverable onshore markets.</p>
-
-                <h2 class="mt-5 mb-3">Non-Deliverable Forwards</h2>
-
-                <div class="math-box definition">
-                    <div class="math-box-label">Definition — Non-Deliverable Forward (NDF)</div>
-                    <p class="mb-0">An NDF is a forward contract on an exchange rate that is cash-settled in a convertible currency (typically USD) rather than by physical delivery of the EM currency. At maturity, the NDF is settled by reference to a published "fixing" rate $S_{\text{fix}}$ for the EM currency against USD:</p>
-                    <p class="mb-0">$$\text{Payoff} = N \times \left(\frac{1}{K} - \frac{1}{S_{\text{fix}}}\right) \quad \text{(or the analogous expression depending on quotation convention)}$$</p>
-                    <p class="mb-0">where $N$ is the notional (in USD) and $K$ is the contracted forward rate. NDFs allow offshore investors to take FX exposure to currencies subject to capital controls (historically including the Chinese yuan, Indian rupee, Korean won, Brazilian real, and others) without needing to hold or transact in the onshore currency itself.</p>
-                </div>
-
-                <h2 class="mt-5 mb-3">Onshore-Offshore Basis</h2>
-
-                <p>Where both an onshore deliverable forward market and an offshore NDF market exist for the same currency pair, their implied forward rates can diverge — the "onshore-offshore basis" — reflecting differences in liquidity, capital controls, and the cost of accessing each market.</p>
-
-                <div class="math-box remark">
-                    <div class="math-box-label">Remark — CNY vs CNH</div>
-                    <p class="mb-0">The Chinese renminbi trades onshore as CNY (subject to PBoC daily fixing bands and capital controls) and offshore (primarily in Hong Kong) as CNH, which trades more freely and is accessible to international investors without onshore account restrictions. CNY and CNH can trade at different spot levels and imply different forward points, with the spread between them widening during periods of capital flow pressure or policy intervention — a useful real-time gauge of market expectations for renminbi policy and capital account dynamics.</p>
-                </div>
-
-                <h2 class="mt-5 mb-3">Carry and EM FX</h2>
-
-                <p>EM currencies typically carry higher domestic interest rates than G10 currencies, so by covered interest rate parity (see <a href="../../fx-forwards-and-swaps/01-fx-forwards-and-swaps/01-fx-forwards-and-interest-rate-parity/">FX Forwards and Interest Rate Parity</a>), EM currencies trade at a forward discount to spot when quoted against USD or EUR — a long EM-currency, short-USD position earns positive carry from this interest rate differential.</p>
-
-                <div class="math-box example">
-                    <div class="math-box-label">Example — EM Carry Trade and Risk</div>
-                    <p class="mb-0">An investor borrows USD at a low rate (say 2%) and invests in a local-currency EM bond yielding 10%, earning an 8% annualised carry before any change in the exchange rate. This trade profits as long as the EM currency does not depreciate by more than the carry differential over the holding period. However, EM currencies are prone to sharp, discontinuous depreciations during episodes of global risk aversion ("risk-off" events), capital flight, or domestic policy shocks — wiping out months or years of accumulated carry in a matter of days. This asymmetry (steady small gains, occasional large losses) is the classic risk profile of carry trades, sometimes summarised as "picking up pennies in front of a steamroller."</p>
-                </div>
-
-                <h2 class="mt-5 mb-3">Capital Controls and Fixing Risk</h2>
-
-                <div class="math-box remark">
-                    <div class="math-box-label">Remark — Fixing Methodology Risk</div>
-                    <p class="mb-0">Because NDFs settle against a published fixing rate rather than an actual currency exchange, the methodology and reliability of that fixing matters significantly. Some EM central banks have, at various points, restricted or suspended the fixings used for NDF settlement, or imposed restrictions on onshore banks' participation in the offshore NDF market, in an effort to reduce the influence of offshore trading on onshore exchange rates. Trading EM FX therefore carries not only market risk (the exchange rate itself) but also regulatory and convertibility risk — the risk that the rules governing how a position settles change during the life of the trade.</p>
-                </div>
+                <h1 class="text-accent mb-4">1. EM Currency Market Structure</h1>
+                <p>Emerging market currency markets are structured differently from G10 FX in ways that matter for pricing, hedging, and risk management. Many EM currencies are subject to capital controls that restrict who can hold the currency, when it can be converted, and how much can be moved across borders. To allow international investors to take exposure despite these restrictions, an offshore market in non-deliverable forwards (NDFs) has developed for most major EM currencies — cash-settled contracts referencing a published fixing rate, traded entirely outside the onshore banking system.</p>
+                <p>This chapter develops the mechanics of NDFs and the offshore markets that trade them, then examines what happens when an onshore deliverable market and an offshore NDF market coexist for the same currency: the resulting onshore-offshore basis, the channels through which capital controls drive that basis, and the fixing risk that arises because NDF settlement depends on a rate published by an authority that may itself be a party to the policy debate the market is trying to price.</p>
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
                     <a href="../../" class="btn btn-outline-custom">&larr; Back to Quant</a>
-                    <a href="../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                    <a href="01-non-deliverable-forwards-and-offshore-markets/" class="btn btn-custom">1.1 Non-Deliverable Forwards and Offshore Markets &rarr;</a>
                 </div>
             </article>
         </section>

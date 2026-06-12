@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binomial and PDE Valuation</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Convertibles and Equity-Linked Products</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-convertible-bonds">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-convertible-bonds/" class="toc-chapter-link"><strong>1.</strong> Convertible Bond Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-convertible-bonds/01-structure-and-decomposition/">1.1 Structure and Decomposition</a>
+                        <a href="../../01-convertible-bonds/02-regimes-and-call-put-features/">1.2 Regimes and Call/Put Features</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-convertible-bond-pricing">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-convertible-bond-pricing/" class="toc-chapter-link"><strong>2.</strong> Convertible Bond Pricing</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-convertible-bond-pricing/01-binomial-and-pde-valuation/">2.1 Binomial and PDE Valuation</a>
+                        <a href="../../02-convertible-bond-pricing/02-credit-risk-and-hazard-rate-models/">2.2 Credit Risk and Hazard-Rate Models</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-convertible-arbitrage-and-greeks">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-convertible-arbitrage-and-greeks/" class="toc-chapter-link"><strong>3.</strong> Convertible Arbitrage and Greeks</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-convertible-arbitrage-and-greeks/01-delta-hedging-and-gamma-trading/">3.1 Delta Hedging and Gamma Trading</a>
+                        <a href="../../03-convertible-arbitrage-and-greeks/02-vega-credit-and-cross-greeks/">3.2 Vega, Credit Spread Risk, and Cross-Greeks</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-other-equity-linked-structures">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-other-equity-linked-structures/" class="toc-chapter-link"><strong>4.</strong> Other Equity-Linked Structures</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-other-equity-linked-structures/01-mandatory-convertibles-and-exchangeables/">4.1 Mandatory Convertibles and Exchangeables</a>
+                        <a href="../../04-other-equity-linked-structures/02-equity-linked-notes-and-structured-products/">4.2 Equity-Linked Notes and Structured Products</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Convertibles and Equity-Linked Products</a> › <a href="../">2. Convertible Bond Pricing</a> › <span>Binomial and PDE Valuation</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2.1 Binomial and PDE Approaches to Convertible Valuation</h1>
+
+                <p>Because a convertible bond embeds American-style conversion, call, and put rights, its value cannot generally be written as a closed-form expectation. Instead, practitioners value convertibles on a binomial (or trinomial) lattice for the underlying stock price, with the embedded decisions evaluated by backward induction at every node — a direct extension of the Cox-Ross-Rubinstein approach to American option pricing, augmented to handle the bond's coupon and principal cash flows and credit-risky discounting.</p>
+
+                <h2 class="mt-5 mb-3">Building the Stock Price Lattice</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Binomial Stock Price Tree</div>
+                    <p class="mb-0">Divide the time to maturity $T$ into $N$ steps of length $\Delta t = T/N$. At each step the stock price moves up by a factor $u$ or down by a factor $d$, with risk-neutral probability $p$ of an up-move:
+                    $$u = e^{\sigma\sqrt{\Delta t}}, \qquad d = \frac{1}{u} = e^{-\sigma\sqrt{\Delta t}}, \qquad p = \frac{e^{r\Delta t} - d}{u - d}$$
+                    where $\sigma$ is the stock's volatility and $r$ the risk-free rate. After $N$ steps, the stock price at node $(i,j)$ (time step $i$, $j$ up-moves) is $S_{i,j} = S_0 u^j d^{i-j}$. This is the same recombining tree used for vanilla American options; what differs for a convertible is the payoff and decision logic applied at each node.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Backward Induction with Embedded Decisions</h2>
+
+                <p>At maturity, the convertible's terminal value at each node is the maximum of redemption at par (plus final coupon) and the conversion value:</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Terminal Condition</div>
+                    <p class="mb-0">At maturity node $(N,j)$:
+                    $$V_{N,j} = \max\left(F + c\,F, \; C_r \, S_{N,j}\right)$$
+                    where $F$ is the face value, $c$ the final coupon rate, and $C_r$ the conversion ratio.</p>
+                </div>
+
+                <p>Working backward from maturity, at each interior node $(i,j)$ the "continuation value" is the discounted expectation of the two successor node values, plus any coupon paid at step $i$. The holder's and issuer's embedded options are then applied to this continuation value:</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Convertible Lattice Recursion</div>
+                    <p class="mb-0">Let $H_{i,j}$ denote the continuation (holding) value at node $(i,j)$:
+                    $$H_{i,j} = e^{-y_{i,j}\,\Delta t}\Big[p\,V_{i+1,j+1} + (1-p)\,V_{i+1,j}\Big] + \text{(coupon paid at } i\text{, if any)}$$
+                    where $y_{i,j}$ is the credit-risky discount rate applicable at that node (Section 2.2). The convertible's value at the node, after applying the embedded optionality, is:
+                    $$V_{i,j} = \max\Big(\min(H_{i,j}, K_{\text{call}}), \; C_r\,S_{i,j}, \; K_{\text{put}}\Big)$$
+                    if a call is exercisable at step $i$ (with $K_{\text{put}} = 0$ if no put is exercisable), where $K_{\text{call}}$ is the issuer's call price and $K_{\text{put}}$ the investor's put price. The inner $\min$ reflects that the issuer caps the holder's continuation value at $K_{\text{call}}$ (a rational issuer calls whenever $H_{i,j} > K_{\text{call}}$, i.e. whenever continuing is worth more to the holder than the call price); the outer $\max$ with $C_r S_{i,j}$ reflects the holder's right to convert instead, and the $\max$ with $K_{\text{put}}$ reflects the holder's right to put the bond back for cash.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Order of Optionality</div>
+                    <p class="mb-0">The nesting in the recursion above encodes an important economic point: the issuer's call decision is applied to the holder's continuation value <em>before</em> the holder's conversion and put rights, because in practice the holder responds to a call notice by choosing the better of converting or accepting the call price — so the holder's final payoff upon a call is $\max(C_r S_{i,j}, K_{\text{call}})$, and the issuer only calls when this is less than $H_{i,j}$ would otherwise have been. Different lattice implementations vary in the exact sequencing of these checks, but all must respect that each party exercises its right only when doing so is in its own interest — the lattice computes the resulting game-theoretic equilibrium value at each node.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Connection to the Black-Scholes PDE</h2>
+
+                <p>As $\Delta t \to 0$ (equivalently $N \to \infty$), the binomial recursion converges to a partial differential equation in continuous time and stock price — the same Black-Scholes PDE that governs vanilla option prices, but with boundary conditions reflecting the convertible's embedded optionality.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — PDE for Convertible Value</div>
+                    <p class="mb-0">Let $V(S,t)$ denote the convertible's value as a function of stock price $S$ and time $t$. In the continuation region (where neither conversion, call, nor put is exercised), $V$ satisfies the Black-Scholes PDE with credit-risky discounting:
+                    $$\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + (r-q) S \frac{\partial V}{\partial S} - (r+h) V + c\,F\,\delta(t) = 0$$
+                    where $q$ is the stock's dividend yield, $h$ the issuer's hazard rate (Section 2.2), and the last term represents coupon payments. The free-boundary conditions enforce the lattice's $\max/\min$ logic continuously:
+                    $$V(S,t) \geq C_r S \quad \text{(conversion)}, \qquad V(S,t) \leq K_{\text{call}}(t) \text{ when callable}, \qquad V(S,t) \geq K_{\text{put}}(t) \text{ when puttable}$$
+                    Solving this PDE numerically by finite differences (e.g. Crank-Nicolson) on a grid in $(S,t)$, applying these constraints at each time step, is the continuous-time analogue of the binomial backward induction — and the two methods converge to the same value as the grid is refined.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example: A Small Binomial Tree</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Two-Step Convertible Lattice</div>
+                    <p>Consider a simplified 2-step (1-year, $\Delta t = 0.5$) convertible with $F=100$, $C_r = 1$ (so the conversion price equals $100$), no coupons, no call/put features, $S_0 = 100$, $\sigma = 0.30$, $r = 0.04$, and a flat credit-risky discount rate $y = r + h = 0.08$ for the bond's continuation value.</p>
+                    <p>Tree parameters: $u = e^{0.30\sqrt{0.5}} = e^{0.2121} = 1.2364$, $d = 1/u = 0.8088$, $p = \frac{e^{0.04 \times 0.5} - 0.8088}{1.2364 - 0.8088} = \frac{1.0202 - 0.8088}{0.4276} = 0.4944$.</p>
+                    <table class="table table-sm table-bordered" style="max-width:520px;">
+                        <thead><tr><th>Node (step, ups)</th><th>$S_{i,j}$</th><th>Terminal $V = \max(100, S)$</th></tr></thead>
+                        <tbody>
+                            <tr><td>(2,2) — up,up</td><td>$152.86$</td><td>$152.86$</td></tr>
+                            <tr><td>(2,1) — one up</td><td>$100.00$</td><td>$100.00$</td></tr>
+                            <tr><td>(2,0) — down,down</td><td>$65.41$</td><td>$100.00$</td></tr>
+                        </tbody>
+                    </table>
+                    <p>Step back to $t=0.5$. At node (1,1) ($S=123.64$): continuation value $H = e^{-0.08\times0.5}[0.4944\times152.86 + 0.5056\times100.00] = 0.9608 \times 125.84 = 120.85$. Since $C_r S = 123.64 > H$, conversion dominates: $V_{1,1} = \max(120.85, 123.64) = 123.64$.</p>
+                    <p>At node (1,0) ($S=80.88$): continuation value $H = e^{-0.04}[0.4944\times100.00 + 0.5056\times100.00] = 0.9608 \times 100.00 = 96.08$ (using the discount rate $y=0.04+0.04$ for an out-of-the-money node where the bond floor is more relevant — illustrating that the effective discount rate can vary by node, as discussed in Section 2.2). Conversion value $C_r S = 80.88 < H$, so $V_{1,0} = 96.08$.</p>
+                    <p class="mb-0">Finally, at $t=0$: $H_{0,0} = e^{-0.06\times0.5}[0.4944\times123.64 + 0.5056\times96.08] = 0.9704 \times (61.13 + 48.58) = 0.9704 \times 109.71 = 106.46$, and since $C_r S_0 = 100 < 106.46$, $V_{0,0} = 106.46$. The convertible's fair value today is approximately $\$106.46$ per $\$100$ face — a premium of $6.46$ points over par, reflecting the value of the embedded conversion option at this at-the-money starting point.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 2. Convertible Bond Pricing</a>
+                    <a href="../02-credit-risk-and-hazard-rate-models/" class="btn btn-custom">2.2 Credit Risk and Hazard-Rate Models &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

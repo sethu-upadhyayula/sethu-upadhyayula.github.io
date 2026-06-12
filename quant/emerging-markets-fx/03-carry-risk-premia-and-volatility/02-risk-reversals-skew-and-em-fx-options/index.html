@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Reversals, Skew, and EM FX Options</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Emerging Markets FX</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-emerging-markets-fx">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-emerging-markets-fx/" class="toc-chapter-link"><strong>1.</strong> EM Currency Market Structure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-emerging-markets-fx/01-non-deliverable-forwards-and-offshore-markets/">1.1 Non-Deliverable Forwards and Offshore Markets</a>
+                        <a href="../../01-emerging-markets-fx/02-onshore-offshore-basis-and-capital-controls/">1.2 Onshore-Offshore Basis, Capital Controls, and Fixing Risk</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-fx-regimes-and-central-bank-policy">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-fx-regimes-and-central-bank-policy/" class="toc-chapter-link"><strong>2.</strong> EM FX Regimes and Central Bank Policy</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-fx-regimes-and-central-bank-policy/01-exchange-rate-regimes/">2.1 Exchange Rate Regimes: Pegs, Bands, and Managed Floats</a>
+                        <a href="../../02-fx-regimes-and-central-bank-policy/02-intervention-reserves-and-sterilization/">2.2 Central Bank Intervention, Reserves, and Sterilization</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-carry-risk-premia-and-volatility">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-carry-risk-premia-and-volatility/" class="toc-chapter-link"><strong>3.</strong> Carry, Risk Premia, and EM FX Volatility</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-carry-risk-premia-and-volatility/01-carry-trade-and-interest-rate-parity/">3.1 The Carry Trade and Interest Rate Parity</a>
+                        <a href="../../03-carry-risk-premia-and-volatility/02-risk-reversals-skew-and-em-fx-options/">3.2 Risk Reversals, Skew, and EM FX Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-crises-contagion-and-case-studies">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-crises-contagion-and-case-studies/" class="toc-chapter-link"><strong>4.</strong> Crises, Contagion, and Case Studies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-crises-contagion-and-case-studies/01-currency-crisis-mechanics/">4.1 Currency Crisis Mechanics and Speculative Attacks</a>
+                        <a href="../../04-crises-contagion-and-case-studies/02-historical-case-studies/">4.2 Historical Case Studies</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Emerging Markets FX</a> › <a href="../">3. Carry, Risk Premia, and EM FX Volatility</a> › <span>Risk Reversals, Skew, and EM FX Options</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 Risk Reversals, Skew, and EM FX Options</h1>
+
+                <p>The EM FX options market expresses the crash-risk premium described in the previous section directly through the shape of the implied volatility surface. Where a G10 currency pair's volatility smile is often relatively symmetric, EM FX smiles are typically steeply skewed — out-of-the-money options that pay off on a sharp depreciation of the EM currency trade at materially higher implied volatility than equivalent options that pay off on appreciation. The standard instruments for quoting and trading this skew are the risk reversal and the butterfly.</p>
+
+                <h2 class="mt-5 mb-3">Quoting Conventions: Delta and Volatility</h2>
+
+                <p>FX options are quoted not by strike but by <em>delta</em> — the option's sensitivity to the underlying spot rate — because delta is a stable, strike-independent way to compare options across different spot levels and tenors. A "25-delta call" is the call option whose Black-Scholes delta is 0.25; a "25-delta put" has delta $-0.25$ (or is sometimes quoted as the corresponding 25-delta put by absolute value).</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Risk Reversal and Butterfly</div>
+                    <p class="mb-0">For a given tenor $T$ and delta level (commonly 25-delta or 10-delta), let $\sigma_{\Delta P}$ and $\sigma_{\Delta C}$ denote the Black-Scholes implied volatilities of the corresponding out-of-the-money put and call. Define:</p>
+                    <p class="mb-0">$$\text{Risk Reversal (RR)} = \sigma_{\Delta C} - \sigma_{\Delta P}$$
+                    $$\text{Butterfly (BF)} = \frac{\sigma_{\Delta C}+\sigma_{\Delta P}}{2} - \sigma_{\text{ATM}}$$
+                    The risk reversal measures the <em>skew</em> — the asymmetry between calls and puts at equal delta — while the butterfly measures the <em>convexity</em> of the smile (how much the wings exceed the at-the-money volatility, symmetrized). Both are quoted directly as tradeable volatility spreads in the interbank market, alongside the at-the-money volatility $\sigma_{\text{ATM}}$ itself; together the three numbers (ATM, RR, BF) at each delta level and tenor parametrize the volatility smile.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Sign and Magnitude of EM Skew</h2>
+
+                <p>Quoting conventions for risk reversals specify which currency is the base and which is the quote currency, so the sign convention requires care; the economically meaningful statement is in terms of which side of the smile — calls or puts on the EM currency — trades at higher implied volatility.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — EM FX Skew Reflects Crash Risk</div>
+                    <p class="mb-0">For most EM currencies against USD, options that pay off on EM currency <em>depreciation</em> (puts on the EM currency / calls on USD in EM-currency-per-USD terms) trade at materially higher implied volatility than equivalent-delta options that pay off on EM currency appreciation. This is the options-market expression of the same asymmetric risk discussed in Section 3.1: the market prices in a meaningfully higher probability (or severity) of a sharp depreciation than of a comparable appreciation. The risk reversal — typically quoted at a level corresponding to several volatility points in favor of EM-currency puts — is therefore a direct, continuously tradeable measure of the market's perceived crash risk, and tends to widen sharply (more negative for the EM currency, i.e. EM puts become even more expensive relative to calls) during episodes of stress, exactly when the carry trades of Section 3.1 are under pressure.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Pricing Tail Risk: The Smile as a Risk-Neutral Density</h2>
+
+                <p>The implied volatility smile encodes the market's risk-neutral probability density for the terminal spot rate $S_T$, via the Breeden-Litzenberger relationship between option prices and the second derivative of the price with respect to strike. A steep put skew corresponds to a risk-neutral density with a fatter left tail (higher probability mass assigned to large depreciations) than a lognormal distribution with the same at-the-money volatility would imply.</p>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Skew and the Implied Density</div>
+                    <p class="mb-0">Let $c(K,T)$ be the price of a call with strike $K$ and maturity $T$. The risk-neutral density of $S_T$ is:
+                    $$q(K) = e^{r_f T}\frac{\partial^2 c}{\partial K^2}\bigg|_{K}$$
+                    A volatility smile that is steeply downward-sloping in $K$ for low strikes (i.e. put skew, in the sense that low-strike implied volatilities are higher) increases $\partial^2 c/\partial K^2$ at low $K$ relative to the flat-smile (lognormal) case, raising $q(K)$ for low $K$ — i.e. assigning more probability to a sharply depreciated currency. The risk reversal is therefore not merely a quoting convention but a direct, model-free statement about the relative likelihood the market assigns to large currency moves in each direction.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example: Pricing a Risk Reversal Position</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Constructing a 25-Delta Risk Reversal</div>
+                    <p>Consider 3-month USD/local-currency (LC) options with spot $S_0 = 5.00$ (LC per USD) and the following market quotes:</p>
+                    <table class="table table-sm table-bordered" style="max-width:480px;">
+                        <thead><tr><th>Quantity</th><th>Value</th></tr></thead>
+                        <tbody>
+                            <tr><td>ATM volatility</td><td>14.0%</td></tr>
+                            <tr><td>25-delta risk reversal (LC put / USD call vs. LC call / USD put)</td><td>3.5 vol points</td></tr>
+                            <tr><td>25-delta butterfly</td><td>0.6 vol points</td></tr>
+                        </tbody>
+                    </table>
+                    <p>By convention, a positive risk reversal here means options that pay off on LC depreciation (USD calls / LC puts) trade richer than the corresponding LC appreciation options by 3.5 vols. Using $\text{RR} = \sigma_{\Delta C}-\sigma_{\Delta P} = 3.5$ and $\text{BF}=\frac{\sigma_{\Delta C}+\sigma_{\Delta P}}{2}-\sigma_{\text{ATM}}=0.6$ (with $\sigma_{\Delta C}$ the higher, depreciation-side volatility):
+                    $$\sigma_{\Delta C}+\sigma_{\Delta P} = 2(\sigma_{\text{ATM}}+\text{BF}) = 2(14.0+0.6)=29.2$$
+                    $$\sigma_{\Delta C}-\sigma_{\Delta P}=3.5$$
+                    Solving: $\sigma_{\Delta C} = (29.2+3.5)/2 = 16.35\%$, $\sigma_{\Delta P}=(29.2-3.5)/2=12.85\%$.</p>
+                    <p class="mb-0">A trader who buys the risk reversal — long the 25-delta USD call/LC put, short the 25-delta USD put/LC call — pays a net premium (since the option they buy, at 16.35% vol, is more expensive than the one they sell, at 12.85% vol) for a position that profits from LC depreciation beyond the strikes, partially financed by giving up the upside if LC appreciates beyond the other strike. This is the standard way an investor with a long-LC carry position (Section 3.1) hedges the crash-risk tail: paying away part of the carry to buy protection against exactly the depreciation scenario that would otherwise generate the large losses illustrated in the carry trade example.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-carry-trade-and-interest-rate-parity/" class="btn btn-outline-custom">&larr; 3.1 The Carry Trade and Interest Rate Parity</a>
+                    <a href="../../04-crises-contagion-and-case-studies/" class="btn btn-custom">4. Crises, Contagion, and Case Studies &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertible Arbitrage and Greeks</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Convertibles and Equity-Linked Products</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-convertible-bonds">
+                    <div class="toc-chapter-header">
+                        <a href="../01-convertible-bonds/" class="toc-chapter-link"><strong>1.</strong> Convertible Bond Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-convertible-bonds/01-structure-and-decomposition/">1.1 Structure and Decomposition</a>
+                        <a href="../01-convertible-bonds/02-regimes-and-call-put-features/">1.2 Regimes and Call/Put Features</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-convertible-bond-pricing">
+                    <div class="toc-chapter-header">
+                        <a href="../02-convertible-bond-pricing/" class="toc-chapter-link"><strong>2.</strong> Convertible Bond Pricing</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../02-convertible-bond-pricing/01-binomial-and-pde-valuation/">2.1 Binomial and PDE Valuation</a>
+                        <a href="../02-convertible-bond-pricing/02-credit-risk-and-hazard-rate-models/">2.2 Credit Risk and Hazard-Rate Models</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-convertible-arbitrage-and-greeks">
+                    <div class="toc-chapter-header">
+                        <a href="../03-convertible-arbitrage-and-greeks/" class="toc-chapter-link"><strong>3.</strong> Convertible Arbitrage and Greeks</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../03-convertible-arbitrage-and-greeks/01-delta-hedging-and-gamma-trading/">3.1 Delta Hedging and Gamma Trading</a>
+                        <a href="../03-convertible-arbitrage-and-greeks/02-vega-credit-and-cross-greeks/">3.2 Vega, Credit Spread Risk, and Cross-Greeks</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-other-equity-linked-structures">
+                    <div class="toc-chapter-header">
+                        <a href="../04-other-equity-linked-structures/" class="toc-chapter-link"><strong>4.</strong> Other Equity-Linked Structures</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../04-other-equity-linked-structures/01-mandatory-convertibles-and-exchangeables/">4.1 Mandatory Convertibles and Exchangeables</a>
+                        <a href="../04-other-equity-linked-structures/02-equity-linked-notes-and-structured-products/">4.2 Equity-Linked Notes and Structured Products</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../">Quant</a> › <a href="../">Convertibles and Equity-Linked Products</a> › <span>Convertible Arbitrage and Greeks</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3. Convertible Arbitrage and Greeks</h1>
+                <p>The lattice and PDE machinery of Chapter 2 produces not just a price but a set of sensitivities — the Greeks — that describe how the convertible's value responds to small moves in the stock price, volatility, interest rates, and the issuer's credit spread. This chapter develops the delta and gamma of a convertible and shows how convertible arbitrage funds construct a delta-hedged position — long the convertible, short the delta-equivalent amount of stock — designed to profit from gamma trading (re-hedging as the stock moves) when the convertible's implied volatility is cheap relative to the stock's realised volatility.</p>
+                <p>The second part of the chapter extends the Greek framework to vega (volatility sensitivity) and credit-spread sensitivity (an analogue of CS01 for convertibles), and examines the cross-greeks that couple these exposures — most importantly, how a convertible's delta itself depends on the credit spread, given the credit-equity coupling introduced in Section 2.2. We close with a discussion of the risks that a delta-hedged convertible arbitrage book retains even when "fully hedged" on a model basis, using the 2008 convertible arbitrage unwind as a conceptual case study of how these risks can compound.</p>
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-convertible-bond-pricing/02-credit-risk-and-hazard-rate-models/" class="btn btn-outline-custom">&larr; 2.2 Credit Risk and Hazard-Rate Models</a>
+                    <a href="01-delta-hedging-and-gamma-trading/" class="btn btn-custom">3.1 Delta Hedging and Gamma Trading &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body></html>

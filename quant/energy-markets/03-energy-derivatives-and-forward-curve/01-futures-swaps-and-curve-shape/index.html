@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futures, Swaps, and the Shape of the Energy Curve</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Energy Markets</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-oil-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-oil-markets/" class="toc-chapter-link"><strong>1.</strong> Crude Oil Markets and Refining Economics</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-oil-markets/01-crude-benchmarks-and-quality-differentials/">1.1 Crude Benchmarks, Grades, and Quality Differentials</a>
+                        <a href="../../01-oil-markets/02-refining-margins-and-storage-economics/">1.2 Refining Margins, Product Markets, and Storage Economics</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-natural-gas-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-natural-gas-markets/" class="toc-chapter-link"><strong>2.</strong> Natural Gas Markets</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-natural-gas-markets/01-natural-gas-pricing-hubs-and-seasonality/">2.1 Natural Gas Pricing, Hubs, and Seasonality</a>
+                        <a href="../../02-natural-gas-markets/02-lng-and-storage-cycles/">2.2 LNG, Pipeline Economics, and Storage/Injection-Withdrawal Cycles</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-energy-derivatives-and-forward-curve">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-energy-derivatives-and-forward-curve/" class="toc-chapter-link"><strong>3.</strong> Energy Derivatives and the Forward Curve</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-energy-derivatives-and-forward-curve/01-futures-swaps-and-curve-shape/">3.1 Futures, Swaps, and the Shape of the Energy Curve</a>
+                        <a href="../../03-energy-derivatives-and-forward-curve/02-crack-and-spark-spreads/">3.2 Crack Spreads, Spark Spreads, and Cross-Commodity Hedges</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-energy-risk-and-market-structure">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-energy-risk-and-market-structure/" class="toc-chapter-link"><strong>4.</strong> Energy Risk and Market Structure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-energy-risk-and-market-structure/01-opec-and-geopolitical-risk/">4.1 OPEC+, Geopolitical Risk, and Supply Shocks</a>
+                        <a href="../../04-energy-risk-and-market-structure/02-energy-transition-and-carbon-markets/">4.2 Energy Transition, Carbon Markets, and Renewable Risk</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Energy Markets</a> › <a href="../">3. Energy Derivatives and the Forward Curve</a> › <span>Futures, Swaps, and the Shape of the Energy Curve</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.1 Futures, Swaps, and the Shape of the Energy Curve</h1>
+
+                <p>Energy markets transfer price risk through a range of derivative instruments, of which exchange-traded futures and over-the-counter (OTC) swaps are the two most fundamental. While economically similar, they differ in settlement mechanics, counterparty structure, and the markets in which they are most commonly used — differences that matter for how the energy forward curve is constructed and traded.</p>
+
+                <h2 class="mt-5 mb-3">Futures versus Swaps</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Energy Futures and Swaps</div>
+                    <p><strong>Futures</strong> are exchange-traded, standardised contracts (e.g., NYMEX WTI, NYMEX Henry Hub, ICE Brent) for delivery or cash settlement at a specified future date, cleared through a central counterparty with daily mark-to-market margining. A given futures "curve" is the set of prices for contracts expiring in successive months (or, for some products, quarters/seasons).</p>
+                    <p class="mb-0"><strong>Swaps</strong> are OTC contracts, typically based on the average of a reference price (e.g., the average daily settlement of the front-month futures contract over a calendar month) over a specified period, exchanged for a fixed price agreed at inception. Swaps are the primary instrument used by commercial hedgers — producers, refiners, utilities — to lock in a price for a future period without taking on the operational complexity of managing a futures position into expiry (physical delivery or daily margin calls).</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why the Distinction Matters</div>
+                    <p class="mb-0">For pricing purposes, a swap based on the average of futures settlements over a month is economically similar to (though not identical to) a strip of daily futures positions — the "Asian" or average-price structure of many energy swaps means their value depends on the average price over a period, not the price on a single date, which has consequences for volatility (averaging reduces variance) and for how such instruments should be hedged (a swap on the average requires a position that itself decays through the averaging period, rather than a static futures position).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Contango and Backwardation Revisited</h2>
+
+                <p>Chapter 1 introduced contango and backwardation in the context of crude oil storage economics. The same cost-of-carry framework applies across the energy complex, but the relative importance of its components — financing cost, physical storage cost, and convenience yield — differs by commodity.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Drivers of Curve Shape by Commodity</div>
+                    <p><strong>Crude oil</strong> has relatively low storage costs as a fraction of its value and is easily transportable, so its curve shape is most sensitive to the balance between current inventory levels (driving convenience yield) and expectations of future supply/demand — persistent contango often signals an oversupplied market building inventory, while backwardation signals a tight market drawing down inventory.</p>
+                    <p class="mb-0"><strong>Natural gas</strong> exhibits a structural seasonal pattern (Section 2.1, 2.2) layered on top of any contango/backwardation from storage economics — the curve's shape over a single year is dominated by the winter/summer seasonal pattern, while the year-over-year level reflects broader supply/demand expectations.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Samuelson Effect</h2>
+
+                <p>One of the most important empirical and theoretical features of commodity forward curves — including energy — is that volatility is not constant across the curve. Near-dated (front-month) contracts tend to be substantially more volatile than far-dated contracts, a phenomenon known as the <strong>Samuelson effect</strong> after economist Paul Samuelson, who first formalised it.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem (Informal) — The Samuelson Effect</div>
+                    <p class="mb-0">For a storable commodity, the volatility of the futures price $F_{t,T}$ tends to increase as $t \to T$ — that is, as the contract approaches expiry, its price volatility increases. Intuitively, news that affects the spot price (a supply outage, a demand shock) has a large effect on near-term futures prices, because there is little time for storage and production responses to absorb the shock before delivery. The same news has a much smaller effect on far-dated futures, because producers and storage operators have ample time to adjust supply, demand, and inventories before that contract's delivery date arrives — the "self-correcting" mechanism of storage and production response dampens the impact of shocks on longer-dated prices.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Term Structure of Volatility and Option Pricing</div>
+                    <p class="mb-0">The Samuelson effect implies that implied volatility for options on energy futures generally declines with the underlying futures contract's time to expiry — an at-the-money option on the front-month contract typically has higher implied volatility than an option of the same tenor on a contract expiring a year later. This has direct consequences for hedging: a hedge using far-dated futures or options will be less responsive to near-term price shocks than a hedge using near-dated instruments, even if both have the same notional exposure, because the underlying instruments themselves move by different amounts in response to the same news. Models used to price energy options (e.g., one- and two-factor mean-reverting models) are explicitly constructed to reproduce this declining term structure of volatility, in contrast to the roughly flat term structure often assumed for equity or FX volatility.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Curve Shape and the Behaviour of Calendar Spreads</h2>
+
+                <p>Because near-dated prices are more volatile and more sensitive to current physical conditions (inventory, weather, outages) than far-dated prices, <em>calendar spreads</em> — the difference between two futures contracts of different maturities on the same underlying — are a primary tool for expressing views on physical tightness independent of the overall price level.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Calendar Spreads as a Tightness Signal</div>
+                    <p class="mb-0">A trader who believes the prompt market is tightening (e.g., inventories are drawing down faster than seasonal norms) but has no view on the overall direction of prices can express this view by buying the near-dated contract and selling a far-dated contract — a calendar spread trade. If the market is indeed tightening, the near-dated contract should rise relative to the far-dated contract (the curve moves toward backwardation), profiting the position regardless of whether the overall price level rises or falls. This is precisely the mechanism that links the WTI front-month/second-month spread to Cushing inventory levels discussed in Section 1.2, and the gas summer-winter spread to storage levels discussed in Section 2.2.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 3. Energy Derivatives and the Forward Curve</a>
+                    <a href="../02-crack-and-spark-spreads/" class="btn btn-custom">3.2 Crack Spreads, Spark Spreads, and Cross-Commodity Hedges &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>
