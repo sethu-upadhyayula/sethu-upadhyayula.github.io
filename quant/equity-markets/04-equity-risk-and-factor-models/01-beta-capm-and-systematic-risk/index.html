@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beta, CAPM, and Systematic Risk</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Equity Markets</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-equity-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-equity-markets/" class="toc-chapter-link"><strong>1.</strong> Equity Markets</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-equity-markets/01-equity-basics/">1.1 Equity Basics</a>
+                        <a href="../../01-equity-markets/02-stock-indices/">1.2 Stock Indices</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-equity-market-structure-and-trading">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-equity-market-structure-and-trading/" class="toc-chapter-link"><strong>2.</strong> Equity Market Structure and Trading</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-equity-market-structure-and-trading/01-exchanges-order-types-and-microstructure/">2.1 Exchanges, Order Types, and Market Microstructure</a>
+                        <a href="../../02-equity-market-structure-and-trading/02-dark-pools-hft-and-market-making/">2.2 Dark Pools, HFT, and Market Making</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-corporate-actions-and-valuation">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-corporate-actions-and-valuation/" class="toc-chapter-link"><strong>3.</strong> Corporate Actions and Equity Valuation</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-corporate-actions-and-valuation/01-dividends-splits-and-corporate-actions/">3.1 Dividends, Splits, and Corporate Actions</a>
+                        <a href="../../03-corporate-actions-and-valuation/02-fundamental-valuation-approaches/">3.2 Fundamental Valuation Approaches</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-equity-risk-and-factor-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-equity-risk-and-factor-models/" class="toc-chapter-link"><strong>4.</strong> Equity Risk and Factor Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-equity-risk-and-factor-models/01-beta-capm-and-systematic-risk/">4.1 Beta, CAPM, and Systematic Risk</a>
+                        <a href="../../04-equity-risk-and-factor-models/02-factor-investing-value-momentum-quality/">4.2 Factor Investing: Value, Momentum, and Quality</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Equity Markets</a> › <a href="../">4. Equity Risk and Factor Models</a> › <span>Beta, CAPM, and Systematic Risk</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Beta, CAPM, and Systematic Risk</h1>
+
+                <p>The Capital Asset Pricing Model (CAPM) is the foundational framework for understanding why expected returns differ across assets, and is the starting point for nearly every subsequent development in equity risk modelling. Its central insight is that not all risk is rewarded: risk that can be diversified away earns no compensation, and only the risk that cannot be diversified — systematic, or market, risk — should command a premium.</p>
+
+                <h2 class="mt-5 mb-3">Systematic vs Idiosyncratic Risk</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Decomposing Stock Returns</div>
+                    <p>The return on any individual stock $i$ can be decomposed into a component driven by the overall market and a component specific to the firm:
+                    $$R_i = \alpha_i + \beta_i R_m + \epsilon_i$$
+                    where $R_m$ is the return on the market portfolio, $\beta_i$ measures the stock's sensitivity to market moves, $\alpha_i$ is a constant, and $\epsilon_i$ is an idiosyncratic (firm-specific) shock with $E[\epsilon_i] = 0$ and $\text{Cov}(\epsilon_i, R_m) = 0$.</p>
+                    <p class="mb-0"><strong>Systematic (market) risk</strong> is the portion of variance driven by $\beta_i R_m$ — it affects all stocks to varying degrees and cannot be eliminated by holding more stocks. <strong>Idiosyncratic (specific) risk</strong> is the variance of $\epsilon_i$ — firm-specific news, management decisions, lawsuits — which is uncorrelated across companies and shrinks toward zero as a portfolio is diversified across many holdings.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Diversification and the Limits of Risk Reduction</div>
+                    <p class="mb-0">For a portfolio of $N$ equally-weighted stocks each with idiosyncratic variance $\sigma_\epsilon^2$ and zero correlation between idiosyncratic terms, the portfolio's idiosyncratic variance is $\sigma_\epsilon^2/N$, which approaches zero as $N \to \infty$. The systematic component, however, does not diversify away: every stock's return contains a $\beta_i R_m$ term, and a portfolio's exposure to $R_m$ is simply the weighted average of the constituent betas. This is why a well-diversified portfolio's risk is dominated by its exposure to systematic factors — and why CAPM argues that only systematic risk should be priced.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">CAPM Derivation and Assumptions</h2>
+
+                <p>CAPM derives an equilibrium relationship between an asset's systematic risk and its expected return, building on mean-variance portfolio theory.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — The CAPM Equation</div>
+                    <p>Under the CAPM, the expected return on any asset $i$ satisfies:
+                    $$E[R_i] = r_f + \beta_i \left(E[R_m] - r_f\right)$$
+                    where $r_f$ is the risk-free rate, $E[R_m]$ is the expected return on the market portfolio, and $\beta_i = \dfrac{\text{Cov}(R_i, R_m)}{\text{Var}(R_m)}$ is the asset's beta. The term $E[R_m] - r_f$ is the <em>market risk premium</em> — the excess return investors require for bearing market risk.</p>
+                    <p class="mb-0">The model implies that an asset's expected excess return is determined entirely by $\beta_i$: two assets with the same beta must have the same expected return, regardless of their idiosyncratic risk, total variance, or any other characteristic.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Key Assumptions</div>
+                    <p>CAPM's clean result rests on a set of idealised assumptions: all investors are mean-variance optimisers with identical expectations about asset returns, variances, and covariances (homogeneous expectations); investors can borrow and lend unlimited amounts at the risk-free rate $r_f$; there are no taxes, transaction costs, or other frictions; and all assets are perfectly divisible and tradeable.</p>
+                    <p class="mb-0">Under these assumptions, every investor holds some combination of the risk-free asset and the same risky portfolio — the <em>market portfolio</em> $M$, which must be the value-weighted portfolio of all risky assets in equilibrium. Real markets violate most of these assumptions to varying degrees, which motivates both the empirical critiques of CAPM and the multi-factor extensions covered in Section 4.2.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Beta Estimation</h2>
+
+                <p>In practice, beta is not observed directly but estimated from historical return data using linear regression.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Estimating Beta by Regression</div>
+                    <p class="mb-0">Given a time series of excess returns on stock $i$, $r_{i,t} = R_{i,t} - r_{f,t}$, and excess returns on the market, $r_{m,t} = R_{m,t} - r_{f,t}$, beta is estimated as the slope coefficient of the ordinary least squares regression:
+                    $$r_{i,t} = \alpha_i + \beta_i r_{m,t} + \epsilon_{i,t}$$
+                    Equivalently, $\hat\beta_i = \dfrac{\widehat{\text{Cov}}(r_i, r_m)}{\widehat{\text{Var}}(r_m)}$. Estimates are sensitive to the choice of estimation window (e.g. 2 years of weekly data vs 5 years of monthly data) and to the choice of market proxy (e.g. S&amp;P 500 vs a broader global index), and betas are known to be unstable over time — a stock's risk profile can change as its business mix, leverage, or the macroeconomic regime evolves.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Security Market Line</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Security Market Line (SML)</div>
+                    <p class="mb-0">The Security Market Line is the graphical representation of the CAPM equation: a line in $(\beta, E[R])$ space with intercept $r_f$ and slope $E[R_m] - r_f$, on which every asset should plot in equilibrium. An asset plotting <em>above</em> the SML offers a higher expected return than CAPM predicts for its level of systematic risk (it appears "underpriced"); an asset plotting <em>below</em> the SML offers a lower expected return than warranted ("overpriced"). The vertical distance of an asset's realised average return from the SML is its estimated $\alpha$ — the basis for assessing whether a manager or strategy has generated returns beyond what their market exposure alone would predict.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example: Beta and CAPM</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Computing an Expected Return with CAPM</div>
+                    <p>A regression of a stock's weekly excess returns against the market's weekly excess returns over the past three years yields an estimated beta of $\hat\beta = 1.3$. The risk-free rate is $r_f = 3\%$ and the expected market risk premium is $E[R_m] - r_f = 5\%$.</p>
+                    <p>The CAPM-implied expected return on the stock is:
+                    $$E[R_i] = r_f + \beta_i(E[R_m]-r_f) = 3\% + 1.3 \times 5\% = 3\% + 6.5\% = 9.5\%$$</p>
+                    <p class="mb-0">A beta of $1.3$ means the stock is expected to move approximately 1.3% for every 1% move in the market — amplifying both gains and losses relative to the market portfolio. If the stock's realised average return over the period was $12\%$, its estimated alpha is $12\% - 9.5\% = 2.5\%$ per year — a positive excess return relative to its systematic risk exposure, which a portfolio manager might attribute to skill, though it could equally reflect exposure to other priced factors not captured by market beta alone (Section 4.2).</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Equity Risk and Factor Models</a>
+                    <a href="../02-factor-investing-value-momentum-quality/" class="btn btn-custom">4.2 Factor Investing: Value, Momentum, and Quality &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

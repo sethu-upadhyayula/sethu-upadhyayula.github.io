@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Derivatives and Capacity Markets</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Power and Emissions</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-natural-gas-and-electricity">
+                    <div class="toc-chapter-header">
+                        <a href="../01-natural-gas-and-electricity/" class="toc-chapter-link"><strong>1.</strong> Natural Gas and Electricity</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-carbon-and-emissions-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../02-carbon-and-emissions-markets/" class="toc-chapter-link"><strong>2.</strong> Carbon and Emissions Markets</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-power-derivatives-and-capacity-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../03-power-derivatives-and-capacity-markets/" class="toc-chapter-link"><strong>3.</strong> Power Derivatives and Capacity Markets</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-renewables-and-environmental-attributes">
+                    <div class="toc-chapter-header">
+                        <a href="../04-renewables-and-environmental-attributes/" class="toc-chapter-link"><strong>4.</strong> Renewables, PPAs, and Environmental Attributes</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../">Quant</a> › <a href="../">Power and Emissions</a> › <span>Power Derivatives and Capacity Markets</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3. Power Derivatives and Capacity Markets</h1>
+
+                <p>Once the spot characteristics of power markets — non-storability, load curves, the merit order, and price spikes — are understood (Section 1), the next step is how market participants trade and hedge forward exposure to electricity prices, and how regulators ensure enough generating capacity exists to meet demand in the first place.</p>
+
+                <h2 class="mt-5 mb-3">Power Forwards and Futures: Peak vs Off-Peak</h2>
+
+                <p>Unlike most commodities, a power forward contract does not specify delivery of a single fixed quantity at a single instant. Instead, it specifies delivery of electricity at a constant rate (in MW) over a defined delivery period, and — critically — over a defined set of hours within that period.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Peak and Off-Peak Contracts</div>
+                    <p><strong>On-peak (peak)</strong> contracts cover delivery during the hours of highest demand — typically weekday hours (e.g., 7am-11pm Monday through Friday, excluding holidays, in many U.S. markets), when the merit order is most likely to call on expensive marginal generation.</p>
+                    <p class="mb-0"><strong>Off-peak</strong> contracts cover the remaining hours — nights, weekends, and holidays — when demand and prices are typically lower and less volatile. A "round-the-clock" (RTC, or "flat") contract covers all hours and is, by construction, a load-weighted blend of the peak and off-peak contracts for the same period.</p>
+                </div>
+
+                <p>Because a forward contract delivers a constant MW rate across all hours in its delivery window, its payoff is tied to the <em>average</em> price over those hours, not to the price at any single point. This is the defining feature of a "load shape" product: the value of a forward depends not just on the average level of prices but on how prices are distributed across the hours the contract covers.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Load Shapes and Shaped Products</div>
+                    <p>A flat (RTC) forward pays the simple average of hourly prices over the delivery period:
+                    $$\text{Flat Price} = \frac{1}{N}\sum_{i=1}^{N} P_i$$
+                    where $P_i$ is the spot price in hour $i$ and $N$ is the total number of hours. A peak forward pays the average only over the on-peak hours, $N_{\text{peak}} < N$. Because the most extreme price spikes occur almost exclusively during peak hours (Section 1), the peak price is systematically higher than the off-peak price, and the spread between them — the <strong>peak/off-peak spread</strong> — is itself a traded and hedged quantity, particularly for generators and retailers whose load is not flat.</p>
+                    <p class="mb-0">A retailer serving customers whose consumption is concentrated in peak hours (e.g., commercial and industrial load) is more exposed to peak price risk than one serving predominantly off-peak residential load (e.g., heating load that runs overnight). Hedging programmes are therefore built around the shape of the load being served, not just its total volume — a flat hedge on a peaky load leaves the retailer short exactly the hours where prices are most volatile.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Spark Spread as a Power Derivative</h2>
+
+                <p>Section 1 introduced the spark spread as the gross margin of a gas-fired generator. The same quantity is also traded directly as a derivative — a <strong>spark spread option</strong> or <strong>spark spread swap</strong> — allowing a generator to hedge its margin without separately hedging gas and power.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Spark Spread Option</div>
+                    <p class="mb-0">A spark spread call option with a fixed heat rate $H$ pays
+                    $$\max\left(P_{\text{power}} - H \times P_{\text{gas}} - K, 0\right)$$
+                    per MWh, where $K$ is a strike representing the plant's variable non-fuel costs (and any desired margin above breakeven). A generator that owns such an option (or replicates its payoff via a tolling agreement) effectively monetises its physical optionality to run only when the spread covers its costs — the option payoff mirrors the generator's actual dispatch decision. Because the payoff depends on the <em>difference</em> of two correlated underlyings, spark spread options are priced using two-factor models (e.g., a bivariate lognormal or a Margrabe-style exchange option formula) rather than a single-asset Black-Scholes formula, and the correlation between gas and power prices is a key — and often unstable — input.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Tolling Agreement as a Strip of Spark Spread Options</div>
+                    <p class="mb-0">A tolling agreement gives a counterparty the right to convert gas into power at a specified plant for a fee, for a specified period. Economically, this is equivalent to a strip of daily (or hourly) spark spread call options with strike equal to the plant's variable operating cost and notional equal to the plant's capacity — the toller "exercises" on any hour where the spark spread is positive net of the toll fee, and the plant owner receives the toll fee regardless of whether the option is exercised. Valuing a tolling agreement is therefore a direct application of spark spread option pricing, summed across every hour (or block of hours) in the agreement's term, accounting for the plant's operational constraints (start-up costs, minimum run times, ramp rates) that a pure financial option does not have.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Capacity Markets and Resource Adequacy</h2>
+
+                <p>Energy markets pay generators for the MWh of electricity they produce. But because power demand is inelastic and peaks are short-lived, a generator that only runs a handful of hours per year during extreme peaks (a "peaker") may never earn enough energy-market revenue to cover its fixed costs, even though that capacity is essential for keeping the lights on during those rare hours. Capacity markets exist to address this "missing money" problem.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Capacity Market</div>
+                    <p class="mb-0">A capacity market is a separate market, run by the grid operator, in which generators (and increasingly demand-response providers and storage) are paid a fixed price per MW of capacity they commit to make available during a future delivery period, in exchange for an obligation to be available (and to bid into the energy market) when called upon — typically enforced through performance penalties if the resource fails to deliver during a system-wide scarcity event. The capacity price is set through an auction (e.g., a descending-clock auction) where the grid operator's demand curve reflects the total capacity needed to meet a target reliability standard, such as a 1-in-10-year loss-of-load expectation.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Resource Adequacy</div>
+                    <p><strong>Resource adequacy</strong> is the property of a power system having enough generation, storage, and demand-response resources — accounting for outages, maintenance, and weather-driven demand swings — to reliably meet peak demand with an acceptably low probability of shortfall. Capacity markets are one mechanism (alongside vertically-integrated utility planning and bilateral resource adequacy contracts in other jurisdictions) for procuring this reliability.</p>
+                    <p class="mb-0">From a market participant's perspective, capacity revenue is a second, largely decorrelated revenue stream alongside energy and ancillary services revenue. A generator's total revenue is the sum of energy-market margins (driven by the spark spread and dispatch), capacity payments (driven by the capacity auction clearing price and the unit's accredited capacity value), and any ancillary services payments — and project finance for new generation, particularly peakers and storage, often depends heavily on the certainty (or lack thereof) of future capacity revenues.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Basis Risk Between Power Hubs</h2>
+
+                <p>Power forward and futures contracts are typically settled against prices at specific, liquid pricing points — "hubs" — within a grid (e.g., PJM West Hub, ERCOT North Hub, the German EPEX day-ahead price). A market participant whose physical exposure is at a different location (a specific generating plant or load zone) faces basis risk: the difference between the hub price used for hedging and the local price actually realised.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Locational Basis and Congestion</div>
+                    <p>In a locational marginal pricing (LMP) system, the price at any node on the grid equals a system-wide energy price plus a congestion component (reflecting binding transmission constraints between that node and the rest of the grid) plus a losses component (reflecting marginal transmission losses). The basis between a hub price and a local node's price is therefore driven primarily by transmission congestion, which varies with load patterns, generation availability (including intermittent renewables), and planned or unplanned outages on the transmission network.</p>
+                    <p class="mb-0">Unlike basis risk in, say, crude oil (where regional spreads tend to be relatively stable and driven by transport economics), locational power basis can be highly volatile and can even change sign — a node that is normally at a small discount to the hub can spike to a large premium during a localised transmission outage or a period of high renewable curtailment. Hedgers with significant locational exposure often supplement hub-based hedges with congestion-revenue-rights or financial transmission rights — instruments that pay the basis itself between two specified locations — to more precisely hedge their actual delivery point.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-carbon-and-emissions-markets/" class="btn btn-outline-custom">&larr; 2. Carbon and Emissions Markets</a>
+                    <a href="../04-renewables-and-environmental-attributes/" class="btn btn-custom">4. Renewables, PPAs, and Environmental Attributes &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body></html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Hedging in Practice</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Equity Derivatives</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-equity-derivatives">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-equity-derivatives/" class="toc-chapter-link"><strong>1.</strong> Equity Derivatives</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-equity-derivatives/01-equity-forwards-and-futures/">1.1 Equity Forwards and Futures</a>
+                        <a href="../../01-equity-derivatives/02-vanilla-options/">1.2 Vanilla Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-black-scholes">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-black-scholes/" class="toc-chapter-link"><strong>2.</strong> The Black-Scholes Framework</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-black-scholes/01-black-scholes-formula/">2.1 The Black-Scholes Formula</a>
+                        <a href="../../02-black-scholes/02-the-greeks/">2.2 The Greeks</a>
+                        <a href="../../02-black-scholes/03-implied-volatility/">2.3 Implied Volatility</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-volatility-modeling">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-volatility-modeling/" class="toc-chapter-link"><strong>3.</strong> Volatility Modeling</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-volatility-modeling/01-local-volatility/">3.1 Local Volatility</a>
+                        <a href="../../03-volatility-modeling/02-stochastic-volatility/">3.2 Stochastic Volatility Models</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-equity-derivatives-risk-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-equity-derivatives-risk-management/" class="toc-chapter-link"><strong>4.</strong> Equity Derivatives Risk Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-equity-derivatives-risk-management/01-dynamic-hedging-in-practice/">4.1 Dynamic Hedging in Practice</a>
+                        <a href="../../04-equity-derivatives-risk-management/02-dividend-and-borrow-cost-risk/">4.2 Dividend and Borrow Cost Risk</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> &rsaquo; <a href="../../">Equity Derivatives</a> &rsaquo; <a href="../">4. Equity Derivatives Risk Management</a> &rsaquo; <span>Dynamic Hedging in Practice</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Dynamic Hedging in Practice</h1>
+
+                <p>The Black-Scholes derivation relies on a delta-hedged portfolio that is rebalanced <em>continuously</em> and <em>costlessly</em>, perfectly replicating the option's payoff with zero risk. Real trading desks rehedge in discrete time &mdash; once or a few times a day &mdash; and every rebalancing trade incurs bid-ask spread and market impact. This section examines how this gap between theory and practice shapes the P&amp;L of an option position and how desks think about hedging frequency.</p>
+
+                <h2 class="mt-5 mb-3">Delta Hedging Frequency and Transaction Costs</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition &mdash; Discrete Delta Hedging</div>
+                    <p class="mb-0">A delta-hedged option position holds $-\Delta$ shares of the underlying against a long option, where $\Delta = \partial V/\partial S$ is the Black-Scholes delta. Under <em>discrete</em> hedging, the hedge ratio is recalculated and the stock position adjusted only at a finite set of times $t_0 < t_1 < \dots < t_n$ rather than continuously. Between rehedge dates, the portfolio is exposed to changes in $\Delta$ driven by movements in spot, time decay, and (for stochastic volatility) changes in implied volatility.</p>
+                </div>
+
+                <p>Each rehedge trade of size $|\Delta_{t_{i+1}} - \Delta_{t_i}|$ shares costs roughly $\tfrac{1}{2}(\text{bid-ask spread}) \times |\Delta_{t_{i+1}} - \Delta_{t_i}| \times S$, plus any market impact for large size. There is therefore a direct trade-off: hedging more frequently reduces the variance of the hedging error (the portfolio tracks the theoretical delta-neutral P&amp;L more closely) but increases cumulative transaction costs, which scale roughly with the <em>total variation</em> of the delta path &mdash; itself driven by gamma and the realized path of the underlying.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark &mdash; The Hedging Frequency Trade-off</div>
+                    <p><strong>Too infrequent.</strong> Rehedging only once a day (or less) leaves the position significantly exposed to gamma risk between rehedges &mdash; large intraday moves are not captured, and the realized hedging P&amp;L can deviate substantially from its theoretical expectation, especially for high-gamma, near-the-money, short-dated options.</p>
+                    <p class="mb-0"><strong>Too frequent.</strong> Rehedging continuously (in the limit, every tick) drives transaction costs to infinity for any nonzero bid-ask spread, since the delta of an option is a continuous but infinitely-varying process. In practice, desks choose a hedging frequency (or a band around the target delta, rehedging only when delta drifts outside the band) that balances expected transaction costs against the variance of the hedging error &mdash; a classic mean-variance trade-off, formalized in models such as Leland's adjusted-volatility approach, which inflates the volatility used for pricing/hedging to account for the expected cost of discrete rehedging.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Gamma and Theta P&amp;L from Discrete Hedging</h2>
+
+                <p>Consider a delta-hedged long option position held over a short interval $dt$ during which the spot moves by $dS$. To second order, the change in the option's value is</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem &mdash; P&amp;L Decomposition of a Delta-Hedged Position</div>
+                    <p>Over a small time interval $dt$ with spot move $dS$, the P&amp;L of a delta-hedged long option position (long the option, short $\Delta$ shares, financed at the risk-free rate) is, to second order in $dS$,
+                    $$d\Pi \approx \underbrace{\tfrac{1}{2}\Gamma\,dS^2}_{\text{gamma P\&L}} + \underbrace{\Theta\,dt}_{\text{theta P\&L}}$$
+                    where $\Gamma = \partial^2 V/\partial S^2 > 0$ for a long vanilla option and $\Theta = \partial V/\partial t < 0$ (time decay). Substituting the realized variance $dS^2 \approx \sigma_{realized}^2 S^2\,dt$ for the actual move and the Black-Scholes relation $\Theta = -\tfrac{1}{2}\sigma_{implied}^2 S^2 \Gamma$ (from the Black-Scholes PDE, ignoring rate and dividend terms) gives
+                    $$d\Pi \approx \tfrac{1}{2}\Gamma S^2 \left(\sigma_{realized}^2 - \sigma_{implied}^2\right) dt$$</p>
+                    <p class="mb-0">This is the central result of dynamic hedging: a delta-hedged long option position earns a P&amp;L proportional to the difference between <em>realized</em> and <em>implied</em> variance, weighted by gamma. If realized volatility exceeds the implied volatility at which the option was bought, the gamma P&amp;L from rehedging more than compensates for the theta decay paid, and vice versa.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark &mdash; Why This Matters for Trading</div>
+                    <p class="mb-0">This decomposition is the reason option traders speak of "trading realized against implied" or being "long/short gamma." A trader who buys an option at implied volatility $\sigma_{implied}$ and delta-hedges is effectively taking a position that pays off according to the gap $\sigma_{realized}^2 - \sigma_{implied}^2$, accumulated and weighted by gamma along the realized path. This is the foundation of volatility trading strategies that are directionally neutral in spot but directional in volatility.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Hedging Error Analysis</h2>
+
+                <p>The formula above describes the <em>expected</em> P&amp;L under continuous hedging. With discrete hedging, the realized P&amp;L over any single path deviates from this expectation &mdash; this deviation is the <em>hedging error</em>.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark &mdash; Sources and Behaviour of Hedging Error</div>
+                    <p><strong>Discretization error.</strong> Even with zero transaction costs, rehedging at discrete times $t_0, \dots, t_n$ rather than continuously introduces a tracking error whose variance, for a fixed total time horizon, decreases roughly proportionally to $1/n$ as the number of rehedges $n$ increases &mdash; doubling the hedging frequency roughly halves the variance of the discretization error.</p>
+                    <p><strong>Path dependence.</strong> Because the gamma P&amp;L term $\tfrac{1}{2}\Gamma\,dS^2$ depends on the realized squared move at each step, the cumulative hedging error over the life of the option depends on the entire realized path of the underlying, not just its terminal value &mdash; two paths that end at the same spot level but took different routes (e.g. one calm, one volatile) produce different hedging P&amp;Ls.</p>
+                    <p class="mb-0"><strong>Distribution of the hedging error.</strong> For a fixed hedging frequency, the distribution of the total hedging error across many simulated paths is approximately mean-zero (relative to the continuous-hedging benchmark) but has substantial variance and fat tails &mdash; large discrete moves between rehedges (jumps, gaps) produce outsized gamma P&amp;L swings that a continuous-hedging analysis would not predict. This is one reason desks monitor "P&amp;L explain" &mdash; decomposing realized daily P&amp;L into the Greek-attributed components (delta, gamma, theta, vega) plus an unexplained residual that captures hedging error and model misspecification.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example &mdash; Discrete-Hedging P&amp;L</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example &mdash; One Day of Delta Hedging</div>
+                    <p>A trader holds a long position in one at-the-money call option on a stock currently at $S=100$, with $\Gamma = 0.04$ (i.e. delta changes by $0.04$ per $1 move in $S$) and an implied volatility of $\sigma_{implied}=20\%$, corresponding to a daily implied variance of $\sigma_{implied}^2/252 \approx 0.0159\%$, i.e. $dt=1/252$.</p>
+                    <p>Suppose the stock actually moves by $+2$ over the day (a realized move of $2\%$, so $dS^2 = 4$), giving a realized daily variance of $dS^2/S^2 = 4/10{,}000 = 0.04\%$ &mdash; an annualized realized volatility of $\sigma_{realized} = \sqrt{0.0004 \times 252} \approx 31.7\%$, well above the $20\%$ implied volatility at which the option was bought.</p>
+                    <p>The gamma P&amp;L from this single day's rehedging is approximately
+                    $$\tfrac{1}{2}\Gamma\,dS^2 = \tfrac{1}{2}(0.04)(4) = 0.08$$
+                    while the theta paid for the day, using $\Theta \approx -\tfrac{1}{2}\sigma_{implied}^2 S^2 \Gamma\,dt$, is approximately
+                    $$\tfrac{1}{2}(0.20)^2(100)^2(0.04)\left(\tfrac{1}{252}\right) \approx 0.0317$$</p>
+                    <p class="mb-0">Net daily P&amp;L from the delta-hedged position is therefore approximately $0.08 - 0.0317 \approx +0.048$ per option &mdash; a gain, because the realized move ($2\%$, annualizing to roughly $32\%$ realized vol) was larger than the $20\%$ implied volatility at which theta is being paid. Had the stock instead moved by only $dS=0.5$ (so $dS^2=0.25$, an annualized realized vol of about $7.9\%$), the gamma P&amp;L would have been only $\tfrac{1}{2}(0.04)(0.25)=0.005$, less than the theta cost of $0.0317$, producing a net loss of about $-0.027$ for the day &mdash; the familiar experience of a long-gamma position "bleeding" theta on quiet days and recovering it on volatile ones.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Equity Derivatives Risk Management</a>
+                    <a href="../02-dividend-and-borrow-cost-risk/" class="btn btn-custom">4.2 Dividend and Borrow Cost Risk &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

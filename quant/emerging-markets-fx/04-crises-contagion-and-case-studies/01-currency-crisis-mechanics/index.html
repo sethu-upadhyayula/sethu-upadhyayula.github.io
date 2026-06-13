@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Crisis Mechanics and Speculative Attacks</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Emerging Markets FX</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-emerging-markets-fx">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-emerging-markets-fx/" class="toc-chapter-link"><strong>1.</strong> EM Currency Market Structure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-emerging-markets-fx/01-non-deliverable-forwards-and-offshore-markets/">1.1 Non-Deliverable Forwards and Offshore Markets</a>
+                        <a href="../../01-emerging-markets-fx/02-onshore-offshore-basis-and-capital-controls/">1.2 Onshore-Offshore Basis, Capital Controls, and Fixing Risk</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-fx-regimes-and-central-bank-policy">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-fx-regimes-and-central-bank-policy/" class="toc-chapter-link"><strong>2.</strong> EM FX Regimes and Central Bank Policy</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-fx-regimes-and-central-bank-policy/01-exchange-rate-regimes/">2.1 Exchange Rate Regimes: Pegs, Bands, and Managed Floats</a>
+                        <a href="../../02-fx-regimes-and-central-bank-policy/02-intervention-reserves-and-sterilization/">2.2 Central Bank Intervention, Reserves, and Sterilization</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-carry-risk-premia-and-volatility">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-carry-risk-premia-and-volatility/" class="toc-chapter-link"><strong>3.</strong> Carry, Risk Premia, and EM FX Volatility</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-carry-risk-premia-and-volatility/01-carry-trade-and-interest-rate-parity/">3.1 The Carry Trade and Interest Rate Parity</a>
+                        <a href="../../03-carry-risk-premia-and-volatility/02-risk-reversals-skew-and-em-fx-options/">3.2 Risk Reversals, Skew, and EM FX Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-crises-contagion-and-case-studies">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-crises-contagion-and-case-studies/" class="toc-chapter-link"><strong>4.</strong> Crises, Contagion, and Case Studies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-crises-contagion-and-case-studies/01-currency-crisis-mechanics/">4.1 Currency Crisis Mechanics and Speculative Attacks</a>
+                        <a href="../../04-crises-contagion-and-case-studies/02-historical-case-studies/">4.2 Historical Case Studies</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Emerging Markets FX</a> › <a href="../">4. Crises, Contagion, and Case Studies</a> › <span>Currency Crisis Mechanics and Speculative Attacks</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Currency Crisis Mechanics and Speculative Attacks</h1>
+
+                <p>A currency crisis is a sudden, large depreciation of a currency, often accompanied by a forced abandonment of a peg or managed exchange rate regime, a sharp loss of reserves, and a spike in interest rates and risk premia. The theoretical literature on currency crises is conventionally organized into "generations," each emphasizing a different mechanism by which a fixed exchange rate regime becomes untenable and is attacked by speculators.</p>
+
+                <h2 class="mt-5 mb-3">First-Generation Models: Fundamentals-Driven Speculative Attacks</h2>
+
+                <p>The first-generation framework, associated with Krugman's analysis of balance-of-payments crises, describes a government running persistent fiscal deficits financed by money creation, while simultaneously trying to maintain a fixed exchange rate by selling foreign reserves to defend the peg. The model shows that such a regime is doomed to collapse — not gradually, but in a sudden speculative attack that occurs well before reserves would otherwise be exhausted.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Shadow Exchange Rate</div>
+                    <p class="mb-0">Let $R_t$ denote the central bank's stock of foreign reserves and suppose domestic credit $D_t$ grows at a constant rate due to deficit monetization, $\dot{D}_t = \mu > 0$. While the peg $S_t = \bar{S}$ holds, money supply is $M_t = D_t + R_t$ (in domestic-currency terms), and reserves fall at rate $\mu$ to offset the credit expansion and keep $M_t$ consistent with the fixed rate: $\dot{R}_t = -\mu$. The <em>shadow exchange rate</em> $\tilde{S}_t$ is the exchange rate that would prevail <em>if the peg were abandoned today and the central bank stopped intervening</em>, with the money stock equal to its post-collapse level $D_t$ (i.e. $R_t \to 0$):
+                    $$\tilde{S}_t = \bar{S}\cdot \frac{D_t}{D_0}\quad\text{(under a simple quantity-theory money demand)}$$
+                    Because $D_t$ grows over time while $\bar S$ is fixed, $\tilde S_t$ rises over time — the shadow rate is the depreciated level the currency would jump to upon collapse.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Timing of the Attack</div>
+                    <p class="mb-0">The peg cannot survive until reserves are literally exhausted ($R_t=0$) by gradual intervention alone. Instead, the attack occurs at the first time $T^*$ at which the shadow exchange rate equals the pegged rate, $\tilde{S}_{T^*} = \bar{S}$. At $T^*$, rational speculators recognize that holding domestic currency a moment longer, once $\tilde S > \bar S$, would mean accepting a below-market rate; they simultaneously convert their entire domestic money holdings into foreign currency, draining the <em>remaining</em> stock of reserves $R_{T^*}$ in one discrete jump. After the attack, the peg is abandoned, $R_{T^*}\to 0$, and the exchange rate floats at $\tilde S_{T^*} = \bar S$ (continuous at the moment of collapse, but free to depreciate further thereafter as $D_t$ continues to grow).</p>
+                </div>
+
+                <p>The key insight is that the collapse is <em>sudden and discrete</em> even though the underlying fundamental deterioration (the fiscal deficit and credit growth) is smooth and gradual. Speculators do not wait for reserves to hit zero — doing so would hand them a one-period riskless capital gain at the central bank's expense, which competitive speculators bid away by attacking earlier, at exactly the point where the shadow rate first reaches the pegged rate.</p>
+
+                <h2 class="mt-5 mb-3">Worked Example: Reserve Depletion Under a Peg</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Predictable Collapse from Steady Credit Growth</div>
+                    <p>A central bank pegs its currency at $\bar S = 4.00$ (local currency per USD) and holds reserves $R_0 = \$20{,}000{,}000{,}000$. Domestic credit (driven by financing the fiscal deficit) grows at a constant rate such that, absent intervention, the money stock — and hence the shadow exchange rate — would grow at $10\%$ per year: $\tilde S_t = \bar S \cdot e^{0.10\,t}$.</p>
+                    <p>Reserves are run down at a constant rate to sterilize the credit expansion and keep the peg, so $R_t = R_0 - \mu t$ for some constant outflow rate $\mu$ implied by the credit growth. Suppose this implied outflow rate is $\$2{,}000{,}000{,}000$ per year; naive extrapolation says reserves would hit zero at $t = 10$ years.</p>
+                    <p class="mb-0">But the shadow rate reaches the peg level at the time $T^*$ such that $\tilde S_{T^*}=\bar S$ is no longer the binding condition in this simplified telling — rather, the well-known result of these models is that $T^* < 10$: the speculative attack arrives strictly before the "naive" exhaustion date, often well before it, because at $T^*$ speculators convert their remaining peso-equivalent money balances into dollars in a single discrete transaction, consuming whatever reserves remain at that moment rather than the smooth $\$2$bn/year drawdown the central bank had been planning for. The qualitative lesson generalizes far beyond this stylized linear example: a government that is on an unsustainable fiscal/monetary path will lose its reserves to a sudden attack, not a gradual drain, and "we still have $X$ billion in reserves" is not, by itself, evidence that a peg is safe.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Second-Generation Models: Self-Fulfilling Crises</h2>
+
+                <p>First-generation models treat the collapse as inevitable given the fundamentals — the government's policy is fixed and speculators merely identify when the inconsistency becomes binding. Second-generation models, associated with Obstfeld, instead allow the government to have a <em>choice</em>: it could defend the peg if it wished, at some cost (higher interest rates, recession, political cost of austerity), or abandon it. This creates the possibility of multiple equilibria.</p>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Multiple Equilibria from Self-Fulfilling Expectations</div>
+                    <p class="mb-0">Suppose the cost to the government of defending the peg increases with the perceived probability of an attack — e.g. defense requires raising domestic interest rates, which depresses output and raises unemployment, and the size of the rate hike needed to deter an attack increases with how aggressively the market is betting against the currency. Then:</p>
+                    <ul>
+                        <li>If the market believes the peg is safe and does not attack, the government's cost of maintaining it is low (no defensive rate hikes needed), so the government chooses to maintain it — the peg survives. <strong>This is a self-fulfilling "no-attack" equilibrium.</strong></li>
+                        <li>If the market believes an attack is coming and sells the currency, the government faces a much higher cost of defense (large rate hikes to maintain credibility), which may exceed the benefit of staying on the peg, so the government rationally abandons it — validating the attack. <strong>This is a self-fulfilling "attack" equilibrium.</strong></li>
+                    </ul>
+                    <p class="mb-0">Both equilibria can be consistent with the <em>same</em> underlying fundamentals — there is a range of fundamentals (neither obviously unsustainable as in the first-generation case, nor obviously rock-solid) for which the outcome depends on which beliefs investors happen to coordinate on. This is why second-generation crises can appear to strike "out of nowhere," triggered by a shift in sentiment, contagion from another country, or a coordinating event, rather than by any new information about fundamentals themselves.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Third-Generation Models: Balance Sheets, Banking, and Twin Crises</h2>
+
+                <p>Third-generation models, developed largely in response to the 1990s EM crises, emphasize the role of the financial sector and currency mismatches on balance sheets. A common pattern: domestic banks and corporates borrow in foreign currency (often USD) because foreign-currency rates are lower, while their revenues and assets are in local currency. As long as the peg holds, this mismatch is invisible — but if the currency depreciates, the local-currency value of foreign-currency liabilities balloons, pushing banks and firms toward insolvency.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Balance-Sheet Channel and Twin Crises</div>
+                    <p class="mb-0">In third-generation models, the causality between currency and banking crises can run in both directions, producing "twin crises": a currency depreciation directly damages bank and corporate balance sheets via foreign-currency debt revaluation (the channel just described), which can trigger a banking crisis; conversely, a weak banking sector — perhaps revealed by bad-loan problems or a loss of confidence — can itself trigger capital flight and a currency crisis, as foreign creditors refuse to roll over short-term foreign-currency loans to domestic banks. This interaction also explains why currency crises in economies with large foreign-currency-denominated private debt tend to be far more costly, in terms of output loss, than crises in economies where the depreciation primarily affects competitiveness (trade) channels rather than balance sheets — the depreciation that is supposed to restore external competitiveness simultaneously triggers a domestic credit crunch that can dominate any competitiveness gain.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Common Threads: Anatomy of a Speculative Attack</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — A Stylized Sequence</div>
+                    <p class="mb-0">Across all three generations, a speculative attack on a peg typically follows a recognizable sequence: (1) a vulnerability builds up — overvaluation, fiscal deficits, current account deficits financed by short-term external debt, or currency-mismatched balance sheets; (2) reserves decline, either gradually (first-generation drain) or because the central bank intervenes to defend against initial selling pressure; (3) at some point — either when the shadow rate crosses the peg (first-generation) or when a shift in sentiment occurs (second/third-generation) — speculators convert domestic-currency assets to foreign currency en masse, often within days; (4) the central bank, facing near-exhausted reserves and/or an unacceptable interest-rate cost of defense, abandons the peg; (5) the currency depreciates sharply, frequently overshooting any "fundamental" fair value, and — where balance-sheet mismatches are large — a banking and corporate-debt crisis follows. The historical episodes in the next section illustrate how these mechanisms interacted in practice.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Crises, Contagion, and Case Studies</a>
+                    <a href="../02-historical-case-studies/" class="btn btn-custom">4.2 Historical Case Studies &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

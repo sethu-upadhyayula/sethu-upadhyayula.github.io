@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bond-CDS Basis Trading</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Credit Derivatives</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-credit-default-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-credit-default-swaps/" class="toc-chapter-link"><strong>1.</strong> Credit Default Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-credit-default-swaps/01-cds-basics/">1.1 CDS Structure</a>
+                        <a href="../../01-credit-default-swaps/02-hazard-rate-model/">1.2 Hazard Rate Model</a>
+                        <a href="../../01-credit-default-swaps/03-cds-pricing/">1.3 CDS Pricing</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-cds-indices">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-cds-indices/" class="toc-chapter-link"><strong>2.</strong> CDS Indices</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-cds-indices/01-index-composition/">2.1 Index Composition</a>
+                        <a href="../../02-cds-indices/02-index-pricing/">2.2 Index Pricing</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-credit-curve-and-basis-trading">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-credit-curve-and-basis-trading/" class="toc-chapter-link"><strong>3.</strong> Credit Curve Construction and Basis Trading</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-credit-curve-and-basis-trading/01-cds-curve-bootstrapping/">3.1 CDS Curve Bootstrapping</a>
+                        <a href="../../03-credit-curve-and-basis-trading/02-bond-cds-basis-trading/">3.2 Bond-CDS Basis Trading</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-credit-derivative-structures">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-credit-derivative-structures/" class="toc-chapter-link"><strong>4.</strong> Credit Derivative Structures Beyond Single-Name CDS</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-credit-derivative-structures/01-total-return-swaps-on-credit/">4.1 Total Return Swaps on Credit</a>
+                        <a href="../../04-credit-derivative-structures/02-credit-linked-notes/">4.2 Credit-Linked Notes</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Credit Derivatives</a> › <a href="../">3. Credit Curve Construction and Basis Trading</a> › <span>Bond-CDS Basis Trading</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 Bond-CDS Basis Trading</h1>
+
+                <p>A reference entity's credit risk is priced in two related but distinct markets: the CDS market, where protection on its default is bought and sold directly, and the cash bond market, where its debt is bought and sold at a price (and hence a yield spread over a risk-free benchmark). The "bond-CDS basis" measures the gap between these two markets' views of the same credit risk.</p>
+
+                <h2 class="mt-5 mb-3">Defining the Basis</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Bond-CDS Basis</div>
+                    <p class="mb-0">The bond-CDS basis for a reference entity at a given maturity is:</p>
+                    <p class="mb-0">$$\text{Basis} = s_{\text{CDS}} - Z_{\text{bond}}$$</p>
+                    <p class="mb-0">where $s_{\text{CDS}}$ is the CDS spread for that maturity (from <a href="../01-cds-curve-bootstrapping/">CDS Curve Bootstrapping</a>) and $Z_{\text{bond}}$ is the bond's Z-spread — the constant spread that must be added to the risk-free discount curve so that the bond's discounted cash flows equal its market price. The Z-spread is the standard "bond-implied" credit spread, capturing the same compensation-for-default-risk concept as the CDS spread but derived from the bond's price rather than from a derivatives market.</p>
+                </div>
+
+                <p>A <strong>positive basis</strong> ($s_{\text{CDS}} > Z_{\text{bond}}$) means CDS protection is more expensive than the credit risk priced into the bond — buying the bond and buying CDS protection on it (a "negative basis package" from the trade's perspective, but the basis itself is positive) would, in a frictionless world, lock in a riskless profit. A <strong>negative basis</strong> ($s_{\text{CDS}} < Z_{\text{bond}}$) is the more commonly observed case historically, particularly during and after periods of stress.</p>
+
+                <h2 class="mt-5 mb-3">Drivers of the Basis</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why the Basis Is Non-Zero</div>
+                    <p><strong>Funding costs.</strong> Buying a cash bond requires funding the purchase price, typically at a spread over the risk-free rate (the bond's repo rate). A CDS is unfunded — no principal changes hands. When funding costs rise relative to the risk-free rate (as in 2008), holding the bond becomes relatively more expensive, pushing $Z_{\text{bond}}$ up relative to $s_{\text{CDS}}$ and making the basis <em>more negative</em>.</p>
+                    <p><strong>CDS-bond delivery option.</strong> Under physical settlement (and even under the auction-based cash settlement used since the Big Bang protocol), the protection buyer effectively has the option to deliver the cheapest among several deliverable obligations of the reference entity into the CDS following a credit event. This "cheapest-to-deliver" option has positive value to the protection buyer, which — all else equal — pushes the fair CDS spread <em>up</em> relative to what a single bond's risk alone would imply, contributing to a <em>positive</em> basis.</p>
+                    <p><strong>Technical and supply/demand factors.</strong> New bond issuance increases the supply of cash bonds without a corresponding increase in CDS supply, which can cheapen bonds relative to CDS (more negative basis). Conversely, heavy demand for protection from banks hedging loan books can push CDS spreads wider relative to bonds (more positive basis).</p>
+                    <p class="mb-0"><strong>Counterparty risk and collateralisation.</strong> CDS positions (especially cleared ones) carry different counterparty and margin profiles than holding a cash bond, and during periods of dealer balance-sheet stress this can drive a wedge between the two markets' pricing of the same credit.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Constructing a Basis Trade</h2>
+
+                <p>A <strong>negative basis trade</strong> (exploiting $s_{\text{CDS}} < Z_{\text{bond}}$, i.e. the bond looks "cheap" relative to CDS) is constructed by:</p>
+
+                <ul>
+                    <li><strong>Buying the cash bond</strong>, funded via repo, earning the bond's yield (which embeds $Z_{\text{bond}}$).</li>
+                    <li><strong>Buying CDS protection</strong> on the same reference entity at maturity matching the bond, paying $s_{\text{CDS}} < Z_{\text{bond}}$.</li>
+                </ul>
+
+                <p>The combined position earns the basis $(Z_{\text{bond}} - s_{\text{CDS}})$ as a carry, while being largely hedged against the reference entity's default: if a credit event occurs, the CDS protection pays out $N(1-R)$ (or the bond can be delivered into the CDS auction), offsetting the loss on the bond.</p>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Negative Basis Trade Cash Flows</div>
+                    <p>A 5Y bond from a reference entity trades at a Z-spread of $Z_{\text{bond}} = 150\text{bp}$, while the 5Y CDS spread is $s_{\text{CDS}} = 100\text{bp}$, giving a basis of $-50\text{bp}$. An investor buys \$10mm notional of the bond, funds it in repo at a rate close to risk-free, and buys \$10mm of 5Y CDS protection at 100bp.</p>
+                    <p><strong>Carry.</strong> The position earns approximately $50\text{bp} \times \$10\text{mm} = \$50{,}000$ per year in net carry (bond yield spread minus CDS premium minus funding spread), for as long as both positions are held.</p>
+                    <p class="mb-0"><strong>Default scenario.</strong> If the reference entity defaults with a recovery rate of $R = 40\%$, the bond falls in value to approximately 40 (per 100 face), a loss of \$600,000 on the \$10mm position. The CDS protection pays $N(1-R) = \$10\text{mm} \times 0.60 = \$600{,}000$, offsetting the bond loss almost exactly. The trade is therefore close to default-neutral, with the residual P&amp;L driven mainly by the accumulated carry plus any mark-to-market basis movements before default.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Risks to the Basis Trade</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why the "Arbitrage" Isn't Free</div>
+                    <p><strong>Funding and repo risk.</strong> The repo rate at which the bond position is funded is not fixed for the life of the trade; if repo rates rise (or the bond becomes "special" and repo financing becomes expensive or unavailable), the carry can be eroded or turn negative.</p>
+                    <p><strong>Basis risk between the bond and CDS.</strong> The CDS references a basket of the issuer's deliverable obligations, not the specific bond held — if the specific bond's price moves idiosyncratically relative to the issuer's broader curve (e.g. due to a covenant issue or its own technical scarcity), the hedge is imperfect.</p>
+                    <p><strong>Mark-to-market volatility.</strong> Even a basis trade intended to be held to maturity or default will show mark-to-market P&amp;L swings as the basis itself moves, which can trigger margin calls on the CDS leg well before any actual default.</p>
+                    <p class="mb-0"><strong>Counterparty risk on the CDS.</strong> The protection payout depends on the CDS counterparty (or central counterparty, if cleared) remaining solvent through a credit event — a particular concern in systemic stress scenarios where the reference entity's default is correlated with broader counterparty distress.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-cds-curve-bootstrapping/" class="btn btn-outline-custom">&larr; 3.1 CDS Curve Bootstrapping</a>
+                    <a href="../../04-credit-derivative-structures/" class="btn btn-custom">4. Credit Derivative Structures Beyond Single-Name CDS &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

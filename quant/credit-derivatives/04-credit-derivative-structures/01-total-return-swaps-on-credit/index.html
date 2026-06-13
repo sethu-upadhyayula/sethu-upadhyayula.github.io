@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Return Swaps on Credit</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Credit Derivatives</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-credit-default-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-credit-default-swaps/" class="toc-chapter-link"><strong>1.</strong> Credit Default Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-credit-default-swaps/01-cds-basics/">1.1 CDS Structure</a>
+                        <a href="../../01-credit-default-swaps/02-hazard-rate-model/">1.2 Hazard Rate Model</a>
+                        <a href="../../01-credit-default-swaps/03-cds-pricing/">1.3 CDS Pricing</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-cds-indices">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-cds-indices/" class="toc-chapter-link"><strong>2.</strong> CDS Indices</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-cds-indices/01-index-composition/">2.1 Index Composition</a>
+                        <a href="../../02-cds-indices/02-index-pricing/">2.2 Index Pricing</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-credit-curve-and-basis-trading">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-credit-curve-and-basis-trading/" class="toc-chapter-link"><strong>3.</strong> Credit Curve Construction and Basis Trading</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-credit-curve-and-basis-trading/01-cds-curve-bootstrapping/">3.1 CDS Curve Bootstrapping</a>
+                        <a href="../../03-credit-curve-and-basis-trading/02-bond-cds-basis-trading/">3.2 Bond-CDS Basis Trading</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-credit-derivative-structures">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-credit-derivative-structures/" class="toc-chapter-link"><strong>4.</strong> Credit Derivative Structures Beyond Single-Name CDS</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-credit-derivative-structures/01-total-return-swaps-on-credit/">4.1 Total Return Swaps on Credit</a>
+                        <a href="../../04-credit-derivative-structures/02-credit-linked-notes/">4.2 Credit-Linked Notes</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Credit Derivatives</a> › <a href="../">4. Credit Derivative Structures Beyond Single-Name CDS</a> › <span>Total Return Swaps on Credit</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Total Return Swaps on Credit</h1>
+
+                <p>A total return swap (TRS) is a bilateral contract in which one party (the "total return receiver") receives the full economic return of a reference asset — coupon/dividend income plus any price appreciation or depreciation — in exchange for paying a periodic financing rate to the other party (the "total return payer"), who typically owns the underlying asset.</p>
+
+                <h2 class="mt-5 mb-3">Structure and Mechanics</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Total Return Swap on a Bond</div>
+                    <p class="mb-0">For a TRS referencing a bond with notional $N$, over each accrual period of length $\Delta$:</p>
+                    <ul class="mb-0">
+                        <li>The <strong>TRS payer</strong> (who holds or finances the bond) pays the total return receiver any coupon income received from the bond, plus the change in the bond's market value (price appreciation), or receives it if the value has fallen.</li>
+                        <li>The <strong>TRS receiver</strong> pays the payer a financing rate, typically a reference rate plus a spread, $\left(\text{SOFR} + f\right) \times \Delta \times N$, reflecting the cost of funding the position.</li>
+                    </ul>
+                    <p class="mb-0">At maturity, if the reference bond has defaulted, the TRS is typically terminated early with a final settlement based on the bond's recovery value, mirroring a CDS credit event settlement.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Funding vs. Credit Risk Transfer</h2>
+
+                <p>A TRS transfers <em>both</em> the credit risk and the market (price/interest-rate) risk of the reference asset to the receiver — unlike a CDS, which transfers only the default/credit-event risk and leaves the protection seller with no exposure to non-default price movements of the reference bond (a CDS seller's mark-to-market moves with the CDS spread, not directly with the bond price, though the two are closely related).</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — TRS as a Synthetic Financed Position</div>
+                    <p class="mb-0">From the receiver's perspective, a TRS is economically equivalent to borrowing cash at $\text{SOFR}+f$ to buy the reference bond outright, except that the bond never appears on the receiver's balance sheet — the TRS payer retains legal ownership throughout. This makes the TRS a tool for taking a leveraged, off-balance-sheet position in an asset, which is why TRS are heavily used by hedge funds (to gain leveraged exposure without the balance-sheet and operational costs of holding the bond) and by banks (to transfer the credit and market risk of loans or bonds off their books while retaining the relationship with the borrower, for regulatory capital relief).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Comparison to CDS</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — TRS vs. CDS</div>
+                    <ul class="mb-0">
+                        <li><strong>Scope of risk transferred.</strong> CDS transfers default/credit-event risk only; TRS transfers total economic return, including interest-rate risk, spread-widening risk absent any credit event, and funding-cost risk.</li>
+                        <li><strong>Reference asset specificity.</strong> A CDS references an entity and a basket of deliverable obligations; a TRS references one specific asset (e.g. a particular bond or loan), so the receiver's payoff tracks that asset's price exactly, with no cheapest-to-deliver ambiguity.</li>
+                        <li><strong>Funding leg.</strong> CDS has no explicit funding leg — the premium is purely compensation for default risk. TRS embeds an explicit financing rate, making it sensitive to repo/funding markets in a way CDS is not.</li>
+                        <li><strong>Use case.</strong> CDS is the natural instrument for taking a pure directional or relative-value view on an entity's credit quality. TRS is the natural instrument for gaining synthetic, leveraged exposure to a specific asset's total return, or for a bank to offload an asset's risk (including funding benefit to the counterparty) while keeping it on its books for client-relationship or accounting reasons.</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Cash Flow Example</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — TRS on a Corporate Bond</div>
+                    <p>A bank (TRS payer) owns \$10mm face value of a corporate bond paying a 5% annual coupon, currently priced at par (100). It enters a 1-year TRS with a hedge fund (TRS receiver) at a financing spread of $\text{SOFR} + 50\text{bp}$, with SOFR assumed flat at 4% over the year.</p>
+                    <p><strong>Financing leg.</strong> The receiver pays the payer $(4\% + 0.5\%) \times \$10\text{mm} = \$450{,}000$ over the year.</p>
+                    <p><strong>Total return leg, no default.</strong> Suppose the bond pays its \$500,000 coupon and its price rises from 100 to 102 over the year (a \$200,000 gain). The payer passes both the coupon and the price appreciation to the receiver: $\$500{,}000 + \$200{,}000 = \$700{,}000$. Netting the two legs, the receiver's net P&amp;L is $\$700{,}000 - \$450{,}000 = \$250{,}000$ — equivalent to having bought the bond with borrowed funds at $\text{SOFR}+50\text{bp}$ and realised the coupon plus price gain.</p>
+                    <p class="mb-0"><strong>Total return leg, with default.</strong> If instead the reference entity defaults mid-year and the bond's value falls to a recovery price of 35, the payer passes the (negative) price change of $-65$ points, i.e. $-\$6.5\text{mm}$, to the receiver — the receiver bears the full loss, just as if they had owned the bond directly with borrowed money. The TRS would typically be unwound at this point based on the post-default recovery value, with the receiver owing the payer the net mark-to-market loss.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Credit Derivative Structures Beyond Single-Name CDS</a>
+                    <a href="../02-credit-linked-notes/" class="btn btn-custom">4.2 Credit-Linked Notes &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

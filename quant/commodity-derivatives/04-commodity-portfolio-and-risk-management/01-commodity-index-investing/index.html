@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commodity Index Investing</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Commodity Derivatives</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-commodity-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-commodity-markets/" class="toc-chapter-link"><strong>1.</strong> Commodity Markets</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-commodity-markets/01-market-structure/">1.1 Market Structure</a>
+                        <a href="../../01-commodity-markets/02-spot-prices-and-convenience-yield/">1.2 Spot Prices and Convenience Yield</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-futures-and-forwards">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-futures-and-forwards/" class="toc-chapter-link"><strong>2.</strong> Futures and Forwards</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-futures-and-forwards/01-cost-of-carry/">2.1 Cost of Carry Model</a>
+                        <a href="../../02-futures-and-forwards/02-contango-and-backwardation/">2.2 Contango and Backwardation</a>
+                        <a href="../../02-futures-and-forwards/03-basis-risk/">2.3 Basis Risk</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-commodity-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-commodity-options/" class="toc-chapter-link"><strong>3.</strong> Commodity Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-commodity-options/01-black-76/">3.1 Black-76 Model</a>
+                        <a href="../../03-commodity-options/02-volatility-surfaces/">3.2 Volatility Surfaces</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-commodity-portfolio-and-risk-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-commodity-portfolio-and-risk-management/" class="toc-chapter-link"><strong>4.</strong> Commodity Portfolio and Risk Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-commodity-portfolio-and-risk-management/01-commodity-index-investing/">4.1 Commodity Index Investing</a>
+                        <a href="../../04-commodity-portfolio-and-risk-management/02-cross-commodity-hedging-and-correlation/">4.2 Cross-Commodity Hedging and Correlation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Commodity Derivatives</a> › <a href="../">4. Commodity Portfolio and Risk Management</a> › <span>Commodity Index Investing</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Commodity Index Investing</h1>
+
+                <p>Most institutional and retail exposure to commodities as an asset class is held through <strong>commodity indices</strong> — rules-based baskets of futures contracts across energy, metals, and agriculture, designed to be replicable by passive investment vehicles. Unlike equity indices, which simply track the price of a fixed basket of shares, commodity indices must specify not only <em>what</em> futures contracts to hold but <em>how to roll</em> them, since every futures contract expires and must be replaced before delivery.</p>
+
+                <h2 class="mt-5 mb-3">Major Index Construction Methodologies</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Index Weighting Approaches</div>
+                    <p>The two most widely referenced broad commodity indices illustrate two different philosophies of weighting:</p>
+                    <p><strong>Bloomberg Commodity Index (BCOM):</strong> weights are determined by a combination of liquidity (average dollar value traded) and world production values, with caps applied at the individual commodity, sector, and group level to prevent any single commodity (historically energy) from dominating the index. Weights are reviewed and rebalanced annually.</p>
+                    <p class="mb-0"><strong>S&amp;P GSCI (Goldman Sachs Commodity Index):</strong> weights are determined primarily by world production values over a trailing period, with no caps comparable to BCOM's. As a result, the S&amp;P GSCI is heavily weighted toward energy — historically 50-70% — reflecting energy's dominant share of global commodity production and consumption by value.</p>
+                </div>
+
+                <p>The choice of weighting methodology has first-order consequences for the resulting return profile: a production-weighted index like the S&amp;P GSCI behaves much like an energy-sector proxy with a long tail of other commodities, while a diversification-capped index like BCOM gives more balanced exposure across energy, agriculture, industrial metals, precious metals, and livestock sectors.</p>
+
+                <h2 class="mt-5 mb-3">Roll Mechanics</h2>
+
+                <p>A long-only commodity index cannot hold futures to physical delivery — it must sell the expiring (near) contract and buy a longer-dated (deferred) contract before the near contract reaches its delivery window. This process is called <strong>rolling</strong>.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — The Roll</div>
+                    <p class="mb-0">A roll consists of simultaneously: (i) selling (or closing) a quantity of the near futures contract with price $F_1(t,T_1)$, and (ii) buying an equivalent notional quantity of a deferred futures contract with price $F_2(t,T_2)$, $T_2 > T_1$. Major indices spread this transaction over several days (e.g., BCOM rolls over a multi-day window each month) to reduce the market impact of large, predictable, simultaneous rolling by index-tracking funds.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Roll Yield</h2>
+
+                <p>The return to a long futures position decomposes into the change in the spot price (the "spot return") and a second component arising purely from the shape of the futures curve and the act of rolling — the <strong>roll yield</strong>.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Decomposition of Futures Total Return</div>
+                    <p>The total return on a continuously-rolled long futures position over a period can be decomposed (approximately, for small price changes) as</p>
+                    <p>$$R_{\text{total}} \approx R_{\text{spot}} + R_{\text{roll}}$$</p>
+                    <p class="mb-0">where $R_{\text{spot}}$ is the percentage change in the price of the nearby (spot-proxy) futures contract, and $R_{\text{roll}}$ is the return earned (or lost) by selling the expiring contract and buying the next one at a different price — i.e., by rolling down (or up) the futures curve.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Sign of the Roll Yield</div>
+                    <p>If the futures curve is in <strong>backwardation</strong> ($F_2 < F_1$, deferred contracts cheaper than near contracts), an investor who sells the expiring contract at $F_1$ and buys the deferred contract at $F_2 < F_1$ effectively "sells high, buys low" — this is a <em>positive</em> roll yield, all else equal, because as time passes and the deferred contract itself becomes the near contract, its price tends to converge upward toward spot.</p>
+                    <p class="mb-0">If the curve is in <strong>contango</strong> ($F_2 > F_1$), the roll involves selling low and buying high — a <em>negative</em> roll yield, sometimes called "roll cost" or "negative carry." This effect was a major drag on long-only commodity index returns during the prolonged contango in energy markets following the 2008-09 financial crisis, when spot prices could be roughly flat or even rising while index returns lagged due to persistent roll losses.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Index Investor Flows and the Futures Curve</h2>
+
+                <p>Because major indices roll on predictable, publicly-known schedules (e.g., BCOM's roll window each month), and because the assets under management tracking these indices can be substantial relative to the open interest in individual contract months, index rolling can itself become a driver of curve shape rather than merely a passive consequence of it.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — "Roll Distortion" and Curve Flattening</div>
+                    <p class="mb-0">When a large volume of index-linked selling in the expiring contract and buying in the deferred contract is concentrated in a known window, it can temporarily depress the price of the contract being sold and lift the price of the contract being bought — flattening the near part of the curve around the roll period. Some index providers and active managers have responded by diversifying roll dates across multiple contract months or by using "enhanced" or "optimum yield" indices that select which point on the curve to roll into based on the curve's shape, aiming to reduce both market impact and negative roll yield in persistent contango.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example: Roll Yield Calculation</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Roll Yield on a Crude Oil Index Position</div>
+                    <p>An index holds a long position in the front-month WTI crude oil futures contract. At the start of the roll period, the front-month (near) contract trades at $F_1 = \$78.00$ and the next-month (deferred) contract trades at $F_2 = \$77.20$ — the curve is in backwardation by $\$0.80$.</p>
+                    <p>The index sells its entire position in the front-month contract at $F_1 = \$78.00$ and uses the proceeds to buy the same notional quantity of the deferred contract at $F_2 = \$77.20$. Suppose the notional position is equivalent to 1,000 barrels.</p>
+                    <p>$$\text{Roll yield (dollar terms)} = 1{,}000 \times (F_1 - F_2) = 1{,}000 \times (78.00 - 77.20) = \$800.$$</p>
+                    <p>As a percentage of the notional value rolled:</p>
+                    <p>$$R_{\text{roll}} = \frac{F_1 - F_2}{F_2} = \frac{78.00 - 77.20}{77.20} \approx 1.04\%.$$</p>
+                    <p class="mb-0">If this roll is repeated monthly and the backwardation persists at a similar magnitude, the annualised roll yield contribution would be on the order of $12 \times 1.04\% \approx 12.4\%$ — a substantial positive contribution to total return that has nothing to do with the direction of spot oil prices. Conversely, if the curve had been in contango by the same $\$0.80$ (i.e., $F_2 = \$78.80 > F_1 = \$78.00$), the same calculation would produce a roll <em>cost</em> of approximately $-1.02\%$ per roll.</p>
+                </div>
+
+                <p>This example illustrates why two commodity index investors holding "the same exposure to crude oil" by spot price can realise very different total returns depending on the shape of the futures curve at each roll date — and why understanding roll mechanics is essential to interpreting commodity index performance.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../04-commodity-portfolio-and-risk-management/" class="btn btn-outline-custom">&larr; 4. Commodity Portfolio and Risk Management</a>
+                    <a href="../../04-commodity-portfolio-and-risk-management/02-cross-commodity-hedging-and-correlation/" class="btn btn-custom">4.2 Cross-Commodity Hedging and Correlation &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

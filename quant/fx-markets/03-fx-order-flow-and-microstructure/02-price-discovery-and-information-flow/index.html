@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Discovery and Information Flow</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">FX Markets</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-fx-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-fx-markets/" class="toc-chapter-link"><strong>1.</strong> FX Markets</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-fx-markets/01-fx-spot/">1.1 FX Spot</a>
+                        <a href="../../01-fx-markets/02-quoting-conventions/">1.2 Quoting Conventions</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-fx-market-structure-and-liquidity">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-fx-market-structure-and-liquidity/" class="toc-chapter-link"><strong>2.</strong> FX Market Structure and Liquidity</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-fx-market-structure-and-liquidity/01-market-participants-and-trading-venues/">2.1 Market Participants and Trading Venues</a>
+                        <a href="../../02-fx-market-structure-and-liquidity/02-settlement-cls-and-operational-risk/">2.2 Settlement, CLS, and Operational Risk</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fx-order-flow-and-microstructure">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-fx-order-flow-and-microstructure/" class="toc-chapter-link"><strong>3.</strong> FX Order Flow and Microstructure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-fx-order-flow-and-microstructure/01-order-types-and-execution/">3.1 Order Types and Execution</a>
+                        <a href="../../03-fx-order-flow-and-microstructure/02-price-discovery-and-information-flow/">3.2 Price Discovery and Information Flow</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-macro-drivers-of-fx">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-macro-drivers-of-fx/" class="toc-chapter-link"><strong>4.</strong> Macro Drivers of FX</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-macro-drivers-of-fx/01-interest-rate-differentials-and-flows/">4.1 Interest Rate Differentials and Flows</a>
+                        <a href="../../04-macro-drivers-of-fx/02-central-bank-policy-and-fx/">4.2 Central Bank Policy and FX</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">FX Markets</a> › <a href="../">3. FX Order Flow and Microstructure</a> › <span>Price Discovery and Information Flow</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 Price Discovery and Information Flow</h1>
+
+                <p>The previous section treated execution as the problem of getting an order filled at a good price. This section turns the lens around: from the dealer's perspective, every incoming order is a piece of information, and the central problem of market making is to update prices in response to that information without being systematically picked off by participants who know more than the dealer does.</p>
+
+                <h2 class="mt-5 mb-3">How Information Enters FX Prices</h2>
+
+                <p>Exchange rates respond to a vast range of information: macroeconomic data releases, central bank communications, geopolitical events, and shifts in risk sentiment. But information does not translate into price changes instantaneously or directly — it is incorporated through the trading activity of participants who interpret that information and act on it.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Two Channels of Price Discovery</div>
+                    <p><strong>Direct (public information) channel:</strong> when a scheduled data release or central bank announcement is made, dealers across the market simultaneously update their quotes based on the new information itself, often within milliseconds, with little need for trading to occur first. This is the dominant channel for major scheduled events.</p>
+                    <p class="mb-0"><strong>Order flow channel:</strong> when information is dispersed, private, or gradually accumulated (e.g., a real money manager's gradual reallocation, or a hedge fund's proprietary signal), it is incorporated into prices primarily through the trading activity it generates. Dealers observe the resulting order flow and adjust their quotes — even without directly observing the underlying information — because the flow itself reveals something about where prices should move.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Order Flow and the Information Content of Trades</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Signed Order Flow</div>
+                    <p class="mb-0"><em>Signed order flow</em> over an interval is the net of buyer-initiated minus seller-initiated trading volume (where a trade is "buyer-initiated" if it crosses the spread to hit the offer, and "seller-initiated" if it hits the bid). A substantial empirical literature finds that signed order flow is contemporaneously and predictively correlated with exchange rate changes — persistent buying pressure tends to coincide with, and often precede, currency appreciation, even after controlling for macro fundamentals.</p>
+                </div>
+
+                <p>This relationship is the empirical foundation of the "order flow" or "microstructure" approach to exchange rate determination, which complements (rather than replaces) the macro/fundamentals-based approach developed in Chapter 4: fundamentals determine where exchange rates should go over longer horizons, but order flow is the mechanism through which that information — and a great deal of other, non-fundamental information — actually moves prices day to day.</p>
+
+                <h2 class="mt-5 mb-3">Order Flow Toxicity</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Order Flow Toxicity</div>
+                    <p class="mb-0"><em>Order flow toxicity</em> refers to the degree to which a stream of orders is correlated with subsequent adverse price moves from the perspective of the liquidity provider. "Toxic" flow tends to arrive just before the market moves in the direction of the trade — i.e., a market maker who buys from a toxic seller tends to see the price fall shortly afterward, realising a loss on the position just acquired.</p>
+                </div>
+
+                <p>Toxicity is not a property of a single trade in isolation but a statistical property of a counterparty's or a flow segment's trading pattern over time. Dealers continuously estimate the toxicity of different client segments and venues, and adjust their pricing, quoted size, and willingness to internalise (rather than immediately hedge) accordingly.</p>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Toxicity and Quote Skew</div>
+                    <p class="mb-0">Suppose a dealer observes that orders arriving from a particular ECN segment, in a particular size bracket, are followed on average by a 0.3 pip adverse move within one second 60% of the time. The dealer can respond in several ways: widening the spread quoted to that segment to compensate for the expected adverse selection cost, reducing the size shown to that segment, or skewing the quote (raising the offer or lowering the bid asymmetrically) in the direction the toxic flow tends to predict, so that the dealer is paid for taking the other side. All three responses are, in effect, a price for the information asymmetry between the dealer and that flow segment.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Role of Dealers in Price Discovery</h2>
+
+                <p>Because the FX market has no central limit order book visible to all participants in the way some equity markets do, dealers play an outsized role in aggregating dispersed information. Each dealer observes only the flow that comes to it — a noisy, partial sample of the market's aggregate order flow — yet must set a single price that reflects its best estimate of fair value given that sample.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Inventory and Information in Quote Setting</div>
+                    <p class="mb-0">A dealer's quote at any moment reflects two distinct motives: an <em>inventory</em> motive (skewing quotes to encourage flow that moves the dealer's net position back toward a target, typically flat) and an <em>information</em> motive (adjusting the quoted mid-price in the direction suggested by recent order flow, because that flow is believed to be informative about where the "true" price is heading). Separating these two effects is one of the central challenges in empirical market microstructure — a large buy order could move a dealer's quote up either because the dealer now has less inventory to sell (and wants to discourage further buying) or because the dealer has revised its view of fair value upward, or both.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Adverse Selection</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Adverse Selection in Market Making</div>
+                    <p class="mb-0"><em>Adverse selection</em> is the risk that a market maker's posted quote will be selectively executed against by counterparties who possess superior information, such that the market maker systematically transacts at prices that are about to move against it. It is the central risk borne by any participant who commits to quoting firm, two-sided prices without knowing in advance who will trade against them or why.</p>
+                </div>
+
+                <p>The bid-offer spread can be decomposed, at least conceptually, into a component that compensates for adverse selection and a component that compensates for inventory-holding and order-processing costs. In highly competitive, low-latency markets like major-pair FX spot, the adverse selection component is widely believed to be a significant — sometimes dominant — driver of the spread, particularly around scheduled news events when the probability of facing an informed counterparty rises sharply and dealers often widen spreads or temporarily withdraw quotes altogether.</p>
+
+                <p>This completes the microstructure picture: Chapter 2 established where and through whom FX trades, this chapter has examined how individual orders are executed and how, in aggregate, they drive price discovery. Chapter 4 now steps back to the macroeconomic forces — interest rate differentials, capital flows, and central bank policy — that ultimately determine the fundamentals these prices are discovering.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-order-types-and-execution/" class="btn btn-outline-custom">&larr; 3.1 Order Types and Execution</a>
+                    <a href="../../04-macro-drivers-of-fx/" class="btn btn-custom">4. Macro Drivers of FX &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

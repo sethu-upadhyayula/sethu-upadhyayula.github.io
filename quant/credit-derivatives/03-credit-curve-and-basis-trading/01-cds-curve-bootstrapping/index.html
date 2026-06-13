@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDS Curve Bootstrapping</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Credit Derivatives</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-credit-default-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-credit-default-swaps/" class="toc-chapter-link"><strong>1.</strong> Credit Default Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-credit-default-swaps/01-cds-basics/">1.1 CDS Structure</a>
+                        <a href="../../01-credit-default-swaps/02-hazard-rate-model/">1.2 Hazard Rate Model</a>
+                        <a href="../../01-credit-default-swaps/03-cds-pricing/">1.3 CDS Pricing</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-cds-indices">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-cds-indices/" class="toc-chapter-link"><strong>2.</strong> CDS Indices</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-cds-indices/01-index-composition/">2.1 Index Composition</a>
+                        <a href="../../02-cds-indices/02-index-pricing/">2.2 Index Pricing</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-credit-curve-and-basis-trading">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-credit-curve-and-basis-trading/" class="toc-chapter-link"><strong>3.</strong> Credit Curve Construction and Basis Trading</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-credit-curve-and-basis-trading/01-cds-curve-bootstrapping/">3.1 CDS Curve Bootstrapping</a>
+                        <a href="../../03-credit-curve-and-basis-trading/02-bond-cds-basis-trading/">3.2 Bond-CDS Basis Trading</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-credit-derivative-structures">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-credit-derivative-structures/" class="toc-chapter-link"><strong>4.</strong> Credit Derivative Structures Beyond Single-Name CDS</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-credit-derivative-structures/01-total-return-swaps-on-credit/">4.1 Total Return Swaps on Credit</a>
+                        <a href="../../04-credit-derivative-structures/02-credit-linked-notes/">4.2 Credit-Linked Notes</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Credit Derivatives</a> › <a href="../">3. Credit Curve Construction and Basis Trading</a> › <span>CDS Curve Bootstrapping</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.1 CDS Curve Bootstrapping</h1>
+
+                <p>Section 1.3 expressed the fair CDS spread as a function of the survival probability curve $Q(\cdot)$. In practice, the market quotes CDS spreads at a small number of standard tenors (1Y, 3Y, 5Y, 7Y, 10Y) for a given reference entity, and $Q(\cdot)$ must be inferred — "bootstrapped" — from these quotes, one tenor at a time, exactly as a discount curve is bootstrapped from a strip of money-market and swap rates (see <a href="../../../rates-fundamentals/02-yield-curve-construction/01-bootstrapping/">Bootstrapping the Yield Curve</a>).</p>
+
+                <h2 class="mt-5 mb-3">The Piecewise-Constant Hazard Rate Assumption</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Piecewise-Constant Hazard Rate</div>
+                    <p class="mb-0">The survival probability is written in terms of a hazard rate (default intensity) function $\lambda(t)$ as $Q(t) = \exp\left(-\int_0^t \lambda(u)\,du\right)$. The standard bootstrapping assumption is that $\lambda(u)$ is <em>piecewise constant</em> between the quoted CDS maturities $T_0 = 0 < T_1 < T_2 < \cdots < T_n$, taking a constant value $\lambda_k$ on each interval $(T_{k-1}, T_k]$. This gives:</p>
+                    <p class="mb-0">$$Q(T_k) = Q(T_{k-1}) \cdot \exp\left(-\lambda_k (T_k - T_{k-1})\right)$$</p>
+                    <p class="mb-0">with $Q(T_0) = Q(0) = 1$. The curve is fully determined by the $n$ values $\lambda_1, \ldots, \lambda_n$, one per quoted tenor — exactly matching the number of market quotes available to calibrate against.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Bootstrap Procedure</h2>
+
+                <p>The bootstrap proceeds tenor by tenor, from the shortest maturity to the longest. At each step, all hazard rates for earlier intervals have already been determined, and a single new hazard rate $\lambda_k$ is solved for so that the CDS maturing at $T_k$, priced using the survival curve built so far plus the unknown $\lambda_k$, reproduces its quoted market spread $s_k$ exactly.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Sequential Calibration</div>
+                    <p class="mb-0">At step $k$, $\lambda_k$ is the unique value solving</p>
+                    <p class="mb-0">$$s_k \cdot \text{RPV01}_k(\lambda_1,\ldots,\lambda_{k-1},\lambda_k) = (1-R)\cdot\text{PV}_{\text{protection},k}(\lambda_1,\ldots,\lambda_{k-1},\lambda_k)$$</p>
+                    <p class="mb-0">where both $\text{RPV01}_k$ and $\text{PV}_{\text{protection},k}$ are computed over $[0,T_k]$, using the already-calibrated $\lambda_1,\ldots,\lambda_{k-1}$ on $(T_0,T_{k-1}]$ and the unknown $\lambda_k$ on $(T_{k-1},T_k]$. Because both legs are monotonic in $\lambda_k$ over the relevant range, this is a well-behaved one-dimensional root-find (e.g. bisection or Newton's method) at each step, rather than a single high-dimensional joint solve.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Two-Tenor Bootstrap</div>
+                    <p>Suppose a reference entity has quoted CDS spreads of $s_1 = 80\text{bp}$ at 1Y and $s_2 = 120\text{bp}$ at 3Y, a flat risk-free curve, recovery $R = 40\%$, and quarterly premium payments.</p>
+                    <p><strong>Step 1 — Solve for $\lambda_1$ on $(0, 1Y]$.</strong> With $Q(0)=1$, the 1Y CDS equation $s_1 \cdot \text{RPV01}_1(\lambda_1) = (1-R)\cdot \text{PV}_{\text{protection},1}(\lambda_1)$ is solved numerically, giving $\lambda_1 \approx 80\text{bp} / (1-0.40) \approx 1.33\%$ as a first-order approximation (the exact value requires iterating with the discrete payment schedule, but this approximation — fair spread $\approx (1-R)\lambda$ for short maturities — is a useful sanity check).</p>
+                    <p class="mb-0"><strong>Step 2 — Solve for $\lambda_2$ on $(1Y, 3Y]$.</strong> With $\lambda_1$ fixed and $Q(1Y) = e^{-\lambda_1 \cdot 1}$ known, the 3Y CDS equation is solved for $\lambda_2$ alone. Because the 3Y spread (120bp) exceeds the 1Y spread (80bp), the curve is upward-sloping and $\lambda_2 > \lambda_1$ — the market is pricing a higher annualised default intensity over years 2–3 than over year 1, consistent with a "stressed near-term, deteriorating further out" credit view. The resulting two-segment hazard rate curve $(\lambda_1, \lambda_2)$ can then be used to price any CDS, tranche, or other credit derivative on this name out to 3Y maturity, and the procedure extends identically to 5Y, 7Y and 10Y once those quotes are added as further bootstrap steps.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Interpolation Between Pillars</div>
+                    <p class="mb-0">For maturities between the quoted "pillar" tenors (e.g. pricing a 4Y CDS off a curve calibrated to 1Y, 3Y, 5Y), the piecewise-constant hazard rate is typically held flat from the nearest earlier pillar — i.e. $\lambda(t) = \lambda_k$ for $t \in (T_{k-1}, T_k]$ is used directly, with no further interpolation needed since the hazard rate is already constant on each interval. This is analogous to "flat forward" interpolation of a discount curve (see <a href="../../../rates-fundamentals/02-yield-curve-construction/02-interpolation-methods/">Interpolation Methods</a>), and is the standard convention used by the ISDA CDS Standard Model.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 3. Credit Curve Construction and Basis Trading</a>
+                    <a href="../02-bond-cds-basis-trading/" class="btn btn-custom">3.2 Bond-CDS Basis Trading &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

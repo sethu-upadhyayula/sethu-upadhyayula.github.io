@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Commodity Hedging and Correlation</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Commodity Derivatives</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-commodity-markets">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-commodity-markets/" class="toc-chapter-link"><strong>1.</strong> Commodity Markets</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-commodity-markets/01-market-structure/">1.1 Market Structure</a>
+                        <a href="../../01-commodity-markets/02-spot-prices-and-convenience-yield/">1.2 Spot Prices and Convenience Yield</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-futures-and-forwards">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-futures-and-forwards/" class="toc-chapter-link"><strong>2.</strong> Futures and Forwards</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-futures-and-forwards/01-cost-of-carry/">2.1 Cost of Carry Model</a>
+                        <a href="../../02-futures-and-forwards/02-contango-and-backwardation/">2.2 Contango and Backwardation</a>
+                        <a href="../../02-futures-and-forwards/03-basis-risk/">2.3 Basis Risk</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-commodity-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-commodity-options/" class="toc-chapter-link"><strong>3.</strong> Commodity Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-commodity-options/01-black-76/">3.1 Black-76 Model</a>
+                        <a href="../../03-commodity-options/02-volatility-surfaces/">3.2 Volatility Surfaces</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-commodity-portfolio-and-risk-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-commodity-portfolio-and-risk-management/" class="toc-chapter-link"><strong>4.</strong> Commodity Portfolio and Risk Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-commodity-portfolio-and-risk-management/01-commodity-index-investing/">4.1 Commodity Index Investing</a>
+                        <a href="../../04-commodity-portfolio-and-risk-management/02-cross-commodity-hedging-and-correlation/">4.2 Cross-Commodity Hedging and Correlation</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Commodity Derivatives</a> › <a href="../">4. Commodity Portfolio and Risk Management</a> › <span>Cross-Commodity Hedging and Correlation</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 Cross-Commodity Hedging and Correlation</h1>
+
+                <p>The hedging discussion in Chapter 2 implicitly assumed that a liquid futures contract exists on exactly the commodity being hedged, so that basis risk arises only from grade, location, and timing mismatches between the futures and the underlying exposure. Many real-world exposures, however, have <em>no directly-traded futures contract at all</em> — a regional jet fuel consumer, a specialty chemical producer, or a livestock feeder facing input costs tied to a blend of grains. In these cases, the hedger must construct a <strong>cross-hedge</strong>: a position in a related, liquid futures contract whose price moves are correlated with — but not identical to — the exposure being hedged.</p>
+
+                <h2 class="mt-5 mb-3">When Cross-Hedging Is Necessary</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Cross-Hedge</div>
+                    <p class="mb-0">A cross-hedge is a hedge constructed using a futures (or other derivative) contract on a commodity $Y$ that is different from, but economically related to, the commodity $X$ to which the hedger has exposure. Common examples include hedging jet fuel exposure with heating oil futures, hedging a basket of base metals exposure with copper futures, or hedging a regional natural gas price with a benchmark hub futures contract (e.g., hedging a European gas price with Henry Hub, where the relationship is driven by global LNG arbitrage rather than direct substitution).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Minimum-Variance Hedge Ratio</h2>
+
+                <p>The central question in any hedge — direct or cross — is <em>how many units</em> of the hedging instrument to hold per unit of the underlying exposure. The classical answer is the minimum-variance hedge ratio, obtained by regressing changes in the spot price of the exposure on changes in the futures price of the hedging instrument.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Minimum-Variance Hedge Ratio</div>
+                    <p>Let $\Delta S$ denote the change in the value of the exposure to be hedged and $\Delta F$ the change in the price of the hedging futures contract over the same period. Consider a hedged position $\Delta S - h\,\Delta F$ for hedge ratio $h$. The variance of the hedged position is</p>
+                    <p>$$\text{Var}(\Delta S - h\,\Delta F) = \sigma_S^2 - 2h\,\sigma_{S,F} + h^2 \sigma_F^2.$$</p>
+                    <p>Minimising over $h$ gives the minimum-variance hedge ratio</p>
+                    <p>$$h^* = \frac{\sigma_{S,F}}{\sigma_F^2} = \rho_{S,F}\,\frac{\sigma_S}{\sigma_F}$$</p>
+                    <p class="mb-0">where $\sigma_S$ and $\sigma_F$ are the standard deviations of $\Delta S$ and $\Delta F$, $\sigma_{S,F}$ their covariance, and $\rho_{S,F}$ their correlation. In practice $h^*$ is estimated as the slope coefficient $\hat\beta$ from an ordinary least squares regression $\Delta S = \alpha + \beta\,\Delta F + \varepsilon$.</p>
+                </div>
+
+                <p>The number of futures contracts to trade follows directly from $h^*$ and the relative contract sizes of the exposure and the futures contract:</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Number of Contracts</div>
+                    <p class="mb-0">If the exposure has notional size $Q_S$ (in the same physical units as the futures contract) and each futures contract covers $Q_F$ units, the number of futures contracts to trade is $$N^* = h^* \times \frac{Q_S}{Q_F}.$$</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Hedge Effectiveness</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — $R^2$ as Hedge Effectiveness</div>
+                    <p class="mb-0">The $R^2$ of the regression used to estimate $h^*$ has a direct interpretation: it is the proportion of the variance of $\Delta S$ that is eliminated by the optimal hedge, i.e., the proportional reduction in variance achieved by the minimum-variance hedge is exactly $R^2 = \rho_{S,F}^2$. A cross-hedge with $\rho_{S,F} = 0.85$ eliminates roughly $72\%$ of the variance of the unhedged exposure — useful, but leaving substantial residual basis risk relative to a direct hedge where $\rho$ might exceed $0.97$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Basis Risk in Cross-Hedges</h2>
+
+                <p>Even with the optimal hedge ratio applied, a cross-hedge leaves residual <strong>basis risk</strong> — but of a different character from the basis risk discussed in Chapter 2. There, basis risk arose from grade, location, and timing mismatches <em>within the same commodity</em>. In a cross-hedge, the residual risk also includes the risk that the fundamental relationship between the two commodities itself shifts.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Correlation Instability</div>
+                    <p>Cross-hedge relationships are typically less stable than direct-hedge basis relationships, because they depend on economic linkages — substitutability, shared input costs, or arbitrage channels — that can weaken or break under stress. Heating oil and jet fuel, for example, are both middle distillates refined from similar crude streams and historically move closely together; but refinery output mix shifts, regional supply disruptions, or a structural change in jet fuel demand (as seen during periods of reduced air travel) can cause the historical correlation to deteriorate precisely when the hedge is needed most.</p>
+                    <p class="mb-0">A practical consequence is that hedge ratios estimated from historical regressions should be treated as time-varying rather than fixed: re-estimating $h^*$ periodically (e.g., using a rolling window) and stress-testing the hedge under scenarios where $\rho_{S,F}$ falls toward zero or even reverses sign are standard risk management practices for cross-hedged books.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example: Hedging Jet Fuel with Heating Oil Futures</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Airline Fuel Hedge Using Heating Oil Futures</div>
+                    <p>An airline needs to hedge its exposure to 420,000 gallons of jet fuel purchases over the next quarter. There is no actively-traded jet fuel futures contract suitable for this maturity, so the airline hedges using NYMEX heating oil futures, where each contract covers 42,000 gallons.</p>
+                    <p>Using two years of weekly price changes, the airline's risk team regresses changes in the jet fuel spot price ($\Delta S$, in dollars per gallon) on changes in the heating oil futures price ($\Delta F$, in dollars per gallon), obtaining:</p>
+                    <p>$$\hat\beta = h^* = 0.92, \qquad R^2 = 0.89, \qquad \sigma_S = 0.045, \qquad \sigma_F = 0.041.$$</p>
+                    <p>Check: $h^* = \rho_{S,F}\,\sigma_S/\sigma_F$. With $R^2 = 0.89$, $\rho_{S,F} = \sqrt{0.89} \approx 0.943$, so $h^* \approx 0.943 \times (0.045/0.041) \approx 1.035$ — close enough to the directly-estimated $0.92$ given rounding and sample-period differences; we proceed with the regression estimate $h^* = 0.92$.</p>
+                    <p>The number of heating oil contracts to sell short (the airline is long fuel-price risk and wants to hedge against price increases, so it goes long futures — but let's frame the hedge from the perspective of locking in a purchase price, i.e., going <em>long</em> heating oil futures):</p>
+                    <p>$$N^* = h^* \times \frac{Q_S}{Q_F} = 0.92 \times \frac{420{,}000}{42{,}000} = 0.92 \times 10 = 9.2 \approx 9 \text{ contracts}.$$</p>
+                    <p class="mb-0">The airline goes long approximately 9 heating oil futures contracts. With $R^2 = 0.89$, this hedge is expected to eliminate roughly $89\%$ of the variance in the airline's jet fuel cost arising from common price movements — leaving an $11\%$ residual variance attributable to the jet fuel/heating oil basis, which the airline's risk management framework must separately monitor and, where the exposure is large enough, potentially supplement with jet fuel swaps from physical suppliers or refiners who can take the other side of the basis risk.</p>
+                </div>
+
+                <p>This example highlights the general trade-off in cross-hedging: the hedge substantially reduces — but does not eliminate — price risk, and the residual basis risk is itself a risk that must be sized, monitored, and where possible, diversified or laid off through other means. Cross-commodity hedging is therefore as much a statistical and risk-monitoring discipline as it is a derivatives-trading one.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../04-commodity-portfolio-and-risk-management/01-commodity-index-investing/" class="btn btn-outline-custom">&larr; 4.1 Commodity Index Investing</a>
+                    <a href="../../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

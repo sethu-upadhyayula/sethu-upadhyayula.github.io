@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inflation Hedging for Liability-Driven Investors</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Inflation-Linked Products</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-inflation-linked-bonds">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-inflation-linked-bonds/" class="toc-chapter-link"><strong>1.</strong> Inflation-Linked Bond Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-inflation-linked-bonds/01-indexation-mechanics-and-real-yields/">1.1 Indexation Mechanics and Real Yield Curves</a>
+                        <a href="../../01-inflation-linked-bonds/02-breakeven-inflation-and-fisher-equation/">1.2 Breakeven Inflation and the Fisher Equation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-inflation-derivatives">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-inflation-derivatives/" class="toc-chapter-link"><strong>2.</strong> Inflation Derivatives</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-inflation-derivatives/01-zc-and-yoy-inflation-swaps/">2.1 Zero-Coupon and Year-on-Year Inflation Swaps</a>
+                        <a href="../../02-inflation-derivatives/02-inflation-caps-floors-and-options/">2.2 Inflation Caps, Floors, and Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-real-rates-and-inflation-risk-premia">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-real-rates-and-inflation-risk-premia/" class="toc-chapter-link"><strong>3.</strong> Real Rate and Inflation Risk Premia</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-real-rates-and-inflation-risk-premia/01-decomposing-breakeven-inflation/">3.1 Decomposing Breakevens: Expected Inflation vs Risk Premia</a>
+                        <a href="../../03-real-rates-and-inflation-risk-premia/02-seasonality-and-indexation-lag/">3.2 Seasonality and Indexation Lag Effects</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-portfolio-applications-and-relative-value">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-portfolio-applications-and-relative-value/" class="toc-chapter-link"><strong>4.</strong> Portfolio Applications and Relative Value</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-portfolio-applications-and-relative-value/01-inflation-hedging-for-ldi/">4.1 Inflation Hedging for Liability-Driven Investors</a>
+                        <a href="../../04-portfolio-applications-and-relative-value/02-relative-value-across-the-inflation-curve/">4.2 Relative Value Trades Across the Inflation Curve</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Inflation-Linked Products</a> › <a href="../">4. Portfolio Applications and Relative Value</a> › <span>Inflation Hedging for Liability-Driven Investors</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Inflation Hedging for Liability-Driven Investors</h1>
+
+                <p>Pension funds and insurers with inflation-linked liabilities — final-salary pension benefits that escalate with a price index, or annuity and insurance contracts with explicit CPI-linked payouts — face a direct economic exposure to realised inflation that mirrors, in reverse, the exposure of an investor holding inflation-linked bonds. This section develops the liability-driven investment (LDI) framework for hedging that exposure, focusing on how hedge ratios are constructed using linkers and inflation swaps, and works through a worked example of a typical LDI inflation hedge.</p>
+
+                <h2 class="mt-5 mb-3">The Inflation-Linked Liability</h2>
+
+                <p>A defined-benefit pension scheme's liabilities are, in present-value terms, a stream of future benefit cash flows, many of which are contractually linked to a price index (commonly CPI or RPI, depending on jurisdiction and scheme rules). The present value of these liabilities therefore depends not only on the discount curve used to value them, but also on the path of future inflation embedded in that valuation.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Liability Inflation Sensitivity</div>
+                    <p class="mb-0">Write the present value of the liabilities as $L = \sum_{i} N_i \cdot \text{IR}(T_i) \cdot P(0,T_i)$, where $N_i$ is the nominal (base-year) cash flow due at time $T_i$, $\text{IR}(T_i)$ is the cumulative index ratio applied to that cash flow (Section 1.1), and $P(0,T_i)$ is the discount factor. The liability's sensitivity to a parallel shift in the inflation curve — its <em>inflation duration</em> — is
+                    $$D_{\pi}^{L} = -\frac{1}{L}\frac{\partial L}{\partial \pi} = \frac{1}{L}\sum_i N_i \cdot \text{IR}(T_i) \cdot P(0,T_i) \cdot T_i$$
+                    a cash-flow-weighted average of the times $T_i$, exactly analogous to the Macaulay duration of a bond — except that here it measures sensitivity to the <em>inflation</em> curve rather than the nominal or real discount curve.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Hedging Instruments: Linkers vs Inflation Swaps</h2>
+
+                <p>Two broad instrument classes are available to hedge this exposure, and most LDI portfolios use a combination of both, chosen according to funding constraints, collateral requirements, and the shape of the liability cash flow profile.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Linkers vs Swaps in an LDI Context</div>
+                    <p><strong>Inflation-linked bonds (linkers).</strong> Holding a linker requires funding its full notional, which competes with the scheme's return-seeking assets for capital. Linkers also provide real-rate duration alongside inflation exposure — a linker hedges <em>both</em> the real-rate and inflation-linkage components of the liability simultaneously, which can be a feature (if the liability also has real-rate sensitivity through its discount factors) or a complication (if the scheme wants to isolate the inflation exposure only).</p>
+                    <p class="mb-0"><strong>Inflation swaps (ZC and YoY, Section 2.1).</strong> A receive-inflation ZC swap is unfunded (aside from collateral posting under a CSA), allowing the scheme to add inflation exposure without displacing capital from return-seeking assets. Swaps can also be tailored to arbitrary maturities and notionals to match the liability cash flow profile more precisely than the available linker universe, which is constrained to whatever maturities and coupons the relevant sovereign or supranational issuers have in issue.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Constructing the Hedge Ratio</h2>
+
+                <p>The basic objective is to choose a notional of hedging instrument such that the inflation-driven change in the value of the hedge offsets the inflation-driven change in the value of the liability, for a given shift in the inflation curve.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Inflation Hedge Ratio</div>
+                    <p class="mb-0">For a hedging instrument $H$ (a linker or inflation swap) with inflation-curve sensitivity $\partial H/\partial \pi$, the notional $N_H$ required to hedge a liability $L$ with sensitivity $\partial L/\partial \pi$ against a parallel shift in the inflation curve solves
+                    $$N_H \cdot \frac{\partial H}{\partial \pi}\bigg|_{\text{per unit notional}} = \frac{\partial L}{\partial \pi}$$
+                    The <strong>hedge ratio</strong> is then expressed as $N_H / L$ — the notional of hedging instrument per unit of liability present value — and a hedge ratio of 100% (often termed "full hedging") means the inflation sensitivities are matched one-for-one at the portfolio level. In practice, schemes often run hedge ratios below 100% (e.g. 60–80%) reflecting funding constraints, a desire to retain some upside if realised inflation undershoots curve-implied expectations, or because only a subset of liability cash flows (typically the longest-dated, least certain ones) are deemed appropriate to hedge with available instruments.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Matching the Curve Shape, Not Just the Level</h2>
+
+                <p>A single parallel-shift hedge ratio is a useful summary statistic, but liabilities typically have cash flows spread across many decades, while the available hedging instruments are concentrated at specific maturities (linker issuance points, or liquid swap tenors). A robust hedge therefore requires matching sensitivity bucket-by-bucket across the curve, not just in aggregate.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Key Rate Inflation Durations</div>
+                    <p class="mb-0">Analogous to key rate durations for nominal curve risk (Section 3.1 of Rates Fundamentals), the liability's inflation sensitivity can be decomposed into a vector of sensitivities to shifts in specific points on the inflation curve (e.g. 5y, 10y, 20y, 30y breakevens or ZC swap rates). The hedge portfolio — a combination of linkers and swaps at various maturities — is then constructed to match this sensitivity vector as closely as possible, subject to the constraint that the available instruments are discrete points rather than a continuum. Liabilities with very long-dated cash flows (40–50 years) often cannot be fully matched even with the longest-dated available linkers or swaps, leaving residual "tail risk" that the scheme must either accept or hedge with proxy instruments at shorter maturities, extrapolated using assumptions about the long end of the curve.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example — Constructing an LDI Inflation Hedge</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Sizing a Receive-Inflation Swap Overlay</div>
+                    <p>Suppose a pension scheme has CPI-linked liabilities with a present value of $L = \$2.0\text{bn}$ and an inflation duration of $D_\pi^L = 18$ years, so $\partial L/\partial \pi \approx L \times D_\pi^L = \$2.0\text{bn} \times 18 = \$36\text{bn}\cdot\text{yr}$ (in present-value terms, per unit of parallel inflation curve shift, e.g. per $1\%$ shift this is a $\$360\text{m}$ change in liability value).</p>
+                    <p>The scheme currently holds $\$0.6\text{bn}$ notional of long-dated linkers with an average inflation duration of $20$ years, contributing $\partial H_{\text{linker}}/\partial \pi \approx \$0.6\text{bn} \times 20 = \$12\text{bn}\cdot\text{yr}$. The scheme targets a hedge ratio of $80\%$, i.e. it wants total hedge sensitivity of $0.80 \times \$36\text{bn}\cdot\text{yr} = \$28.8\text{bn}\cdot\text{yr}$.</p>
+                    <p>The remaining sensitivity to be hedged via an inflation swap overlay is $\$28.8\text{bn}\cdot\text{yr} - \$12\text{bn}\cdot\text{yr} = \$16.8\text{bn}\cdot\text{yr}$. If the scheme uses 30-year ZC inflation swaps (inflation duration $\approx 30$ years per unit notional), the required notional is:
+                    $$N_{\text{swap}} = \frac{\$16.8\text{bn}\cdot\text{yr}}{30\text{ yr}} = \$0.56\text{bn}$$</p>
+                    <p class="mb-0">The scheme therefore enters a receive-fixed (pay-CPI, i.e. receive the realised inflation leg) 30-year ZC inflation swap with $\$0.56\text{bn}$ notional, alongside its existing $\$0.6\text{bn}$ linker holding, to bring the portfolio's aggregate inflation sensitivity to roughly $80\%$ of the liability's sensitivity. This is, of course, only a parallel-shift approximation — in practice the scheme would also check the key-rate inflation duration profile of the combined linker-plus-swap hedge against the liability's profile (per the remark above) to ensure the hedge is not concentrated at the wrong point on the curve relative to where the liability cash flows actually fall.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Portfolio Applications and Relative Value</a>
+                    <a href="../02-relative-value-across-the-inflation-curve/" class="btn btn-custom">4.2 Relative Value Trades Across the Inflation Curve &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

@@ -5,17 +5,23 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
 
 ## TODO / Roadmap
 
-1. **Expand Chess into chapter-level pages**, mirroring the Math/Quant
+1. **Finish expanding the remaining Quant subjects** to the 4-chapter /
+   ~13-page depth used by `rates-fundamentals`: bonds-and-fixed-income,
+   interest-rate-swaps, interest-rate-options, fx-forwards-and-swaps,
+   fx-options-and-volatility, exotic-equity-products, exotic-fx-products,
+   loans-and-lending, structured-credit, term-structure-models,
+   volatility-trading, xva-and-counterparty-risk.
+2. **Expand Chess into chapter-level pages**, mirroring the Math/Quant
    section's structure (topic → chapter → subsection, with a collapsible
    sidebar TOC). Each Chess topic (Regular/Variants/Compositions) is
    currently a single flat page and could be broken out into
    chapters/subsections with deeper content.
-2. **Expand the Math section** with more worked proofs, exercises (with
+3. **Expand the Math section** with more worked proofs, exercises (with
    solutions), and additional examples per subsection.
-3. **Add a site-wide search bar** (likely a static client-side index, e.g.
+4. **Add a site-wide search bar** (likely a static client-side index, e.g.
    Pagefind/Lunr/Fuse.js) so users can search across Math, Quant, and Chess
    content by topic/title rather than only browsing via the sidebar TOC.
-4. Other ideas under consideration:
+5. Other ideas under consideration:
    - Add a "recently updated" / changelog section so returning visitors can
      see what's new.
    - Cross-link related topics across sections (e.g. Black-Scholes in
@@ -40,9 +46,10 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
   (Measure Theory, Functional Analysis, SDEs, PDEs, Numerical Analysis,
   Financial Mathematics, etc.).
 - **Quant section**: 25 subjects across Rates, Credit, Equities,
-  Currencies, and Commodities, each fully built out with chapters and
-  subsections covering market structure, pricing models, and derivatives —
-  written in the same style/format as the Math section.
+  Currencies, and Commodities, covering market structure, pricing models,
+  and derivatives — written in the same style/format as the Math section.
+  Most subjects are fully built out to 4 chapters / ~13 pages each; the
+  remaining subjects are being expanded to the same depth (see Roadmap).
 - **Chess section**: split into Regular Chess, Variants, and Compositions.
   Regular Chess covers 8 topics (Basics, Opening Theory, Tactical Play,
   Strategic Play, Endgame Theory, Endgame Strategy, Master Games,

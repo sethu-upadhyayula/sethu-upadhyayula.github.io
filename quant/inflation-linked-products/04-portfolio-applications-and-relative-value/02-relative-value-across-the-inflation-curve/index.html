@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relative Value Trades Across the Inflation Curve</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Inflation-Linked Products</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-inflation-linked-bonds">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-inflation-linked-bonds/" class="toc-chapter-link"><strong>1.</strong> Inflation-Linked Bond Fundamentals</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-inflation-linked-bonds/01-indexation-mechanics-and-real-yields/">1.1 Indexation Mechanics and Real Yield Curves</a>
+                        <a href="../../01-inflation-linked-bonds/02-breakeven-inflation-and-fisher-equation/">1.2 Breakeven Inflation and the Fisher Equation</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-inflation-derivatives">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-inflation-derivatives/" class="toc-chapter-link"><strong>2.</strong> Inflation Derivatives</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-inflation-derivatives/01-zc-and-yoy-inflation-swaps/">2.1 Zero-Coupon and Year-on-Year Inflation Swaps</a>
+                        <a href="../../02-inflation-derivatives/02-inflation-caps-floors-and-options/">2.2 Inflation Caps, Floors, and Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-real-rates-and-inflation-risk-premia">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-real-rates-and-inflation-risk-premia/" class="toc-chapter-link"><strong>3.</strong> Real Rate and Inflation Risk Premia</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-real-rates-and-inflation-risk-premia/01-decomposing-breakeven-inflation/">3.1 Decomposing Breakevens: Expected Inflation vs Risk Premia</a>
+                        <a href="../../03-real-rates-and-inflation-risk-premia/02-seasonality-and-indexation-lag/">3.2 Seasonality and Indexation Lag Effects</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-portfolio-applications-and-relative-value">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-portfolio-applications-and-relative-value/" class="toc-chapter-link"><strong>4.</strong> Portfolio Applications and Relative Value</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-portfolio-applications-and-relative-value/01-inflation-hedging-for-ldi/">4.1 Inflation Hedging for Liability-Driven Investors</a>
+                        <a href="../../04-portfolio-applications-and-relative-value/02-relative-value-across-the-inflation-curve/">4.2 Relative Value Trades Across the Inflation Curve</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Inflation-Linked Products</a> › <a href="../">4. Portfolio Applications and Relative Value</a> › <span>Relative Value Trades Across the Inflation Curve</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 Relative Value Trades Across the Inflation Curve</h1>
+
+                <p>Beyond the strategic hedging applications of Section 4.1, inflation-linked markets offer a rich set of relative value opportunities: trades that express a view on the shape of the breakeven curve, the real yield curve, or on relative pricing between different inflation markets, while remaining largely neutral to the overall level of nominal rates. This section surveys the main families of such trades and works through an example.</p>
+
+                <h2 class="mt-5 mb-3">Breakeven Curve Trades: Steepeners and Flatteners</h2>
+
+                <p>The breakeven inflation curve — the term structure of $\pi_{\text{BE}}(T)$ across maturities — need not be flat, and its slope reflects the market's view on how expected inflation, the inflation risk premium, and liquidity premia (Section 3.1) evolve with horizon. A trader with a view on how this slope will change can express it via a breakeven curve steepener or flattener.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Breakeven Curve Steepener</div>
+                    <p class="mb-0">A <strong>breakeven steepener</strong> between maturities $T_1 < T_2$ is constructed to be long the breakeven spread $\pi_{\text{BE}}(T_2) - \pi_{\text{BE}}(T_1)$ — for example, by being long a $T_2$-maturity linker (or receiving on a $T_2$ ZC inflation swap) and short a duration-matched amount of a $T_1$-maturity nominal bond (or paying on a $T_1$ ZC inflation swap), with notionals sized so the position has approximately zero sensitivity to a parallel shift in either the nominal or real curve. The position profits if long-dated breakevens rise relative to short-dated breakevens, i.e. if the breakeven curve steepens. A <strong>flattener</strong> is the opposite position, profiting if the curve flattens (or inverts).</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why Breakeven Curves Steepen or Flatten</div>
+                    <p class="mb-0">The breakeven curve typically steepens when near-term inflation is expected to be low or falling (anchoring the short end) while long-run inflation expectations and the inflation risk premium (which increases with maturity, per Section 3.1) keep the long end elevated — a pattern common after disinflationary shocks. It tends to flatten or invert when near-term inflation is elevated (e.g. during a supply-shock-driven inflation spike) but is expected to be transitory, pulling the short end of the breakeven curve above the long end, which remains anchored near the central bank's long-run target. A breakeven curve trade is therefore often a relatively direct expression of a view on whether a current inflation regime — high or low — is expected to persist or mean-revert.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Real Yield Curve Relative Value</h2>
+
+                <p>Separately from breakevens, the real yield curve itself — constructed from linker prices as in Section 1.1 — can exhibit relative value opportunities driven by supply, demand, and liquidity factors specific to the real-rate market, independent of any view on inflation.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Real Curve Butterflies and Liquidity-Driven Cheapness</div>
+                    <p class="mb-0">Individual linker issues can trade cheap or rich relative to a smooth fitted real yield curve (a "linker curve fly" or "linker vs fitted curve" trade) for reasons that are entirely real-rate specific: a particular issue may be in high demand from LDI investors targeting that specific maturity bucket (Section 4.1), may be a benchmark issue with associated repo specialness, or may simply be old and illiquid relative to a newer on-the-run issue of similar maturity. These dislocations are analogous to nominal curve butterfly trades (Section 3.2 of Rates Fundamentals) but expressed on the real curve, and — because they do not involve a breakeven leg — carry no direct inflation view, only real-rate curve-shape and linker-specific liquidity risk.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Cross-Market Breakeven Comparisons</h2>
+
+                <p>Because inflation-linked markets exist in multiple jurisdictions — U.S. TIPS, UK index-linked gilts, French and German OAT€i/Bundei linked to eurozone HICP, and others — breakevens in one market can be compared with breakevens in another, after adjusting for differences in the underlying price index and market structure, to identify cross-market relative value.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Comparing US TIPS and UK Linker Breakevens (Conceptually)</div>
+                    <p class="mb-0">A direct comparison of, say, 10-year US TIPS breakevens (referencing US CPI) and 10-year UK index-linked gilt breakevens (referencing UK RPI, or CPI for newer issuance) is complicated by several structural differences: the two breakevens reference different price indices with different long-run trend inflation rates and different statistical methodologies (RPI has historically run persistently above CPI in the UK due to formula effects); the two markets have different liquidity profiles and investor bases (UK linkers are heavily dominated by LDI demand from pension funds, discussed in Section 4.1, which can persistently distort UK real yields and breakevens relative to a "pure" inflation-expectations measure); and the two economies may be at different points in the inflation cycle, with different central bank credibility and policy stances. A cross-market breakeven trade — e.g. long UK breakevens, short US breakevens — is therefore a view not on absolute inflation levels in either country, but on the <em>relative</em> evolution of these structural and cyclical factors, and requires care in sizing given the very different liquidity and duration characteristics of the two markets.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example — A Breakeven Curve Flattener</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Sizing a 5s30s Breakeven Flattener</div>
+                    <p>Suppose the current 5-year breakeven is $\pi_{\text{BE}}(5) = 2.70\%$ and the 30-year breakeven is $\pi_{\text{BE}}(30) = 2.30\%$, so the 5s30s breakeven spread is $2.30\% - 2.70\% = -40$bp (i.e. the curve is already inverted, but a trader believes near-term inflation pressures will fade further, causing the 5-year breakeven to fall faster than the 30-year, steepening the inversion — a "flattener" in the sense of betting the spread becomes more negative).</p>
+                    <p>To express this view, the trader receives the fixed leg on a 5-year ZC inflation swap (effectively short the 5-year breakeven — profiting if 5-year breakevens fall) with notional $N_5$, and pays fixed on a 30-year ZC inflation swap (long the 30-year breakeven) with notional $N_{30}$, sized so the position has zero net real-rate duration. If the DV01 of the 5-year swap is $0.0048$ per $\$1\text{m}$ notional and the 30-year swap's DV01 is $0.021$ per $\$1\text{m}$ notional, the ratio is:
+                    $$\frac{N_{30}}{N_5} = \frac{0.0048}{0.021} \approx 0.229$$</p>
+                    <p>For $N_5 = \$100\text{m}$, the trader pays fixed on $N_{30} \approx \$22.9\text{m}$ notional of the 30-year swap. If, three months later, the 5-year breakeven has fallen to $2.40\%$ ($-30$bp) while the 30-year breakeven is roughly unchanged at $2.28\%$ ($-2$bp), the 5s30s spread has moved from $-40$bp to $2.28\% - 2.40\% = -12$bp, a $28$bp widening of the (negative) spread in the trader's favoured direction.</p>
+                    <p class="mb-0">The approximate P&amp;L is the $28$bp move applied to the smaller leg's DV01-equivalent sensitivity: $28\text{bp} \times 0.0048 \times \$100\text{m} \approx \$13{,}400$ — small in absolute terms for this notional, illustrating that breakeven curve trades typically require substantial notionals (often hundreds of millions) to generate meaningful P&amp;L from moves measured in single-digit basis points, and that transaction costs and bid-offer in the underlying swap or linker markets are a material consideration in sizing such trades.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-inflation-hedging-for-ldi/" class="btn btn-outline-custom">&larr; 4.1 Inflation Hedging for Liability-Driven Investors</a>
+                    <a href="../../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>
