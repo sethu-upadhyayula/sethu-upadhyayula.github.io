@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Definition and Scope — Moremovers</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Moremovers</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-definition-and-scope"><div class="toc-chapter-header"><a href="../01-definition-and-scope/" class="toc-chapter-link"><strong>1.</strong> Definition and Scope</a></div></div>
+            <div class="toc-chapter" data-chapter="02-characteristics"><div class="toc-chapter-header"><a href="../02-characteristics/" class="toc-chapter-link"><strong>2.</strong> Characteristics</a></div></div>
+            <div class="toc-chapter" data-chapter="03-famous-composers-and-their-styles"><div class="toc-chapter-header"><a href="../03-famous-composers-and-their-styles/" class="toc-chapter-link"><strong>3.</strong> Famous Composers and Their Styles</a></div></div>
+            <div class="toc-chapter" data-chapter="04-a-knight-manoeuvre-problem"><div class="toc-chapter-header"><a href="../04-a-knight-manoeuvre-problem/" class="toc-chapter-link"><strong>4.</strong> A Knight Manoeuvre Problem</a></div></div>
+            <div class="toc-chapter" data-chapter="05-moremovers-vs-endgame-studies"><div class="toc-chapter-header"><a href="../05-moremovers-vs-endgame-studies/" class="toc-chapter-link"><strong>5.</strong> Moremovers vs. Endgame Studies</a></div></div>
+            <div class="toc-chapter" data-chapter="06-how-to-solve-moremovers"><div class="toc-chapter-header"><a href="../06-how-to-solve-moremovers/" class="toc-chapter-link"><strong>6.</strong> How to Solve Moremovers</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Moremovers</a> › <span>1. Definition and Scope</span></nav>
+
+        <h1 class="text-accent mb-4">1. Definition and Scope</h1>
+
+  <p>A <strong>moremover</strong> carries the stipulation <strong>#n</strong> with n ≥ 4 &mdash; that is, "White to play and mate in exactly n moves," where n is four or greater. The name itself is purely a matter of convention: a problem with the stipulation #2 is a <em>twomover</em>, #3 is a <em>threemover</em>, and everything from #4 upward is grouped together under the umbrella term "moremover." In practice, most competition moremovers range from #4 to about #12, with longer problems &mdash; #15, #20, even #50 or more &mdash; existing as specialised curiosities prized for record-breaking length or for a single extraordinary idea that genuinely requires that much space to unfold.</p>
+
+  <p>Why does the convention lump together everything from #4 upwards, rather than giving each move-count its own named category the way twomovers and threemovers get? The answer is structural. A twomover is built around a single key move and a single set of replies &mdash; there is, by definition, no room for a "plan" in the strategic sense, because the entire problem is one ply of White followed by one ply of Black. A threemover already introduces the idea of a quiet first move followed by a forcing continuation, but the scope for genuinely long-range strategy is still limited. From #4 onwards, however, the qualitative character of the problem changes: White is no longer just setting a single trap, but executing a <em>plan</em> that may involve regrouping pieces, manoeuvring around obstacles, and creating zugzwang positions. This qualitative shift &mdash; from "trap" to "plan" &mdash; is what defines the moremover as a genre, regardless of whether n is 4 or 14.</p>
+
+  <h3>The Formal Stipulation</h3>
+  <p>As with all direct-mate problems, the stipulation #n is read literally and exactly:</p>
+  <ul>
+    <li>White must force checkmate against any Black defence within n moves &mdash; not more.</li>
+    <li>If White can force mate in fewer than n moves against <em>some</em> Black defence, that is not in itself a flaw &mdash; what matters is that mate-in-exactly-n is achievable against best play, and the composer's intention is that the "main line" (Black's best defence) takes the full n moves.</li>
+    <li>If White has an alternative way to force mate in fewer than n moves <em>against every defence</em>, the problem is unsound &mdash; this is called a "cook" (the same term used in twomovers and threemovers), and it is just as fatal here.</li>
+    <li>Conversely, if even the best defence allows White to mate in fewer than n moves with no try by White producing the full n-move line, the stated stipulation #n is misleading and the problem is usually rejected by judges as "n is not exact."</li>
+  </ul>
+
+  <h3>Where the Moremover Sits</h3>
+  <p>It helps to think of composed chess problems as occupying a spectrum, with the moremover bridging two very different worlds:</p>
+  <ul>
+    <li><strong>Short problems (twomovers, threemovers)</strong> &mdash; combinatorial puzzles. The entire content of the problem can often be appreciated "all at once": you see the key, you see the replies, you see the mates. The aesthetic is closer to that of a riddle.</li>
+    <li><strong>Moremovers (#4 and beyond)</strong> &mdash; strategic narratives. The solver must hold a plan in mind across several moves, anticipate how Black's defences interact with that plan, and recognise when White needs to deviate, regroup, or wait. The aesthetic is closer to that of a short story with a beginning, a middle, and a resolution.</li>
+    <li><strong>Endgame studies</strong> &mdash; open-ended strategic problems ("White to play and win," with no move-count specified). The aesthetic is closer to that of a demonstration: "here is how a real game could plausibly be won from this position."</li>
+  </ul>
+  <p>The moremover, then, is not simply "a longer twomover." It borrows the strict formal apparatus of the direct-mate problem (an exact stipulation, the requirement that every Black defence be refuted, the prohibition on cooks and duals) and combines it with the strategic depth more commonly associated with studies. This hybrid character is precisely what makes the genre so rich: a well-constructed #6 can contain an entire miniature drama &mdash; a foreplan that clears the way, a main plan that exploits the cleared space, and a mating combination that ties it all together &mdash; while still being checkable, move by move, with total precision.</p>
+
+  <h3>A Note on Helpmates, Selfmates, and Other Genres</h3>
+  <p>The term "moremover" as used here refers specifically to <strong>direct mates</strong>: White moves first and forces mate against any Black defence. This is the same family as twomovers and threemovers, just with a longer move count. Other genres &mdash; helpmates (where Black cooperates), selfmates (where White forces Black to deliver mate), and the various fairy-chess problem types &mdash; have their own conventions for move-count and their own equivalents of "more moves means more strategic depth." Those genres are covered in their own sections of this site; this chapter, and the five that follow, deal exclusively with the orthodox direct-mate moremover.</p>
+
+  <h3>Why the Boundary Matters</h3>
+  <p>The formal boundary &mdash; n ≥ 4, an exact move count, no cooks &mdash; might look like dry bookkeeping, but it has deep artistic consequences that the rest of this section explores. Because the move count is exact, composers can build problems around <em>rhythm</em>: a knight that must take exactly three moves to reach its post, a king that must shuffle for precisely the right number of tempi before a mating net closes. An endgame study, which only promises "White wins" with no move-count constraint, cannot achieve this kind of precise temporal architecture. The moremover, uniquely among composed problem types, combines strategic scope with rhythmic precision &mdash; and that combination is the subject of the chapters that follow.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../" class="btn btn-outline-custom">&larr; Back to Moremovers</a>
+            <a href="../02-characteristics/" class="btn btn-custom">2. Characteristics &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grid Chess — Fairy Chess</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+.piece-def{background:var(--card-bg,#1e1e2e);border-left:3px solid var(--accent-color,#7c9cbf);padding:.75rem 1rem;margin:.5rem 0;border-radius:0 6px 6px 0;}
+.grid-note{background:var(--card-bg,#1e1e2e);border:1px dashed var(--border-color,#444);border-radius:8px;padding:.75rem 1rem;margin:.5rem 0;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Fairy Chess</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-what-is-fairy-chess"><div class="toc-chapter-header"><a href="../01-what-is-fairy-chess/" class="toc-chapter-link"><strong>1.</strong> What Is Fairy Chess?</a></div></div>
+            <div class="toc-chapter" data-chapter="02-fairy-pieces"><div class="toc-chapter-header"><a href="../02-fairy-pieces/" class="toc-chapter-link"><strong>2.</strong> Fairy Pieces</a></div></div>
+            <div class="toc-chapter" data-chapter="03-fairy-conditions"><div class="toc-chapter-header"><a href="../03-fairy-conditions/" class="toc-chapter-link"><strong>3.</strong> Fairy Conditions</a></div></div>
+            <div class="toc-chapter" data-chapter="04-grid-chess"><div class="toc-chapter-header"><a href="../04-grid-chess/" class="toc-chapter-link"><strong>4.</strong> Grid Chess</a></div></div>
+            <div class="toc-chapter" data-chapter="05-a-grasshopper-problem"><div class="toc-chapter-header"><a href="../05-a-grasshopper-problem/" class="toc-chapter-link"><strong>5.</strong> A Grasshopper Problem</a></div></div>
+            <div class="toc-chapter" data-chapter="06-circe-a-worked-example"><div class="toc-chapter-header"><a href="../06-circe-a-worked-example/" class="toc-chapter-link"><strong>6.</strong> Circe: A Worked Example</a></div></div>
+            <div class="toc-chapter" data-chapter="07-why-compose-fairy-problems"><div class="toc-chapter-header"><a href="../07-why-compose-fairy-problems/" class="toc-chapter-link"><strong>7.</strong> Why Compose Fairy Problems?</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Fairy Chess</a> › <span>4. Grid Chess</span></nav>
+
+        <h1 class="text-accent mb-4">4. Grid Chess</h1>
+
+  <p>Grid Chess is a fairy <em>condition</em> in the same family as Circe, Madrasi, and the other rule-changes from Chapter 3 &mdash; but instead of altering captures or check, it overlays an entirely new piece of geometry onto the board: a grid of lines that every move must respect.</p>
+
+  <h3>The Rule</h3>
+  <div class="piece-def">
+    The 8&times;8 board is partitioned into sixteen 2&times;2 "cells" by a set of grid lines &mdash; typically the lines running between files b/c, d/e, and f/g (vertically), and between ranks 2/3, 4/5, and 6/7 (horizontally). Every move, for every piece (including pawns and the king, and including captures), must <strong>cross at least one grid line</strong>. A move that begins and ends within the same 2&times;2 cell &mdash; i.e., a move that crosses no grid line at all &mdash; is <strong>illegal</strong>, even if it would otherwise be a perfectly legal move under the normal rules of chess.
+  </div>
+  <p class="mt-2">Note that this is purely an additional restriction layered on top of orthodox movement: nothing becomes legal under Grid Chess that wasn't legal before, but some normally-legal moves become illegal because they stay "inside the cell."</p>
+
+  <h3>Visualising the Grid</h3>
+  <div class="grid-note">
+    The standard Grid Chess partition divides the board into a 4&times;4 arrangement of 2&times;2 cells:
+    <ul class="mb-0 mt-2">
+      <li><strong>Vertical grid lines</strong> fall between the b- and c-files, between the d- and e-files, and between the f- and g-files.</li>
+      <li><strong>Horizontal grid lines</strong> fall between ranks 2 and 3, between ranks 4 and 5, and between ranks 6 and 7.</li>
+    </ul>
+    <p class="mb-0 mt-2">So, for example, a1/a2/b1/b2 form one cell; c1/c2/d1/d2 form the next cell to its right; e1/e2/f1/f2 the next; and g1/g2/h1/h2 the last cell of the bottom-left row of cells. The pattern repeats upward in bands of two ranks.</p>
+  </div>
+
+  <h3>How Grid Lines Change Mobility</h3>
+  <p>The practical effect of the grid is best seen piece by piece:</p>
+  <ul>
+    <li><strong>Kings</strong> normally have up to eight one-square moves. Under Grid Chess, a king on a square in the "interior" of a cell &mdash; i.e., not adjacent to any grid line &mdash; actually has <em>no</em> legal king-moves at all in some directions, because every neighbouring square inside the same cell is off-limits. A king on b2, for instance, can step to a1, a2, a3, b1, b3, c1, c2, or c3 in the ordinary game; under Grid Chess, the steps to a1, a2, a3, and b1 (all of which stay within the a1-b2 cell, since a1/a2/b1/b2 form a cell together) are illegal, leaving only b3, c1, c2, c3 as legal king moves &mdash; and even some of those must be checked against the grid lines on the other side.</li>
+    <li><strong>Pawns</strong> moving one square forward from their second rank to their third rank automatically cross the rank-2/rank-3 grid line, so that move remains legal. But a pawn already on its third rank moving to its fourth rank stays within the same horizontal band (ranks 3-4 sit inside the same 2-rank cell-band only if no grid line separates them &mdash; check the specific line: ranks 2/3 and 4/5 are grid lines, so a pawn moving from rank 3 to rank 4 crosses <em>no</em> horizontal grid line. If its file doesn't change, and the destination cell shares both the file-pair and rank-pair of the origin, the move is illegal). Pawn captures, which always change file, are far more likely to cross a vertical grid line and remain legal.</li>
+    <li><strong>Knights</strong> are particularly interesting: a knight's (2,1)-shape jump can sometimes land in the very same cell it started in (e.g., from a square near the centre of a cell, a short knight hop might stay inside the 2&times;2 block), making that specific jump illegal under Grid Chess even though no other rule forbids it. Conversely, knight jumps that already span a cell boundary are completely unaffected.</li>
+    <li><strong>Long-range pieces</strong> (rooks, bishops, queens) are least affected in absolute terms &mdash; any move of length two or more along a rank, file, or diagonal is virtually guaranteed to cross at least one grid line. The only moves at risk are single-step rook/bishop/queen moves that happen to stay inside one cell, which mirrors the king's situation above.</li>
+  </ul>
+
+  <h3>A Worked Position</h3>
+  <p>Consider the following simple position, with the standard grid lines (vertical: b/c, d/e, f/g; horizontal: 2/3, 4/5, 6/7) overlaid in your mind's eye as described above.</p>
+
+  <div class="chess-board" id="board-grid"></div>
+  <script>renderChessBoard('board-grid', {e1:'wK',a1:'wR',h4:'wQ',e8:'bK',a8:'bR'});</script>
+  <p class="text-center text-muted mt-2"><small>White: Ke1, Ra1, Qh4 &nbsp;|&nbsp; Black: Ke8, Ra8 &mdash; under Grid Chess with grid lines b/c, d/e, f/g (files) and 2/3, 4/5, 6/7 (ranks)</small></p>
+
+  <div class="grid-note">
+    <strong>Checking some candidate White moves:</strong>
+    <ul class="mb-0 mt-2">
+      <li><strong>Ke1&ndash;d1</strong>: e1 sits in the cell e1/e2/f1/f2; d1 sits in the cell c1/c2/d1/d2. These are different cells (separated by the d/e file line), so the move crosses a grid line &mdash; <em>legal</em>.</li>
+      <li><strong>Ke1&ndash;f1</strong>: e1 and f1 are both inside the same cell (e1/e2/f1/f2). No grid line is crossed &mdash; <em>illegal</em> under Grid Chess, even though it's a normal king move.</li>
+      <li><strong>Ra1&ndash;a4</strong>: a1 is in cell a1/a2/b1/b2; a4 is in cell a3/a4/b3/b4. The rank-2/3 line separates them &mdash; <em>legal</em>.</li>
+      <li><strong>Qh4&ndash;h3</strong>: h4 is in cell g3/g4/h3/h4; h3 is in the very same cell. No grid line crossed &mdash; <em>illegal</em>, despite being a one-square queen move that would be unremarkable in orthodox chess.</li>
+      <li><strong>Qh4&ndash;e1</strong> (diagonal): spans both a vertical line (f/g) and several horizontal lines &mdash; clearly <em>legal</em>.</li>
+    </ul>
+  </div>
+
+  <h3>Why Composers Use Grid Chess</h3>
+  <p>Grid Chess rewards a kind of spatial awareness that has no analogue in orthodox composition: a king "trapped" in the interior of a cell may have drastically fewer flight squares than its raw piece-count would suggest, letting composers construct mates with far less material than an orthodox equivalent would need. Conversely, the condition can also <em>save</em> a king that would otherwise be mated &mdash; if every checking move available to the attacker happens to stay within a cell, the check itself may be illegal. Solving a Grid Chess problem therefore requires solvers to mentally trace the grid lines for every candidate move, on every move of the solution, for both sides &mdash; a discipline that, once internalised, often reveals geometric patterns in the position that were invisible under the orthodox rules alone.</p>
+
+  <p>Grid Chess also combines naturally with fairy pieces from Chapter 2: a Nightrider or Grasshopper's long path is even more likely to cross multiple grid lines, so grid restrictions interact most sharply with short-range pieces (kings, pawns, and single-step moves) &mdash; precisely the pieces whose mobility orthodox chess takes most for granted.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../03-fairy-conditions/" class="btn btn-outline-custom">&larr; 3. Fairy Conditions</a>
+            <a href="../05-a-grasshopper-problem/" class="btn btn-custom">5. A Grasshopper Problem &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

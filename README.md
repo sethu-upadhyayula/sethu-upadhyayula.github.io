@@ -5,17 +5,12 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
 
 ## TODO / Roadmap
 
-1. **Expand Chess into chapter-level pages**, mirroring the Math/Quant
-   section's structure (topic → chapter → subsection, with a collapsible
-   sidebar TOC). Each Chess topic (Regular/Variants/Compositions) is
-   currently a single flat page and could be broken out into
-   chapters/subsections with deeper content.
-2. **Expand the Math section** with more worked proofs, exercises (with
+1. **Expand the Math section** with more worked proofs, exercises (with
    solutions), and additional examples per subsection.
-3. **Add a site-wide search bar** (likely a static client-side index, e.g.
+2. **Add a site-wide search bar** (likely a static client-side index, e.g.
    Pagefind/Lunr/Fuse.js) so users can search across Math, Quant, and Chess
    content by topic/title rather than only browsing via the sidebar TOC.
-4. Other ideas under consideration:
+3. Other ideas under consideration:
    - Add a "recently updated" / changelog section so returning visitors can
      see what's new.
    - Cross-link related topics across sections (e.g. Black-Scholes in
@@ -43,14 +38,16 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
   Currencies, and Commodities, covering market structure, pricing models,
   and derivatives — written in the same style/format as the Math section.
   Every subject is built out to 4 chapters / ~13-14 pages.
-- **Chess section**: split into Regular Chess, Variants, and Compositions.
-  Regular Chess covers 8 topics (Basics, Opening Theory, Tactical Play,
-  Strategic Play, Endgame Theory, Endgame Strategy, Master Games,
-  Chess History) with interactive boards rendered via a lichess-style
-  board renderer; Variants covers Antichess, Atomic, Chess 960, Crazyhouse,
-  Horde, King of the Hill, Racing Kings, and Three Check; Compositions
-  covers Endgame Studies, Twomovers, Threemovers, Moremovers, Helpmates,
-  Selfmates, Retro Problems, and Fairy Chess.
+- **Chess section**: split into Regular Chess, Variants, and Compositions,
+  all organized into chapter-level pages (topic → chapter, with a
+  collapsible sidebar TOC) using interactive boards rendered via a
+  lichess-style board renderer. Regular Chess covers 8 topics (Basics,
+  Opening Theory, Tactical Play, Strategic Play, Endgame Theory, Endgame
+  Strategy, Master Games, Chess History); Variants covers Antichess, Atomic,
+  Chess 960, Crazyhouse, Horde, King of the Hill, Racing Kings, and Three
+  Check (4 chapters each); Compositions covers Endgame Studies, Twomovers,
+  Threemovers, Moremovers, Helpmates, Selfmates, Retro Problems, and Fairy
+  Chess (6-7 chapters each).
 - **About Me** and **Contact** pages with social links (email, LinkedIn,
   GitHub).
 
@@ -98,15 +95,19 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
     power-and-emissions, metals-and-mining, agriculture
 
 /chess/                 Chess
-  /chess/regular/                Regular Chess (8 topics)
+  /chess/regular/                Regular Chess (8 topics, 8 chapters each)
     basics/, opening-theory/, tactical-play/, strategic-play/,
     endgame-theory/, endgame-strategy/, master-games/, chess-history/
-  /chess/variants/               Chess Variants (alphabetical)
+  /chess/variants/               Chess Variants (8 topics, 4 chapters each)
     antichess/, atomic/, chess960/, crazyhouse/, horde/,
     king-of-the-hill/, racing-kings/, three-check/
-  /chess/compositions/           Chess Compositions
+    /chess/variants/<topic>/                Topic overview
+    /chess/variants/<topic>/<chapter>/      Chapter content
+  /chess/compositions/           Chess Compositions (8 topics, 6-7 chapters each)
     endgame-studies/, twomovers/, threemovers/, moremovers/, helpmates/,
     selfmates/, retros/, fairies/
+    /chess/compositions/<topic>/            Topic overview
+    /chess/compositions/<topic>/<chapter>/  Chapter content
 ```
 
 ## Tech Stack

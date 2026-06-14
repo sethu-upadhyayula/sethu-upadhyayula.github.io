@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Characteristics — Moremovers</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Moremovers</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-definition-and-scope"><div class="toc-chapter-header"><a href="../01-definition-and-scope/" class="toc-chapter-link"><strong>1.</strong> Definition and Scope</a></div></div>
+            <div class="toc-chapter" data-chapter="02-characteristics"><div class="toc-chapter-header"><a href="../02-characteristics/" class="toc-chapter-link"><strong>2.</strong> Characteristics</a></div></div>
+            <div class="toc-chapter" data-chapter="03-famous-composers-and-their-styles"><div class="toc-chapter-header"><a href="../03-famous-composers-and-their-styles/" class="toc-chapter-link"><strong>3.</strong> Famous Composers and Their Styles</a></div></div>
+            <div class="toc-chapter" data-chapter="04-a-knight-manoeuvre-problem"><div class="toc-chapter-header"><a href="../04-a-knight-manoeuvre-problem/" class="toc-chapter-link"><strong>4.</strong> A Knight Manoeuvre Problem</a></div></div>
+            <div class="toc-chapter" data-chapter="05-moremovers-vs-endgame-studies"><div class="toc-chapter-header"><a href="../05-moremovers-vs-endgame-studies/" class="toc-chapter-link"><strong>5.</strong> Moremovers vs. Endgame Studies</a></div></div>
+            <div class="toc-chapter" data-chapter="06-how-to-solve-moremovers"><div class="toc-chapter-header"><a href="../06-how-to-solve-moremovers/" class="toc-chapter-link"><strong>6.</strong> How to Solve Moremovers</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Moremovers</a> › <span>2. Characteristics</span></nav>
+
+        <h1 class="text-accent mb-4">2. Characteristics</h1>
+
+  <p>What separates a moremover from a short problem is not just the move count, but a cluster of recurring features that this extra room makes possible. None of these features is unique to moremovers in isolation &mdash; a threemover can have a small plan, a study can have zugzwang &mdash; but moremovers are the genre where all of them routinely combine in a single composition. This chapter surveys the five most important: plan-based thinking, long manoeuvres, zugzwang, positional motifs, and the "logical" theme at scale.</p>
+
+  <h3>Plan-Based Thinking</h3>
+  <p>Unlike twomovers, where every Black reply is considered in isolation against a single key move, moremovers demand that White pursue a coherent <em>plan</em> across many moves. The plan might be: transfer the queen to a specific square via a clearance manoeuvre, force the Black king into a corner, systematically reduce Black's defensive options, or set up a mating net that only becomes visible in its final form.</p>
+  <p>Black, naturally, tries to disrupt this plan at every opportunity. This is what gives moremovers their dramatic shape: White's plan and Black's resistance unfold together, move by move, and the "story" of the problem is the interaction between the two. A solver who only calculates one move at a time, without asking "what is White trying to achieve overall?", will often find the position bewildering &mdash; the individual moves may look pointless until the plan reveals itself.</p>
+  <p>A useful mental model is to separate <strong>strategy</strong> (the overall plan: where do White's pieces need to end up, and what mating mechanism is being prepared?) from <strong>tactics</strong> (the individual forcing moves that get them there). In a twomover these collapse into one step; in a moremover, strategy comes first and tactics follow.</p>
+
+  <h3>Long Manoeuvres</h3>
+  <p>A piece may need three, four, or more moves to reach its destination, making an apparently useless first move actually the beginning of a decisive journey. These long manoeuvres &mdash; especially by knights, which must zig-zag across the board because of their unusual movement &mdash; are among the most beautiful elements of moremovers.</p>
+  <p>The solver's task in these cases is to recognise the <em>destination</em> rather than the path. If a knight clearly needs to end up controlling a particular square to complete a mating net, the solver can often work out the most efficient route to that square even before checking each intermediate step for legality and safety. Composers exploit this by choosing routes that are not the most direct: a knight might take a longer path because the direct path would expose it to capture, or because the "wrong" intermediate squares serve a secondary purpose (controlling an extra escape square along the way, for instance).</p>
+  <p>Long manoeuvres are not limited to knights. A rook might need to manoeuvre to a different file via a "ladder" of moves; a bishop might need to switch diagonals through an intermediate square; even a king, in some moremovers, undertakes a multi-move march toward the centre of the action. What unites all of these is the gap between the apparent purpose of the first move (often "nothing, really") and its actual purpose (the first step of a journey).</p>
+
+  <h3>Zugzwang</h3>
+  <p><strong>Zugzwang</strong> &mdash; a position in which a player would prefer to pass but is forced to move, and every available move worsens their position &mdash; appears more naturally in moremovers because there is enough time to manoeuvre into a position where Black is in zugzwang on a specific, predictable move.</p>
+  <p>The classic structure runs like this: White spends several moves improving the position &mdash; repositioning pieces, restricting Black's pawn moves, taking away squares one by one &mdash; until a position is reached where Black has no useful move left at all. Crucially, it must be <em>Black's turn</em> at that moment. If White reached the same position with White to move, the position might be a dead draw or even lost for White; the entire point of the manoeuvring is to "pass the move" to Black at exactly the right moment.</p>
+  <p>This is sometimes described as <strong>reciprocal zugzwang</strong> when the position is such that <em>whoever</em> has to move is in trouble &mdash; both sides would prefer to pass. In a moremover, White's task is then to manoeuvre (using only moves that don't disturb the reciprocal-zugzwang position itself) until it becomes Black's turn to move into it. Finding such "neutral" or "waiting" moves, often called <strong>tempo moves</strong>, is one of the central challenges in constructing &mdash; and solving &mdash; this type of moremover.</p>
+
+  <h3>Positional Motifs</h3>
+  <p>Moremovers regularly feature motifs more commonly seen in practical, over-the-board play: piece coordination, outpost squares, pawn chains, king marches, the restriction of a piece's mobility by surrounding it with pawns, and so on. Because the genre has room to "set the scene" before the combinational fireworks begin, composers can draw on the full vocabulary of positional chess.</p>
+  <p>The compositions of composers like Lev Loshinsky and Comins Mansfield show how profound positional understanding can be encoded in a composed moremover &mdash; not as decoration, but as the load-bearing structure of the problem. A pawn chain might exist specifically to deny the Black king a flight square three moves later; an "outpost" knight might be the piece that ultimately delivers mate, its placement on that outpost having been the first move of the solution.</p>
+  <p>This overlap with practical chess is part of why strong over-the-board players often enjoy moremovers (and studies) more than short problems: the skills used to solve them &mdash; planning, evaluating piece activity, recognising weaknesses &mdash; transfer directly to tournament play, in a way that the highly specialised key-finding skills of twomover solving do not always do.</p>
+
+  <h3>The Logical Theme at Scale</h3>
+  <p>The "logical school" of composition organises a problem's solution into a <strong>foreplan</strong> (a preparatory sequence that removes some obstacle) followed by a <strong>main plan</strong> (the sequence that actually forces mate, now that the obstacle is gone). In a threemover, a foreplan might be a single move; in a longer moremover, the logical theme reaches its full expression.</p>
+  <p>A ten-move problem (#10) might require White to execute <em>three separate foreplans</em>, each removing one obstacle to the next, before the decisive main plan becomes executable at all:</p>
+  <ul>
+    <li><strong>Foreplan 1</strong> might reposition a White piece that is currently blocking its own king's planned route.</li>
+    <li><strong>Foreplan 2</strong> might force a Black pawn to commit to a square where it will later block one of Black's own escape squares.</li>
+    <li><strong>Foreplan 3</strong> might be a waiting manoeuvre that arranges for White to have the move at the critical zugzwang moment (see above).</li>
+    <li><strong>Main plan</strong> then executes the actual mating sequence, which would have failed at move one if any of the three foreplans had been skipped.</li>
+  </ul>
+  <p>The construction of such problems is extraordinarily demanding: each foreplan must be <em>provably necessary</em> (omitting it must cause the main plan to fail, ideally to a precisely demonstrable refutation), and the foreplans themselves must not introduce any unintended side effects (alternative defences, duals, or cooks) of their own. A long logical moremover is, in effect, several smaller problems nested inside one another, each one a necessary condition for the next &mdash; which is why such problems, when they are sound and clear, are among the most admired in the entire art form.</p>
+
+  <h3>Putting It Together</h3>
+  <p>None of these five characteristics &mdash; plan, manoeuvre, zugzwang, positional motif, logical structure &mdash; is required in every moremover. Many fine #4s and #5s use only one or two of them. But as the move count grows, more of these elements tend to appear, and the most celebrated long moremovers typically weave together several of them into a single coherent narrative. The worked example in Chapter 4 demonstrates the long-manoeuvre characteristic directly; Chapter 3 introduces some of the composers most associated with these styles.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../01-definition-and-scope/" class="btn btn-outline-custom">&larr; 1. Definition and Scope</a>
+            <a href="../03-famous-composers-and-their-styles/" class="btn btn-custom">3. Famous Composers and Their Styles &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

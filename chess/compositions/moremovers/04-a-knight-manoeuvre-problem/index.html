@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Knight Manoeuvre Problem — Moremovers</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Moremovers</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-definition-and-scope"><div class="toc-chapter-header"><a href="../01-definition-and-scope/" class="toc-chapter-link"><strong>1.</strong> Definition and Scope</a></div></div>
+            <div class="toc-chapter" data-chapter="02-characteristics"><div class="toc-chapter-header"><a href="../02-characteristics/" class="toc-chapter-link"><strong>2.</strong> Characteristics</a></div></div>
+            <div class="toc-chapter" data-chapter="03-famous-composers-and-their-styles"><div class="toc-chapter-header"><a href="../03-famous-composers-and-their-styles/" class="toc-chapter-link"><strong>3.</strong> Famous Composers and Their Styles</a></div></div>
+            <div class="toc-chapter" data-chapter="04-a-knight-manoeuvre-problem"><div class="toc-chapter-header"><a href="../04-a-knight-manoeuvre-problem/" class="toc-chapter-link"><strong>4.</strong> A Knight Manoeuvre Problem</a></div></div>
+            <div class="toc-chapter" data-chapter="05-moremovers-vs-endgame-studies"><div class="toc-chapter-header"><a href="../05-moremovers-vs-endgame-studies/" class="toc-chapter-link"><strong>5.</strong> Moremovers vs. Endgame Studies</a></div></div>
+            <div class="toc-chapter" data-chapter="06-how-to-solve-moremovers"><div class="toc-chapter-header"><a href="../06-how-to-solve-moremovers/" class="toc-chapter-link"><strong>6.</strong> How to Solve Moremovers</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Moremovers</a> › <span>4. A Knight Manoeuvre Problem</span></nav>
+
+        <h1 class="text-accent mb-4">4. A Knight Manoeuvre Problem</h1>
+
+  <p>This chapter works through a single illustrative position from start to finish, demonstrating the long knight manoeuvre that Chapter 2 introduced as one of the defining characteristics of the genre. The point of working through it carefully is not just to verify the solution, but to see <em>how</em> a solver should approach a position like this &mdash; what to notice first, what to dismiss, and how the pieces' eventual roles become clear only in hindsight.</p>
+
+  <h3>The Position</h3>
+  <p><strong>Position:</strong> White: &#9812;a1, &#9813;h8, &#9816;a3 &nbsp;|&nbsp; Black: &#9818;h3, pawns g4, h4, g3</p>
+  <p><em>White to play and mate in 5 (#5)</em></p>
+
+  <div class="chess-board" id="board-more"></div>
+  <script>renderChessBoard('board-more', {a1:'wK',h8:'wQ',a3:'wN',h3:'bK',g4:'bP',h4:'bP',g3:'bP'});</script>
+  <p class="text-center text-muted mt-2"><small>Knight manoeuvre moremover &mdash; illustrative #5</small></p>
+
+  <h3>First Impressions</h3>
+  <p>Before calculating anything, it's worth simply describing the position. White has an enormous material advantage &mdash; a queen and a knight against three pawns &mdash; and yet the Black king is not currently in any danger: it sits on h3, shielded by its own pawns on g3, g4, and h4, which between them block almost every approach. The White queen on h8 is far away on the back rank, and the White knight on a3 is in the opposite corner of the board from the action, about as far from the Black king as a piece can be.</p>
+  <p>A solver's first instinct might be to look at queen moves: can the queen simply swoop down and deliver a quick mate? Checking this quickly: the queen on h8 has access to the h-file and the long diagonal, but every direct approach to the Black king's vicinity is blocked or covered by one of those three pawns. A move like Qh8&ndash;h5 isn't possible in one step along the relevant lines without passing through occupied or irrelevant squares, and even where the queen <em>can</em> approach, the king has escape squares unless something else is controlling them. The queen alone cannot finish the job &mdash; which is the first clue that the knight, despite being on the opposite side of the board, must matter.</p>
+
+  <h3>Identifying the Plan</h3>
+  <p>Given that the knight is so far away, and the stipulation allows five moves, the natural hypothesis is: <strong>the knight needs to travel to a square near the Black king, and the queen will deliver mate once it arrives</strong>. This is exactly the "long manoeuvre" characteristic from Chapter 2 &mdash; the apparently irrelevant piece is actually the key to the whole position.</p>
+  <p>From a3, where can a knight usefully go in the direction of h3? A natural route is a3&ndash;b5&ndash;d4&ndash;f3. Each of these squares is a legal knight move from the previous one, and f3 is adjacent to the Black king's pawn shield &mdash; from f3, a knight would help control g1, g2, h2, h4, e1, e5, d2, and d4-area squares, several of which are relevant to restricting the king on h3.</p>
+  <p>Three knight moves (a3&ndash;b5, b5&ndash;d4, d4&ndash;f3) would use moves 1 through 3. That leaves moves 4 and 5 for the queen to deliver the final blow with the knight's help &mdash; exactly fitting the five-move stipulation. This is a strong sign that the hypothesis is correct.</p>
+
+  <h3>Checking Black's Defences</h3>
+  <p>Of course, White's plan must work against <em>any</em> Black defence, not just a passive one. Black's king on h3 is hemmed in by its own pawns, so its only real option during White's manoeuvre is to shuffle between the few squares its pawn structure allows &mdash; principally g2 and h3 itself (h4 and g4 are occupied by Black's own pawns, and g3 likewise). This severely limits Black's active choices: Black cannot create counterplay, cannot advance the pawns usefully without self-blocking further, and cannot bring any other piece into play (there isn't one). The position is, in effect, "solitaire" for Black &mdash; the king shuffles back and forth while White executes the plan unopposed.</p>
+  <p>This is itself a notable feature of the position: with such a restricted Black force, the "defence" is almost entirely passive, and the artistic interest lies almost entirely in White's manoeuvre rather than in a battle of ideas. (Compare this with the rich variation-play discussed for Mansfield-style problems in Chapter 3 &mdash; this position sits at the opposite extreme, where the entire content is the manoeuvre itself.)</p>
+
+  <h3>Solution Outline</h3>
+  <div class="notation-box">
+    The knight on a3 must reach f3 via a multi-step route,<br>
+    while the queen and king coordinate to restrict the Black king.<br><br>
+    <strong>1. Nb5!</strong> (begins the manoeuvre &mdash; not check, not capture)<br>
+    <strong>1... Kg2</strong> (Black's king shuffles &mdash; its only real try)<br>
+    <strong>2. Nd4</strong> (continuing the knight tour)<br>
+    <strong>2... Kh3</strong> (shuffling back)<br>
+    <strong>3. Nf3</strong> (knight arrives, cutting off escape via g1/g2/e1)<br>
+    <strong>3... Kg2</strong><br>
+    <strong>4. Qg7+</strong> (queen swings into the attack, gaining a tempo with check)<br>
+    <strong>4... Kh3</strong> (forced back)<br>
+    <strong>5. Qg4#</strong><br><br>
+    <em>The knight manoeuvre Nb5&ndash;Nd4&ndash;Nf3 is the engine of the solution: it is only because the knight has arrived on f3 by move 3 that the queen's checks on moves 4 and 5 are actually mating, rather than merely checking.</em>
+  </div>
+
+  <h3>Why the Order of Moves Matters</h3>
+  <p>It's worth asking: could White play the moves in a different order &mdash; for instance, bring the queen in first and finish with the knight? In this position, no: until the knight reaches f3, the queen's checks on g7 and g4 do not control enough squares around the Black king to prevent an escape, because f3, e2, and related squares are not yet covered by anything. The knight's arrival on f3 is a <em>precondition</em> for the queen's checks to be final. This is the foreplan/main-plan structure from Chapter 2 in miniature: the three knight moves are the foreplan (they don't threaten anything by themselves), and the two queen moves are the main plan (they only work because the foreplan has already happened).</p>
+  <p>This also explains why the move count is exactly five, and not four or six. Four moves is not enough because the knight cannot reach a useful square in only two moves from a3 (a3&ndash;b5&ndash;d4 only reaches d4, which does not yet control the key squares around h3) &mdash; the manoeuvre genuinely requires three knight moves. Six moves would be too many: once the knight reaches f3 on move 3, the queen needs only two further moves to mate, so a five-move solution is forced, and the "extra" move that a #6 stipulation would imply simply isn't there. This tight fit between the manoeuvre's natural length and the stipulation is part of what makes a position like this satisfying &mdash; the move count isn't arbitrary, it's a direct consequence of the geometry of the board.</p>
+
+  <h3>A Variant: What If the Knight Started Closer?</h3>
+  <p>It's instructive to consider how the problem would change if the knight started on, say, d4 instead of a3 &mdash; one step along its intended route. In that case, only Nf3 would be needed to complete the manoeuvre, and the queen would have three moves (instead of two) to deliver mate &mdash; but the stipulation would then need to be #4, not #5, for the position to be "exact" (recall from Chapter 1 that a stipulation which could be solved in fewer moves than stated is a serious flaw). This illustrates a general principle: <strong>the starting square of a manoeuvring piece and the stated move count are tightly linked</strong> &mdash; composers choose the starting square specifically so that the manoeuvre takes exactly as many moves as the stipulation requires, no more and no less.</p>
+
+  <h3>What to Take Away</h3>
+  <p>The key solving lesson from this position is the one previewed in Chapter 2: when a position contains a piece that appears completely disconnected from the action, and the stipulation allows enough moves for that piece to travel somewhere relevant, <strong>investigate that piece's possible routes first</strong>. Once a plausible route and destination are found, the remaining moves of the stipulation will often tell you how many moves are "left over" for the rest of the plan &mdash; and that number is usually exactly right, which is itself a clue that you've found the correct idea.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../03-famous-composers-and-their-styles/" class="btn btn-outline-custom">&larr; 3. Famous Composers and Their Styles</a>
+            <a href="../05-moremovers-vs-endgame-studies/" class="btn btn-custom">5. Moremovers vs. Endgame Studies &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

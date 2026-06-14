@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Solve Selfmates — Selfmates</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Selfmates</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-definition"><div class="toc-chapter-header"><a href="../01-definition/" class="toc-chapter-link"><strong>1.</strong> Definition</a></div></div>
+            <div class="toc-chapter" data-chapter="02-why-selfmates-are-counterintuitive"><div class="toc-chapter-header"><a href="../02-why-selfmates-are-counterintuitive/" class="toc-chapter-link"><strong>2.</strong> Why Selfmates Are Counterintuitive</a></div></div>
+            <div class="toc-chapter" data-chapter="03-key-techniques"><div class="toc-chapter-header"><a href="../03-key-techniques/" class="toc-chapter-link"><strong>3.</strong> Key Techniques</a></div></div>
+            <div class="toc-chapter" data-chapter="04-thematic-content"><div class="toc-chapter-header"><a href="../04-thematic-content/" class="toc-chapter-link"><strong>4.</strong> Thematic Content</a></div></div>
+            <div class="toc-chapter" data-chapter="05-an-illustrative-selfmate"><div class="toc-chapter-header"><a href="../05-an-illustrative-selfmate/" class="toc-chapter-link"><strong>5.</strong> An Illustrative Selfmate</a></div></div>
+            <div class="toc-chapter" data-chapter="06-how-to-solve-selfmates"><div class="toc-chapter-header"><a href="../06-how-to-solve-selfmates/" class="toc-chapter-link"><strong>6.</strong> How to Solve Selfmates</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Selfmates</a> › <span>6. How to Solve Selfmates</span></nav>
+
+        <h1 class="text-accent mb-4">6. How to Solve Selfmates</h1>
+
+  <p>Selfmates are widely regarded as the hardest genre for beginners — not because the calculations are necessarily longer than in directmates, but because of the psychological barrier of "wanting to win." Solvers spend years training themselves to look for moves that attack the opponent's king and defend their own. A selfmate asks for the opposite on both counts, and until that switch is made, even simple selfmates can feel impenetrable. This chapter lays out a concrete, step-by-step method for approaching them.</p>
+
+  <h3>Step 1: Reverse Your Thinking</h3>
+  <p>Before looking at any specific move, consciously reframe the goal. Ask yourself: <strong>"What position, one (or a few) moves from now, has Black forced to deliver checkmate on the White king?"</strong> Then work <em>backward</em> from that target position toward the diagram.</p>
+  <p>This is the single most important mental adjustment. Everything else in this chapter is really just a more detailed way of carrying out this reversal. If you find yourself evaluating a candidate White move by asking "does this help White's attack?" — stop. The question is always "does this help <em>force Black</em> into mating White?"</p>
+
+  <h3>Step 2: Find the Mating Position First</h3>
+  <p>Rather than searching for White's first move, start by identifying <strong>how the White king could be mated by a Black piece</strong> in this position, given the pieces on the board. Ask:</p>
+  <ul>
+    <li>Which Black piece(s) are geometrically close enough to the White king to deliver a check in one or two moves?</li>
+    <li>If that piece checked the White king from a particular square, would the king have any flight squares? If so, what would need to change (which White piece would need to move where) to cover them?</li>
+    <li>Is there a White piece that could be sacrificed to "deliver" a Black piece onto the critical mating square via a forced capture?</li>
+  </ul>
+  <p>Identifying the mating piece, the mating square, and the mating move <em>first</em> gives you a fixed target. Everything else — the key move, any intermediate moves — exists purely to make that one position arise with Black to move and no alternative.</p>
+
+  <h3>Step 3: Set Up the Zugzwang</h3>
+  <p>Once you know the target mating position, the move (or moves) immediately before it must put Black in <strong>zugzwang</strong>: every legal Black move from that position must lead to the mate (directly, in an s#2, or via further forced play in longer problems). Concretely:</p>
+  <ul>
+    <li>List <em>every</em> Black piece and <em>every</em> legal move available to each one in the position just before the final move.</li>
+    <li>For each such move, verify it leads to checkmate on White (either immediately, or via a further forced sequence if n &gt; 2).</li>
+    <li>If you find a Black move that does <em>not</em> lead to mate, your candidate key is wrong (or incomplete) — either it doesn't restrict that piece enough, or it doesn't cover the resulting position. Go back and look for a different key, or for an additional restriction your key move provides that you missed.</li>
+  </ul>
+  <p>This step is the most labour-intensive and the one beginners skip — but it is also where most "obviously correct" candidate solutions turn out to be unsound, because they overlook one quiet Black move (often a pawn push, or a retreat of a piece that seemed irrelevant).</p>
+
+  <h3>Step 4: Ensure Stalemate Is Avoided</h3>
+  <p>At every stage — not just the final position — check that Black is not stalemated. If your candidate key move removes <em>all</em> of Black's legal moves while the Black king is not in check, the line fails: stalemate is not the stipulated result, no matter how "nearly mate" the position looks. If you find this happening, look for:</p>
+  <ul>
+    <li>A different key that restricts Black <em>slightly less</em>, leaving exactly the one (mating) move available; or</li>
+    <li>A key that <em>grants</em> Black a new move (via the stalemate-avoidance ideas from Chapter 3) precisely so that the position isn't stalemate, with that new move being the mating one.</li>
+  </ul>
+
+  <h3>Step 5: Verify Every Black Defence Is Covered</h3>
+  <p>Just as in a directmate, a selfmate solution is only sound if <em>every</em> legal Black response at every branch point has been accounted for. The asymmetry is that here, "accounted for" means "leads to Black mating White," not "leads to White mating Black." Go through the position systematically:</p>
+  <ul>
+    <li>Every legal move of the Black king;</li>
+    <li>Every legal move of every Black piece, including pieces that look "stuck" or irrelevant — a single overlooked pawn move can unravel an entire line;</li>
+    <li>Any checks Black could give at intermediate points, and whether White has a way to continue toward the stipulated mate after them.</li>
+  </ul>
+  <p>If this checklist passes for the candidate key and all subsequent forced moves, you have a sound solution.</p>
+
+  <h3>A Worked Mini-Checklist</h3>
+  <p>Applying these steps to the miniature from Chapter 5 (White: Ke4, Qd6, Rh5; Black: Ka8, Qb6, Pa6; s#2):</p>
+  <ol>
+    <li><strong>Target mate:</strong> the Black queen checking on a square adjacent to the White king (e.g., d5), with all White-king flights covered.</li>
+    <li><strong>Zugzwang move:</strong> 1.Qd5 — restricts the Black queen to one legal move (Qxd5) and removes the Black king's and pawn's moves.</li>
+    <li><strong>Stalemate check:</strong> Black has exactly one legal move (Qxd5) — not zero, so not stalemate.</li>
+    <li><strong>Defence check:</strong> Black king and pawn have no legal moves (verified by the surrounding guards); the queen's only legal destination is d5.</li>
+    <li><strong>Result:</strong> 1...Qxd5 is forced and is checkmate — s#2 solved.</li>
+  </ol>
+
+  <h3>Closing Thoughts</h3>
+  <p>Solvers often describe a moment, after enough practice, where the inversion described in Chapter 2 simply "clicks" — the same five-step process above stops feeling like an unnatural exercise and starts feeling like the obvious way to look at the position. Once you genuinely see the White king as a target to be cornered, and the Black pieces as tools that White is patiently manoeuvring into position, the logic becomes every bit as clean and satisfying as solving a directmate — arguably more so, because the solution has to survive scrutiny from <em>both</em> directions: White's plan must work, and Black's resistance must be shown to be completely futile.</p>
+  <p>This chapter closes the selfmate section of Chess Compositions. The other composition topics — twomovers, helpmates, fairies, retros, and more — explore related but distinct sets of conventions; many of the techniques and themes introduced here (zugzwang, model mates, Nowotnys, Rundlaufs) recur across all of them in their own characteristic forms.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../05-an-illustrative-selfmate/" class="btn btn-outline-custom">&larr; 5. An Illustrative Selfmate</a>
+            <a href="../../" class="btn btn-custom">Back to Chess Compositions &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

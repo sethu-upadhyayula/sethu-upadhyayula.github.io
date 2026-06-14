@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Major Themes — Threemovers</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Threemovers</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-definition-and-structure"><div class="toc-chapter-header"><a href="../01-definition-and-structure/" class="toc-chapter-link"><strong>1.</strong> Definition and Structure</a></div></div>
+            <div class="toc-chapter" data-chapter="02-what-changes-from-the-twomover"><div class="toc-chapter-header"><a href="../02-what-changes-from-the-twomover/" class="toc-chapter-link"><strong>2.</strong> What Changes from the Twomover</a></div></div>
+            <div class="toc-chapter" data-chapter="03-major-themes"><div class="toc-chapter-header"><a href="../03-major-themes/" class="toc-chapter-link"><strong>3.</strong> Major Themes</a></div></div>
+            <div class="toc-chapter" data-chapter="04-an-illustrative-position"><div class="toc-chapter-header"><a href="../04-an-illustrative-position/" class="toc-chapter-link"><strong>4.</strong> An Illustrative Position</a></div></div>
+            <div class="toc-chapter" data-chapter="05-solving-strategy"><div class="toc-chapter-header"><a href="../05-solving-strategy/" class="toc-chapter-link"><strong>5.</strong> Solving Strategy</a></div></div>
+            <div class="toc-chapter" data-chapter="06-aesthetic-ideals"><div class="toc-chapter-header"><a href="../06-aesthetic-ideals/" class="toc-chapter-link"><strong>6.</strong> Aesthetic Ideals</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Threemovers</a> › <span>3. Major Themes</span></nav>
+
+        <h1 class="text-accent mb-4">3. Major Themes</h1>
+
+  <p>Over more than a century, composers have identified and named recurring patterns that exploit the extra move available in a threemover. Knowing these themes by name is invaluable both for solvers (it tells you what to look for) and for understanding why a particular problem is celebrated. This chapter covers five of the most important: the Nowotny, the Grimshaw, the half-battery, the Turton doubling, and the logical problem tradition.</p>
+
+  <h3>The Nowotny Theme</h3>
+  <p>The Nowotny is named after the Austrian composer <strong>Anton Nowotny</strong>, who first demonstrated it systematically in 1854. The mechanism is:</p>
+  <ul>
+    <li>A White piece (commonly a bishop, rook, or knight) moves to a square that sits at the <strong>intersection</strong> of a line controlled by a Black rook (or queen) and a diagonal controlled by a Black bishop (or queen).</li>
+    <li>This White piece is, in principle, capturable by either Black line-piece.</li>
+    <li>Whichever Black piece captures, it has now moved <em>onto</em> the intersection square — which means it <strong>interferes with the other Black piece's line</strong> (the captured piece's old line is no longer covered by it, but more importantly, the capturing piece now blocks its own colleague along the orthogonal/diagonal it just stepped onto).</li>
+    <li>White's prepared continuation exploits exactly this self-interference, mating along the line that the capturing piece has just blocked for its partner.</li>
+  </ul>
+  <p>In a threemover, the Nowotny sacrifice can appear as the <strong>key</strong> (move 1) — immediately forcing the choice of which piece captures — or it can be <strong>set up by the key and executed on move 2</strong>, with Black's first defence determining exactly where the sacrifice lands. The latter form lets the composer combine the Nowotny with an additional layer of choice.</p>
+
+  <div class="chess-board" id="board-nowotny"></div>
+  <script>renderChessBoard('board-nowotny', {g1:'wK',c6:'wB',a6:'bR',h8:'bK',h1:'bB'});</script>
+  <p class="text-center text-muted mt-2"><small>Schematic Nowotny intersection: the White bishop on c6 sits on the intersection of the Black rook's 6th-rank/a-file control and the Black bishop's a8&ndash;h1 diagonal. Either capture, Rxc6 or Bxc6, causes the capturing piece to block its partner's line.</small></p>
+
+  <h3>The Grimshaw Theme</h3>
+  <p>The Grimshaw, named after the English composer <strong>Walter Grimshaw</strong>, is in a sense the "purely Black" cousin of the Nowotny: it requires <em>no White sacrifice</em> at all.</p>
+  <ul>
+    <li>Two Black pieces of different types — most commonly a rook and a bishop — both have access to the same square, call it X.</li>
+    <li>If the Black rook moves to X, it blocks the Black bishop's diagonal through X.</li>
+    <li>If the Black bishop moves to X instead, it blocks the Black rook's file or rank through X.</li>
+    <li>Either way, Black has voluntarily created a self-interference, and White's continuation is tailored to punish whichever piece actually moved there.</li>
+  </ul>
+  <p>The elegance of the Grimshaw lies in its symmetry: the same square produces two structurally parallel — but not identical — self-blocks, and the composer must provide two correspondingly related (but distinct) mating continuations. When the two resulting mates share a strong family resemblance (same mating piece, mirrored geometry, etc.), the Grimshaw is considered especially well realised.</p>
+
+  <h3>Half-Battery</h3>
+  <p>A <strong>battery</strong> is a pair of White pieces aligned on a rank, file, or diagonal, where the rear piece's line of attack is currently blocked by the front piece — so that if the front piece moves off the line, the rear piece delivers check (often mate). A <strong>half-battery</strong> is a battery configuration that is only "half-armed": typically, the front piece itself is not yet positioned to deliver a check or mate when it moves, or the rear piece's potential is not yet aimed at the Black king at all.</p>
+  <p>In a threemover, the key can be the move that "completes" the half-battery — repositioning one of the two pieces so that the battery, now fully armed, becomes a genuine threat for move 3. Alternatively, the key can leave the half-battery as is, and Black's first defence (perhaps forced by an unrelated threat) inadvertently completes the arming for White, who then fires the battery on move 2 or with the continuation on move 3. Half-batteries are popular because firing a battery is visually and tactically striking, and a half-battery gives the composer one extra "free" move in which to set the stage.</p>
+
+  <h3>The Turton Doubling</h3>
+  <p>Named after the English problemist <strong>Henry Turton</strong>, the Turton manoeuvre involves two long-range pieces of the <em>same type</em> (e.g., two rooks, or a rook and queen sharing a line, or two bishops on the same diagonal) operating on a shared line, where the piece that is currently <strong>behind</strong> moves <em>past</em> the piece that is currently <strong>in front</strong> — i.e., the rear piece "leapfrogs" to a square beyond the front piece, putting itself in front. The (formerly front, now rear) piece can then continue along the same line later, creating a battery.</p>
+  <p>The defining feature of the Turton — what makes it harder to spot than the simple battery formation — is the <strong>order of movement</strong>: the piece that ends up at the back of the battery moves <em>first</em>, threading past its partner, and the partner (now at the back) provides the discovered check or mate on a subsequent move. This "doubling" requires precise geometry and at least the extra tempo that a threemover provides, which is why the Turton is essentially a threemover-and-longer theme; it almost never fits inside a twomover's single move.</p>
+
+  <h3>Logical Problems (Logische Aufgaben)</h3>
+  <p>The <strong>logical school</strong>, associated above all with German composers of the late nineteenth and early twentieth centuries, introduced a distinctive narrative structure: the problem has an obvious <strong>main plan</strong> that would mate quickly — except that some feature of the position (an obstruction, a piece in the way, an insufficiently covered square) prevents it from working immediately.</p>
+  <p>The solution therefore unfolds in two conceptual stages:</p>
+  <ul>
+    <li><strong>The foreplan:</strong> one or more preliminary moves whose entire purpose is to remove the obstacle — clearing a line, deflecting a defender, or repositioning a piece — with no mating point of their own.</li>
+    <li><strong>The main plan:</strong> once the obstacle is gone, the "obvious" mating idea now executes cleanly.</li>
+  </ul>
+  <p>What makes logical problems so admired is the experience of <em>retrospectively understanding</em> the key: a solver who tries the "obvious" main-plan move immediately will fail (a try!), and only realises afterward that the key was preparing exactly that failure's cure. This "preparation before execution" structure is the hallmark of the logical tradition, and it is one of the main reasons threemovers (and the longer moremovers) became its natural home — a twomover simply does not have room for a foreplan and a main plan as separate moves.</p>
+
+  <h3>Combining Themes</h3>
+  <p>The themes above are not mutually exclusive — in fact, the most celebrated threemovers often combine two or more. A Nowotny sacrifice might be the foreplan of a logical problem; a half-battery might be completed by a Turton doubling; a Grimshaw self-block might determine which arm of a half-battery gets to fire. Recognising the individual themes is the first step; recognising how they interact in a single position is what separates a casual solver from an expert. Chapter 4 puts the Nowotny theme to work in a complete, fully-diagrammed example, showing exactly how the abstract pattern above becomes a concrete three-move solution.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../02-what-changes-from-the-twomover/" class="btn btn-outline-custom">&larr; 2. What Changes from the Twomover</a>
+            <a href="../04-an-illustrative-position/" class="btn btn-custom">4. An Illustrative Position &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>
+</content>

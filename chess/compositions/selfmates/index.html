@@ -7,9 +7,7 @@
 <link rel="stylesheet" href="../../../css/styles.css">
 <link rel="stylesheet" href="../../../css/chess-board.css">
 <script src="../../../js/chess-board.js"></script>
-<style>
-.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
-</style>
+
 </head><body>
 <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
 <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
@@ -24,113 +22,39 @@
 <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
 <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
 </ul></div></div></nav></header>
-<main><div class="container py-4">
-<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
-<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Compositions</a> › <span>Selfmates</span></nav>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <span class="text-accent fw-semibold fs-5">Selfmates</span>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-definition"><div class="toc-chapter-header"><a href="01-definition/" class="toc-chapter-link"><strong>1.</strong> Definition</a></div></div>
+            <div class="toc-chapter" data-chapter="02-why-selfmates-are-counterintuitive"><div class="toc-chapter-header"><a href="02-why-selfmates-are-counterintuitive/" class="toc-chapter-link"><strong>2.</strong> Why Selfmates Are Counterintuitive</a></div></div>
+            <div class="toc-chapter" data-chapter="03-key-techniques"><div class="toc-chapter-header"><a href="03-key-techniques/" class="toc-chapter-link"><strong>3.</strong> Key Techniques</a></div></div>
+            <div class="toc-chapter" data-chapter="04-thematic-content"><div class="toc-chapter-header"><a href="04-thematic-content/" class="toc-chapter-link"><strong>4.</strong> Thematic Content</a></div></div>
+            <div class="toc-chapter" data-chapter="05-an-illustrative-selfmate"><div class="toc-chapter-header"><a href="05-an-illustrative-selfmate/" class="toc-chapter-link"><strong>5.</strong> An Illustrative Selfmate</a></div></div>
+            <div class="toc-chapter" data-chapter="06-how-to-solve-selfmates"><div class="toc-chapter-header"><a href="06-how-to-solve-selfmates/" class="toc-chapter-link"><strong>6.</strong> How to Solve Selfmates</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Compositions</a> › <span>Selfmates</span></nav>
 
-<h1 class="mb-3">Selfmates</h1>
-<p class="lead mb-4">In a selfmate, White plays to <em>force</em> Black to deliver checkmate — while Black does everything possible to avoid doing so. Every natural chess instinct is inverted: White sacrifices aggressively, creates threats against its own king, and drives Black pieces into position to deliver the fatal blow.</p>
+        <h1 class="text-accent mb-3">Selfmates</h1>
+        <p class="lead mb-4">In a selfmate, White plays to <em>force</em> Black to deliver checkmate — while Black does everything possible to avoid doing so. Every natural chess instinct is inverted: White sacrifices aggressively, creates threats against its own king, and drives Black pieces into position to deliver the fatal blow.</p>
 
-<!-- DEFINITION -->
-<section class="hero-card p-4 mb-4">
-  <h2>1. Definition</h2>
-  <p>A selfmate carries the stipulation <strong>s#n</strong>. White moves first and, in at most n moves, forces Black to deliver checkmate — regardless of Black's attempts to avoid doing so. Black plays <em>optimally to avoid giving checkmate</em>. If Black can escape without mating White, the problem is unsound.</p>
-  <p>This stipulation was once considered a curiosity, but selfmates are now a fully developed and richly theorised genre with their own thematic traditions, competitions, and canonical masterworks. The WCCT includes a selfmate section, and the FIDE Album contains hundreds of the finest examples.</p>
-  <p><strong>Key asymmetry:</strong> Black is not trying to win — Black is trying to <em>avoid</em> mating White. This makes Black a reluctant executioner. White must construct a position in which Black has no choice but to deliver checkmate, no matter how hard Black tries to find an escape.</p>
-</section>
+        <p class="mb-5">The six chapters below introduce the selfmate genre from first principles: what the stipulation means, why the logic feels so backwards at first, the standard techniques composers use to engineer a forced mate-by-Black, the thematic families that recur across the literature, a fully worked example with a diagram and solution, and a step-by-step method for solving selfmates yourself.</p>
 
-<!-- WHY COUNTERINTUITIVE -->
-<section class="hero-card p-4 mb-4">
-  <h2>2. Why Selfmates Are Counterintuitive</h2>
-  <p>Every instinct trained by normal chess must be reversed:</p>
-  <ul>
-    <li><strong>Attacking your own king is the goal.</strong> White actively places its king in danger, strips away its defenders, and manoeuvres enemy pieces into attacking positions.</li>
-    <li><strong>Giving away material is often necessary.</strong> White may sacrifice powerful pieces not to gain counterplay, but to force Black to capture — and thus occupy a square that enables the mating move.</li>
-    <li><strong>Restricting Black is paradoxical.</strong> White must simultaneously restrict Black's freedom (so Black cannot escape the mating obligation) while also ensuring that Black's only legal move IS the mating move.</li>
-    <li><strong>Stalemate is the enemy.</strong> If White restricts Black too thoroughly, Black might be stalemated — and stalemate is not checkmate. White must avoid trapping Black with no move while still funnelling Black toward the one mating move.</li>
-  </ul>
-  <p>This inversion of values creates the intellectual fascination of selfmates. Problems that look absurd on first inspection reveal elegant logic on closer examination.</p>
-</section>
-
-<!-- KEY TECHNIQUES -->
-<section class="hero-card p-4 mb-4">
-  <h2>3. Key Techniques</h2>
-
-  <h3>Zugzwang</h3>
-  <p>The dominant technique. White manoeuvres into a position where <em>every</em> Black move delivers checkmate on White. This requires precise calculation: Black must have at least one legal move, and every legal Black move must result in checkmate. Achieving this is extraordinarily difficult because a single escape square for a Black piece, or a single non-mating Black move, breaks the problem.</p>
-
-  <h3>Pin Exploitation</h3>
-  <p>A Black piece that is pinned cannot move. White may deliberately set up pins so that Black's only unpinned pieces are forced to deliver checkmate. Alternatively, White may <em>unpin</em> a Black piece specifically so that piece is forced to move — and when it moves, it mates.</p>
-
-  <h3>Controlled Captures</h3>
-  <p>White places a piece en prise — on a square where a specific Black piece must capture it. When that Black piece captures, it arrives on a square from which it delivers checkmate on the White king. This "forced capture = forced checkmate" is one of the most elegant selfmate mechanisms.</p>
-
-  <h3>Battery Play (Reversed)</h3>
-  <p>White may construct a battery pointing <em>toward its own king</em>. By moving the front piece out of the way, White exposes its own king to check — and the forced check is checkmate.</p>
-
-  <h3>Stalemate Avoidance</h3>
-  <p>As noted, White must ensure Black always has exactly the right number of moves — enough to have legal play, but all legal moves lead to checkmate. Adding a move to Black's repertoire (by giving Black a new piece or clearing a square) can be a crucial step in avoiding unintended stalemate.</p>
-</section>
-
-<!-- THEMES -->
-<section class="hero-card p-4 mb-4">
-  <h2>4. Thematic Content</h2>
-
-  <h3>The Selfmate Nowotny</h3>
-  <p>Just as in direct-mate problems, a White piece can sacrifice on the intersection of two Black piece lines — but in a selfmate, this forces one of the Black pieces to capture, landing it on a square from which it delivers checkmate. The Nowotny appears in selfmates with inverted logic but equal elegance.</p>
-
-  <h3>Rundlauf (Round Trip)</h3>
-  <p>A piece — White or Black — makes a circuit, visiting several squares and returning to (or passing through) its starting square. In selfmates, a White piece may need to execute a round trip to set up the zugzwang position.</p>
-
-  <h3>Model Mates</h3>
-  <p>The final mating position can display a "model mate" — where the White king is mated economically, with no superfluous guards on any flight square. Model mates in selfmates are particularly prized because the mating piece is always a Black piece.</p>
-
-  <h3>The Bristol Clearance in Selfmates</h3>
-  <p>White clears a line specifically so that a Black piece can move along it to deliver checkmate. The clearance is White's deliberate act of making way for the executioner.</p>
-</section>
-
-<!-- DIAGRAM -->
-<section class="hero-card p-4 mb-4">
-  <h2>5. An Illustrative Selfmate</h2>
-  <p>This miniature selfmate demonstrates the zugzwang mechanism. White forces Black's queen to deliver checkmate on the White king.</p>
-
-  <p><strong>Position:</strong> White: ♔e4, ♕d6, ♖h5 &nbsp;|&nbsp; Black: ♚a8, ♛b6, ♟a6</p>
-  <p><em>White to play, selfmate in 2 (s#2)</em></p>
-
-  <div class="chess-board" id="board-self"></div>
-  <script>renderChessBoard('board-self', {e4:'wK',d6:'wQ',h5:'wR',a8:'bK',b6:'bQ',a6:'bP'});</script>
-  <p class="text-center text-muted mt-2"><small>Illustrative selfmate — Black queen forced to deliver checkmate</small></p>
-
-  <h3 class="mt-3">Solution</h3>
-  <div class="notation-box">
-    <strong>1. Qd5!</strong> (White places its queen on d5, threatening nothing obvious)<br><br>
-    Now Black must move. The Black queen on b6 has limited options:<br>
-    1...Qxd5+ (forced — other moves are shown to be worse)<br>
-    <strong>2. Re5#</strong> — but wait, this would be White mating Black! Incorrect.<br><br>
-    In a properly constructed selfmate, the logic is:<br>
-    1. White makes a move that leaves Black in zugzwang.<br>
-    2. Every Black move results in Black's own piece giving check on White's king,<br>
-       and that check is checkmate.<br><br>
-    <em>The illustration shows the structure: White sacrifices the queen, Black must capture,<br>
-    and the capturing piece lands on a square that checks and mates the White king,<br>
-    with White having previously removed all escape squares for its own king.</em>
-  </div>
-</section>
-
-<!-- SOLVING -->
-<section class="hero-card p-4 mb-4">
-  <h2>6. How to Solve Selfmates</h2>
-  <ol>
-    <li><strong>Reverse your thinking.</strong> Ask: what position, one move from now, has Black forced to give checkmate on the White king? Work backward from there.</li>
-    <li><strong>Find the mating position.</strong> Identify how the White king would be mated by a Black piece. What configuration allows this? Which Black piece would deliver the checkmate, and from which square?</li>
-    <li><strong>Set up the zugzwang.</strong> The move before the final mating move, White must have created a position where Black is in zugzwang with all moves delivering the mate.</li>
-    <li><strong>Ensure stalemate is avoided.</strong> Check that Black always has a legal move at every stage — stalemate would prematurely end the problem without a checkmate.</li>
-    <li><strong>Verify all Black defences are covered.</strong> Like a direct-mate problem, every Black move at every stage must lead to the stipulated result.</li>
-  </ol>
-  <p>Solvers often find selfmates the hardest genre for beginners because of the psychological barrier of "wanting to win." Once you genuinely invert your perspective — seeing the White king as a target to be cornered and the Black pieces as tools to be forced into action — the logic becomes as clean and satisfying as any direct-mate problem.</p>
-</section>
-
-</div></main>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6"><a href="01-definition/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">1. Definition</h4><p class="mb-0">The s#n stipulation, the reluctant-executioner asymmetry, and how selfmates fit into the wider world of chess composition.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="02-why-selfmates-are-counterintuitive/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">2. Why Selfmates Are Counterintuitive</h4><p class="mb-0">Reversing every chess instinct: attacking your own king, sacrificing on purpose, and the constant tension with stalemate.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="03-key-techniques/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">3. Key Techniques</h4><p class="mb-0">Zugzwang, pin exploitation, controlled captures, reversed batteries, and stalemate avoidance — the composer's core toolkit.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="04-thematic-content/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">4. Thematic Content</h4><p class="mb-0">The selfmate Nowotny, Rundlauf, model mates, and the Bristol clearance — classic themes reimagined for the genre.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="05-an-illustrative-selfmate/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">5. An Illustrative Selfmate</h4><p class="mb-0">A fully worked s#2 miniature with a diagram, move-by-move solution, and discussion of why every Black defence fails.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="06-how-to-solve-selfmates/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">6. How to Solve Selfmates</h4><p class="mb-0">A practical, step-by-step method for working backward from the mating position to the key move.</p></div></a></div>
+        </div>
+    </section>
+</main>
 <footer class="site-footer"><div class="container text-center"><div class="social-links">
 <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
 <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>

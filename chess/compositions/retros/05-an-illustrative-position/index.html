@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>An Illustrative Position — Retrograde Analysis</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Retrograde Analysis</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-what-is-retrograde-analysis"><div class="toc-chapter-header"><a href="../01-what-is-retrograde-analysis/" class="toc-chapter-link"><strong>1.</strong> What Is Retrograde Analysis?</a></div></div>
+            <div class="toc-chapter" data-chapter="02-types-of-retro-problems"><div class="toc-chapter-header"><a href="../02-types-of-retro-problems/" class="toc-chapter-link"><strong>2.</strong> Types of Retro Problems</a></div></div>
+            <div class="toc-chapter" data-chapter="03-sam-loyd-and-the-birth-of-retro-problems"><div class="toc-chapter-header"><a href="../03-sam-loyd-and-the-birth-of-retro-problems/" class="toc-chapter-link"><strong>3.</strong> Sam Loyd and the Birth of Retro Problems</a></div></div>
+            <div class="toc-chapter" data-chapter="04-proof-games-in-detail"><div class="toc-chapter-header"><a href="../04-proof-games-in-detail/" class="toc-chapter-link"><strong>4.</strong> Proof Games in Detail</a></div></div>
+            <div class="toc-chapter" data-chapter="05-an-illustrative-position"><div class="toc-chapter-header"><a href="../05-an-illustrative-position/" class="toc-chapter-link"><strong>5.</strong> An Illustrative Position</a></div></div>
+            <div class="toc-chapter" data-chapter="06-how-to-solve-retro-problems"><div class="toc-chapter-header"><a href="../06-how-to-solve-retro-problems/" class="toc-chapter-link"><strong>6.</strong> How to Solve Retro Problems</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Retrograde Analysis</a> › <span>5. An Illustrative Position</span></nav>
+
+        <h1 class="text-accent mb-4">5. An Illustrative Position</h1>
+
+  <p>The preceding chapters described the ideas of retrograde analysis in the abstract: captures, promotions, castling rights, proof games. This chapter works through a single position from start to finish, in the spirit of a detective slowly assembling the facts of a case. The question we will ask is one of the oldest in the genre — a question that sounds almost trivial until you try to answer it rigorously: <strong>can White castle?</strong></p>
+
+  <div class="chess-board" id="board-illustrative1"></div>
+  <script>renderChessBoard('board-illustrative1', {e1:'wK',h1:'wR',a8:'bR',e8:'bK',f7:'bP',g7:'bP',h7:'bP',g2:'wP',h2:'wP',f2:'wP',b2:'wP',a2:'wP',c2:'wP',d2:'wP',b1:'wN',c1:'wB',d1:'wQ',f1:'wB',g1:'wN',b8:'bN',c8:'bB',d8:'bQ',f8:'bB',a7:'bP',b7:'bP',c7:'bP',d7:'bP'});</script>
+  <p class="text-center text-muted mt-2"><small>White: K e1, Q d1, R h1, B c1/f1, N b1/g1, pawns a2-d2/f2-h2. Black: K e8, Q d8, R a8, B c8/f8, N b8, pawns a7-d7/f7-h7. White to move. Can White castle kingside?</small></p>
+
+  <p>At first glance the diagram looks unremarkable — a near-symmetric opening-style position with both sides fully developed on their back ranks except for a single missing pawn each (White's e-pawn and Black's h-rook side is otherwise intact, but notice that <strong>White's e-pawn is gone</strong> and <strong>Black's g8-knight and h8-rook are both gone</strong>, while a Black rook sits on a8 and the White king and h1-rook stand on their home squares). The position <em>looks</em> like White should be able to play 0-0 (kingside castling): the king is on e1, the rook is on h1, the squares f1 and g1 are occupied by White's own bishop and knight (so castling isn't <em>immediately</em> available without first developing — but let's simplify and ask the underlying rules question first). For the purposes of this chapter, assume f1 and g1 are empty in the position under discussion and only e1 (king) and h1 (rook) are occupied on the back rank's east side, with everything else as shown. The question is purely about <strong>rights</strong>, not current legality of the squares being occupied.</p>
+
+  <div class="notation-box">
+    <strong>Question:</strong> Given the diagram, with the White king on e1 and a White rook on h1, and nothing yet known about the game's history — does White retain the right to castle kingside?<br><br>
+    <strong>Step 1 — What does "the right to castle" actually require?</strong><br>
+    Under the rules of chess, castling is legal only if (a) the king and the castling rook have <em>never previously moved</em> in this game, (b) the squares between them are empty, (c) the king is not currently in check, and (d) the king does not pass through or land on a square attacked by the enemy. Conditions (b)-(d) are facts about the <em>current</em> position and can be read directly off the diagram. Condition (a), however, is a fact about <em>history</em> — and history is exactly what a static diagram does not record. This is the heart of every "can White castle?" problem: the diagram shows a king on e1 and a rook on h1, but it cannot, by itself, tell us whether those are the <em>original</em> king and rook that have sat there undisturbed since move 0, or whether the king (say) wandered away and came back via a switchback (recall Chapter 4), or whether a <em>different</em> rook somehow ended up on h1.<br><br>
+    <strong>Step 2 — Could the king have left e1 and returned?</strong><br>
+    Suppose the White king had, at some point, moved from e1 — say Ke1-d1xd1... no, d1 is occupied by White's own queen in our diagram, so the king cannot have passed through d1 while the queen sits there <em>unless</em> the queen left and came back too, which only adds more required moves without changing the diagram. More productively: for the king to leave e1 and return to e1, it must step to a neighboring empty square and step back — but in the starting position, every square adjacent to e1 (d1, f1, d2, e2, f2) is occupied by another White piece. The king cannot move onto a square occupied by its own piece. So in order for the king to have moved at all, <em>some other White piece must first have vacated one of those squares</em>, the king must step there, and then — to return to e1 and create the illusion of "never moved" — the king must step back, at which point e1 must again be free (it is, since the king itself just vacated it... this is circular but resolvable): the king departs e1 (to, say, e2, after the e-pawn has moved away), then later returns to e1 (which is empty, since the king is the one who left it). This is a genuine switchback and costs the king at least 2 tempi.<br><br>
+    <strong>Step 3 — Does the diagram give any evidence of such a switchback?</strong><br>
+    Here is the crucial observation: <strong>White's e-pawn is missing from e2</strong> (compare the diagram: pawns stand on a2-d2 and f2-h2, but not e2). For the king to have made the only switchback geometrically available to it from the starting array (e1-e2-e1, using the vacated e2 square), the e-pawn must have moved out of e2 <em>before</em> the king's first step, and the king must then have returned to e1 leaving e2 permanently empty (since the pawn that was there is gone for good — pawns cannot move backward). This is entirely <strong>consistent</strong> with the diagram! The e-pawn is indeed missing from its home square, exactly as this hypothesis requires.<br><br>
+    <strong>Step 4 — But consistency is not proof. Is the switchback forced, or merely possible?</strong><br>
+    This is the decisive question, and it is where the "Sherlock Holmes" method (Chapter 6) becomes essential: we must ask not "<em>could</em> the king have moved and returned?" but "<em>is there any legal game reaching this diagram in which the king never moved at all?</em>" If even one such game exists, White retains castling rights (the diagram is ambiguous, and in over-the-board play the benefit of the doubt goes to the player — castling is presumed legal unless it can be <em>proven</em> impossible). Is there a game where the e-pawn advances (say 1.e4 or 1.e3, or it advances and is later captured leaving a hole at e2) <em>without the king ever moving</em>? Certainly: 1.e4 simply pushes the pawn two squares, leaving e2 empty and the king undisturbed on e1, with every other piece exactly as shown. This is a perfectly ordinary opening — no switchback, no irregularity, nothing suspicious at all.<br><br>
+    <strong>Conclusion.</strong> Because a legal game reaching the diagram <em>without</em> the king moving plainly exists (the simple pawn push 1.e4 or 1.e3 followed by any consistent development), White's castling rights are <strong>intact</strong>. White <em>can</em> castle kingside (once f1 and g1 are vacated). The missing e-pawn, which at first looked like it might be the "smoking gun" for a king switchback, turns out to be a red herring — it is equally, and far more simply, explained by an ordinary pawn advance. The lesson generalizes: <strong>a retro deduction is only valid if the "suspicious" feature of the diagram is the <em>unique</em> explanation, not merely <em>an</em> explanation.</strong>
+  </div>
+
+  <h3>Tightening the Position: When Castling Really Is Illegal</h3>
+  <p>Contrast the position above with a small but critical change: suppose that, <em>in addition</em> to the missing e-pawn, the diagram also shows <strong>Black's king on e8 and a Black rook on a8, but Black's king-side rook and knight (f8-bishop's neighbours) are gone, and a Black bishop now stands on g1</strong> — a square that, in the starting array, is occupied by a <em>White</em> piece. For a Black bishop to be sitting on g1, it must have traveled there via f2 or h2 (the only diagonals reaching g1), and in particular it must have passed through — or captured on — a square that, in the starting position, lies on White's home rank or the squares immediately in front of it. If the only route for that bishop to reach g1 requires that <strong>White's g1-knight first vacate g1</strong> (so the bishop has a square to land on) <em>and</em> that this happens via a capture sequence that does not also disturb e1 or h1 — then we are back to asking the same question, but now with concrete, forced piece movements rather than a hypothetical pawn push.</p>
+  <p>The general pattern is always the same: a single anomalous feature (a missing pawn, a piece on an unexpected square, an unexpected pawn structure) is <em>never</em>, by itself, enough to prove that the king or rook moved. What <em>is</em> enough is showing that <strong>every</strong> legal game reaching the diagram requires the king or the relevant rook to have moved — i.e., that the "innocent" explanation (the one that doesn't involve the king or rook moving) is <em>impossible</em>, not merely improbable. This is a much higher bar, and meeting it is usually what separates a beautifully composed castling problem from a merely suggestive one.</p>
+
+  <h3>Why This Example Matters</h3>
+  <p>This single worked example illustrates almost every theme from the previous four chapters at once: it is fundamentally a question about <em>history</em> rather than the current position (Chapter 1); it belongs to the family of "castling legality" retro problems (Chapter 2); it has the same flavor of "what looks irregular is actually the only legal explanation — or isn't" that animated Sam Loyd's earliest constructions (Chapter 3); and the reasoning about which moves are "forced," "possible," or "impossible" given a fixed move budget is precisely the bookkeeping that underlies every proof game (Chapter 4). The final chapter distills the method used here — working backward from the diagram, eliminating impossible histories one by one — into a general toolkit you can apply to any retro problem you encounter.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../04-proof-games-in-detail/" class="btn btn-outline-custom">&larr; 4. Proof Games in Detail</a>
+            <a href="../06-how-to-solve-retro-problems/" class="btn btn-custom">6. How to Solve Retro Problems &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

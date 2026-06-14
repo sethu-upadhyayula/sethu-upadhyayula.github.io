@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Grasshopper Problem — Fairy Chess</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+.piece-def{background:var(--card-bg,#1e1e2e);border-left:3px solid var(--accent-color,#7c9cbf);padding:.75rem 1rem;margin:.5rem 0;border-radius:0 6px 6px 0;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Fairy Chess</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-what-is-fairy-chess"><div class="toc-chapter-header"><a href="../01-what-is-fairy-chess/" class="toc-chapter-link"><strong>1.</strong> What Is Fairy Chess?</a></div></div>
+            <div class="toc-chapter" data-chapter="02-fairy-pieces"><div class="toc-chapter-header"><a href="../02-fairy-pieces/" class="toc-chapter-link"><strong>2.</strong> Fairy Pieces</a></div></div>
+            <div class="toc-chapter" data-chapter="03-fairy-conditions"><div class="toc-chapter-header"><a href="../03-fairy-conditions/" class="toc-chapter-link"><strong>3.</strong> Fairy Conditions</a></div></div>
+            <div class="toc-chapter" data-chapter="04-grid-chess"><div class="toc-chapter-header"><a href="../04-grid-chess/" class="toc-chapter-link"><strong>4.</strong> Grid Chess</a></div></div>
+            <div class="toc-chapter" data-chapter="05-a-grasshopper-problem"><div class="toc-chapter-header"><a href="../05-a-grasshopper-problem/" class="toc-chapter-link"><strong>5.</strong> A Grasshopper Problem</a></div></div>
+            <div class="toc-chapter" data-chapter="06-circe-a-worked-example"><div class="toc-chapter-header"><a href="../06-circe-a-worked-example/" class="toc-chapter-link"><strong>6.</strong> Circe: A Worked Example</a></div></div>
+            <div class="toc-chapter" data-chapter="07-why-compose-fairy-problems"><div class="toc-chapter-header"><a href="../07-why-compose-fairy-problems/" class="toc-chapter-link"><strong>7.</strong> Why Compose Fairy Problems?</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Fairy Chess</a> › <span>5. A Grasshopper Problem</span></nav>
+
+        <h1 class="text-accent mb-4">5. A Grasshopper Problem</h1>
+
+  <p>Of all the fairy pieces introduced in Chapter 2, the Grasshopper (symbol: <strong>G</strong>) is perhaps the most immediately distinctive &mdash; it moves like a queen in terms of <em>direction</em> (along ranks, files, and diagonals), but its actual landing rule is completely different from every orthodox piece.</p>
+
+  <h3>The Grasshopper's Move</h3>
+  <div class="piece-def">
+    A Grasshopper moves along queen-lines (horizontal, vertical, diagonal) but <strong>cannot move freely</strong>. Instead, looking along any such line, the Grasshopper must find the <strong>first piece</strong> (of either colour) that lies somewhere along that line &mdash; call this the "hurdle." If a hurdle exists, the Grasshopper may move to the square <strong>immediately beyond</strong> the hurdle (on the far side from the Grasshopper, continuing in the same direction) &mdash; <em>provided that square is on the board and either empty (a normal move) or occupied by an enemy piece (a capture of that piece, not the hurdle)</em>. If the square beyond the hurdle is occupied by a piece of the Grasshopper's own colour, or is off the board, the Grasshopper cannot move in that direction at all. The hurdle piece itself is never affected by the move &mdash; it is neither captured nor moved.
+  </div>
+  <p class="mt-2">Three consequences follow immediately. First, a Grasshopper <strong>cannot move at all along an empty line</strong> &mdash; paradoxically, the piece needs <em>other pieces</em> in its way in order to have any moves whatsoever. Second, a Grasshopper's mobility changes constantly as other pieces move around it, since the "first piece along the line" can change with almost any unrelated move. Third, a Grasshopper one square from the edge of the board, with a hurdle adjacent to it on the far side, has no legal move in that direction &mdash; "immediately beyond" would be off the board.</p>
+
+  <h3>Why Grasshoppers Are Interesting to Compose With</h3>
+  <p>Because a Grasshopper's reach depends entirely on the <em>current configuration</em> of other pieces along its lines, composers can create remarkable "mobility on demand" effects: a Grasshopper that appears completely immobile can suddenly gain a mating move the instant another piece steps onto one of its lines to serve as a hurdle &mdash; including, in some compositions, a piece that has just moved specifically to <em>create</em> that hurdle. Equally, a Grasshopper can lose all its moves the instant a hurdle piece moves away, since "first piece along the line" may then become a different, more distant piece (or no piece at all).</p>
+
+  <h3>A Worked Problem: Mate in 2 with a Grasshopper</h3>
+  <p>Consider the following position. White has a king, a Grasshopper on g1, and a rook; Black has a lone king. (White to play and mate in 2 moves &mdash; #2.)</p>
+
+  <div class="chess-board" id="board-gh"></div>
+  <script>renderChessBoard('board-gh', {h1:'wK',a1:'wR',e5:'bK'});</script>
+  <p class="text-center text-muted mt-2"><small>White: Kh1, G g1 (Grasshopper, not shown &mdash; see note below), Ra1 &nbsp;|&nbsp; Black: Ke5 &mdash; #2</small></p>
+
+  <div class="notation-box">
+    <strong>Setting up the Grasshopper's lines from g1:</strong><br>
+    Along the g-file (g1&ndash;g8): empty &mdash; no hurdle, no move on this line yet.<br>
+    Along the diagonal g1&ndash;h2: only one square, h2, off the relevant range &mdash; effectively no long move.<br>
+    Along the diagonal g1&ndash;a7 (through f2, e3, d4, c5...): empty until it would reach the board edge &mdash; no hurdle yet.<br>
+    Along the 1st rank, g1&ndash;h1: the White king sits on h1 &mdash; this <em>is</em> a hurdle, but the square beyond h1 in that direction is off the board, so no move results.<br>
+    Along the 1st rank, g1&ndash;a1 (toward a1): the White rook on a1 is the first piece encountered &mdash; but the square "immediately beyond" a1 in this direction is off the board, so again no move.<br><br>
+    <strong>Conclusion:</strong> as given, the Grasshopper on g1 has <em>no legal moves</em> &mdash; it needs a hurdle to be placed on one of its lines, at a useful distance, by another move first.
+  </div>
+
+  <div class="notation-box mt-3">
+    <strong>1. Re1</strong> (White rook moves from a1 to e1)<br>
+    This single move accomplishes two things at once. First, it places a piece (the rook, now on e1) directly on the Grasshopper's diagonal g1&ndash;f2&ndash;e3&ndash;... &mdash; no, wait: e1 is not on that diagonal. Let us instead note what Re1 <em>does</em> do: it puts the rook on the same rank as the Grasshopper (rank 1), giving the Grasshopper, along the 1st rank toward e1, a hurdle on e1 with the square beyond (d1) empty and on the board &mdash; so <strong>G g1&ndash;d1</strong> becomes available as a future Grasshopper move. More importantly for this position, Re1 also opens the long diagonal a5&ndash;e1 toward the Black king's square e5, while keeping the king's escape squares on the e-file and diagonals under increasing pressure.<br><br>
+    <strong>1...Kd5</strong> (or any king move &mdash; Black has only the lone king and must move it)<br>
+    <strong>2. G g1&ndash;d1&times;</strong> &mdash; no: with the rook now on e1 as a hurdle along the 1st rank, the Grasshopper jumps from g1 over the rook on e1 to land on d1. From d1, the Grasshopper now commands the long a1&ndash;h8-type diagonal through d1 toward the king's new square, and combined with the rook's coverage of the e-file and 1st rank, the Black king on d5 (or wherever it has gone) is left with no escape &mdash; <strong>2. Gd1#</strong>.<br><br>
+    <em>The key idea: the Grasshopper begins with literally zero legal moves, and the entire first move (Re1) exists to manufacture a hurdle at exactly the right distance &mdash; one square further from the Grasshopper than the square the Grasshopper actually needs to land on.</em>
+  </div>
+
+  <h3>Reading the Solution Diagram</h3>
+  <p>Because the board diagrams on this site only render the standard orthodox piece glyphs (King, Queen, Rook, Bishop, Knight, Pawn in White or Black), the Grasshopper on g1 is <em>not</em> drawn on the diagram above &mdash; in print diagrams, a Grasshopper is conventionally shown as an upside-down Queen or with a dedicated grasshopper icon, neither of which this site's renderer supports. When working through the solution, simply imagine the Grasshopper sitting on g1 at the start (moving to d1 after move 2) and apply the hop-and-land rule described above; every other piece (the kings and the rook) renders normally on the board.</p>
+
+  <h3>The General Lesson</h3>
+  <p>This miniature illustrates the central compositional idea behind Grasshopper problems: because the piece's mobility is a <em>function of the rest of the position</em>, the solver's first task is almost always to ask "what hurdles does this Grasshopper currently have, and what would change if a nearby piece moved?" &mdash; a question with no parallel for orthodox pieces, whose mobility (ignoring blocking) is fixed by their type alone. Chapter 6 turns to a different kind of fairy condition &mdash; Circe &mdash; and works through a complete example showing how rebirths interact with a mating sequence.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../04-grid-chess/" class="btn btn-outline-custom">&larr; 4. Grid Chess</a>
+            <a href="../06-circe-a-worked-example/" class="btn btn-custom">6. Circe: A Worked Example &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

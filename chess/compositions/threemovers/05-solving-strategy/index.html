@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solving Strategy — Threemovers</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Threemovers</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-definition-and-structure"><div class="toc-chapter-header"><a href="../01-definition-and-structure/" class="toc-chapter-link"><strong>1.</strong> Definition and Structure</a></div></div>
+            <div class="toc-chapter" data-chapter="02-what-changes-from-the-twomover"><div class="toc-chapter-header"><a href="../02-what-changes-from-the-twomover/" class="toc-chapter-link"><strong>2.</strong> What Changes from the Twomover</a></div></div>
+            <div class="toc-chapter" data-chapter="03-major-themes"><div class="toc-chapter-header"><a href="../03-major-themes/" class="toc-chapter-link"><strong>3.</strong> Major Themes</a></div></div>
+            <div class="toc-chapter" data-chapter="04-an-illustrative-position"><div class="toc-chapter-header"><a href="../04-an-illustrative-position/" class="toc-chapter-link"><strong>4.</strong> An Illustrative Position</a></div></div>
+            <div class="toc-chapter" data-chapter="05-solving-strategy"><div class="toc-chapter-header"><a href="../05-solving-strategy/" class="toc-chapter-link"><strong>5.</strong> Solving Strategy</a></div></div>
+            <div class="toc-chapter" data-chapter="06-aesthetic-ideals"><div class="toc-chapter-header"><a href="../06-aesthetic-ideals/" class="toc-chapter-link"><strong>6.</strong> Aesthetic Ideals</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Threemovers</a> › <span>5. Solving Strategy</span></nav>
+
+        <h1 class="text-accent mb-4">5. Solving Strategy</h1>
+
+  <p>Solving a threemover "cold" can feel intimidating: there are more candidate keys to try, more Black replies to check, and more places for a promising-looking line to quietly fail. The good news is that the same handful of questions, asked in the right order, will crack the overwhelming majority of threemovers &mdash; including the kind that appear in club bulletins, solving tourneys, and the FIDE Album. This chapter lays out that method step by step.</p>
+
+  <h3>Step 1: Map the Mating Zone</h3>
+  <p>Before considering any moves, survey the board purely in terms of <strong>geography</strong>. Where is the Black king, and which White pieces are within striking distance of it &mdash; either directly, or one move away from being so? Ask:</p>
+  <ul>
+    <li>Which squares around the Black king are already covered by White pieces?</li>
+    <li>Which squares are <em>not</em> covered, i.e., potential flight squares?</li>
+    <li>Which White pieces, with one extra move, could cover those flight squares or deliver check?</li>
+  </ul>
+  <p>This step doesn't yet tell you the key, but it tells you what the <em>eventual mating position</em> is likely to look like &mdash; which pieces will be doing the work in the final picture. In the Chapter 4 example, this step would have flagged the queen (e1, on the king's file) and the rook (b8, with 8th-rank and b-file reach) as the most likely mating pieces, with the knight on d4 as a probable supporting or sacrificial piece given its proximity.</p>
+
+  <h3>Step 2: Hypothesize the Main Threat</h3>
+  <p>Ask: <strong>if Black were simply forced to pass, what 3-move sequence would deliver mate?</strong> This hypothetical "main threat" is usually the backbone of the problem &mdash; the key's primary job is often to establish exactly this threat. Concretely:</p>
+  <ul>
+    <li>Find a White move 1 that doesn't immediately do anything drastic to the position, but sets up a forcing sequence (often a check on move 2 followed by mate on move 3, assuming Black does nothing useful).</li>
+    <li>Verify this hypothetical sequence is actually legal and forcing &mdash; i.e., that the move-2 check genuinely restricts the king to squares where move 3 mates.</li>
+  </ul>
+  <p>In the Chapter 4 example, the threat after 1.Nc6 was 2.Qe4+ followed by 3.Rxe8# &mdash; precisely this kind of "what if Black passes" sequence.</p>
+
+  <h3>Step 3: Ask What Stops the Plan &mdash; Enumerate Defences</h3>
+  <p>Now switch perspective to Black. Given the threat identified in Step 2, what are Black's <strong>candidate defences</strong>? Systematically consider:</p>
+  <ul>
+    <li><strong>Captures</strong> of the White piece that just moved (the key), if it's en prise.</li>
+    <li><strong>Blocks</strong> &mdash; moves that interpose a piece on the threatened mating line.</li>
+    <li><strong>Guards</strong> &mdash; moves that add defensive coverage to a square the mate would otherwise use.</li>
+    <li><strong>Flights</strong> &mdash; king moves that step away from the threatened mate (if the king has any legal moves at all in the position).</li>
+    <li><strong>Counter-threats</strong> &mdash; Black moves that don't directly address the threat but create a danger of their own (a check, a promotion threat, a discovered attack).</li>
+  </ul>
+  <p>Each meaningful defence in this list becomes (or starts to become) a separate variation. In the Chapter 4 position, the two captures (1...Rxc6 and 1...Bxc6) and the king flight/capture (1...Kxd4) were exactly this kind of enumeration &mdash; three structurally different responses to one threat.</p>
+
+  <h3>Step 4: For Each Defence, Find the Tailored Continuation</h3>
+  <p>This is the heart of threemover solving and the step most often rushed. For <em>each</em> defence identified in Step 3, ask: <strong>has this defence changed the position in a way that opens a new mating idea?</strong> Specifically:</p>
+  <ul>
+    <li>Did the defending piece move <em>away from</em> a square it was guarding, opening a new line for White?</li>
+    <li>Did the defending piece move <em>onto</em> a square where it now blocks one of Black's own pieces (a self-interference, as in the Nowotny and Grimshaw themes from Chapter 3)?</li>
+    <li>Did the defence create a <em>new</em> weakness near the king (a blocked flight square, an overloaded defender)?</li>
+  </ul>
+  <p>The continuation is very often "the move that becomes possible <em>because</em> of what Black just did" &mdash; not a move that was already available before Black's defence. This is why a continuation can look completely different from the original threatened sequence: it's exploiting a <em>new</em> feature of the position, not forcing through the old plan against new resistance.</p>
+
+  <h3>Step 5: Check for Short Mates</h3>
+  <p>While enumerating defences in Step 3, keep a separate mental list of any defence that looks <strong>unusually weakening</strong> &mdash; a move that blocks the king's own escape, or walks a piece into a pin, or otherwise hands White an immediate mate-in-one on move 2. As discussed in Chapter 1, these <strong>short mates</strong> are legal and often present, and a solution write-up that omits them is incomplete. Don't let an unusually bad-looking Black move distract you from finding its (often very short and simple) refutation.</p>
+
+  <h3>Step 6: Verify Uniqueness at Every Level</h3>
+  <p>Once you believe you have a full solution, switch to <strong>verification mode</strong> and check uniqueness at each of the three White move-points:</p>
+  <ul>
+    <li><strong>Move 1 (the key):</strong> is there any <em>other</em> first move that also forces mate within three moves against every defence? If so, the problem is <strong>cooked</strong> and the "intended" key is not actually unique.</li>
+    <li><strong>Move 2 (the continuation) in each variation:</strong> for the specific Black defence in that variation, is there more than one White second move that leads to mate on move 3? If so, that variation has a <strong>dual</strong>.</li>
+    <li><strong>Move 3 (the mate) in each sub-variation:</strong> for the specific position reached after Black's second move, is there more than one mating move available? This is also a dual, at the final step.</li>
+  </ul>
+  <p>A single dual in a minor, non-thematic line is often tolerated (and noted) in published problems; a dual in the main thematic variation, or any cook of the key, is considered a serious flaw and may render the problem unsound. This is why solving programs &mdash; software that exhaustively checks every line &mdash; became standard tools for composers: the combinatorial space of a threemover is large enough that a human can easily miss a dual or cook buried in an unglamorous side variation.</p>
+
+  <h3>Putting It Together: A Worked Checklist</h3>
+  <div class="notation-box">
+    1. Map the mating zone &mdash; which White pieces could plausibly deliver mate near the Black king?<br>
+    2. Hypothesize the main threat &mdash; what 3-move sequence works if Black "passes"?<br>
+    3. Enumerate Black's defences &mdash; captures, blocks, guards, flights, counter-threats.<br>
+    4. For each defence, find what it <em>newly</em> allows White to do &mdash; that's the continuation.<br>
+    5. Check for short mates among unusually weakening defences.<br>
+    6. Verify: no cook at move 1, no dual at move 2 or move 3 in any line.
+  </div>
+  <p>Applying this checklist to the Chapter 4 position would proceed exactly along the lines of its annotated solution: map the zone (queen, rook, knight near the king), hypothesize 1.Nc6 with threat 2.Qe4+/3.Rxe8#, enumerate 1...Rxc6 / 1...Bxc6 / 1...Kxd4, find the tailored continuations 2.Qb4+ / 2.Rbe8+ / 2.Qe4+ respectively, note there are no short mates needed here, and verify each line ends in a unique mate. With a reliable method in hand, Chapter 6 turns from <em>how to solve</em> to <em>how to judge</em> &mdash; the aesthetic standards that separate a merely sound threemover from a celebrated one.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../04-an-illustrative-position/" class="btn btn-outline-custom">&larr; 4. An Illustrative Position</a>
+            <a href="../06-aesthetic-ideals/" class="btn btn-custom">6. Aesthetic Ideals &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>
+</content>

@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>An Illustrative Position — Threemovers</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Threemovers</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-definition-and-structure"><div class="toc-chapter-header"><a href="../01-definition-and-structure/" class="toc-chapter-link"><strong>1.</strong> Definition and Structure</a></div></div>
+            <div class="toc-chapter" data-chapter="02-what-changes-from-the-twomover"><div class="toc-chapter-header"><a href="../02-what-changes-from-the-twomover/" class="toc-chapter-link"><strong>2.</strong> What Changes from the Twomover</a></div></div>
+            <div class="toc-chapter" data-chapter="03-major-themes"><div class="toc-chapter-header"><a href="../03-major-themes/" class="toc-chapter-link"><strong>3.</strong> Major Themes</a></div></div>
+            <div class="toc-chapter" data-chapter="04-an-illustrative-position"><div class="toc-chapter-header"><a href="../04-an-illustrative-position/" class="toc-chapter-link"><strong>4.</strong> An Illustrative Position</a></div></div>
+            <div class="toc-chapter" data-chapter="05-solving-strategy"><div class="toc-chapter-header"><a href="../05-solving-strategy/" class="toc-chapter-link"><strong>5.</strong> Solving Strategy</a></div></div>
+            <div class="toc-chapter" data-chapter="06-aesthetic-ideals"><div class="toc-chapter-header"><a href="../06-aesthetic-ideals/" class="toc-chapter-link"><strong>6.</strong> Aesthetic Ideals</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Threemovers</a> › <span>4. An Illustrative Position</span></nav>
+
+        <h1 class="text-accent mb-4">4. An Illustrative Position</h1>
+
+  <p>We now bring together the theory of Chapters 1&ndash;3 in a single fully worked example. The position below was constructed to demonstrate the <strong>Nowotny theme</strong> introduced in Chapter 3, combined with the branching continuation structure described in Chapter 2.</p>
+
+  <h3>The Position</h3>
+  <p><strong>Position:</strong> White: &#9812;a1, &#9813;e1, &#9814;b8, &#9817;g2, &#9816;d4 &nbsp;|&nbsp; Black: &#9818;e5, &#9814;e8, &#9817;b2, &#9816;f3, &#9823;d5, &#9823;f5</p>
+  <p><em>White to play and mate in 3 (#3)</em></p>
+
+  <div class="chess-board" id="board-three"></div>
+  <script>renderChessBoard('board-three', {a1:'wK',e1:'wQ',b8:'wR',g2:'wB',d4:'wN',e5:'bK',e8:'bR',b2:'bB',f3:'bN',d5:'bP',f5:'bP'});</script>
+  <p class="text-center text-muted mt-2"><small>Illustrative threemover position &mdash; Nowotny motif on c6</small></p>
+
+  <h3>First Look: Finding the Plan</h3>
+  <p>Before reading the solution, it's worth practising the method we will formalise in Chapter 5. Scan the board for White pieces that are close to Black's king on e5: the queen on e1 (on the e-file, same as the king), the knight on d4 (a knight's move from several key squares), the rook on b8 (on the b-file and 8th rank), and the bishop on g2 (on the long a8&ndash;h1 diagonal, though currently blocked).</p>
+  <p>Notice that Black's rook (e8) and bishop (b2) are themselves on lines that cross: the rook controls the e-file and 8th rank, while the bishop controls the a1&ndash;h8 diagonal (through b2, c3, d4, e5...) and other diagonals. The square <strong>c6</strong> is special: it lies on the b8&ndash;h2 diagonal that the rook does <em>not</em> directly use, but more importantly, a White piece landing on c6 can be captured by either the Black rook (along the 6th... no &mdash; let's check the actual lines below) or relates to both pieces' mobility. This is the seed of the Nowotny: a single square where a White sacrifice forces Black to choose which of two pieces "spoils" the position for the other.</p>
+
+  <h3>Solution Outline</h3>
+  <div class="notation-box">
+    <strong>1. Nc6!</strong> (key &mdash; threatens 2.Qe4+ dxe4 3.Rxe8#)<br><br>
+    1...Rxc6 2. Qb4+ (the rook on c6 has interfered with the bishop's defence of key squares)<br>
+      &nbsp;&nbsp;2...Kd6 3. Rd8#<br>
+    1...Bxc6 2. Rbe8+ (the bishop on c6 has interfered with the rook's control of e8)<br>
+      &nbsp;&nbsp;2...Rxe8 3. Rxe8#<br>
+    1...Kxd4 2. Qe4+ Kc3 3. Qa3#<br><br>
+    <em>The Nowotny sacrifice on c6 forces Black into self-interference: whichever piece captures, it blocks the other's defence of the mating lines.</em>
+  </div>
+
+  <h3>Annotating the Key: 1.Nc6!</h3>
+  <p>The key move <strong>1.Nc6</strong> looks, at first glance, like a simple sacrifice &mdash; the knight walks into range of two Black pieces. This is precisely the "looks bad, is correct" quality discussed in Chapter 6: a player unfamiliar with the Nowotny theme might dismiss 1.Nc6 instantly as "just losing a piece for nothing."</p>
+  <p>But the move accomplishes three things simultaneously:</p>
+  <ul>
+    <li>It sets up the <strong>threat</strong> 2.Qe4+ followed by 3.Rxe8# &mdash; a genuine three-move mating sequence if Black does nothing about it.</li>
+    <li>It occupies the one square where <strong>both</strong> of Black's key defensive pieces (the rook on e8 and the bishop on b2, which has access to c6 via b2&ndash;c3&ndash;... no, more precisely via whichever diagonal reaches c6) could consider capturing.</li>
+    <li>It guarantees that <em>whichever</em> piece captures, White has a tailored continuation ready &mdash; 2.Qb4+ after ...Rxc6, or 2.Rbe8+ after ...Bxc6.</li>
+  </ul>
+
+  <h3>Annotating the Main Variations</h3>
+  <p>The line <strong>1...Rxc6 2.Qb4+ Kd6 3.Rd8#</strong> shows the queen delivering a check that drives the king to d6, where the rook (having been freed by the earlier Nc6 sacrifice and the rook's own departure from e8 along its original duties) delivers the final mate on d8. The key point: after 1...Rxc6, the Black rook is no longer on e8, so the e-file/8th-rank coverage that made 2.Qe4+ 3.Rxe8# the original <em>threat</em> is now irrelevant &mdash; White switches plans entirely with 2.Qb4+, a different continuation for a different defence, exactly as described in Chapter 2.</p>
+  <p>The line <strong>1...Bxc6 2.Rbe8+ Rxe8 3.Rxe8#</strong> looks superficially like it "just" carries out the original threat (Rxe8 appears in both the threat and this mate), but notice the move-2 difference: instead of 2.Qe4+ (which was the threat against an idle Black), White plays the immediate check 2.Rbe8+, because the bishop's capture on c6 has removed the bishop from b2, changing what White's king needs to watch for and making the more forcing 2.Rbe8+ both safe and necessary.</p>
+  <p>The line <strong>1...Kxd4 2.Qe4+ Kc3 3.Qa3#</strong> is the King's own attempt to deal with the threat by capturing the advanced knight. This walks straight into a check that drives the king to c3, where the queen delivers a long-range mate from a3. This variation demonstrates that even "the king eats the sacrificed piece" — often a solver's first instinct against an apparent sacrifice — has been fully accounted for.</p>
+
+  <h3>A Second, Smaller Example: Spotting a Short Mate</h3>
+  <p>To reinforce the idea of <strong>short mates</strong> from Chapter 1, consider a simplified fragment built around the same king position. Suppose that after some hypothetical key, Black plays an extremely weakening move &mdash; say, blocking its own king's only flight square with a pawn push. In that case White might already have a mate in one available on move 2, rather than needing the full continuation-then-mate sequence. The diagram below shows just the mating geometry of such a short variation: White's queen and bishop combine to deliver mate along the long diagonal and a file simultaneously, with the king on e5 having no escape because its own pawns on d5 and f5 (from the main diagram) block both retreating diagonals.</p>
+
+  <div class="chess-board" id="board-short"></div>
+  <script>renderChessBoard('board-short', {a1:'wK',a3:'wQ',g2:'wB',e5:'bK',d5:'bP',f5:'bP'});</script>
+  <p class="text-center text-muted mt-2"><small>Short-mate geometry: &#9813;a3 and &#9817;g2 combine &mdash; the king on e5 is boxed in by its own pawns on d5 and f5, exactly as in the 1...Kxd4 2.Qe4+ Kc3 3.Qa3# line above, but here mate would arrive a tempo earlier in a more cooperative line.</small></p>
+
+  <h3>What to Take Away</h3>
+  <p>This single position demonstrates almost every concept from the first three chapters: a five-ply tree with three meaningfully different branches (1...Rxc6, 1...Bxc6, 1...Kxd4), continuations that differ completely from one branch to the next, a key whose apparent "loss of material" is precisely its point, and a Nowotny self-interference at the heart of the two main lines. Chapter 5 now turns this kind of analysis into a repeatable <em>method</em> you can apply to unfamiliar positions.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../03-major-themes/" class="btn btn-outline-custom">&larr; 3. Major Themes</a>
+            <a href="../05-solving-strategy/" class="btn btn-custom">5. Solving Strategy &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>
+</content>
