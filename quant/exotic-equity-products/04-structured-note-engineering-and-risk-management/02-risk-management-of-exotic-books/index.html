@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Management of Exotic Equity Books</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Exotic Equity Products</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-exotic-equity-products">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-exotic-equity-products/" class="toc-chapter-link"><strong>1.</strong> Exotic Equity Products</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-exotic-equity-products/01-barrier-and-digital-options/">1.1 Barrier and Digital Options</a>
+                        <a href="../../01-exotic-equity-products/02-autocallables/">1.2 Autocallables</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-path-dependent-and-multi-asset-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-path-dependent-and-multi-asset-options/" class="toc-chapter-link"><strong>2.</strong> Path-Dependent and Multi-Asset Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-path-dependent-and-multi-asset-options/01-asian-and-lookback-options/">2.1 Asian and Lookback Options</a>
+                        <a href="../../02-path-dependent-and-multi-asset-options/02-basket-and-rainbow-options/">2.2 Basket and Rainbow Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-dispersion-and-correlation-products">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-dispersion-and-correlation-products/" class="toc-chapter-link"><strong>3.</strong> Dispersion and Correlation Products</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-dispersion-and-correlation-products/01-dispersion-trading/">3.1 Dispersion Trading</a>
+                        <a href="../../03-dispersion-and-correlation-products/02-correlation-swaps-and-products/">3.2 Correlation Swaps and Products</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-structured-note-engineering-and-risk-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-structured-note-engineering-and-risk-management/" class="toc-chapter-link"><strong>4.</strong> Structured Note Engineering and Risk Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-structured-note-engineering-and-risk-management/01-building-structured-notes/">4.1 Building Structured Notes</a>
+                        <a href="../../04-structured-note-engineering-and-risk-management/02-risk-management-of-exotic-books/">4.2 Risk Management of Exotic Equity Books</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Exotic Equity Products</a> › <a href="../">4. Structured Note Engineering and Risk Management</a> › <span>Risk Management of Exotic Equity Books</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 Risk Management of Exotic Equity Books</h1>
+
+                <p>An exotic equity derivatives book aggregates positions across all the product types covered in this subject — barrier options, autocallables, Asian and lookback structures, baskets and rainbows, dispersion and correlation exposures, and the embedded options inside structured notes. Risk-managing such a book requires going beyond the standard delta/gamma/vega framework used for vanilla options: exotic payoffs introduce discontinuities, path dependencies, and multi-asset sensitivities that concentrate risk in specific, often predictable, ways.</p>
+
+                <h2 class="mt-5 mb-3">Greeks of Exotic Books: Barrier Risk and Gap Risk</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Barrier Risk Near Knock Levels</div>
+                    <p>As discussed in Section 1.1, a barrier option's value (and therefore its delta and gamma) can change discontinuously as the spot crosses the barrier — for a knock-out, the value drops to zero; for a knock-in, the option suddenly comes into existence. As the underlying approaches a barrier with time remaining to expiry, the option's <strong>gamma can become extremely large and can flip sign</strong>, because the delta itself jumps discontinuously across the barrier. A delta-hedger holding a large barrier position near the barrier level must trade rapidly and in large size to keep the hedge current — exactly when the underlying is moving in a way (toward the barrier) that makes such trading most likely to move the market against the hedger.</p>
+                    <p class="mb-0"><strong>Gap risk</strong> refers to the risk that the underlying jumps <em>across</em> the barrier (due to a market gap, overnight move, or discrete-monitoring observation) without the hedger having the opportunity to rebalance continuously. At the instant of a knock-out, a hedger who was long delta (because the option, just before knocking out, still had positive delta) is suddenly left holding an unhedged position in the underlying with no offsetting option exposure — the hedge itself becomes the residual risk. This is analogous to, but more severe than, the pin risk a vanilla option desk faces at expiry for at-the-money options, because barrier gap risk can materialize at any point during the option's life, not just at maturity.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Autocall Cliff Risk Revisited</div>
+                    <p class="mb-0">Recall from Section 1.2 that autocallable notes exhibit "cliff risk" at each observation date: if the underlying is near the autocall trigger as an observation date approaches, the note's value and Greeks can change discontinuously depending on whether the trigger is met. For a book containing many autocallables with observation dates clustered around similar calendar dates (common, since autocallables are often issued with standardized quarterly schedules), this creates periodic spikes in gamma-like risk across the book — risk that is concentrated in time (around observation dates) as well as in spot level (near trigger levels), making it one of the most operationally demanding aspects of running an autocallable book.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Hedging Challenges for Path-Dependent Payoffs</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why Path-Dependent Payoffs Resist Static Hedges</div>
+                    <p><strong>No simple replicating portfolio:</strong> a vanilla option's payoff depends only on $S_T$, so its risk can (in the Black-Scholes idealization) be perfectly replicated by continuously trading the underlying according to the option's delta. Asian options (Section 2.1) depend on the entire price path through the average; lookback options depend on the running extremum; autocallables depend on the path through multiple discrete observation dates with early-termination logic. None of these admit a simple delta-hedging strategy in the underlying alone that perfectly replicates the payoff — the hedge ratio itself depends on path history (e.g., for an Asian option, the delta with respect to $S_t$ depends on how much of the averaging period has already elapsed and what the average-so-far is).</p>
+                    <p class="mb-0"><strong>Vega term structure and "vega ramp-down":</strong> as discussed for Asians in Section 2.1, the vega of a path-dependent option evolves in a way that has no analogue for vanillas — vega can decline towards zero well before expiry as the relevant averaging or observation period is exhausted. A book containing many path-dependent positions at different stages of their observation periods has a vega profile that is not simply a function of time-to-maturity, complicating standard "vega bucket" risk reporting that assumes vega is driven primarily by tenor.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Model Risk in Exotics</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Sources of Model Risk</div>
+                    <p><strong>Correlation assumptions:</strong> as discussed in Chapter 3, multi-asset and worst-of products are highly sensitive to correlation, which is not directly observable and must be estimated — historically, from implied correlation, or from a parametric correlation skew model. A book that marks worst-of autocallables using a single flat correlation number, when the relevant downside correlation (per the correlation skew discussion in Section 3.2) is structurally higher, will systematically understate the value of the embedded short-put risk — an error that only becomes visible when realized correlation spikes in a stress event.</p>
+                    <p><strong>Discrete monitoring and barrier shift assumptions:</strong> as discussed in Section 1.1, barrier options are typically priced with continuous-monitoring closed-form formulas adjusted by a barrier shift to approximate discrete monitoring. The size of this shift depends on assumptions about monitoring frequency and local volatility near the barrier — getting it wrong systematically biases the marked value of every barrier position in the book in the same direction.</p>
+                    <p class="mb-0"><strong>Skew and smile dynamics:</strong> exotic payoffs (especially barriers, digitals, and worst-of structures) are highly sensitive not just to the current implied volatility smile, but to <em>how the smile is assumed to move</em> as spot moves — the choice between a "sticky strike," "sticky delta," or local volatility dynamic can produce materially different Greeks (and therefore different hedging behavior and P&amp;L) for the same exotic position, even when all models are calibrated to the same current-day vanilla option prices. Because exotics cannot be perfectly statically hedged (as discussed above), the desk's realized P&amp;L depends on which dynamic actually occurs — a form of model risk that is invisible at trade inception (when all models agree on the current smile) but materializes over the life of the trade as the smile evolves.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Aggregating Risk Across an Exotic Book</div>
+                    <p class="mb-0">Because of the issues above, exotic equity books are typically risk-managed using a combination of (1) standard Greeks (delta, gamma, vega, by underlying and tenor bucket) computed from whatever pricing model is in use, for day-to-day hedging; (2) scenario and stress analysis — repricing the book under shifts to correlation, skew, and discrete-monitoring assumptions, to quantify model risk that standard Greeks do not capture; and (3) concentration monitoring — specifically tracking how much notional sits near active barriers or upcoming autocall observation dates, since this is where gap and cliff risk are concentrated and where standard continuous-Greek hedging is least reliable. This multi-layered approach reflects the central theme of this entire subject: exotic equity products offer investors tailored payoffs and issuers attractive margins precisely because they embed risks — path dependency, correlation, discontinuities — that are harder to measure and hedge than the risks of vanilla options, and managing an exotic book well means making those hidden risks visible.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-building-structured-notes/" class="btn btn-outline-custom">&larr; 4.1 Building Structured Notes</a>
+                    <a href="../../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

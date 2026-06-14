@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispersion and Correlation Trading</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Volatility Trading</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-volatility-products">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-volatility-products/" class="toc-chapter-link"><strong>1.</strong> Volatility Products</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-volatility-products/01-volatility-surface/">1.1 Volatility Surface</a>
+                        <a href="../../01-volatility-products/02-variance-swaps/">1.2 Variance Swaps</a>
+                        <a href="../../01-volatility-products/03-vix-and-volatility-indices/">1.3 VIX and Volatility Indices</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-volatility-derivatives-and-strategies">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-volatility-derivatives-and-strategies/" class="toc-chapter-link"><strong>2.</strong> Volatility Derivatives and Strategies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-volatility-derivatives-and-strategies/01-volatility-swaps-and-forward-vol-agreements/">2.1 Volatility Swaps and Forward Vol Agreements</a>
+                        <a href="../../02-volatility-derivatives-and-strategies/02-dispersion-and-correlation-trading/">2.2 Dispersion and Correlation Trading</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-vix-products-and-term-structure">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-vix-products-and-term-structure/" class="toc-chapter-link"><strong>3.</strong> VIX Products and Term Structure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-vix-products-and-term-structure/01-vix-futures-and-the-vix-term-structure/">3.1 VIX Futures and the VIX Term Structure</a>
+                        <a href="../../03-vix-products-and-term-structure/02-vix-options-and-etps/">3.2 VIX Options and ETPs</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-systematic-volatility-strategies">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-systematic-volatility-strategies/" class="toc-chapter-link"><strong>4.</strong> Systematic Volatility Strategies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-systematic-volatility-strategies/01-vol-risk-premium-harvesting/">4.1 Vol Risk Premium Harvesting</a>
+                        <a href="../../04-systematic-volatility-strategies/02-tail-risk-hedging/">4.2 Tail Risk Hedging</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Volatility Trading</a> › <a href="../">2. Volatility Derivatives and Strategies</a> › <span>Dispersion and Correlation Trading</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2.2 Dispersion and Correlation Trading</h1>
+
+                <p>The variance of a stock index is not simply the average of the variances of its constituents — it also depends on the correlations between them. This relationship is the basis of dispersion trading, a strategy that takes a view on the difference between index-level and single-stock-level implied volatility, which is fundamentally a view on implied correlation.</p>
+
+                <h2 class="mt-5 mb-3">The Variance-Correlation Identity</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Index Variance as a Function of Constituent Variances and Correlation</div>
+                    <p>Let an index $I = \sum_{i=1}^n w_i S_i$ be a weighted sum of $n$ constituents with weights $w_i$. To a good approximation (treating returns rather than levels, with $w_i$ now denoting the weight of stock $i$'s return contribution to the index return), the variance of the index return is
+                    $$\sigma_I^2 = \sum_{i=1}^n w_i^2 \sigma_i^2 + \sum_{i \neq j} w_i w_j \rho_{ij} \sigma_i \sigma_j$$
+                    where $\sigma_i$ is the volatility of constituent $i$ and $\rho_{ij}$ is the pairwise correlation between constituents $i$ and $j$. If all pairwise correlations are assumed equal to a single average correlation $\bar\rho$, this simplifies to
+                    $$\sigma_I^2 \approx \bar\rho \sum_{i\neq j} w_i w_j \sigma_i \sigma_j + \sum_i w_i^2\sigma_i^2$$</p>
+                </div>
+
+                <p>The key implication is that, holding constituent volatilities fixed, index variance is increasing in average correlation $\bar\rho$. When $\bar\rho = 1$ (constituents move in lockstep), the index behaves like a weighted average of perfectly correlated assets and $\sigma_I = \sum_i w_i \sigma_i$ (volatilities add linearly). When $\bar\rho < 1$, diversification reduces index variance below this level — the index is "less volatile than its parts," with the gap widening as correlation falls.</p>
+
+                <h2 class="mt-5 mb-3">Implied Correlation</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Implied Correlation</div>
+                    <p class="mb-0">Given the implied (variance-swap) volatilities of the index, $\sigma_I$, and of each constituent, $\sigma_i$, the implied correlation $\rho_{\text{impl}}$ is the single average pairwise correlation that reconciles the variance identity:
+                    $$\rho_{\text{impl}} = \frac{\sigma_I^2 - \sum_i w_i^2 \sigma_i^2}{\sum_{i \neq j} w_i w_j \sigma_i \sigma_j}$$
+                    This is a market-implied quantity, extracted purely from option (or variance swap) prices on the index and its constituents, analogous to how implied volatility is extracted from an option price given a pricing model.</p>
+                </div>
+
+                <p>Empirically, implied correlation tends to be higher than subsequently realized correlation — analogous to the volatility risk premium for implied vs. realized volatility (Section 1.3) — and tends to spike during market stress, when constituent stocks become more correlated (a "risk-off" environment in which idiosyncratic factors are dominated by a common macro factor).</p>
+
+                <h2 class="mt-5 mb-3">The Dispersion Trade</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Dispersion Trade</div>
+                    <p class="mb-0">A (long) dispersion trade consists of selling a variance swap on the index and buying variance swaps on the index's constituents, in proportions weighted to be vega-neutral at inception:
+                    $$\text{Sell } \sigma_I^2 \text{ variance swap}, \qquad \text{Buy } \sum_i w_i^2 \sigma_i^2 \text{ (or similar weighting) of constituent variance swaps}$$
+                    The trade profits if realized correlation comes in lower than the correlation implied by the relative pricing of index vs. single-stock variance at inception — i.e., it is a short-correlation position. A "short dispersion" trade does the opposite (long index variance, short constituent variance) and is a long-correlation position.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Worked Dispersion P&L</div>
+                    <p>Consider a simplified index of two equally-weighted stocks ($w_1 = w_2 = 0.5$), each with implied variance-swap volatility $\sigma_1 = \sigma_2 = 30\%$, and suppose the implied correlation priced into the index variance swap is $\rho_{\text{impl}} = 0.5$. Using the identity above with $\sigma_1=\sigma_2=\sigma$,
+                    $$\sigma_I^2 = w_1^2\sigma^2 + w_2^2\sigma^2 + 2w_1w_2\rho\,\sigma^2 = \sigma^2(w_1^2+w_2^2 + 2w_1w_2\rho)$$
+                    With $w_1=w_2=0.5$ and $\rho=0.5$: $\sigma_I^2 = 0.09 \times (0.25+0.25+2\times0.25\times0.5) = 0.09 \times 0.75 = 0.0675$, so $\sigma_I \approx 26.0\%$.</p>
+                    <p>Suppose a trader sells the index variance swap at $K_{\text{var}}^I = 26.0\%^2$ and buys each single-stock variance swap at $K_{\text{var}}^i = 30\%^2$, sized so the position is vega-neutral. If realized correlation over the life of the trade turns out to be only $\rho_{\text{real}}=0.2$, while realized single-stock volatilities come in exactly at their strikes (30% each), then realized index variance would be
+                    $$\sigma_I^{2,\text{real}} = 0.09 \times (0.25+0.25+2\times0.25\times0.2) = 0.09 \times 0.6 = 0.054 \implies \sigma_I^{\text{real}} \approx 23.2\%$$</p>
+                    <p class="mb-0">The index variance swap (sold at $26.0\%^2$) settles below its strike — a gain to the seller — while the single-stock variance swaps (bought at $30\%$ each) realize exactly at their strikes, roughly breakeven. The net P&L is therefore positive, driven entirely by the gap between implied correlation ($0.5$) and realized correlation ($0.2$), illustrating how a dispersion trade isolates correlation as the primary P&L driver even when single-name volatility forecasts are accurate.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Practical Considerations</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why Dispersion Trades Are Hard to Execute Perfectly</div>
+                    <p>In practice, dispersion trades face several frictions. First, trading variance swaps (or their option-replication portfolios) on every constituent of a broad index is operationally heavy and incurs significant transaction costs and bid-ask spreads, especially for less liquid single names — so dispersion books are often implemented on a subset of the largest or most liquid constituents, introducing tracking error against the true index variance.</p>
+                    <p class="mb-0">Second, the variance-correlation identity assumes a single average pairwise correlation, but realized correlations across pairs can diverge substantially, especially during idiosyncratic events (e.g., an earnings surprise at a single constituent). Third, dispersion is structurally a short-correlation position on average (since implied correlation tends to exceed realized), which means it shares some of the "short volatility risk premium" character of other short-vol strategies discussed in Chapter 4 — generating steady gains in normal markets but exposed to sharp losses when correlations spike during systemic events, exactly when single-stock variance and index variance move together most strongly.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-volatility-swaps-and-forward-vol-agreements/" class="btn btn-outline-custom">&larr; 2.1 Volatility Swaps and Forward Vol Agreements</a>
+                    <a href="../../03-vix-products-and-term-structure/" class="btn btn-custom">3. VIX Products and Term Structure &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

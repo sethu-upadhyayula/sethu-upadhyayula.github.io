@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tactical Patterns — Three-Check</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.check-counter{display:inline-block;background:var(--card-bg,#1e1e2e);border:2px solid #e74c3c;border-radius:8px;padding:.5rem 1.5rem;font-size:1.4rem;font-weight:bold;color:#e74c3c;margin:.5rem .25rem;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Variants</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Three-Check</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-rules-and-winning-conditions"><div class="toc-chapter-header"><a href="../01-rules-and-winning-conditions/" class="toc-chapter-link"><strong>1.</strong> Rules and Winning Conditions</a></div></div>
+            <div class="toc-chapter" data-chapter="02-how-three-check-changes-strategy"><div class="toc-chapter-header"><a href="../02-how-three-check-changes-strategy/" class="toc-chapter-link"><strong>2.</strong> How Three Check Changes Strategy</a></div></div>
+            <div class="toc-chapter" data-chapter="03-tactical-patterns"><div class="toc-chapter-header"><a href="../03-tactical-patterns/" class="toc-chapter-link"><strong>3.</strong> Tactical Patterns</a></div></div>
+            <div class="toc-chapter" data-chapter="04-openings-and-endgames-in-three-check"><div class="toc-chapter-header"><a href="../04-openings-and-endgames-in-three-check/" class="toc-chapter-link"><strong>4.</strong> Openings and Endgames in Three Check</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Variants</a> › <a href="../">Three-Check</a> › <span>3. Tactical Patterns</span></nav>
+
+        <h1 class="text-accent mb-4">3. Tactical Patterns</h1>
+
+  <p>Three Check has its own tactical vocabulary. Many patterns that are dismissed as "unsound" or "premature" in classical chess become legitimate, sometimes winning, resources here — because the goal is not always checkmate. Sometimes the goal is simply <em>check, check, check</em>.</p>
+
+  <h3>The Early Check Attack</h3>
+  <p>Unlike classical chess, where scholar's-mate-style attempts (queen sorties to f7/f2 early in the game) are easily refuted and considered amateurish, early checking attacks in Three Check carry real value even when they are "refuted" on the board. Giving check on move 3 or 4 — even with a piece that immediately gets chased away or traded off — puts you one-third of the way to an outright win before most opponents have even finished developing.</p>
+
+  <div class="notation-box mb-3">
+    1.e4 e5 2.Qh5 Nc6 3.Bc4 Nf6?? 4.Qxf7+ (check 1!) Ke7 5.Qxe5+ (check 2!) Kf7 ...
+    <br><em>White has 2/3 checks in 5 moves. Black must now desperately avoid any further checks for the rest of the game — a single careless move anywhere on the board could end it immediately.</em>
+  </div>
+
+  <p>Even against accurate defence, a checking sortie that is "refuted" by being driven away with tempo loss can still leave the attacker at 1/3 while having lost very little. The key insight is that the defender's "refutation" only addresses the position on the board — it does nothing to remove the check that has already been banked.</p>
+
+  <h3>Sacrificing for Checks</h3>
+  <p>In classical chess, a sacrifice needs to be justified by a follow-up: mate, material recovery, or a decisive positional gain. In Three Check, <strong>a sacrifice that produces a check is partially self-justifying</strong>, because it makes concrete progress toward an entirely separate win condition. Offering a queen to drag the enemy king into the open, and then following up with two more checks delivered by minor pieces, is a recurring winning motif — especially in faster time controls where the defender has little time to find the precise sequence that neutralises all three threats.</p>
+
+  <div class="chess-board" id="board-sac"></div>
+  <script>renderChessBoard('board-sac', {e8:'bK', f7:'bP', g7:'bP', h7:'bP', g6:'wN', d5:'wB', h5:'wQ', e1:'wK'});</script>
+  <p class="text-center text-muted mt-2"><small>A typical "checking storm" setup: White's queen, bishop, and knight are all converging on the Black king's shelter. The bishop on d5 already gives a discovered-check threat if the knight moves, and the knight on g6 threatens ...fxg6 but also covers checking squares like e7 and f8. Each piece represents a potential future check, even if some of them are eventually traded off.</small></p>
+
+  <h3>Defensive Counter-Checks</h3>
+  <p>When your opponent reaches 2/3 and needs just one more check to win outright, your entire defensive plan must change — often dramatically. The position on the board may still be roughly balanced or even favour you, but you are now playing under a kind of sudden-death condition. Priorities become:</p>
+  <ul>
+    <li><strong>Total king shielding.</strong> Audit every line, file, diagonal, and knight-jump that could reach your king, and systematically close them — even moves that look passive or ugly are justified if they remove a checking possibility.</li>
+    <li><strong>Fortress squares.</strong> Look for a square (or small cluster of squares) for your king where checks are geometrically impossible for the remaining material on the board — for instance, a corner surrounded by your own intact pawns with no enemy piece able to reach a checking square in one move.</li>
+    <li><strong>Race to your own third check.</strong> If your position allows it, the most reliable way to neutralise the threat of "they need one more check" is to get to 3/3 yourself first. A counter-checking attack, even a slightly unsound one, can be the correct practical try when the alternative is passive defence against an opponent who only needs one accurate move.</li>
+    <li><strong>Avoid unnecessary piece trades that open lines.</strong> A capture that looks like a "free" simplification in classical chess might open a file or diagonal directly onto your king.</li>
+  </ul>
+
+  <h3>Discovered Checks</h3>
+  <p>Discovered checks — where a piece moves out of the way to reveal an attack from a piece behind it — are especially dangerous in Three Check because they deliver <em>two</em> things at once: the counter-incrementing check itself, and whatever threat or capture the moving piece makes. A rook or bishop sitting behind a friendly piece, aimed at the enemy king, is a loaded gun that can be fired at the moment of maximum tactical benefit.</p>
+
+  <div class="chess-board" id="board-discovered"></div>
+  <script>renderChessBoard('board-discovered', {e8:'bK', e4:'wR', e6:'wN', e1:'wK', d8:'bQ'});</script>
+  <p class="text-center text-muted mt-2"><small>White's knight on e6 currently blocks the rook on e4 from the Black king on e8. If the knight moves anywhere with tempo — for example Nxd8, capturing the queen — it both wins material <em>and</em> uncovers a discovered check from the rook, banking a point on the counter at the same time.</small></p>
+
+  <h3>Double Discovered Checks</h3>
+  <p>The rarest and most feared tactical weapon in Three Check is the <strong>double discovered check</strong>: a single move that moves a piece off a line, revealing checks from <em>two</em> different pieces behind it simultaneously — for example, a diagonal move that simultaneously uncovers a rook on a file and a bishop on a diagonal, both aimed at the king. As covered in Chapter 1, this still only counts as <em>one</em> increment to the counter (the king is in check, however many pieces are responsible) — but the practical effect on the board is often overwhelming, since the defending king frequently has no legal move that escapes both attacks, leading to checkmate on the spot. In Three Check this is the rare case where the board result and the counter result coincide perfectly: it is both check number three <em>and</em> checkmate.</p>
+
+  <h3>Pins and Skewers as Check-Setup</h3>
+  <p>Pins and skewers retain their classical value, but in Three Check they take on an additional role: a piece pinned against the king cannot move away to block a future check, and a piece pinned against a more valuable piece often cannot be used defensively at all. A well-placed pin can effectively remove one of the opponent's defenders from the "checking-prevention" team for several moves, widening the window for a checking combination.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../02-how-three-check-changes-strategy/" class="btn btn-outline-custom">&larr; 2. How Three Check Changes Strategy</a>
+            <a href="../04-openings-and-endgames-in-three-check/" class="btn btn-custom">4. Openings and Endgames in Three Check &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

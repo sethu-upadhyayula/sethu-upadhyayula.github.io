@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hedging Foreign Currency Assets and Liabilities</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">FX Forwards and Swaps</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-fx-forwards-and-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-fx-forwards-and-swaps/" class="toc-chapter-link"><strong>1.</strong> FX Forwards and Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-fx-forwards-and-swaps/01-fx-forwards-and-interest-rate-parity/">1.1 FX Forwards and Interest Rate Parity</a>
+                        <a href="../../01-fx-forwards-and-swaps/02-fx-swaps/">1.2 FX Swaps</a>
+                        <a href="../../01-fx-forwards-and-swaps/03-cross-currency-basis-swaps/">1.3 Cross-Currency Basis Swaps</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-fx-funding-and-the-basis">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-fx-funding-and-the-basis/" class="toc-chapter-link"><strong>2.</strong> FX Funding and the Basis</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-fx-funding-and-the-basis/01-covered-interest-parity-and-its-breakdown/">2.1 Covered Interest Parity and Its Breakdown</a>
+                        <a href="../../02-fx-funding-and-the-basis/02-funding-collateral-and-the-post-2008-basis/">2.2 Funding, Collateral, and the Post-2008 Basis</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fx-forward-curve-construction-and-trading">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-fx-forward-curve-construction-and-trading/" class="toc-chapter-link"><strong>3.</strong> FX Forward Curve Construction and Trading</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-fx-forward-curve-construction-and-trading/01-building-the-fx-forward-curve/">3.1 Building the FX Forward Curve</a>
+                        <a href="../../03-fx-forward-curve-construction-and-trading/02-forward-points-trading-and-carry/">3.2 Forward Points Trading and Carry</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-long-dated-fx-and-hedging-applications">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-long-dated-fx-and-hedging-applications/" class="toc-chapter-link"><strong>4.</strong> Long-Dated FX and Hedging Applications</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-long-dated-fx-and-hedging-applications/01-long-dated-fx-forwards-and-curve-risk/">4.1 Long-Dated FX Forwards and Curve Risk</a>
+                        <a href="../../04-long-dated-fx-and-hedging-applications/02-hedging-foreign-currency-assets-and-liabilities/">4.2 Hedging Foreign Currency Assets and Liabilities</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">FX Forwards and Swaps</a> › <a href="../">4. Long-Dated FX and Hedging Applications</a> › <span>Hedging Foreign Currency Assets and Liabilities</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 Hedging Foreign Currency Assets and Liabilities</h1>
+
+                <p>The instruments and curve mechanics developed throughout this subject exist, ultimately, to serve a very practical end: a corporate, asset manager, or bank holds an asset or liability denominated in a currency other than its functional (reporting) currency, and wants to manage the resulting FX risk. This final section covers how FX forwards and swaps are used to construct such hedges, how hedge programmes are rolled forward through time, and the high-level accounting considerations that shape how hedging programmes are designed in practice.</p>
+
+                <h2 class="mt-5 mb-3">The Basic Hedging Problem</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — FX Exposure from a Balance Sheet Item</div>
+                    <p class="mb-0">A firm with functional currency $D$ (domestic) holds an asset or liability of notional $N$ denominated in foreign currency $F$. The value of this item in domestic-currency terms is $N \cdot S$, where $S$ is the $D/F$ exchange rate. If $S$ moves, the domestic-currency value of the item moves proportionally — this is the firm's <em>FX translation exposure</em>. A common example: a US company ("D = USD") with a 1-year receivable of €10,000,000 ("F = EUR, N = 10{,}000{,}000") from a European customer has USD-denominated value $10{,}000{,}000 \times S_{\text{EUR/USD}}$ that fluctuates with the EUR/USD rate until the receivable is collected and converted.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Forward Hedge</div>
+                    <p class="mb-0">The most direct hedge is an FX forward: the firm in the example above sells €10,000,000 forward for USD at the prevailing 1-year forward rate $F(1y)$, fixing today the USD amount it will receive in one year regardless of where spot moves. The forward rate $F(1y) = S \cdot e^{(r_{USD}-r_{EUR})}$ (Section 1.1) already reflects the interest rate differential, so the hedge is not "free" in the sense of guaranteeing the same USD amount as converting at today's spot — it guarantees a known amount that may be higher or lower than today's spot-equivalent value, depending on the sign of the rate differential. What the hedge eliminates is the <em>uncertainty</em> in that amount, not the cost embedded in the rate differential itself.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Rolling Hedge Programmes</h2>
+
+                <p>Many exposures are not single, known cash flows with a fixed maturity — they are ongoing or recurring, such as a foreign subsidiary's expected revenues over the next several years, or a foreign-currency-denominated investment portfolio with no fixed maturity. For these exposures, firms run <em>rolling hedge programmes</em>.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Rolling Hedge Programme</div>
+                    <p class="mb-0">A rolling hedge programme maintains a hedge of approximately constant maturity (e.g., always hedging the next 3 months of exposure with a 3-month forward) by entering a new forward each period and allowing the previous period's forward to mature (or be closed out via an offsetting FX swap, Section 1.2). Each "roll" realizes the P&amp;L of the maturing forward (relative to the spot rate at that time) and establishes a new forward at the then-current forward rate for the next period.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why Roll Rather Than Hold to Final Maturity</div>
+                    <p class="mb-0">For an exposure with no fixed end date (e.g., a perpetual foreign-currency asset holding), there is no single forward maturity to hedge to. Rolling hedges also allow the hedge notional to be adjusted period to period as the underlying exposure changes (e.g., as a foreign subsidiary's revenue forecast is updated), and avoid locking in a single long-dated forward rate — with its associated wide bid-offer and basis risk (Section 4.1) — when the exposure itself is better matched by a series of shorter-dated, more liquid forwards.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Hedge Accounting Considerations</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Hedge Accounting: A Conceptual Overview</div>
+                    <p>Under accounting frameworks such as IFRS 9 and US GAAP (ASC 815), derivatives are generally marked to market through the income statement, which can introduce P&amp;L volatility from the hedge even when it is economically offsetting an exposure that is not itself marked to market the same way (e.g., a forecast future transaction, or an asset measured at amortised cost). <em>Hedge accounting</em> is an optional set of rules that allows a firm to align the timing of recognition of the hedge's gains/losses with the hedged item, reducing this artificial P&amp;L volatility — but only if specific qualifying criteria are met and documented.</p>
+                    <p><strong>Hedge designation types</strong> commonly include: a <em>fair value hedge</em> (hedging the change in fair value of a recognized asset or liability), a <em>cash flow hedge</em> (hedging variability in future cash flows from a forecast transaction or recognized item), and a <em>net investment hedge</em> (hedging the FX exposure of a net investment in a foreign operation, e.g., a foreign subsidiary).</p>
+                    <p class="mb-0"><strong>Forward points and hedge accounting.</strong> A practical wrinkle specific to FX forwards: the forward rate differs from spot by the forward points (Section 1.1), which represent a kind of "time value" of the hedge. Modern hedge accounting standards generally permit firms to exclude this forward-points component from the hedge effectiveness assessment and amortize it separately, so that the hedge accounting relationship is assessed primarily on a "spot-to-spot" basis — simplifying what would otherwise be a significant source of hedge ineffectiveness purely due to the passage of time and roll-down (Section 3.2).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example: A Rolling Hedge Programme</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Rolling a 3-Month EUR Receivable Hedge</div>
+                    <p>A US firm expects to receive €10,000,000 every quarter indefinitely from European sales, and runs a rolling 3-month forward hedge programme, selling €10,000,000 forward each quarter for USD.</p>
+                    <p><strong>Quarter 1:</strong> EUR/USD spot is $S_0 = 1.0850$. The firm sells €10,000,000 forward 3 months at $F_0(3m) = 1.0898$ (48 pips of points, per the Section 1.1 example), locking in $\$10{,}898{,}000$ for delivery in 3 months.</p>
+                    <p><strong>3 months later:</strong> the receivable is collected and converted at the locked-in rate, realizing $\$10{,}898{,}000$ regardless of where spot has moved. Suppose actual spot at this date is $S_1 = 1.0700$ — without the hedge, the firm would have received only $\$10{,}700{,}000$. The hedge has added $\$198{,}000$ relative to an unhedged conversion at the new spot.</p>
+                    <p>Simultaneously, the firm enters a new 3-month forward for the next quarter's expected €10,000,000 receivable. Suppose the new spot is $S_1 = 1.0700$ and 3-month points are now $+40$ pips (a smaller rate differential than before), giving $F_1(3m) = 1.0740$ and locking in $\$10{,}740{,}000$ for the next quarter.</p>
+                    <p class="mb-0">Over time, this programme converts a volatile stream of EUR receivables, subject to whatever spot rate prevails at each collection date, into a smoother stream of USD amounts each locked in three months in advance at the then-prevailing forward rate — with the realized USD amount each quarter equal to (notional) $\times$ (forward rate locked in three months earlier), and the cumulative difference between hedged and unhedged outcomes driven by the cumulative roll-down and realized spot path described in Section 3.2.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Closing the Loop</div>
+                    <p class="mb-0">This worked example brings together every instrument and concept covered in this subject: the forward rate and its CIP-based pricing (Chapter 1), the role of FX swaps and the cross-currency basis in determining the points actually quoted (Chapters 1-2), the construction and roll-down of the forward curve that determines $F_0(3m)$ and $F_1(3m)$ (Chapter 3), and the practical hedging application that motivates all of it (this section). A solid grasp of covered interest rate parity — and its real-world breakdown via the cross-currency basis — is what separates a hedge that is correctly priced and risk-managed from one that silently embeds funding costs the hedger never intended to take on.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../04-long-dated-fx-and-hedging-applications/01-long-dated-fx-forwards-and-curve-risk/" class="btn btn-outline-custom">&larr; 4.1 Long-Dated FX Forwards and Curve Risk</a>
+                    <a href="../../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

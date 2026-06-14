@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Bermudans with LMM</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Term Structure Models</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-short-rate-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-short-rate-models/" class="toc-chapter-link"><strong>1.</strong> Short Rate Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-short-rate-models/01-vasicek-and-hull-white/">1.1 Vasicek and Hull-White Models</a>
+                        <a href="../../01-short-rate-models/02-hjm-framework/">1.2 HJM Framework</a>
+                        <a href="../../01-short-rate-models/03-lmm/">1.3 LIBOR Market Model (LMM)</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-affine-term-structure-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-affine-term-structure-models/" class="toc-chapter-link"><strong>2.</strong> Affine Term Structure Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-affine-term-structure-models/01-affine-models-and-the-cir-model/">2.1 Affine Models and the CIR Model</a>
+                        <a href="../../02-affine-term-structure-models/02-multi-factor-affine-models/">2.2 Multi-Factor Affine Models</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-calibration-and-model-risk">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-calibration-and-model-risk/" class="toc-chapter-link"><strong>3.</strong> Calibration and Model Risk</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-calibration-and-model-risk/01-calibrating-short-rate-models/">3.1 Calibrating Short-Rate Models</a>
+                        <a href="../../03-calibration-and-model-risk/02-model-risk-in-term-structure-models/">3.2 Model Risk in Term Structure Models</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-applications-to-exotic-rate-derivatives">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-applications-to-exotic-rate-derivatives/" class="toc-chapter-link"><strong>4.</strong> Applications to Exotic Rate Derivatives</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-applications-to-exotic-rate-derivatives/01-pricing-bermudans-with-lmm/">4.1 Pricing Bermudans with LMM</a>
+                        <a href="../../04-applications-to-exotic-rate-derivatives/02-model-choice-for-different-products/">4.2 Model Choice for Different Products</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Term Structure Models</a> › <a href="../">4. Applications to Exotic Rate Derivatives</a> › <span>Pricing Bermudans with LMM</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Pricing Bermudans with LMM</h1>
+
+                <p>A Bermudan swaption gives its holder the right to enter an interest rate swap on any one of a discrete set of exercise dates. Pricing it requires modelling the joint evolution of <em>all</em> the forward rates that determine the underlying swap's value at every exercise date, and solving an optimal-stopping problem over that joint distribution. The LIBOR Market Model (LMM), introduced in Section 1.3, is the dominant framework for this task. This section explains why, and sketches how Monte Carlo simulation is combined with regression-based methods to handle the early-exercise feature.</p>
+
+                <h2 class="mt-5 mb-3">Recap: The LIBOR Market Model</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — LMM Models Market-Observable Rates Directly</div>
+                    <p class="mb-0">Recall from Section 1.3 that LMM specifies the joint dynamics of a discrete set of forward LIBOR (or, post-LIBOR, forward SOFR-compounded) rates $L_i(t) = L(t;T_i,T_{i+1})$, each lognormal (or displaced-lognormal/SABR-extended) under its own forward measure, with a full correlation matrix between the driving Brownian motions:
+                    $$dL_i(t) = \mu_i(t)\,dt + \sigma_i(t)\,L_i(t)\,dW_i^{(i)}(t), \qquad d\langle W^{(i)},W^{(j)}\rangle_t = \rho_{ij}\,dt$$
+                    Unlike a 1- or 2-factor short-rate model, LMM's state is the entire vector of forward rates $(L_1(t),\ldots,L_n(t))$ — typically 10-40 rates for a 10-year structure with semi-annual or quarterly tenors. This high dimensionality is precisely what is needed to capture the joint behaviour of the swap rates underlying each exercise date of a Bermudan.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Why LMM for Bermudans?</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Three Reasons LMM Dominates for Bermudan Swaptions</div>
+                    <p><strong>1. Direct calibration to the relevant vanillas.</strong> As discussed in Section 3.1, a Bermudan should be calibrated to the diagonal of co-terminal European swaptions spanning its exercise dates. Because each $L_i(t)$ in LMM is (to good approximation) lognormal with a volatility directly comparable to a caplet volatility, and swap rates are weighted combinations of the $L_i(t)$, LMM can be calibrated so that the model's implied volatilities for this entire diagonal of swaptions match the market simultaneously — something a 1- or 2-factor short-rate model cannot generally achieve exactly.</p>
+                    <p><strong>2. Realistic correlation structure.</strong> The correlation matrix $\rho_{ij}$ between forward rates is itself a calibratable input (fit to historical rate correlations or to the prices of correlation-sensitive instruments like CMS spread options). Since the value of the Bermudan's early-exercise feature depends on how the swap rate at one exercise date is related to the swap rate at the next, getting this correlation structure right — which a low-factor short-rate model cannot do, per the model-risk discussion in Section 3.2 — is central to pricing the Bermudan correctly.</p>
+                    <p class="mb-0"><strong>3. A natural state space for Monte Carlo.</strong> The Bermudan payoff at each exercise date is a function of the then-prevailing forward rates (via the underlying swap's value). Since LMM simulates exactly these rates, the payoff at each exercise date is a simple, direct function of the simulated state — no further transformation from an abstract short-rate state variable is needed.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Early-Exercise Problem</h2>
+
+                <p>Pricing a Bermudan requires solving an optimal-stopping problem: at each exercise date $T_k$, the holder compares the immediate exercise value (the value of entering the underlying swap) against the value of continuing to hold the option. The Bermudan's price is the value of following the optimal exercise strategy.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Bermudan Value via Dynamic Programming</div>
+                    <p class="mb-0">Let $h_k$ denote the intrinsic (exercise) value at exercise date $T_k$, and $V_k$ the value of the Bermudan at $T_k$ if not yet exercised. Working backwards from the final exercise date $T_N$ (where $V_N = h_N$), the value at each earlier date satisfies:
+                    $$V_k = \max\big(h_k,\; \mathbb{E}_k^{\mathbb{Q}}[\,D(T_k,T_{k+1})\,V_{k+1}\,]\big)$$
+                    where $D(T_k,T_{k+1})$ is the stochastic discount factor and $\mathbb{E}_k^{\mathbb{Q}}[\cdot]$ denotes the conditional expectation given information at $T_k$. The price today is $V_0$ (suitably discounted). The term $\mathbb{E}_k^{\mathbb{Q}}[D(T_k,T_{k+1})V_{k+1}]$ — the <em>continuation value</em> — is the crux of the difficulty: it requires knowing $V_{k+1}$ as a function of the state at $T_k$, which is exactly what we are trying to compute.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why This Is Hard for High-Dimensional Monte Carlo</div>
+                    <p class="mb-0">A plain forward Monte Carlo simulation of LMM produces, at each exercise date, a large number of simulated paths and the corresponding forward rates along each path — but it gives no direct way to compute the continuation value $\mathbb{E}_k^{\mathbb{Q}}[D\,V_{k+1}]$ for a <em>given</em> path, because $V_{k+1}$ itself depends on the optimal future exercise decisions, which in turn depend on the (unknown) continuation values at $T_{k+1}$. PDE/lattice methods, which would naturally handle backward induction, are infeasible here because LMM's state space (10-40 correlated forward rates) is far too high-dimensional for a grid. This is precisely the situation regression-based Monte Carlo methods are designed for.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Regression-Based Methods (Longstaff-Schwartz)</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — The Least-Squares Monte Carlo (LSM) Approach</div>
+                    <p class="mb-0">The Longstaff-Schwartz (LSM) algorithm estimates the continuation value at each exercise date as a function of the simulated state, using cross-sectional regression across simulated paths:</p>
+                    <ol class="mb-0">
+                        <li>Simulate $M$ paths of the LMM forward-rate vector $(L_1(t),\ldots,L_n(t))$ from today to the final exercise date $T_N$.</li>
+                        <li>At the final date $T_N$, set the realised cash flow on each path to the intrinsic value $h_N$ (exercise if positive, zero otherwise).</li>
+                        <li>Working backwards from $T_{N-1}$ to $T_1$: on each path, regress the (discounted) realised future cash flow from later exercise decisions against a set of basis functions of the current state (e.g. polynomials in the relevant swap rate, or in a small number of forward rates). The fitted regression value is an estimate of the continuation value $\mathbb{E}_k^{\mathbb{Q}}[D\,V_{k+1}]$ as a function of the state.</li>
+                        <li>On each path, compare the intrinsic value $h_k$ to the <em>fitted</em> continuation value (not the realised future cash flow itself, which would look ahead) to decide whether to exercise at $T_k$ on that path, and update the realised cash flow accordingly.</li>
+                        <li>After processing all exercise dates, average the resulting (discounted) cash flows across all $M$ paths to obtain the Bermudan price.</li>
+                    </ol>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why Regression Solves the Dimensionality Problem</div>
+                    <p class="mb-0">The key insight is that the continuation value, while conceptually a function of the entire high-dimensional state $(L_1(t),\ldots,L_n(t))$, is in practice well-approximated by a function of a small number of <em>relevant</em> quantities — typically the underlying swap rate at that exercise date, perhaps together with one or two additional explanatory variables. Regressing on these low-dimensional basis functions, using the cross-section of simulated paths to estimate the regression coefficients, avoids ever needing to represent the continuation value on a high-dimensional grid. The exercise decision on each path then uses only this fitted low-dimensional approximation, and the law of large numbers ensures the final Monte Carlo average converges to the true price as $M\to\infty$ and the basis function set is enriched — making LSM-on-LMM the practical workhorse for Bermudan swaption pricing.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Applications to Exotic Rate Derivatives</a>
+                    <a href="../02-model-choice-for-different-products/" class="btn btn-custom">4.2 Model Choice for Different Products &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

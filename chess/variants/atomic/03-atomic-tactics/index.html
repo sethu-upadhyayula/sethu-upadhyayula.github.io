@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atomic Tactics — Atomic Chess</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Variants</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Atomic Chess</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-the-rules-of-atomic-chess"><div class="toc-chapter-header"><a href="../01-the-rules-of-atomic-chess/" class="toc-chapter-link"><strong>1.</strong> The Rules of Atomic Chess</a></div></div>
+            <div class="toc-chapter" data-chapter="02-king-safety-and-the-inversion-of-values"><div class="toc-chapter-header"><a href="../02-king-safety-and-the-inversion-of-values/" class="toc-chapter-link"><strong>2.</strong> King Safety and the Inversion of Values</a></div></div>
+            <div class="toc-chapter" data-chapter="03-atomic-tactics"><div class="toc-chapter-header"><a href="../03-atomic-tactics/" class="toc-chapter-link"><strong>3.</strong> Atomic Tactics</a></div></div>
+            <div class="toc-chapter" data-chapter="04-opening-theory-and-practical-tips"><div class="toc-chapter-header"><a href="../04-opening-theory-and-practical-tips/" class="toc-chapter-link"><strong>4.</strong> Opening Theory and Practical Tips</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Variants</a> › <a href="../">Atomic Chess</a> › <span>3. Atomic Tactics</span></nav>
+
+        <h1 class="text-accent mb-4">3. Atomic Tactics</h1>
+  <p>Tactical patterns in Atomic Chess revolve around one question: <strong>can I make a capture that places an explosion next to the enemy king (or a critical piece), while keeping my own king out of the blast radius?</strong> This chapter walks through the most common tactical motifs, organised by which piece typically delivers the decisive blow.</p>
+
+  <h3>Knight Explosions</h3>
+  <p>Knights are uniquely dangerous in Atomic Chess because they jump over other pieces and can land deep in enemy territory in just one or two moves, often landing on squares that no other piece can reach quickly. A knight that lands adjacent to the enemy king &mdash; even in the middle of a dense, seemingly safe position &mdash; threatens a devastating explosion on its very next capture.</p>
+
+  <div class="chess-board" id="board-knight"></div>
+  <script>renderChessBoard('board-knight', {a1:'wR',b1:'wN',c1:'wB',d1:'wQ',e1:'wK',f1:'wB',h1:'wR',d7:'wN',a2:'wP',b2:'wP',c2:'wP',d2:'wP',e2:'wP',f2:'wP',g2:'wP',h2:'wP',a8:'bR',b8:'bN',c8:'bB',d8:'bQ',e8:'bK',f8:'bB',g8:'bN',h8:'bR',a7:'bP',b7:'bP',c7:'bP',e7:'bP',g7:'bP',h7:'bP',d5:'bP',f6:'bP'});</script>
+  <p class="text-center text-muted mt-2"><small>The famous "Nd7 trap" (1.Nf3 d5 2.Ne5 f6?! 3.Nd7): the White knight on d7 is completely safe. Any Black piece that captures it would explode adjacent to Black's own king on e8, destroying that king &mdash; so no capture is legal. Meanwhile White threatens 4.Nxf8#, exploding the rook and detonating next to the Black king.</small></p>
+
+  <p>Notice the key idea: the knight on d7 is "untouchable" not because it is defended in the classical sense, but because <em>capturing it would be suicide for the defender</em>. This "self-protection by adjacency to the enemy king" is one of the signature tactical themes of Atomic Chess and appears constantly in games at all levels.</p>
+
+  <h3>Rook Explosions on Open Files</h3>
+  <p>Rooks sweeping along open files or ranks are extremely dangerous in Atomic Chess. A rook that reaches the 7th (or 2nd) rank and finds a pawn adjacent to the enemy king can capture that pawn, triggering an explosion that reaches the king directly. Open files are therefore not merely a long-term positional advantage as in classical chess &mdash; they are often a direct, immediate winning threat that must be neutralised right away.</p>
+
+  <div class="chess-board" id="board-rook"></div>
+  <script>renderChessBoard('board-rook', {e1:'wK',e8:'bK',a8:'wR',a7:'bP',b7:'bP',c7:'bP',d7:'bP',f7:'bP',g7:'bP',h7:'bP'}, {highlight:{a7:'safe'}});</script>
+  <p class="text-center text-muted mt-2"><small>The White rook on a8 can play Rxa7, capturing the pawn. Because a7 is not adjacent to the Black king on e8, this particular capture is "only" a material gain &mdash; but if the Black king were on b8 or a7's neighbours instead, the same rook move would end the game on the spot. Always check king proximity before evaluating a capture as "merely" winning material.</small></p>
+
+  <h3>Suicide Tactics and Chain Reactions</h3>
+  <p>Sometimes the strongest move in Atomic Chess involves deliberately sacrificing material to set up a follow-up explosion. A classic pattern: allow your opponent to capture a piece of yours, which removes one of <em>their</em> defenders or repositions one of their pieces next to their own king &mdash; then deliver the final blow on the next move. Calculating these sequences requires thinking several moves ahead not in terms of material count, but in terms of "what will be standing on which squares after this chain of explosions resolves."</p>
+  <p>A useful way to train this skill is to practice counting, for any candidate capture, exactly which eight squares would be affected and listing every piece (yours and your opponent's) currently on those squares. Doing this quickly and accurately is the core calculation skill of Atomic Chess, in the same way that calculating forcing sequences is the core skill in classical tactics.</p>
+
+  <h3>Avoiding Exploding Yourself</h3>
+  <p>One pitfall unique to Atomic Chess: carelessly capturing a piece that is adjacent to <em>your own</em> king is suicide &mdash; your own king is destroyed by the explosion from your own move, and you lose instantly. This means certain recaptures that look completely natural (and would be forced or automatic in classical chess) are in fact <strong>illegal</strong>, because the rules forbid making a move that results in your own king's destruction.</p>
+
+  <div class="chess-board" id="board-self-explosion"></div>
+  <script>renderChessBoard('board-self-explosion', {e1:'wK',d2:'wP',f2:'wP',e2:'bN',d1:'wQ',f1:'wB'}, {highlight:{e2:'illegal'}});</script>
+  <p class="text-center text-muted mt-2"><small>The Black knight on e2 is attacking White's queen on d1 and bishop on f1, and is itself attackable by the White king, queen, and bishop. But e2 is adjacent to the White king on e1 &mdash; so <strong>none</strong> of Kxe2, Qxe2, or Bxe2 are legal moves, because each would explode White's own king. White must find another way to deal with the knight, perhaps by moving the king away first or by ignoring the threat if the knight's captures are themselves not dangerous.</small></p>
+
+  <h3>Defensive Resource: Forced Self-Protection</h3>
+  <p>Because captures adjacent to your own king are illegal, pieces sitting next to your king are sometimes effectively immune from capture by your opponent's pieces too &mdash; if your opponent's capturing piece would also end up adjacent to your king and they don't want to hand you a winning explosion in return, or if the position is such that any capture there is simply illegal for both sides due to other adjacency constraints. Skilled Atomic players sometimes deliberately huddle pieces around their king not just for material defence, but to create a web of squares where captures are mutually illegal &mdash; a kind of "diplomatic immunity zone."</p>
+
+  <h3>Discovered Explosions</h3>
+  <p>A "discovered explosion" occurs when a piece moves out of the way (without itself capturing anything) to allow a different piece's capture &mdash; already lined up &mdash; to land its blast on the enemy king on the very next move, or when moving a piece creates a new capturing relationship that wasn't there before. Because explosions only happen on the move that performs the capture, the "discovery" itself is silent; it's the follow-up capture that detonates. Players should constantly scan for moves that, while not captures themselves, set up an unstoppable capture-with-explosion for the following move.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../02-king-safety-and-the-inversion-of-values/" class="btn btn-outline-custom">&larr; 2. King Safety and the Inversion of Values</a>
+            <a href="../04-opening-theory-and-practical-tips/" class="btn btn-custom">4. Opening Theory and Practical Tips &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

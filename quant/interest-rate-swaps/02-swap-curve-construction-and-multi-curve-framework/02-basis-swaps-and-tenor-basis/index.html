@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basis Swaps and Tenor Basis</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Interest Rate Swaps</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rate-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rate-swaps/" class="toc-chapter-link"><strong>1.</strong> Interest Rate Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rate-swaps/01-vanilla-interest-rate-swaps/">1.1 Vanilla Interest Rate Swaps</a>
+                        <a href="../../01-interest-rate-swaps/02-ois-and-sofr-discounting/">1.2 OIS and SOFR Discounting</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-swap-curve-construction-and-multi-curve-framework">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/" class="toc-chapter-link"><strong>2.</strong> Swap Curve Construction and the Multi-Curve Framework</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/01-multi-curve-bootstrapping/">2.1 Multi-Curve Bootstrapping</a>
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/02-basis-swaps-and-tenor-basis/">2.2 Basis Swaps and Tenor Basis</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-swap-risk-and-hedging">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-swap-risk-and-hedging/" class="toc-chapter-link"><strong>3.</strong> Swap Risk and Hedging</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-swap-risk-and-hedging/01-pv01-and-swap-sensitivities/">3.1 PV01 and Swap Sensitivities</a>
+                        <a href="../../03-swap-risk-and-hedging/02-hedging-swap-books/">3.2 Hedging Swap Books</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-non-vanilla-swap-structures">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-non-vanilla-swap-structures/" class="toc-chapter-link"><strong>4.</strong> Non-Vanilla Swap Structures</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-non-vanilla-swap-structures/01-amortizing-forward-starting-and-cms/">4.1 Amortizing, Forward-Starting, and Constant Maturity Swaps</a>
+                        <a href="../../04-non-vanilla-swap-structures/02-cross-currency-and-asset-swaps/">4.2 Cross-Currency Swaps and Asset Swaps</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Interest Rate Swaps</a> › <a href="../">2. Swap Curve Construction and the Multi-Curve Framework</a> › <span>Basis Swaps and Tenor Basis</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2.2 Basis Swaps and Tenor Basis</h1>
+
+                <p>Section 2.1 noted that forecast curves for different tenors of the same underlying index — e.g. 3-month and 6-month SOFR or LIBOR — are not generally identical, and that the spread between them is calibrated from <em>tenor basis swaps</em>. This section examines that instrument directly: what it is, why the basis exists, and how it is priced and used in curve construction.</p>
+
+                <h2 class="mt-5 mb-3">Tenor Basis Swaps</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Tenor Basis Swap</div>
+                    <p class="mb-0">A <em>tenor basis swap</em> (or "basis swap") exchanges two floating legs referencing the same underlying index family but different tenors — most commonly 3-month vs. 6-month — on a common notional, with no fixed leg. One leg pays the shorter-tenor rate (e.g. 3M) plus a fixed spread $b$, the other pays the longer-tenor rate (e.g. 6M) flat:
+                    $$\text{Leg A: } N\big(L_{3M}(t_{i-1},t_i) + b\big)\delta_i^A \qquad \text{Leg B: } N\,L_{6M}(t_{j-1},t_j)\,\delta_j^B$$
+                    The spread $b$ — quoted in basis points — is set so the swap has zero value at inception. By convention $b$ is usually added to the <em>shorter</em>-tenor leg, since shorter-tenor rates have historically traded below longer-tenor rates of the same credit family.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Why Tenor Basis Exists</h2>
+
+                <p>In a frictionless market with no credit or liquidity differences, a strip of four consecutive 3-month rates should equal a single 6-month rate spanning the same period (compounding effects aside) — so the tenor basis spread should be roughly zero. In practice it is not, and the spread itself carries information about term funding markets.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Drivers of Tenor Basis</div>
+                    <p><strong>Credit and liquidity premium for longer commitments.</strong> A 6-month unsecured loan (historically, 6M LIBOR) embeds a credit and liquidity premium for the longer commitment period relative to a 3-month loan rolled twice — lenders demand more compensation for being exposed to a counterparty's credit for longer without the option to reprice. This premium is the classical explanation for positive 6M-vs-3M basis (6M trading above the rolled 3M strip).</p>
+                    <p><strong>Convexity and roll risk.</strong> A strip of 3M rates carries reinvestment/roll risk — the rate for each successive 3-month period is unknown until it resets — whereas a single 6M rate fixes the cost for the whole period upfront. This timing difference contributes a (typically small) convexity-related component to the basis.</p>
+                    <p class="mb-0"><strong>Supply and demand for each tenor.</strong> Structural demand imbalances — e.g. floating-rate notes and loans that reference 3M, versus swap and bond markets that reference 6M — create supply/demand pressure on each tenor's forward curve independently of the credit-premium argument, and this pressure shows up directly in the basis swap market.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Pricing a Basis Swap and Calibrating Tenor Forecast Curves</h2>
+
+                <p>Given the discount curve $P_d$ and the forecast curve for one tenor (say $P_{3M}$, already bootstrapped from vanilla 3M swaps as in Section 2.1), the basis swap market is the calibration instrument for $P_{6M}$.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Pricing a Tenor Basis Swap</div>
+                    <p>The value of the basis swap to the payer of the 3M-plus-spread leg is the difference of the two legs' present values:
+                    $$V = \underbrace{\sum_j \delta_j^B F_{6M,j}\,P_d(0,t_j)}_{PV\text{ of 6M leg}} - \underbrace{\sum_i \delta_i^A\big(F_{3M,i}+b\big)P_d(0,t_i)}_{PV\text{ of 3M+spread leg}}$$
+                    where $F_{3M,i}$ are forward rates from the already-known $P_{3M}$ curve. Setting $V=0$ and solving for the par basis spread $b^*$ at a given maturity gives one calibration equation; bootstrapping $P_{6M}$ proceeds node-by-node exactly as in Section 2.1, but using basis swap quotes (and the known $P_{3M}$, $P_d$) rather than fixed-vs-floating swap quotes directly.</p>
+                    <p class="mb-0">Equivalently, once $P_{6M}$ is calibrated, the basis swap is correctly repriced to zero using $P_d$ for discounting and $P_{3M}$, $P_{6M}$ for the respective forward rates — exactly analogous to how a vanilla swap reprices to zero using $P_d$ and a single forecast curve.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Tenor Basis Example</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Implied 6M Forward from a 3M Curve and Basis Spread</div>
+                    <p>Suppose for a particular 6-month period, the 3M forecast curve implies two consecutive 3M forward rates of $F_{3M,1}=4.80\%$ and $F_{3M,2}=4.85\%$ (each accruing over $\delta=0.25$), and the market 3M-vs-6M basis swap quotes a spread of $b=8\text{bp}=0.08\%$ added to the 3M leg over this period.</p>
+                    <p>Ignoring discounting effects within the short period for simplicity (i.e. treating $P_d(0,t_i)\approx P_d(0,t_2)$ for both sub-periods), the par condition $\delta^B F_{6M} \approx \delta^A(F_{3M,1}+b) + \delta^A(F_{3M,2}+b)$ with $\delta^A=0.25$, $\delta^B=0.5$ gives:
+                    $$F_{6M} \approx \frac{0.25\times(0.0480+0.0008) + 0.25\times(0.0485+0.0008)}{0.5} = \frac{0.25\times 0.0488 + 0.25\times 0.0493}{0.5}$$
+                    $$F_{6M} \approx \frac{0.01220+0.01233}{0.5} = \frac{0.02453}{0.5} \approx 4.905\%$$</p>
+                    <p class="mb-0">The implied 6-month forward rate (4.905%) sits above the average of the two 3-month forwards (4.825%) by approximately the basis spread of 8bp — confirming that, in this simplified setting, the tenor basis spread is directly absorbed into the gap between the 3M and 6M forecast curves' implied forward rates over the same period.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-multi-curve-bootstrapping/" class="btn btn-outline-custom">&larr; 2.1 Multi-Curve Bootstrapping</a>
+                    <a href="../../03-swap-risk-and-hedging/" class="btn btn-custom">3. Swap Risk and Hedging &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

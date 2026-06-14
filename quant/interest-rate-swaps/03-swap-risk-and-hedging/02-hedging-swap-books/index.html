@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hedging Swap Books</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Interest Rate Swaps</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rate-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rate-swaps/" class="toc-chapter-link"><strong>1.</strong> Interest Rate Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rate-swaps/01-vanilla-interest-rate-swaps/">1.1 Vanilla Interest Rate Swaps</a>
+                        <a href="../../01-interest-rate-swaps/02-ois-and-sofr-discounting/">1.2 OIS and SOFR Discounting</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-swap-curve-construction-and-multi-curve-framework">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/" class="toc-chapter-link"><strong>2.</strong> Swap Curve Construction and the Multi-Curve Framework</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/01-multi-curve-bootstrapping/">2.1 Multi-Curve Bootstrapping</a>
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/02-basis-swaps-and-tenor-basis/">2.2 Basis Swaps and Tenor Basis</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-swap-risk-and-hedging">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-swap-risk-and-hedging/" class="toc-chapter-link"><strong>3.</strong> Swap Risk and Hedging</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-swap-risk-and-hedging/01-pv01-and-swap-sensitivities/">3.1 PV01 and Swap Sensitivities</a>
+                        <a href="../../03-swap-risk-and-hedging/02-hedging-swap-books/">3.2 Hedging Swap Books</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-non-vanilla-swap-structures">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-non-vanilla-swap-structures/" class="toc-chapter-link"><strong>4.</strong> Non-Vanilla Swap Structures</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-non-vanilla-swap-structures/01-amortizing-forward-starting-and-cms/">4.1 Amortizing, Forward-Starting, and Constant Maturity Swaps</a>
+                        <a href="../../04-non-vanilla-swap-structures/02-cross-currency-and-asset-swaps/">4.2 Cross-Currency Swaps and Asset Swaps</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Interest Rate Swaps</a> › <a href="../">3. Swap Risk and Hedging</a> › <span>Hedging Swap Books</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 Hedging Swap Books</h1>
+
+                <p>A swap desk's book typically contains hundreds or thousands of swaps across many maturities, tenors, and currencies, each contributing PV01 with respect to multiple curves as described in Section 3.1. The desk's job is not to eliminate every individual swap's risk, but to manage the book's <em>aggregate</em> exposure — and to do so efficiently, using a small number of liquid hedging instruments.</p>
+
+                <h2 class="mt-5 mb-3">Aggregating Risk Across a Book</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Net PV01 of a Book</div>
+                    <p class="mb-0">For a book of swaps with positions $N_k$ (signed, payer positive say) and individual PV01s $\text{PV01}_k$ (with respect to a given curve), the book's net PV01 with respect to that curve is simply the sum:
+                    $$\text{PV01}_{\text{book}} = \sum_k N_k \cdot \text{pv01}_k$$
+                    where $\text{pv01}_k$ is the per-unit-notional PV01 of swap $k$. A book is "PV01-flat" with respect to a curve if this sum is (close to) zero — a parallel 1bp shift in that curve has negligible first-order effect on the book's value.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Hedging with Swaps and Futures</h2>
+
+                <p>The simplest hedge for a single swap is an offsetting swap of the same maturity and tenor — a receiver can be hedged with a payer of equal notional and maturity, leaving (in principle) zero net PV01. In practice, desks prefer to hedge with the most liquid instruments available, which are not always identical to the swaps in the book.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Common Hedging Instruments</div>
+                    <p><strong>Benchmark on-the-run swaps.</strong> Standard maturities (2Y, 5Y, 10Y, 30Y) trade with the tightest bid-offer and are the natural hedge for any swap whose risk is concentrated near those points on the curve.</p>
+                    <p><strong>SOFR futures.</strong> Short-end risk (out to roughly 2-3 years) is often hedged with SOFR futures (3-month and 1-month contracts), which are exchange-traded, highly liquid, and closely track the front end of the SOFR curve — an efficient alternative to OIS swaps for short-dated discount-curve risk.</p>
+                    <p class="mb-0"><strong>Spread/butterfly trades.</strong> A swap with risk concentrated between two benchmark maturities (e.g. a 7-year swap, between the 5Y and 10Y benchmarks) is often hedged with a combination of the two adjacent benchmarks, weighted so the combination's PV01 and approximate curve-shape exposure matches the target swap — a "PV01-weighted" spread or butterfly hedge.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Bucket Hedging vs. Key-Rate Hedging</h2>
+
+                <p>A single net PV01 number (Definition above) only captures sensitivity to a <em>parallel</em> shift. A book can be flat to parallel shifts while still being exposed to changes in the curve's <em>shape</em> — steepening, flattening, or twists at specific maturities. Two related but distinct approaches address this.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Bucket Hedging</div>
+                    <p class="mb-0"><em>Bucket hedging</em> partitions the curve into maturity buckets (e.g. 0-2Y, 2-5Y, 5-10Y, 10-30Y) and requires the book's net PV01 to be approximately zero <em>within each bucket</em>, not just in aggregate. A book with +\$10,000 PV01 in the 2-5Y bucket and -\$10,000 in the 5-10Y bucket has zero total PV01 but is exposed to a steepening or flattening between those buckets — bucket hedging would flag and hedge each bucket separately, typically using the benchmark swap (or futures) whose maturity falls within that bucket.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Key-Rate Hedging</div>
+                    <p class="mb-0"><em>Key-rate hedging</em> is a finer-grained version of the same idea: rather than buckets, it computes the book's sensitivity to a shift in each individual <em>node</em> of the curve (e.g. each of the 1Y, 2Y, 3Y, 5Y, 7Y, 10Y, 20Y, 30Y curve-building instruments, perturbed one at a time while holding the others fixed — the "key-rate durations" or "key-rate PV01s" introduced in Rates Fundamentals Section 3.1). A book is fully curve-shape-hedged when its key-rate PV01 is approximately zero at every node, which generally requires hedging with an instrument at (or near) each node where the book has exposure — the limiting, most granular case of bucket hedging.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Residual Curve Risk</h2>
+
+                <p>Even a carefully bucket- or key-rate-hedged book retains risk that does not reduce to a clean PV01 number, for several reasons specific to the multi-curve setting of this chapter.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Sources of Residual Risk</div>
+                    <p><strong>Curve vs. curve basis risk.</strong> A book hedged to be flat in discount-curve PV01 and flat in 3M-forecast-curve PV01 can still be exposed to a change in the tenor basis spread (Section 2.2) between the 3M and 6M curves, if its swaps and hedges reference different tenors.</p>
+                    <p><strong>Interpolation and node-placement risk.</strong> Hedging at discrete nodes (key rates or benchmark maturities) leaves residual exposure to changes in the curve <em>between</em> nodes — interpolation risk, which is small for smooth curves but can matter around features like the turn-of-year jumps discussed in Rates Fundamentals Section 4.2.</p>
+                    <p class="mb-0"><strong>Non-parallel and higher-order moves.</strong> PV01 (a first-derivative, linear measure) does not capture convexity — the second-order sensitivity to large rate moves — which matters for swaps with embedded optionality (Section 4.1) or for very large parallel shifts. Desks typically monitor convexity (gamma) separately and hedge it, where material, with options or convexity-bearing structures.</p>
+                </div>
+
+                <p class="mb-0">The overall picture is one of successive refinement: net PV01 controls the dominant parallel-shift risk, bucket and key-rate hedging control curve-shape risk, and basis, interpolation, and convexity risk remain as smaller residuals that are monitored and managed — but rarely reduced to exactly zero — as part of the ongoing risk management of a swap book.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-pv01-and-swap-sensitivities/" class="btn btn-outline-custom">&larr; 3.1 PV01 and Swap Sensitivities</a>
+                    <a href="../../04-non-vanilla-swap-structures/" class="btn btn-custom">4. Non-Vanilla Swap Structures &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

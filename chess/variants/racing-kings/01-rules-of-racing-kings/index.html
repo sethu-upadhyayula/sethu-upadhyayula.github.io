@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rules of Racing Kings — Racing Kings</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.chess-board .sq.goal{background:#2980b9 !important;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Variants</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Racing Kings</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-rules-of-racing-kings"><div class="toc-chapter-header"><a href="../01-rules-of-racing-kings/" class="toc-chapter-link"><strong>1.</strong> Rules of Racing Kings</a></div></div>
+            <div class="toc-chapter" data-chapter="02-strategic-ideas"><div class="toc-chapter-header"><a href="../02-strategic-ideas/" class="toc-chapter-link"><strong>2.</strong> Strategic Ideas</a></div></div>
+            <div class="toc-chapter" data-chapter="03-tactical-motifs"><div class="toc-chapter-header"><a href="../03-tactical-motifs/" class="toc-chapter-link"><strong>3.</strong> Tactical Motifs</a></div></div>
+            <div class="toc-chapter" data-chapter="04-practical-tips-and-typical-patterns"><div class="toc-chapter-header"><a href="../04-practical-tips-and-typical-patterns/" class="toc-chapter-link"><strong>4.</strong> Practical Tips and Typical Patterns</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Variants</a> › <a href="../">Racing Kings</a> › <span>1. Rules of Racing Kings</span></nav>
+
+        <h1 class="text-accent mb-4">1. Rules of Racing Kings</h1>
+
+  <p>Racing Kings is one of the official variants on lichess.org, and it stands apart from almost every other chess variant because the objective has nothing to do with checkmate. Instead, the board is a racetrack: whoever gets their king to the far side first — without ever placing the opponent's king in check along the way — wins.</p>
+
+  <h3>Starting Position</h3>
+  <p>Both sides begin with their pieces packed into the bottom two ranks — no pawns at all. The specific starting arrangement places the pieces to avoid any immediate checks, and crucially, <strong>both kings start on the same rank</strong> (rank 2), side by side with the rest of the army on rank 1 and the second halves of each side's pieces on rank 2:</p>
+
+  <div class="chess-board" id="board-start"></div>
+  <script>renderChessBoard('board-start', {a1:'bQ',b1:'bR',c1:'bB',d1:'bN',e1:'wN',f1:'wB',g1:'wR',h1:'wQ',a2:'bK',b2:'bR',c2:'bB',d2:'bN',e2:'wN',f2:'wB',g2:'wR',h2:'wK'}, {highlight:{a8:'goal',b8:'goal',c8:'goal',d8:'goal',e8:'goal',f8:'goal',g8:'goal',h8:'goal'}});</script>
+  <p class="text-center text-muted mt-2"><small>Racing Kings starting position. Blue rank 8 is the goal. Black king on a2, White king on h2, with rooks, bishops, knights, and queens mirrored across ranks 1-2. First king to rank 8 wins.</small></p>
+
+  <p>Notice how symmetric the position is: each side has a queen and rook on the back rank corner, a bishop and knight stacked vertically next to them, and the king tucked on the second rank. This arrangement is deliberate — it ensures that <strong>no piece gives check at the very start</strong>, satisfying the variant's central rule before a single move is made.</p>
+
+  <h3>The No-Check Rule</h3>
+  <p>Racing Kings has one unique and critical constraint: <strong>no move may place the opponent's king in check</strong>. Every legal move must leave the opponent's king completely safe — not just your own king as in standard chess. This means:</p>
+  <ul>
+    <li>You cannot move a piece to a square that attacks the opponent's king.</li>
+    <li>You cannot uncover a discovered check by moving a piece out of the way of one of your other pieces.</li>
+    <li>You cannot move in a way that exposes the opponent's king to attack from another piece.</li>
+    <li>A move that would give check is simply <em>illegal</em> — it is not a win, it is not allowed, and the engine (or arbiter) will not let you make it.</li>
+  </ul>
+  <p>There are no pawns in Racing Kings. All pieces are the standard chess pieces — king, queen, rooks, bishops, and knights — minus pawns, and they move exactly as they do in standard chess (the king still moves one square in any direction, the queen combines rook and bishop movement, knights jump in their usual "L" shape, and so on). The only thing that changes is the objective and the no-check constraint.</p>
+
+  <h3>Why No Checks? The Logic Behind the Rule</h3>
+  <p>At first glance the no-check rule might seem arbitrary, but it exists for a clean reason: if checks were allowed, players could spend the entire game giving spurious checks to slow the opponent down, turning the race into a checking contest rather than a true sprint. By banning checks entirely, every move must be "neutral" with respect to the kings, and the only way to gain an advantage is through superior king movement and piece placement — which is exactly the skill the variant is designed to test.</p>
+  <p>A useful way to think about it: in Racing Kings, your own king's safety is irrelevant (since check is impossible for either side), but the opponent's king's <em>freedom of movement</em> is everything. Every piece you have can be thought of as a potential roadblock — either for your own king's path, or for the opponent's.</p>
+
+  <h3>Winning and the Black Draw Rule</h3>
+  <ul>
+    <li><strong>Win:</strong> Be the first player to move your king onto any square of the 8th rank (a8 through h8). The moment a king lands on rank 8, that side has won — unless the draw rule below applies.</li>
+    <li><strong>Draw (the "Black gets one more move" rule):</strong> If White moves their king to the 8th rank, and Black can <em>immediately</em> also move their king to the 8th rank on the very next move, the game is a draw. This rule prevents White from having an unfair advantage purely from moving first — Black always gets a chance to equalise on the move immediately following White's winning move.</li>
+    <li><strong>Stalemate / no legal moves:</strong> If a player has no legal moves at all (every possible move would give check, or the player has no pieces that can move), the game is a draw — exactly as stalemate is a draw in standard chess.</li>
+    <li><strong>Normal draw conditions also apply:</strong> threefold repetition, the 50-move rule, and insufficient material can all still produce a draw, though these are rare given the race nature of the game.</li>
+  </ul>
+
+  <h3>What is the Same as Standard Chess?</h3>
+  <p>It's worth being explicit about what carries over unchanged from standard chess:</p>
+  <ul>
+    <li>Piece movement rules (rook moves on ranks/files, bishop on diagonals, knight in an L-shape, queen combines rook and bishop, king one square any direction).</li>
+    <li>Captures work exactly as normal — a piece landing on an opponent's piece removes it from the board.</li>
+    <li>There is no castling and no en passant, since there are no pawns and the kings start away from their "home" corners in a non-standard arrangement.</li>
+    <li>There is no pawn promotion, for the same reason — no pawns exist in this variant at all.</li>
+  </ul>
+
+  <div class="notation-box">
+    <strong>Quick summary:</strong> Standard pieces, no pawns, no checks ever allowed for either side, first king to rank 8 wins (Black gets a one-move grace period if White arrives first).
+  </div>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../" class="btn btn-outline-custom">&larr; Back to Racing Kings</a>
+            <a href="../02-strategic-ideas/" class="btn btn-custom">2. Strategic Ideas &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>
+</content>

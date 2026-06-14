@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Risk in Term Structure Models</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Term Structure Models</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-short-rate-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-short-rate-models/" class="toc-chapter-link"><strong>1.</strong> Short Rate Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-short-rate-models/01-vasicek-and-hull-white/">1.1 Vasicek and Hull-White Models</a>
+                        <a href="../../01-short-rate-models/02-hjm-framework/">1.2 HJM Framework</a>
+                        <a href="../../01-short-rate-models/03-lmm/">1.3 LIBOR Market Model (LMM)</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-affine-term-structure-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-affine-term-structure-models/" class="toc-chapter-link"><strong>2.</strong> Affine Term Structure Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-affine-term-structure-models/01-affine-models-and-the-cir-model/">2.1 Affine Models and the CIR Model</a>
+                        <a href="../../02-affine-term-structure-models/02-multi-factor-affine-models/">2.2 Multi-Factor Affine Models</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-calibration-and-model-risk">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-calibration-and-model-risk/" class="toc-chapter-link"><strong>3.</strong> Calibration and Model Risk</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-calibration-and-model-risk/01-calibrating-short-rate-models/">3.1 Calibrating Short-Rate Models</a>
+                        <a href="../../03-calibration-and-model-risk/02-model-risk-in-term-structure-models/">3.2 Model Risk in Term Structure Models</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-applications-to-exotic-rate-derivatives">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-applications-to-exotic-rate-derivatives/" class="toc-chapter-link"><strong>4.</strong> Applications to Exotic Rate Derivatives</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-applications-to-exotic-rate-derivatives/01-pricing-bermudans-with-lmm/">4.1 Pricing Bermudans with LMM</a>
+                        <a href="../../04-applications-to-exotic-rate-derivatives/02-model-choice-for-different-products/">4.2 Model Choice for Different Products</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Term Structure Models</a> › <a href="../">3. Calibration and Model Risk</a> › <span>Model Risk in Term Structure Models</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 Model Risk in Term Structure Models</h1>
+
+                <p>A model that is calibrated to perfectly reprice all chosen market instruments can still produce materially wrong prices and hedges for an exotic instrument that is not in that calibration set. This gap — between "fits the data used to calibrate it" and "correctly prices and hedges the instrument we actually care about" — is <strong>model risk</strong>. For term-structure models, model risk arises from three main sources: the choice of model itself, the instability of the calibration process, and the need to extrapolate beyond observed market data.</p>
+
+                <h2 class="mt-5 mb-3">Source 1: Model Choice and Misspecification</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Two Models Can Agree on Calibration Instruments and Disagree Everywhere Else</div>
+                    <p class="mb-0">A single-factor Hull-White model and a two-factor Gaussian model can both be calibrated to match a given diagonal of co-terminal swaptions exactly — yet they will, in general, produce different prices for a Bermudan swaption written on the same underlying swaps. The reason is that the calibration instruments (European swaptions) only constrain the <em>marginal</em> distribution of the swap rate at each exercise date; they say nothing about the <em>joint</em> distribution across exercise dates, which is exactly what determines the value of the early-exercise optionality in a Bermudan. A single-factor model forces near-perfect correlation between rates at different dates (Section 1.1's single-factor limitation), while a two-factor model allows more realistic decorrelation — and the Bermudan price is sensitive to this assumption even though no calibration instrument directly tests it. This is the canonical example of model risk: the model choice itself, not a calibration error, drives the pricing difference.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — CMS Spread Options and Decorrelation Risk</div>
+                    <p class="mb-0">A CMS spread option pays based on the difference between two swap rates of different tenors (e.g. 10y CMS minus 2y CMS). Its value depends critically on the assumed correlation between these two rates. A single-factor short-rate model implies a correlation close to 1 (both rates are driven by the same $r(t)$ via similarly-shaped $B(t,T)$ functions), which can dramatically <em>overprice</em> a spread option relative to a multi-factor model with realistic (lower) correlation between the level and slope factors. If the desk's calibration instruments are vanilla caps and single-tenor swaptions — which carry essentially no information about cross-tenor correlation — both models could calibrate identically to those instruments while disagreeing sharply on the spread option. The model choice (number of factors, and their correlation structure) is therefore itself a parameter that must be set by judgement or by reference to historical data, not purely by calibration to liquid vanillas.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Source 2: Calibration Instability</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Non-Uniqueness and Day-to-Day Parameter Jumps</div>
+                    <p class="mb-0">When a model has multiple free parameters (e.g. $a$ and a term structure $\sigma(t)$) being fit to a noisy, finite set of market quotes via least-squares, the optimisation problem can be poorly conditioned: many different $(a,\sigma(t))$ combinations may produce nearly identical fits to the calibration instruments (a "flat" or "ridge-shaped" objective function), but imply very different prices for instruments outside that set. Small, economically insignificant moves in market quotes from one day to the next can then cause the calibrated parameters to jump discontinuously from one point on this ridge to another — producing large, spurious day-over-day P&L swings on the exotic book that have nothing to do with genuine market moves. This instability is itself a form of model risk: it indicates the calibration instruments do not contain enough information to pin down the parameters that matter for the exotic, so the "extra" degrees of freedom are effectively determined by numerical noise.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Mitigants: Regularisation and Parameter Stability Constraints</div>
+                    <p class="mb-0">Common mitigants include: (1) <em>regularising</em> the calibration objective by adding a penalty term for how far parameters move from their previous-day values, trading off a slightly worse fit to today's instruments for greater day-to-day stability; (2) fixing certain parameters (e.g. mean reversion $a$) to stable, historically-estimated values and calibrating only the remaining parameters; and (3) calibrating to a deliberately small, stable subset of highly liquid instruments rather than the full available set, accepting a worse overall fit in exchange for predictability. None of these eliminate model risk — they convert "instability risk" into "the model may not fit certain instruments well," which must then be monitored and, if it grows too large, addressed by re-examining the model or calibration set.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Source 3: Extrapolation Beyond the Calibration Set</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Strikes, Maturities, and Market Regimes Outside the Data</div>
+                    <p class="mb-0">A model calibrated to at-the-money swaptions out to 10 years says little, by construction, about deep out-of-the-money strikes, maturities beyond 10 years, or rate levels far from those prevailing at calibration time. Exotic products frequently have exactly these features: a long-dated callable structured note may reference rates 20-30 years out, where liquid swaption quotes are sparse or absent; a digital or barrier-type payoff may depend on the probability of reaching a strike far from the current forward, in the tails of the model's distribution — a region the calibration instruments (typically near-the-money) constrain only weakly. In both cases the model's behaviour in the relevant region is determined more by the model's intrinsic distributional assumptions (e.g. Gaussian vs. square-root, single-factor vs. multi-factor) than by anything observed in the market, which is precisely the definition of extrapolation risk.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Consequences for Pricing and Hedging</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Reserves, Model Validation, and the Role of Multiple Models</div>
+                    <p class="mb-0">In practice, institutions manage model risk through several complementary mechanisms. <em>Model reserves</em> ("additional valuation adjustments") are capital set aside against the estimated difference between the chosen model's price and a range of plausible alternative models — directly monetising the uncertainty discussed above. <em>Model validation</em> functions, independent of the trading desk, periodically benchmark the production model against alternatives (different number of factors, different distributional assumptions) on the actual exotic book, not just on vanilla calibration instruments, specifically to surface the kind of disagreement illustrated by the CMS spread option example. For hedging, model risk manifests as <em>hedge slippage</em>: if the model's assumed dynamics (e.g. correlation between rates) differ from realised dynamics, a hedge that is "perfect" within the model will not perfectly offset the exotic's P&L in reality — and this slippage tends to be largest exactly for the products (Bermudans, spread options, long-dated callables) where model risk is highest. The next chapter looks at how these considerations play out concretely for the most important such product, the Bermudan swaption, and at how desks choose between the models developed in this subject.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-calibrating-short-rate-models/" class="btn btn-outline-custom">&larr; 3.1 Calibrating Short-Rate Models</a>
+                    <a href="../../04-applications-to-exotic-rate-derivatives/" class="btn btn-custom">4. Applications to Exotic Rate Derivatives &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

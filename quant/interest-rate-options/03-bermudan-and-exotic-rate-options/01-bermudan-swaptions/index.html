@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bermudan Swaptions</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Interest Rate Options</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rate-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rate-options/" class="toc-chapter-link"><strong>1.</strong> Interest Rate Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rate-options/01-caps-and-floors/">1.1 Caps and Floors</a>
+                        <a href="../../01-interest-rate-options/02-swaptions/">1.2 Swaptions</a>
+                        <a href="../../01-interest-rate-options/03-sabr-model/">1.3 SABR Model</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-interest-rate-option-pricing-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-interest-rate-option-pricing-models/" class="toc-chapter-link"><strong>2.</strong> Interest Rate Option Pricing Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-interest-rate-option-pricing-models/01-black-model-for-rate-options/">2.1 Black Model for Rate Options</a>
+                        <a href="../../02-interest-rate-option-pricing-models/02-normal-models-and-negative-rates/">2.2 Normal vs Lognormal Models and Negative Rates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-bermudan-and-exotic-rate-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-bermudan-and-exotic-rate-options/" class="toc-chapter-link"><strong>3.</strong> Bermudan and Exotic Rate Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-bermudan-and-exotic-rate-options/01-bermudan-swaptions/">3.1 Bermudan Swaptions</a>
+                        <a href="../../03-bermudan-and-exotic-rate-options/02-cms-and-cms-spread-options/">3.2 CMS and CMS Spread Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-rate-option-risk-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-rate-option-risk-management/" class="toc-chapter-link"><strong>4.</strong> Rate Option Risk Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-rate-option-risk-management/01-greeks-of-rate-options/">4.1 Greeks of Rate Options</a>
+                        <a href="../../04-rate-option-risk-management/02-volatility-surface-calibration-and-risk/">4.2 Volatility Surface Calibration and Risk</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Interest Rate Options</a> › <a href="../">3. Bermudan and Exotic Rate Options</a> › <span>Bermudan Swaptions</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.1 Bermudan Swaptions</h1>
+
+                <p>A Bermudan swaption, introduced briefly in Section 1.2, generalises a European swaption by granting the holder the right to enter the underlying swap on any one of several pre-specified exercise dates, rather than at a single fixed expiry. This section develops the structure of the early-exercise decision in more detail, explains why pricing a Bermudan swaption requires a fundamentally different modelling approach from the single-date Black or normal models of Chapters 1-2, and builds intuition for the resulting exercise boundary.</p>
+
+                <h2 class="mt-5 mb-3">Structure of a Bermudan Swaption</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Bermudan Payer Swaption</div>
+                    <p class="mb-0">A Bermudan payer swaption with notional $N$, strike $K$, and exercise dates $T_0^{(1)} < T_0^{(2)} < \cdots < T_0^{(m)}$ gives the holder the right, on each date $T_0^{(k)}$, to enter into a payer swap starting at $T_0^{(k)}$ and running to a fixed final maturity $T_n$ (so the underlying swap's tenor shrinks at each successive exercise date). If the holder exercises at $T_0^{(k)}$, they receive the value of that underlying swap and the option terminates — no further exercise is possible. If the holder never exercises, the option simply expires worthless.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — A Common Special Case: One Exercise Date Left</div>
+                    <p class="mb-0">If $m=1$, a Bermudan swaption degenerates to a European swaption, which Black's model (Section 1.2 / Section 2.1) prices exactly. The complexity of the Bermudan case arises entirely from $m > 1$: at each exercise date $T_0^{(k)}$ for $k < m$, the holder must compare the value of exercising now against the value of continuing to hold the option for possible exercise at a later date $T_0^{(k+1)}, \ldots, T_0^{(m)}$ — and that continuation value itself depends on the future evolution of the entire forward curve, not just a single forward swap rate.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Early-Exercise Decision</h2>
+
+                <p>At each exercise date $T_0^{(k)}$, the holder's optimal action follows a standard optimal-stopping criterion: exercise if and only if the immediate exercise value exceeds the value of continuing to hold the option.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Optimal Exercise Rule</div>
+                    <p>Let $E_k$ denote the intrinsic value of exercising the Bermudan payer swaption at $T_0^{(k)}$ — the value of entering the remaining payer swap, $E_k = N\cdot A_k(T_0^{(k)})\cdot\max(R_k(T_0^{(k)}) - K, 0)$ where $R_k$ and $A_k$ are the forward swap rate and annuity for the swap starting at $T_0^{(k)}$. Let $C_k$ denote the continuation value — the time-$T_0^{(k)}$ value of holding the (now Bermudan, with one fewer exercise date) option unexercised. The holder exercises at $T_0^{(k)}$ if and only if:
+                    $$E_k \ge C_k$$
+                    The value of the Bermudan swaption at $T_0^{(k)}$ is therefore $V_k = \max(E_k, C_k)$, and by backward induction $V_m = E_m$ (at the final exercise date, exercise if and only if the option is in the money — there is nothing left to continue into).</p>
+                    <p class="mb-0">The value of the Bermudan swaption today, $V_0$, is obtained by working backward from $V_m$ through $V_{m-1},\ldots,V_1$, discounting and taking expectations at each step — a dynamic programming recursion that, unlike the European case, has no closed-form solution in general.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Why a Term-Structure Model Is Required</h2>
+
+                <p>The continuation value $C_k$ at exercise date $T_0^{(k)}$ depends on the distribution, as seen from $T_0^{(k)}$, of the swap rates $R_{k+1}, \ldots, R_m$ underlying all the later exercise opportunities. These swap rates are highly correlated (they share most of their underlying cash flows and discount factors) but not perfectly so, and their joint distribution evolves stochastically over time.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Failure of Black's Model</div>
+                    <p>Black's model (Section 2.1) specifies dynamics for a single forward swap rate $R(t)$ under its own annuity measure $\mathbb{Q}^A$. To compute the Bermudan's continuation value, however, the model needs the <em>joint</em> distribution of $R_{k+1}(T_0^{(k)}), \ldots, R_m(T_0^{(k)})$, all under a common measure — and Black's model says nothing about the dynamics of $R_{k+1}$ under the measure $\mathbb{Q}^{A_k}$ associated with a different swap rate $R_k$. There is simply no single-rate model rich enough to answer the question.</p>
+                    <p class="mb-0">What is needed instead is a <em>term-structure model</em> — a model that simultaneously specifies the joint dynamics of the entire forward curve (or, equivalently, of every discount factor $P(t,T)$ for all $T$) under a single measure. The two dominant families are the <strong>Heath-Jarrow-Morton (HJM)</strong> framework, which models the dynamics of instantaneous forward rates directly, and the <strong>LIBOR Market Model (LMM)</strong>, which models a discrete set of forward LIBOR/SOFR rates as a multi-factor lognormal (or SABR-extended) system with a specified correlation structure. Either framework, once calibrated to the relevant European swaption volatilities (so that it reprices the $V_m, V_{m-1},\ldots$ European "building blocks" correctly), can be simulated forward (Monte Carlo) or solved on a lattice/PDE grid to evaluate the backward recursion of the theorem above — typically via a least-squares Monte Carlo (LSM) regression for the continuation value at each exercise date.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Intuition for the Exercise Boundary</h2>
+
+                <p>At each exercise date $T_0^{(k)}$, the decision $E_k \ge C_k$ partitions the space of possible swap rate realisations $R_k(T_0^{(k)})$ into an "exercise region" and a "continuation region." The boundary between them — the critical swap rate level at which the holder is indifferent between exercising and continuing — is the <em>exercise boundary</em> for that date.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Shape and Behaviour of the Boundary</div>
+                    <p>For a Bermudan payer swaption, the exercise region is typically $\{R_k(T_0^{(k)}) \ge B_k\}$ for some critical level $B_k$ (the boundary): if the swap rate is sufficiently high, the immediate value $E_k$ of locking in a pay-fixed swap at the (now relatively attractive) strike $K$ outweighs the value of waiting. Because the continuation value $C_k$ reflects the remaining optionality — which is itself worth more when there is more time and more future exercise dates remaining — the boundary $B_k$ is generally <em>higher</em> than the strike $K$ for early exercise dates (it is not enough to be marginally in the money; the option must be sufficiently deep in the money to justify giving up future optionality), and the boundary tends to decrease toward $K$ as $k \to m$ (less remaining optionality to give up).</p>
+                    <p class="mb-0">This pattern — "don't exercise early unless the immediate gain clearly dominates the value of waiting, and that bar gets lower as fewer chances remain" — is the same qualitative intuition as for American equity options, but here it applies to a forward swap rate whose own distribution is shaped by the entire term-structure model, making the boundary a genuinely multi-dimensional object (it depends on the full state of the model, not just $R_k$ alone, in models with more than one factor) that in practice is approximated numerically rather than computed in closed form.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 3. Bermudan and Exotic Rate Options</a>
+                    <a href="../02-cms-and-cms-spread-options/" class="btn btn-custom">3.2 CMS and CMS Spread Options &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

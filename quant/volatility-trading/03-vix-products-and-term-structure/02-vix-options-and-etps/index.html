@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIX Options and ETPs</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Volatility Trading</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-volatility-products">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-volatility-products/" class="toc-chapter-link"><strong>1.</strong> Volatility Products</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-volatility-products/01-volatility-surface/">1.1 Volatility Surface</a>
+                        <a href="../../01-volatility-products/02-variance-swaps/">1.2 Variance Swaps</a>
+                        <a href="../../01-volatility-products/03-vix-and-volatility-indices/">1.3 VIX and Volatility Indices</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-volatility-derivatives-and-strategies">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-volatility-derivatives-and-strategies/" class="toc-chapter-link"><strong>2.</strong> Volatility Derivatives and Strategies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-volatility-derivatives-and-strategies/01-volatility-swaps-and-forward-vol-agreements/">2.1 Volatility Swaps and Forward Vol Agreements</a>
+                        <a href="../../02-volatility-derivatives-and-strategies/02-dispersion-and-correlation-trading/">2.2 Dispersion and Correlation Trading</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-vix-products-and-term-structure">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-vix-products-and-term-structure/" class="toc-chapter-link"><strong>3.</strong> VIX Products and Term Structure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-vix-products-and-term-structure/01-vix-futures-and-the-vix-term-structure/">3.1 VIX Futures and the VIX Term Structure</a>
+                        <a href="../../03-vix-products-and-term-structure/02-vix-options-and-etps/">3.2 VIX Options and ETPs</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-systematic-volatility-strategies">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-systematic-volatility-strategies/" class="toc-chapter-link"><strong>4.</strong> Systematic Volatility Strategies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-systematic-volatility-strategies/01-vol-risk-premium-harvesting/">4.1 Vol Risk Premium Harvesting</a>
+                        <a href="../../04-systematic-volatility-strategies/02-tail-risk-hedging/">4.2 Tail Risk Hedging</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Volatility Trading</a> › <a href="../">3. VIX Products and Term Structure</a> › <span>VIX Options and ETPs</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 VIX Options and ETPs</h1>
+
+                <p>The VIX futures term structure discussed in the previous section is the foundation for two further families of tradeable products: options on the VIX itself, and exchange-traded products (ETPs) that package VIX futures exposure into a listed security. Both inherit, and in some cases amplify, the term-structure dynamics already described.</p>
+
+                <h2 class="mt-5 mb-3">VIX Options</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — VIX Options Are Options on Futures, Not on Spot VIX</div>
+                    <p class="mb-0">A critical feature of VIX options is that they are European-style and cash-settled, but their underlying is effectively the VIX <em>future</em> of matching maturity, not the spot VIX index. Because the spot VIX is not a tradeable asset (there is no portfolio that replicates it directly), a VIX option cannot be hedged by holding spot VIX — the natural hedge is the corresponding VIX future. As a result, a VIX option should be priced off the VIX futures curve $F_t(T)$ as the "forward," not off the current spot VIX level, and its implied volatility surface is quoted in terms of volatility-of-volatility relative to that forward.</p>
+                </div>
+
+                <p>This has a practical consequence that often surprises newcomers: when spot VIX spikes sharply but the futures curve remains in mild contango (because the market expects the spike to be transient and mean-revert), VIX call options struck near the elevated spot level can be far out-of-the-money relative to the relevant forward — and therefore cheaper than the spot move alone would suggest. Conversely, a rise in longer-dated VIX futures (a genuine shift in the forward curve, not just a spot spike) moves VIX option values more directly.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — VIX Call as a Tail Hedge</div>
+                    <p class="mb-0">A VIX call option with strike $K$ and maturity $T$ pays $\max(\text{VIX}_T^{\text{SOQ}} - K, 0)$ at expiry, where $\text{VIX}_T^{\text{SOQ}}$ is the special opening quotation used for cash settlement (the same settlement mechanism as VIX futures, Section 3.1). Because VIX tends to spike sharply during equity market sell-offs — often rising by a much larger percentage than the S&P 500 falls — out-of-the-money VIX calls are a capital-efficient way to acquire convex exposure to a volatility spike, and are widely used as a component of tail risk hedging programmes (Section 4.2).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Volatility Exchange-Traded Products</h2>
+
+                <p>Volatility ETPs are exchange-traded notes (ETNs) or funds designed to give retail and institutional investors exposure to VIX futures without requiring a futures account. The most well-known family tracks a constant-maturity blend of the first- and second-month VIX futures (e.g., a "30-day constant maturity" weighted combination), rebalanced daily to maintain that target maturity.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Constant-Maturity VIX Futures Index</div>
+                    <p class="mb-0">A typical long-volatility ETP tracks an index that holds weights $w_1$ and $w_2 = 1-w_1$ in the front-month and second-month VIX futures respectively, where $w_1$ is chosen each day so that the weighted-average time to expiry of the combined position equals a fixed target (commonly 30 calendar days). As the front-month future approaches expiry, $w_1$ decreases and $w_2$ increases, so that on the day the front-month future expires, the position has rolled entirely into what is now the new front month — a daily partial roll rather than a single discrete roll.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Contango Decay</h2>
+
+                <p>The daily roll described above is where the roll yield analysis from Section 3.1 becomes a first-order driver of long-term ETP performance. Because the VIX futures curve is in contango roughly 80% of the time, a long-volatility ETP is, on most days, systematically selling a cheaper front-month future and buying a more expensive second-month future — realizing a negative roll yield every single day the curve remains in contango.</p>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Cumulative Decay From Daily Roll</div>
+                    <p>Suppose the VIX futures curve sits in a stable contango such that the daily roll cost is approximately $0.1\%$ of the ETP's net asset value (a roughly representative order of magnitude during calm periods). Even if spot VIX itself is perfectly flat over a year, compounding a $-0.1\%$ daily drag over roughly 252 trading days gives a cumulative decay of
+                    $$(1-0.001)^{252} - 1 \approx e^{-0.001 \times 252} - 1 \approx e^{-0.252}-1 \approx -22.3\%$$</p>
+                    <p class="mb-0">This is why long-volatility ETPs have, historically, lost the large majority of their value over multi-year horizons even though the VIX index itself has not trended persistently upward — the loss is structural, arising from the roll, not from any drift in spot VIX. The ETP's value can still spike sharply higher during a volatility event (when the curve flips to backwardation and short-dated futures rally hardest), but these gains are typically given back through renewed decay once the curve reverts to contango.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Short-Volatility ETPs and Their Risks</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Mirror Image, and Its Tail Risk</div>
+                    <p>Inverse or short-volatility ETPs take the opposite position — effectively short the constant-maturity VIX futures index — and therefore harvest the contango-driven roll yield as a structural <em>gain</em> during calm periods, compounding positively in the same way the long ETP compounds negatively. This made such products extremely popular as a steady "carry" trade during extended low-volatility regimes.</p>
+                    <p class="mb-0">The risk is the mirror image of the long ETP's occasional spikes: a sudden, sharp rise in spot VIX (and especially in front-month VIX futures, to which short-volatility ETPs typically have the most leveraged exposure) produces a correspondingly sharp loss. Because these products are often leveraged (e.g., targeting $-1\times$ or more of daily VIX futures returns) and rebalance daily, a single extreme one-day move in the VIX futures curve can wipe out a large fraction — or all — of the ETP's net asset value in a single session, as occurred dramatically in early February 2018 when a roughly 100% one-day spike in VIX futures caused at least one major short-volatility ETN to lose effectively all of its value and be delisted shortly after. This event is the canonical illustration of why "short volatility" strategies, whether implemented via ETPs or directly, carry a payoff profile that is structurally short a tail event — a theme picked up directly in Chapter 4.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-vix-futures-and-the-vix-term-structure/" class="btn btn-outline-custom">&larr; 3.1 VIX Futures and the VIX Term Structure</a>
+                    <a href="../../04-systematic-volatility-strategies/" class="btn btn-custom">4. Systematic Volatility Strategies &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

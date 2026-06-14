@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smile Interpolation Methods</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">FX Options and Volatility</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-fx-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-fx-options/" class="toc-chapter-link"><strong>1.</strong> FX Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-fx-options/01-garman-kohlhagen/">1.1 Garman-Kohlhagen Model</a>
+                        <a href="../../01-fx-options/02-delta-and-hedging-conventions/">1.2 Delta and Hedging Conventions</a>
+                        <a href="../../01-fx-options/03-volatility-surface-rr-and-bf/">1.3 Volatility Surface: Risk Reversals and Butterflies</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-fx-volatility-surface-construction">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-fx-volatility-surface-construction/" class="toc-chapter-link"><strong>2.</strong> FX Volatility Surface Construction</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-fx-volatility-surface-construction/01-smile-interpolation-methods/">2.1 Smile Interpolation Methods</a>
+                        <a href="../../02-fx-volatility-surface-construction/02-volatility-surface-dynamics-and-sticky-rules/">2.2 Volatility Surface Dynamics and Sticky Rules</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fx-option-strategies">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-fx-option-strategies/" class="toc-chapter-link"><strong>3.</strong> FX Option Strategies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-fx-option-strategies/01-vanilla-strategy-combinations/">3.1 Vanilla Strategy Combinations</a>
+                        <a href="../../03-fx-option-strategies/02-volatility-trading-via-fx-options/">3.2 Volatility Trading via FX Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-fx-vol-risk-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-fx-vol-risk-management/" class="toc-chapter-link"><strong>4.</strong> FX Vol Risk Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-fx-vol-risk-management/01-vega-vanna-and-volga/">4.1 Vega, Vanna, and Volga</a>
+                        <a href="../../04-fx-vol-risk-management/02-correlation-and-cross-pair-volatility-risk/">4.2 Correlation and Cross-Pair Volatility Risk</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">FX Options and Volatility</a> › <a href="../">2. FX Volatility Surface Construction</a> › <span>Smile Interpolation Methods</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2.1 Smile Interpolation Methods</h1>
+
+                <p>The three pillars introduced in Chapter 1 — $\sigma_{\text{ATM}}$, $\text{RR}_{25}$, $\text{BF}_{25}$ (and often the 10-delta equivalents) — pin down implied volatility at five points of the smile at most. Pricing an exotic option, or even a vanilla option at an off-market strike, requires implied volatility at an arbitrary strike or delta. Two complementary techniques dominate FX practice: the <em>vanna-volga</em> method, which is a pricing-adjustment technique with a direct hedging interpretation, and <em>SABR-style</em> parametric smile fitting, which is a purely functional fit to the smile shape.</p>
+
+                <h2 class="mt-5 mb-3">The Vanna-Volga Method</h2>
+
+                <p>Vanna-volga starts from the observation that the Garman-Kohlhagen price of any option, priced at a single flat volatility (say $\sigma_{\text{ATM}}$), is wrong by an amount related to the option's exposure to the smile — specifically, its sensitivity to changes in volatility driven by spot (vanna) and to changes in the volatility of volatility (volga). The method prices these exposures using the three liquid market instruments that embed exactly that information: the ATM straddle, the risk reversal, and the (vega-weighted) butterfly.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Vanna and Volga</div>
+                    <p class="mb-0">For an option with Garman-Kohlhagen price $V(S_0, \sigma)$:</p>
+                    $$\text{Vega} = \frac{\partial V}{\partial \sigma}, \qquad \text{Vanna} = \frac{\partial^2 V}{\partial S_0\,\partial \sigma}, \qquad \text{Volga} = \frac{\partial^2 V}{\partial \sigma^2}$$
+                    <p class="mt-2 mb-0">Vanna measures how an option's vega changes as spot moves (equivalently, how delta changes as volatility moves); volga measures how vega changes as volatility itself moves — i.e. the convexity of the option price in volatility.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Vanna-Volga Construction</div>
+                    <p>Consider the three benchmark instruments at a given tenor: the ATM straddle (pure vega exposure, by construction close to zero delta), the 25-delta risk reversal (long one wing, short the other — primarily a vanna trade), and the 25-delta butterfly (long both wings, short the straddle — primarily a volga trade). Each of these has a known market price (from $\sigma_{\text{ATM}}$, $\text{RR}_{25}$, $\text{BF}_{25}$) and a known Black-Scholes price at flat $\sigma_{\text{ATM}}$; the difference between the two is the "smile cost" attributable to vanna and volga.</p>
+                    <p class="mb-0">For an arbitrary option with strike $K$, the vanna-volga price adjustment is a weighted combination of these three smile costs, with weights chosen so that the adjustment exactly replicates the known smile costs of the three benchmarks themselves (and vanishes for an ATM option, which by construction has zero vanna and volga relative to the ATM benchmark).</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Result — Vanna-Volga Price Adjustment</div>
+                    <p class="mb-0">The vanna-volga price of an option with strike $K$ is the flat-$\sigma_{\text{ATM}}$ Black-Scholes price plus a correction:</p>
+                    $$V^{\text{VV}}(K) = V^{\text{BS}}(K,\sigma_{\text{ATM}}) + w_{\text{RR}}(K)\,X_{\text{RR}} + w_{\text{BF}}(K)\,X_{\text{BF}}$$
+                    <p class="mt-2 mb-0">where $X_{\text{RR}}$ and $X_{\text{BF}}$ are the smile costs of the risk reversal and butterfly (their market prices minus their flat-$\sigma_{\text{ATM}}$ prices), and the weights $w_{\text{RR}}(K), w_{\text{BF}}(K)$ are ratios of the vanna and volga of the option at strike $K$ to the vanna and volga of the benchmark instruments. A common simplified (first-order) version expresses the adjustment directly as an implied volatility shift, $\sigma^{\text{VV}}(K) \approx \sigma_{\text{ATM}} + d_1 d_2 \cdot \frac{X_1}{\text{Vega}_{\text{ATM}}} \cdot (\cdots)$, but the price-space formulation above is the more robust and commonly implemented form.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">SABR-Style Smile Fitting in FX</h2>
+
+                <p>An alternative — and increasingly common for liquid pairs and longer tenors — is to fit a parametric stochastic volatility model to the smile and read off implied volatilities from the fitted parameters at any strike. The SABR (Stochastic Alpha Beta Rho) model is the standard choice, originally developed for interest rate options but widely adapted to FX.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — SABR Implied Volatility (Hagan Approximation)</div>
+                    <p class="mb-0">Under SABR, the forward $F_t$ and its instantaneous volatility $\alpha_t$ follow:</p>
+                    $$dF_t = \alpha_t F_t^\beta\,dW_t^1, \qquad d\alpha_t = \nu\alpha_t\,dW_t^2, \qquad dW_t^1 dW_t^2 = \rho\,dt$$
+                    <p class="mt-2 mb-0">with parameters $\alpha$ (initial vol level), $\beta$ (backbone exponent, often fixed near 1 for FX), $\rho$ (correlation, controlling skew), and $\nu$ (vol-of-vol, controlling smile curvature). Hagan's asymptotic formula gives a closed-form approximation for the Black-Scholes implied volatility $\sigma_{\text{BS}}(K)$ as a function of strike $K$ and these four parameters, allowing the smile to be evaluated at any strike without repricing.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Calibration and Role of Each Parameter</div>
+                    <p class="mb-0">In FX, the four SABR parameters are calibrated to the market pillars at each tenor: $\rho$ is primarily responsible for matching the risk reversal (skew), $\nu$ for the butterfly (curvature), and $\alpha$ for the ATM level, with $\beta$ often fixed by convention (e.g. $\beta=1$, giving a lognormal backbone consistent with FX rates rarely going negative). Because SABR has only four parameters per tenor but the market typically quotes five points (ATM, 25C, 25P, 10C, 10P), the fit is often not exact at the 10-delta wings — a known limitation addressed by extensions such as SABR with a shifted lognormal or by adding a fifth parameter.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Interpolation Across Delta and Strike Space</h2>
+
+                <p>A subtlety specific to FX is that the market quotes the smile in <em>delta</em> space (25-delta, 10-delta, ATM), but pricing models and risk systems generally need volatility as a function of <em>strike</em>. Converting between the two requires care, because the mapping from delta to strike depends on the volatility at that point — which is exactly what is being solved for.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Delta-Strike Fixed-Point Problem</div>
+                    <p class="mb-0">Given a smile function $\sigma(K)$ (from vanna-volga or SABR), the strike corresponding to a target delta $\Delta^*$ satisfies $\Delta(K, \sigma(K)) = \Delta^*$ — both the delta formula and the smile function depend on $K$ and $\sigma$ jointly. In practice this is solved iteratively: guess a strike, read off $\sigma(K)$ from the smile, compute the implied delta, and adjust $K$ until convergence. Most production systems iterate this within the vanna-volga or SABR construction itself, so that the resulting smile reproduces the original delta-quoted pillars (ATM, 25C, 25P, etc.) exactly, with interpolation only used to fill in <em>between</em> those points.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example: Vanna-Volga Adjustment</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Pricing a 10-Delta Call via Vanna-Volga</div>
+                    <p>Consider a 3-month EUR/USD surface with $\sigma_{\text{ATM}} = 7.50\%$, $\text{RR}_{25} = -0.30\%$, $\text{BF}_{25} = 0.20\%$, giving (from Section 1.3) $\sigma_{25\text{C}} = 7.55\%$ and $\sigma_{25\text{P}} = 7.85\%$. Suppose we need the implied volatility for a 10-delta call, which is not directly quoted.</p>
+                    <p>The vanna-volga adjustment computes the smile costs of the risk reversal and butterfly — the difference between their market prices (built from $\sigma_{25\text{C}}, \sigma_{25\text{P}}, \sigma_{\text{ATM}}$) and their prices at flat $\sigma_{\text{ATM}} = 7.50\%$. For the 10-delta call, which lies further from ATM than the 25-delta call, both its vanna and volga (relative to the ATM straddle) are larger in magnitude than those of the 25-delta call, so the smile cost adjustment is correspondingly larger.</p>
+                    <p class="mb-0">Carrying this through typically produces $\sigma_{10\text{C}} \approx 7.7\%$–$7.9\%$ for this surface — higher than $\sigma_{25\text{C}} = 7.55\%$, consistent with the positive butterfly producing a smile that curves upward away from the ATM in both directions, with the call wing additionally adjusted by the (small, negative) risk reversal contribution. The key practical point is that vanna-volga produces this extrapolated volatility <em>without requiring any additional market quotes</em> — it is fully determined by the three pillars already observed.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 2. FX Volatility Surface Construction</a>
+                    <a href="../02-volatility-surface-dynamics-and-sticky-rules/" class="btn btn-custom">2.2 Volatility Surface Dynamics and Sticky Rules &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

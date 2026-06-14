@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fairy Pieces — Fairy Chess</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.chess-board-placeholder{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:2px solid var(--border-color,#555);width:fit-content;margin:1rem auto;}
+.chess-board-placeholder .sq{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
+.chess-board-placeholder .light{background:#f0d9b5;}
+.chess-board-placeholder .dark{background:#b58863;}
+.chess-board-placeholder .sq.mark{box-shadow:inset 0 0 0 3px #2e8b57;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+.piece-def{background:var(--card-bg,#1e1e2e);border-left:3px solid var(--accent-color,#7c9cbf);padding:.75rem 1rem;margin:.5rem 0;border-radius:0 6px 6px 0;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Fairy Chess</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-what-is-fairy-chess"><div class="toc-chapter-header"><a href="../01-what-is-fairy-chess/" class="toc-chapter-link"><strong>1.</strong> What Is Fairy Chess?</a></div></div>
+            <div class="toc-chapter" data-chapter="02-fairy-pieces"><div class="toc-chapter-header"><a href="../02-fairy-pieces/" class="toc-chapter-link"><strong>2.</strong> Fairy Pieces</a></div></div>
+            <div class="toc-chapter" data-chapter="03-fairy-conditions"><div class="toc-chapter-header"><a href="../03-fairy-conditions/" class="toc-chapter-link"><strong>3.</strong> Fairy Conditions</a></div></div>
+            <div class="toc-chapter" data-chapter="04-grid-chess"><div class="toc-chapter-header"><a href="../04-grid-chess/" class="toc-chapter-link"><strong>4.</strong> Grid Chess</a></div></div>
+            <div class="toc-chapter" data-chapter="05-a-grasshopper-problem"><div class="toc-chapter-header"><a href="../05-a-grasshopper-problem/" class="toc-chapter-link"><strong>5.</strong> A Grasshopper Problem</a></div></div>
+            <div class="toc-chapter" data-chapter="06-circe-a-worked-example"><div class="toc-chapter-header"><a href="../06-circe-a-worked-example/" class="toc-chapter-link"><strong>6.</strong> Circe: A Worked Example</a></div></div>
+            <div class="toc-chapter" data-chapter="07-why-compose-fairy-problems"><div class="toc-chapter-header"><a href="../07-why-compose-fairy-problems/" class="toc-chapter-link"><strong>7.</strong> Why Compose Fairy Problems?</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Fairy Chess</a> › <span>2. Fairy Pieces</span></nav>
+
+        <h1 class="text-accent mb-4">2. Fairy Pieces</h1>
+
+  <p>The zoo of fairy pieces is vast &mdash; well over a hundred have been formally defined and used in published compositions, each with its own line of theoretical articles and "best of" anthologies. The pieces below are the ones a solver is most likely to encounter, ordered roughly from "extended orthodox piece" to "genuinely novel movement rule."</p>
+
+  <h3>Nightrider (N)</h3>
+  <div class="piece-def">
+    A nightrider makes knight jumps in a single direction, repeatedly, until blocked. If a standard knight jumps (+2,+1), the nightrider can jump (+2,+1), then (+4,+2), then (+6,+3), etc. &mdash; as far as it wishes, provided no piece occupies any of the intermediate "landing" squares. It is to the knight what the rook is to the king's single-step move: an unlimited repetition of the same displacement. A nightrider on b1 attacks d2, f3, h4 (continuing the (+2,+1) direction) and c3, e5, g7 (continuing (+1,+2)), and similarly in the other six knight directions where the board permits.
+  </div>
+  <p class="mt-2">Nightriders are particularly powerful as mating pieces in helpmates and fairy directmates because their long lines create rich interference possibilities with other nightriders &mdash; the so-called <strong>Nightrider-Grimshaw</strong>, where two nightriders mutually obstruct each other's lines on the same square, mirroring the orthodox Grimshaw theme (rook and bishop interfering on one square) but along knight-geometry lines instead.</p>
+
+  <div class="chess-board-placeholder" id="board-nightrider"></div>
+  <script>(function(){
+    var pieces={'b1':'N'};
+    var marks={'d2':1,'f3':1,'h4':1,'c3':1,'e5':1,'g7':1};
+    var b=document.getElementById('board-nightrider');
+    var files='abcdefgh';
+    for(var r=7;r>=0;r--){for(var c=0;c<8;c++){
+      var s=document.createElement('div');
+      var sq=files[c]+(r+1);
+      s.className='sq '+((r+c)%2===0?'dark':'light')+(marks[sq]?' mark':'');
+      if(pieces[sq]){
+        var span=document.createElement('span');
+        span.textContent='N';
+        span.style.color='#fff';span.style.fontWeight='bold';span.style.fontSize='18px';
+        span.title='Nightrider';
+        s.appendChild(span);
+      }
+      b.appendChild(s);
+    }}
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>A White nightrider on b1 (N) and the squares it attacks along just two of its eight knight-directions (green outline) &mdash; d2/f3/h4 and c3/e5/g7</small></p>
+
+  <h3>Grasshopper (G)</h3>
+  <div class="piece-def">
+    The grasshopper moves along queen lines (ranks, files, diagonals) but must hop over exactly one piece &mdash; the <strong>hurdle</strong> &mdash; to land on the square immediately beyond it. If there is no hurdle along a given line, the grasshopper cannot move along that line at all. If the square immediately beyond the hurdle is occupied by a friendly piece, the grasshopper is blocked on that line; if occupied by an enemy piece, the grasshopper captures it (landing on the hurdle's far side, not on the hurdle itself).
+  </div>
+  <p class="mt-2">The grasshopper is the most-used fairy piece in composition, and for good reason: its dependence on hurdles creates a rich economy of purpose. Every piece on the board &mdash; including pawns, and even the kings &mdash; potentially serves as a hurdle for a grasshopper, creating webs of mutual dependency that orthodox pieces simply cannot replicate. Moving a piece can simultaneously open a grasshopper's line (by becoming its hurdle) and close another (by no longer being available elsewhere).</p>
+
+  <h3>Mao, Moa, and the Chinese Pieces (Leo, Pao, Vao)</h3>
+  <p>A family of fairy pieces inspired by Chinese chess (xiangqi) reinterprets the queen's lines using a "hopping" capture mechanism:</p>
+  <div class="piece-def">
+    <strong>Leo:</strong> Moves like a queen (any distance, any queen-direction) when <em>not</em> capturing, but captures only by hopping over exactly one piece &mdash; like a grasshopper &mdash; and landing on the square immediately beyond it. Named after the Chinese chess cannon (pao) but generalised to all eight queen directions.<br><br>
+    <strong>Pao:</strong> The rook-line restriction of the Leo &mdash; moves like a rook when not capturing, hops to capture along ranks and files only.<br><br>
+    <strong>Vao:</strong> The bishop-line restriction of the Leo &mdash; moves like a bishop when not capturing, hops to capture along diagonals only.<br><br>
+    <strong>Mao:</strong> Moves to knight-squares, but in two discrete orthogonal-then-diagonal steps rather than a single leap &mdash; first one square orthogonally, then one square diagonally outward, continuing in roughly the same direction. The intermediate square must be vacant for the move to be legal. A Mao on e4 trying to reach f6 first steps to e5 (or f5); whichever intermediate square is used must be empty.<br><br>
+    <strong>Moa:</strong> The mirror-image of Mao &mdash; the two component steps are taken in the opposite order (diagonal first, then orthogonal), reaching the same set of destination squares as a knight but with a different intermediate square, and hence a different blocking condition.
+  </div>
+  <p class="mt-2">Because Mao and Moa can be blocked on their intermediate square &mdash; something a real knight never experiences &mdash; problems featuring them often hinge on a single pawn or piece occupying exactly the right (or wrong) intermediate square.</p>
+
+  <h3>Amazon</h3>
+  <div class="piece-def">
+    Combines the movements of queen and knight: on any turn, an amazon may move as a queen <em>or</em> jump as a knight. It is the single most powerful piece definable on the chessboard &mdash; an amazon alone can deliver mate from almost any square relative to a lone king. Precisely because of this power, amazons are used sparingly in composition: their presence tends to make a position "too easy" unless the composer works hard to neutralise their dominance with careful piece placement.
+  </div>
+
+  <h3>Archbishop (Cardinal) and Chancellor (Marshal)</h3>
+  <div class="piece-def">
+    <strong>Archbishop (Cardinal):</strong> Combines bishop and knight moves &mdash; moves diagonally any distance, or jumps as a knight. Unlike a lone bishop (which can never checkmate a lone king, due to being confined to one square colour), an archbishop can checkmate a bare king unaided, because its knight component lets it cover squares of both colours.<br><br>
+    <strong>Chancellor (Marshal):</strong> Combines rook and knight moves &mdash; moves orthogonally any distance, or jumps as a knight. Like the archbishop, it can checkmate a lone king by itself. Together, an archbishop and a chancellor are sometimes called the "minor fairy pieces" of the Capablanca chess variant, from which both are borrowed.
+  </div>
+
+  <h3>Berolina Pawn</h3>
+  <div class="piece-def">
+    A Berolina pawn <em>captures</em> the way an orthodox pawn <em>moves</em> (straight ahead) and <em>moves</em> the way an orthodox pawn <em>captures</em> (diagonally forward, one square, or two squares from its starting rank). This reversal of the normal pawn's move/capture roles produces surprising tactics: a Berolina pawn cannot simply "push through" a blockading enemy piece directly in front of it the way an orthodox pawn is blocked &mdash; instead it is the diagonal squares that matter for forward movement.
+  </div>
+
+  <h3>Grasshopper Variants: The Lion and the Equihopper</h3>
+  <div class="piece-def">
+    <strong>Lion:</strong> Like a grasshopper, but after hopping over the hurdle it may continue any further distance along the same line (rather than landing immediately on the square beyond the hurdle). A Lion's range, in other words, is "queen moves, with exactly one hurdle to clear along the way."<br><br>
+    <strong>Equihopper:</strong> Hops over any piece (the hurdle may be anywhere on the board, not necessarily adjacent) to the square that is the same distance beyond the hurdle as the equihopper started before it &mdash; i.e., the hurdle is the midpoint between start and end squares. This piece moves in straight lines in any of the eight standard directions, including ones with no orthodox analogue at unusual distances.
+  </div>
+
+  <h3>Choosing Pieces for a Composition</h3>
+  <p>Composers select fairy pieces not for novelty alone but because a piece's specific movement rule enables a <em>theme</em> &mdash; a particular geometric or logical idea &mdash; that would be impossible or clumsy with orthodox material. A nightrider might be chosen because its long, narrow lines allow two pieces to interfere on a single square far from either piece's starting point. A grasshopper might be chosen because its hurdle-dependency lets a single pawn move simultaneously activate one grasshopper and deactivate another. Reading a fairy composition well means asking, for each fairy piece on the board, <em>"what unique geometric possibility does this piece's rule create here that no orthodox piece could?"</em></p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../01-what-is-fairy-chess/" class="btn btn-outline-custom">&larr; 1. What Is Fairy Chess?</a>
+            <a href="../03-fairy-conditions/" class="btn btn-custom">3. Fairy Conditions &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

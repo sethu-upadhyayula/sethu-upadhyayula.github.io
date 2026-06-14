@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duration Matching and Immunization</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Bonds and Fixed Income</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-bonds">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-bonds/" class="toc-chapter-link"><strong>1.</strong> Bonds and Credit</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-bonds/01-bond-pricing/">1.1 Bond Pricing</a>
+                        <a href="../../01-bonds/02-yield-and-duration/">1.2 Yield, Duration and DV01</a>
+                        <a href="../../01-bonds/03-credit-spread/">1.3 Credit Spread</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-bond-portfolio-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-bond-portfolio-management/" class="toc-chapter-link"><strong>2.</strong> Bond Portfolio Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-bond-portfolio-management/01-duration-matching-and-immunization/">2.1 Duration Matching and Immunization</a>
+                        <a href="../../02-bond-portfolio-management/02-convexity-and-portfolio-risk/">2.2 Convexity and Portfolio Risk</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-bond-market-structure-and-issuance">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-bond-market-structure-and-issuance/" class="toc-chapter-link"><strong>3.</strong> Bond Market Structure and Issuance</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-bond-market-structure-and-issuance/01-primary-markets-and-auctions/">3.1 Primary Markets and Auctions</a>
+                        <a href="../../03-bond-market-structure-and-issuance/02-secondary-market-trading-and-repo/">3.2 Secondary Market Trading and Repo</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-fixed-income-relative-value">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-fixed-income-relative-value/" class="toc-chapter-link"><strong>4.</strong> Fixed Income Relative Value</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-fixed-income-relative-value/01-yield-curve-trades/">4.1 Yield Curve Trades</a>
+                        <a href="../../04-fixed-income-relative-value/02-credit-vs-rates-relative-value/">4.2 Credit vs Rates Relative Value</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Bonds and Fixed Income</a> › <a href="../">2. Bond Portfolio Management</a> › <span>Duration Matching and Immunization</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2.1 Duration Matching and Immunization</h1>
+
+                <p>Pension funds, insurers, and bank treasuries face a common problem: they have a stream of known or estimated future liabilities (pension payments, insurance claims, deposit withdrawals) and must hold a portfolio of assets that will be sufficient to meet them, regardless of how interest rates move between now and the payment dates. <em>Immunization</em> is the classical technique for constructing such a portfolio.</p>
+
+                <h2 class="mt-5 mb-3">The Duration Matching Condition</h2>
+                <p>Recall from Section 1.2 that the modified duration of a bond (or portfolio) governs its first-order sensitivity to a parallel shift in yields: $\Delta P / P \approx -D_{\text{mod}}\,\Delta y$. The same applies to a stream of liabilities, which can be valued and assigned a duration in exactly the same way as a bond's cashflows.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Duration Matching</div>
+                    <p>A portfolio of assets with present value $A$ and modified duration $D_A$ is <em>duration-matched</em> to a liability stream with present value $L$ and modified duration $D_L$ if:
+                    $$A = L \quad \text{and} \quad D_A = D_L$$
+                    Under a small parallel shift $\Delta y$, both sides change by approximately the same proportion:
+                    $$\Delta A \approx -D_A\, A\, \Delta y, \qquad \Delta L \approx -D_L\, L\, \Delta y$$
+                    so that $\Delta A \approx \Delta L$ and the surplus $A - L$ is preserved to first order.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Portfolio Duration as a Weighted Average</h2>
+                <p>The modified duration of a portfolio of $N$ bonds with values $P_1,\dots,P_N$ and durations $D_1,\dots,D_N$ is the value-weighted average of the individual durations:</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Portfolio Duration</div>
+                    <p>$$D_{\text{portfolio}} = \sum_{i=1}^{N} w_i D_i, \qquad w_i = \frac{P_i}{\sum_{j=1}^N P_j}$$
+                    This follows directly from the linearity of the first-order price sensitivity: the portfolio's dollar duration (DV01) is the sum of the constituents' dollar durations, $\sum_i D_i P_i$, and dividing by the total portfolio value $\sum_i P_i$ gives the weighted-average duration above.</p>
+                </div>
+
+                <p>In practice, a duration-matched portfolio is usually constructed from just two bonds — a short-dated and a long-dated bond — whose durations bracket the liability duration. Solving for the weights that match both the value and the duration gives a unique two-bond portfolio (a "barbell" around the target duration).</p>
+
+                <h2 class="mt-5 mb-3">Immunization Against Parallel Shifts</h2>
+                <p>Duration matching protects the surplus to first order, but a parallel yield shift also changes the future value of reinvested coupons (reinvestment risk) and the price at which the assets must eventually be sold (price risk). The classical immunization result is that these two effects offset exactly when duration is matched to the investment horizon.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Redington Immunization</div>
+                    <p>A portfolio is immunized against an instantaneous parallel shift $\Delta y$ in the flat yield curve if, in addition to the value and duration matching conditions $A=L$ and $D_A = D_L$, the portfolio's convexity exceeds the liability's convexity:
+                    $$\mathcal{C}_A \geq \mathcal{C}_L$$
+                    Under these conditions, the second-order approximation gives $\Delta A - \Delta L \approx \tfrac{1}{2}(\mathcal{C}_A - \mathcal{C}_L)A(\Delta y)^2 \geq 0$ for any $\Delta y$ — the asset side never falls short of the liability side for a parallel shift, in either direction. This is why barbell portfolios (Section 2.2), which have higher convexity than a single bullet bond of the same duration, are the preferred building block for immunized portfolios.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Limitations of Immunization</div>
+                    <p class="mb-0">Immunization only protects against parallel shifts evaluated at a single instant. As time passes and yields move, durations drift apart and the portfolio must be <em>rebalanced</em> — periodically rebought to restore the duration match. Immunization also offers no protection against non-parallel (twist or curvature) movements of the yield curve, which is why real liability-driven investment (LDI) programs combine duration matching with key-rate duration hedging across multiple points of the curve.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example — Immunizing a Single Liability</h2>
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Two-Bond Immunization</div>
+                    <p>A pension fund owes $L = \$10{,}000{,}000$ in 7 years. Available bonds: Bond A has duration $D_A = 3$ years and Bond B has duration $D_B = 12$ years. We want a portfolio of value $A = L = \$10{,}000{,}000$ (assuming flat yields equal the liability discount rate) with $D_{\text{portfolio}} = 7$.</p>
+                    <p>Let $w$ be the fraction invested in Bond B. The duration matching condition is:
+                    $$w \cdot 12 + (1-w)\cdot 3 = 7 \implies 3 + 9w = 7 \implies w = \frac{4}{9} \approx 0.444$$
+                    </p>
+                    <p class="mb-0">So the fund allocates $\approx 44.4\%$ ($\$4{,}444{,}444$) to the 12-year bond and $\approx 55.6\%$ ($\$5{,}555{,}556$) to the 3-year bond. This barbell has both higher convexity than a single 7-year bullet bond of the same duration and the value/duration match required to immunize the $7$-year liability against small parallel rate moves — as quantified in Section 2.2.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 2. Bond Portfolio Management</a>
+                    <a href="../02-convexity-and-portfolio-risk/" class="btn btn-custom">2.2 Convexity and Portfolio Risk &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

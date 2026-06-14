@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amortizing, Forward-Starting, and Constant Maturity Swaps</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Interest Rate Swaps</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rate-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rate-swaps/" class="toc-chapter-link"><strong>1.</strong> Interest Rate Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rate-swaps/01-vanilla-interest-rate-swaps/">1.1 Vanilla Interest Rate Swaps</a>
+                        <a href="../../01-interest-rate-swaps/02-ois-and-sofr-discounting/">1.2 OIS and SOFR Discounting</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-swap-curve-construction-and-multi-curve-framework">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/" class="toc-chapter-link"><strong>2.</strong> Swap Curve Construction and the Multi-Curve Framework</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/01-multi-curve-bootstrapping/">2.1 Multi-Curve Bootstrapping</a>
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/02-basis-swaps-and-tenor-basis/">2.2 Basis Swaps and Tenor Basis</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-swap-risk-and-hedging">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-swap-risk-and-hedging/" class="toc-chapter-link"><strong>3.</strong> Swap Risk and Hedging</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-swap-risk-and-hedging/01-pv01-and-swap-sensitivities/">3.1 PV01 and Swap Sensitivities</a>
+                        <a href="../../03-swap-risk-and-hedging/02-hedging-swap-books/">3.2 Hedging Swap Books</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-non-vanilla-swap-structures">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-non-vanilla-swap-structures/" class="toc-chapter-link"><strong>4.</strong> Non-Vanilla Swap Structures</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-non-vanilla-swap-structures/01-amortizing-forward-starting-and-cms/">4.1 Amortizing, Forward-Starting, and Constant Maturity Swaps</a>
+                        <a href="../../04-non-vanilla-swap-structures/02-cross-currency-and-asset-swaps/">4.2 Cross-Currency Swaps and Asset Swaps</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Interest Rate Swaps</a> › <a href="../">4. Non-Vanilla Swap Structures</a> › <span>Amortizing, Forward-Starting, and Constant Maturity Swaps</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Amortizing, Forward-Starting, and Constant Maturity Swaps</h1>
+
+                <p>This section covers three structures that modify the vanilla swap of Chapter 1 along different dimensions: the notional schedule (amortizing/accreting swaps), the start date (forward-starting swaps), and the floating rate's term structure (constant maturity swaps). The first two require no new valuation machinery — they are valued with the same discount and forecast curves as a vanilla swap, simply applied to a different cash flow schedule. CMS requires one genuinely new ingredient: a convexity adjustment.</p>
+
+                <h2 class="mt-5 mb-3">Amortizing and Accreting Swaps</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Amortizing and Accreting Swaps</div>
+                    <p class="mb-0">An <em>amortizing swap</em> has a notional schedule $N_1 > N_2 > \cdots > N_n$ that decreases over time, typically following a predetermined schedule (e.g. matching the amortization of an underlying loan or mortgage pool). An <em>accreting</em> swap has an increasing notional schedule $N_1 < N_2 < \cdots < N_n$ (e.g. matching drawdowns under a construction loan facility). Both are valued by the same leg-PV formulas as Section 1.1, but with the notional inside each summand replaced by the period-specific $N_i$:
+                    $$PV_{fix} = c\sum_{i=1}^n N_i\,\delta_i^{fix} P_d(0,t_i), \qquad PV_{flt} = \sum_{i=1}^n N_i\,\delta_i^{flt} F_{x,i}\,P_d(0,t_i)$$</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why Amortizing Swaps Are Used</div>
+                    <p class="mb-0">Amortizing swaps are the natural hedge for floating-rate liabilities whose principal balance declines over time — most commonly mortgage-backed and asset-backed loan pools, or term loans with scheduled principal repayments. Hedging such a liability with a constant-notional vanilla swap would leave the borrower over-hedged (paying fixed on a notional larger than the remaining loan balance) in later years; matching the swap's notional schedule to the amortization schedule keeps the hedge ratio close to 1 throughout the life of the loan. The PV01 (Section 3.1) of an amortizing swap is correspondingly front-loaded relative to a bullet swap of the same final maturity, since later cash flows carry less notional.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Forward-Starting Swaps</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Forward-Starting Swap</div>
+                    <p class="mb-0">A <em>forward-starting swap</em> (or "forward swap") has its first accrual period beginning at a future date $T_0 > 0$ rather than today, with payments on $t_1 < \cdots < t_n$, all $> T_0$. Its valuation is identical to the vanilla formulas of Section 1.1 — the discount factors $P_d(0,t_i)$ and forward rates $F_{x,i}$ already incorporate the time value between today and each future date, so no additional adjustment is needed:
+                    $$PV_{fix} = Nc\sum_{i=1}^n \delta_i^{fix}P_d(0,t_i), \qquad PV_{flt} = N\sum_{i=1}^n \delta_i^{flt}F_{x,i}P_d(0,t_i)$$
+                    The par rate for a forward-starting swap is simply $c^*=PV_{flt}/A$ as in Section 1.1, using only the cash flows from $T_0$ onward — equivalently, it is the rate that makes a $T_0\times(t_n-T_0)$ "forward swap" worth zero today.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Uses of Forward-Starting Swaps</div>
+                    <p class="mb-0">Forward-starting swaps are used to hedge anticipated future borrowing or lending — e.g. a company planning to issue a 5-year bond in 6 months can lock in today's forward swap rate for that future period using a 6-month-forward 5-year swap, eliminating the risk that rates rise before issuance. They are also a building block for constructing forward volatility and forward curve views, and underlie the "forward swap rate" that appears as the underlying of a swaption.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Constant Maturity Swaps (CMS)</h2>
+
+                <p>A constant maturity swap references, as its floating rate, not a money-market rate (like 3M SOFR) but a <em>swap rate</em> of a fixed tenor — for example, the prevailing 10-year swap rate, reset periodically.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — CMS Swap</div>
+                    <p class="mb-0">A CMS swap exchanges a fixed rate for a floating leg that pays, at each $t_i$, the $\tau$-year par swap rate $S_\tau(t_{i-1})$ observed (fixed) at $t_{i-1}$ for the period $[t_{i-1},t_i]$ — e.g. a "CMS10Y" leg resets to the then-current 10-year swap rate every quarter or every year, regardless of the swap's own (shorter) maturity. Naively, one might value the floating leg by replacing $S_\tau(t_{i-1})$ with its forward value $\mathbb{E}^{Q_{t_i}}[S_\tau(t_{i-1})]$ under the $t_i$-forward measure — but this forward swap rate is <em>not</em> equal to the textbook forward rate one would read off the curve, due to a convexity effect.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The CMS Convexity Adjustment</div>
+                    <p><strong>Where the adjustment comes from.</strong> A vanilla floating rate (e.g. 3M SOFR) pays out and is discounted over the same short period, so its forward value under the relevant forward measure equals the simple forward rate from the curve — no adjustment needed (this is the content of the "natural" payment timing assumption used throughout Chapters 1-3). A CMS payment, by contrast, pays a <em>swap rate</em> (whose natural "annuity" numeraire spans many years) but the payment itself occurs on a single date $t_i$ — a mismatch between the rate's natural payment timing and its actual payment timing.</p>
+                    <p class="mb-0"><strong>Sign and magnitude.</strong> This timing mismatch means $\mathbb{E}^{Q_{t_i}}[S_\tau(t_{i-1})] = F_\tau(t_{i-1}) + \text{CMS adjustment}$, where $F_\tau(t_{i-1})$ is the "naive" forward swap rate and the adjustment is positive and grows with the swap rate's volatility, the tenor $\tau$, and the time to the fixing date $t_{i-1}$ — longer underlying tenors and longer-dated fixings have larger adjustments. The adjustment is computed by integrating over the implied volatility smile of swaptions on $S_\tau$ (a static replication argument), making CMS pricing intrinsically dependent on the swaption volatility surface, unlike the vanilla swaps of Chapters 1-3 which require no optionality inputs at all.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Non-Vanilla Swap Structures</a>
+                    <a href="../02-cross-currency-and-asset-swaps/" class="btn btn-custom">4.2 Cross-Currency Swaps and Asset Swaps &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Types of Retro Problems — Retrograde Analysis</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Retrograde Analysis</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-what-is-retrograde-analysis"><div class="toc-chapter-header"><a href="../01-what-is-retrograde-analysis/" class="toc-chapter-link"><strong>1.</strong> What Is Retrograde Analysis?</a></div></div>
+            <div class="toc-chapter" data-chapter="02-types-of-retro-problems"><div class="toc-chapter-header"><a href="../02-types-of-retro-problems/" class="toc-chapter-link"><strong>2.</strong> Types of Retro Problems</a></div></div>
+            <div class="toc-chapter" data-chapter="03-sam-loyd-and-the-birth-of-retro-problems"><div class="toc-chapter-header"><a href="../03-sam-loyd-and-the-birth-of-retro-problems/" class="toc-chapter-link"><strong>3.</strong> Sam Loyd and the Birth of Retro Problems</a></div></div>
+            <div class="toc-chapter" data-chapter="04-proof-games-in-detail"><div class="toc-chapter-header"><a href="../04-proof-games-in-detail/" class="toc-chapter-link"><strong>4.</strong> Proof Games in Detail</a></div></div>
+            <div class="toc-chapter" data-chapter="05-an-illustrative-position"><div class="toc-chapter-header"><a href="../05-an-illustrative-position/" class="toc-chapter-link"><strong>5.</strong> An Illustrative Position</a></div></div>
+            <div class="toc-chapter" data-chapter="06-how-to-solve-retro-problems"><div class="toc-chapter-header"><a href="../06-how-to-solve-retro-problems/" class="toc-chapter-link"><strong>6.</strong> How to Solve Retro Problems</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Retrograde Analysis</a> › <span>2. Types of Retro Problems</span></nav>
+
+        <h1 class="text-accent mb-4">2. Types of Retro Problems</h1>
+
+  <p>Retrograde analysis is not a single problem type but an entire family of genres, unified by the requirement that the solver reason about the history of the position rather than (or in addition to) its future. This chapter surveys the principal families: proof games, shortest proof games, last-move problems, castling and en passant right analysis, and illegal position problems.</p>
+
+  <h3>Proof Games (PG)</h3>
+  <p>A proof game asks: <em>starting from the initial position, reach the given diagram in exactly n moves by each side.</em> The solution is a specific, complete sequence of legal chess moves from the opening array to the given diagram — essentially, the solver must write out a plausible-looking "game score" that a real game could have produced, except that the destination is fixed in advance and the solver must find a path (often the <em>only</em> path) that reaches it in exactly the stipulated number of moves.</p>
+  <p>The notation <strong>PG 7.5</strong> (or sometimes written "SPG" for shortest proof game, discussed below) means the position was reached after White's 8th move and Black's 7th move — i.e., 7 full move-pairs plus one extra half-move by White. The ".5" denotes that White has just moved and it is now Black's turn (or vice versa, depending on convention — always check the stipulation carefully). Proof games are by far the most actively composed retro genre today, with dedicated magazines, solving competitions, and computer-assisted construction tools.</p>
+
+  <h3>Shortest Proof Games (SPG)</h3>
+  <p>A shortest proof game problem gives a diagram and asks the solver to find the <strong>minimum possible number of moves</strong> in which that position could have arisen, together with a sequence of moves achieving that minimum. Often the stipulation does not even state the move count — discovering the number itself is part of the puzzle. SPGs can be deceptively hard: a position that "looks like" it should take many moves to reach sometimes has a surprisingly short proof game using an unexpected route (for instance, both sides shuffling pieces to "waste" moves while a key piece travels by the most direct path), and conversely a position that looks simple may require far more moves than expected because of subtle move-order constraints.</p>
+
+  <h3>Last Move Problems</h3>
+  <p>A last-move problem asks simply: <em>what was the last move played (by the side not to move)?</em> Often the position is constructed so that, on the surface, several moves seem plausible, but careful analysis eliminates all but one. Common techniques for eliminating candidate last moves include:</p>
+  <ul>
+    <li><strong>Check considerations.</strong> If the side to move is currently in check, the last move must have been one that delivers that check (a "discovered check" retro-move, a direct check, or a check delivered by a newly-promoted piece).</li>
+    <li><strong>Capture evidence.</strong> If a piece appears to be "missing" relative to the full set, and the diagram shows signs of a recent capture (e.g., a piece standing on a square it could only have reached by capturing), the last move may have been that capture.</li>
+    <li><strong>Pawn structure constraints.</strong> A pawn cannot "uncapture" backward across a file it never crossed; pawns can only have arrived at certain squares via specific capture sequences consistent with the current pawn formation.</li>
+    <li><strong>Promotion evidence.</strong> A piece standing on the 1st or 8th rank that is "extra" relative to the starting material (e.g., a second queen) must be a promoted pawn, and the last move may have been that promotion — especially if undoing the promotion (replacing the piece with a pawn one square back) is the only way to obtain a legal predecessor position.</li>
+  </ul>
+
+  <h3>Castling and En Passant Right Analysis</h3>
+  <p>A very common retro device embeds a <em>forward</em>-play problem (typically a direct mate in n) whose solution depends on whether castling or en passant capture is legal in the diagram. The retro analysis is used to determine — purely from the position's history — whether the right exists.</p>
+  <p>The governing convention in chess composition (matching the FIDE Laws of Chess) is: <strong>castling and en passant are assumed to be legally available unless retrograde analysis proves they cannot be.</strong> In other words, the burden of proof is on illegality, not legality. If the king and rook stand on their original squares and nothing in the diagram <em>forces</em> the conclusion that the king or rook must have moved away and returned, castling remains available. Only when every legal proof game leading to the diagram requires a king or rook move does castling become illegal.</p>
+  <p><strong>Example:</strong> Suppose White wants to play 0-0 (kingside castling) as the key move of a mate-in-two. The diagram shows the White king on e1 and the White rook on h1, both apparently undisturbed. But retrograde analysis of the position — perhaps examining the position of Black's pieces, or how many captures must have occurred and by what routes — may prove that the White king's home-square position is only achievable via a king move away and back (a "switchback"). If so, castling rights were permanently lost the moment the king first moved, even though the king now stands on e1 again. The composer's intended solution is then a <em>different</em> key move entirely — and discovering this is the whole point of the problem.</p>
+  <p>En passant analysis works similarly but concerns the immediately preceding move. If a Black pawn stands on, say, b4 and a White pawn stands on a4 (adjacent files, same rank), White might wish to play axb3 e.p. as part of the solution. This is only legal if Black's very last move was b7-b5 (a two-square advance) ending on b4 — wait, more precisely, if Black's pawn just advanced two squares to land beside the White pawn. Retrograde analysis must determine whether the position is consistent <em>only</em> with that last move, or whether other last moves (which would forfeit the en passant right) are also possible or even forced.</p>
+
+  <h3>Illegal Position Problems</h3>
+  <p>Sam Loyd and his successors delighted in publishing diagrams that, at first glance, look like an entirely ordinary position from a real game — yet are provably <strong>impossible to reach</strong> by any sequence of legal moves from the starting array. The puzzle is simply: <em>why is this position illegal?</em> Or equivalently: <em>which piece could not possibly have arrived where it stands?</em></p>
+  <p>Common reasons a position is illegal include:</p>
+  <ul>
+    <li><strong>Wrong-coloured bishops.</strong> As discussed in Chapter 1, a side cannot have two same-coloured-square bishops unless at least one is a promoted pawn — and the position must show evidence (a missing pawn, an extra piece) consistent with that promotion.</li>
+    <li><strong>Pawns that could not have advanced.</strong> A pawn cannot pass through (or capture past) a square that was permanently blocked by the opponent's own unchanged pawn structure.</li>
+    <li><strong>Too many checks or impossible double checks.</strong> Certain configurations of "check" are impossible to arise from a single legal move — for example, a position showing check from two pieces that could only have delivered check via two completely different and incompatible last moves.</li>
+    <li><strong>Pieces trapped inside their own pawn chains</strong> with no legal route by which they could have entered (or exited) that configuration.</li>
+    <li><strong>Both kings in check simultaneously</strong>, or other configurations that violate the basic rule that exactly one side may be in check at the start of a turn.</li>
+  </ul>
+  <p>These problems require an extremely deep and rule-precise understanding of chess — not pattern recognition, but a kind of legal-logic reasoning closer to mathematics than to over-the-board play.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../01-what-is-retrograde-analysis/" class="btn btn-outline-custom">&larr; 1. What Is Retrograde Analysis?</a>
+            <a href="../03-sam-loyd-and-the-birth-of-retro-problems/" class="btn btn-custom">3. Sam Loyd and the Birth of Retro Problems &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

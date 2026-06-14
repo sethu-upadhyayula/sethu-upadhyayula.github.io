@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Portfolio Risk</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Loans and Lending</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-loans">
+                    <div class="toc-chapter-header">
+                        <a href="../01-loans/" class="toc-chapter-link"><strong>1.</strong> Loans</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-loans/01-loan-structure/">1.1 Loan Structure and Pricing</a>
+                        <a href="../01-loans/02-prepayment/">1.2 Prepayment Modelling</a>
+                        <a href="../01-loans/03-default/">1.3 Default Modelling</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-mortgage-backed-securities">
+                    <div class="toc-chapter-header">
+                        <a href="../02-mortgage-backed-securities/" class="toc-chapter-link"><strong>2.</strong> Mortgage-Backed Securities</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../02-mortgage-backed-securities/01-mbs-structure-and-cash-flows/">2.1 MBS Structure and Cash Flows</a>
+                        <a href="../02-mortgage-backed-securities/02-prepayment-models-for-mbs/">2.2 Prepayment Models for MBS</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-loan-portfolio-risk">
+                    <div class="toc-chapter-header">
+                        <a href="../03-loan-portfolio-risk/" class="toc-chapter-link"><strong>3.</strong> Loan Portfolio Risk</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../03-loan-portfolio-risk/01-credit-scoring-and-portfolio-loss-models/">3.1 Credit Scoring and Portfolio Loss Models</a>
+                        <a href="../03-loan-portfolio-risk/02-loan-pricing-and-risk-adjusted-returns/">3.2 Loan Pricing and Risk-Adjusted Returns</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-securitization-mechanics">
+                    <div class="toc-chapter-header">
+                        <a href="../04-securitization-mechanics/" class="toc-chapter-link"><strong>4.</strong> Securitization Mechanics</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../04-securitization-mechanics/01-securitization-structures/">4.1 Securitization Structures</a>
+                        <a href="../04-securitization-mechanics/02-servicing-and-cash-flow-waterfalls/">4.2 Servicing and Cash Flow Waterfalls</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../">Quant</a> › <a href="../">Loans and Lending</a> › <span>Loan Portfolio Risk</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3. Loan Portfolio Risk</h1>
+                <p>Chapters 1 and 2 analysed single loans and mortgage pools in isolation. A lender's actual exposure, however, is a portfolio of thousands of loans with correlated default behaviour, varying credit quality, and concentrations by sector, geography, and borrower. This chapter moves from instrument-level mechanics to portfolio-level risk: how individual borrower creditworthiness is scored, how expected and unexpected losses aggregate across a portfolio, and how concentration risk shapes the tail of the loss distribution.</p>
+                <p>We then turn from risk measurement to risk-based pricing: how a lender translates expected loss, funding cost, and capital consumption into a required loan spread, and how risk-adjusted return on capital (RAROC) is used to compare loans of different risk profiles on a common footing. These portfolio-level tools are the foundation for the securitization structures developed in Chapter 4, where pools of loans are repackaged and their risk redistributed across tranches of investors.</p>
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../02-mortgage-backed-securities/02-prepayment-models-for-mbs/" class="btn btn-outline-custom">&larr; 2.2 Prepayment Models for MBS</a>
+                    <a href="01-credit-scoring-and-portfolio-loss-models/" class="btn btn-custom">3.1 Credit Scoring and Portfolio Loss Models &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body></html>

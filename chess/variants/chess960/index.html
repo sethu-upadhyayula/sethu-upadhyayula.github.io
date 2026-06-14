@@ -7,9 +7,6 @@
 <link rel="stylesheet" href="../../../css/styles.css">
 <link rel="stylesheet" href="../../../css/chess-board.css">
 <script src="../../../js/chess-board.js"></script>
-<style>
-.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
-</style>
 </head><body>
 <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
 <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
@@ -24,102 +21,35 @@
 <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
 <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
 </ul></div></div></nav></header>
-<main><div class="container py-4">
-<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
-<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Variants</a> › <span>Chess 960</span></nav>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Variants</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <span class="text-accent fw-semibold fs-5">Chess 960</span>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-why-fischer-created-it"><div class="toc-chapter-header"><a href="01-why-fischer-created-it/" class="toc-chapter-link"><strong>1.</strong> Why Fischer Created It</a></div></div>
+            <div class="toc-chapter" data-chapter="02-starting-position-rules"><div class="toc-chapter-header"><a href="02-starting-position-rules/" class="toc-chapter-link"><strong>2.</strong> Starting Position Rules</a></div></div>
+            <div class="toc-chapter" data-chapter="03-castling-in-chess-960"><div class="toc-chapter-header"><a href="03-castling-in-chess-960/" class="toc-chapter-link"><strong>3.</strong> Castling in Chess 960</a></div></div>
+            <div class="toc-chapter" data-chapter="04-how-to-approach-chess-960-strategically"><div class="toc-chapter-header"><a href="04-how-to-approach-chess-960-strategically/" class="toc-chapter-link"><strong>4.</strong> How to Approach Chess 960 Strategically</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Variants</a> › <span>Chess 960</span></nav>
 
-<h1 class="mb-3">Chess 960 <small class="text-muted fs-5">(Fischer Random Chess)</small></h1>
-<p class="lead mb-4">Chess 960 randomises the starting position of the back-rank pieces across 960 legal configurations, making opening preparation obsolete and forcing players to rely on pure understanding rather than memorised lines. Created by Bobby Fischer, it is the most widely played chess variant in the world.</p>
+        <h1 class="text-accent mb-3">Chess 960 <small class="text-muted fs-5">(Fischer Random Chess)</small></h1>
+        <p class="lead mb-4">Chess 960 randomises the starting position of the back-rank pieces across 960 legal configurations, making opening preparation obsolete and forcing players to rely on pure understanding rather than memorised lines. Created by Bobby Fischer, it is the most widely played chess variant in the world.</p>
 
-<!-- ORIGIN AND MOTIVATION -->
-<section class="hero-card p-4 mb-4">
-  <h2>1. Why Fischer Created It</h2>
-  <p>Bobby Fischer, the 11th World Chess Champion, became increasingly disillusioned with professional chess in the latter part of his career. His core complaint was that modern grandmaster chess had become an exercise in memorisation — players spent thousands of hours learning opening theory 20, 25, even 30 moves deep, reducing the opening phase to a test of preparation rather than creativity or understanding.</p>
+        <p class="mb-5">The four chapters below cover the history and motivation behind the variant, the rules that generate the 960 starting positions, the (initially confusing but elegant) rules for castling from any starting square, and practical strategic advice for approaching a position you have never seen before.</p>
 
-  <blockquote class="blockquote border-start ps-3 my-3">
-    <p>"Chess is totally dead. The memory freaks just copy everything." — Bobby Fischer</p>
-  </blockquote>
-
-  <p>Fischer proposed a simple solution: randomise the starting position. With 960 possible starting setups, no one can memorise preparation for all of them. From move one, players must think for themselves. Fischer announced the rules in 1996 in Buenos Aires, and the variant quickly spread through the chess world. The first major Chess 960 tournament was held in 2001, and in 2019 Magnus Carlsen won the inaugural Chess 960 World Championship.</p>
-
-  <h3>The Philosophical Point</h3>
-  <p>Fischer's deeper argument was that Chess 960 reveals the true strength of a player — their understanding of piece coordination, pawn structure, and strategic planning — unclouded by preparation advantages. Many top grandmasters agree: Chess 960 rankings correlate strongly with classical ratings precisely because the same underlying skills determine success.</p>
-</section>
-
-<!-- RULES AND STARTING POSITIONS -->
-<section class="hero-card p-4 mb-4">
-  <h2>2. Starting Position Rules</h2>
-  <p>The 960 starting positions are generated by randomly placing the back-rank pieces according to three constraints:</p>
-  <ol>
-    <li><strong>Bishops must be on opposite colours</strong> — one bishop on a light square, one on a dark square. (This ensures the standard chess tactical and strategic dynamics involving bishops remain intact.)</li>
-    <li><strong>The king must be placed between the two rooks</strong> — on whichever files they happen to occupy. (This enables castling to work as intended.)</li>
-    <li><strong>The queens and knights</strong> fill the remaining squares in any order.</li>
-  </ol>
-  <p>Pawns are always on rank 2 (White) and rank 7 (Black), identical to standard chess. Black's pieces mirror White's exactly.</p>
-
-  <h3>Example Starting Positions</h3>
-
-  <div class="chess-board" id="board-sp1"></div>
-  <script>renderChessBoard('board-sp1', {a1:'wR',b1:'wN',c1:'wB',d1:'wQ',e1:'wK',f1:'wB',g1:'wN',h1:'wR',a2:'wP',b2:'wP',c2:'wP',d2:'wP',e2:'wP',f2:'wP',g2:'wP',h2:'wP',a7:'bP',b7:'bP',c7:'bP',d7:'bP',e7:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bR',b8:'bN',c8:'bB',d8:'bQ',e8:'bK',f8:'bB',g8:'bN',h8:'bR'});</script>
-  <p class="text-center text-muted mt-2"><small>Position 518: The standard chess starting position — also one of the 960 valid setups.</small></p>
-
-  <div class="chess-board" id="board-sp2"></div>
-  <script>renderChessBoard('board-sp2', {a1:'wR',b1:'wN',c1:'wB',d1:'wK',e1:'wQ',f1:'wB',g1:'wN',h1:'wR',a2:'wP',b2:'wP',c2:'wP',d2:'wP',e2:'wP',f2:'wP',g2:'wP',h2:'wP',a7:'bP',b7:'bP',c7:'bP',d7:'bP',e7:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bR',b8:'bN',c8:'bB',d8:'bK',e8:'bQ',f8:'bB',g8:'bN',h8:'bR'});</script>
-  <p class="text-center text-muted mt-2"><small>A random Chess 960 position: king between rooks, bishops on opposite colours, queen and knights on remaining squares.</small></p>
-
-  <div class="chess-board" id="board-sp3"></div>
-  <script>renderChessBoard('board-sp3', {a1:'wQ',b1:'wN',c1:'wN',d1:'wR',e1:'wK',f1:'wB',g1:'wB',h1:'wR',a2:'wP',b2:'wP',c2:'wP',d2:'wP',e2:'wP',f2:'wP',g2:'wP',h2:'wP',a7:'bP',b7:'bP',c7:'bP',d7:'bP',e7:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bQ',b8:'bN',c8:'bN',d8:'bR',e8:'bK',f8:'bB',g8:'bB',h8:'bR'});</script>
-  <p class="text-center text-muted mt-2"><small>Another valid position: queen on a1, knights on b1/c1, rook on d1, king on e1, bishops on f1/g1, rook on h1.</small></p>
-</section>
-
-<!-- CASTLING RULES -->
-<section class="hero-card p-4 mb-4">
-  <h2>3. Castling in Chess 960</h2>
-  <p>Castling is the most confusing aspect of Chess 960 for players new to the variant. The rules are designed so that the <strong>final position after castling is always the same</strong> as in standard chess, regardless of where the king and rooks started.</p>
-
-  <h3>Castling Rule</h3>
-  <ul>
-    <li><strong>Kingside castling (0-0):</strong> The king ends up on <strong>g1</strong> (White) or <strong>g8</strong> (Black). The kingside rook ends up on <strong>f1</strong> (White) or <strong>f8</strong> (Black).</li>
-    <li><strong>Queenside castling (0-0-0):</strong> The king ends up on <strong>c1</strong> (White) or <strong>c8</strong> (Black). The queenside rook ends up on <strong>d1</strong> (White) or <strong>d8</strong> (Black).</li>
-  </ul>
-  <p>The king and rook slide to their destination squares. In some starting positions, the king or rook may already be on its destination square — in that case it simply stays put while the other piece moves. In other positions, pieces must pass through each other's squares, which is legal during castling (and only during castling).</p>
-
-  <h3>Castling Conditions (Same as Standard Chess)</h3>
-  <ul>
-    <li>Neither the king nor the castling rook has previously moved.</li>
-    <li>All squares between the king's initial and final positions must be unoccupied (by pieces other than the castling rook).</li>
-    <li>The king is not in check, does not pass through check, and does not end in check.</li>
-  </ul>
-  <p>The "no pieces between" rule applies to the <em>path traversed</em>, not the starting squares of the king and rook. This can be subtle when they start adjacent to each other or when the king barely moves.</p>
-</section>
-
-<!-- STRATEGY -->
-<section class="hero-card p-4 mb-4">
-  <h2>4. How to Approach Chess 960 Strategically</h2>
-
-  <h3>Principles Over Memory</h3>
-  <p>The single most important adjustment when playing Chess 960 is to forget opening memorisation and rely entirely on first principles:</p>
-  <ul>
-    <li><strong>Develop your pieces</strong> toward active squares — knights toward the centre, bishops to open diagonals.</li>
-    <li><strong>Castle early</strong> to connect your rooks and secure the king — but note that in some starting positions, the king may already be behind rooks and castling is less urgent.</li>
-    <li><strong>Control the centre</strong> with pawns and pieces — this principle is universal regardless of starting position.</li>
-    <li><strong>Identify your worst-placed piece</strong> and improve it. With randomised starts, some pieces begin awkwardly placed (a rook trapped in the corner behind a knight, for instance) and need priority attention.</li>
-  </ul>
-
-  <h3>Reading the Starting Position</h3>
-  <p>Spend 30–60 seconds at the start of a Chess 960 game assessing your position:</p>
-  <ul>
-    <li>Where are your bishops pointing? Are they blocked by your own pawns?</li>
-    <li>Which rook is better placed to become active quickly?</li>
-    <li>Is castling immediately possible, or do you need to clear squares first?</li>
-    <li>Are your knights well-placed or do they need to reroute?</li>
-  </ul>
-
-  <h3>The Equalising Effect</h3>
-  <p>Chess 960 is widely considered more equal between players of different preparation levels. A club player facing a grandmaster in standard chess faces disadvantage from move one due to opening prep gaps. In Chess 960, both players are on equal footing in the opening — only understanding determines who emerges from the first 15 moves with an advantage. This makes Chess 960 a fantastic format for improvement: every game, from move one, you are forced to think.</p>
-</section>
-
-</div></main>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6"><a href="01-why-fischer-created-it/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">1. Why Fischer Created It</h4><p class="mb-0">Fischer's disillusionment with opening memorisation, the announcement of the rules in 1996, and the philosophical case for randomised starting positions.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="02-starting-position-rules/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">2. Starting Position Rules</h4><p class="mb-0">The three constraints that generate all 960 legal setups, with example diagrams and a look at how the position number is calculated.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="03-castling-in-chess-960/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">3. Castling in Chess 960</h4><p class="mb-0">Why castling always lands the king and rook on the same squares as standard chess, illustrated with diagrams from unusual starting setups.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="04-how-to-approach-chess-960-strategically/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">4. How to Approach Chess 960 Strategically</h4><p class="mb-0">Practical first-principles guidance for the opening: development, the worst-placed piece, reading a new position, and the equalising effect.</p></div></a></div>
+        </div>
+    </section>
+</main>
 <footer class="site-footer"><div class="container text-center"><div class="social-links">
 <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
 <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>

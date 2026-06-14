@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>White's Strategy: The Advance — Horde Chess</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Variants</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Horde</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-rules-and-starting-position"><div class="toc-chapter-header"><a href="../01-rules-and-starting-position/" class="toc-chapter-link"><strong>1.</strong> Rules and Starting Position</a></div></div>
+            <div class="toc-chapter" data-chapter="02-whites-strategy-the-advance"><div class="toc-chapter-header"><a href="../02-whites-strategy-the-advance/" class="toc-chapter-link"><strong>2.</strong> White's Strategy: The Advance</a></div></div>
+            <div class="toc-chapter" data-chapter="03-blacks-strategy-thinning-the-horde"><div class="toc-chapter-header"><a href="../03-blacks-strategy-thinning-the-horde/" class="toc-chapter-link"><strong>3.</strong> Black's Strategy: Thinning the Horde</a></div></div>
+            <div class="toc-chapter" data-chapter="04-game-balance-and-practical-tips"><div class="toc-chapter-header"><a href="../04-game-balance-and-practical-tips/" class="toc-chapter-link"><strong>4.</strong> Game Balance and Practical Tips</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Variants</a> › <a href="../">Horde Chess</a> › <span>2. White's Strategy: The Advance</span></nav>
+
+        <h1 class="text-accent mb-4">2. White's Strategy: The Advance</h1>
+
+  <p>White's strategic task is simple to state but hard to execute well: advance the pawn mass forward as a coherent body, create threats that Black cannot answer with a single move, and eventually surround the Black king with pawns so completely that checkmate becomes unavoidable. Every Horde pawn is individually worthless once isolated — the entire strategy depends on pawns working together.</p>
+
+  <h3>Advance in Waves, Not Spikes</h3>
+  <p>The Horde is most dangerous when it moves as a connected front. Pushing pawns in adjacent files so that they continue to defend one another keeps Black's pieces from finding safe outposts. Consider what happens when a knight tries to settle in the middle of an advancing wall: if every square the knight could jump to is occupied or covered by a Horde pawn, the knight is effectively dead weight.</p>
+
+  <div class="chess-board" id="board-wave"></div>
+  <script>(function(){
+    var pieces={e8:'bK',d4:'bN'};
+    ['c3','d3','e3','c5','d5','e5','b4','f4'].forEach(function(sq){pieces[sq]='wP';});
+    renderChessBoard('board-wave', pieces);
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>A Black knight on d4 surrounded on all sides by a connected Horde wave — every one of its eight potential jump squares is covered or blocked.</small></p>
+
+  <h3>Exploit the Pawn Majority</h3>
+  <p>White's overwhelming numbers are an asset only if they're used to create more problems than Black can solve in a single move. Three useful ways to leverage the majority:</p>
+  <ul>
+    <li><strong>Overwhelm individual pieces:</strong> If three pawns are bearing down on one bishop, Black can capture at most one or two of them before the bishop itself is lost or forced into a bad square — the bishop simply cannot eliminate the entire local cluster fast enough.</li>
+    <li><strong>Open multiple fronts:</strong> Advancing on both the queenside and kingside simultaneously forces Black to split attention. A piece that is busy capturing pawns on one side cannot also be defending the king on the other.</li>
+    <li><strong>Constrict the king's escape squares:</strong> Pawns advancing toward the back rank methodically remove flight squares from the Black king. A king with zero legal moves and no piece able to interpose or capture the checking pawn is checkmated — and a wall of pawns is exactly the kind of attacker that's very hard to block or capture cleanly.</li>
+  </ul>
+
+  <h3>Keep the Mass Connected</h3>
+  <p>The single most common way White loses quickly is by sending individual pawns racing ahead of the rest of the army. A lone pawn on the 6th rank with no support is simply a free piece for Black — capturing it costs Black nothing and removes one thirty-sixth of White's entire army for free. Before pushing any pawn deep into enemy territory, ask: <em>if Black captures this pawn next move, do I have a recapture, or have I just handed over material for nothing?</em></p>
+
+  <div class="chess-board" id="board-overextend"></div>
+  <script>(function(){
+    var pieces={e8:'bK',c6:'wP'};
+    ['b4','d4','c4','b3','c3','d3'].forEach(function(sq){pieces[sq]='wP';});
+    renderChessBoard('board-overextend', pieces);
+  })();</script>
+  <p class="text-center text-muted mt-2"><small>An overextended pawn on c6 has run ahead of the main body. With no White pawn able to recapture on c6, any Black piece that can reach it wins a pawn for free.</small></p>
+
+  <h3>Target the King's File and Adjacent Files</h3>
+  <p>Because checkmate is White's only winning condition, the most direct plan is often to aim the advance squarely at the files around Black's king — typically the e, f, and g files if Black has castled kingside, or the c, d, and b files if Black has castled queenside (or left the king in the centre). A wave of pawns reaching the 6th and 7th ranks in front of the king restricts its escape squares dramatically, and a pawn reaching the 7th rank adjacent to the king, supported by a neighbour, can deliver check that is very difficult for Black to meet without giving up material to capture it.</p>
+
+  <h3>Don't Neglect the Flanks</h3>
+  <p>A Horde that pushes only in the centre is easy for Black to defend against — Black's pieces simply concentrate where the danger is. By contrast, when both wings are advancing, Black's rooks and bishops are pulled in different directions. Even a slow, grinding advance on the side away from the king can eventually produce a passed pawn (a Horde pawn with no Black pawn able to block or capture it on its file or the adjacent files) that ties down a Black piece permanently just to watch it.</p>
+
+  <h3>Practical Move-Order Tips</h3>
+  <ul>
+    <li>Early on, advance the pawns that are <em>not</em> on the b5/c5/f5/g5 salients first if those salients are already attackable — reinforcing a threatened pawn is often better than pushing past it.</li>
+    <li>Recapture whenever possible. Every recapture that restores material parity locally is a small victory, because White cannot "regenerate" pawns.</li>
+    <li>Watch for knight outposts (see the next chapter) and try to deny the squares a Black knight wants to land on by occupying or covering them before Black gets there.</li>
+    <li>As the position simplifies and fewer pawns remain, shift from "advance everywhere" to "advance specifically toward checkmate" — count carefully whether a final mating pattern is reachable with the pawns that remain.</li>
+  </ul>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../01-rules-and-starting-position/" class="btn btn-outline-custom">&larr; 1. Rules and Starting Position</a>
+            <a href="../03-blacks-strategy-thinning-the-horde/" class="btn btn-custom">3. Black's Strategy: Thinning the Horde &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

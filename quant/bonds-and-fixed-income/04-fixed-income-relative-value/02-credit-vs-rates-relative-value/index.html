@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit vs Rates Relative Value</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Bonds and Fixed Income</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-bonds">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-bonds/" class="toc-chapter-link"><strong>1.</strong> Bonds and Credit</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-bonds/01-bond-pricing/">1.1 Bond Pricing</a>
+                        <a href="../../01-bonds/02-yield-and-duration/">1.2 Yield, Duration and DV01</a>
+                        <a href="../../01-bonds/03-credit-spread/">1.3 Credit Spread</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-bond-portfolio-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-bond-portfolio-management/" class="toc-chapter-link"><strong>2.</strong> Bond Portfolio Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-bond-portfolio-management/01-duration-matching-and-immunization/">2.1 Duration Matching and Immunization</a>
+                        <a href="../../02-bond-portfolio-management/02-convexity-and-portfolio-risk/">2.2 Convexity and Portfolio Risk</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-bond-market-structure-and-issuance">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-bond-market-structure-and-issuance/" class="toc-chapter-link"><strong>3.</strong> Bond Market Structure and Issuance</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-bond-market-structure-and-issuance/01-primary-markets-and-auctions/">3.1 Primary Markets and Auctions</a>
+                        <a href="../../03-bond-market-structure-and-issuance/02-secondary-market-trading-and-repo/">3.2 Secondary Market Trading and Repo</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-fixed-income-relative-value">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-fixed-income-relative-value/" class="toc-chapter-link"><strong>4.</strong> Fixed Income Relative Value</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-fixed-income-relative-value/01-yield-curve-trades/">4.1 Yield Curve Trades</a>
+                        <a href="../../04-fixed-income-relative-value/02-credit-vs-rates-relative-value/">4.2 Credit vs Rates Relative Value</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Bonds and Fixed Income</a> › <a href="../">4. Fixed Income Relative Value</a> › <span>Credit vs Rates Relative Value</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 Credit vs Rates Relative Value</h1>
+
+                <p>So far the relative value trades we've discussed have been expressed purely within the government (risk-free) yield curve. A second major category of relative value compares <em>credit</em> instruments — corporate bonds, credit default swaps (CDS) — against <em>rates</em> instruments (government bonds, interest rate swaps), exploiting small but persistent differences between economically similar exposures to credit and funding risk.</p>
+
+                <h2 class="mt-5 mb-3">Asset Swap Spread as a Relative Value Tool</h2>
+                <p>Recall from Section 1.3 that the asset swap spread (ASW) converts a fixed-rate bond's credit and liquidity premium into a floating spread over a reference rate (e.g. SOFR or its swap-curve equivalent), by packaging the bond with an interest rate swap that strips out the interest rate risk.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — ASW as a Cleaned-Up Credit Signal</div>
+                    <p class="mb-0">Because the asset swap package removes the bond's interest rate sensitivity, the ASW spread is a cleaner measure of pure credit and liquidity risk than the bond's yield or even its Z-spread, which still embed some curve-shape effects. This makes ASW spreads directly comparable <em>across bonds of different maturities and coupons</em> — a 2-year bond trading at ASW $+45$bp and a 10-year bond from the same issuer trading at ASW $+80$bp can be compared on a like-for-like basis to assess whether the issuer's credit curve is too steep or too flat relative to peers, in exactly the spirit of the curve trades from Section 4.1, but applied to a spread curve rather than an outright yield curve.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The CDS–Bond Basis as a Cash-vs-Derivative Trade</h2>
+                <p>Section 1.3 introduced the CDS–bond basis, $\text{Basis} = s_{\text{CDS}} - s_Z$, as a measure of the gap between the credit derivative market (CDS) and the cash bond market for the same reference entity. This basis is one of the clearest examples of a <em>cash-versus-derivative</em> relative value trade.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Negative Basis Trade</div>
+                    <p>A <strong>negative basis trade</strong> exploits a negative CDS–bond basis ($s_{\text{CDS}} < s_Z$, i.e. the bond's spread is wider than the CDS spread for the same credit). The trade is: buy the cash bond (earning spread $s_Z$) and buy CDS protection on the same name (paying spread $s_{\text{CDS}}$). The net carry is approximately $s_Z - s_{\text{CDS}} > 0$, while the position is close to hedged against the issuer's default — if the issuer defaults, the bond's loss is offset by the CDS payout (subject to cheapest-to-deliver and basis risk in the recovery assumption).</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why the Basis Persists</div>
+                    <p class="mb-0">A persistently negative basis looks like "free money," but it is not, because the trade requires <em>funding the cash bond purchase</em> (via repo, Section 3.2) while the CDS leg requires no funding beyond posting collateral. If the bond's repo financing cost exceeds the basis itself, the trade is unprofitable on a funded basis even though it appears attractive on an unfunded spread comparison. This is precisely why Chapter 3's repo mechanics matter for Chapter 4's relative value: a trade that looks profitable purely on spread can be value-destructive once realistic financing costs — including the risk that the bond goes special and financing becomes cheaper, or general collateral rates rise and financing becomes more expensive — are included.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Swap Spreads: Government Bonds vs Interest Rate Swaps</h2>
+                <p>A related rates-vs-rates (but cash-vs-derivative) relative value measure is the <em>swap spread</em>: the difference between the swap rate and the government bond yield of the same maturity.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Swap Spread</div>
+                    <p class="mb-0">$$\text{Swap Spread}(T) = y_{\text{swap}}(T) - y_{\text{govt}}(T)$$
+                    Government bonds and interest rate swaps reference very similar interest rate risk, but differ in credit risk, balance-sheet treatment, supply and demand (government bond supply is driven by fiscal issuance, Section 3.1, while swap rates are driven by hedging demand from borrowers and investors), and collateralization. The swap spread captures the net effect of all these differences, and trades on it (paying or receiving the spread between a swap and an offsetting government bond position, duration-matched as in Section 4.1) are a staple of relative value desks that span both the cash government bond market and the derivatives market.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-yield-curve-trades/" class="btn btn-outline-custom">&larr; 4.1 Yield Curve Trades</a>
+                    <a href="../../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSAs and Variation Margin</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">XVA and Counterparty Risk</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-xva">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-xva/" class="toc-chapter-link"><strong>1.</strong> CVA and XVA</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-xva/01-counterparty-risk/">1.1 Counterparty Credit Risk</a>
+                        <a href="../../01-xva/02-cva/">1.2 CVA</a>
+                        <a href="../../01-xva/03-dva-fva/">1.3 DVA and FVA</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-collateral-and-margining">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-collateral-and-margining/" class="toc-chapter-link"><strong>2.</strong> Collateral and Margining</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-collateral-and-margining/01-csas-and-variation-margin/">2.1 CSAs and Variation Margin</a>
+                        <a href="../../02-collateral-and-margining/02-initial-margin-and-simm/">2.2 Initial Margin and SIMM</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-kva-and-mva">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-kva-and-mva/" class="toc-chapter-link"><strong>3.</strong> KVA and MVA</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-kva-and-mva/01-capital-valuation-adjustment/">3.1 Capital Valuation Adjustment</a>
+                        <a href="../../03-kva-and-mva/02-margin-valuation-adjustment/">3.2 Margin Valuation Adjustment</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-xva-desk-practice">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-xva-desk-practice/" class="toc-chapter-link"><strong>4.</strong> XVA Desk Practice</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-xva-desk-practice/01-xva-aggregation-and-netting-sets/">4.1 XVA Aggregation and Netting Sets</a>
+                        <a href="../../04-xva-desk-practice/02-xva-hedging-and-pl-attribution/">4.2 XVA Hedging and P&amp;L Attribution</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">XVA and Counterparty Risk</a> › <a href="../">2. Collateral and Margining</a> › <span>CSAs and Variation Margin</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2.1 CSAs and Variation Margin</h1>
+
+                <p>The Credit Support Annex (CSA) is the legal document — typically an annex to an ISDA Master Agreement — that governs the exchange of collateral between two counterparties to mitigate the counterparty credit risk identified in Chapter 1. Variation margin (VM) is the collateral that tracks the mark-to-market value of the netting set, exchanged periodically (usually daily) so that the secured exposure remains close to zero.</p>
+
+                <h2 class="mt-5 mb-3">CSA Mechanics</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Variation Margin Call</div>
+                    <p>On each margin call date $t$, the collateral-taking party computes the net mark-to-market $V(t) = \sum_i V_i(t)$ of the netting set under the CSA. The required collateral balance is:
+                    $$C^{\star}(t) = \max\big(V(t) - H,\, 0\big) \quad \text{(from the perspective of the party owed money)}$$
+                    where $H$ is the unsecured <em>threshold</em>. If the existing posted collateral balance $C(t^-)$ differs from $C^{\star}(t)$ by more than the <em>Minimum Transfer Amount (MTA)</em>, a margin call is issued for the difference $\Delta C = C^{\star}(t) - C(t^-)$, rounded to the nearest collateral increment.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Threshold and Minimum Transfer Amount</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Threshold (H) and MTA</div>
+                    <ul class="mb-0">
+                        <li><strong>Threshold $H$:</strong> the amount of exposure that may remain uncollateralised before a margin call is triggered. A "zero-threshold" CSA collateralises from the first dollar of exposure; a positive threshold leaves a permanent unsecured exposure band of size $H$ even with daily margining.</li>
+                        <li><strong>Minimum Transfer Amount (MTA):</strong> the smallest collateral movement that will actually be called, to avoid the operational burden of transferring trivial amounts every day. A typical MTA is \$100k–\$500k for an interdealer CSA.</li>
+                        <li><strong>Rounding:</strong> calls are usually rounded up to the nearest specified increment (e.g. \$10,000), which introduces a small additional residual exposure band.</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Residual Exposure Under a CSA</h2>
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Collateralised Exposure</div>
+                    <p>Under a one-way or two-way CSA with threshold $H$ and margin period of risk (MPOR) $\Delta$, the current exposure at the moment of counterparty default is approximately:
+                    $$CE_{\text{CSA}}(t) \approx \max\!\Big(V(t) - C(t-\Delta) ,\, 0\Big)$$
+                    where $C(t-\Delta)$ is the collateral balance held $\Delta$ days before default — the lag during which the portfolio may move further against the collateral-taker before collateral can be liquidated. The MPOR (typically 10 business days for non-cleared bilateral trades, 5–7 for cleared) captures the operational delay: notification of default, dispute resolution, and close-out.</p>
+                    <p class="mb-0">The residual exposure that survives collateralisation is therefore driven by three components: the threshold $H$, the MTA/rounding band, and the potential market move over the MPOR. CVA on a well-collateralised netting set is dominated by the latter — the "gap risk" over the margin period of risk.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — VM Call on a Swap Portfolio</div>
+                    <p>Two dealers run a two-way CSA with $H = \$0$, MTA $= \$250{,}000$, daily margining, USD cash collateral. At close of business the net MTM of the netting set (from Dealer A's perspective) moves from $+\$4.10\text{m}$ to $+\$4.42\text{m}$.</p>
+                    <p>$\Delta C = \$4.42\text{m} - \$4.10\text{m} = \$320{,}000 > \text{MTA} = \$250{,}000$, so Dealer A issues a call to Dealer B for $\$320{,}000$ of additional variation margin.</p>
+                    <p class="mb-0">If instead the move had been $+\$180{,}000$, no call would be made — that amount remains uncollateralised until cumulative moves exceed the MTA, contributing a small residual exposure to CVA.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Eligible Collateral and Haircuts</h2>
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Collateral Quality, FX and ColVA</div>
+                    <p class="mb-0">CSAs specify eligible collateral types (cash in one or more currencies, government bonds) and apply <em>haircuts</em> to non-cash collateral to absorb potential value declines before the next margin call. When variation margin can be posted in a currency other than the trade's discounting currency, the embedded optionality to choose the cheapest-to-deliver collateral currency gives rise to a "cheapest-to-deliver" (CTD) discounting curve and a small additional valuation adjustment sometimes called <em>ColVA</em>. Because most major interdealer CSAs now mandate cash VM in the trade's settlement currency remunerated at the overnight index rate (e.g. SOFR, €STR), discounting collateralised derivatives at the relevant overnight rate — OIS discounting — has become the market standard, as introduced in the Interest Rate Swaps module.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 2. Collateral and Margining</a>
+                    <a href="../02-initial-margin-and-simm/" class="btn btn-custom">2.2 Initial Margin and SIMM &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

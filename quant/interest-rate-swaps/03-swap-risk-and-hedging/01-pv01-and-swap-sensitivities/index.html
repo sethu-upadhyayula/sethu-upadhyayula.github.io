@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PV01 and Swap Sensitivities</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Interest Rate Swaps</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rate-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rate-swaps/" class="toc-chapter-link"><strong>1.</strong> Interest Rate Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rate-swaps/01-vanilla-interest-rate-swaps/">1.1 Vanilla Interest Rate Swaps</a>
+                        <a href="../../01-interest-rate-swaps/02-ois-and-sofr-discounting/">1.2 OIS and SOFR Discounting</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-swap-curve-construction-and-multi-curve-framework">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/" class="toc-chapter-link"><strong>2.</strong> Swap Curve Construction and the Multi-Curve Framework</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/01-multi-curve-bootstrapping/">2.1 Multi-Curve Bootstrapping</a>
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/02-basis-swaps-and-tenor-basis/">2.2 Basis Swaps and Tenor Basis</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-swap-risk-and-hedging">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-swap-risk-and-hedging/" class="toc-chapter-link"><strong>3.</strong> Swap Risk and Hedging</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-swap-risk-and-hedging/01-pv01-and-swap-sensitivities/">3.1 PV01 and Swap Sensitivities</a>
+                        <a href="../../03-swap-risk-and-hedging/02-hedging-swap-books/">3.2 Hedging Swap Books</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-non-vanilla-swap-structures">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-non-vanilla-swap-structures/" class="toc-chapter-link"><strong>4.</strong> Non-Vanilla Swap Structures</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-non-vanilla-swap-structures/01-amortizing-forward-starting-and-cms/">4.1 Amortizing, Forward-Starting, and Constant Maturity Swaps</a>
+                        <a href="../../04-non-vanilla-swap-structures/02-cross-currency-and-asset-swaps/">4.2 Cross-Currency Swaps and Asset Swaps</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Interest Rate Swaps</a> › <a href="../">3. Swap Risk and Hedging</a> › <span>PV01 and Swap Sensitivities</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.1 PV01 and Swap Sensitivities</h1>
+
+                <p>Section 1.1 introduced DV01 in a single-curve setting as the sensitivity of a swap's value to a parallel one-basis-point shift in the discount/forward curve. In the multi-curve world, "the curve" is no longer a single object — there is a discounting curve and one or more forecasting curves, and a swap's total interest rate sensitivity decomposes across all of them. This section develops that decomposition and the PV01 terminology used to describe it.</p>
+
+                <h2 class="mt-5 mb-3">PV01 Defined</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — PV01</div>
+                    <p class="mb-0">The <em>PV01</em> (present value of a basis point) of a swap with respect to a given curve is the change in the swap's value for a $+1\text{bp}$ parallel shift applied to that curve's zero rates, holding all other curves fixed:
+                    $$\text{PV01}_{\text{curve}} = V(\text{curve}+1\text{bp}) - V(\text{curve})$$
+                    PV01 and DV01 are used largely interchangeably in practice; "DV01" is sometimes reserved for the single-curve case or for sensitivity to a specific instrument's rate, while "PV01" emphasizes sensitivity to a full curve shift. Because a swap depends on (at least) a discount curve and a forecast curve, it has a PV01 with respect to each.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Decomposing Sensitivity: Discount Curve vs. Forecast Curve</h2>
+
+                <p>Recall from Section 1.1 that $V_{payer} = PV_{flt} - PV_{fix}$, with $PV_{fix} = Nc\sum_i \delta_i^{fix}P_d(0,t_i)$ and $PV_{flt}=N\sum_i\delta_i^{flt}F_{x,i}P_d(0,t_i)$. A shift in $P_d$ affects both legs through discounting; a shift in the forecast curve $P_x$ affects only $PV_{flt}$, through the forward rates $F_{x,i}$.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Two-Curve PV01 Decomposition</div>
+                    <p><strong>Discount curve PV01.</strong> A parallel shift in $P_d$ changes both $PV_{fix}$ and $PV_{flt}$ proportionally to their respective annuities — but for a swap near par ($PV_{fix}\approx PV_{flt}$), the dominant effect is the same as in the single-curve case: the discount-curve PV01 is approximately the annuity sensitivity,
+                    $$\text{PV01}_{d} \approx -N\sum_{i=1}^n \delta_i^{fix} P_d(0,t_i) \times \big(\text{duration-weighted shift}\big)$$
+                    closely analogous to the single-curve DV01 of Section 1.1's Example.</p>
+                    <p class="mb-0"><strong>Forecast curve PV01.</strong> A parallel shift in $P_x$ changes only the forward rates $F_{x,i}$ entering $PV_{flt}$. Since each $F_{x,i}$ moves by approximately the shift size (forward rates from a parallel-shifted curve shift by approximately the same amount, to first order), the forecast-curve PV01 is approximately:
+                    $$\text{PV01}_{x} \approx N\sum_{i=1}^n \delta_i^{flt}\,P_d(0,t_i)\times 0.0001$$
+                    i.e. the sensitivity of the floating leg to its own forward rates, discounted on the (separate) discount curve. For a SOFR swap where discounting and projection use the same curve, $\text{PV01}_d$ and $\text{PV01}_x$ combine into the familiar single PV01; for a LIBOR-style swap with distinct discount and forecast curves, the two are genuinely separate risk numbers that must be hedged independently.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Why the Decomposition Matters</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Two Independent Risk Factors</div>
+                    <p class="mb-0">A swap book that is flat in $\text{PV01}_d$ but has nonzero $\text{PV01}_x$ (or vice versa) is not flat — it has residual exposure to a relative move between the discount curve and the forecast curve (or between forecast curves of different tenors, via tenor basis as in Section 2.2). This is precisely why curve construction separates these curves in the first place: each is a distinct risk factor that the market prices and trades separately (OIS swaps move the discount curve; tenor swaps and vanilla swaps of a given tenor move the corresponding forecast curve), and a hedging program must offset each one.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked PV01 Calculation</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — PV01 of a 5-Year Receiver Swap</div>
+                    <p>Consider a 5-year annual-pay receiver swap (receive fixed, pay floating) with notional $N=50{,}000{,}000$ and fixed rate $c=4.00\%$. Suppose the SOFR discount curve gives the following discount factors and a $+1\text{bp}$ parallel shift produces the shifted values shown:</p>
+                    <p class="mb-0">$$P_d(0,t): \ 0.96154,\ 0.92456,\ 0.88900,\ 0.85480,\ 0.82193 \quad (\text{sum} = A = 4.45183)$$
+                    The fixed-leg annuity is $A=4.45183$. The discount-curve PV01 (dominant term, fixed leg's annuity sensitivity to a 1bp drop in rates, which raises discount factors and hence the annuity by approximately $A\times(\text{duration}\times 0.0001)$) is approximated using the standard relation:
+                    $$\text{PV01}_d \approx N\times A \times 0.0001 = 50{,}000{,}000 \times 4.45183 \times 0.0001 \approx \$22{,}259.15$$
+                    A $+1\text{bp}$ parallel rise in the discount curve reduces the annuity (and hence the value of the fixed leg the receiver is owed) by roughly \$22,259 — the receiver of fixed loses approximately this amount per basis point, which is its PV01 with respect to the discount curve. The forecast-curve PV01 (sensitivity of the floating leg's forward rates) is a separate, typically smaller, number computed analogously using $\delta^{flt}$ and $P_d$ as in the theorem above, and must be tracked and hedged as its own risk bucket.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 3. Swap Risk and Hedging</a>
+                    <a href="../02-hedging-swap-books/" class="btn btn-custom">3.2 Hedging Swap Books &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volatility Trading via FX Options</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">FX Options and Volatility</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-fx-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-fx-options/" class="toc-chapter-link"><strong>1.</strong> FX Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-fx-options/01-garman-kohlhagen/">1.1 Garman-Kohlhagen Model</a>
+                        <a href="../../01-fx-options/02-delta-and-hedging-conventions/">1.2 Delta and Hedging Conventions</a>
+                        <a href="../../01-fx-options/03-volatility-surface-rr-and-bf/">1.3 Volatility Surface: Risk Reversals and Butterflies</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-fx-volatility-surface-construction">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-fx-volatility-surface-construction/" class="toc-chapter-link"><strong>2.</strong> FX Volatility Surface Construction</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-fx-volatility-surface-construction/01-smile-interpolation-methods/">2.1 Smile Interpolation Methods</a>
+                        <a href="../../02-fx-volatility-surface-construction/02-volatility-surface-dynamics-and-sticky-rules/">2.2 Volatility Surface Dynamics and Sticky Rules</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fx-option-strategies">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-fx-option-strategies/" class="toc-chapter-link"><strong>3.</strong> FX Option Strategies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-fx-option-strategies/01-vanilla-strategy-combinations/">3.1 Vanilla Strategy Combinations</a>
+                        <a href="../../03-fx-option-strategies/02-volatility-trading-via-fx-options/">3.2 Volatility Trading via FX Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-fx-vol-risk-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-fx-vol-risk-management/" class="toc-chapter-link"><strong>4.</strong> FX Vol Risk Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-fx-vol-risk-management/01-vega-vanna-and-volga/">4.1 Vega, Vanna, and Volga</a>
+                        <a href="../../04-fx-vol-risk-management/02-correlation-and-cross-pair-volatility-risk/">4.2 Correlation and Cross-Pair Volatility Risk</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">FX Options and Volatility</a> › <a href="../">3. FX Option Strategies</a> › <span>Volatility Trading via FX Options</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 Volatility Trading via FX Options</h1>
+
+                <p>Beyond static combinations held to expiry, FX options are used to take active positions on volatility itself — trading the gap between the realized volatility that the underlying actually exhibits and the implied volatility paid (or received) when the option was transacted. The key mechanism is the delta-hedged option position, continuously rebalanced, whose P&amp;L decomposes cleanly into a realized-vs-implied volatility spread.</p>
+
+                <h2 class="mt-5 mb-3">Delta-Hedged Options and the Realized-Implied Spread</h2>
+
+                <p>Consider buying an option and continuously delta-hedging the position by trading the underlying spot to keep total delta at zero. The P&amp;L of this hedged position over the life of the option, in the idealized continuous-hedging limit, depends only on the difference between realized and implied variance.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Result — P&amp;L of a Delta-Hedged Long Option Position</div>
+                    <p class="mb-0">For a long option continuously delta-hedged, financed at the risk-free rate, the cumulative P&amp;L at expiry (in the Black-Scholes/Garman-Kohlhagen setting) is approximately:</p>
+                    $$\text{P\&L} \approx \frac{1}{2}\int_0^T \Gamma_t S_t^2 \left(\sigma_{\text{realized},t}^2 - \sigma_{\text{implied}}^2\right) dt$$
+                    <p class="mt-2 mb-0">where $\Gamma_t$ is the option's gamma at time $t$, $\sigma_{\text{implied}}$ is the (constant) volatility at which the option was purchased and hedged, and $\sigma_{\text{realized},t}$ is the instantaneous realized volatility of the underlying. A long delta-hedged option position profits if realized volatility exceeds the implied volatility paid, and loses if realized volatility is lower — weighted at each instant by the gamma-dollar exposure $\Gamma_t S_t^2$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why Gamma Weighting Matters</div>
+                    <p class="mb-0">Gamma is largest for options near the money and close to expiry, so the realized-implied spread matters most precisely when the option is ATM and close to maturity — exactly when delta-hedging activity (and hedging cost from bid-ask spreads on each rebalance) is also highest. This creates a tension: the P&amp;L driver (gamma-weighted variance spread) and the hedging cost driver (rebalancing frequency near expiry) are concentrated in the same region, so the realized P&amp;L of a "long vol" position is sensitive to the discreteness of the hedging schedule, not just the average realized-implied spread.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Gamma Scalping</h2>
+
+                <p>"Gamma scalping" is the practical implementation of the long-volatility delta-hedging strategy: a trader holding a long-gamma position (e.g., a long straddle) rebalances the delta hedge as spot moves, systematically buying low and selling high relative to the position's evolving delta.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Gamma Scalping Mechanics</div>
+                    <p class="mb-0">A long straddle has positive gamma: as spot rises, its delta becomes more positive (the call delta rises faster than the put delta falls in magnitude... more precisely the net delta moves from ~0 toward +1), so a delta-neutral hedger must <em>sell</em> spot to re-flatten delta — selling into the rally. As spot falls, the position's delta becomes more negative, so the hedger must <em>buy</em> spot — buying into the decline. Each rebalance, in isolation, is a small profitable trade (sell high, buy low) whose aggregate size over the life of the position approximates the realized-variance term in the P&amp;L formula above.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Scalping in FX Specifically</div>
+                    <p class="mb-0">FX spot markets are deep and trade continuously (barring weekend closures), making gamma scalping operationally easier in FX than in many equity or commodity markets — rebalancing can happen at any time, in large size, with tight bid-ask spreads for G10 pairs. This is one reason FX volatility is often considered a "cleaner" expression of a realized-vs-implied view than markets where hedging is constrained by trading hours or liquidity. However, the gamma-scalping P&amp;L is path-dependent in practice (not just dependent on total realized variance) because of the discreteness of hedging — high-frequency "whipsaw" moves that revert can produce more scalping P&amp;L than the same total variance realized as one smooth trend, all else equal.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Calendar Spreads and the Term Structure of Volatility</h2>
+
+                <p>Where a straddle or strangle expresses a view on the level of volatility at a single tenor, a calendar spread — long an option at one maturity and short an option (often at the same strike/delta) at a different maturity — expresses a view on the <em>term structure</em> of implied volatility, i.e., how implied volatility differs across tenors.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Calendar Spread</div>
+                    <p class="mb-0">A long calendar spread is long an option with maturity $T_2$ and short an option with maturity $T_1 < T_2$, both at the same (or matched) delta. The position's net vega is the difference between the vegas of the two legs; because vega generally increases with maturity (for ATM options, vega scales roughly with $\sqrt{T}$), a long calendar spread is typically net long vega, with the magnitude depending on the relative vegas of the two legs.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Trading a Term-Structure View</div>
+                    <p>Suppose the 1-month ATM implied volatility for USD/JPY is $\sigma_1 = 9.0\%$ and the 3-month ATM implied volatility is $\sigma_2 = 8.0\%$ — an inverted term structure, often seen when the market is pricing elevated near-term event risk (e.g., an upcoming central bank meeting) that is expected to fade.</p>
+                    <p>A trader who believes the near-term elevated volatility is overpriced relative to the medium term — i.e., that the 1-month/3-month spread will normalize (1-month vol will fall, or 3-month vol will rise, or both) — can sell the 1-month ATM straddle and buy the 3-month ATM straddle in vega-weighted proportions, constructing a position that is approximately vega-neutral overall but profits if the term structure flattens or inverts less.</p>
+                    <p class="mb-0">The key risk to this trade is that it is not gamma-neutral: the short-dated leg has higher gamma per unit of vega, so the position has negative net gamma even while being vega-neutral. If the near-term event causes a large realized spot move (rather than just an implied-vol repricing), the gamma-scalping losses on the short 1-month leg can dominate the intended term-structure P&amp;L — a reminder that "vega-neutral" does not mean "risk-neutral" across all Greeks, a theme developed further in Chapter 4.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-vanilla-strategy-combinations/" class="btn btn-outline-custom">&larr; 3.1 Vanilla Strategy Combinations</a>
+                    <a href="../../04-fx-vol-risk-management/" class="btn btn-custom">Next: 4. FX Vol Risk Management &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Scoring and Portfolio Loss Models</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Loans and Lending</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-loans">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-loans/" class="toc-chapter-link"><strong>1.</strong> Loans</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-loans/01-loan-structure/">1.1 Loan Structure and Pricing</a>
+                        <a href="../../01-loans/02-prepayment/">1.2 Prepayment Modelling</a>
+                        <a href="../../01-loans/03-default/">1.3 Default Modelling</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-mortgage-backed-securities">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-mortgage-backed-securities/" class="toc-chapter-link"><strong>2.</strong> Mortgage-Backed Securities</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-mortgage-backed-securities/01-mbs-structure-and-cash-flows/">2.1 MBS Structure and Cash Flows</a>
+                        <a href="../../02-mortgage-backed-securities/02-prepayment-models-for-mbs/">2.2 Prepayment Models for MBS</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-loan-portfolio-risk">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-loan-portfolio-risk/" class="toc-chapter-link"><strong>3.</strong> Loan Portfolio Risk</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-loan-portfolio-risk/01-credit-scoring-and-portfolio-loss-models/">3.1 Credit Scoring and Portfolio Loss Models</a>
+                        <a href="../../03-loan-portfolio-risk/02-loan-pricing-and-risk-adjusted-returns/">3.2 Loan Pricing and Risk-Adjusted Returns</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-securitization-mechanics">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-securitization-mechanics/" class="toc-chapter-link"><strong>4.</strong> Securitization Mechanics</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-securitization-mechanics/01-securitization-structures/">4.1 Securitization Structures</a>
+                        <a href="../../04-securitization-mechanics/02-servicing-and-cash-flow-waterfalls/">4.2 Servicing and Cash Flow Waterfalls</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Loans and Lending</a> › <a href="../">3. Loan Portfolio Risk</a> › <span>Credit Scoring and Portfolio Loss Models</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.1 Credit Scoring and Portfolio Loss Models</h1>
+
+                <p>Section 1.3 introduced the Expected Loss decomposition $EL = PD \times LGD \times EAD$ for a single obligor using structural and reduced-form models of default. At the portfolio level, the question becomes: how do PDs, LGDs, and exposures combine across thousands of correlated borrowers, and what does the resulting distribution of total portfolio losses look like? Credit scoring provides the inputs for PD; portfolio loss models describe how those individual PDs aggregate.</p>
+
+                <h2 class="mt-5 mb-3">Credit Scoring</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Logistic Scorecard</div>
+                    <p class="mb-0">A credit scorecard maps a vector of borrower characteristics $x = (x_1,\dots,x_k)$ — income, debt-to-income ratio, credit history length, utilisation, employment status — to a probability of default via a logistic regression:
+                    $$PD(x) = \frac{1}{1+e^{-(\beta_0 + \beta_1 x_1 + \cdots + \beta_k x_k)}}$$
+                    The linear combination $z = \beta_0 + \sum_i \beta_i x_i$ is the <em>credit score</em> (often rescaled to a points-based scale, e.g. FICO's 300–850 range, via a linear transformation of $z$). Scorecards are calibrated on historical data by maximum likelihood, and validated using discriminatory power metrics such as the Gini coefficient or KS statistic, which measure how well the score separates defaulters from non-defaulters.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Through-the-Cycle vs Point-in-Time PD</div>
+                    <p class="mb-0">A <em>point-in-time</em> (PIT) PD reflects current economic conditions and moves with the cycle — rising in recessions. A <em>through-the-cycle</em> (TTC) PD is a long-run average that is relatively stable across the cycle. Regulatory capital under Basel often uses TTC PDs (to avoid procyclical capital requirements), while IFRS 9 expected credit loss provisioning requires PIT, forward-looking PDs that incorporate macroeconomic scenarios.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Portfolio Expected Loss</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Portfolio Expected Loss</div>
+                    <p class="mb-0">For a portfolio of $N$ loans with exposures $EAD_i$, default probabilities $PD_i$, and loss-given-default $LGD_i$, the portfolio expected loss is simply the sum of individual expected losses (expectation is linear, so correlation does not matter for the mean):
+                    $$EL_{\text{portfolio}} = \sum_{i=1}^{N} PD_i \times LGD_i \times EAD_i$$
+                    This is the loss a lender should expect to incur "on average" and is typically covered by loan pricing (the credit spread) and loss provisions, not by capital.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Portfolio Loss Distribution and the Vasicek Model</h2>
+                <p>Unexpected loss — the amount by which actual losses might exceed the expectation in a bad year — depends critically on default correlation. The single-factor Gaussian copula (Vasicek) model, introduced briefly in Section 1.3 for regulatory capital, provides a tractable closed-form for the portfolio loss distribution in the limit of a large, granular portfolio.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Vasicek Large Portfolio Loss Distribution</div>
+                    <p>Assume a large homogeneous portfolio where each obligor's asset return is $A_i = \sqrt{\rho}\,M + \sqrt{1-\rho}\,\epsilon_i$, with $M,\epsilon_i \sim N(0,1)$ i.i.d., $\rho$ the asset correlation, and obligor $i$ defaults if $A_i < \Phi^{-1}(PD)$. Conditional on the systematic factor $M$, defaults are independent, and as $N \to \infty$ the portfolio default rate converges to:
+                    $$L(M) = \Phi\!\left(\frac{\Phi^{-1}(PD) - \sqrt{\rho}\,M}{\sqrt{1-\rho}}\right)$$
+                    The cumulative distribution function of the portfolio loss rate $L$ is:
+                    $$F(\ell) = \Phi\!\left(\frac{1}{\sqrt{\rho}}\left(\sqrt{1-\rho}\,\Phi^{-1}(\ell) - \Phi^{-1}(PD)\right)\right)$$
+                    The $\alpha$-quantile loss rate (used for VaR-based capital) is obtained by inverting $F$: $\ell_\alpha = \Phi\!\left(\frac{\Phi^{-1}(PD)+\sqrt{\rho}\,\Phi^{-1}(\alpha)}{\sqrt{1-\rho}}\right)$, which is exactly the conditional default rate $CDR_{99.9\%}$ used in the Basel IRB formula.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — 99.9% Loss Quantile</div>
+                    <p>Take $PD = 1.5\%$ and asset correlation $\rho = 0.15$ (a typical value for retail mortgage exposures under Basel). Then $\Phi^{-1}(PD) = \Phi^{-1}(0.015) \approx -2.17$ and $\Phi^{-1}(0.999) \approx 3.09$.</p>
+                    <p>$$\ell_{99.9\%} = \Phi\!\left(\frac{-2.17 + \sqrt{0.15}\times 3.09}{\sqrt{0.85}}\right) = \Phi\!\left(\frac{-2.17+1.197}{0.922}\right) = \Phi(-1.055) \approx 14.6\%$$</p>
+                    <p class="mb-0">So in a 1-in-1000 bad year, roughly 14.6% of the portfolio is expected to default — nearly ten times the average PD of 1.5%. The gap between $\ell_{99.9\%}$ and $PD$, scaled by LGD and EAD, is the unexpected loss that risk capital must cover.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Concentration Risk</h2>
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Name and Sector Concentration</div>
+                    <p class="mb-0">The Vasicek formula assumes a granular portfolio of many small, independent-conditional exposures. Real portfolios deviate from this in two ways. <strong>Name concentration</strong> arises when a few large exposures dominate the portfolio — a single large default can move the loss distribution materially, an effect captured by granularity adjustments to the IRB formula. <strong>Sector/geographic concentration</strong> arises when the single systematic factor $M$ is too coarse — a multi-factor model is needed when borrowers' fortunes are tied to different industries or regions with imperfect correlation to each other. Both forms of concentration increase the tail of the loss distribution beyond what the single-factor model predicts, and are managed via concentration limits, sector caps, and multi-factor economic capital models.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 3. Loan Portfolio Risk</a>
+                    <a href="../02-loan-pricing-and-risk-adjusted-returns/" class="btn btn-custom">3.2 Loan Pricing and Risk-Adjusted Returns &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

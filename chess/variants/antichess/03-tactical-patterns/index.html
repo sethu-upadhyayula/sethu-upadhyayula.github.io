@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tactical Patterns — Antichess</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Variants</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Antichess</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-the-rules-of-antichess"><div class="toc-chapter-header"><a href="../01-the-rules-of-antichess/" class="toc-chapter-link"><strong>1.</strong> The Rules of Antichess</a></div></div>
+            <div class="toc-chapter" data-chapter="02-strategic-ideas"><div class="toc-chapter-header"><a href="../02-strategic-ideas/" class="toc-chapter-link"><strong>2.</strong> Strategic Ideas</a></div></div>
+            <div class="toc-chapter" data-chapter="03-tactical-patterns"><div class="toc-chapter-header"><a href="../03-tactical-patterns/" class="toc-chapter-link"><strong>3.</strong> Tactical Patterns</a></div></div>
+            <div class="toc-chapter" data-chapter="04-paradoxes-and-deep-theory"><div class="toc-chapter-header"><a href="../04-paradoxes-and-deep-theory/" class="toc-chapter-link"><strong>4.</strong> Paradoxes and Deep Theory</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Variants</a> › <a href="../">Antichess</a> › <span>3. Tactical Patterns</span></nav>
+
+        <h1 class="text-accent mb-4">3. Tactical Patterns</h1>
+  <p>Strategy tells you what you're trying to achieve; tactics are the concrete sequences of moves that get you there. Antichess has its own rich tactical vocabulary, much of it built around chains of forced captures that can be calculated with surprising precision &mdash; because "forced" really does mean forced.</p>
+
+  <h3>The Forced Capture Chain</h3>
+  <p>The most powerful tactical motif in Antichess is the <strong>forced capture chain</strong>: a sequence in which every move by one player offers a piece that the opponent <em>must</em> take, one after another, cascading through several moves. Because the opponent has no choice (assuming each offered piece is the only capture available, or the only one that doesn't lead somewhere worse for them), the player initiating the chain can calculate the resulting position with certainty.</p>
+
+  <div class="notation-box mb-3">
+    White plays Qd5 (en prise). Black must capture: ...Qxd5.<br>
+    White plays Bb3 (en prise to the new queen on d5). Black must capture: ...Qxb3.<br>
+    White plays Nc4 (en prise to the queen on b3). Black must capture: ...Qxc4.<br>
+    <br><em>White has shed three pieces in three moves by forcing Black's queen to take each one. White's piece count has dropped by three; Black's has stayed the same (one piece moved repeatedly).</em>
+  </div>
+
+  <p>The key skill in spotting these chains is <strong>look-ahead on the capturing piece</strong>: after Black's queen captures on d5, what new squares does it attack? If White can place a piece on one of those squares (and it's the only capture, or the best one for White), the chain continues. Strong Antichess players essentially play "follow the forced piece" several moves deep.</p>
+
+  <h3>Creating Reverse Zugzwang</h3>
+  <p>In classical chess, <em>zugzwang</em> means being forced to move when every available move makes your position worse. Antichess has a mirrored version of this idea. Consider a position where:</p>
+  <ul>
+    <li>One player has many pieces remaining, and</li>
+    <li>That player currently has <strong>no forced captures</strong> (none of their pieces can be captured by the opponent, or vice versa, on this move).</li>
+  </ul>
+  <p>In this situation, the player with more pieces and no forcing options must make a "free" move &mdash; often a passive one &mdash; while their opponent uses the tempo to manoeuvre toward setting up the next sacrificial offering. Engineering a position where your opponent has lots of pieces but few or no forced-capture obligations effectively puts them in reverse zugzwang: every move they make is just delaying the inevitable, while you steadily improve your position.</p>
+
+  <div class="chess-board" id="board-zugzwang"></div>
+  <script>renderChessBoard('board-zugzwang', {a2:'wP',b2:'wP',h2:'wP',g2:'wP',d4:'wN',e5:'bP',g7:'bP',h7:'bP',a7:'bP',b7:'bP',e8:'bK',e1:'wK'});</script>
+  <p class="text-center text-muted mt-2"><small>White's pieces are mostly tucked away with no captures available to Black, while Black has several pawns. White can use this tempo to manoeuvre the knight on d4 toward a square where Black is forced to take it.</small></p>
+
+  <h3>The Pawn Rush</h3>
+  <p>Advancing a pawn rapidly toward the back rank is a common Antichess technique, for two reasons. First, a pawn that has advanced far is often in a position to offer itself as a capture along the way, since pawns capture diagonally and an advancing pawn frequently crosses files where enemy pawns or pieces sit. Second, once a pawn reaches the back rank, it must promote &mdash; and promoting to a <strong>king</strong> creates a piece that moves only one square at a time, making it relatively easy to walk into a forced-capture square without accidentally escaping to safety the way a queen or rook might.</p>
+  <p>A "rushed" pawn that promotes to a king right next to a cluster of enemy pieces can often be captured on the very next move, instantly reducing your piece count by one while leaving the position otherwise unchanged.</p>
+
+  <h3>Stalemate as a Winning Resource</h3>
+  <p>Remember that <strong>stalemate is a win</strong> in Antichess &mdash; if it is your turn and you have no legal move, you win immediately, even if you still have several pieces on the board. This creates a distinct tactical resource: deliberately manoeuvring your remaining pieces into a configuration where they are completely blocked, with no legal moves and no captures available, rather than continuing to try to lose them one by one.</p>
+  <p>This is especially relevant in endgames where a player has a small number of pieces that are hard to force captures on (for example, a lone king boxed in by its own remaining pawns with no diagonal captures available). Rather than searching for a way to sacrifice these last pieces, the player may look for a way to "lock" the position into stalemate.</p>
+
+  <div class="chess-board" id="board-stalemate"></div>
+  <script>renderChessBoard('board-stalemate', {a1:'wK',a2:'wP',b2:'wP',b1:'bQ'});</script>
+  <p class="text-center text-muted mt-2"><small>White's king on a1 is boxed in by its own pawns on a2 and b2, with Black's queen on b1 covering the only other adjacent squares. If White has no legal move here, White wins by stalemate &mdash; despite still having three pieces on the board.</small></p>
+
+  <h3>Double Offers and Choice Manipulation</h3>
+  <p>A more advanced tactic involves offering <strong>two pieces for capture simultaneously</strong>, where one of the resulting positions is much better for you than the other. Since your opponent must capture <em>something</em> but gets to choose <em>which</em> piece, you want both options to be acceptable (or even better, both options to lead toward forced chains that favour you). This is the Antichess analogue of a "fork," except instead of threatening two pieces with one attacker (bad for the opponent), you are offering two pieces to be captured by the opponent (good for you either way).</p>
+
+  <h3>Counting Tempo in Forcing Sequences</h3>
+  <p>When calculating a forced capture chain, keep careful track of <strong>whose piece count drops</strong> on each exchange. A capture only helps you if it's <em>your</em> piece being removed from the board (or, in rarer cases, if removing an opponent piece sets up an even larger forced sequence in your favour later). Misreading a chain &mdash; thinking you're shedding pieces when you're actually accumulating your opponent's pieces onto a square that then becomes a problem &mdash; is one of the most common mistakes for players new to the variant.</p>
+
+  <p>The next chapter steps back from concrete tactics to the bigger picture: the deep theory of Antichess, the proof that it is a solved game, and the paradoxes that make it such a fascinating departure from regular chess.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../02-strategic-ideas/" class="btn btn-outline-custom">&larr; 2. Strategic Ideas</a>
+            <a href="../04-paradoxes-and-deep-theory/" class="btn btn-custom">4. Paradoxes and Deep Theory &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

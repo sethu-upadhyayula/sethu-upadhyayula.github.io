@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeks of Rate Options</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Interest Rate Options</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rate-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rate-options/" class="toc-chapter-link"><strong>1.</strong> Interest Rate Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rate-options/01-caps-and-floors/">1.1 Caps and Floors</a>
+                        <a href="../../01-interest-rate-options/02-swaptions/">1.2 Swaptions</a>
+                        <a href="../../01-interest-rate-options/03-sabr-model/">1.3 SABR Model</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-interest-rate-option-pricing-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-interest-rate-option-pricing-models/" class="toc-chapter-link"><strong>2.</strong> Interest Rate Option Pricing Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-interest-rate-option-pricing-models/01-black-model-for-rate-options/">2.1 Black Model for Rate Options</a>
+                        <a href="../../02-interest-rate-option-pricing-models/02-normal-models-and-negative-rates/">2.2 Normal vs Lognormal Models and Negative Rates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-bermudan-and-exotic-rate-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-bermudan-and-exotic-rate-options/" class="toc-chapter-link"><strong>3.</strong> Bermudan and Exotic Rate Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-bermudan-and-exotic-rate-options/01-bermudan-swaptions/">3.1 Bermudan Swaptions</a>
+                        <a href="../../03-bermudan-and-exotic-rate-options/02-cms-and-cms-spread-options/">3.2 CMS and CMS Spread Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-rate-option-risk-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-rate-option-risk-management/" class="toc-chapter-link"><strong>4.</strong> Rate Option Risk Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-rate-option-risk-management/01-greeks-of-rate-options/">4.1 Greeks of Rate Options</a>
+                        <a href="../../04-rate-option-risk-management/02-volatility-surface-calibration-and-risk/">4.2 Volatility Surface Calibration and Risk</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Interest Rate Options</a> › <a href="../">4. Rate Option Risk Management</a> › <span>Greeks of Rate Options</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Greeks of Rate Options</h1>
+
+                <p>Every cap/floor or swaption price computed via the Black or normal models of Chapter 2 is a function of several market inputs: the underlying forward rate or swap rate, the discount curve (entering through the discount factor or annuity), the implied volatility, and time to expiry. The Greeks are the sensitivities of the option price to small changes in each of these inputs, and they are the primary tool by which a trading desk decomposes and hedges the risk of an options book.</p>
+
+                <h2 class="mt-5 mb-3">Delta: Sensitivity to the Forward Rate</h2>
+
+                <p>Delta measures the sensitivity of the option price to a change in the underlying forward rate or forward swap rate, holding the discount curve, volatility, and time fixed.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Delta</div>
+                    <p class="mb-0">For a Black-76 payer swaption price $V_{\text{pay}}(t) = N\cdot A(t)\left[R(t)\Phi(d_1)-K\Phi(d_2)\right]$ (Section 1.2, Section 2.1), the delta with respect to the forward swap rate $R(t)$ is:
+                    $$\Delta = \frac{\partial V_{\text{pay}}}{\partial R(t)} = N\cdot A(t)\cdot\Phi(d_1)$$
+                    using the standard Black-Scholes-type result that the $\partial d_1/\partial R$ and $\partial d_2/\partial R$ terms cancel in the bracket. For a caplet (Section 1.1), the analogous delta with respect to the forward rate $F_i(t)$ is $\delta_i\cdot N\cdot P(t,T_{i+1})\cdot\Phi(d_1)$. In both cases, $0 \le \Delta/(N\cdot[\text{numeraire}]) \le 1$, with $\Phi(d_1)\to 1$ deep in the money and $\to 0$ deep out of the money — exactly as for an equity call.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Delta Hedging with the Swap Curve</div>
+                    <p class="mb-0">In practice, "the forward rate" is not an independently tradeable instrument — it is implied by the discount/forward curve built from a set of liquid swaps, futures, and deposits (the curve-construction process of the Rates Fundamentals subject). Delta-hedging a swaption therefore means trading in the underlying swap or futures market in a quantity determined by $\Delta$, so that a parallel (or curve-implied) move in rates that changes $R(t)$ by $dR$ changes the value of the hedge by approximately $-\Delta\cdot dR$, offsetting the change in the option's value. Because $R(t)$ itself depends on multiple points of the discount curve through the annuity $A(t)$, a full hedge in practice also requires the curve risk (DV01/key-rate duration) sensitivities discussed in the Rates Fundamentals subject, not just a single delta number against one swap rate.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Gamma: Convexity in the Forward Rate</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Gamma</div>
+                    <p class="mb-0">Gamma is the second derivative of the option price with respect to the forward rate:
+                    $$\Gamma = \frac{\partial^2 V_{\text{pay}}}{\partial R(t)^2} = N\cdot A(t)\cdot\frac{\phi(d_1)}{R(t)\,\sigma_{\text{swpn}}\sqrt{T_0-t}}$$
+                    where $\phi$ is the standard normal density. Gamma is largest for at-the-money options close to expiry, and measures how quickly delta itself changes as $R(t)$ moves — it is the quantity that makes a delta hedge imperfect for anything beyond an infinitesimal move, and the reason a delta-hedged book must be re-hedged ("re-deltaed") periodically as the market moves.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Gamma and the Choice of Model</div>
+                    <p class="mb-0">Under the Bachelier (normal) model of Section 2.2, the corresponding gamma is $\Gamma^N = N\cdot A(t)\cdot\phi(d)/(\sigma^N\sqrt{T_0-t})$ — structurally similar but without the $1/R(t)$ factor. Near $R(t)=0$, the lognormal gamma above blows up (since $1/R(t)\to\infty$), which is one more symptom of why the lognormal model is ill-suited to a near-zero-rate environment (Section 2.2): not only does the price formula misbehave, but the risk sensitivities computed from it become numerically unstable exactly in the regime where hedging matters most.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Vega: Sensitivity to Implied Volatility</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Vega</div>
+                    <p class="mb-0">Vega is the sensitivity of the option price to the implied volatility input:
+                    $$\text{Vega} = \frac{\partial V_{\text{pay}}}{\partial \sigma_{\text{swpn}}} = N\cdot A(t)\cdot R(t)\cdot\phi(d_1)\cdot\sqrt{T_0-t}$$
+                    Vega is positive for both calls and puts (longer volatility always increases the value of optionality), is maximised for at-the-money options, and grows with $\sqrt{T_0-t}$ — long-dated options are far more sensitive in absolute price terms to a 1-vol-point change than short-dated ones, even though their implied vols may move by similar amounts in percentage terms.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Vega Is Not a Single Number for a Book</div>
+                    <p class="mb-0">A single swaption has one vega, computed against its own $(T_0,\tau,K)$ implied volatility. A book containing many caps, floors, and swaptions across different expiries, tenors, and strikes has vega exposure to many different points of the volatility cube (Section 1.2) simultaneously — and a parallel shift of "the" volatility surface is rarely how the market actually moves. This motivates vega bucketing, covered in Section 4.2: decomposing the book's total vega into sensitivities to each grid point of the cube, so that the desk can see not just an aggregate number but where the risk is concentrated.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Role of the Discount Curve vs. the Forward Rate</h2>
+
+                <p>It is worth being precise about which Greeks are driven by the forward rate / swap rate, and which are driven by the discount curve entering through $P(t,T)$ or the annuity $A(t)$ — these are economically distinct sources of risk that happen to both feed into the same pricing formula.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Two Distinct Curve Sensitivities</div>
+                    <p>Delta and gamma (above) measure sensitivity to the <em>forward rate or swap rate itself</em> — i.e., to the shape of the forward curve at the specific tenor point(s) relevant to this option's underlying. But the annuity $A(t)=\sum_i\delta_i P(t,T_i)$ (or the discount factor $P(t,T_{i+1})$ for a caplet) also depends on the discount curve — and moves in the discount curve that leave $R(t)$ or $F_i(t)$ unchanged (a "parallel shift in discounting only," which is somewhat artificial but useful for decomposition) still change $V$ proportionally through $A(t)$ or $P(t,T_{i+1})$.</p>
+                    <p class="mb-0">In practice, because most curves are now built using overnight-indexed (OIS/SOFR) discounting while the forward rate itself may reference the same or a related index, a single underlying market move (e.g. a parallel shift in the SOFR curve) affects <em>both</em> $R(t)$ (or $F_i(t)$) and $A(t)$ (or $P(t,T_{i+1})$) simultaneously. A full risk decomposition therefore typically reports a single "DV01"-style number — the total change in $V$ for a 1bp parallel shift of the relevant curve(s), capturing both the forward-rate and discounting effects together — alongside the separate vega and gamma numbers above, which isolate the volatility and convexity dimensions of the risk.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example: Greeks of an ATM Payer Swaption</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Computing Delta, Gamma, and Vega</div>
+                    <p>Take the at-the-money case $R(t)=K=4.00\%$, $\sigma_{\text{swpn}}=22\%$, $T_0-t=5$, $A(t)=7.85$, $N=\$10\text{m}$. At the money, $\ln(R/K)=0$, so $d_1 = \tfrac{1}{2}\sigma\sqrt{T_0-t}$ and $d_2=-d_1$. With $\sigma\sqrt{T_0-t}=0.22\sqrt{5}\approx0.4919$, $d_1\approx0.2459$, and $\phi(d_1)\approx0.3866$, $\Phi(d_1)\approx0.5972$.</p>
+                    <p><strong>Delta:</strong> $\Delta = N\cdot A(t)\cdot\Phi(d_1) = 10{,}000{,}000\times7.85\times0.5972 \approx \$468.7\text{m}$ per unit change in $R(t)$ — i.e. a $+1\text{bp}=0.0001$ rise in $R(t)$ increases the swaption's value by approximately $468.7\text{m}\times0.0001\approx\$46{,}870$.</p>
+                    <p><strong>Vega:</strong> $\text{Vega}=N\cdot A(t)\cdot R(t)\cdot\phi(d_1)\cdot\sqrt{T_0-t} = 10{,}000{,}000\times7.85\times0.04\times0.3866\times\sqrt{5}\approx10{,}000{,}000\times7.85\times0.04\times0.8645\approx\$27{,}150$ per 1.00 (100 percentage points) of volatility — so a 1-vol-point ($0.01$) change in $\sigma_{\text{swpn}}$ changes the value by approximately $\$271.50$.</p>
+                    <p class="mb-0"><strong>Gamma:</strong> $\Gamma = N\cdot A(t)\cdot\phi(d_1)/(R(t)\sigma\sqrt{T_0-t}) = 10{,}000{,}000\times7.85\times0.3866/(0.04\times0.4919)\approx 30{,}347{,}500/0.01968\approx\$1.54\text{bn}$ per unit change in $R(t)$ — meaning delta itself would increase by about $1.54\text{bn}\times0.0001\approx\$154{,}000$ for a further 1bp rise in $R(t)$, illustrating why this option's hedge ratio needs continual adjustment as rates move.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Rate Option Risk Management</a>
+                    <a href="../02-volatility-surface-calibration-and-risk/" class="btn btn-custom">4.2 Volatility Surface Calibration and Risk &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

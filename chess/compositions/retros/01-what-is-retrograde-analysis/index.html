@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Retrograde Analysis? — Retrograde Analysis</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Retrograde Analysis</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-what-is-retrograde-analysis"><div class="toc-chapter-header"><a href="../01-what-is-retrograde-analysis/" class="toc-chapter-link"><strong>1.</strong> What Is Retrograde Analysis?</a></div></div>
+            <div class="toc-chapter" data-chapter="02-types-of-retro-problems"><div class="toc-chapter-header"><a href="../02-types-of-retro-problems/" class="toc-chapter-link"><strong>2.</strong> Types of Retro Problems</a></div></div>
+            <div class="toc-chapter" data-chapter="03-sam-loyd-and-the-birth-of-retro-problems"><div class="toc-chapter-header"><a href="../03-sam-loyd-and-the-birth-of-retro-problems/" class="toc-chapter-link"><strong>3.</strong> Sam Loyd and the Birth of Retro Problems</a></div></div>
+            <div class="toc-chapter" data-chapter="04-proof-games-in-detail"><div class="toc-chapter-header"><a href="../04-proof-games-in-detail/" class="toc-chapter-link"><strong>4.</strong> Proof Games in Detail</a></div></div>
+            <div class="toc-chapter" data-chapter="05-an-illustrative-position"><div class="toc-chapter-header"><a href="../05-an-illustrative-position/" class="toc-chapter-link"><strong>5.</strong> An Illustrative Position</a></div></div>
+            <div class="toc-chapter" data-chapter="06-how-to-solve-retro-problems"><div class="toc-chapter-header"><a href="../06-how-to-solve-retro-problems/" class="toc-chapter-link"><strong>6.</strong> How to Solve Retro Problems</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Retrograde Analysis</a> › <span>1. What Is Retrograde Analysis?</span></nav>
+
+        <h1 class="text-accent mb-4">1. What Is Retrograde Analysis?</h1>
+
+  <p>In most chess problems, you are given a position and asked what will happen going forward: find the mate in two, win material, force a draw. In a <strong>retrograde analysis</strong> problem — a "retro" — the question runs in the opposite direction. You are given a position and asked: <strong>what sequence of legal chess moves could have produced this position?</strong> The diagram is treated not as a snapshot frozen in isolation, but as the endpoint of a unique (or constrained) game history that the solver must reconstruct.</p>
+
+  <h3>The Central Principle: Legality</h3>
+  <p>The fundamental principle underlying every retro problem is <strong>legality</strong>. Every position that appears in a chess problem must be <em>reachable</em> from the initial array — White king on e1, White queen on d1, pawns on the second rank, and so on for both sides — by some sequence of legal chess moves. This sounds like a trivial requirement, but it is surprisingly restrictive. Many arrangements of pieces that are perfectly legal <em>as a static configuration</em> (no king in an impossible double-check, no pawns on the first rank, etc.) turn out to be completely <strong>unreachable</strong> by any sequence of legal play. Proving that a position is illegal — or, conversely, proving exactly how a legal position must have arisen — is the heart of retrograde analysis.</p>
+
+  <p>Consider a simple illustration. Suppose a diagram shows both bishops belonging to one side standing on light squares. Since each player starts with one bishop on a light square and one on a dark square, and a bishop can never change the colour of square it occupies (bishops move diagonally, which always preserves square colour), the only way for both of a player's bishops to end up on light-coloured squares is if <em>one of them is a promoted pawn</em>. If the position contains no evidence of a pawn promotion — for instance, if all eight of that side's pawns are still on the board — then the position is provably illegal. This is retrograde analysis in its purest form: reasoning backward from an observed configuration to a constraint on the game's history.</p>
+
+  <h3>History Matters, Not Just Position</h3>
+  <p>Retros are unique among chess problem genres because they require knowledge not just of the rules of <em>play</em> (how pieces move, what constitutes check, etc.) but of the <em>history</em> of the position. Several facts about a position cannot be read directly off the diagram — they depend entirely on how the position was reached:</p>
+  <ul>
+    <li><strong>Castling rights.</strong> A king and rook standing on their home squares does not by itself guarantee that castling is legal — the king or rook might have moved away and come back (a "switchback"), forfeiting the right permanently even though the pieces currently occupy the correct squares.</li>
+    <li><strong>En passant rights.</strong> Whether an en passant capture is available depends entirely on whether the opponent's pawn just advanced two squares on the immediately preceding move — information that is invisible in a static diagram unless deduced retrogradely.</li>
+    <li><strong>The fifty-move rule and threefold repetition.</strong> These depend on the entire move history, not the current position.</li>
+    <li><strong>How many times a piece has moved</strong> — relevant for proof games, where the solver must reconstruct the minimum (or an exact) number of moves required to reach the diagram.</li>
+  </ul>
+  <p>A forward-looking solver who ignores these historical dimensions can be led badly astray. A position might <em>appear</em> to permit castling or an en passant capture as the winning move in a mate-in-two, but retrograde analysis may prove that this apparent resource is illusory — or, just as often, that an apparently impossible resource is in fact forced to be available.</p>
+
+  <h3>A First "Last Move" Puzzle</h3>
+  <p>The simplest type of retro question is: <em>what was the last move played, and by whom?</em> Even this modest question can require careful reasoning. Consider the position below.</p>
+
+  <div class="chess-board" id="board-lastmove1"></div>
+  <script>renderChessBoard('board-lastmove1', {e1:'wK',h1:'wR',a1:'wR',e8:'bK',h8:'bR',a8:'bR',e5:'wP',d5:'bP'});</script>
+  <p class="text-center text-muted mt-2"><small>White: King e1, Rooks a1/h1, Pawn e5. Black: King e8, Rooks a8/h8, Pawn d5. Black to move. What was White's last move?</small></p>
+
+  <div class="notation-box">
+    <strong>Question:</strong> It is Black to move. What was White's last move?<br><br>
+    <strong>Reasoning:</strong> White's pawn stands on e5 and Black's pawn stands on d5 — they are adjacent files on adjacent ranks, eyeing each other diagonally as if a capture might be imminent, but neither pawn is currently attacking the other (e5 attacks d6/f6, not d5). Could White's last move have been a pawn push, e.g. e4-e5? That is certainly possible and consistent with everything else in the diagram. Could it instead have been <strong>d7-d5 by Black</strong>? No — it is Black <em>to move</em>, meaning the last move was White's, not Black's.<br><br>
+    <strong>Could White's last move have been e5xd6 or similar?</strong> No piece stands on d6, and the diagram shows no evidence of a capture having just occurred there. With nothing else constraining the position, the most natural (and in a constructed problem, often the <em>only</em> legal) candidate is a quiet pawn advance such as e4-e5. In a real composed problem, the surrounding material would be arranged so that <em>only one</em> candidate move survives scrutiny — that is the art of the genre.
+  </div>
+
+  <h3>Why "Retro" Problems Feel Different</h3>
+  <p>Solving a forward problem (a mate-in-n) is fundamentally a search problem: among the legal moves available from this position, which sequence leads to checkmate? Solving a retro problem is fundamentally a <strong>constraint-satisfaction</strong> problem: among all sequences of legal moves from the <em>starting position</em>, which ones (if any) terminate in the diagram, and what constraints does that impose on castling rights, en passant rights, or the identity of captured pieces? This inversion of direction is why retro problems are sometimes described as the "detective fiction" of chess composition — the diagram is a crime scene, and the solver is Sherlock Holmes, working backward from the evidence to the sequence of events that produced it.</p>
+
+  <p>The remaining chapters in this section build on this foundation: Chapter 2 surveys the major families of retro problems, Chapter 3 traces the genre's history to Sam Loyd, Chapter 4 examines proof games — the most actively composed retro genre today — in depth, Chapter 5 walks through a fully worked illustrative position, and Chapter 6 distills a general method for approaching any retro problem.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../" class="btn btn-outline-custom">&larr; Back to Retrograde Analysis</a>
+            <a href="../02-types-of-retro-problems/" class="btn btn-custom">2. Types of Retro Problems &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

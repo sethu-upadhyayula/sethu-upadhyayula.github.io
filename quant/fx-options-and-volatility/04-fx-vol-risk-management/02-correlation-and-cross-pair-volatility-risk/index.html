@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correlation and Cross-Pair Volatility Risk</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">FX Options and Volatility</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-fx-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-fx-options/" class="toc-chapter-link"><strong>1.</strong> FX Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-fx-options/01-garman-kohlhagen/">1.1 Garman-Kohlhagen Model</a>
+                        <a href="../../01-fx-options/02-delta-and-hedging-conventions/">1.2 Delta and Hedging Conventions</a>
+                        <a href="../../01-fx-options/03-volatility-surface-rr-and-bf/">1.3 Volatility Surface: Risk Reversals and Butterflies</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-fx-volatility-surface-construction">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-fx-volatility-surface-construction/" class="toc-chapter-link"><strong>2.</strong> FX Volatility Surface Construction</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-fx-volatility-surface-construction/01-smile-interpolation-methods/">2.1 Smile Interpolation Methods</a>
+                        <a href="../../02-fx-volatility-surface-construction/02-volatility-surface-dynamics-and-sticky-rules/">2.2 Volatility Surface Dynamics and Sticky Rules</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fx-option-strategies">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-fx-option-strategies/" class="toc-chapter-link"><strong>3.</strong> FX Option Strategies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-fx-option-strategies/01-vanilla-strategy-combinations/">3.1 Vanilla Strategy Combinations</a>
+                        <a href="../../03-fx-option-strategies/02-volatility-trading-via-fx-options/">3.2 Volatility Trading via FX Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-fx-vol-risk-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-fx-vol-risk-management/" class="toc-chapter-link"><strong>4.</strong> FX Vol Risk Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-fx-vol-risk-management/01-vega-vanna-and-volga/">4.1 Vega, Vanna, and Volga</a>
+                        <a href="../../04-fx-vol-risk-management/02-correlation-and-cross-pair-volatility-risk/">4.2 Correlation and Cross-Pair Volatility Risk</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">FX Options and Volatility</a> › <a href="../">4. FX Vol Risk Management</a> › <span>Correlation and Cross-Pair Volatility Risk</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 Correlation and Cross-Pair Volatility Risk</h1>
+
+                <p>Every FX rate is a relative price between two currencies, and any third currency provides a "cross" relationship: the EUR/USD rate, the USD/JPY rate, and the EUR/JPY rate are not independent quantities — EUR/JPY is, by construction, the product of EUR/USD and USD/JPY. This triangular structure means that the volatility surfaces of these three pairs are linked by a no-arbitrage relationship involving the <em>implied correlation</em> between EUR/USD and USD/JPY, making cross-pair consistency a distinct and important risk dimension for any desk trading more than one currency pair.</p>
+
+                <h2 class="mt-5 mb-3">Triangular Relationships</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Triangular Rate Identity</div>
+                    <p class="mb-0">For three currencies A, B, C, the cross rate satisfies (with rates quoted as units of the second currency per unit of the first, i.e. A/B means "B per A"):</p>
+                    $$S_{\text{A/C}} = S_{\text{A/B}} \times S_{\text{B/C}}$$
+                    <p class="mt-2 mb-0">For example, $S_{\text{EUR/JPY}} = S_{\text{EUR/USD}} \times S_{\text{USD/JPY}}$ — the EUR/JPY rate (JPY per EUR) equals the EUR/USD rate (USD per EUR) times the USD/JPY rate (JPY per USD). This identity must hold at every instant to preclude triangular arbitrage in spot.</p>
+                </div>
+
+                <p>Because EUR/JPY is the product of two other exchange rates, its variance is determined by the variances of EUR/USD and USD/JPY <em>and</em> their correlation — exactly as the variance of a product of two correlated random variables depends on the correlation between them.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Result — Cross-Rate Volatility and Implied Correlation</div>
+                    <p class="mb-0">To first order (for log-returns over a short horizon), if $x = \ln S_{\text{EUR/USD}}$ and $y = \ln S_{\text{USD/JPY}}$, then $\ln S_{\text{EUR/JPY}} = x + y$, and:</p>
+                    $$\sigma_{\text{EUR/JPY}}^2 = \sigma_{\text{EUR/USD}}^2 + \sigma_{\text{USD/JPY}}^2 + 2\rho\,\sigma_{\text{EUR/USD}}\,\sigma_{\text{USD/JPY}}$$
+                    <p class="mt-2 mb-0">where $\rho$ is the correlation between log-returns of EUR/USD and USD/JPY. Given market-observable implied volatilities for all three pairs (EUR/USD, USD/JPY, EUR/JPY), this equation can be inverted to solve for an <em>implied correlation</em> $\rho$ — the correlation consistent with the three quoted volatility surfaces:</p>
+                    $$\rho_{\text{implied}} = \frac{\sigma_{\text{EUR/JPY}}^2 - \sigma_{\text{EUR/USD}}^2 - \sigma_{\text{USD/JPY}}^2}{2\,\sigma_{\text{EUR/USD}}\,\sigma_{\text{USD/JPY}}}$$
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Sign Conventions and Inverted Pairs</div>
+                    <p class="mb-0">Care is needed with quoting conventions: if a pair is quoted in inverted form (e.g., JPY/USD instead of USD/JPY), the corresponding log-return changes sign, which flips the sign of the correlation term. The formula above is correct for the "chain" convention where the base currency of the second pair matches the quote currency of the first (EUR/USD then USD/JPY, chaining to EUR/JPY); if instead the natural market quote is USD/JPY but the chain requires JPY/USD, the implied correlation computed must account for this sign flip, or equivalently the relevant correlation is between EUR/USD and the <em>negative</em> of USD/JPY log-returns.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Cross-Pair Volatility Arbitrage and Consistency Conditions</h2>
+
+                <p>Each of the three pairs in a triangle (e.g., EUR/USD, USD/JPY, EUR/JPY) trades its own liquid vanilla options market with its own ATM, risk reversal, and butterfly quotes. The implied correlation $\rho_{\text{implied}}$ extracted from the three ATM volatilities is therefore an <em>output</em> of three independently-quoted markets, not an input — and there is no guarantee it stays within $[-1,1]$, or that it remains stable, or that it is consistent with historically realized correlation.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Implied Correlation Out of Bounds</div>
+                    <p class="mb-0">If the three quoted ATM volatilities are such that the formula above produces $|\rho_{\text{implied}}| > 1$, this signals an internal inconsistency among the three markets — at least one of the three implied volatilities is "out of line" relative to the other two, given any valid correlation. In practice this is rare for the most liquid triangles (EUR/USD, USD/JPY, EUR/JPY for the "EUR-USD-JPY" triangle) precisely because cross-pair arbitrage trading keeps the three markets mutually consistent, but it can occur transiently during periods of stress when one leg of the triangle is significantly less liquid or when a market dislocation affects one pair before the others reprice.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Detecting a Cross-Pair Dislocation</div>
+                    <p>Suppose the 1-month ATM volatilities are quoted as $\sigma_{\text{EUR/USD}} = 7.0\%$, $\sigma_{\text{USD/JPY}} = 9.0\%$, and $\sigma_{\text{EUR/JPY}} = 9.5\%$. Applying the formula:</p>
+                    $$\rho_{\text{implied}} = \frac{9.5^2 - 7.0^2 - 9.0^2}{2 \times 7.0 \times 9.0} = \frac{90.25 - 49 - 81}{126} = \frac{-39.75}{126} \approx -0.32$$
+                    <p>An implied correlation of $-0.32$ between EUR/USD and USD/JPY is economically plausible (historically these pairs have often shown mildly negative correlation, reflecting JPY's safe-haven behaviour against both USD and risk sentiment that also affects EUR). No dislocation is signalled.</p>
+                    <p class="mb-0">Now suppose EUR/JPY implied volatility spikes to $\sigma_{\text{EUR/JPY}} = 13.0\%$ while EUR/USD and USD/JPY volatilities remain unchanged (perhaps due to a EUR/JPY-specific flow imbalance). Recomputing: $\rho_{\text{implied}} = (169 - 49 - 81)/126 = 39/126 \approx +0.31$ — a swing from $-0.32$ to $+0.31$ implied correlation purely from one leg of the triangle repricing. If a trader believes the "true" correlation has not changed this dramatically, this is a signal that EUR/JPY volatility is rich relative to EUR/USD and USD/JPY — a cross-pair volatility arbitrage opportunity: sell EUR/JPY vol (e.g., via a straddle) and buy a correlation-replicating basket of EUR/USD and USD/JPY vol, position-sized so that the combined vega and correlation exposure is approximately neutral to small further moves in any single leg, profiting if the triangle's implied correlation reverts toward its more typical level.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why This Matters for Book Risk Management</div>
+                    <p class="mb-0">A desk that runs books in multiple currency pairs cannot treat each pair's vol risk in isolation: a position that is vega-, vanna-, and volga-flat on each individual pair can still carry significant risk to the <em>joint</em> distribution of the pairs, which is exactly what cross-pair correlation captures. Risk systems for multi-currency options books therefore compute and monitor implied correlations across all relevant triangles, flagging both out-of-bounds values (signalling a likely pricing error or stale quote) and large deviations from recent historical or longer-run average levels (signalling a potential cross-pair trading opportunity or an unhedged correlation exposure in the existing book). This completes the picture begun in Chapter 1: from the pricing of a single vanilla option, through surface construction and trading strategies, to the full risk management of a multi-pair FX volatility book.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-vega-vanna-and-volga/" class="btn btn-outline-custom">&larr; 4.1 Vega, Vanna, and Volga</a>
+                    <a href="../../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

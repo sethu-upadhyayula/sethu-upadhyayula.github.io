@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Currency Swaps and Asset Swaps</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Interest Rate Swaps</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rate-swaps">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rate-swaps/" class="toc-chapter-link"><strong>1.</strong> Interest Rate Swaps</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rate-swaps/01-vanilla-interest-rate-swaps/">1.1 Vanilla Interest Rate Swaps</a>
+                        <a href="../../01-interest-rate-swaps/02-ois-and-sofr-discounting/">1.2 OIS and SOFR Discounting</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-swap-curve-construction-and-multi-curve-framework">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/" class="toc-chapter-link"><strong>2.</strong> Swap Curve Construction and the Multi-Curve Framework</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/01-multi-curve-bootstrapping/">2.1 Multi-Curve Bootstrapping</a>
+                        <a href="../../02-swap-curve-construction-and-multi-curve-framework/02-basis-swaps-and-tenor-basis/">2.2 Basis Swaps and Tenor Basis</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-swap-risk-and-hedging">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-swap-risk-and-hedging/" class="toc-chapter-link"><strong>3.</strong> Swap Risk and Hedging</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-swap-risk-and-hedging/01-pv01-and-swap-sensitivities/">3.1 PV01 and Swap Sensitivities</a>
+                        <a href="../../03-swap-risk-and-hedging/02-hedging-swap-books/">3.2 Hedging Swap Books</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-non-vanilla-swap-structures">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-non-vanilla-swap-structures/" class="toc-chapter-link"><strong>4.</strong> Non-Vanilla Swap Structures</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-non-vanilla-swap-structures/01-amortizing-forward-starting-and-cms/">4.1 Amortizing, Forward-Starting, and Constant Maturity Swaps</a>
+                        <a href="../../04-non-vanilla-swap-structures/02-cross-currency-and-asset-swaps/">4.2 Cross-Currency Swaps and Asset Swaps</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Interest Rate Swaps</a> › <a href="../">4. Non-Vanilla Swap Structures</a> › <span>Cross-Currency Swaps and Asset Swaps</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 Cross-Currency Swaps and Asset Swaps</h1>
+
+                <p>This final section covers two structures that connect the single-currency swap market developed in Chapters 1-3 to other markets: cross-currency swaps, which exchange cash flows in two different currencies and connect the rates market to the FX market; and asset swaps, which combine a swap with a bond to isolate and trade a bond's credit spread, connecting the rates market to the credit market.</p>
+
+                <h2 class="mt-5 mb-3">Cross-Currency Swap Structure</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Cross-Currency Basis Swap</div>
+                    <p class="mb-0">A <em>cross-currency (basis) swap</em> exchanges floating-rate payments in two currencies, say USD and EUR, on notionals $N_{USD}$ and $N_{EUR}=N_{USD}/X_0$ (where $X_0$ is the spot exchange rate at inception). Unlike a single-currency swap, <strong>principal is exchanged</strong>: at inception, the two parties exchange $N_{USD}$ for $N_{EUR}$; at maturity, they re-exchange the same notional amounts back. During the life of the swap, each party pays the floating reference rate of the currency it received, typically with a spread (the <em>cross-currency basis</em>, quoted in bp) applied to one leg — usually the non-USD leg, by convention.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Mark-to-Market Resets</h2>
+
+                <p>A plain cross-currency swap with fixed notionals exchanged only at inception and maturity leaves both counterparties exposed to FX-driven changes in the relative size of the two notionals over the swap's life — a USD payer's EUR notional, converted back to USD at the current spot rate, may now be worth far more or less than $N_{USD}$. Mark-to-market (MTM) cross-currency swaps address this.</p>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — MTM Notional Resets</div>
+                    <p class="mb-0">In an <em>MTM cross-currency swap</em>, the non-USD notional is reset periodically (e.g. quarterly) to the then-current spot exchange rate, with the difference between the old and new notional exchanged as an additional cash flow at the reset date. This keeps the two legs' notionals continuously aligned with the current FX rate, eliminating the FX notional mismatch risk that a fixed-notional cross-currency swap would carry — at the cost of more frequent principal exchanges. MTM resets are now standard for most interdealer cross-currency swaps, particularly those referencing USD against other G10 currencies.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Cross-Currency Basis</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why Cross-Currency Basis Exists</div>
+                    <p class="mb-0">In theory, covered interest rate parity implies that borrowing in one currency and swapping into another via FX forwards/cross-currency swaps should cost the same as borrowing directly in the second currency — i.e. the cross-currency basis should be zero. In practice, persistent non-zero (often negative for non-USD currencies vs. USD) cross-currency bases have existed since 2008, reflecting structural USD funding demand from non-US banks, balance-sheet costs for the dealers who would otherwise arbitrage the basis away (post-crisis regulatory capital constraints), and supply/demand imbalances in cross-currency hedging flows (e.g. from foreign investors hedging USD bond holdings back to their home currency). The cross-currency basis is itself a curve — term structure across maturities — bootstrapped from market-quoted cross-currency swap spreads, analogous to the tenor basis curves of Section 2.2.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Asset Swaps</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Asset Swap</div>
+                    <p class="mb-0">An <em>asset swap</em> packages a fixed-rate bond together with an interest rate swap that converts the bond's fixed coupon into a floating rate plus (or minus) a spread — the <em>asset swap spread</em>. The investor buys the bond at its market price $P_{bond}$ (typically not par) and simultaneously enters a swap, paying the bond's fixed coupon $c_{bond}$ and receiving floating-plus-spread on a notional equal to the bond's face value. The asset swap spread $ASW$ is set so that the package has zero value at inception.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Par Asset Swap Spread</div>
+                    <p class="mb-0">For a "par" asset swap (notional equal to the bond's face value $F$, regardless of $P_{bond}$), the asset swap spread is approximately the value that reconciles the bond's price away from par with its coupon stream, expressed per period:
+                    $$ASW \approx \frac{(F - P_{bond}) + \big(PV_{fix}(c_{bond}) - PV_{fix}(c^*)\big)}{A}$$
+                    where $c^*$ is the par swap rate (Section 1.1) for the bond's maturity, $A$ is the swap annuity, and $PV_{fix}(\cdot)$ denotes the fixed-leg PV at the given coupon. Intuitively, $ASW$ is the spread over the floating reference rate that compensates the investor for (a) the difference between the bond's price and par, amortized over the bond's life via the annuity, and (b) the difference between the bond's actual coupon and the prevailing par swap rate. A bond trading below par (reflecting wider credit spreads than the swap curve implies) will have a positive $ASW$.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Asset Swap Spread Example</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Asset Swap Spread on a Discount Bond</div>
+                    <p>Consider a 5-year bond with face value $F=100$, annual coupon $c_{bond}=3.50\%$, currently trading at a price $P_{bond}=96.50$ (i.e. below par, reflecting a credit spread above the swap curve). Suppose the 5-year par swap rate is $c^*=4.00\%$ and the swap annuity is $A=4.4518$ (using the discount factors from the Section 3.1 example).</p>
+                    <p class="mb-0">The price-vs-par contribution is $F - P_{bond} = 100 - 96.50 = 3.50$. The coupon-vs-par-rate contribution is $PV_{fix}(c_{bond}) - PV_{fix}(c^*) = (0.0350-0.0400)\times 100 \times A = -0.0050\times 100\times 4.4518 = -2.2259$. Combining:
+                    $$ASW \approx \frac{3.50 + (-2.2259)}{4.4518} = \frac{1.2741}{4.4518} \approx 0.02862 = 286.2\text{bp}$$
+                    The investor who buys this bond at 96.50 and enters the asset swap receives the floating reference rate plus approximately 286bp — a spread that compensates for the bond trading 3.50 points below par despite its coupon already being below the swap rate, with the price discount dominating. This spread is the standard market measure of the bond's credit risk relative to the swap (and hence SOFR/OIS) curve, stripped of the effects of the bond's specific coupon and price.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-amortizing-forward-starting-and-cms/" class="btn btn-outline-custom">&larr; 4.1 Amortizing, Forward-Starting, and Constant Maturity Swaps</a>
+                    <a href="../../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factor Copula Models</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Structured Credit</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-cdo-and-clo">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-cdo-and-clo/" class="toc-chapter-link"><strong>1.</strong> CDO Tranches and CLOs</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-cdo-and-clo/01-tranche-structure/">1.1 Tranche Structure</a>
+                        <a href="../../01-cdo-and-clo/02-gaussian-copula/">1.2 Gaussian Copula Model</a>
+                        <a href="../../01-cdo-and-clo/03-clo-modelling/">1.3 CLO Modelling</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-correlation-modeling-beyond-gaussian-copula">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-correlation-modeling-beyond-gaussian-copula/" class="toc-chapter-link"><strong>2.</strong> Correlation Modeling Beyond Gaussian Copula</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-correlation-modeling-beyond-gaussian-copula/01-base-correlation-and-implied-correlation/">2.1 Base Correlation and Implied Correlation</a>
+                        <a href="../../02-correlation-modeling-beyond-gaussian-copula/02-factor-copula-models/">2.2 Factor Copula Models</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-synthetic-cdos-and-index-tranches">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-synthetic-cdos-and-index-tranches/" class="toc-chapter-link"><strong>3.</strong> Synthetic CDOs and Index Tranches</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-synthetic-cdos-and-index-tranches/01-synthetic-cdo-structures/">3.1 Synthetic CDO Structures</a>
+                        <a href="../../03-synthetic-cdos-and-index-tranches/02-index-tranche-pricing-and-trading/">3.2 Index Tranche Pricing and Trading</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-structured-credit-risk-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-structured-credit-risk-management/" class="toc-chapter-link"><strong>4.</strong> Structured Credit Risk Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-structured-credit-risk-management/01-delta-hedging-tranches/">4.1 Delta Hedging Tranches</a>
+                        <a href="../../04-structured-credit-risk-management/02-correlation-risk-and-model-risk/">4.2 Correlation Risk and Model Risk</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Structured Credit</a> › <a href="../">2. Correlation Modeling Beyond Gaussian Copula</a> › <span>Factor Copula Models</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2.2 Factor Copula Models</h1>
+
+                <p>The one-factor Gaussian copula's central weakness is its dependence structure: a single Gaussian common factor produces "thin tails" — the probability of many names defaulting together in a short window is too low relative to what is observed in systemic credit crises. Factor copula models generalise the construction to address this, either by adding more common factors or by replacing the Gaussian distribution with one that has heavier tails and explicit tail dependence.</p>
+
+                <h2 class="mt-5 mb-3">Multi-Factor Copulas</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Two-Factor (Sector) Gaussian Copula</div>
+                    <p>A natural extension assigns each obligor to a sector and introduces both a global factor and a sector factor:
+                    $$X_i = \sqrt{\rho_1}\,M + \sqrt{\rho_2 - \rho_1}\,M_{s(i)} + \sqrt{1-\rho_2}\,Z_i, \qquad 0 \leq \rho_1 \leq \rho_2 \leq 1$$
+                    where $M \sim N(0,1)$ is the global factor common to all names, $M_{s(i)} \sim N(0,1)$ is a sector-specific factor for the sector $s(i)$ containing obligor $i$, and $Z_i$ is idiosyncratic. Names in the same sector share correlation $\rho_2$ (intra-sector), while names in different sectors share only $\rho_1$ (inter-sector). This better reflects real portfolios, where defaults cluster by industry or geography, but loses the simple semi-analytic loss distribution and generally requires conditioning on multiple factors via nested numerical integration or Monte Carlo.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Student-$t$ Copula</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — One-Factor Student-$t$ Copula</div>
+                    <p>Replace the Gaussian common and idiosyncratic factors with a construction that produces multivariate Student-$t$ marginals:
+                    $$X_i = \frac{\sqrt{\rho}\,M + \sqrt{1-\rho}\,Z_i}{\sqrt{W/\nu}}$$
+                    where $M, Z_i \sim N(0,1)$ as before, $W \sim \chi^2_\nu$ is a chi-squared random variable independent of $M$ and the $Z_i$, and $\nu$ is the degrees-of-freedom parameter. Dividing by a common random scaling factor $\sqrt{W/\nu}$ induces <em>tail dependence</em>: in periods where $W$ is small, all $X_i$ are scaled up together, producing simultaneous extreme moves across all names — exactly the systemic clustering the Gaussian copula cannot generate. As $\nu \to \infty$, the Student-$t$ copula converges to the Gaussian copula.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Double-$t$ Copula</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Double-$t$ Copula</div>
+                    <p>The double-$t$ copula applies Student-$t$ distributions to the common and idiosyncratic factors <em>separately</em>, rather than to their combination:
+                    $$X_i = \sqrt{\rho}\, t_{\nu_M}(M) + \sqrt{1-\rho}\, t_{\nu_Z}(Z_i)$$
+                    where $t_{\nu_M}$ and $t_{\nu_Z}$ denote (rescaled) Student-$t$ transforms of the underlying Gaussian variables, with possibly different degrees-of-freedom parameters $\nu_M$ and $\nu_Z$. Giving the systematic factor $M$ fat tails (small $\nu_M$) increases the chance of a severe common shock driving correlated defaults, while keeping the idiosyncratic factors closer to Gaussian preserves realistic behaviour for isolated single-name defaults. This extra degree of freedom lets the model fit the base correlation skew more flatly across strikes than the single-parameter Gaussian copula — fewer distinct $\rho_{\text{base}}(D)$ values are needed because the tail behaviour is already richer.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Why These Models Help</h2>
+                <div class="math-box theorem">
+                    <div class="math-box-label">Result — Tail Dependence and the Correlation Skew</div>
+                    <p class="mb-0">A copula exhibits (upper) tail dependence if $\lambda_U = \lim_{u\to 1} P(U_2 > u \mid U_1 > u) > 0$ for uniform marginals $U_1, U_2$. The Gaussian copula has $\lambda_U = 0$ for any $\rho < 1$ — joint extreme outcomes become negligibly likely. The Student-$t$ and double-$t$ copulas have $\lambda_U > 0$ for finite $\nu$: extreme common shocks remain non-negligible in probability. Because senior tranches are paid off only in extreme, highly correlated loss scenarios, a copula with positive tail dependence assigns more probability mass to the scenarios that drive senior tranche losses without needing an artificially high $\rho$. This is precisely why fat-tailed factor copulas can fit the market-observed correlation skew with a flatter, more stable correlation parameter across the capital structure than the Gaussian copula requires.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Practical Trade-offs</div>
+                    <p class="mb-0">Multi-factor and fat-tailed copulas come at a computational cost: the simple Gauss–Hermite quadrature of Section 1.2 generalises to multi-dimensional quadrature or Monte Carlo simulation, slowing calibration and full-revaluation risk runs. In practice, desks often retain the one-factor Gaussian copula with base correlation as a quoting and bootstrapping convention — because the market itself communicates in base correlation terms — while using richer factor copulas for model validation, stress testing, and pricing bespoke tranches where the standard index tranche quotes provide insufficient calibration information. The choice of copula family is itself a source of model risk, discussed further in Section 4.2.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../../02-correlation-modeling-beyond-gaussian-copula/01-base-correlation-and-implied-correlation/" class="btn btn-outline-custom">&larr; 2.1 Base Correlation and Implied Correlation</a>
+                    <a href="../../03-synthetic-cdos-and-index-tranches/" class="btn btn-custom">3. Synthetic CDOs and Index Tranches &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

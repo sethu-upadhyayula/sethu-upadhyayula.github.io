@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Castling in Chess 960 — Chess 960</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Variants</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Chess 960</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-why-fischer-created-it"><div class="toc-chapter-header"><a href="../01-why-fischer-created-it/" class="toc-chapter-link"><strong>1.</strong> Why Fischer Created It</a></div></div>
+            <div class="toc-chapter" data-chapter="02-starting-position-rules"><div class="toc-chapter-header"><a href="../02-starting-position-rules/" class="toc-chapter-link"><strong>2.</strong> Starting Position Rules</a></div></div>
+            <div class="toc-chapter" data-chapter="03-castling-in-chess-960"><div class="toc-chapter-header"><a href="../03-castling-in-chess-960/" class="toc-chapter-link"><strong>3.</strong> Castling in Chess 960</a></div></div>
+            <div class="toc-chapter" data-chapter="04-how-to-approach-chess-960-strategically"><div class="toc-chapter-header"><a href="../04-how-to-approach-chess-960-strategically/" class="toc-chapter-link"><strong>4.</strong> How to Approach Chess 960 Strategically</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Variants</a> › <a href="../">Chess 960</a> › <span>3. Castling in Chess 960</span></nav>
+
+        <h1 class="text-accent mb-4">3. Castling in Chess 960</h1>
+
+  <p>Castling is, by far, the most confusing aspect of Chess960 for players new to the variant — and the part of the rules that most often needs to be explained to spectators. The good news is that the underlying principle is simple and elegant: the rules are designed so that the <strong>final position after castling is always identical</strong> to the position you would reach after castling in standard chess, no matter where the king and rooks started.</p>
+
+  <h3>The Castling Rule</h3>
+  <ul>
+    <li><strong>Kingside castling (0-0):</strong> The king ends up on <strong>g1</strong> (White) or <strong>g8</strong> (Black). The kingside rook (the rook that started on the side the king is moving toward) ends up on <strong>f1</strong> (White) or <strong>f8</strong> (Black).</li>
+    <li><strong>Queenside castling (0-0-0):</strong> The king ends up on <strong>c1</strong> (White) or <strong>c8</strong> (Black). The queenside rook ends up on <strong>d1</strong> (White) or <strong>d8</strong> (Black).</li>
+  </ul>
+  <p>In other words: regardless of where the king and the relevant rook began the game, after castling they always land on the same four squares (g1/f1, c1/d1, and their mirror images on rank 8) that they would occupy after castling from the standard starting position. The king and rook simply "slide" — possibly past each other — directly to these destination squares in a single move.</p>
+
+  <h3>Worked Example: Castling From an Unusual Starting Square</h3>
+  <p>Consider the position <strong>B N R K R B N Q</strong> from Chapter 2, where White's king starts on <strong>d1</strong>, directly between rooks on <strong>c1</strong> and <strong>e1</strong>.</p>
+
+  <div class="chess-board" id="board-cas-before"></div>
+  <script>renderChessBoard('board-cas-before', {a1:'wB',b1:'wN',c1:'wR',d1:'wK',e1:'wR',f1:'wB',g1:'wN',h1:'wQ',a2:'wP',b2:'wP',c2:'wP',d2:'wP',e2:'wP',f2:'wP',g2:'wP',h2:'wP',a7:'bP',b7:'bP',c7:'bP',d7:'bP',e7:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bB',b8:'bN',c8:'bR',d8:'bK',e8:'bR',f8:'bB',g8:'bN',h8:'bQ'});</script>
+  <p class="text-center text-muted mt-2"><small>Before castling: king on d1, rooks on c1 and e1.</small></p>
+
+  <p>Suppose White has cleared the necessary squares (moved the b1-knight and f1-bishop out of the way) and now castles <strong>kingside (0-0)</strong> with the e1-rook:</p>
+
+  <div class="chess-board" id="board-cas-after-k"></div>
+  <script>renderChessBoard('board-cas-after-k', {a1:'wB',c1:'wR',f1:'wR',g1:'wK',h1:'wQ',a2:'wP',b2:'wP',c2:'wP',d2:'wP',e2:'wP',f2:'wP',g2:'wP',h2:'wP',a7:'bP',b7:'bP',c7:'bP',d7:'bP',e7:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bB',b8:'bN',c8:'bR',d8:'bK',e8:'bR',f8:'bB',g8:'bN',h8:'bQ'});</script>
+  <p class="text-center text-muted mt-2"><small>After 0-0: the king has moved from d1 to <strong>g1</strong> and the e1-rook has moved to <strong>f1</strong> — exactly the same destination squares as kingside castling in standard chess, even though the king travelled three squares and passed over its own rook on f1's neighbouring squares along the way (the f1-bishop must vacate first).</small></p>
+
+  <p>Now suppose instead White castles <strong>queenside (0-0-0)</strong> with the c1-rook:</p>
+
+  <div class="chess-board" id="board-cas-after-q"></div>
+  <script>renderChessBoard('board-cas-after-q', {a1:'wB',c1:'wK',d1:'wR',e1:'wR',f1:'wB',g1:'wN',h1:'wQ',a2:'wP',b2:'wP',c2:'wP',d2:'wP',e2:'wP',f2:'wP',g2:'wP',h2:'wP',a7:'bP',b7:'bP',c7:'bP',d7:'bP',e7:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bB',b8:'bN',c8:'bR',d8:'bK',e8:'bR',f8:'bB',g8:'bN',h8:'bQ'});</script>
+  <p class="text-center text-muted mt-2"><small>After 0-0-0: the king has moved from d1 to <strong>c1</strong> (just one square left) and the c1-rook has moved to <strong>d1</strong> — the king and rook have effectively swapped squares! This is a perfectly legal castling move, and the b1-knight must have vacated first since the king passes through (or starts on, in some positions) the b1 square's path is not actually crossed here, but the rook's path from c1 to d1 passes through the king's original square, which is allowed only during castling.</small></p>
+
+  <h3>The "Sliding Past Each Other" Rule</h3>
+  <p>In some starting positions, the king and the castling rook may need to <strong>pass through each other's squares</strong> to reach their destinations — for example, if the rook starts to the left of where the king needs to end up, but the king starts to the right of where the rook needs to end up (as in the queenside example above, where the king moves from d1 to c1 while the rook moves from c1 to d1, momentarily "swapping"). This kind of square-sharing during a single move is illegal for every other move in chess, but it is explicitly permitted for castling in Chess960. Think of it less as "the king and rook move individually" and more as "the king-rook pair rearranges itself into the castled configuration in one atomic move."</p>
+
+  <h3>Castling Conditions (Same as Standard Chess)</h3>
+  <p>Despite the different starting squares, the <em>conditions</em> required for castling to be legal are unchanged from standard chess:</p>
+  <ul>
+    <li>Neither the king nor the castling rook has previously moved during the game.</li>
+    <li>All squares between the king's initial and final positions, and between the rook's initial and final positions, must be unoccupied by any piece <em>other than the king and that rook themselves</em>.</li>
+    <li>The king is not currently in check, does not pass through a square attacked by an enemy piece, and does not end up in check after castling.</li>
+  </ul>
+  <p>The "no other pieces in the way" rule applies to the full set of squares spanned by the king's path <em>and</em> the rook's path — the union of these two paths must be clear (except for the king and rook themselves). This is why, in many Chess960 starting positions, several other pieces must develop first before castling becomes available — sometimes taking many more moves than the two or three typically needed in standard chess.</p>
+
+  <h3>When the King or Rook Doesn't Need to Move</h3>
+  <p>In some starting positions, the king or the castling rook may <em>already</em> occupy its post-castling destination square. For example, if the king starts on g1 (kingside castling destination for White), then 0-0 only moves the rook to f1 — the king stays exactly where it is, but the move still counts as castling for all rules purposes (it still requires that the king has not moved, satisfies the check conditions, etc., and it still uses up the right to castle on that side).</p>
+
+  <h3>Why This Design Was Chosen</h3>
+  <p>Fischer's rule — "castling always lands on the same squares as standard chess" — was a deliberate design choice that keeps the post-castling structures (rook on f-file supporting a kingside attack, rook on d-file supporting central play, king tucked safely on g1/g8 or c1/c8) familiar and strategically meaningful, even though the starting squares differ wildly from game to game. It means that all of the endgame and middlegame knowledge built around "the king is on g1" or "the rook is on f1 after castling" carries over directly into Chess960 once castling has occurred — only the <em>opening</em> phase, before castling, is genuinely unfamiliar territory.</p>
+
+  <div class="notation-box">
+    <strong>Quick reference:</strong><br>
+    0-0 (kingside): King → g1/g8, Rook → f1/f8<br>
+    0-0-0 (queenside): King → c1/c8, Rook → d1/d8
+  </div>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../02-starting-position-rules/" class="btn btn-outline-custom">&larr; 2. Starting Position Rules</a>
+            <a href="../04-how-to-approach-chess-960-strategically/" class="btn btn-custom">4. How to Approach Chess 960 Strategically &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

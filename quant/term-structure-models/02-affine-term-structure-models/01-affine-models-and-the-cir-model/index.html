@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affine Models and the CIR Model</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Term Structure Models</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-short-rate-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-short-rate-models/" class="toc-chapter-link"><strong>1.</strong> Short Rate Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-short-rate-models/01-vasicek-and-hull-white/">1.1 Vasicek and Hull-White Models</a>
+                        <a href="../../01-short-rate-models/02-hjm-framework/">1.2 HJM Framework</a>
+                        <a href="../../01-short-rate-models/03-lmm/">1.3 LIBOR Market Model (LMM)</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-affine-term-structure-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-affine-term-structure-models/" class="toc-chapter-link"><strong>2.</strong> Affine Term Structure Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-affine-term-structure-models/01-affine-models-and-the-cir-model/">2.1 Affine Models and the CIR Model</a>
+                        <a href="../../02-affine-term-structure-models/02-multi-factor-affine-models/">2.2 Multi-Factor Affine Models</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-calibration-and-model-risk">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-calibration-and-model-risk/" class="toc-chapter-link"><strong>3.</strong> Calibration and Model Risk</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-calibration-and-model-risk/01-calibrating-short-rate-models/">3.1 Calibrating Short-Rate Models</a>
+                        <a href="../../03-calibration-and-model-risk/02-model-risk-in-term-structure-models/">3.2 Model Risk in Term Structure Models</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-applications-to-exotic-rate-derivatives">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-applications-to-exotic-rate-derivatives/" class="toc-chapter-link"><strong>4.</strong> Applications to Exotic Rate Derivatives</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-applications-to-exotic-rate-derivatives/01-pricing-bermudans-with-lmm/">4.1 Pricing Bermudans with LMM</a>
+                        <a href="../../04-applications-to-exotic-rate-derivatives/02-model-choice-for-different-products/">4.2 Model Choice for Different Products</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Term Structure Models</a> › <a href="../">2. Affine Term Structure Models</a> › <span>Affine Models and the CIR Model</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2.1 Affine Models and the CIR Model</h1>
+
+                <p>Vasicek and Hull-White produced bond prices of the exponential-affine form $P(t,T) = A(t,T)e^{-B(t,T)r(t)}$ as a consequence of having a Gaussian short rate with affine drift and constant diffusion. This section makes that structure explicit and general, then studies the Cox-Ingersoll-Ross (CIR) model — the canonical affine model whose diffusion term depends on the level of the short rate, ruling out negative rates.</p>
+
+                <h2 class="mt-5 mb-3">The Affine Term Structure Framework</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Affine Term Structure Model (ATSM)</div>
+                    <p class="mb-0">A short-rate model $dr(t) = \mu(r(t),t)\,dt + \sigma(r(t),t)\,dW_t$ is an <em>affine term structure model</em> if both the drift $\mu$ and the squared diffusion $\sigma^2$ are affine (linear plus constant) functions of $r(t)$:
+                    $$\mu(r,t) = \alpha(t) + \beta(t)\,r, \qquad \sigma^2(r,t) = \gamma(t) + \delta(t)\,r$$
+                    Under this condition, zero-coupon bond prices admit the exponential-affine form $P(t,T) = A(t,T)\,e^{-B(t,T)\,r(t)}$, where $A$ and $B$ solve a system of ordinary differential equations (Riccati equations) derived from the bond-pricing PDE, rather than requiring a full PDE solution in $r$ and $t$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why Affine Structure Matters</div>
+                    <p class="mb-0">The practical payoff of the affine property is enormous: $A(t,T)$ and $B(t,T)$ depend only on $t$ and $T$ (through ODEs with at most a handful of parameters), not on the current state $r(t)$. This means bond prices, and often option prices, can be computed in closed form or via fast numerical integration of low-dimensional ODEs, rather than by solving a PDE or running Monte Carlo for every valuation. Vasicek and Hull-White are the Gaussian special case ($\delta(t)=0$); CIR, introduced next, is the simplest non-Gaussian affine model.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Cox-Ingersoll-Ross (CIR) Model</h2>
+
+                <p>The Vasicek model's Gaussian short rate can become negative. The CIR model (1985) modifies the diffusion term so that volatility shrinks to zero as $r(t) \to 0$, which — combined with a sufficiently strong upward drift near zero — keeps the short rate non-negative.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — CIR Short Rate Dynamics</div>
+                    <p class="mb-0">Under the risk-neutral measure $\mathbb{Q}$, the CIR short rate follows a mean-reverting square-root diffusion:
+                    $$dr(t) = a(b-r(t))\,dt + \sigma\sqrt{r(t)}\,dW_t$$
+                    where $a>0$ is the speed of mean reversion, $b>0$ is the long-run mean, and $\sigma>0$ governs volatility. The $\sqrt{r(t)}$ term means that as $r(t)\to0^+$, the diffusion vanishes while the drift $a(b-r(t)) \to ab > 0$ remains strictly positive, pushing the rate back up — preventing $r(t)$ from going negative.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Feller Condition</div>
+                    <p class="mb-0">Whether $r(t)=0$ is actually attainable depends on the parameters. The <em>Feller condition</em>
+                    $$2ab \geq \sigma^2$$
+                    guarantees that $r(t)$ remains strictly positive for all $t>0$ if $r(0)>0$. If $2ab < \sigma^2$, the process can touch zero (and is instantaneously reflected back into positive territory), but never goes negative. Either way, CIR rules out negative rates entirely — in contrast to Vasicek/Hull-White, where $r(t)$ is normally distributed and can be negative with positive probability.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Bond Pricing Under CIR</h2>
+
+                <p>Despite the more complicated square-root diffusion, CIR is affine in the sense of the definition above ($\gamma(t)=0$, $\delta(t)=\sigma^2$), and the bond-pricing PDE can still be solved in closed form via the affine ansatz.</p>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — CIR Bond Price Formula</div>
+                    <p>The price at time $t$ of a zero-coupon bond maturing at $T$ under CIR is $P(t,T) = A(t,T)\,e^{-B(t,T)\,r(t)}$, where, writing $\tau=T-t$ and $\gamma=\sqrt{a^2+2\sigma^2}$:
+                    $$B(t,T) = \frac{2(e^{\gamma\tau}-1)}{(\gamma+a)(e^{\gamma\tau}-1)+2\gamma}$$
+                    $$A(t,T) = \left[\frac{2\gamma\,e^{(a+\gamma)\tau/2}}{(\gamma+a)(e^{\gamma\tau}-1)+2\gamma}\right]^{2ab/\sigma^2}$$</p>
+                    <p class="mb-0">As in Vasicek, $B(t,T)$ and $A(t,T)$ depend only on $(t,T)$ and the model parameters $(a,b,\sigma)$, not on $r(t)$ itself — the hallmark of the affine structure. The resulting yield curve $r(t,T) = \big(B(t,T)r(t)-\ln A(t,T)\big)/\tau$ is again affine in $r(t)$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Distribution of $r(t)$ Under CIR</div>
+                    <p class="mb-0">Unlike the Gaussian Vasicek short rate, $r(t)$ under CIR follows a (scaled) non-central chi-squared distribution conditional on $r(0)$, which is supported on $[0,\infty)$ — consistent with the non-negativity property above. This non-Gaussianity is what allows CIR to avoid negative rates, but it also means the short rate's marginal distribution is skewed, with a heavier right tail than the Gaussian case for the same mean and variance.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">CIR in Practice: Trade-offs</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why CIR Is Less Common Than Hull-White Today</div>
+                    <p class="mb-0">CIR's non-negativity was historically viewed as its key advantage over Vasicek. However, it comes at a cost: CIR with constant parameters $(a,b,\sigma)$ cannot, in general, be exactly fit to an arbitrary initial yield curve the way Hull-White's time-dependent $\theta(t)$ can — extending CIR to match an arbitrary curve (the "CIR++" or shifted-CIR approach) requires adding a deterministic shift function, which can reintroduce the possibility of negative rates that the original model was designed to avoid. Combined with the post-2012 era of negative policy rates (where Hull-White's Gaussian negative-rate tolerance became a practical advantage rather than a flaw, as discussed in Section 1.1), CIR's strict non-negativity became less essential, and Hull-White remains more widely used for single-factor short-rate modelling. CIR's lasting importance is instead as the building block for multi-factor affine models — particularly for modelling stochastic volatility and variance processes (e.g. in the Heston model for equity options) — and as the prototype for the general affine framework developed further in the next section.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 2. Affine Term Structure Models</a>
+                    <a href="../02-multi-factor-affine-models/" class="btn btn-custom">2.2 Multi-Factor Affine Models &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

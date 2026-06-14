@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normal vs Lognormal Models and Negative Rates</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Interest Rate Options</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-interest-rate-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-interest-rate-options/" class="toc-chapter-link"><strong>1.</strong> Interest Rate Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-interest-rate-options/01-caps-and-floors/">1.1 Caps and Floors</a>
+                        <a href="../../01-interest-rate-options/02-swaptions/">1.2 Swaptions</a>
+                        <a href="../../01-interest-rate-options/03-sabr-model/">1.3 SABR Model</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-interest-rate-option-pricing-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-interest-rate-option-pricing-models/" class="toc-chapter-link"><strong>2.</strong> Interest Rate Option Pricing Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-interest-rate-option-pricing-models/01-black-model-for-rate-options/">2.1 Black Model for Rate Options</a>
+                        <a href="../../02-interest-rate-option-pricing-models/02-normal-models-and-negative-rates/">2.2 Normal vs Lognormal Models and Negative Rates</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-bermudan-and-exotic-rate-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-bermudan-and-exotic-rate-options/" class="toc-chapter-link"><strong>3.</strong> Bermudan and Exotic Rate Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-bermudan-and-exotic-rate-options/01-bermudan-swaptions/">3.1 Bermudan Swaptions</a>
+                        <a href="../../03-bermudan-and-exotic-rate-options/02-cms-and-cms-spread-options/">3.2 CMS and CMS Spread Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-rate-option-risk-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-rate-option-risk-management/" class="toc-chapter-link"><strong>4.</strong> Rate Option Risk Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-rate-option-risk-management/01-greeks-of-rate-options/">4.1 Greeks of Rate Options</a>
+                        <a href="../../04-rate-option-risk-management/02-volatility-surface-calibration-and-risk/">4.2 Volatility Surface Calibration and Risk</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Interest Rate Options</a> › <a href="../">2. Interest Rate Option Pricing Models</a> › <span>Normal vs Lognormal Models and Negative Rates</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2.2 Normal vs Lognormal Models and Negative Rates</h1>
+
+                <p>The Black-76 model of Section 2.1 assumes the underlying forward rate or swap rate is lognormally distributed, which requires $F(t) > 0$ at all times and for $\ln(F(t)/K)$ to be well-defined. From roughly 2012 onward, EUR, CHF, JPY, and (later) other government bond yields and swap rates traded persistently at or below zero, and the Black formula — and the entire concept of "lognormal volatility" for these rates — became mathematically inapplicable at the relevant strikes. This section covers the Bachelier (normal) model that the market adopted in response, and the shifted-lognormal compromise that bridges the two worlds.</p>
+
+                <h2 class="mt-5 mb-3">The Bachelier (Normal) Model</h2>
+
+                <p>The Bachelier model, originally proposed by Louis Bachelier in 1900 (predating Black-Scholes by 73 years), assumes the underlying follows arithmetic — not geometric — Brownian motion.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Bachelier Dynamics</div>
+                    <p class="mb-0">Under the relevant forward/annuity measure $\mathbb{Q}$, the forward rate or swap rate $F(t)$ follows:
+                    $$dF(t) = \sigma^N \, dW_t^{\mathbb{Q}}$$
+                    where $\sigma^N$ is the <em>normal volatility</em>, constant, with units of rate per $\sqrt{\text{year}}$ — quoted in practice as basis points per $\sqrt{\text{year}}$ (e.g. "62bp normal vol"). Since $F(T) = F(t) + \sigma^N(W_T - W_t)$ is Gaussian, $F(T)$ can take any real value, including negative ones, with positive probability — there is no constraint $F(t)>0$.</p>
+                </div>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">Theorem — Bachelier Pricing Formula</div>
+                    <p>The time-$t$ price of a European call (e.g. a caplet or payer swaption) with strike $K$, expiry $T$, and numeraire $A(t)$ is:
+                    $$C(t) = A(t)\left[(F(t)-K)\,\Phi(d) + \sigma^N\sqrt{T-t}\,\phi(d)\right], \qquad d = \frac{F(t)-K}{\sigma^N\sqrt{T-t}}$$
+                    and the corresponding put is:
+                    $$P(t) = A(t)\left[(K-F(t))\,\Phi(-d) + \sigma^N\sqrt{T-t}\,\phi(d)\right]$$
+                    where $\phi$ and $\Phi$ are the standard normal density and CDF. Both formulas remain well-defined for any real $F(t)$ and $K$, including negative values — the only requirement is $\sigma^N > 0$.</p>
+                    <p class="mb-0">Crucially, the formula's structure — $(F-K)\Phi(d) + \sigma^N\sqrt{T-t}\,\phi(d)$ — has no logarithm and no ratio $F/K$, so it never encounters the $\ln(\cdot)$ singularity that breaks the Black-76 formula when $F(t)$ or $K$ is non-positive.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Why Negative Rates Broke Lognormal Models</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Mechanics of the Breakdown</div>
+                    <p>Two distinct problems arise once $F(t)$ or $K$ can be zero or negative under Black-76. First, $\ln(F(t)/K)$ in $d_{1,2}$ is undefined if either argument is non-positive — the formula simply cannot be evaluated. Second, even where $F(t) > 0$ but a strike $K \le 0$ is quoted (e.g. a "$-10$bp" floor strike, which became economically meaningful once rates went negative), the formula breaks for that specific option even if other options on the same underlying are fine.</p>
+                    <p class="mb-0">Beyond the formula itself, the underlying economic assumption was simply wrong: lognormal dynamics imply $F(t)$ can never reach zero, let alone go negative, with positive probability — yet EUR and CHF short rates did exactly that for an extended period. A model whose state space excludes outcomes the market is actively trading is not just inconvenient, it is structurally mis-specified.</p>
+                </div>
+
+                <p>The market's response was swift: by the mid-2010s, EUR and CHF cap/floor and swaption volatilities were quoted natively in normal (bps) terms using the Bachelier formula above, sidestepping the issue entirely. Many other markets (including USD) followed during and after the COVID-era rate cuts of 2020, when even USD short rates approached zero and market participants wanted volatility surfaces that remained well-defined however far rates might fall.</p>
+
+                <h2 class="mt-5 mb-3">Shifted-Lognormal as a Workaround</h2>
+
+                <p>Many legacy pricing systems, risk models, and regulatory frameworks were built around the Black-76 formula and lognormal volatility as the fundamental unit of volatility. Rather than rewrite this infrastructure, a common workaround is the <em>shifted</em> (or <em>displaced-diffusion</em>) lognormal model.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Shifted-Lognormal Model</div>
+                    <p class="mb-0">Choose a positive shift $s$ large enough that $F(t) + s > 0$ and $K + s > 0$ for all rates and strikes of interest (e.g. $s = 3\%$ or $s=4\%$, large enough to cover plausible negative excursions). Then assume the <em>shifted</em> variable $\tilde{F}(t) = F(t) + s$ follows Black-76 lognormal dynamics:
+                    $$d\tilde{F}(t) = \sigma^{\text{shift}}\,\tilde{F}(t)\,dW_t^{\mathbb{Q}}, \qquad \tilde{F}(t) = F(t)+s > 0$$
+                    Option prices are then computed by applying the ordinary Black-76 formula to $\tilde{F}(t)$ and $\tilde{K} = K+s$:
+                    $$C(t) = A(t)\left[\tilde{F}(t)\,\Phi(d_1) - \tilde{K}\,\Phi(d_2)\right], \qquad d_{1,2} = \frac{\ln(\tilde{F}(t)/\tilde{K}) \pm \tfrac{1}{2}(\sigma^{\text{shift}})^2(T-t)}{\sigma^{\text{shift}}\sqrt{T-t}}$$
+                    Since $(F(t)-K) = (\tilde{F}(t)-\tilde{K})$, the option payoff is unchanged by the shift — only the internal mechanics of the formula are affected.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Trade-offs of Shifting</div>
+                    <p class="mb-0">Shifted-lognormal lets existing Black-76 infrastructure, Greeks formulas, and implied-vol conventions continue to function with minimal code changes — only $F$ and $K$ need to be offset by $s$ before calling the existing routines. The cost is an extra free parameter (the shift $s$) that must be agreed upon across counterparties and risk systems, and that effectively changes the "units" of lognormal volatility: a $\sigma^{\text{shift}}$ quoted with $s=3\%$ is not directly comparable to one quoted with $s=4\%$, even for the same option. As a pure quoting convention, normal (Bachelier) volatility avoids this ambiguity entirely, which is why it has become the dominant convention for ATM and near-the-money rates volatility despite the continued use of shifted-lognormal in some legacy contexts.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Comparison: Pricing the Same Option Three Ways</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Normal vs Shifted-Lognormal for a Near-Zero Forward</div>
+                    <p>Suppose a 1-year caplet has forward rate $F(t) = 0.30\%$, strike $K=-0.20\%$ (a negative strike, common in EUR markets circa 2019), $A(t) = 0.995$, and $T-t=1$.</p>
+                    <p><strong>Bachelier:</strong> with normal volatility $\sigma^N = 45$bp $=0.0045$, $d = \frac{0.0030-(-0.0020)}{0.0045} = \frac{0.0050}{0.0045}\approx 1.111$. Using $\Phi(1.111)\approx0.8667$ and $\phi(1.111)\approx 0.2155$:
+                    $$C(t) = 0.995\left[(0.0050)(0.8667) + 0.0045(0.2155)\right] = 0.995\left[0.004334+0.000970\right] \approx 0.995\times0.005304 \approx 0.005277$$</p>
+                    <p><strong>Shifted-lognormal with $s=3\%$:</strong> $\tilde{F}=3.30\%$, $\tilde{K}=2.80\%$. Suppose the market quotes $\sigma^{\text{shift}}=15\%$ for this shift convention. Then $\ln(\tilde{F}/\tilde{K})=\ln(3.30/2.80)\approx0.1640$, $\sigma^{\text{shift}}\sqrt{T-t}=0.15$, so $d_1=\frac{0.1640+0.5(0.15)^2}{0.15}\approx1.1683$, $d_2\approx1.0183$. With $\Phi(d_1)\approx0.8787$ and $\Phi(d_2)\approx0.8457$:
+                    $$C(t) = 0.995\left[0.0330\times0.8787 - 0.0280\times0.8457\right] = 0.995\left[0.02900-0.02368\right]\approx0.995\times0.00532\approx0.005294$$</p>
+                    <p class="mb-0">Both approaches give essentially the same price ($\approx0.00528$ vs $\approx0.00529$) — as expected, since $\sigma^{\text{shift}}$ was chosen to roughly match the Bachelier price for this $(F,K,T)$. The point is not that one number is "more correct," but that the Bachelier price required no auxiliary parameter $s$ and remains valid however negative $K$ or $F$ become, whereas the shifted-lognormal price is only valid as long as $F+s>0$ and $K+s>0$, and its $\sigma^{\text{shift}}$ is specific to the chosen $s$.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-black-model-for-rate-options/" class="btn btn-outline-custom">&larr; 2.1 Black Model for Rate Options</a>
+                    <a href="../../03-bermudan-and-exotic-rate-options/" class="btn btn-custom">3. Bermudan and Exotic Rate Options &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

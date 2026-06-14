@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicing and Cash Flow Waterfalls</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Loans and Lending</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-loans">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-loans/" class="toc-chapter-link"><strong>1.</strong> Loans</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-loans/01-loan-structure/">1.1 Loan Structure and Pricing</a>
+                        <a href="../../01-loans/02-prepayment/">1.2 Prepayment Modelling</a>
+                        <a href="../../01-loans/03-default/">1.3 Default Modelling</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-mortgage-backed-securities">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-mortgage-backed-securities/" class="toc-chapter-link"><strong>2.</strong> Mortgage-Backed Securities</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-mortgage-backed-securities/01-mbs-structure-and-cash-flows/">2.1 MBS Structure and Cash Flows</a>
+                        <a href="../../02-mortgage-backed-securities/02-prepayment-models-for-mbs/">2.2 Prepayment Models for MBS</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-loan-portfolio-risk">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-loan-portfolio-risk/" class="toc-chapter-link"><strong>3.</strong> Loan Portfolio Risk</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-loan-portfolio-risk/01-credit-scoring-and-portfolio-loss-models/">3.1 Credit Scoring and Portfolio Loss Models</a>
+                        <a href="../../03-loan-portfolio-risk/02-loan-pricing-and-risk-adjusted-returns/">3.2 Loan Pricing and Risk-Adjusted Returns</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-securitization-mechanics">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-securitization-mechanics/" class="toc-chapter-link"><strong>4.</strong> Securitization Mechanics</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-securitization-mechanics/01-securitization-structures/">4.1 Securitization Structures</a>
+                        <a href="../../04-securitization-mechanics/02-servicing-and-cash-flow-waterfalls/">4.2 Servicing and Cash Flow Waterfalls</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Loans and Lending</a> › <a href="../">4. Securitization Mechanics</a> › <span>Servicing and Cash Flow Waterfalls</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 Servicing and Cash Flow Waterfalls</h1>
+
+                <p>Section 4.1 established the legal structure that allows a single pool of collateral to back tranches of differing seniority. This section turns to the operational machinery that translates the pool's monthly collections into payments on those tranches: the servicer, who collects from borrowers and manages delinquencies, and the <em>cash flow waterfall</em>, the contractual rulebook that specifies, in strict order of priority, how each period's collections are allocated.</p>
+
+                <h2 class="mt-5 mb-3">The Role of the Servicer</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Servicer</div>
+                    <p class="mb-0">The <em>servicer</em> is the entity responsible for the day-to-day administration of the underlying loans on behalf of the SPV: collecting scheduled principal and interest payments from borrowers, processing prepayments, pursuing collections on delinquent accounts, managing the foreclosure or repossession process on defaulted loans, and remitting collected funds to the SPV's trustee for distribution to noteholders according to the waterfall. The servicer is typically the original lender (the loans were "originated" by the same institution that continues to service them), but servicing rights can be sold separately from ownership of the loans, and many securitizations also designate a <em>backup servicer</em> who can step in if the primary servicer fails or is terminated.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Servicer Advances and Servicing Fees</div>
+                    <p class="mb-0">The servicer is paid a <em>servicing fee</em>, typically a fixed percentage (e.g. 25–50 bps annually) of the outstanding pool balance, deducted from collections before any distribution to noteholders — this fee sits at the very top of the waterfall because the servicer must be compensated for its ongoing work regardless of pool performance. In many RMBS structures, the servicer is also obligated to make <em>servicer advances</em>: if a borrower misses a scheduled payment, the servicer fronts the missed principal and interest to the SPV out of its own funds, on the expectation of being reimbursed (with priority) once the loan is brought current or liquidated. Servicer advances smooth cash flows to noteholders but introduce counterparty risk to the servicer itself — a servicer in financial distress may be unable to continue advancing, which was a significant issue during the 2008 financial crisis when several large mortgage servicers came under stress simultaneously with the loans they serviced.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Cash Flow Waterfall</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Cash Flow Waterfall</div>
+                    <p class="mb-0">The <em>waterfall</em> is the contractual sequence of payments that the SPV's trustee must follow each period, applying available collections to each item in order until either the item is paid in full or the funds are exhausted, in which case all subsequent (lower-priority) items receive nothing that period. A typical simplified waterfall, in order of priority, is:</p>
+                    <ol class="mb-0">
+                        <li>Senior fees (servicing fee, trustee fee)</li>
+                        <li>Interest on the senior tranche</li>
+                        <li>Interest on the mezzanine tranche(s), in order of seniority</li>
+                        <li>Principal on the senior tranche (until paid down to its target balance, or until retired)</li>
+                        <li>Principal on the mezzanine tranche(s)</li>
+                        <li>Any reserve fund replenishment</li>
+                        <li>Residual / excess spread to the equity tranche</li>
+                    </ol>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Pro Rata vs Sequential Principal Paydown</div>
+                    <p class="mb-0">Principal collections can be allocated <em>sequentially</em> — the senior tranche is paid down to zero before any mezzanine tranche receives principal — or <em>pro rata</em>, where each tranche receives principal in proportion to its outstanding balance. Sequential paydown increases the relative subordination protecting the senior tranche over time (since junior tranches shrink in absolute terms more slowly while the senior balance falls), which is why most structures begin sequential and only "turn on" pro rata paydown once certain performance triggers are satisfied (e.g. sufficient seasoning and credit enhancement build-up). If delinquencies or losses breach pre-specified <em>triggers</em>, the structure typically reverts to sequential paydown to protect the senior tranche — a feature often called a "trigger event" or "early amortization" in credit card and other revolving ABS.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Waterfall Example</h2>
+                <p>Consider a simplified securitization with the same three-tranche structure as the example in Section 4.1: a senior tranche (balance $\$420\text{m}$, coupon 4.0%), a mezzanine tranche (balance $\$50\text{m}$, coupon 6.5%), and an equity tranche (balance $\$30\text{m}$, no fixed coupon, receives residual cash flow). Assume sequential principal paydown and a servicing fee of 0.30% annually on the pool balance.</p>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — One Period's Waterfall Allocation</div>
+                    <p>In a given month, the underlying pool (current balance $\$500\text{m}$ at the start of the period) generates total collections of $\$6.2\text{m}$, consisting of $\$2.5\text{m}$ of scheduled interest and $\$3.7\text{m}$ of scheduled and prepaid principal. We allocate this $\$6.2\text{m}$ down the waterfall:</p>
+                    <p><strong>Step 1 — Senior fees:</strong> Servicing fee $= 0.30\%/12 \times \$500\text{m} = \$125{,}000$. Remaining: $\$6.2\text{m} - \$0.125\text{m} = \$6.075\text{m}$.</p>
+                    <p><strong>Step 2 — Senior tranche interest:</strong> $4.0\%/12 \times \$420\text{m} = \$1.4\text{m}$. Remaining: $\$6.075\text{m} - \$1.4\text{m} = \$4.675\text{m}$.</p>
+                    <p><strong>Step 3 — Mezzanine tranche interest:</strong> $6.5\%/12 \times \$50\text{m} = \$0.2708\text{m}$ (approx. $\$270{,}833$). Remaining: $\$4.675\text{m} - \$0.2708\text{m} \approx \$4.404\text{m}$.</p>
+                    <p><strong>Step 4 — Senior tranche principal (sequential):</strong> All available principal collections ($\$3.7\text{m}$) are directed to the senior tranche first. Since $\$3.7\text{m} < \$4.404\text{m}$ remaining, the full $\$3.7\text{m}$ is paid as senior principal, and the senior balance falls from $\$420\text{m}$ to $\$416.3\text{m}$. Remaining after this step: $\$4.404\text{m} - \$3.7\text{m} = \$0.704\text{m}$.</p>
+                    <p><strong>Step 5 — Mezzanine tranche principal:</strong> Under strict sequential paydown, the mezzanine tranche receives no scheduled principal until the senior tranche is fully retired, so this step is skipped (mezzanine principal $= 0$).</p>
+                    <p><strong>Step 6 — Reserve fund:</strong> Assume the reserve fund is already at its target level, so no top-up is required.</p>
+                    <p class="mb-0"><strong>Step 7 — Residual to equity:</strong> The remaining $\$0.704\text{m}$ flows to the equity tranche as excess spread. Summary of this period's allocation: servicer $\$0.125\text{m}$, senior interest $\$1.4\text{m}$, senior principal $\$3.7\text{m}$, mezzanine interest $\$0.271\text{m}$, mezzanine principal $\$0$, equity residual $\$0.704\text{m}$ — totalling the full $\$6.2\text{m}$ of collections.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — What Happens When Collections Fall Short</div>
+                    <p class="mb-0">If pool performance deteriorates — say collections in a future period are only $\$2.0\text{m}$, less than the $\$2.0\text{m}$ needed to cover the senior fee, senior interest, and mezzanine interest combined — the waterfall is applied strictly in order: senior fees and senior interest are paid in full first, and only the remainder (if any) goes to mezzanine interest. If even senior interest cannot be paid in full, the shortfall is typically capitalized (added to the senior tranche's balance) or, in severe cases, triggers a default under the transaction documents. The equity tranche, sitting at the bottom of the waterfall, is the first to receive nothing in a stressed period — this is precisely the "first-loss" feature that makes the tranching mechanism of Section 4.1 work: each tranche's actual cash flow risk mirrors its position in the waterfall, which in turn mirrors its subordination level in the loss-allocation structure.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-securitization-structures/" class="btn btn-outline-custom">&larr; 4.1 Securitization Structures</a>
+                    <a href="../../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

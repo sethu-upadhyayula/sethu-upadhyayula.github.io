@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tactical Patterns — King of the Hill</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.chess-board .sq.hill{background:#27ae60 !important;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Variants</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">King of the Hill</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-rules-and-winning-conditions"><div class="toc-chapter-header"><a href="../01-rules-and-winning-conditions/" class="toc-chapter-link"><strong>1.</strong> Rules and Winning Conditions</a></div></div>
+            <div class="toc-chapter" data-chapter="02-strategic-impact-the-king-race"><div class="toc-chapter-header"><a href="../02-strategic-impact-the-king-race/" class="toc-chapter-link"><strong>2.</strong> Strategic Impact: The King Race</a></div></div>
+            <div class="toc-chapter" data-chapter="03-tactical-patterns"><div class="toc-chapter-header"><a href="../03-tactical-patterns/" class="toc-chapter-link"><strong>3.</strong> Tactical Patterns</a></div></div>
+            <div class="toc-chapter" data-chapter="04-typical-game-patterns-and-practical-advice"><div class="toc-chapter-header"><a href="../04-typical-game-patterns-and-practical-advice/" class="toc-chapter-link"><strong>4.</strong> Typical Game Patterns and Practical Advice</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Variants</a> › <a href="../">King of the Hill</a> › <span>3. Tactical Patterns</span></nav>
+
+        <h1 class="text-accent mb-4">3. Tactical Patterns</h1>
+
+  <p>The strategic shift described in Chapter 2 gives rise to a set of tactical patterns that are rare or non-existent in classical chess but appear constantly in KOTH. Recognising these patterns &mdash; both how to execute them and how to defend against them &mdash; is the core practical skill of the variant.</p>
+
+  <h3>The King March</h3>
+  <p>The single most distinctive tactical motif in KOTH is the <strong>king march</strong>: a sequence of consecutive king moves that aims to reach a hill square in as few tempi as possible, with every intermediate square verified safe. A clean march might look like Ke1&ndash;e2&ndash;e3&ndash;e4 (win!), but the defender gets to respond after every single one of these moves, so the attacker must constantly re-evaluate whether the march is still safe and still the fastest plan.</p>
+
+  <div class="chess-board" id="board-march"></div>
+  <script>renderChessBoard('board-march', {e2:'wK',e8:'bK',d1:'wQ',d8:'bQ'}, {highlight:{d4:'hill',e4:'hill',d5:'hill',e5:'hill'}});</script>
+  <p class="text-center text-muted mt-2"><small>White's king on e2 is two steps from the hill (e2&ndash;e3&ndash;e4). If e3 and e4 are both safe and uncontrolled by Black, White wins in two more moves &mdash; assuming Black cannot create a faster threat.</small></p>
+
+  <h3>Counting the Race</h3>
+  <p>A critical practical skill is <strong>counting tempi</strong> for both kings simultaneously. Before committing to a march, ask: how many safe moves does my king need to reach a hill square, and how many does my opponent's king need? If you are faster, the march itself may be the winning plan, provided you can verify that the destination square will still be available (not blocked, not covered) when you arrive several moves from now &mdash; the opponent gets to react to every one of your moves in between.</p>
+
+  <div class="chess-board" id="board-counting"></div>
+  <script>renderChessBoard('board-counting', {f2:'wK',d7:'bK'}, {highlight:{d4:'hill',e4:'hill',d5:'hill',e5:'hill'}});</script>
+  <p class="text-center text-muted mt-2"><small>White's king (f2) needs three moves to reach e4 (f2&ndash;f3&ndash;e3&ndash;e4 or f2&ndash;e3&ndash;e4 in two if f3 isn't required). Black's king (d7) needs only two moves to reach d5 (d7&ndash;d6&ndash;d5). Black is faster &mdash; White cannot win this race on tempo alone and must look for ways to slow Black down or block d5/d6.</small></p>
+
+  <h3>Blocking and Deflection</h3>
+  <p>When you cannot win the race outright, you must disrupt your opponent's. There are three main tools:</p>
+  <ul>
+    <li><strong>Check the enemy king</strong> to force it off its planned route. A king in check must move out of check (or the check must be blocked or the checking piece captured), which often costs the defender a full tempo they cannot afford &mdash; sometimes pushing their king <em>away</em> from the hill rather than toward it.</li>
+    <li><strong>Control the hill squares</strong> with pieces other than your king. A king can never move to a square attacked by an enemy piece (this is just the standard "cannot move into check" rule applied to a non-check square), so a single well-placed bishop, knight, rook, or queen covering a hill square can completely shut down the opponent's march toward that square &mdash; even if their king is right next to it.</li>
+    <li><strong>Occupy the hill squares</strong> directly with your own non-king pieces. An occupied square cannot be moved onto without a capture, and if the occupying piece is itself defended, the enemy king cannot legally capture it (capturing into check is illegal) &mdash; so a defended piece on a hill square is a very strong blockade.</li>
+  </ul>
+
+  <div class="chess-board" id="board-check-deflect"></div>
+  <script>renderChessBoard('board-check-deflect', {e3:'wK',f5:'wB',e6:'bK'}, {highlight:{d4:'hill',e4:'hill',d5:'hill',e5:'hill'}});</script>
+  <p class="text-center text-muted mt-2"><small>White's bishop on f5 gives check to Black's king on e6. Black must respond to the check, likely losing a tempo in the race &mdash; meanwhile White's king on e3 is just one move from e4.</small></p>
+
+  <h3>The Trade-off: Checkmate vs. Hill Race</h3>
+  <p>Perhaps the deepest strategic tension in KOTH is the constant question: <em>should I race for the hill, or go for checkmate?</em> Both are fully legitimate winning paths, and the best move in a given position depends entirely on which threat materialises faster.</p>
+
+  <p>Consider a position where White's king is two moves from the hill, but Black has just opened a mating net that requires only one more move to complete. Even though White is "ahead" in the king race, Black's mating threat is faster &mdash; White must abandon the march (at least temporarily) and defend, or counter with an even faster mating threat of their own. Correctly weighing "moves to mate" against "moves to hill" for <em>both</em> sides, on <em>every</em> move, is what separates strong KOTH players from weak ones.</p>
+
+  <div class="chess-board" id="board-tradeoff"></div>
+  <script>renderChessBoard('board-tradeoff', {g1:'wK',e3:'bK',h7:'wQ',g7:'bP'}, {highlight:{d4:'hill',e4:'hill',d5:'hill',e5:'hill'}});</script>
+  <p class="text-center text-muted mt-2"><small>An illustrative tension: Black's king on e3 is one move from the hill (e4, d4, or d5/e5 depending on legality), while White's queen has infiltrated to h7 with mating threats. If White's attack is not faster than one move, Black simply marches to the hill and wins.</small></p>
+
+  <h3>Sacrificing Material to Open or Close Lines</h3>
+  <p>Because the king's path is everything, KOTH players are often willing to sacrifice pawns or even pieces purely to <strong>open a lane</strong> for their own king or to <strong>close a lane</strong> the opponent's king needs. A pawn sacrifice that blows open the centre might look unsound in classical material terms but be entirely correct in KOTH if it gives your king a clear, fast, safe route to a hill square &mdash; especially if the opponent's king has no equivalent route in return.</p>
+
+  <h3>Zwischenzug and Tempo Tricks</h3>
+  <p>Intermediate moves (zwischenzug) that gain a tempo are especially valuable in KOTH because the entire game is often decided by a single tempo in the race. A check, an attack on a piece, or a threat that forces a response can be the difference between your king arriving on move 20 versus move 21 &mdash; which can be the difference between winning and losing if your opponent's king is also one move away on move 21.</p>
+
+  <h3>Defensive Resource: Perpetual Check and Repetition</h3>
+  <p>If a player realises their king cannot win the race and cannot avoid the opponent's march, one defensive try is to seek perpetual check or a repetition draw &mdash; exactly as in classical chess. A drawn game by threefold repetition or the fifty-move rule is still a valid outcome in KOTH, and "I can't win the race but I can force a draw" is a legitimate practical decision when losing is otherwise inevitable.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../02-strategic-impact-the-king-race/" class="btn btn-outline-custom">&larr; 2. Strategic Impact: The King Race</a>
+            <a href="../04-typical-game-patterns-and-practical-advice/" class="btn btn-custom">4. Typical Game Patterns and Practical Advice &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

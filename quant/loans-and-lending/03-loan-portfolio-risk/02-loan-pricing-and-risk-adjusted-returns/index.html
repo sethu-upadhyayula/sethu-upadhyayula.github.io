@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Pricing and Risk-Adjusted Returns</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Loans and Lending</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-loans">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-loans/" class="toc-chapter-link"><strong>1.</strong> Loans</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-loans/01-loan-structure/">1.1 Loan Structure and Pricing</a>
+                        <a href="../../01-loans/02-prepayment/">1.2 Prepayment Modelling</a>
+                        <a href="../../01-loans/03-default/">1.3 Default Modelling</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-mortgage-backed-securities">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-mortgage-backed-securities/" class="toc-chapter-link"><strong>2.</strong> Mortgage-Backed Securities</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-mortgage-backed-securities/01-mbs-structure-and-cash-flows/">2.1 MBS Structure and Cash Flows</a>
+                        <a href="../../02-mortgage-backed-securities/02-prepayment-models-for-mbs/">2.2 Prepayment Models for MBS</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-loan-portfolio-risk">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-loan-portfolio-risk/" class="toc-chapter-link"><strong>3.</strong> Loan Portfolio Risk</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-loan-portfolio-risk/01-credit-scoring-and-portfolio-loss-models/">3.1 Credit Scoring and Portfolio Loss Models</a>
+                        <a href="../../03-loan-portfolio-risk/02-loan-pricing-and-risk-adjusted-returns/">3.2 Loan Pricing and Risk-Adjusted Returns</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-securitization-mechanics">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-securitization-mechanics/" class="toc-chapter-link"><strong>4.</strong> Securitization Mechanics</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-securitization-mechanics/01-securitization-structures/">4.1 Securitization Structures</a>
+                        <a href="../../04-securitization-mechanics/02-servicing-and-cash-flow-waterfalls/">4.2 Servicing and Cash Flow Waterfalls</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Loans and Lending</a> › <a href="../">3. Loan Portfolio Risk</a> › <span>Loan Pricing and Risk-Adjusted Returns</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">3.2 Loan Pricing and Risk-Adjusted Returns</h1>
+
+                <p>Having quantified expected and unexpected loss for a portfolio in Section 3.1, we now turn to the pricing decision for an individual loan: what spread must a lender charge so that the loan, after covering funding cost, expected loss, operating costs, and the cost of the capital it consumes, earns an acceptable return? The standard framework for this decision is risk-adjusted return on capital (RAROC).</p>
+
+                <h2 class="mt-5 mb-3">Risk-Based Loan Pricing</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Loan Spread Decomposition</div>
+                    <p class="mb-0">The all-in lending rate on a loan can be decomposed as:
+                    $$r_{\text{loan}} = r_{\text{funding}} + s_{\text{EL}} + s_{\text{capital}} + s_{\text{opex}} + s_{\text{profit}}$$
+                    where $r_{\text{funding}}$ is the bank's marginal cost of funds (e.g. SOFR plus the bank's funding spread), $s_{\text{EL}}$ compensates for expected loss, $s_{\text{capital}}$ compensates shareholders for the regulatory or economic capital the loan consumes, $s_{\text{opex}}$ covers origination and servicing costs, and $s_{\text{profit}}$ is the target economic profit margin. The expected-loss component is directly $s_{\text{EL}} \approx PD \times LGD$ (expressed as an annualised spread on EAD).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">RAROC</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Risk-Adjusted Return on Capital</div>
+                    <p>RAROC measures the return on a loan after deducting expected loss, expressed as a fraction of the economic or regulatory capital allocated to the loan:
+                    $$\text{RAROC} = \frac{\text{Revenue} - \text{Funding Cost} - \text{Operating Cost} - EL}{\text{Economic Capital}}$$
+                    where Revenue is the interest and fee income on the loan, and Economic Capital is typically computed as $EAD \times LGD \times (CDR_{99.9\%} - PD)$ from the Vasicek unexpected-loss formula of Section 3.1. A loan is accretive to the bank if:
+                    $$\text{RAROC} > \text{Hurdle Rate}$$
+                    where the hurdle rate is the bank's required return on equity (e.g. 12–15%).</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why Capital, Not Just Expected Loss, Matters for Pricing</div>
+                    <p class="mb-0">A loan priced only to cover expected loss earns zero economic profit in expectation, but exposes shareholders to the risk of losses exceeding the expectation in adverse scenarios (unexpected loss). Capital is held precisely to absorb unexpected loss, and shareholders require a return on that capital regardless of whether losses materialise. Two loans with identical $EL = PD \times LGD \times EAD$ but different $\rho$ (asset correlation) or $PD$ will require different amounts of economic capital and therefore different spreads — RAROC captures this distinction, while a naive expected-loss-only pricing approach does not.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Worked Example</h2>
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Pricing a $10m Loan</div>
+                    <p>Consider a 1-year, \$10m term loan with the following inputs:</p>
+                    <ul>
+                        <li>Funding cost: $r_{\text{funding}} = 4.5\%$ (1-year SOFR plus the bank's funding spread)</li>
+                        <li>$PD = 1.0\%$, $LGD = 45\%$, $EAD = \$10\text{m}$ (fully drawn term loan)</li>
+                        <li>Operating cost: 25 bps of EAD</li>
+                        <li>Asset correlation $\rho = 0.20$ (corporate exposure), so from the Vasicek formula at 99.9%: $\ell_{99.9\%} \approx \Phi\!\left(\frac{\Phi^{-1}(0.01)+\sqrt{0.20}\,\Phi^{-1}(0.999)}{\sqrt{0.80}}\right) \approx \Phi\!\left(\frac{-2.326+0.447\times3.090}{0.894}\right) \approx \Phi(-1.054) \approx 14.6\%$</li>
+                        <li>Target hurdle rate: 13%</li>
+                    </ul>
+                    <p><strong>Step 1 — Expected loss:</strong> $EL = 0.01 \times 0.45 \times \$10\text{m} = \$45{,}000$, or 45 bps of EAD.</p>
+                    <p><strong>Step 2 — Economic capital:</strong> $EC = EAD \times LGD \times (\ell_{99.9\%} - PD) = \$10\text{m} \times 0.45 \times (0.146 - 0.01) = \$10\text{m}\times0.45\times0.136 \approx \$612{,}000$.</p>
+                    <p><strong>Step 3 — Required spread for hurdle:</strong> Required return on capital $= 13\% \times \$612{,}000 \approx \$79{,}560$, i.e. 79.6 bps of EAD.</p>
+                    <p class="mb-0"><strong>Step 4 — All-in pricing:</strong> $r_{\text{loan}} \approx 4.5\% + 0.45\% \,(\text{EL}) + 0.25\%\,(\text{opex}) + 0.80\%\,(\text{capital charge}) = 6.00\%$. The lender should quote a spread of approximately $1.50\%$ over its funding cost (i.e. SOFR + funding spread + 150 bps) to clear its hurdle rate. If the borrower's credit committee approves a spread of only 100 bps, the loan's RAROC would fall below 13% and the relationship manager would need to offset this with ancillary fee revenue or reject the deal.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Portfolio-Level RAROC and Diversification</div>
+                    <p class="mb-0">RAROC can be computed at the single-loan level (marginal RAROC, used for origination decisions) or at the portfolio level (used for strategic allocation across business lines). Because economic capital under a multi-factor model depends on correlations between exposures, adding a loan to a portfolio with low correlation to existing exposures consumes less marginal capital than its stand-alone capital would suggest — a diversification benefit that is the quantitative rationale for portfolio limits by sector and geography discussed in Section 3.1, and for the pooling and tranching of loans into securitizations, the subject of Chapter 4.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-credit-scoring-and-portfolio-loss-models/" class="btn btn-outline-custom">&larr; 3.1 Credit Scoring and Portfolio Loss Models</a>
+                    <a href="../../04-securitization-mechanics/" class="btn btn-custom">Next: 4. Securitization Mechanics &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

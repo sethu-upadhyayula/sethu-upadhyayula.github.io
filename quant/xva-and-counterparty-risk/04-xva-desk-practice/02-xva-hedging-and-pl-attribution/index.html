@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XVA Hedging and P&amp;L Attribution</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">XVA and Counterparty Risk</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-xva">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-xva/" class="toc-chapter-link"><strong>1.</strong> CVA and XVA</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-xva/01-counterparty-risk/">1.1 Counterparty Credit Risk</a>
+                        <a href="../../01-xva/02-cva/">1.2 CVA</a>
+                        <a href="../../01-xva/03-dva-fva/">1.3 DVA and FVA</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-collateral-and-margining">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-collateral-and-margining/" class="toc-chapter-link"><strong>2.</strong> Collateral and Margining</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-collateral-and-margining/01-csas-and-variation-margin/">2.1 CSAs and Variation Margin</a>
+                        <a href="../../02-collateral-and-margining/02-initial-margin-and-simm/">2.2 Initial Margin and SIMM</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-kva-and-mva">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-kva-and-mva/" class="toc-chapter-link"><strong>3.</strong> KVA and MVA</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-kva-and-mva/01-capital-valuation-adjustment/">3.1 Capital Valuation Adjustment</a>
+                        <a href="../../03-kva-and-mva/02-margin-valuation-adjustment/">3.2 Margin Valuation Adjustment</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-xva-desk-practice">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-xva-desk-practice/" class="toc-chapter-link"><strong>4.</strong> XVA Desk Practice</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-xva-desk-practice/01-xva-aggregation-and-netting-sets/">4.1 XVA Aggregation and Netting Sets</a>
+                        <a href="../../04-xva-desk-practice/02-xva-hedging-and-pl-attribution/">4.2 XVA Hedging and P&amp;L Attribution</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">XVA and Counterparty Risk</a> › <a href="../">4. XVA Desk Practice</a> › <span>XVA Hedging and P&amp;L Attribution</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.2 XVA Hedging and P&amp;L Attribution</h1>
+
+                <p>Once a netting set's CVA, FVA, KVA and MVA have been computed, the XVA desk does not simply book the resulting charge and walk away. CVA and FVA are themselves contingent claims — CVA depends on the counterparty's default probability and on the bank's exposure to that counterparty, while FVA depends on the bank's own funding spread — and both fluctuate daily with market moves. The XVA desk therefore runs a live hedging book, managing the market and credit risk of its CVA/FVA position much like a trading desk manages a derivatives book, and must explain day-to-day P&amp;L moves to management through a rigorous attribution process.</p>
+
+                <h2 class="mt-5 mb-3">CVA Sensitivities and Credit Hedging</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — CVA Greeks</div>
+                    <p>CVA depends on the counterparty's hazard rate $\lambda_C(t)$ (via its survival probability) and on the exposure profile $EE(t)$ (via the underlying market risk factors). The desk computes sensitivities analogous to option Greeks:
+                    $$\text{CS01}_C = \frac{\partial \text{CVA}}{\partial s_C} \times 1\text{bp}, \qquad \frac{\partial \text{CVA}}{\partial S}, \quad \frac{\partial \text{CVA}}{\partial \sigma}, \quad \frac{\partial \text{CVA}}{\partial r}$$
+                    where $s_C$ is the counterparty's CDS spread and $S$, $\sigma$, $r$ are the underlying spot, volatility and rate factors driving $EE(t)$. $\text{CS01}_C$ is the change in CVA for a 1bp parallel shift in counterparty $C$'s credit curve, and is the primary metric used to size a credit hedge.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Hedging Credit Risk with CDS</div>
+                    <p class="mb-0">The most direct hedge for $\text{CS01}_C$ is a single-name CDS on counterparty $C$: buying protection notional $N_{\text{CDS}}$ such that the CDS position's CS01 offsets the CVA's CS01,
+                    $$N_{\text{CDS}} \approx \frac{\text{CS01}_C^{\text{CVA}}}{\text{CS01 per unit notional of CDS}}$$
+                    In practice single-name CDS are illiquid or unavailable for the vast majority of a bank's counterparties (corporates, sovereigns, funds), so desks frequently fall back to <strong>proxy hedges</strong> — CDS index positions (e.g. CDX or iTraxx) sized to match the counterparty's sector and rating, or a basket of liquid single names with similar credit characteristics. Proxy hedges leave residual <em>basis risk</em>: the counterparty's own spread can move differently from the index, and this basis risk is itself a P&amp;L driver that must be attributed and reported separately.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Hedging the Market Risk of CVA and FVA</h2>
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Wrong-Way Risk and Delta/Vega Hedges</div>
+                    <p class="mb-0">Beyond pure credit sensitivity, CVA inherits all of the market risk sensitivities of the underlying exposure profile: a payer-swap-heavy netting set has CVA that rises with rates (positive CVA delta to rates), and CVA on an option-heavy book has vega exposure because $EE(t)$ depends on the volatility used to simulate future paths. The XVA desk therefore also runs delta and vega hedges in the underlying rates, FX, equity or commodity markets — typically using vanilla swaps, FX forwards, or listed/OTC options — sized from the aggregated $\frac{\partial \text{CVA}}{\partial S}$ and $\frac{\partial \text{CVA}}{\partial \sigma}$ across all netting sets sharing that risk factor. When exposure and counterparty credit quality are correlated (<strong>wrong-way risk</strong>, e.g. an oil producer counterparty on the other side of a payer commodity swap), CVA sensitivities are amplified relative to a simple product of expected exposure and default probability, and the desk's hedge ratios must account for this correlation explicitly — often via the joint Monte Carlo simulation used to compute CVA itself, rather than via separately-computed Greeks.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — FVA Funding Hedge</div>
+                    <p>A netting set is uncollateralized and generates FVA $= -\$1.2\text{m}$ (a cost, reflecting the bank's own funding spread $s_F = 80\text{bp}$ applied to its expected positive exposure). The desk's FVA sensitivity to its own funding spread is:
+                    $$\frac{\partial \text{FVA}}{\partial s_F} = -\$15{,}000 \text{ per bp}$$
+                    A 10bp widening of the bank's funding spread (e.g. following a ratings downgrade) would move FVA by approximately $-\$150{,}000$ before any hedge.</p>
+                    <p class="mb-0">Unlike CVA, FVA's primary risk factor — the bank's own funding spread — is not directly hedgeable in the market in the same way a counterparty's CDS is: the bank cannot buy protection on itself. Desks instead manage this exposure through balance-sheet and treasury actions (term funding issuance, internal funding transfer pricing) and through proxy hedges using peer-bank credit spreads, which is why FVA P&amp;L often carries larger residual, unhedged moves than CVA P&amp;L.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">P&amp;L Attribution</h2>
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — XVA P&amp;L Attribution</div>
+                    <p>The day-on-day change in total XVA, $\Delta \text{XVA} = \text{XVA}_{t+1} - \text{XVA}_t$, is decomposed into named buckets so that desk heads and risk managers can see <em>why</em> the number moved:
+                    $$\Delta \text{XVA} = \underbrace{\theta \, \Delta t}_{\text{time decay}} + \underbrace{\sum_i \frac{\partial \text{XVA}}{\partial x_i} \Delta x_i}_{\text{market moves (delta/vega/CS01)}} + \underbrace{\Delta \text{XVA}_{\text{new trades}}}_{\text{new business}} + \underbrace{\epsilon}_{\text{unexplained / gamma residual}}$$
+                    The first-order ("delta") terms should be largely offset by the corresponding moves in the hedge book, so the desk's <em>net</em> P&amp;L is dominated by hedge slippage, basis risk, theta carry, and the cost of putting on new hedges — rather than by the gross market moves in the unhedged XVA itself.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Daily P&amp;L Attribution Report</div>
+                    <p>An XVA desk's end-of-day report for a single netting set might read:</p>
+                    <p>
+                    Theta (time decay): $-\$2{,}100$<br>
+                    CVA delta from rates move (+5bp): $-\$18{,}500$<br>
+                    Rates hedge P&amp;L: $+\$17{,}900$<br>
+                    CVA CS01 from counterparty spread widening (+3bp): $-\$9{,}000$<br>
+                    CDS proxy hedge P&amp;L: $+\$7{,}200$ (basis loss of \$1,800)<br>
+                    New trade impact (incremental CVA on new swap): $-\$4{,}500$<br>
+                    Unexplained / gamma residual: $-\$650$
+                    </p>
+                    <p class="mb-0">Net XVA P&amp;L for the day: $-\$2{,}100 + (-\$18{,}500 + \$17{,}900) + (-\$9{,}000 + \$7{,}200) - \$4{,}500 - \$650 = -\$10{,}650$. The report isolates the \$1,800 credit-spread basis loss and the \$600 rates hedge slippage as the drivers of the day's net loss, separately from the \$4,500 cost of putting on the new trade — information that would be invisible if only the raw $\Delta \text{XVA}$ were reported.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The XVA Desk as a P&amp;L Center</h2>
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Desk Reporting and Governance</div>
+                    <p class="mb-0">In most banks, the XVA desk operates as a centralized P&amp;L center: it charges other trading desks an XVA premium (via internal transfer pricing) when they execute a new trade with a counterparty, takes on the resulting XVA position, and is measured on the P&amp;L of running and hedging that aggregated position over time. Daily reporting therefore covers (i) the aggregate XVA balance sheet value across all netting sets, (ii) the hedge book's positions and Greeks, (iii) the attributed P&amp;L breakdown illustrated above, and (iv) capital metrics (CVA capital charge, KVA) since CVA hedges themselves consume capital and can create second-order KVA effects. This closes the loop from the theoretical exposure and valuation-adjustment framework developed in Chapters 1–3 to the practical, continuously-managed business of an XVA desk.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-xva-aggregation-and-netting-sets/" class="btn btn-outline-custom">&larr; 4.1 XVA Aggregation and Netting Sets</a>
+                    <a href="../../../" class="btn btn-custom">Back to Quant &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rules and Winning Conditions — King of the Hill</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.chess-board .sq.hill{background:#27ae60 !important;}
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Variants</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">King of the Hill</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-rules-and-winning-conditions"><div class="toc-chapter-header"><a href="../01-rules-and-winning-conditions/" class="toc-chapter-link"><strong>1.</strong> Rules and Winning Conditions</a></div></div>
+            <div class="toc-chapter" data-chapter="02-strategic-impact-the-king-race"><div class="toc-chapter-header"><a href="../02-strategic-impact-the-king-race/" class="toc-chapter-link"><strong>2.</strong> Strategic Impact: The King Race</a></div></div>
+            <div class="toc-chapter" data-chapter="03-tactical-patterns"><div class="toc-chapter-header"><a href="../03-tactical-patterns/" class="toc-chapter-link"><strong>3.</strong> Tactical Patterns</a></div></div>
+            <div class="toc-chapter" data-chapter="04-typical-game-patterns-and-practical-advice"><div class="toc-chapter-header"><a href="../04-typical-game-patterns-and-practical-advice/" class="toc-chapter-link"><strong>4.</strong> Typical Game Patterns and Practical Advice</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Variants</a> › <a href="../">King of the Hill</a> › <span>1. Rules and Winning Conditions</span></nav>
+
+        <h1 class="text-accent mb-4">1. Rules and Winning Conditions</h1>
+
+  <p>King of the Hill (often abbreviated <strong>KOTH</strong>) is played with exactly the same pieces, board, starting position, and move rules as standard chess. Every familiar rule still applies: castling, en passant, pawn promotion, the fifty-move rule, threefold repetition, and stalemate all work exactly as they do in classical chess. The only change is the addition of a second way to win the game outright.</p>
+
+  <h3>The Two Winning Conditions</h3>
+  <ul>
+    <li><strong>Standard win:</strong> Checkmate the opponent's king, exactly as in regular chess.</li>
+    <li><strong>King of the Hill win:</strong> Move your king to one of the four central squares &mdash; <strong>e4, d4, e5, or d5</strong> &mdash; and the position is not immediately lost for you as a result. The instant your king legally lands on one of these squares (and the game has not simultaneously ended in your opponent's favour), you win.</li>
+  </ul>
+
+  <p>This is a genuinely radical change. In classical chess, the king's job is almost entirely defensive: stay safe, stay out of the way, and let the other pieces do the fighting. In King of the Hill, the king has an offensive mission from the very start of the game &mdash; reach the centre, by any safe route, before your opponent does.</p>
+
+  <h3>The Hill Squares</h3>
+  <p>The four "hill" squares are exactly the same squares that classical opening theory already identifies as the most valuable real estate on the board &mdash; the centre. Controlling e4, d4, e5, and d5 has always been a cornerstone of good chess strategy because pieces placed there have maximum mobility and influence over the largest number of other squares. King of the Hill simply makes this central importance literal and absolute: occupying one of these squares with your king is not merely advantageous, it ends the game.</p>
+
+  <div class="chess-board" id="board-hill"></div>
+  <script>renderChessBoard('board-hill', {}, {highlight:{d4:'hill',e4:'hill',d5:'hill',e5:'hill'}});</script>
+  <p class="text-center text-muted mt-2"><small>The four green "hill" squares: d4, e4, d5, e5. Move your king onto any of these to win instantly (subject to the simultaneous-threat rule below).</small></p>
+
+  <h3>Reaching the Hill from the Starting Position</h3>
+  <p>From their home squares (e1 for White, e8 for Black), each king is theoretically only a handful of moves from a hill square. The shortest geometric path for White's king from e1 to e4 is three moves (e1&ndash;e2&ndash;e3&ndash;e4), and to d4 is also three moves via a diagonal route (e1&ndash;e2&ndash;d3&ndash;d4 or similar). In practice, however, the king cannot simply walk forward on move one &mdash; the squares in front of it are occupied by pawns and pieces, and walking an undeveloped king into the open early in the game is almost always fatally unsafe. The real skill of KOTH lies in clearing a safe path and timing the march correctly, which is the subject of Chapters 2 and 3.</p>
+
+  <div class="chess-board" id="board-start-paths"></div>
+  <script>renderChessBoard('board-start-paths', {}, {highlight:{e2:'hill',e3:'hill',d3:'hill'}});</script>
+  <p class="text-center text-muted mt-2"><small>A possible diagonal path for White's king from e1 toward d4: e1&ndash;e2&ndash;d3&ndash;d4. Every intermediate square must be safe and unoccupied.</small></p>
+
+  <h3>The Simultaneous Threat Rule</h3>
+  <p>There is one important caveat that every KOTH player must understand precisely: a king move to a hill square only wins if, immediately after the move, your opponent cannot legally and immediately end the game in their own favour. In practice this means:</p>
+  <ul>
+    <li>If moving your king to the hill square would place your own king in a position where it is simultaneously in <strong>check from a discovered attack</strong> and that check happens to also be checkmate, the move is simply illegal (you cannot move into checkmate, just as in regular chess) &mdash; so this scenario cannot actually occur.</li>
+    <li>The more practically relevant case is move ordering at the board level: if your king move to the hill is itself check or checkmate against the opponent, <em>both</em> conditions are satisfied simultaneously and you win &mdash; there is no ambiguity, since your move is what just happened.</li>
+    <li>The caveat mainly exists to clarify that the hill win is evaluated <strong>after your move is complete and fully legal</strong>. You cannot "almost" reach the hill or pass through a hill square en route to somewhere else and claim a win &mdash; your king must come to rest on d4, e4, d5, or e5 at the end of your turn.</li>
+  </ul>
+  <p>In almost all practical games, the simultaneous-threat subtlety boils down to a simple rule of thumb: <strong>if it is legal for your king to move to a hill square, and your king is not currently in check, making that move wins the game immediately</strong>. The exotic edge cases rarely arise outside of constructed puzzle positions.</p>
+
+  <div class="notation-box">
+    <strong>Rule summary:</strong> Win by (1) checkmate, exactly as in standard chess, or (2) a legal king move to d4, e4, d5, or e5. All other rules of chess (castling, en passant, promotion, draws by repetition/50-move/insufficient material, stalemate) are unchanged.
+  </div>
+
+  <h3>What Does NOT Count</h3>
+  <p>It is worth being explicit about a few things that do <em>not</em> trigger a hill win, since new players sometimes misremember the rule:</p>
+  <ul>
+    <li><strong>Other pieces on the hill squares don't win the game.</strong> A rook, knight, bishop, queen, or pawn sitting on d4/e4/d5/e5 has no special winning status &mdash; only the king triggers the win, and only by moving there itself.</li>
+    <li><strong>Castling does not count</strong>, even though castling is technically a king move &mdash; the king's destination squares after castling (c1/g1 for White, c8/g8 for Black) are never hill squares anyway, so this is moot in practice, but it underlines that the win condition is about the king's final resting square after a normal king move.</li>
+    <li><strong>Passing through a hill square is not enough.</strong> The king's move must terminate on a hill square; a king cannot "pass through" squares in the way a rook or queen slides, so this point is mostly conceptual &mdash; but it reinforces that only the final square matters.</li>
+  </ul>
+
+  <h3>Comparison with Standard Chess</h3>
+  <p>It can be useful to think of King of the Hill as standard chess with an additional, parallel "objective" layered on top &mdash; similar to how some video games have multiple win conditions (eliminate all enemies, or capture the flag). A game of KOTH can be won in the classical way (a full mating attack, with the king staying safely tucked away the whole game) just as easily as it can be won by a king march. Many games are decided by the threat of one method forcing a response that allows the other &mdash; for example, a defender forced to give up central control while parrying a mating attack may inadvertently open the door for the attacker's king to walk to the centre.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../" class="btn btn-outline-custom">&larr; Back to King of the Hill</a>
+            <a href="../02-strategic-impact-the-king-race/" class="btn btn-custom">2. Strategic Impact: The King Race &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

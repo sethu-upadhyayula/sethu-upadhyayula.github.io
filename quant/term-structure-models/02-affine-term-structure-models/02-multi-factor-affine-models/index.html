@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Factor Affine Models</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Term Structure Models</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-short-rate-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-short-rate-models/" class="toc-chapter-link"><strong>1.</strong> Short Rate Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-short-rate-models/01-vasicek-and-hull-white/">1.1 Vasicek and Hull-White Models</a>
+                        <a href="../../01-short-rate-models/02-hjm-framework/">1.2 HJM Framework</a>
+                        <a href="../../01-short-rate-models/03-lmm/">1.3 LIBOR Market Model (LMM)</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-affine-term-structure-models">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-affine-term-structure-models/" class="toc-chapter-link"><strong>2.</strong> Affine Term Structure Models</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-affine-term-structure-models/01-affine-models-and-the-cir-model/">2.1 Affine Models and the CIR Model</a>
+                        <a href="../../02-affine-term-structure-models/02-multi-factor-affine-models/">2.2 Multi-Factor Affine Models</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-calibration-and-model-risk">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-calibration-and-model-risk/" class="toc-chapter-link"><strong>3.</strong> Calibration and Model Risk</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-calibration-and-model-risk/01-calibrating-short-rate-models/">3.1 Calibrating Short-Rate Models</a>
+                        <a href="../../03-calibration-and-model-risk/02-model-risk-in-term-structure-models/">3.2 Model Risk in Term Structure Models</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-applications-to-exotic-rate-derivatives">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-applications-to-exotic-rate-derivatives/" class="toc-chapter-link"><strong>4.</strong> Applications to Exotic Rate Derivatives</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-applications-to-exotic-rate-derivatives/01-pricing-bermudans-with-lmm/">4.1 Pricing Bermudans with LMM</a>
+                        <a href="../../04-applications-to-exotic-rate-derivatives/02-model-choice-for-different-products/">4.2 Model Choice for Different Products</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Term Structure Models</a> › <a href="../">2. Affine Term Structure Models</a> › <span>Multi-Factor Affine Models</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2.2 Multi-Factor Affine Models</h1>
+
+                <p>All models so far — Vasicek, Hull-White, CIR — are driven by a single Brownian motion, so every point on the yield curve moves as a deterministic function of one state variable $r(t)$. Real yield curves do not move this way: empirically, curve changes are well described by two or three largely independent modes of variation. Multi-factor affine models add additional state variables to capture this.</p>
+
+                <h2 class="mt-5 mb-3">Motivation: Level, Slope, and Curvature</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Three Principal Components of Yield Curve Moves</div>
+                    <p class="mb-0">Principal component analysis (PCA) of historical changes in yield curves across many currencies and time periods consistently finds that the first three principal components explain the overwhelming majority (often &gt;95%) of total variance, and have a clear interpretation:</p>
+                    <ul>
+                        <li><strong>Level</strong> — a roughly parallel shift of the entire curve up or down, typically the dominant factor (60-80% of variance).</li>
+                        <li><strong>Slope</strong> — a steepening or flattening, where short and long rates move in opposite directions or by different amounts.</li>
+                        <li><strong>Curvature</strong> — a "butterfly" move where the middle of the curve moves relative to both ends.</li>
+                    </ul>
+                    <p class="mb-0">A single-factor model like Hull-White can only generate level-type moves (up to the shape of $B(t,T)$); it has no mechanism for an independent slope or curvature factor. Capturing these additional modes requires additional state variables.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Multi-Factor Affine Model Structure</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Multi-Factor Affine Short Rate Model</div>
+                    <p class="mb-0">A multi-factor affine model writes the short rate as a (typically linear) combination of $n$ state variables $X(t) = (X_1(t),\ldots,X_n(t))^\top$:
+                    $$r(t) = \delta_0 + \delta^\top X(t)$$
+                    where each $X_i(t)$ follows its own affine diffusion (e.g. Gaussian OU or CIR-type square-root), possibly correlated:
+                    $$dX_i(t) = \kappa_i(\theta_i - X_i(t))\,dt + \sigma_i \sqrt{\alpha_i + \beta_i X_i(t)}\,dW_i(t), \qquad d\langle W_i,W_j\rangle_t = \rho_{ij}\,dt$$
+                    Provided the drift and squared-diffusion of <em>each</em> factor remain affine in $X(t)$ (the joint affine condition), bond prices retain the exponential-affine form $P(t,T) = \exp\big(A(t,T) - B(t,T)^\top X(t)\big)$, with $A(t,T)$ scalar and $B(t,T)$ an $n$-vector, both solving a system of Riccati ODEs.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — A Two-Factor Gaussian Model</div>
+                    <p class="mb-0">A common two-factor specification sets $r(t) = X_1(t) + X_2(t)$ with
+                    $$dX_1(t) = -a_1 X_1(t)\,dt + \sigma_1\,dW_1(t), \qquad dX_2(t) = -a_2 X_2(t)\,dt + \sigma_2\,dW_2(t)$$
+                    and $d\langle W_1,W_2\rangle_t = \rho\,dt$. With $a_1 \ll a_2$, $X_1$ is a slow-moving, persistent factor (driving the long end and overall level) while $X_2$ is a fast-mean-reverting factor (driving the short end). The combination produces independent level and slope movements, and — with a suitable choice of $\rho$ and the two mean-reversion speeds — a curvature-like effect in the belly of the curve, none of which a single-factor model can reproduce. This is the natural multi-factor extension of Hull-White, and is widely used for products sensitive to curve shape such as CMS spread options.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Comparison to Single-Factor Models</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Trade-offs of Adding Factors</div>
+                    <p><strong>Realism of curve dynamics.</strong> A two- or three-factor model can match observed correlations between rate changes at different maturities far better than a single-factor model, which forces a correlation of (near) one between all points on the curve.</p>
+                    <p><strong>Pricing of curve-shape-sensitive products.</strong> Products whose payoff depends on the relationship between two or more points on the curve — CMS spread options, steepener/flattener structures, basis products — are essentially unpriceable in a meaningful sense by a single-factor model, since the model has no mechanism for the curve to twist. Multi-factor models give such products genuine, calibratable volatility and correlation exposure.</p>
+                    <p class="mb-0"><strong>Cost: more parameters, harder calibration.</strong> Each additional factor brings additional mean-reversion, volatility, and correlation parameters that must be calibrated to market data — and the market may not contain enough independent information (e.g. enough liquid CMS spread option quotes) to pin down all of them robustly. This calibration burden, and the model risk that comes with it, is the subject of the next chapter.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Affine Models in Context</div>
+                    <p class="mb-0">The affine framework unifies Vasicek, Hull-White, CIR, and their multi-factor extensions under a single closed-form bond-pricing machinery. In practice, the choice between a single-factor Hull-White, a two-factor Gaussian model, or a CIR-type model is driven by the product being priced: vanilla swaptions and caps are often adequately handled by a well-calibrated single-factor Hull-White; products with explicit curve-shape sensitivity demand at least two factors; and the LIBOR Market Model of Chapter 1, while not affine in this narrow sense, can be viewed as a very high-dimensional generalisation where every forward rate is (approximately) its own factor. The next chapter addresses how any of these models are actually calibrated in practice, and the risks that arise from that process.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-affine-models-and-the-cir-model/" class="btn btn-outline-custom">&larr; 2.1 Affine Models and the CIR Model</a>
+                    <a href="../../03-calibration-and-model-risk/" class="btn btn-custom">3. Calibration and Model Risk &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

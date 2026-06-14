@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vol Risk Premium Harvesting</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">Volatility Trading</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-volatility-products">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-volatility-products/" class="toc-chapter-link"><strong>1.</strong> Volatility Products</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-volatility-products/01-volatility-surface/">1.1 Volatility Surface</a>
+                        <a href="../../01-volatility-products/02-variance-swaps/">1.2 Variance Swaps</a>
+                        <a href="../../01-volatility-products/03-vix-and-volatility-indices/">1.3 VIX and Volatility Indices</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-volatility-derivatives-and-strategies">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-volatility-derivatives-and-strategies/" class="toc-chapter-link"><strong>2.</strong> Volatility Derivatives and Strategies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-volatility-derivatives-and-strategies/01-volatility-swaps-and-forward-vol-agreements/">2.1 Volatility Swaps and Forward Vol Agreements</a>
+                        <a href="../../02-volatility-derivatives-and-strategies/02-dispersion-and-correlation-trading/">2.2 Dispersion and Correlation Trading</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-vix-products-and-term-structure">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-vix-products-and-term-structure/" class="toc-chapter-link"><strong>3.</strong> VIX Products and Term Structure</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-vix-products-and-term-structure/01-vix-futures-and-the-vix-term-structure/">3.1 VIX Futures and the VIX Term Structure</a>
+                        <a href="../../03-vix-products-and-term-structure/02-vix-options-and-etps/">3.2 VIX Options and ETPs</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-systematic-volatility-strategies">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-systematic-volatility-strategies/" class="toc-chapter-link"><strong>4.</strong> Systematic Volatility Strategies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-systematic-volatility-strategies/01-vol-risk-premium-harvesting/">4.1 Vol Risk Premium Harvesting</a>
+                        <a href="../../04-systematic-volatility-strategies/02-tail-risk-hedging/">4.2 Tail Risk Hedging</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">Volatility Trading</a> › <a href="../">4. Systematic Volatility Strategies</a> › <span>Vol Risk Premium Harvesting</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">4.1 Vol Risk Premium Harvesting</h1>
+
+                <p>Section 1.3 noted in passing that implied correlation tends to exceed realized correlation, and the discussion of VIX futures contango in Section 3.1 attributed part of the structural shape of the VIX futures curve to a "volatility risk premium." This section makes that premium precise, and looks at how it is harvested systematically.</p>
+
+                <h2 class="mt-5 mb-3">The Volatility Risk Premium</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Volatility Risk Premium</div>
+                    <p class="mb-0">For an option (or variance swap) on an underlying with maturity $T$, the volatility risk premium (VRP) is the average gap between the implied volatility (or implied variance) priced into the instrument at inception, $\sigma_{\text{impl}}$, and the volatility subsequently realized by the underlying over $[0,T]$, $\sigma_{\text{real}}$:
+                    $$\text{VRP} = \mathbb{E}[\sigma_{\text{impl}} - \sigma_{\text{real}}]$$
+                    Empirically, across most equity indices and many other asset classes, $\text{VRP} > 0$ on average — implied volatility tends to overstate subsequently realized volatility, most of the time.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why a Positive Premium Should Exist</div>
+                    <p>The standard explanation mirrors the discussion of contango in Section 3.1: there is a structural imbalance between buyers and sellers of volatility protection. Many market participants — pension funds, insurers, asset managers — have a natural and persistent demand to <em>buy</em> protection against large drawdowns, and are willing to overpay (relative to a statistically "fair" volatility estimate) for that insurance. Sellers of volatility (option writers, variance swap dealers, systematic vol-selling funds) require compensation for bearing the resulting tail risk, which manifests as implied volatility trading above the statistically expected realized volatility.</p>
+                    <p class="mb-0">This is directly analogous to an insurance premium: the expected payout on a policy is lower than the premium charged, with the difference compensating the insurer for underwriting risk and capital costs. A short volatility position is, in this sense, "selling insurance" against large moves — collecting a steady premium most of the time, with the risk of large claims (losses) during tail events.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Strategies for Harvesting the Premium</h2>
+
+                <p>The most direct way to monetize a positive VRP is to systematically sell options (or variance) and delta-hedge (or not) the resulting exposure, collecting the premium as the position decays over time, net of any losses from the underlying's actual realized moves.</p>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Short Straddle / Strangle Overlay</div>
+                    <p class="mb-0">A short straddle sells a call and a put with the same strike $K$ (typically near-the-money) and maturity $T$, receiving total premium $C(K,T) + P(K,T)$. A short strangle instead sells an out-of-the-money call (strike $K_2 > S_0$) and an out-of-the-money put (strike $K_1 < S_0$), receiving $C(K_2,T) + P(K_1,T)$ — a smaller premium but a wider range over which the position is profitable at expiry, since the payoff is flat (zero) for $S_T \in [K_1, K_2]$. Systematic implementations typically sell a constant-maturity ladder of such structures (e.g., rolling monthly), so that premium income is received continuously rather than in a single lump sum.</p>
+                </div>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Systematic Put-Writing</div>
+                    <p class="mb-0">A put-writing strategy systematically sells out-of-the-money puts on a broad index (commonly cited benchmarks track selling one-month, roughly 2-5% out-of-the-money puts on a major equity index on a rolling basis), collecting the premium $P(K,T)$ each period. If $S_T \geq K$, the put expires worthless and the full premium is retained; if $S_T < K$, the strategy is assigned the underlying at $K$ (or cash-settles the equivalent loss), realizing a loss of $K - S_T - P(K,T)$ net of premium received. Over long histories, such strategies have delivered equity-like returns with somewhat lower volatility than holding the index outright — the premium collected compensates for, and on average more than offsets, the cost of the occasional large loss when $S_T \ll K$.</p>
+                </div>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — One-Month Put-Writing P&L</div>
+                    <p>Suppose an index trades at $S_0 = 100$, and a one-month put with strike $K=95$ (5% out-of-the-money) trades at $P(K,T) = 1.20$ (reflecting an implied volatility somewhat above the index's typical realized volatility — the VRP at work). A systematic put-writing strategy sells this put.</p>
+                    <p>If, at expiry, $S_T = 102$ (the index rose), the put expires worthless and the strategy keeps the full premium: P&L $= +1.20$, a return of $1.20\%$ on the $100$ notional.</p>
+                    <p class="mb-0">If instead $S_T = 88$ (a sharp 12% drawdown), the strategy is short a put that is now $7$ in-the-money, for a loss of $K - S_T = 7$, partially offset by the premium received: P&L $= 1.20 - 7 = -5.80$, a loss of $5.80\%$. Note that the put-writer's loss ($5.80\%$) is smaller in magnitude than the underlying's decline ($12\%$) — the premium provides a partial buffer — but the strategy still participates substantially in large downside moves, which is precisely the tail risk being compensated for.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Risk of Tail Events</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Premium Collection vs. Tail Exposure</div>
+                    <p>The defining feature of VRP-harvesting strategies is a payoff profile that is positive and relatively steady in most periods, punctuated by occasional sharp losses during tail events — a "negatively skewed" or "short gamma" return profile. This is the mirror image of a long-volatility position (Section 3.2's discussion of long VIX ETPs, or a long VIX call as in Section 3.2): most of the time it decays, but it pays off explosively during the same tail events that hurt the short-vol strategy most.</p>
+                    <p class="mb-0">Because the VRP is, on average, positive but realized in small increments while tail losses are large and infrequent, naive backtests over calm periods can substantially overstate the risk-adjusted attractiveness of these strategies — a sufficiently short or favorably-timed backtest may show no large losses at all, understating the true tail risk embedded in the strategy. Sizing a VRP-harvesting programme prudently, and pairing it with some form of tail protection, is the subject of the next section.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; 4. Systematic Volatility Strategies</a>
+                    <a href="../02-tail-risk-hedging/" class="btn btn-custom">4.2 Tail Risk Hedging &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fairy Conditions — Fairy Chess</title>
+<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="../../../../css/chess-board.css">
+<script src="../../../../js/chess-board.js"></script>
+<style>
+.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
+.piece-def{background:var(--card-bg,#1e1e2e);border-left:3px solid var(--accent-color,#7c9cbf);padding:.75rem 1rem;margin:.5rem 0;border-radius:0 6px 6px 0;}
+</style>
+</head><body>
+<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+</ul></div></div></nav></header>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Compositions</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Fairy Chess</a>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-what-is-fairy-chess"><div class="toc-chapter-header"><a href="../01-what-is-fairy-chess/" class="toc-chapter-link"><strong>1.</strong> What Is Fairy Chess?</a></div></div>
+            <div class="toc-chapter" data-chapter="02-fairy-pieces"><div class="toc-chapter-header"><a href="../02-fairy-pieces/" class="toc-chapter-link"><strong>2.</strong> Fairy Pieces</a></div></div>
+            <div class="toc-chapter" data-chapter="03-fairy-conditions"><div class="toc-chapter-header"><a href="../03-fairy-conditions/" class="toc-chapter-link"><strong>3.</strong> Fairy Conditions</a></div></div>
+            <div class="toc-chapter" data-chapter="04-grid-chess"><div class="toc-chapter-header"><a href="../04-grid-chess/" class="toc-chapter-link"><strong>4.</strong> Grid Chess</a></div></div>
+            <div class="toc-chapter" data-chapter="05-a-grasshopper-problem"><div class="toc-chapter-header"><a href="../05-a-grasshopper-problem/" class="toc-chapter-link"><strong>5.</strong> A Grasshopper Problem</a></div></div>
+            <div class="toc-chapter" data-chapter="06-circe-a-worked-example"><div class="toc-chapter-header"><a href="../06-circe-a-worked-example/" class="toc-chapter-link"><strong>6.</strong> Circe: A Worked Example</a></div></div>
+            <div class="toc-chapter" data-chapter="07-why-compose-fairy-problems"><div class="toc-chapter-header"><a href="../07-why-compose-fairy-problems/" class="toc-chapter-link"><strong>7.</strong> Why Compose Fairy Problems?</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Compositions</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Chess Compositions</a> › <a href="../">Fairy Chess</a> › <span>3. Fairy Conditions</span></nav>
+
+        <h1 class="text-accent mb-4">3. Fairy Conditions</h1>
+
+  <p>Where fairy <em>pieces</em> add new units to the board, fairy <em>conditions</em> change the rules of the game itself &mdash; and they apply to <strong>both</strong> sides, for the entire game, from the very first move. A position with no fairy pieces at all can still be a fairy problem purely by virtue of the condition under which it is played.</p>
+
+  <h3>Circe</h3>
+  <div class="piece-def">
+    When a piece is captured, it is immediately reborn on its <strong>game-array square</strong> &mdash; the square it would occupy in the starting position of an orthodox game &mdash; provided that square is currently vacant. If the rebirth square is occupied, the piece is simply captured as normal, with no rebirth. Pawns reborn this way reappear on their own file's second rank (for White) or seventh rank (for Black), regardless of which file they were captured on. A rook captured anywhere on the board reborns on a1 or h1 (if White) or a8/h8 (if Black), depending on which side of the board it "belongs" to by colour of its starting square.
+  </div>
+  <p class="mt-2">Circe transforms capture from a permanent removal into a (conditional) temporary displacement. This single change ripples through every tactical calculation: capturing a piece may be actively undesirable if the rebirth delivers it to a more active square, opens a discovered attack, or even gives check. Composing a Circe mate requires checking that the mated king has no rebirth-based escape (e.g., that no captured piece, on rebirth, would be able to interpose or capture the checking piece) &mdash; a constraint with no orthodox analogue. Chapter 6 works through a full Circe example.</p>
+
+  <h3>Anticirce</h3>
+  <div class="piece-def">
+    The mirror image of Circe: when a piece <em>captures</em>, it is the <strong>capturing</strong> piece (not the captured piece) that is reborn on its own game-array square immediately after the capture. If that rebirth square is occupied by any piece (friend or foe), the capture itself is <strong>illegal</strong> &mdash; it simply cannot be played.
+  </div>
+  <p class="mt-2">This dramatically restricts which captures are legal: a knight that has wandered to the centre of the board, whose game-array square (b1/g1/b8/g8) is occupied by another piece, cannot capture <em>anything</em> until that square is vacated. Anticirce problems often revolve around manoeuvring pieces so that a particular capture becomes legal (its rebirth square is cleared) at exactly the right moment &mdash; or, conversely, keeping a square permanently occupied to <em>prevent</em> an enemy capture.</p>
+
+  <h3>Madrasi</h3>
+  <div class="piece-def">
+    Two pieces of the <strong>same type and colour-pair</strong> (e.g., a White rook and a Black rook, or a White knight and a Black knight) that mutually observe each other &mdash; i.e., each could capture the other on the next move, if not for Madrasi &mdash; are <strong>paralysed</strong>: neither may move, capture, or give check, for as long as the mutual observation persists. The paralysis is symmetric and updates instantly with every move &mdash; a piece can become paralysed and then unparalysed repeatedly over the course of a single solution as the geometry of the board changes.
+  </div>
+  <p class="mt-2">Madrasi creates striking reciprocal effects. A player may want to move a piece to a square where it observes an enemy piece of the same type &mdash; freezing that enemy piece &mdash; but doing so <em>also</em> freezes their own piece. The resulting "mutual paralysis" theme produces compositions of remarkable restraint: large parts of the board become frozen in place, and the entire solution revolves around the handful of pieces that remain mobile. Pawns are included: two pawns (of any colour combination matching "same type") that attack each other are mutually paralysed under Madrasi, which can produce surprising "frozen pawn chain" structures.</p>
+
+  <h3>Andernach</h3>
+  <div class="piece-def">
+    Whenever a piece (other than a king) makes a capture, it immediately <strong>changes colour</strong> &mdash; a White rook that captures a Black piece becomes a Black rook (and vice versa), remaining on the square it captured to.
+  </div>
+  <p class="mt-2">Andernach turns every capture into a kind of "defection." A piece you use to capture an enemy unit becomes the enemy's piece from that point on &mdash; meaning aggressive captures must be weighed against permanently losing that piece to the opponent's side. In helpmates especially, Andernach often produces final positions where the mating piece itself only became White's (or Black's) by virtue of a capture made earlier in the solution.</p>
+
+  <h3>Anti-Kings</h3>
+  <div class="piece-def">
+    Under Anti-Kings, a player's king must be <strong>in check</strong> at the end of every move that player makes. Moving the king out of check (the normal legality requirement in orthodox chess) is illegal here; instead, the king must move <em>into</em>, or remain in, check. A player who has no legal move that leaves their own king in check has no legal move at all, and the game ends (typically as a loss for that player, depending on the exact stipulation).
+  </div>
+  <p class="mt-2">This condition completely inverts the role of "check" as a concept &mdash; rather than something to be avoided, being in check becomes a permanent requirement, and a player must continually manoeuvre to keep at least one enemy piece attacking their own king.</p>
+
+  <h3>Maximummer (and Minimummer)</h3>
+  <div class="piece-def">
+    Under a (Black) Maximummer, Black must always play the <strong>geometrically longest</strong> legal move available on each turn, where "length" is measured as the straight-line (Euclidean) distance between the departure and arrival squares. If several legal moves are tied for longest, Black may choose freely among them. A <strong>Minimummer</strong> is the dual condition: the shortest legal move must be played. Either condition can apply to White instead of (or in addition to) Black.
+  </div>
+  <p class="mt-2">Maximummer severely restricts the defending side's options: Black cannot play a quiet "waiting" move if a long-distance move (e.g., a queen sweeping across the whole board) is available and not tied for longest. This is precisely why Maximummer is so often paired with helpmates and selfmates &mdash; it lets the composer force Black's hand with near-total precision, eliminating the need to refute dozens of "sensible" alternative defences, since most of them simply aren't the longest move and so aren't legal.</p>
+
+  <h3>Take &amp; Make</h3>
+  <div class="piece-def">
+    After a capture, the capturing piece must immediately make a further move using the <strong>movement rules of the piece it just captured</strong> &mdash; as if it were, for one extra step, that type of piece. A rook that captures a bishop must then make one bishop-like diagonal step (of any legal length) as part of the same move; if no legal "Make" continuation exists, the capture itself is illegal and cannot be played. Capturing a piece on the "Make" step is also possible, and (in some rule sets) can trigger a further "Make" recursively.
+  </div>
+  <p class="mt-2">Take &amp; Make rewards composers who can set up positions where seemingly natural captures are illegal (no legal "Make" follow-up exists) while less obvious captures work perfectly &mdash; reversing the usual intuition about which captures are "good."</p>
+
+  <h3>Combining Conditions</h3>
+  <p>Conditions are frequently combined in a single composition &mdash; for instance, "Circe Madrasi" applies both the rebirth rule and the mutual-paralysis rule simultaneously, and the two interact: a piece reborn under Circe might land on a square where it immediately paralyses (or is paralysed by) another piece, an effect impossible under either condition alone. Reading the heading of a fairy problem carefully &mdash; and checking every condition listed against every move in the solution &mdash; is essential; skipping even one condition on one move is the most common solving error in this genre.</p>
+
+        <hr class="my-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+            <a href="../02-fairy-pieces/" class="btn btn-outline-custom">&larr; 2. Fairy Pieces</a>
+            <a href="../04-grid-chess/" class="btn btn-custom">4. Grid Chess &rarr;</a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container text-center"><div class="social-links">
+<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+</div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../js/script.js"></script>
+</body></html>

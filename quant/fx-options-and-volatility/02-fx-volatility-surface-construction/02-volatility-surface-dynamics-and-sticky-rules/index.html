@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volatility Surface Dynamics and Sticky Rules</title>
+    <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../../" class="text-decoration-none text-accent fw-semibold fs-5">FX Options and Volatility</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-fx-options">
+                    <div class="toc-chapter-header">
+                        <a href="../../01-fx-options/" class="toc-chapter-link"><strong>1.</strong> FX Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../01-fx-options/01-garman-kohlhagen/">1.1 Garman-Kohlhagen Model</a>
+                        <a href="../../01-fx-options/02-delta-and-hedging-conventions/">1.2 Delta and Hedging Conventions</a>
+                        <a href="../../01-fx-options/03-volatility-surface-rr-and-bf/">1.3 Volatility Surface: Risk Reversals and Butterflies</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-fx-volatility-surface-construction">
+                    <div class="toc-chapter-header">
+                        <a href="../../02-fx-volatility-surface-construction/" class="toc-chapter-link"><strong>2.</strong> FX Volatility Surface Construction</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../02-fx-volatility-surface-construction/01-smile-interpolation-methods/">2.1 Smile Interpolation Methods</a>
+                        <a href="../../02-fx-volatility-surface-construction/02-volatility-surface-dynamics-and-sticky-rules/">2.2 Volatility Surface Dynamics and Sticky Rules</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fx-option-strategies">
+                    <div class="toc-chapter-header">
+                        <a href="../../03-fx-option-strategies/" class="toc-chapter-link"><strong>3.</strong> FX Option Strategies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../03-fx-option-strategies/01-vanilla-strategy-combinations/">3.1 Vanilla Strategy Combinations</a>
+                        <a href="../../03-fx-option-strategies/02-volatility-trading-via-fx-options/">3.2 Volatility Trading via FX Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-fx-vol-risk-management">
+                    <div class="toc-chapter-header">
+                        <a href="../../04-fx-vol-risk-management/" class="toc-chapter-link"><strong>4.</strong> FX Vol Risk Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../../04-fx-vol-risk-management/01-vega-vanna-and-volga/">4.1 Vega, Vanna, and Volga</a>
+                        <a href="../../04-fx-vol-risk-management/02-correlation-and-cross-pair-volatility-risk/">4.2 Correlation and Cross-Pair Volatility Risk</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../../">Quant</a> › <a href="../../">FX Options and Volatility</a> › <a href="../">2. FX Volatility Surface Construction</a> › <span>Volatility Surface Dynamics and Sticky Rules</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2.2 Volatility Surface Dynamics and Sticky Rules</h1>
+
+                <p>Sections 2.1 and 1.3 describe how to construct the volatility surface at a snapshot in time. But a trading book is repriced continuously as spot moves, and the volatility surface must move with it — the question is <em>how</em>. Different assumptions about how the surface re-anchors itself as spot changes are called "sticky rules," and the choice between them is not a modelling detail buried in the appendix: it directly determines the realized P&amp;L of a vega-hedged book and the effective delta of an option position.</p>
+
+                <h2 class="mt-5 mb-3">Three Sticky Rules</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Sticky Strike, Sticky Delta, Sticky Moneyness</div>
+                    <ul class="mb-0">
+                        <li><strong>Sticky strike:</strong> the implied volatility for a given <em>absolute strike</em> $K$ stays fixed as spot moves. $\sigma(K)$ is unchanged; $\sigma(\Delta)$ for a fixed delta level changes because the strike corresponding to that delta shifts with spot.</li>
+                        <li><strong>Sticky delta (sticky moneyness in delta space):</strong> the implied volatility for a given <em>delta</em> (e.g. the 25-delta call) stays fixed as spot moves. $\sigma(\Delta)$ is unchanged; $\sigma(K)$ for a fixed strike changes because that strike now corresponds to a different delta.</li>
+                        <li><strong>Sticky moneyness (in strike space):</strong> implied volatility is fixed as a function of $K/S_0$ (or $K/F_0$) — i.e. the smile "rides along" with spot when plotted against moneyness, similar in spirit to sticky delta but defined directly via the strike-to-spot ratio rather than delta.</li>
+                    </ul>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Which Rule Does the Market Follow?</div>
+                    <p class="mb-0">No single rule holds exactly in practice. Empirically, FX volatility surfaces tend to behave closer to sticky delta (or sticky moneyness) over short horizons and for liquid G10 pairs — the smile shifts with spot so that a given delta point retains roughly the same implied volatility — though the relationship is regime-dependent and can shift toward sticky strike during periods of acute stress when the market re-prices the entire surface around the new spot level rather than smoothly translating it. Many desks calibrate a "sticky-ness" parameter empirically from historical co-movements of spot and the vol surface, or use a local/stochastic volatility model whose dynamics interpolate between the two extremes.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Implications for Delta Hedging</h2>
+
+                <p>The sticky rule assumption changes the <em>effective delta</em> of an option — the total sensitivity of the option price to spot, including the indirect effect of spot on the implied volatility used to price it.</p>
+
+                <div class="math-box proposition">
+                    <div class="math-box-label">Proposition — Effective Delta Under Different Sticky Rules</div>
+                    <p>For an option priced at implied volatility $\sigma(K, S_0)$, the total (effective) delta is:</p>
+                    $$\Delta_{\text{eff}} = \frac{\partial V}{\partial S_0}\bigg|_{\sigma \text{ fixed}} + \frac{\partial V}{\partial \sigma}\cdot\frac{\partial \sigma}{\partial S_0} = \Delta_{\text{BS}} + \text{Vega}\cdot\frac{\partial \sigma}{\partial S_0}$$
+                    <p class="mb-0">Under <strong>sticky strike</strong>, $\sigma(K)$ does not depend on $S_0$ for fixed $K$, so $\partial\sigma/\partial S_0 = 0$ and $\Delta_{\text{eff}} = \Delta_{\text{BS}}$ — the plain Black-Scholes delta is the correct hedge ratio. Under <strong>sticky delta</strong>, as spot rises the smile shifts so that the volatility at the (now higher) original strike changes according to the local slope of the smile in delta space; for a smile with negative skew (puts richer than calls, as is typical with a negative risk reversal), a spot increase typically <em>decreases</em> the volatility at a fixed strike, so $\partial\sigma/\partial S_0 < 0$, and $\Delta_{\text{eff}} \neq \Delta_{\text{BS}}$.</p>
+                </div>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Sign and Size of the Correction</div>
+                    <p class="mb-0">For an OTM call on a currency pair with negative skew (negative risk reversal — puts richer than calls), under sticky delta a spot rally tends to reduce the implied volatility at the option's strike (the strike becomes "less OTM" on the call side, moving toward the cheaper part of the smile). Since $\text{Vega} > 0$ always, and $\partial\sigma/\partial S_0 < 0$ in this case, the correction term $\text{Vega}\cdot\partial\sigma/\partial S_0$ is negative — the sticky-delta effective delta is <em>smaller</em> than the plain Black-Scholes delta for this call. A hedger who uses the Black-Scholes delta under a sticky-delta market is therefore over-hedged, and will see a P&amp;L drag from carrying excess spot exposure relative to the option's true sensitivity.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">P&amp;L of a Vega-Hedged Book</h2>
+
+                <p>A book that is vega-hedged — net vega approximately zero across the surface — is not automatically immune to surface dynamics. The realized P&amp;L from a spot move depends on how the surface actually moves relative to the assumption embedded in the hedge.</p>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Sticky-Delta Book, Sticky-Strike Realization</div>
+                    <p>Suppose a trading desk hedges a short risk-reversal position (short OTM call, long OTM put, both 25-delta) assuming sticky-delta dynamics: as spot moves, they re-strike their delta hedge assuming the 25-delta implied volatilities stay constant. Vega exposure to the ATM bucket is hedged separately and assumed flat.</p>
+                    <p>Now suppose spot rallies sharply, but the market in fact realizes sticky-strike dynamics — the implied volatility at each <em>absolute strike</em> stays fixed, meaning the volatility at the (now more OTM, on a delta basis) original call strike has <em>not</em> fallen as the sticky-delta assumption would predict. The desk's short call position, marked under the realized sticky-strike surface, is now more expensive than the sticky-delta hedge assumed — generating a mark-to-market loss on the vega/vanna exposure of the risk reversal that the delta hedge alone cannot offset.</p>
+                    <p class="mb-0">This is the essence of "vanna P&amp;L": even a book with zero net vega and a delta hedge appropriate for one sticky rule will show P&amp;L when the realized surface dynamics differ from the assumed rule, because the cross-sensitivity of vega to spot (vanna) was hedged under the wrong assumption. Quantifying and managing this exposure — vanna and volga risk explicitly — is the subject of Chapter 4.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-smile-interpolation-methods/" class="btn btn-outline-custom">&larr; 2.1 Smile Interpolation Methods</a>
+                    <a href="../../03-fx-option-strategies/" class="btn btn-custom">Next: 3. FX Option Strategies &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../../js/script.js"></script>
+</body></html>

@@ -7,10 +7,6 @@
 <link rel="stylesheet" href="../../../css/styles.css">
 <link rel="stylesheet" href="../../../css/chess-board.css">
 <script src="../../../js/chess-board.js"></script>
-<style>
-.check-counter{display:inline-block;background:var(--card-bg,#1e1e2e);border:2px solid #e74c3c;border-radius:8px;padding:.5rem 1.5rem;font-size:1.4rem;font-weight:bold;color:#e74c3c;margin:.5rem .25rem;}
-.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
-</style>
 </head><body>
 <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
 <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
@@ -25,116 +21,35 @@
 <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
 <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
 </ul></div></div></nav></header>
-<main><div class="container py-4">
-<div class="mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
-<nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Variants</a> › <span>Three Check</span></nav>
+<main>
+    <aside class="math-toc" id="math-toc">
+        <a href="../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Chess Variants</a>
+        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+            <span class="text-accent fw-semibold fs-5">Three-Check</span>
+            <hr>
+            <div class="toc-chapter" data-chapter="01-rules-and-winning-conditions"><div class="toc-chapter-header"><a href="01-rules-and-winning-conditions/" class="toc-chapter-link"><strong>1.</strong> Rules and Winning Conditions</a></div></div>
+            <div class="toc-chapter" data-chapter="02-how-three-check-changes-strategy"><div class="toc-chapter-header"><a href="02-how-three-check-changes-strategy/" class="toc-chapter-link"><strong>2.</strong> How Three Check Changes Strategy</a></div></div>
+            <div class="toc-chapter" data-chapter="03-tactical-patterns"><div class="toc-chapter-header"><a href="03-tactical-patterns/" class="toc-chapter-link"><strong>3.</strong> Tactical Patterns</a></div></div>
+            <div class="toc-chapter" data-chapter="04-openings-and-endgames-in-three-check"><div class="toc-chapter-header"><a href="04-openings-and-endgames-in-three-check/" class="toc-chapter-link"><strong>4.</strong> Openings and Endgames in Three Check</a></div></div>
+        </nav>
+    </aside>
+    <section class="math-content">
+        <div class="d-lg-none mb-4"><a href="../" class="btn btn-outline-custom btn-sm">&larr; Back to Chess Variants</a></div>
+        <nav class="breadcrumb-nav"><a href="../../../chess/">Chess</a> › <a href="../">Chess Variants</a> › <span>Three-Check</span></nav>
 
-<h1 class="mb-3">Three Check</h1>
-<p class="lead mb-4">Three Check adds a second path to victory: give check to the opponent's king three times and you win. Every single check counts toward your total — even checks that lose material or disrupt your own position. The check counter transforms the entire strategic calculus of the game.</p>
+        <h1 class="text-accent mb-3">Three-Check</h1>
+        <p class="lead mb-4">Three Check adds a second path to victory: give check to the opponent's king three times and you win. Every single check counts toward your total — even checks that lose material or disrupt your own position. The check counter transforms the entire strategic calculus of the game.</p>
 
-<!-- RULES -->
-<section class="hero-card p-4 mb-4">
-  <h2>1. Rules and Winning Conditions</h2>
-  <p>Three Check is played exactly like standard chess with one additional winning condition:</p>
-  <ul>
-    <li><strong>Standard win:</strong> Checkmate the opponent's king.</li>
-    <li><strong>Three Check win:</strong> Deliver check to the opponent's king three times. The game ends immediately when the third check is given — even if the check is escapable, the game is over.</li>
-  </ul>
+        <p class="mb-5">The four chapters below cover the rules of the variant, how it reshapes classical strategy and king safety, the tactical patterns that emerge from the check counter, and how openings and endgames are reshaped when "give a check" becomes its own winning condition.</p>
 
-  <h3>The Check Counter</h3>
-  <p>Both players accumulate a check counter displayed during the game. In most interfaces it appears as <strong>+1</strong>, <strong>+2</strong>, <strong>+3</strong> (winning) for each player. Here is what the counter looks like mid-game:</p>
-
-  <div class="text-center my-3">
-    <div>
-      <span class="check-counter">White: +2</span>
-      <span class="check-counter">Black: +1</span>
-    </div>
-    <small class="text-muted">White has given 2 checks — one more wins. Black has given 1.</small>
-  </div>
-
-  <h3>Checks That Count</h3>
-  <p>Every check counts regardless of context:</p>
-  <ul>
-    <li>A check that loses your queen still counts toward the total.</li>
-    <li>A discovered check counts.</li>
-    <li>A double check counts as one check (not two) — it is still a single instance of the king being in check.</li>
-    <li>Checks in positions where you are materially crushed still count. A player down a queen and two rooks can win by landing their third check.</li>
-  </ul>
-</section>
-
-<!-- STRATEGIC IMPACT -->
-<section class="hero-card p-4 mb-4">
-  <h2>2. How Three Check Changes Strategy</h2>
-
-  <h3>Every Check Has New Value</h3>
-  <p>In classical chess, a check is only good if it accomplishes something — it gains tempo, forces the king to move, or is part of a mating sequence. Pointless checks are considered poor moves. In Three Check, <strong>every check has intrinsic value</strong>: it advances your counter by one. A check that forces you to give up a bishop in exchange might still be worth playing if it brings your counter to 2 or 3.</p>
-
-  <h3>King Safety Is Completely Transformed</h3>
-  <p>King safety in classical chess means avoiding checkmate and threats to the king's position. In Three Check, king safety means <em>avoiding being checked at all</em> — even a harmless check that you can easily escape still counts against you on the scoreboard. This makes king shelter and the prevention of checks a primary strategic concern from move one.</p>
-  <ul>
-    <li>Keeping the king behind a solid pawn wall is more valuable than ever.</li>
-    <li>Trading a piece to avoid a check is often correct in Three Check even if it is materially unfavourable.</li>
-    <li>Blocking a check with a piece is sometimes preferable to escaping with the king — you avoid the counter incrementing.</li>
-  </ul>
-
-  <h3>Attack-Minded Play</h3>
-  <p>Three Check rewards aggressive, attacking play far more than classical chess. The incentive structure pushes both players to:</p>
-  <ul>
-    <li>Open lines toward the enemy king as rapidly as possible.</li>
-    <li>Sacrifice material for checking opportunities.</li>
-    <li>Prioritise piece activity and king exposure over pawn structure and long-term planning.</li>
-  </ul>
-
-  <div class="chess-board" id="board-check"></div>
-  <script>renderChessBoard('board-check', {e8:'bK',f7:'wQ',e1:'wK',g8:'bR'});</script>
-  <p class="text-center text-muted mt-2"><small>White queen on f7 gives check to the Black king on e8 — even if Black captures the queen next move, White banks check number one.</small></p>
-</section>
-
-<!-- TACTICAL PATTERNS -->
-<section class="hero-card p-4 mb-4">
-  <h2>3. Tactical Patterns</h2>
-
-  <h3>The Early Check Attack</h3>
-  <p>Unlike classical chess where scholar's-mate attempts are easily refuted, early checking attacks in Three Check carry real value even when parried. Giving check on move 3 or 4 — even with a piece that gets chased away — puts you one-third of the way to victory before most players have finished developing.</p>
-
-  <div class="notation-box mb-3">
-    1.e4 e5 2.Qh5 Nc6 3.Bc4 Nf6?? 4.Qxf7+ (check 1!) Ke7 5.Qxe5+ (check 2!) Kf7 ...
-    <br><em>White has 2/3 checks in 5 moves. Black must now desperately avoid any further checks.</em>
-  </div>
-
-  <h3>Sacrificing for Checks</h3>
-  <p>In Three Check, piece sacrifices purely for checking rights are legitimate winning strategies. Offering your queen to force the king into the open and then delivering two checks with minor pieces is a common attacking motif. The psychology shifts: material is worth less, checks are worth more.</p>
-
-  <h3>Defensive Counter-Checks</h3>
-  <p>When your opponent has delivered two checks and needs just one more, the entire defensive plan changes. You must:</p>
-  <ul>
-    <li>Keep your king completely shielded — avoid any exposed square that could be checked.</li>
-    <li>Consider moving your king to a fortress where checks are geometrically impossible.</li>
-    <li>Look for ways to deliver your own checks — racing to three first is often the only winning continuation.</li>
-  </ul>
-
-  <h3>Discovered Checks</h3>
-  <p>Discovered checks are especially powerful in Three Check. A single piece move that reveals a check from a piece behind it advances the counter while also creating tactical complications. Double discovered checks — where two pieces simultaneously give check — are among the most feared tactical weapons in the variant.</p>
-</section>
-
-<!-- OPENING AND ENDGAME -->
-<section class="hero-card p-4 mb-4">
-  <h2>4. Openings and Endgames in Three Check</h2>
-
-  <h3>Opening Principles</h3>
-  <p>Classical opening principles apply but with modifications. Development is still important — you need pieces to deliver checks. However, the priority is developing pieces that can immediately threaten checks:</p>
-  <ul>
-    <li><strong>Knights and bishops first</strong> — they can create early checking threats without overextending the queen.</li>
-    <li><strong>King safety is paramount</strong> — castle quickly to put your king behind pawns. Leaving your king in the centre against a Three-Check opponent is extremely dangerous.</li>
-    <li><strong>Avoid pawn moves</strong> that open lines toward your own king — every open diagonal and file is a potential checking avenue.</li>
-  </ul>
-
-  <h3>Endgame Peculiarities</h3>
-  <p>Three Check endgames are unlike any classical endgame. A player who is two checks ahead might have a completely lost classical position but still be winning — they just need to land one more check. Conversely, a player with overwhelming material advantage must be careful: if they allow the opponent to reach 3 checks, all that material is irrelevant.</p>
-  <p>King-and-pawn endgames are particularly treacherous: advancing pawns can open lines that allow unexpected checks. The player with 2 checks should actively seek any checking move, even sacrificing all remaining material if necessary to land the decisive third check.</p>
-</section>
-
-</div></main>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6"><a href="01-rules-and-winning-conditions/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">1. Rules and Winning Conditions</h4><p class="mb-0">The check counter, what counts as a check, and how the game ends.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="02-how-three-check-changes-strategy/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">2. How Three Check Changes Strategy</h4><p class="mb-0">Why every check has value, and how king safety and aggression are transformed.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="03-tactical-patterns/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">3. Tactical Patterns</h4><p class="mb-0">Early checking attacks, sacrifices for checks, and discovered-check tactics.</p></div></a></div>
+            <div class="col-lg-4 col-md-6"><a href="04-openings-and-endgames-in-three-check/" class="text-decoration-none text-reset"><div class="hero-card p-4 h-100 course-card"><h4 class="text-accent mb-2">4. Openings and Endgames in Three Check</h4><p class="mb-0">Opening priorities built around checking threats, and the unique logic of Three Check endgames.</p></div></a></div>
+        </div>
+    </section>
+</main>
 <footer class="site-footer"><div class="container text-center"><div class="social-links">
 <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
 <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>

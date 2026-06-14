@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FX Volatility Surface Construction</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
+    <header><nav class="navbar navbar-expand-lg site-header"><div class="container">
+        <a class="navbar-brand brand-text" href="../../../">Sethu Upadhyayula</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../about/">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../math/">Math</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../../quant/">Quant</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../chess/">Chess</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../contact/">Contact</a></li>
+            <li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
+        </ul></div>
+    </div></nav></header>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Quant</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">FX Options and Volatility</a>
+                <hr>
+                <div class="toc-chapter" data-chapter="01-fx-options">
+                    <div class="toc-chapter-header">
+                        <a href="../01-fx-options/" class="toc-chapter-link"><strong>1.</strong> FX Options</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../01-fx-options/01-garman-kohlhagen/">1.1 Garman-Kohlhagen Model</a>
+                        <a href="../01-fx-options/02-delta-and-hedging-conventions/">1.2 Delta and Hedging Conventions</a>
+                        <a href="../01-fx-options/03-volatility-surface-rr-and-bf/">1.3 Volatility Surface: Risk Reversals and Butterflies</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="02-fx-volatility-surface-construction">
+                    <div class="toc-chapter-header">
+                        <a href="../02-fx-volatility-surface-construction/" class="toc-chapter-link"><strong>2.</strong> FX Volatility Surface Construction</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../02-fx-volatility-surface-construction/01-smile-interpolation-methods/">2.1 Smile Interpolation Methods</a>
+                        <a href="../02-fx-volatility-surface-construction/02-volatility-surface-dynamics-and-sticky-rules/">2.2 Volatility Surface Dynamics and Sticky Rules</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="03-fx-option-strategies">
+                    <div class="toc-chapter-header">
+                        <a href="../03-fx-option-strategies/" class="toc-chapter-link"><strong>3.</strong> FX Option Strategies</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../03-fx-option-strategies/01-vanilla-strategy-combinations/">3.1 Vanilla Strategy Combinations</a>
+                        <a href="../03-fx-option-strategies/02-volatility-trading-via-fx-options/">3.2 Volatility Trading via FX Options</a>
+                    </div>
+                </div>
+                <div class="toc-chapter" data-chapter="04-fx-vol-risk-management">
+                    <div class="toc-chapter-header">
+                        <a href="../04-fx-vol-risk-management/" class="toc-chapter-link"><strong>4.</strong> FX Vol Risk Management</a>
+                        <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
+                    </div>
+                    <div class="toc-subsections">
+                        <a href="../04-fx-vol-risk-management/01-vega-vanna-and-volga/">4.1 Vega, Vanna, and Volga</a>
+                        <a href="../04-fx-vol-risk-management/02-correlation-and-cross-pair-volatility-risk/">4.2 Correlation and Cross-Pair Volatility Risk</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Quant</a></div>
+            <nav class="breadcrumb-nav"><a href="../../">Quant</a> › <a href="../">FX Options and Volatility</a> › <span>FX Volatility Surface Construction</span></nav>
+            <article>
+                <h1 class="text-accent mb-4">2. FX Volatility Surface Construction</h1>
+                <p>Chapter 1 showed how the FX volatility surface is anchored by three market-quoted pillars at each tenor — the ATM volatility, the risk reversal, and the butterfly — and how these translate into implied volatilities at the 25-delta call and put strikes. In practice, however, a pricing or risk system needs implied volatility at <em>any</em> strike (or delta) and tenor, not just the quoted pillars. This chapter covers the interpolation and parameterisation methods used to build a continuous, arbitrage-free volatility surface from a sparse set of market quotes.</p>
+                <p>We begin with smile interpolation methods — the vanna-volga approach that is ubiquitous in FX desks, and SABR-style parametric fitting — and how interpolation is performed across both the delta and strike dimensions of the smile. We then turn to volatility surface <em>dynamics</em>: how the surface is assumed to move as spot moves (sticky strike, sticky delta, sticky moneyness), and why this assumption is not just a modelling nicety but directly determines the P&amp;L of a vega-hedged options book.</p>
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-fx-options/03-volatility-surface-rr-and-bf/" class="btn btn-outline-custom">&larr; 1.3 Volatility Surface: Risk Reversals and Butterflies</a>
+                    <a href="01-smile-interpolation-methods/" class="btn btn-custom">2.1 Smile Interpolation Methods &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container text-center"><div class="social-links">
+        <a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
+    </div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body></html>
