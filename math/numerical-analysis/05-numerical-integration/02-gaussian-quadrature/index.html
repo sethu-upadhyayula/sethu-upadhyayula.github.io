@@ -66,7 +66,7 @@
                     </div>
                     <div class="toc-subsections">
                         <a href="../../02-root-finding/01-bisection-method/">2.1 Bisection Method</a>
-                        <a href="../../02-root-finding/02-newton-raphson-method/">2.2 Newton–Raphson Method</a>
+                        <a href="../../02-root-finding/02-newton-raphson-method/">2.2 Newton-Raphson Method</a>
                         <a href="../../02-root-finding/03-secant-method/">2.3 Secant Method</a>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                     <div class="toc-subsections">
                         <a href="../../03-linear-systems/01-gaussian-elimination/">3.1 Gaussian Elimination</a>
                         <a href="../../03-linear-systems/02-lu-factorisation/">3.2 LU Factorisation</a>
-                        <a href="../../03-linear-systems/03-iterative-methods/">3.3 Iterative Methods (Jacobi, Gauss–Seidel)</a>
+                        <a href="../../03-linear-systems/03-iterative-methods/">3.3 Iterative Methods (Jacobi, Gauss-Seidel)</a>
                     </div>
                 </div>
                 <div class="toc-chapter" data-chapter="04-interpolation">
@@ -98,7 +98,7 @@
                         <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
                     </div>
                     <div class="toc-subsections">
-                        <a href="../01-newton-cotes-formulas/">5.1 Newton–Cotes Formulas</a>
+                        <a href="../01-newton-cotes-formulas/">5.1 Newton-Cotes Formulas</a>
                         <a href="../02-gaussian-quadrature/">5.2 Gaussian Quadrature</a>
                         <a href="../03-adaptive-integration/">5.3 Adaptive Integration</a>
                     </div>
@@ -110,7 +110,7 @@
                     </div>
                     <div class="toc-subsections">
                         <a href="../../06-numerical-ode-methods/01-eulers-method/">6.1 Euler's Method</a>
-                        <a href="../../06-numerical-ode-methods/02-runge-kutta-methods/">6.2 Runge–Kutta Methods</a>
+                        <a href="../../06-numerical-ode-methods/02-runge-kutta-methods/">6.2 Runge-Kutta Methods</a>
                         <a href="../../06-numerical-ode-methods/03-stability-and-stiffness/">6.3 Stability and Stiffness</a>
                     </div>
                 </div>
@@ -139,19 +139,19 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">5.2 Gaussian Quadrature</h1>
-                <p>Newton–Cotes rules fix nodes at prescribed points. Gaussian quadrature instead chooses both nodes and weights optimally, achieving degree of exactness $2n-1$ with only $n$ function evaluations — twice the accuracy for the same cost.</p>
+                <p>Newton-Cotes rules fix nodes at prescribed points. Gaussian quadrature instead chooses both nodes and weights optimally, achieving degree of exactness $2n-1$ with only $n$ function evaluations — twice the accuracy for the same cost.</p>
 
-                <h2 class="mt-5 mb-3">Gauss–Legendre Quadrature</h2>
+                <h2 class="mt-5 mb-3">Gauss-Legendre Quadrature</h2>
                 <div class="math-box definition">
                     <div class="math-box-label">Definition — $n$-Point Gaussian Quadrature Rule</div>
                     <p class="mb-0">An $n$-point quadrature rule approximates
                     $$\int_{-1}^{1} f(x)\,dx \approx \sum_{i=1}^{n} w_i\, f(x_i).$$
-                    The <strong>Gauss–Legendre rule</strong> chooses $x_1,\ldots,x_n$ and $w_1,\ldots,w_n$ to maximise the degree of exactness.</p>
+                    The <strong>Gauss-Legendre rule</strong> chooses $x_1,\ldots,x_n$ and $w_1,\ldots,w_n$ to maximise the degree of exactness.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Optimality of Gauss–Legendre Nodes</div>
-                    <p>The $n$-point Gauss–Legendre rule is exact for all polynomials of degree $\le 2n-1$. No $n$-point rule can be exact for all polynomials of degree $\ge 2n$.</p>
+                    <div class="math-box-label">Theorem — Optimality of Gauss-Legendre Nodes</div>
+                    <p>The $n$-point Gauss-Legendre rule is exact for all polynomials of degree $\le 2n-1$. No $n$-point rule can be exact for all polynomials of degree $\ge 2n$.</p>
                     <p class="mb-0">The nodes $x_1 < \cdots < x_n$ are the $n$ zeros of the Legendre polynomial $P_n(x)$, and the weights are
                     $$w_i = \frac{2}{(1-x_i^2)\,[P_n'(x_i)]^2}.$$</p>
                 </div>
@@ -187,32 +187,32 @@
 
                 <h2 class="mt-5 mb-3">Error Formula</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Gauss–Legendre Error</div>
-                    <p class="mb-0">If $f \in C^{2n}[-1,1]$, the error of the $n$-point Gauss–Legendre rule is
+                    <div class="math-box-label">Theorem — Gauss-Legendre Error</div>
+                    <p class="mb-0">If $f \in C^{2n}[-1,1]$, the error of the $n$-point Gauss-Legendre rule is
                     $$E_n(f) = \frac{2^{2n+1}(n!)^4}{(2n+1)\,[(2n)!]^3}\,f^{(2n)}(\xi), \quad \xi \in (-1,1).$$
                     This decays super-algebraically in $n$ when $f$ is analytic.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Other Gaussian Rules</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Gauss–Laguerre, Gauss–Hermite, Gauss–Chebyshev</div>
+                    <div class="math-box-label">Definition — Gauss-Laguerre, Gauss-Hermite, Gauss-Chebyshev</div>
                     <p>Different weight functions $w(x)$ on different intervals yield other Gaussian rules. The key identity is $\int w(x)f(x)\,dx \approx \sum w_i f(x_i)$ where nodes and weights come from the relevant orthogonal polynomials.</p>
                     <ul class="mb-0">
-                        <li><strong>Gauss–Laguerre:</strong> $\int_0^\infty e^{-x}f(x)\,dx$; nodes = zeros of Laguerre polynomial $L_n$.</li>
-                        <li><strong>Gauss–Hermite:</strong> $\int_{-\infty}^{\infty} e^{-x^2}f(x)\,dx$; nodes = zeros of Hermite polynomial $H_n$.</li>
-                        <li><strong>Gauss–Chebyshev:</strong> $\int_{-1}^{1}(1-x^2)^{-1/2}f(x)\,dx$; nodes are equally spaced in angle: $x_i = \cos\!\left(\tfrac{(2i-1)\pi}{2n}\right)$; weights $w_i = \pi/n$.</li>
+                        <li><strong>Gauss-Laguerre:</strong> $\int_0^\infty e^{-x}f(x)\,dx$; nodes = zeros of Laguerre polynomial $L_n$.</li>
+                        <li><strong>Gauss-Hermite:</strong> $\int_{-\infty}^{\infty} e^{-x^2}f(x)\,dx$; nodes = zeros of Hermite polynomial $H_n$.</li>
+                        <li><strong>Gauss-Chebyshev:</strong> $\int_{-1}^{1}(1-x^2)^{-1/2}f(x)\,dx$; nodes are equally spaced in angle: $x_i = \cos\!\left(\tfrac{(2i-1)\pi}{2n}\right)$; weights $w_i = \pi/n$.</li>
                     </ul>
                 </div>
 
-                <h2 class="mt-5 mb-3">Comparison with Newton–Cotes</h2>
+                <h2 class="mt-5 mb-3">Comparison with Newton-Cotes</h2>
                 <div class="math-box remark">
                     <div class="math-box-label">Remark — Efficiency</div>
-                    <p class="mb-0">For $n$ function evaluations, the $n$-point Gauss–Legendre rule integrates polynomials of degree $2n-1$ exactly, while the $n$-point Newton–Cotes rule integrates polynomials of degree at most $n-1$ (or $n$ if $n$ is even). For smooth $f$, Gaussian quadrature thus requires roughly half the evaluations for the same accuracy. For non-smooth or highly oscillatory $f$, adaptive rules (Section 5.3) are often preferable.</p>
+                    <p class="mb-0">For $n$ function evaluations, the $n$-point Gauss-Legendre rule integrates polynomials of degree $2n-1$ exactly, while the $n$-point Newton-Cotes rule integrates polynomials of degree at most $n-1$ (or $n$ if $n$ is even). For smooth $f$, Gaussian quadrature thus requires roughly half the evaluations for the same accuracy. For non-smooth or highly oscillatory $f$, adaptive rules (Section 5.3) are often preferable.</p>
                 </div>
 
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3">
-                    <a href="../01-newton-cotes-formulas/" class="btn btn-outline-custom">&larr; 5.1 Newton–Cotes Formulas</a>
+                    <a href="../01-newton-cotes-formulas/" class="btn btn-outline-custom">&larr; 5.1 Newton-Cotes Formulas</a>
                     <a href="../03-adaptive-integration/" class="btn btn-custom">5.3 Adaptive Integration &rarr;</a>
                 </div>
             </article>

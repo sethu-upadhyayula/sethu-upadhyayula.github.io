@@ -66,7 +66,7 @@
                     </div>
                     <div class="toc-subsections">
                         <a href="../../02-root-finding/01-bisection-method/">2.1 Bisection Method</a>
-                        <a href="../../02-root-finding/02-newton-raphson-method/">2.2 Newton–Raphson Method</a>
+                        <a href="../../02-root-finding/02-newton-raphson-method/">2.2 Newton-Raphson Method</a>
                         <a href="../../02-root-finding/03-secant-method/">2.3 Secant Method</a>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                     <div class="toc-subsections">
                         <a href="../01-gaussian-elimination/">3.1 Gaussian Elimination</a>
                         <a href="../02-lu-factorisation/">3.2 LU Factorisation</a>
-                        <a href="../03-iterative-methods/">3.3 Iterative Methods (Jacobi, Gauss–Seidel)</a>
+                        <a href="../03-iterative-methods/">3.3 Iterative Methods (Jacobi, Gauss-Seidel)</a>
                     </div>
                 </div>
                 <div class="toc-chapter" data-chapter="04-interpolation">
@@ -98,7 +98,7 @@
                         <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
                     </div>
                     <div class="toc-subsections">
-                        <a href="../../05-numerical-integration/01-newton-cotes-formulas/">5.1 Newton–Cotes Formulas</a>
+                        <a href="../../05-numerical-integration/01-newton-cotes-formulas/">5.1 Newton-Cotes Formulas</a>
                         <a href="../../05-numerical-integration/02-gaussian-quadrature/">5.2 Gaussian Quadrature</a>
                         <a href="../../05-numerical-integration/03-adaptive-integration/">5.3 Adaptive Integration</a>
                     </div>
@@ -110,7 +110,7 @@
                     </div>
                     <div class="toc-subsections">
                         <a href="../../06-numerical-ode-methods/01-eulers-method/">6.1 Euler's Method</a>
-                        <a href="../../06-numerical-ode-methods/02-runge-kutta-methods/">6.2 Runge–Kutta Methods</a>
+                        <a href="../../06-numerical-ode-methods/02-runge-kutta-methods/">6.2 Runge-Kutta Methods</a>
                         <a href="../../06-numerical-ode-methods/03-stability-and-stiffness/">6.3 Stability and Stiffness</a>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                 <span>3.3 Iterative Methods</span>
             </nav>
             <article>
-                <h1 class="text-accent mb-4">3.3 Iterative Methods (Jacobi, Gauss–Seidel)</h1>
+                <h1 class="text-accent mb-4">3.3 Iterative Methods (Jacobi, Gauss-Seidel)</h1>
                 <p>For large sparse systems — arising from discretisation of PDEs, graph problems, or network models — direct methods require storing and factorising matrices with millions of rows, which is prohibitive. Iterative methods instead produce a sequence of approximations using only matrix-vector products, exploiting sparsity to achieve $O(n)$ or $O(n \log n)$ cost per iteration.</p>
 
                 <h2 class="mt-4 mb-3">Splitting Methods</h2>
@@ -155,8 +155,8 @@
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Gauss–Seidel Iteration</div>
-                    <p>The <strong>Gauss–Seidel method</strong> takes $M = D + L$, $N = -U$:</p>
+                    <div class="math-box-label">Definition — Gauss-Seidel Iteration</div>
+                    <p>The <strong>Gauss-Seidel method</strong> takes $M = D + L$, $N = -U$:</p>
                     $$(D+L)x^{k+1} = -Ux^k + b, \qquad \text{i.e.,} \quad x_i^{k+1} = \frac{1}{a_{ii}}\Bigl(b_i - \sum_{j < i} a_{ij}x_j^{k+1} - \sum_{j > i}a_{ij}x_j^k\Bigr).$$
                     <p class="mb-0">Components are updated sequentially, immediately using the most recently computed values. This typically halves the number of iterations compared to Jacobi, though it cannot be parallelised as easily.</p>
                 </div>
@@ -164,7 +164,7 @@
                 <h2 class="mt-5 mb-3">Convergence</h2>
                 <div class="math-box theorem">
                     <div class="math-box-label">Theorem — Spectral Radius Criterion</div>
-                    <p class="mb-0">The iteration $x^{k+1} = Tx^k + c$ converges for any starting vector $x^0$ if and only if the <strong>spectral radius</strong> $\rho(T) < 1$. The asymptotic convergence rate is $-\log_{10}\rho(T)$ decimal digits per iteration. For diagonally dominant matrices, both Jacobi and Gauss–Seidel converge. Gauss–Seidel converges in at most half as many iterations as Jacobi for most problems.</p>
+                    <p class="mb-0">The iteration $x^{k+1} = Tx^k + c$ converges for any starting vector $x^0$ if and only if the <strong>spectral radius</strong> $\rho(T) < 1$. The asymptotic convergence rate is $-\log_{10}\rho(T)$ decimal digits per iteration. For diagonally dominant matrices, both Jacobi and Gauss-Seidel converge. Gauss-Seidel converges in at most half as many iterations as Jacobi for most problems.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Successive Over-Relaxation (SOR)</h2>
@@ -174,7 +174,7 @@
                     $$x_i^{k+1} = (1-\omega)x_i^k + \frac{\omega}{a_{ii}}\Bigl(b_i - \sum_{j<i}a_{ij}x_j^{k+1} - \sum_{j>i}a_{ij}x_j^k\Bigr).$$
                     <p>For the model Laplacian problem on a $n \times n$ grid, the optimal parameter is:
                     $$\omega^* = \frac{2}{1 + \sqrt{1 - \rho_J^2}},$$
-                    where $\rho_J$ is the spectral radius of the Jacobi iteration matrix. With $\omega^*$, SOR converges in $O(\sqrt{\kappa})$ iterations rather than $O(\kappa)$ for Gauss–Seidel.</p>
+                    where $\rho_J$ is the spectral radius of the Jacobi iteration matrix. With $\omega^*$, SOR converges in $O(\sqrt{\kappa})$ iterations rather than $O(\kappa)$ for Gauss-Seidel.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Conjugate Gradient Method</h2>

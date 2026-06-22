@@ -91,10 +91,10 @@
 
                 <div class="math-box remark">
                     <div class="math-box-label">Remark — Instrument Tiers</div>
-                    <p><strong>Short end (cash deposits, 1 day – ~3 months).</strong> Money market deposit rates (or SOFR fixings) give the discount factor directly via simple compounding:
+                    <p><strong>Short end (cash deposits, 1 day - ~3 months).</strong> Money market deposit rates (or SOFR fixings) give the discount factor directly via simple compounding:
                     $$P(0,T) = \frac{1}{1 + L(0,T)\,\delta(0,T)}$$
                     where $L(0,T)$ is the quoted deposit rate and $\delta$ is the Act/360 year fraction.</p>
-                    <p><strong>Middle (FRAs and futures, ~3 months – 2 years).</strong> Forward rate agreements and exchange-traded futures (e.g. SOFR or Eurodollar futures) quote forward rates over future periods $[T_{i-1}, T_i]$. Given $P(0,T_{i-1})$ from a previous step, the forward rate $F(0; T_{i-1}, T_i)$ implies:
+                    <p><strong>Middle (FRAs and futures, ~3 months - 2 years).</strong> Forward rate agreements and exchange-traded futures (e.g. SOFR or Eurodollar futures) quote forward rates over future periods $[T_{i-1}, T_i]$. Given $P(0,T_{i-1})$ from a previous step, the forward rate $F(0; T_{i-1}, T_i)$ implies:
                     $$P(0,T_i) = \frac{P(0,T_{i-1})}{1 + F(0;T_{i-1},T_i)\,\delta_i}$$
                     Futures prices require a convexity adjustment (futures rates are not equal to forward rates) before being used in this step.</p>
                     <p class="mb-0"><strong>Long end (swap rates, 2 years and beyond).</strong> Par swap rates constrain the discount curve through the par rate equation of Section 1.1. Each new swap maturity introduces one new unknown discount factor, which is solved for given all shorter-maturity discount factors.</p>
@@ -129,7 +129,7 @@
 
                 <div class="math-box remark">
                     <div class="math-box-label">Remark — Overlap and Ordering Issues</div>
-                    <p><strong>Choosing which instruments to use.</strong> When multiple instruments imply discount factors over the same horizon, the curve builder must choose a single set of non-redundant, maximally liquid instruments — typically deposits at the very short end, futures or FRAs out to 1–3 years, and swaps beyond that, with a smooth "splice" between tiers.</p>
+                    <p><strong>Choosing which instruments to use.</strong> When multiple instruments imply discount factors over the same horizon, the curve builder must choose a single set of non-redundant, maximally liquid instruments — typically deposits at the very short end, futures or FRAs out to 1-3 years, and swaps beyond that, with a smooth "splice" between tiers.</p>
                     <p><strong>Stub periods.</strong> A futures contract's reference period may not align exactly with the previous pillar date, requiring interpolation of $P(0,T_{i-1})$ at a non-pillar date — which feeds back into the choice of interpolation scheme (Section 2.2).</p>
                     <p class="mb-0"><strong>Jacobian and re-bootstrapping.</strong> If an intermediate quote changes, all downstream discount factors that were computed using interpolated values at that pillar must be recomputed. Production curve-building systems solve the entire system of equations jointly (often via Newton's method on the full pillar vector) rather than purely sequentially, precisely to handle these interdependencies robustly.</p>
                 </div>

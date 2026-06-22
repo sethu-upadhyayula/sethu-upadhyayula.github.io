@@ -138,7 +138,7 @@
             <article>
                 <h1 class="text-accent mb-4">7.2 Spectral Representation</h1>
 
-                <p>The spectral theory of stationary processes is the frequency-domain counterpart of the time-domain covariance analysis from Section 7.1. Bochner's theorem identifies exactly which functions can be autocovariance functions, and the Wiener–Khinchin theorem connects the ACF to the power spectral density. This duality is fundamental to signal processing and time series analysis.</p>
+                <p>The spectral theory of stationary processes is the frequency-domain counterpart of the time-domain covariance analysis from Section 7.1. Bochner's theorem identifies exactly which functions can be autocovariance functions, and the Wiener-Khinchin theorem connects the ACF to the power spectral density. This duality is fundamental to signal processing and time series analysis.</p>
 
                 <h2 class="mt-4 mb-3">Positive Semidefinite Functions and Bochner's Theorem</h2>
 
@@ -157,7 +157,7 @@
                     <p class="mb-0">Bochner's theorem characterises exactly which functions are valid autocovariance functions of weakly stationary processes: they are precisely the continuous positive semidefinite functions, which are exactly the Fourier transforms of non-negative finite measures. This gives a complete characterisation of the class of valid ACFs.</p>
                 </div>
 
-                <h2 class="mt-5 mb-3">Spectral Density and the Wiener–Khinchin Theorem</h2>
+                <h2 class="mt-5 mb-3">Spectral Density and the Wiener-Khinchin Theorem</h2>
 
                 <div class="math-box definition">
                     <div class="math-box-label">Definition 7.2.3 — Spectral Density</div>
@@ -167,13 +167,13 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.4 — Wiener–Khinchin Theorem</div>
+                    <div class="math-box-label">Theorem 7.2.4 — Wiener-Khinchin Theorem</div>
                     <p>For a weakly stationary process $(X_t)$ with spectral density $f$, the autocovariance and spectral density are a Fourier pair:
                     $$R(\tau) = \int_{-\infty}^\infty e^{i\omega\tau} f(\omega)\,d\omega, \qquad f(\omega) = \frac{1}{2\pi}\int_{-\infty}^\infty e^{-i\omega\tau} R(\tau)\,d\tau$$
                     (when $R \in L^1(\mathbb{R})$).</p>
                     <p>For discrete-time processes $(X_n)_{n \in \mathbb{Z}}$, the spectral density is $2\pi$-periodic:
                     $$R(k) = \int_{-\pi}^\pi e^{i\omega k} f(\omega)\,d\omega, \qquad f(\omega) = \frac{1}{2\pi}\sum_{k=-\infty}^\infty e^{-i\omega k} R(k).$$</p>
-                    <p class="mb-0">The Wiener–Khinchin theorem is the operational version of Bochner's theorem: it provides a computable relationship between the time-domain correlation structure and the frequency-domain power distribution. It is the basis for spectral estimation from observed data (periodogram, Welch's method).</p>
+                    <p class="mb-0">The Wiener-Khinchin theorem is the operational version of Bochner's theorem: it provides a computable relationship between the time-domain correlation structure and the frequency-domain power distribution. It is the basis for spectral estimation from observed data (periodogram, Welch's method).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Examples</h2>
@@ -190,7 +190,7 @@
                 <div class="math-box example">
                     <div class="math-box-label">Example — White Noise and Ornstein-Uhlenbeck</div>
                     <p><strong>White noise:</strong> The process with $R(\tau) = \sigma^2 \delta(\tau)$ (Dirac delta) has flat spectral density $f(\omega) = \sigma^2/(2\pi)$ — equal power at all frequencies. This is the continuous-time analogue of i.i.d. noise, though it does not have a classical sample-path interpretation.</p>
-                    <p><strong>Ornstein–Uhlenbeck process:</strong> The stationary solution of $dX_t = -\theta X_t\,dt + \sigma\,dB_t$ (with $\theta > 0$) has $R(\tau) = \frac{\sigma^2}{2\theta} e^{-\theta|\tau|}$ and spectral density
+                    <p><strong>Ornstein-Uhlenbeck process:</strong> The stationary solution of $dX_t = -\theta X_t\,dt + \sigma\,dB_t$ (with $\theta > 0$) has $R(\tau) = \frac{\sigma^2}{2\theta} e^{-\theta|\tau|}$ and spectral density
                     $$f(\omega) = \frac{\sigma^2}{2\pi(\theta^2 + \omega^2)}.$$</p>
                     <p class="mb-0">The OU spectral density is the Lorentzian (Cauchy) function of $\omega$, with half-power bandwidth $\theta$. As $\theta \to 0$ (less damping), the power concentrates at $\omega = 0$ (the process approaches a random walk). As $\theta \to \infty$ (strong damping), $f \to \sigma^2/(2\pi\theta^2)$ (flat) — the process becomes rapidly decorrelated.</p>
                 </div>

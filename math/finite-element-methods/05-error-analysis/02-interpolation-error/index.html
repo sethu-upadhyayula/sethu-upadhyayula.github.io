@@ -65,7 +65,7 @@
                     </div>
                     <div class="toc-subsections">
                         <a href="../../02-galerkin-method/01-abstract-galerkin-framework/">2.1 Abstract Galerkin Framework</a>
-                        <a href="../../02-galerkin-method/02-lax-milgram-theorem/">2.2 Lax–Milgram Theorem</a>
+                        <a href="../../02-galerkin-method/02-lax-milgram-theorem/">2.2 Lax-Milgram Theorem</a>
                     </div>
                 </div>
                 <div class="toc-chapter" data-chapter="03-finite-element-spaces">
@@ -136,7 +136,7 @@
             <article>
                 <h1 class="text-accent mb-4">5.2 Interpolation Error</h1>
 
-                <p>By Céa's lemma, the FEM error is controlled by the best approximation error $\min_{v_h \in V_h}\|u - v_h\|_V$. To make this concrete we need to bound the error when $u$ is approximated by its nodal interpolant $I_h u \in V_h$. The key tool is the <strong>Bramble–Hilbert lemma</strong>, which relates the interpolation error to higher Sobolev seminorms of $u$.</p>
+                <p>By Céa's lemma, the FEM error is controlled by the best approximation error $\min_{v_h \in V_h}\|u - v_h\|_V$. To make this concrete we need to bound the error when $u$ is approximated by its nodal interpolant $I_h u \in V_h$. The key tool is the <strong>Bramble-Hilbert lemma</strong>, which relates the interpolation error to higher Sobolev seminorms of $u$.</p>
 
                 <h2 class="mt-4 mb-3">The Nodal Interpolation Operator</h2>
 
@@ -149,12 +149,12 @@
                     where $x_i^K$ are the local nodes on $K$ and $F_K$ is the affine map from the reference element.</p>
                 </div>
 
-                <h2 class="mt-5 mb-3">The Bramble–Hilbert Lemma</h2>
+                <h2 class="mt-5 mb-3">The Bramble-Hilbert Lemma</h2>
 
-                <p>The Bramble–Hilbert lemma is an abstract result that quantifies how well a bounded linear functional (here, the error $u \mapsto u - Pu$) can fail to vanish on polynomials of degree $\leq k$.</p>
+                <p>The Bramble-Hilbert lemma is an abstract result that quantifies how well a bounded linear functional (here, the error $u \mapsto u - Pu$) can fail to vanish on polynomials of degree $\leq k$.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Bramble–Hilbert Lemma</div>
+                    <div class="math-box-label">Theorem — Bramble-Hilbert Lemma</div>
                     <p>Let $K \subset \mathbb{R}^d$ be a bounded Lipschitz domain with diameter $h_K$. Let $P: W^{k+1,p}(K) \to \mathcal{P}_k(K)$ be a bounded linear operator that reproduces polynomials of degree $\leq k$, i.e., $Pp = p$ for all $p \in \mathcal{P}_k(K)$. Then there exists a constant $C$ depending only on $k$, $p$, and the shape of $K$ (not on $h_K$) such that
                     $$\|u - Pu\|_{W^{m,p}(K)} \leq C\, h_K^{k+1-m}\, |u|_{W^{k+1,p}(K)} \quad \forall\, u \in W^{k+1,p}(K),$$
                     for $0 \leq m \leq k+1$, where $|u|_{W^{k+1,p}(K)}$ denotes the $(k+1)$-th order Sobolev seminorm.</p>
@@ -167,7 +167,7 @@
 
                 <h2 class="mt-5 mb-3">Interpolation Error on a Single Element</h2>
 
-                <p>For the nodal interpolant $I_h$ onto $P_k$ elements ($k \geq 1$), the operator $I_h$ reproduces all polynomials of degree $\leq k$. Applying the Bramble–Hilbert lemma directly (using $p=2$ for $L^2$-based Sobolev spaces):</p>
+                <p>For the nodal interpolant $I_h$ onto $P_k$ elements ($k \geq 1$), the operator $I_h$ reproduces all polynomials of degree $\leq k$. Applying the Bramble-Hilbert lemma directly (using $p=2$ for $L^2$-based Sobolev spaces):</p>
 
                 <div class="math-box theorem">
                     <div class="math-box-label">Theorem — Local Interpolation Error ($P_k$ Elements)</div>
@@ -199,7 +199,7 @@
                     <div class="math-box-label">Definition — Shape Regularity</div>
                     <p class="mb-0">A family of triangulations $\{\mathcal{T}_h\}$ is <strong>shape-regular</strong> if there exists a constant $\sigma > 0$ such that for all $h$ and all $K \in \mathcal{T}_h$:
                     $$\frac{h_K}{\rho_K} \leq \sigma,$$
-                    where $\rho_K$ is the diameter of the largest ball inscribed in $K$. Shape regularity prevents elements from degenerating (becoming flat or needle-like), which would destroy the scaling argument in the Bramble–Hilbert estimate. Under shape regularity, the constant $C$ in the interpolation estimates is uniform across all mesh refinements.</p>
+                    where $\rho_K$ is the diameter of the largest ball inscribed in $K$. Shape regularity prevents elements from degenerating (becoming flat or needle-like), which would destroy the scaling argument in the Bramble-Hilbert estimate. Under shape regularity, the constant $C$ in the interpolation estimates is uniform across all mesh refinements.</p>
                 </div>
 
                 <hr class="my-5">

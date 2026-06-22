@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2.2 Lax–Milgram Theorem</title>
+    <title>2.2 Lax-Milgram Theorem</title>
     <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -65,7 +65,7 @@
                     </div>
                     <div class="toc-subsections">
                         <a href="../../02-galerkin-method/01-abstract-galerkin-framework/">2.1 Abstract Galerkin Framework</a>
-                        <a href="../../02-galerkin-method/02-lax-milgram-theorem/">2.2 Lax–Milgram Theorem</a>
+                        <a href="../../02-galerkin-method/02-lax-milgram-theorem/">2.2 Lax-Milgram Theorem</a>
                     </div>
                 </div>
                 <div class="toc-chapter" data-chapter="03-finite-element-spaces">
@@ -131,12 +131,12 @@
                 <a href="../../../../math/">Math</a> ›
                 <a href="../../">Finite Element Methods</a> ›
                 <a href="../">2. Galerkin Method</a> ›
-                <span>2.2 Lax–Milgram Theorem</span>
+                <span>2.2 Lax-Milgram Theorem</span>
             </nav>
             <article>
-                <h1 class="text-accent mb-4">2.2 Lax–Milgram Theorem</h1>
+                <h1 class="text-accent mb-4">2.2 Lax-Milgram Theorem</h1>
 
-                <p>The Lax–Milgram theorem is the central existence and uniqueness result underpinning the variational approach to elliptic PDEs. It generalises the Riesz representation theorem to non-symmetric bilinear forms and provides the theoretical foundation justifying the well-posedness of both the continuous and discrete Galerkin problems.</p>
+                <p>The Lax-Milgram theorem is the central existence and uniqueness result underpinning the variational approach to elliptic PDEs. It generalises the Riesz representation theorem to non-symmetric bilinear forms and provides the theoretical foundation justifying the well-posedness of both the continuous and discrete Galerkin problems.</p>
 
                 <h2 class="mt-4 mb-3">Assumptions</h2>
 
@@ -153,7 +153,7 @@
                 <h2 class="mt-5 mb-3">The Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Lax–Milgram</div>
+                    <div class="math-box-label">Theorem — Lax-Milgram</div>
                     <p>Let $V$ be a real Hilbert space, $a: V \times V \to \mathbb{R}$ a continuous and coercive bilinear form with constants $M$ and $\alpha$, and $\ell \in V^*$ a bounded linear functional. Then there exists a unique $u \in V$ such that
                     $$a(u, v) = \ell(v) \quad \forall\, v \in V.$$
                     Moreover, the solution satisfies the stability estimate
@@ -181,9 +181,9 @@
                     <ul>
                         <li><strong>Continuity:</strong> $|a(u,v)| \leq \|\nabla u\|_{L^2}\|\nabla v\|_{L^2} \leq \|u\|_{H^1}\|v\|_{H^1}$, so $M = 1$.</li>
                         <li><strong>Coercivity:</strong> by the Poincaré inequality $\|v\|_{H^1_0}^2 \leq C_P^{-2}\|\nabla v\|_{L^2}^2 + \|\nabla v\|_{L^2}^2$; more precisely $a(v,v) = \|\nabla v\|_{L^2}^2 \geq \alpha\|v\|_{H^1}^2$ for some $\alpha > 0$ depending on $\Omega$.</li>
-                        <li><strong>Boundedness of $\ell$:</strong> by Cauchy–Schwarz and Poincaré, $|\ell(v)| \leq \|f\|_{L^2}\|v\|_{L^2} \leq C\|f\|_{L^2}\|v\|_{H^1}$.</li>
+                        <li><strong>Boundedness of $\ell$:</strong> by Cauchy-Schwarz and Poincaré, $|\ell(v)| \leq \|f\|_{L^2}\|v\|_{L^2} \leq C\|f\|_{L^2}\|v\|_{H^1}$.</li>
                     </ul>
-                    <p class="mb-0">Lax–Milgram then guarantees a unique $u \in H^1_0(\Omega)$ satisfying the weak form, with $\|u\|_{H^1_0} \leq C\|f\|_{L^2}$. This $u$ solves $-\Delta u = f$ in the weak sense.</p>
+                    <p class="mb-0">Lax-Milgram then guarantees a unique $u \in H^1_0(\Omega)$ satisfying the weak form, with $\|u\|_{H^1_0} \leq C\|f\|_{L^2}$. This $u$ solves $-\Delta u = f$ in the weak sense.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Energy Minimisation Equivalence (Symmetric Case)</h2>
@@ -199,12 +199,12 @@
 
                 <div class="math-box corollary">
                     <div class="math-box-label">Corollary — Well-posedness of the Discrete Problem</div>
-                    <p class="mb-0">Since $V_h \subset V$ is a finite-dimensional Hilbert space, and $a$ restricted to $V_h \times V_h$ is still continuous and coercive (with the same constants), the Lax–Milgram theorem applies to the Galerkin problem on $V_h$ without modification. This guarantees the stiffness matrix $K$ is invertible (indeed SPD when $a$ is symmetric).</p>
+                    <p class="mb-0">Since $V_h \subset V$ is a finite-dimensional Hilbert space, and $a$ restricted to $V_h \times V_h$ is still continuous and coercive (with the same constants), the Lax-Milgram theorem applies to the Galerkin problem on $V_h$ without modification. This guarantees the stiffness matrix $K$ is invertible (indeed SPD when $a$ is symmetric).</p>
                 </div>
 
                 <div class="math-box remark">
                     <div class="math-box-label">Remark — Non-symmetric Problems</div>
-                    <p class="mb-0">Lax–Milgram applies to non-symmetric $a$, e.g.\ advection-diffusion $a(u,v) = \int_\Omega (\nabla u \cdot \nabla v + \mathbf{b} \cdot \nabla u\, v)\,dx$ with $\mathbf{b}$ a velocity field. Coercivity still holds when diffusion dominates (or via a Gårding inequality), but the stiffness matrix is no longer symmetric. For convection-dominated problems, the standard Galerkin method may be unstable; stabilised methods (SUPG, DG) are then needed.</p>
+                    <p class="mb-0">Lax-Milgram applies to non-symmetric $a$, e.g.\ advection-diffusion $a(u,v) = \int_\Omega (\nabla u \cdot \nabla v + \mathbf{b} \cdot \nabla u\, v)\,dx$ with $\mathbf{b}$ a velocity field. Coercivity still holds when diffusion dominates (or via a Gårding inequality), but the stiffness matrix is no longer symmetric. For convection-dominated problems, the standard Galerkin method may be unstable; stabilised methods (SUPG, DG) are then needed.</p>
                 </div>
 
                 <hr class="my-5">

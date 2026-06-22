@@ -84,13 +84,13 @@
                 <h2 class="mt-5 mb-3">Standard Indices and Tranches</h2>
                 <div class="math-box definition">
                     <div class="math-box-label">Definition — CDX and iTraxx Standard Tranches</div>
-                    <p>The main standardised indices are iTraxx Europe Main (125 investment-grade names) and CDX.NA.IG (125 North American investment-grade names), each rolled into a new "on-the-run" series every six months with standard 5-year (and 10-year) maturities. The standard tranche grid for iTraxx is $\{0$–$3\%, 3$–$6\%, 6$–$9\%, 9$–$12\%, 12$–$22\%, 22$–$100\%\}$; CDX.NA.IG uses a similar grid with slightly different breakpoints (e.g. $0$–$3\%, 3$–$7\%, 7$–$15\%, 15$–$100\%$ historically). Because every dealer prices the same reference portfolio and the same attachment grid, the resulting tranche quotes can be aggregated into a single base correlation curve per index/series/maturity.</p>
+                    <p>The main standardised indices are iTraxx Europe Main (125 investment-grade names) and CDX.NA.IG (125 North American investment-grade names), each rolled into a new "on-the-run" series every six months with standard 5-year (and 10-year) maturities. The standard tranche grid for iTraxx is $\{0$-$3\%, 3$-$6\%, 6$-$9\%, 9$-$12\%, 12$-$22\%, 22$-$100\%\}$; CDX.NA.IG uses a similar grid with slightly different breakpoints (e.g. $0$-$3\%, 3$-$7\%, 7$-$15\%, 15$-$100\%$ historically). Because every dealer prices the same reference portfolio and the same attachment grid, the resulting tranche quotes can be aggregated into a single base correlation curve per index/series/maturity.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Quoting Conventions</h2>
                 <div class="math-box definition">
                     <div class="math-box-label">Definition — Running Spread vs. Points Upfront</div>
-                    <p>Senior and mezzanine tranches are typically quoted as a <em>running spread</em> $s_{[A,D]}$ paid periodically on the outstanding tranche notional. The equity tranche ($0$–$3\%$) is quoted as <em>points upfront</em> plus a fixed running spread (often 500 bps), since the expected loss on the equity tranche is large enough that a running-only premium would require an impractically high spread:
+                    <p>Senior and mezzanine tranches are typically quoted as a <em>running spread</em> $s_{[A,D]}$ paid periodically on the outstanding tranche notional. The equity tranche ($0$-$3\%$) is quoted as <em>points upfront</em> plus a fixed running spread (often 500 bps), since the expected loss on the equity tranche is large enough that a running-only premium would require an impractically high spread:
                     $$\text{Upfront} = \text{PV}_{\text{protection}} - 500\text{bps} \times \text{PV}_{\text{premium annuity}}$$
                     The upfront is paid by the protection buyer to the protection seller at trade inception (for a positive upfront), reflecting the present value mismatch between the fixed coupon and the fair value of protection.</p>
                 </div>
@@ -101,7 +101,7 @@
                     <p>Given the day's standard tranche quotes (running spreads and equity upfront) for the on-the-run index, a desk:</p>
                     <ol class="mb-0">
                         <li>Calibrates single-name survival curves $Q_i(t)$ to each constituent's CDS curve (or uses the flat index spread as a proxy for a homogeneous portfolio approximation).</li>
-                        <li>Bootstraps $\rho_{\text{base}}(D_k)$ for each standard detachment $D_k$ sequentially, from $0$–$3\%$ outward, by solving $\text{EL}_{[0,D_k]}(\rho_{\text{base}}(D_k)) = \text{EL}^{\text{market}}_{[0,D_k]}$ at each step.</li>
+                        <li>Bootstraps $\rho_{\text{base}}(D_k)$ for each standard detachment $D_k$ sequentially, from $0$-$3\%$ outward, by solving $\text{EL}_{[0,D_k]}(\rho_{\text{base}}(D_k)) = \text{EL}^{\text{market}}_{[0,D_k]}$ at each step.</li>
                         <li>Interpolates the resulting $\rho_{\text{base}}(D)$ curve to obtain correlations for any bespoke attachment/detachment pair.</li>
                         <li>Revalues the existing tranche book and any bespoke single-tranche CDOs (Section 3.1) using the interpolated correlations, producing daily P&L and risk sensitivities (Chapter 4).</li>
                     </ol>
@@ -109,10 +109,10 @@
 
                 <h2 class="mt-5 mb-3">Worked Example</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Pricing the iTraxx 3–6% Mezzanine Tranche</div>
+                    <div class="math-box-label">Example — Pricing the iTraxx 3-6% Mezzanine Tranche</div>
                     <p>Suppose the bootstrapped base correlations are $\rho_{\text{base}}(3\%) = 18\%$ and $\rho_{\text{base}}(6\%) = 28\%$ (as in the illustrative curve of Section 2.1), the index 5-year spread is 60 bps, recovery is assumed at 40% for all names, and the risk-free discount curve is flat at 3%.</p>
-                    <p>Using the one-factor Gaussian copula at $\rho = 18\%$, the expected loss of the $[0,3\%]$ base tranche over 5 years is computed via Gauss–Hermite quadrature, say $\text{EL}_{[0,3\%]} = 1.95\%$ (as a fraction of portfolio notional). At $\rho = 28\%$, the $[0,6\%]$ base tranche expected loss is $\text{EL}_{[0,6\%]} = 2.70\%$.</p>
-                    <p>The $3$–$6\%$ tranche expected loss is the difference: $\text{EL}_{[3\%,6\%]} = 2.70\% - 1.95\% = 0.75\%$, against a tranche notional of $3\%$ of the portfolio.</p>
+                    <p>Using the one-factor Gaussian copula at $\rho = 18\%$, the expected loss of the $[0,3\%]$ base tranche over 5 years is computed via Gauss-Hermite quadrature, say $\text{EL}_{[0,3\%]} = 1.95\%$ (as a fraction of portfolio notional). At $\rho = 28\%$, the $[0,6\%]$ base tranche expected loss is $\text{EL}_{[0,6\%]} = 2.70\%$.</p>
+                    <p>The $3$-$6\%$ tranche expected loss is the difference: $\text{EL}_{[3\%,6\%]} = 2.70\% - 1.95\% = 0.75\%$, against a tranche notional of $3\%$ of the portfolio.</p>
                     <p class="mb-0">Plugging $\text{EL}_{[3\%,6\%]}$ into the premium/protection leg formulas of Section 3.1 — together with the (correlation-dependent) expected outstanding tranche notional at each premium date — and solving $\text{PV}_{\text{premium}} = \text{PV}_{\text{protection}}$ for $s_{[3\%,6\%]}$ gives the fair running spread for the mezzanine tranche, which a desk would then compare against the live market quote to identify relative value.</p>
                 </div>
 

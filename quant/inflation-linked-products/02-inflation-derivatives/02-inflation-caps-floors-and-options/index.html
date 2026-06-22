@@ -78,7 +78,7 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Inflation Caps, Floors, and Options</h1>
 
-                <p>Inflation caps and floors are option contracts on realised inflation, used to hedge against inflation rising above (cap) or falling below (floor) a specified strike level. They are widely used to hedge pension liabilities with explicit inflation caps and floors written into their indexation rules — for example, UK defined-benefit pensions frequently apply a "0% floor, 5% cap" (an "LPI 0–5") to annual benefit increases. This section defines the payoffs of YoY and cumulative inflation caps and floors, and outlines a Black-style approach to pricing them.</p>
+                <p>Inflation caps and floors are option contracts on realised inflation, used to hedge against inflation rising above (cap) or falling below (floor) a specified strike level. They are widely used to hedge pension liabilities with explicit inflation caps and floors written into their indexation rules — for example, UK defined-benefit pensions frequently apply a "0% floor, 5% cap" (an "LPI 0-5") to annual benefit increases. This section defines the payoffs of YoY and cumulative inflation caps and floors, and outlines a Black-style approach to pricing them.</p>
 
                 <h2 class="mt-5 mb-3">Year-on-Year Inflation Caps and Floors</h2>
 
@@ -119,7 +119,7 @@
 
                 <div class="math-box remark">
                     <div class="math-box-label">Remark — Limitations of the Black Approach</div>
-                    <p class="mb-0">The Black approach treats each caplet/floorlet independently with its own implied volatility, ignoring the term structure correlations between consecutive YoY periods that matter for path-dependent structures (e.g. cumulative caps/floors, or caps/floors on multi-year compounded inflation). More sophisticated approaches use a full term-structure model of the price index jointly with nominal and real rates (again, typically in a Jarrow–Yildirim-style framework), calibrated to both the ZC/YoY swap curves and the available cap/floor volatility surface. For a first-pass valuation or risk estimate, however, the Black approach with a YoY volatility surface remains the market standard quoting convention.</p>
+                    <p class="mb-0">The Black approach treats each caplet/floorlet independently with its own implied volatility, ignoring the term structure correlations between consecutive YoY periods that matter for path-dependent structures (e.g. cumulative caps/floors, or caps/floors on multi-year compounded inflation). More sophisticated approaches use a full term-structure model of the price index jointly with nominal and real rates (again, typically in a Jarrow-Yildirim-style framework), calibrated to both the ZC/YoY swap curves and the available cap/floor volatility surface. For a first-pass valuation or risk estimate, however, the Black approach with a YoY volatility surface remains the market standard quoting convention.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example — Pricing a YoY Floorlet</h2>
@@ -130,7 +130,7 @@
                     <p>Using $1+F_k = 1.0250$ and $1+K=1.0000$:
                     $$d_{1} = \frac{\ln(1.0250/1.0000) + \tfrac{1}{2}(0.90)^2 (5)}{0.90\sqrt{5}} = \frac{0.02469 + 2.025}{2.0125} \approx 1.018$$
                     $$d_2 = d_1 - \sigma_k\sqrt{t_k} \approx 1.018 - 2.0125 \approx -0.995$$</p>
-                    <p>With $N(d_1)\approx 0.846$ and $N(d_2)\approx 0.160$, the corresponding caplet value is $P(0,5)\left[1.0250 \times 0.846 - 1.0000\times 0.160\right] \approx 0.85 \times (0.867 - 0.160) \approx 0.601$. By put–call parity for this gross-ratio formulation, $\text{Floorlet} - \text{Caplet} = P(0,5)\left[(1+K) - (1+F_k)\right] = 0.85 \times (1.0000-1.0250) = -0.02125$, so:
+                    <p>With $N(d_1)\approx 0.846$ and $N(d_2)\approx 0.160$, the corresponding caplet value is $P(0,5)\left[1.0250 \times 0.846 - 1.0000\times 0.160\right] \approx 0.85 \times (0.867 - 0.160) \approx 0.601$. By put-call parity for this gross-ratio formulation, $\text{Floorlet} - \text{Caplet} = P(0,5)\left[(1+K) - (1+F_k)\right] = 0.85 \times (1.0000-1.0250) = -0.02125$, so:
                     $$\text{Floorlet} \approx \text{Caplet} - 0.02125 \approx 0.601 - 0.021 = 0.580$$</p>
                     <p class="mb-0">In annualised running-spread terms this would be converted to a small fraction of a percent of notional — but the key takeaway is qualitative: with a positive forward inflation rate and very high implied volatility, a 0%-strike YoY floorlet carries substantial value, since there is meaningful probability that a single year's inflation print comes in below zero even when the long-run forward is comfortably positive.</p>
                 </div>

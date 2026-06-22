@@ -66,7 +66,7 @@
                     </div>
                     <div class="toc-subsections">
                         <a href="../01-bisection-method/">2.1 Bisection Method</a>
-                        <a href="../02-newton-raphson-method/">2.2 Newton–Raphson Method</a>
+                        <a href="../02-newton-raphson-method/">2.2 Newton-Raphson Method</a>
                         <a href="../03-secant-method/">2.3 Secant Method</a>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                     <div class="toc-subsections">
                         <a href="../../03-linear-systems/01-gaussian-elimination/">3.1 Gaussian Elimination</a>
                         <a href="../../03-linear-systems/02-lu-factorisation/">3.2 LU Factorisation</a>
-                        <a href="../../03-linear-systems/03-iterative-methods/">3.3 Iterative Methods (Jacobi, Gauss–Seidel)</a>
+                        <a href="../../03-linear-systems/03-iterative-methods/">3.3 Iterative Methods (Jacobi, Gauss-Seidel)</a>
                     </div>
                 </div>
                 <div class="toc-chapter" data-chapter="04-interpolation">
@@ -98,7 +98,7 @@
                         <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
                     </div>
                     <div class="toc-subsections">
-                        <a href="../../05-numerical-integration/01-newton-cotes-formulas/">5.1 Newton–Cotes Formulas</a>
+                        <a href="../../05-numerical-integration/01-newton-cotes-formulas/">5.1 Newton-Cotes Formulas</a>
                         <a href="../../05-numerical-integration/02-gaussian-quadrature/">5.2 Gaussian Quadrature</a>
                         <a href="../../05-numerical-integration/03-adaptive-integration/">5.3 Adaptive Integration</a>
                     </div>
@@ -110,7 +110,7 @@
                     </div>
                     <div class="toc-subsections">
                         <a href="../../06-numerical-ode-methods/01-eulers-method/">6.1 Euler's Method</a>
-                        <a href="../../06-numerical-ode-methods/02-runge-kutta-methods/">6.2 Runge–Kutta Methods</a>
+                        <a href="../../06-numerical-ode-methods/02-runge-kutta-methods/">6.2 Runge-Kutta Methods</a>
                         <a href="../../06-numerical-ode-methods/03-stability-and-stiffness/">6.3 Stability and Stiffness</a>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">2.3 Secant Method</h1>
-                <p>The secant method replaces Newton–Raphson's derivative with a finite-difference approximation using the two most recent iterates. This avoids the need to compute $f'$ analytically while retaining superlinear convergence — an order of $(1+\sqrt{5})/2 \approx 1.618$, the golden ratio.</p>
+                <p>The secant method replaces Newton-Raphson's derivative with a finite-difference approximation using the two most recent iterates. This avoids the need to compute $f'$ analytically while retaining superlinear convergence — an order of $(1+\sqrt{5})/2 \approx 1.618$, the golden ratio.</p>
 
                 <h2 class="mt-4 mb-3">The Iteration</h2>
                 <div class="math-box definition">
@@ -160,7 +160,7 @@
                     <p>Let $r$ be a simple root of $f \in C^2$ near $r$. If $x_0$ and $x_1$ are sufficiently close to $r$, the secant iterates converge with order:</p>
                     $$p = \frac{1 + \sqrt{5}}{2} \approx 1.618,$$
                     <p>meaning $|e_{n+1}| \le C|e_n|^p$ for some constant $C$. This order arises because the Fibonacci-like recurrence $p = 1 + 1/p$ characterises the propagation of errors when the derivative is approximated by the secant slope.</p>
-                    <p class="mb-0">In terms of function evaluations, the secant method is more efficient than Newton–Raphson: Newton needs 2 evaluations per step ($f$ and $f'$) for order 2, while secant needs 1 evaluation per step for order 1.618. Per evaluation, the effective order is $2^{1/2} \approx 1.414$ for Newton and $1.618^1 = 1.618$ for secant — secant wins.</p>
+                    <p class="mb-0">In terms of function evaluations, the secant method is more efficient than Newton-Raphson: Newton needs 2 evaluations per step ($f$ and $f'$) for order 2, while secant needs 1 evaluation per step for order 1.618. Per evaluation, the effective order is $2^{1/2} \approx 1.414$ for Newton and $1.618^1 = 1.618$ for secant — secant wins.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Method Comparison</h2>
@@ -179,7 +179,7 @@
                         </thead>
                         <tbody>
                             <tr><td>Bisection</td><td>1 (linear)</td><td>1</td><td>No</td><td>Yes</td><td>Yes</td></tr>
-                            <tr><td>Newton–Raphson</td><td>2 (quadratic)</td><td>2</td><td>Yes</td><td>No</td><td>Near root only</td></tr>
+                            <tr><td>Newton-Raphson</td><td>2 (quadratic)</td><td>2</td><td>Yes</td><td>No</td><td>Near root only</td></tr>
                             <tr><td>Secant</td><td>$\approx 1.618$</td><td>1</td><td>No</td><td>No</td><td>Near root only</td></tr>
                             <tr><td>Brent's Method</td><td>Superlinear</td><td>1</td><td>No</td><td>Yes</td><td>Yes</td></tr>
                         </tbody>
@@ -199,12 +199,12 @@
 
                 <div class="math-box remark">
                     <div class="math-box-label">Remark — Practical Recommendations</div>
-                    <p class="mb-0">For production numerical software: use <strong>Brent's method</strong> whenever a bracket is available (robust and fast). Use <strong>Newton–Raphson</strong> when derivatives are cheap and a good starting point is available. Use the <strong>secant method</strong> as a derivative-free alternative to Newton when no bracket is available. Reserve <strong>bisection</strong> for initial bracketing or as a fallback when more sophisticated methods diverge.</p>
+                    <p class="mb-0">For production numerical software: use <strong>Brent's method</strong> whenever a bracket is available (robust and fast). Use <strong>Newton-Raphson</strong> when derivatives are cheap and a good starting point is available. Use the <strong>secant method</strong> as a derivative-free alternative to Newton when no bracket is available. Reserve <strong>bisection</strong> for initial bracketing or as a fallback when more sophisticated methods diverge.</p>
                 </div>
 
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3">
-                    <a href="../02-newton-raphson-method/" class="btn btn-outline-custom">&larr; 2.2 Newton–Raphson Method</a>
+                    <a href="../02-newton-raphson-method/" class="btn btn-outline-custom">&larr; 2.2 Newton-Raphson Method</a>
                     <a href="../../03-linear-systems/" class="btn btn-custom">3. Linear Systems &rarr;</a>
                 </div>
             </article>

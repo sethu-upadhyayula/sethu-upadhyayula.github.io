@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2.2 Newton–Raphson Method</title>
+    <title>2.2 Newton-Raphson Method</title>
     <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -66,7 +66,7 @@
                     </div>
                     <div class="toc-subsections">
                         <a href="../01-bisection-method/">2.1 Bisection Method</a>
-                        <a href="../02-newton-raphson-method/">2.2 Newton–Raphson Method</a>
+                        <a href="../02-newton-raphson-method/">2.2 Newton-Raphson Method</a>
                         <a href="../03-secant-method/">2.3 Secant Method</a>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                     <div class="toc-subsections">
                         <a href="../../03-linear-systems/01-gaussian-elimination/">3.1 Gaussian Elimination</a>
                         <a href="../../03-linear-systems/02-lu-factorisation/">3.2 LU Factorisation</a>
-                        <a href="../../03-linear-systems/03-iterative-methods/">3.3 Iterative Methods (Jacobi, Gauss–Seidel)</a>
+                        <a href="../../03-linear-systems/03-iterative-methods/">3.3 Iterative Methods (Jacobi, Gauss-Seidel)</a>
                     </div>
                 </div>
                 <div class="toc-chapter" data-chapter="04-interpolation">
@@ -98,7 +98,7 @@
                         <button class="toc-toggle-btn" aria-label="Toggle subsections"><i class="fas fa-chevron-down toc-chevron"></i></button>
                     </div>
                     <div class="toc-subsections">
-                        <a href="../../05-numerical-integration/01-newton-cotes-formulas/">5.1 Newton–Cotes Formulas</a>
+                        <a href="../../05-numerical-integration/01-newton-cotes-formulas/">5.1 Newton-Cotes Formulas</a>
                         <a href="../../05-numerical-integration/02-gaussian-quadrature/">5.2 Gaussian Quadrature</a>
                         <a href="../../05-numerical-integration/03-adaptive-integration/">5.3 Adaptive Integration</a>
                     </div>
@@ -110,7 +110,7 @@
                     </div>
                     <div class="toc-subsections">
                         <a href="../../06-numerical-ode-methods/01-eulers-method/">6.1 Euler's Method</a>
-                        <a href="../../06-numerical-ode-methods/02-runge-kutta-methods/">6.2 Runge–Kutta Methods</a>
+                        <a href="../../06-numerical-ode-methods/02-runge-kutta-methods/">6.2 Runge-Kutta Methods</a>
                         <a href="../../06-numerical-ode-methods/03-stability-and-stiffness/">6.3 Stability and Stiffness</a>
                     </div>
                 </div>
@@ -135,16 +135,16 @@
                 <a href="../../../../math/">Math</a> ›
                 <a href="../../">Numerical Analysis</a> ›
                 <a href="../">2. Root Finding</a> ›
-                <span>2.2 Newton–Raphson Method</span>
+                <span>2.2 Newton-Raphson Method</span>
             </nav>
             <article>
-                <h1 class="text-accent mb-4">2.2 Newton–Raphson Method</h1>
-                <p>The Newton–Raphson method is the workhorse of numerical root-finding when derivatives are available. Starting from an initial guess, it iterates by following the tangent line to the curve, achieving quadratic convergence near a simple root — a remarkable rate that roughly doubles the number of correct digits at each step.</p>
+                <h1 class="text-accent mb-4">2.2 Newton-Raphson Method</h1>
+                <p>The Newton-Raphson method is the workhorse of numerical root-finding when derivatives are available. Starting from an initial guess, it iterates by following the tangent line to the curve, achieving quadratic convergence near a simple root — a remarkable rate that roughly doubles the number of correct digits at each step.</p>
 
                 <h2 class="mt-4 mb-3">The Iteration</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Newton–Raphson Iteration</div>
-                    <p>Given a differentiable function $f$ and an initial guess $x_0$, the <strong>Newton–Raphson iteration</strong> is:</p>
+                    <div class="math-box-label">Definition — Newton-Raphson Iteration</div>
+                    <p>Given a differentiable function $f$ and an initial guess $x_0$, the <strong>Newton-Raphson iteration</strong> is:</p>
                     $$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}, \qquad n = 0, 1, 2, \ldots$$
                     <p class="mb-0"><strong>Geometric interpretation:</strong> the new iterate $x_{n+1}$ is the $x$-intercept of the tangent line to $y = f(x)$ at the point $(x_n, f(x_n))$. The tangent line is $y - f(x_n) = f'(x_n)(x - x_n)$; setting $y = 0$ yields the formula above.</p>
                 </div>
@@ -152,7 +152,7 @@
                 <h2 class="mt-5 mb-3">Quadratic Convergence</h2>
                 <div class="math-box theorem">
                     <div class="math-box-label">Theorem — Quadratic Convergence</div>
-                    <p>Let $r$ be a simple root of $f$ (i.e., $f(r) = 0$, $f'(r) \ne 0$) and suppose $f$ is twice continuously differentiable near $r$. If $x_0$ is sufficiently close to $r$, then the Newton–Raphson iterates converge to $r$ with:</p>
+                    <p>Let $r$ be a simple root of $f$ (i.e., $f(r) = 0$, $f'(r) \ne 0$) and suppose $f$ is twice continuously differentiable near $r$. If $x_0$ is sufficiently close to $r$, then the Newton-Raphson iterates converge to $r$ with:</p>
                     $$|e_{n+1}| \le \frac{M}{2m} |e_n|^2,$$
                     <p class="mb-0">where $e_n = x_n - r$, $M = \max_{x \in I}|f''(x)|$, and $m = \min_{x \in I}|f'(x)|$ on some interval $I$ containing $r$ and all iterates. This is <strong>quadratic convergence</strong>: once $|e_n|$ is small, $|e_{n+1}|$ is proportional to $|e_n|^2$.</p>
                 </div>
@@ -168,7 +168,7 @@
 
                 <h2 class="mt-5 mb-3">Failure Modes</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — When Newton–Raphson Fails</div>
+                    <div class="math-box-label">Remark — When Newton-Raphson Fails</div>
                     <ul class="mb-0">
                         <li><strong>Stationary point encountered:</strong> if $f'(x_n) = 0$ for some $n$, the method is undefined (division by zero).</li>
                         <li><strong>Poor initial guess:</strong> far from the root, the tangent line may point away from the root or toward a different root.</li>
@@ -186,7 +186,7 @@
 
                 <h2 class="mt-5 mb-3">Example: Computing $\sqrt{2}$</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Square Root via Newton–Raphson</div>
+                    <div class="math-box-label">Example — Square Root via Newton-Raphson</div>
                     <p>Find $r = \sqrt{2}$ as the root of $f(x) = x^2 - 2$, so $f'(x) = 2x$. The iteration is:
                     $$x_{n+1} = x_n - \frac{x_n^2 - 2}{2x_n} = \frac{x_n}{2} + \frac{1}{x_n}.$$
                     Starting from $x_0 = 1$:</p>

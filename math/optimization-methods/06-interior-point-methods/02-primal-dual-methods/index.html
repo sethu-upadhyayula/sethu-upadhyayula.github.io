@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6.2 Primal–Dual Methods</title>
+    <title>6.2 Primal-Dual Methods</title>
     <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -110,7 +110,7 @@
                     </div>
                     <div class="toc-subsections">
                         <a href="../../06-interior-point-methods/01-barrier-functions/">6.1 Barrier Functions</a>
-                        <a href="../../06-interior-point-methods/02-primal-dual-methods/">6.2 Primal–Dual Methods</a>
+                        <a href="../../06-interior-point-methods/02-primal-dual-methods/">6.2 Primal-Dual Methods</a>
                     </div>
                 </div>
                 <div class="toc-chapter" data-chapter="07-integer-programming">
@@ -133,12 +133,12 @@
                 <a href="../../../../math/">Math</a> ›
                 <a href="../../">Optimization Methods</a> ›
                 <a href="../">6. Interior Point Methods</a> ›
-                <span>6.2 Primal–Dual Methods</span>
+                <span>6.2 Primal-Dual Methods</span>
             </nav>
             <article>
-                <h1 class="text-accent mb-4">6.2 Primal–Dual Interior Point Methods</h1>
+                <h1 class="text-accent mb-4">6.2 Primal-Dual Interior Point Methods</h1>
 
-                <p>Primal–dual interior point methods simultaneously update primal and dual variables by applying Newton's method to the perturbed KKT conditions. They are the dominant approach for large-scale LP and SDP, achieving $O(\sqrt{n})$ iterations with polynomial complexity.</p>
+                <p>Primal-dual interior point methods simultaneously update primal and dual variables by applying Newton's method to the perturbed KKT conditions. They are the dominant approach for large-scale LP and SDP, achieving $O(\sqrt{n})$ iterations with polynomial complexity.</p>
 
                 <h2 class="mt-4 mb-3">KKT System for LP</h2>
 
@@ -148,7 +148,7 @@
                     $$Ax^* = b \quad\text{(primal feasibility)},$$
                     $$A^\top y^* + s^* = c \quad\text{(dual feasibility)},$$
                     $$x^*_j s^*_j = 0,\; x^*, s^* \ge 0 \quad\text{(complementary slackness)}.$$</p>
-                    <p class="mb-0">In matrix form, writing $X = \mathrm{diag}(x)$ and $S = \mathrm{diag}(s)$: $XSe = 0$ where $e = (1,\ldots,1)^\top$. The primal–dual method replaces $XSe = 0$ with the perturbed condition $XSe = \mu e$ for $\mu > 0$ (the <em>complementarity parameter</em>).</p>
+                    <p class="mb-0">In matrix form, writing $X = \mathrm{diag}(x)$ and $S = \mathrm{diag}(s)$: $XSe = 0$ where $e = (1,\ldots,1)^\top$. The primal-dual method replaces $XSe = 0$ with the perturbed condition $XSe = \mu e$ for $\mu > 0$ (the <em>complementarity parameter</em>).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Newton Step on Perturbed KKT</h2>
@@ -168,7 +168,7 @@
                     <div class="math-box-label">Definition 6.2.3 — Path-Following Method</div>
                     <p>A <strong>path-following</strong> IPM tracks the central path by decreasing $\mu$:</p>
                     <ol>
-                        <li>Start with strictly primal–dual feasible $(x_0, y_0, s_0)$ with $x_0, s_0 > 0$ and complementarity gap $\mu_0 = x_0^\top s_0 / n$.</li>
+                        <li>Start with strictly primal-dual feasible $(x_0, y_0, s_0)$ with $x_0, s_0 > 0$ and complementarity gap $\mu_0 = x_0^\top s_0 / n$.</li>
                         <li>Choose $\mu_{k+1} = (1 - \alpha/\sqrt{n})\mu_k$ (or a fixed fraction) and compute the Newton step.</li>
                         <li>Step $(\Delta x, \Delta y, \Delta s)$ with step size $\theta$ chosen to maintain $x, s > 0$ (stay in interior).</li>
                         <li>Stop when $\mu_k \le \varepsilon$.</li>
@@ -183,7 +183,7 @@
                         <li><strong>Predictor (affine scaling):</strong> Newton step with $\mu = 0$ to estimate how far we can go.</li>
                         <li><strong>Corrector:</strong> Adjust $\mu$ based on the predictor step length, then compute a corrected Newton step incorporating second-order terms.</li>
                     </ul>
-                    <p class="mb-0">Predictor-corrector requires roughly half the iterations of a pure path-following method in practice, typically $20$–$50$ iterations for large LPs regardless of problem size. It is the basis for virtually all production LP solvers.</p>
+                    <p class="mb-0">Predictor-corrector requires roughly half the iterations of a pure path-following method in practice, typically $20$-$50$ iterations for large LPs regardless of problem size. It is the basis for virtually all production LP solvers.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Advantages Over Simplex</h2>
