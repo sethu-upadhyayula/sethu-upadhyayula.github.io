@@ -69,6 +69,7 @@
         text = text
             .replace(/1\s*[--]\s*0|0\s*[--]\s*1|1\/2\s*[--]\s*1\/2|½\s*[--]\s*½/g, '')
             .replace(/--/g, '')
+            .replace(/(\d+\.+)([A-Za-z])/g, '$1 $2')
             .replace(/\s+/g, ' ').trim();
 
         var words = text.split(' ');
