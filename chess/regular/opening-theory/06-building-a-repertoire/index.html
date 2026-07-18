@@ -1,87 +1,62 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Building an Opening Repertoire — Opening Theory</title>
-<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="../../../../css/styles.css">
-<link rel="stylesheet" href="../../../../css/chess-board.css">
-<script src="../../../../js/chess-board.js"></script>
-<style>
-.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
-.opening-card{border-left:3px solid var(--accent-color,#6c8ebf);padding:.75rem 1rem;margin-bottom:1rem;background:var(--card-bg,#1e1e2e);border-radius:0 8px 8px 0;}
-</style>
-</head><body>
-<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
-<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
-<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
-<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
-<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
-<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
-<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
-<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
-<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
-<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
-</ul></div></div></nav></header>
-<main>
-    <aside class="math-toc" id="math-toc">
-        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Regular Chess</a>
-        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
-            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Opening Theory</a>
-            <hr>
-            <div class="toc-chapter" data-chapter="01-classifying-openings"><div class="toc-chapter-header"><a href="../01-classifying-openings/" class="toc-chapter-link"><strong>1.</strong> Classifying Openings</a></div></div>
-            <div class="toc-chapter" data-chapter="02-opening-principles"><div class="toc-chapter-header"><a href="../02-opening-principles/" class="toc-chapter-link"><strong>2.</strong> Opening Principles</a></div></div>
-            <div class="toc-chapter" data-chapter="03-open-games"><div class="toc-chapter-header"><a href="../03-open-games/" class="toc-chapter-link"><strong>3.</strong> Open Games (1.e4 e5)</a></div></div>
-            <div class="toc-chapter" data-chapter="04-closed-games"><div class="toc-chapter-header"><a href="../04-closed-games/" class="toc-chapter-link"><strong>4.</strong> Closed Games (1.d4)</a></div></div>
-            <div class="toc-chapter" data-chapter="05-flank-openings"><div class="toc-chapter-header"><a href="../05-flank-openings/" class="toc-chapter-link"><strong>5.</strong> Flank Openings</a></div></div>
-            <div class="toc-chapter" data-chapter="06-building-a-repertoire"><div class="toc-chapter-header"><a href="../06-building-a-repertoire/" class="toc-chapter-link"><strong>6.</strong> Building an Opening Repertoire</a></div></div>
-        </nav>
-    </aside>
-    <section class="math-content">
-        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Regular Chess</a></div>
-        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Regular Chess</a> › <a href="../">Opening Theory</a> › <span>6. Building an Opening Repertoire</span></nav>
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="../../../../css/styles.css"><link rel="stylesheet" href="../../../../css/chess-board.css"><style>main{display:block!important;}.ot-content{max-width:920px;margin:0 auto;padding:2rem 1.5rem;}.ot-card{border-left:3px solid var(--accent-color,#6c8ebf);padding:.85rem 1.25rem;margin-bottom:1.25rem;background:var(--card-bg,#1e1e2e);border-radius:0 8px 8px 0;}.ot-card h3{margin-top:0;font-size:1.1rem;}.notation{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:.85rem 1rem;font-family:monospace;font-size:.88rem;line-height:2;margin:.75rem 0;}.chapter-pills{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:2rem;}.chapter-pills a{font-size:.74rem;padding:.2rem .55rem;border-radius:99px;border:1px solid var(--border-color,#444);color:var(--text-muted,#9aa0a6);text-decoration:none;transition:all .15s;}.chapter-pills a:hover,.chapter-pills a.active{border-color:var(--accent-color,#6c8ebf);color:var(--accent-color,#6c8ebf);background:rgba(108,142,191,.08);}.board-caption{text-align:center;font-size:.8rem;color:var(--text-muted,#9aa0a6);margin-top:.35rem;margin-bottom:.75rem;}</style><title>French Defence &amp; Caro-Kann - Opening Theory</title></head><body><div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div><header><nav class="navbar navbar-expand-lg site-header"><div class="container"><a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center"><li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li><li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li><li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li><li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li><li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li><li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li><li class="nav-item ms-3"><label class="theme-switch" for="dt"><input type="checkbox" id="dt"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li></ul></div></div></nav></header><main><div class="ot-content">
+<nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> &rsaquo; <a href="../../../">Regular Chess</a> &rsaquo; <a href="../">Opening Theory</a> &rsaquo; <span>6. French Defence &amp; Caro-Kann</span></nav><div class="chapter-pills"><a href="../01-classifying-openings/">1. Classifying</a><a href="../02-opening-principles/">2. Principles</a><a href="../03-open-games/">3. Ruy Lopez</a><a href="../04-closed-games/">4. Sicilian</a><a href="../05-italian-and-kg/">5. Italian &amp; KG</a><a href="../06-building-a-repertoire/" class="active">6. French &amp; CK</a><a href="../07-queens-gambit/">7. Queen&rsquo;s Gambit</a><a href="../08-indian-defences/">8. Indian Systems</a><a href="../09-english-and-flank/">9. English &amp; Flank</a><a href="../10-building-a-repertoire/">10. Repertoire</a></div><h1 class="text-accent mb-4">6. French Defence &amp; Caro-Kann</h1>
+<p>Two of the most important semi-open defences to 1.e4. Both involve blocking the centre early, accepting a space disadvantage in return for a solid position that is hard to attack. They appeal to players who prefer structure and clarity over the sharp complications of the Sicilian.</p>
 
-        <h1 class="text-accent mb-4">6. Building an Opening Repertoire</h1>
-  <p>An <strong>opening repertoire</strong> is the set of openings a player has chosen to specialise in — typically one (or a small number) of responses to 1.e4 and 1.d4 as Black, plus a main weapon as White. Building a repertoire is a long-term project, and approaching it systematically saves enormous amounts of time and confusion.</p>
+<h2 class="mt-4 mb-3">The French Defence (ECO C00&ndash;C19)</h2>
+<p>1.e4 e6 &mdash; Black prepares ...d5, forming a pawn chain. The classic French pawn structure is d5 vs e5 (after White pushes e5). Black&rsquo;s problem: the c8 bishop is blocked by its own pawn on e6. Black&rsquo;s long-term goal: undermine White&rsquo;s pawn chain with ...c5 and possibly ...f6. Viktor Korchnoi, Tigran Petrosian, and Michael Adams built careers on the French.</p>
 
-  <h3>Step 1: Start From What You Already Play</h3>
-  <p>Look at your recent games and identify which openings you reach most often, whether by choice or by accident. Build outward from these — it is far more efficient to deepen your understanding of a structure you already have some intuition for than to start from zero with something unfamiliar.</p>
+<div class="chess-board" id="b-french"></div>
+<script>renderChessBoard('b-french',{e4:'wP',d4:'wP',a2:'wP',b2:'wP',c2:'wP',f2:'wP',g2:'wP',h2:'wP',c3:'wN',f3:'wN',c1:'wB',d1:'wQ',e1:'wK',f1:'wB',a1:'wR',h1:'wR',e6:'bP',d5:'bP',a7:'bP',b7:'bP',c7:'bP',f7:'bP',g7:'bP',h7:'bP',c6:'bN',f6:'bN',d8:'bQ',e8:'bK',f8:'bB',c8:'bB',a8:'bR',h8:'bR'});</script>
+<p class="board-caption">French Classical after 1.e4 e6 2.d4 d5 3.Nc3 Nf6 &mdash; White must resolve the central tension</p>
 
-  <h3>Step 2: Choose Openings That Match Your Style</h3>
-  <ul>
-    <li><strong>Tactical, attacking players</strong> often gravitate toward open games (1.e4 e5 with the Italian or King's Gambit), the King's Indian Defence, or sharp Sicilian lines (Najdorf, Dragon).</li>
-    <li><strong>Positional, strategic players</strong> often prefer closed structures: the Queen's Gambit Declined, Caro-Kann, Catalan, or English Opening.</li>
-    <li><strong>Players who value solidity over winning chances</strong> might choose the Berlin Defence, Caro-Kann, or Slav — openings with a strong drawing reputation but very few ways to lose quickly.</li>
-  </ul>
-  <p>There is no "best" opening at club level — the best opening is the one whose resulting positions you understand and enjoy playing.</p>
+<div class="ot-card">
+  <h3>Winawer Variation: 3&hellip;Bb4 (ECO C15&ndash;C18)</h3>
+  <p>The sharpest and most popular French. Black pins the knight and will exchange on c3, giving White doubled pawns in return for surrendering the bishop pair. After 4.e5 c5 5.a3 Bxc3+ 6.bxc3, White has a powerful centre but weakened queenside. Black counterattacks with ...Qa5, ...Ne7-Nf5, and ...c4. The resulting positions are enormously complex and asymmetrical.</p>
+  <div class="notation">1.e4 e6 2.d4 d5 3.Nc3 Bb4 4.e5 c5 5.a3 Bxc3+ 6.bxc3 Ne7<br>7. Qg4 &mdash; attacking g7, asking Black to choose between ...0-0 and ...Kf8</div>
+</div>
 
-  <h3>Step 3: Study Model Games, Not Just Move Lists</h3>
-  <p>Memorising moves without understanding is fragile — the moment your opponent deviates, you are on your own. Instead, study a handful of <strong>complete annotated games</strong> in your chosen openings (see <a href="../../master-games/">Master Games</a> for examples), focusing on the resulting middlegame plans for both sides. Understanding "why" beats memorising "what."</p>
+<div class="ot-card">
+  <h3>Classical Variation: 3&hellip;Nf6 (ECO C12&ndash;C14)</h3>
+  <p>Natural development. After 4.Bg5 (the Classical), White pins the knight. Black must choose: 4&hellip;Be7 (solid), 4&hellip;dxe4 5.Nxe4 Be7 (MacCutcheon with 5&hellip;Bb4+ is sharper), or 4&hellip;Bb4 transposing to Winawer territory. The Classical leads to rich, strategic battles.</p>
+</div>
 
-  <h3>Step 4: Build a Repertoire Tree Gradually</h3>
-  <p>Many players use a repertoire database (a PGN collection of "your" lines) or a simple notebook. Start with the main line against the most common replies, and only add detail to side lines as you actually encounter them in your games. There is little value in preparing 15 moves deep against an opening your opponents almost never play.</p>
+<div class="ot-card">
+  <h3>Tarrasch Variation: 3.Nd2 (ECO C03&ndash;C09)</h3>
+  <p>White avoids the Winawer pin with 3.Nd2. The downside: the knight on d2 blocks the c-pawn and is less active than Nc3. Black can continue 3&hellip;Nf6 (solid) or 3&hellip;c5 immediately attacking the centre. The Tarrasch is Karpov&rsquo;s favourite White weapon &mdash; it leads to quieter positions while keeping an edge.</p>
+  <div class="notation">1.e4 e6 2.d4 d5 3.Nd2 c5 4.exd5 exd5 5.Ngf3 Nc6 6.Bb5<br>&mdash; isolated d-pawn positions with opposite-side castling possibilities</div>
+</div>
 
-  <h3>Step 5: Update After Every Loss</h3>
-  <p>Whenever you lose (or get a bad position) out of the opening, find out exactly where the position went wrong and update your repertoire notes. Over time, this turns every painful loss into a permanent improvement — your opening knowledge becomes "battle-tested" rather than purely theoretical.</p>
+<div class="ot-card">
+  <h3>Advance Variation: 3.e5 (ECO C02)</h3>
+  <p>White immediately establishes the pawn on e5, closing the centre. Black must attack this pawn with ...c5, ...Nc6, and ...Qb6. The Milner-Barry Gambit (4.c3 Nc6 5.Nf3 Qb6 6.Bd3!?) is an attacking attempt. Modern engines suggest the Advance is slightly better for Black with correct play, but it&rsquo;s a common choice at club level.</p>
+</div>
 
-  <div class="notation-box">
-    <strong>Practical guideline:</strong> At club level, spend roughly 80% of your study time on tactics, endgames, and general principles, and only about 20% on opening-specific preparation. Opening knowledge has diminishing returns until your general chess understanding catches up.
-  </div>
+<h2 class="mt-5 mb-3">The Caro-Kann Defence (ECO B10&ndash;B19)</h2>
+<p>1.e4 c6 &mdash; preparing ...d5 while keeping the c8 bishop unconstrained (unlike the French). The Caro-Kann is considered one of the most solid defences to 1.e4. Anatoly Karpov played it throughout his career, and Magnus Carlsen has adopted it frequently. The resulting structures are similar to the French but without the passive c8 bishop problem.</p>
 
-        <hr class="my-5">
-        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-            <a href="../05-flank-openings/" class="btn btn-outline-custom">&larr; 5. Flank Openings</a>
-            <a href="../../" class="btn btn-custom">Back to Regular Chess &rarr;</a>
-        </div>
-    </section>
-</main>
-<footer class="site-footer"><div class="container text-center"><div class="social-links">
-<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
-<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
-<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
-</div></div></footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../../../../js/script.js"></script>
-</body></html>
+<div class="chess-board" id="b-caro"></div>
+<script>renderChessBoard('b-caro',{e4:'wP',d4:'wP',a2:'wP',b2:'wP',c2:'wP',f2:'wP',g2:'wP',h2:'wP',c3:'wN',f3:'wN',c1:'wB',d1:'wQ',e1:'wK',f1:'wB',a1:'wR',h1:'wR',c6:'bP',d5:'bP',a7:'bP',b7:'bP',e6:'bP',f7:'bP',g7:'bP',h7:'bP',d7:'bN',c8:'bB',d8:'bQ',e8:'bK',f8:'bB',a8:'bR',h8:'bR'});</script>
+<p class="board-caption">Caro-Kann Classical after 1.e4 c6 2.d4 d5 3.Nc3 dxe4 4.Nxe4 Nd7 &mdash; the bishop on c8 is free</p>
+
+<div class="ot-card">
+  <h3>Classical Variation: 4&hellip;Bf5 (ECO B18&ndash;B19)</h3>
+  <p>The main line. After 4.Nxe4, Black plays 4&hellip;Bf5, immediately developing the problem bishop before closing the pawn chain. White plays 5.Ng3 Bg6 6.h4 h6 7.Nf3 Nd7 8.h5 Bh7, and a typical Caro middlegame arises: Black is solid, White tries to generate kingside pressure. The Karpov Variation (4&hellip;Nd7) is an alternative.</p>
+  <div class="notation">1.e4 c6 2.d4 d5 3.Nc3 dxe4 4.Nxe4 Bf5<br>5. Ng3 Bg6 6.h4 h6 7.Nf3 Nd7 8.h5 Bh7 9.Bd3</div>
+</div>
+
+<div class="ot-card">
+  <h3>Advance Variation: 3.e5 (ECO B12)</h3>
+  <p>As in the French, White grabs space. After 3&hellip;Bf5, Black immediately develops the bishop &mdash; the whole point of playing ...c6 before ...d5. 4.Nf3 e6 5.Be2 Ne7 and Black will later play ...c5, challenging the centre. The Tal Variation (3.e5 Bf5 4.h4!?) is an aggressive try.</p>
+</div>
+
+<div class="ot-card">
+  <h3>Panov Attack: 3.exd5 cxd5 4.c4 (ECO B13&ndash;B14)</h3>
+  <p>White trades the e-pawn for the c-pawn and plays 4.c4, aiming to reach IQP (isolated queen pawn) positions typical of the QGA. Black must choose between accepting the IQP or playing 4&hellip;Nf6 5.Nc3 Nc6, heading for a Nimzo-like structure. The Panov is White&rsquo;s most principled attempt to challenge the Caro-Kann.</p>
+</div>
+
+<hr class="my-5">
+<div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+  <a href="../05-italian-and-kg/" class="btn btn-outline-custom">&larr; 5. Italian &amp; King&rsquo;s Gambit</a>
+  <a href="../07-queens-gambit/" class="btn btn-custom">7. Queen&rsquo;s Gambit &rarr;</a>
+</div>
+</div></main><footer class="site-footer"><div class="container text-center"><div class="social-links"><a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a><a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a></div></div></footer><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><script src="../../../../js/script.js"></script><script src="../../../../js/chess-board.js"></script></body></html>

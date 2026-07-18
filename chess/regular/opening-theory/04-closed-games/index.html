@@ -1,94 +1,63 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Closed Games (1.d4) — Opening Theory</title>
-<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="../../../../css/styles.css">
-<link rel="stylesheet" href="../../../../css/chess-board.css">
-<script src="../../../../js/chess-board.js"></script>
-<style>
-.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
-.opening-card{border-left:3px solid var(--accent-color,#6c8ebf);padding:.75rem 1rem;margin-bottom:1rem;background:var(--card-bg,#1e1e2e);border-radius:0 8px 8px 0;}
-</style>
-</head><body>
-<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
-<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
-<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
-<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
-<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
-<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
-<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
-<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
-<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
-<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
-</ul></div></div></nav></header>
-<main>
-    <aside class="math-toc" id="math-toc">
-        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Regular Chess</a>
-        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
-            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Opening Theory</a>
-            <hr>
-            <div class="toc-chapter" data-chapter="01-classifying-openings"><div class="toc-chapter-header"><a href="../01-classifying-openings/" class="toc-chapter-link"><strong>1.</strong> Classifying Openings</a></div></div>
-            <div class="toc-chapter" data-chapter="02-opening-principles"><div class="toc-chapter-header"><a href="../02-opening-principles/" class="toc-chapter-link"><strong>2.</strong> Opening Principles</a></div></div>
-            <div class="toc-chapter" data-chapter="03-open-games"><div class="toc-chapter-header"><a href="../03-open-games/" class="toc-chapter-link"><strong>3.</strong> Open Games (1.e4 e5)</a></div></div>
-            <div class="toc-chapter" data-chapter="04-closed-games"><div class="toc-chapter-header"><a href="../04-closed-games/" class="toc-chapter-link"><strong>4.</strong> Closed Games (1.d4)</a></div></div>
-            <div class="toc-chapter" data-chapter="05-flank-openings"><div class="toc-chapter-header"><a href="../05-flank-openings/" class="toc-chapter-link"><strong>5.</strong> Flank Openings</a></div></div>
-            <div class="toc-chapter" data-chapter="06-building-a-repertoire"><div class="toc-chapter-header"><a href="../06-building-a-repertoire/" class="toc-chapter-link"><strong>6.</strong> Building an Opening Repertoire</a></div></div>
-        </nav>
-    </aside>
-    <section class="math-content">
-        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Regular Chess</a></div>
-        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Regular Chess</a> › <a href="../">Opening Theory</a> › <span>4. Closed Games (1.d4)</span></nav>
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="../../../../css/styles.css"><link rel="stylesheet" href="../../../../css/chess-board.css"><style>main{display:block!important;}.ot-content{max-width:920px;margin:0 auto;padding:2rem 1.5rem;}.ot-card{border-left:3px solid var(--accent-color,#6c8ebf);padding:.85rem 1.25rem;margin-bottom:1.25rem;background:var(--card-bg,#1e1e2e);border-radius:0 8px 8px 0;}.ot-card h3{margin-top:0;font-size:1.1rem;}.notation{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:.85rem 1rem;font-family:monospace;font-size:.88rem;line-height:2;margin:.75rem 0;}.chapter-pills{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:2rem;}.chapter-pills a{font-size:.74rem;padding:.2rem .55rem;border-radius:99px;border:1px solid var(--border-color,#444);color:var(--text-muted,#9aa0a6);text-decoration:none;transition:all .15s;}.chapter-pills a:hover,.chapter-pills a.active{border-color:var(--accent-color,#6c8ebf);color:var(--accent-color,#6c8ebf);background:rgba(108,142,191,.08);}.board-caption{text-align:center;font-size:.8rem;color:var(--text-muted,#9aa0a6);margin-top:.35rem;margin-bottom:.75rem;}</style><title>The Sicilian Defence - Opening Theory</title></head><body><div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div><header><nav class="navbar navbar-expand-lg site-header"><div class="container"><a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center"><li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li><li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li><li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li><li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li><li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li><li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li><li class="nav-item ms-3"><label class="theme-switch" for="dt"><input type="checkbox" id="dt"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li></ul></div></div></nav></header><main><div class="ot-content">
+<nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> &rsaquo; <a href="../../../">Regular Chess</a> &rsaquo; <a href="../">Opening Theory</a> &rsaquo; <span>4. The Sicilian Defence</span></nav><div class="chapter-pills"><a href="../01-classifying-openings/">1. Classifying</a><a href="../02-opening-principles/">2. Principles</a><a href="../03-open-games/">3. Ruy Lopez</a><a href="../04-closed-games/" class="active">4. Sicilian</a><a href="../05-italian-and-kg/">5. Italian &amp; KG</a><a href="../06-building-a-repertoire/">6. French &amp; CK</a><a href="../07-queens-gambit/">7. Queen&rsquo;s Gambit</a><a href="../08-indian-defences/">8. Indian Systems</a><a href="../09-english-and-flank/">9. English &amp; Flank</a><a href="../10-building-a-repertoire/">10. Repertoire</a></div><h1 class="text-accent mb-4">4. The Sicilian Defence</h1>
+<p>After 1.e4 c5, Black fights for the centre without occupying it symmetrically. The c5 pawn contests d4 while keeping the position asymmetrical from move one &mdash; giving both sides genuine winning chances. The Sicilian is the most popular and statistically most successful response to 1.e4, accounting for roughly 25% of all tournament games. Fischer, Kasparov, Tal, and Carlsen all played it regularly.</p>
 
-        <h1 class="text-accent mb-4">4. Closed Games (1.d4)</h1>
-  <p>Openings starting with 1.d4 tend to lead to more strategic, slower-burning games. Because the d-pawn is protected by the queen immediately, Black cannot win it outright with 1...e5?, unlike in open games. These openings are associated with patient positional play and pawn structure battles.</p>
+<div class="chess-board" id="b-sic-open"></div>
+<script>renderChessBoard('b-sic-open',{e4:'wP',a2:'wP',b2:'wP',c2:'wP',f2:'wP',g2:'wP',h2:'wP',a1:'wR',c1:'wB',d1:'wQ',e1:'wK',f1:'wB',g1:'wN',h1:'wR',c3:'wN',d4:'wN',a6:'bP',b7:'bP',d6:'bP',e7:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bR',c8:'bB',d8:'bQ',e8:'bK',f8:'bB',b8:'bN',h8:'bR',f6:'bN'});</script>
+<p class="board-caption">Open Sicilian after 1.e4 c5 2.Nf3 d6 3.d4 cxd4 4.Nxd4 Nf6 5.Nc3 &mdash; Black to play</p>
 
-  <div class="opening-card">
-    <h3>Queen's Gambit: 1.d4 d5 2.c4</h3>
-    <p>White offers a pawn to gain central control. It is not a true gambit — if Black accepts with 2...dxc4, White regains the pawn with ease while gaining time and space.</p>
-    <div class="chess-board" id="board-qg"></div>
-    <script>renderChessBoard('board-qg', {a2:'wP',b2:'wP',c4:'wP',e2:'wP',f2:'wP',g2:'wP',h2:'wP',d4:'wP',a1:'wR',h1:'wR',c1:'wB',d1:'wQ',e1:'wK',f1:'wB',g1:'wN',b1:'wN',a7:'bP',b7:'bP',c7:'bP',e7:'bP',f7:'bP',g7:'bP',h7:'bP',d5:'bP',a8:'bR',h8:'bR',c8:'bB',d8:'bQ',e8:'bK',f8:'bB',g8:'bN',b8:'bN'});</script>
-    <p class="text-center text-muted mt-2"><small>Queen's Gambit after 1.d4 d5 2.c4</small></p>
-    <ul>
-      <li><strong>Queen's Gambit Accepted (QGA): 2...dxc4</strong> — Black takes the pawn; White gets a free central pawn on e4 and active piece play. Black hopes to equalise with active piece play and a solid position.</li>
-      <li><strong>Queen's Gambit Declined (QGD): 2...e6</strong> — Classical and solid; Black reinforces d5 with the e-pawn. Leads to rich strategic battles. The Exchange Variation (3.cxd5 exd5) and the Orthodox Variation are the main continuations.</li>
-      <li><strong>Slav Defence: 2...c6</strong> — Supports d5 while keeping the light-squared bishop active. Very popular at top level.</li>
-    </ul>
-  </div>
+<h2 class="mt-4 mb-3">The Open Sicilian: 2.Nf3 and 3.d4</h2>
+<p>The main line. White opens the centre with d4 (2.Nf3 followed by 3.d4 cxd4 4.Nxd4), and now Black must choose a variation. The resulting tabiya after 5.Nc3 is one of the most important branching points in chess theory.</p>
 
-  <div class="opening-card">
-    <h3>King's Indian Defence: 1.d4 Nf6 2.c4 g6</h3>
-    <p>A hypermodern opening where Black allows White to build a large centre (d4, e4) and then counterattacks it. Black fianchettoes the dark-squared bishop on g7, creates tremendous pressure on the long diagonal, and typically launches a kingside counterattack with ...e5 while White pursues queenside ambitions.</p>
-    <p>The King's Indian is associated with dynamic, attacking play and was a favourite of Bobby Fischer, Mikhail Tal, and Garry Kasparov. Main variations: Classical (5.Nf3 0-0 6.Be2 e5), Sämisch (5.f3 — White reinforces the centre aggressively), Four Pawns Attack (5.f4 — most aggressive White try), and the Averbakh.</p>
-  </div>
+<div class="ot-card">
+  <h3>Najdorf Variation: 5&hellip;a6 (ECO B90&ndash;B99)</h3>
+  <p>The most popular variation in the world. 5&hellip;a6 seems modest &mdash; it prevents Nb5 and Bb5+ &mdash; but it is a preparation for ...e5 or ...b5-b4 queenside expansion. Bobby Fischer called the Najdorf &ldquo;my favourite opening,&rdquo; and Garry Kasparov played it for his entire career. The typical White responses are 6.Bg5 (the classical, ultra-sharp Poisoned Pawn Variation being the apex), 6.Be3 (the English Attack), and 6.Bc4.</p>
+  <div class="notation">1.e4 c5 2.Nf3 d6 3.d4 cxd4 4.Nxd4 Nf6 5.Nc3 a6<br>6. Bg5 e6 7. f4 &mdash; classical with kingside attack<br>6. Be3 e5 7. Nb3 Be6 &mdash; English Attack vs Najdorf</div>
+  <p>Black&rsquo;s pieces are active; the position is completely unbalanced. White often attacks the kingside, Black counterattacks on the queenside &mdash; this is the Sicilian at its purest.</p>
+</div>
 
-  <div class="opening-card">
-    <h3>Nimzo-Indian Defence: 1.d4 Nf6 2.c4 e6 3.Nc3 Bb4</h3>
-    <p>One of the most theoretically rich openings in chess. Black pins the c3 knight — the key defender of d4 — with the bishop on b4. The Nimzo-Indian creates imbalances immediately: if White plays e4, Black often exchanges Bxc3, giving White doubled pawns in exchange for the bishop pair.</p>
-    <p>The resulting positions are excellent for learning structural concepts: isolated queens' pawns, doubled pawns, bishop vs knight, and active piece coordination. Associated with Aron Nimzowitsch (who gave it his name), Mikhail Botvinnik, Anatoly Karpov, and many other champions.</p>
-  </div>
+<div class="ot-card">
+  <h3>Dragon Variation: 5&hellip;g6 (ECO B70&ndash;B79)</h3>
+  <p>Black fianchettoes the bishop to g7, creating a powerful diagonal aimed at the queenside. The Dragon bishop on g7 is one of the most feared pieces on the board in the endgame. White&rsquo;s most dangerous response is the Yugoslav Attack (6.Be3 Bg7 7.f3 0-0 8.Qd2 Nc6 9.Bc4 0-0-0), which leads to one of the most complex and analysed positions in chess: both sides castle on opposite wings and race to attack.</p>
+  <div class="notation">1.e4 c5 2.Nf3 d6 3.d4 cxd4 4.Nxd4 Nf6 5.Nc3 g6<br>6. Be3 &nbsp;Bg7 &nbsp; 7. f3 &nbsp;0-0 &nbsp; 8. Qd2 &nbsp;Nc6 &nbsp; 9. Bc4 &nbsp;Bd7 &nbsp; 10. 0-0-0</div>
+  <div class="chess-board" id="b-dragon"></div>
+  <script>renderChessBoard('b-dragon',{e4:'wP',a2:'wP',b2:'wP',c2:'wP',f3:'wP',g2:'wP',h2:'wP',c4:'wB',e3:'wB',d4:'wN',c3:'wN',d2:'wQ',c1:'wK',d1:'wR',a1:'wR',d6:'bP',e7:'bP',f7:'bP',g6:'bP',h7:'bP',a7:'bP',b7:'bP',c7:'bB',g7:'bB',c6:'bN',f6:'bN',g8:'bK',h8:'bR',a8:'bR',d8:'bQ'});</script>
+  <p class="board-caption">Yugoslav Attack in Dragon &mdash; White has castled queenside and will attack h7; Black attacks c3/d4</p>
+</div>
 
-  <div class="opening-card">
-    <h3>Catalan Opening: 1.d4 Nf6 2.c4 e6 3.g3</h3>
-    <p>White combines the Queen's Gambit structure with a fianchetto of the light-squared bishop. The bishop on g2 exerts long-term pressure on the queenside and through the centre. The Catalan is associated with positional mastery — White does not seek immediate tactical complications but rather builds slow, persistent pressure.</p>
-    <p>The "Open Catalan" (Black plays ...dxc4) gives White the bishop's diagonal at the cost of White temporarily having no d5 outpost. The "Closed Catalan" (Black keeps pawns on d5 and e6) leads to a more static battle. Popularised by Vladimír Iljin-Zhenevsky and mastered by Vladimir Kramnik and Magnus Carlsen.</p>
-  </div>
+<div class="ot-card">
+  <h3>Scheveningen Variation: 5&hellip;e6 (ECO B80&ndash;B89)</h3>
+  <p>Black forms the "small centre" with pawns on d6 and e6 &mdash; solid, flexible, and leaving all options open for knight and bishop development. The Scheveningen pawn formation is so common it appears in many Najdorf lines too (when Black plays ...e6 after ...a6). White typically tries the Keres Attack (6.g4!?) or the classical 6.Be2. Tigran Petrosian and Anatoly Karpov were famous Scheveningen players.</p>
+  <div class="notation">1.e4 c5 2.Nf3 d6 3.d4 cxd4 4.Nxd4 Nf6 5.Nc3 e6<br>6. g4!? &mdash; Keres Attack, immediately aggressive<br>6. Be2 a6 7. 0-0 Qc7 &mdash; classical development</div>
+</div>
 
-        <hr class="my-5">
-        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-            <a href="../03-open-games/" class="btn btn-outline-custom">&larr; 3. Open Games (1.e4 e5)</a>
-            <a href="../05-flank-openings/" class="btn btn-custom">5. Flank Openings &rarr;</a>
-        </div>
-    </section>
-</main>
-<footer class="site-footer"><div class="container text-center"><div class="social-links">
-<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
-<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
-<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
-</div></div></footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../../../../js/script.js"></script>
-</body></html>
+<div class="ot-card">
+  <h3>Classical Variation: 5&hellip;Nc6 (ECO B55&ndash;B69)</h3>
+  <p>Natural development. 5&hellip;Nc6 attacks the d4 knight directly, forcing White to decide how to handle it. The most popular continuation is 6.Bg5, leading to the Richter-Rauzer Attack (6&hellip;e6 7.Qd2 Be7 8.0-0-0), or 6.Bc4, the Sozin Attack. The Classical Sicilian is solid and less forcing than the Najdorf.</p>
+</div>
+
+<h2 class="mt-5 mb-3">Anti-Sicilian Systems</h2>
+<p>Many players avoid the Open Sicilian&rsquo;s enormous theory. These alternatives trade ambition for control:</p>
+
+<div class="ot-card">
+  <h3>Alapin Variation: 2.c3</h3>
+  <p>White immediately prepares d4 without playing Nf3 first. After 2&hellip;Nf6 3.e5 Nd5 4.d4 cxd4 5.cxd4, White achieves a strong pawn centre. The downside: Black can challenge it effectively with ...d5 ideas, and the c3 square is no longer available for the knight. Solid and theory-light.</p>
+  <div class="notation">1.e4 c5 2.c3 Nf6 3.e5 Nd5 4.d4 cxd4 5.cxd4 d6 6.Nf3</div>
+</div>
+
+<div class="ot-card">
+  <h3>Grand Prix Attack: 2.Nc3 followed by f4</h3>
+  <p>White develops the knight to c3 and plays f4-f5 for a direct kingside attack. The Grand Prix is a particularly good weapon against unprepared Sicilian players. It avoids the main Sicilian theory entirely. Black&rsquo;s best response is typically 2&hellip;Nc6 3.f4 g6, meeting the attack with a Dragon-style setup.</p>
+</div>
+
+<div class="ot-card">
+  <h3>Closed Sicilian: 2.Nc3 and 3.g3</h3>
+  <p>White fianchettoes the kingside bishop and builds up slowly. The resulting positions resemble the King&rsquo;s Indian Attack structure. Less sharp than the Open Sicilian, but can lead to complex middlegames. Popular at club level as it avoids massive theory.</p>
+</div>
+
+<hr class="my-5">
+<div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+  <a href="../03-open-games/" class="btn btn-outline-custom">&larr; 3. The Ruy Lopez</a>
+  <a href="../05-italian-and-kg/" class="btn btn-custom">5. Italian &amp; King&rsquo;s Gambit &rarr;</a>
+</div>
+</div></main><footer class="site-footer"><div class="container text-center"><div class="social-links"><a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a><a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a></div></div></footer><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><script src="../../../../js/script.js"></script><script src="../../../../js/chess-board.js"></script></body></html>

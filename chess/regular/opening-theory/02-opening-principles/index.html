@@ -1,93 +1,53 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Opening Principles — Opening Theory</title>
-<link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="../../../../css/styles.css">
-<link rel="stylesheet" href="../../../../css/chess-board.css">
-<script src="../../../../js/chess-board.js"></script>
-<style>
-.notation-box{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:1rem;font-family:monospace;font-size:.95rem;}
-.opening-card{border-left:3px solid var(--accent-color,#6c8ebf);padding:.75rem 1rem;margin-bottom:1rem;background:var(--card-bg,#1e1e2e);border-radius:0 8px 8px 0;}
-</style>
-</head><body>
-<div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div>
-<header><nav class="navbar navbar-expand-lg site-header"><div class="container">
-<a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
-<div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center">
-<li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li>
-<li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li>
-<li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li>
-<li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li>
-<li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li>
-<li class="nav-item ms-3"><label class="theme-switch" for="desktop-theme-toggle"><input type="checkbox" id="desktop-theme-toggle"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li>
-</ul></div></div></nav></header>
-<main>
-    <aside class="math-toc" id="math-toc">
-        <a href="../../" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Regular Chess</a>
-        <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
-            <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Opening Theory</a>
-            <hr>
-            <div class="toc-chapter" data-chapter="01-classifying-openings"><div class="toc-chapter-header"><a href="../01-classifying-openings/" class="toc-chapter-link"><strong>1.</strong> Classifying Openings</a></div></div>
-            <div class="toc-chapter" data-chapter="02-opening-principles"><div class="toc-chapter-header"><a href="../02-opening-principles/" class="toc-chapter-link"><strong>2.</strong> Opening Principles</a></div></div>
-            <div class="toc-chapter" data-chapter="03-open-games"><div class="toc-chapter-header"><a href="../03-open-games/" class="toc-chapter-link"><strong>3.</strong> Open Games (1.e4 e5)</a></div></div>
-            <div class="toc-chapter" data-chapter="04-closed-games"><div class="toc-chapter-header"><a href="../04-closed-games/" class="toc-chapter-link"><strong>4.</strong> Closed Games (1.d4)</a></div></div>
-            <div class="toc-chapter" data-chapter="05-flank-openings"><div class="toc-chapter-header"><a href="../05-flank-openings/" class="toc-chapter-link"><strong>5.</strong> Flank Openings</a></div></div>
-            <div class="toc-chapter" data-chapter="06-building-a-repertoire"><div class="toc-chapter-header"><a href="../06-building-a-repertoire/" class="toc-chapter-link"><strong>6.</strong> Building an Opening Repertoire</a></div></div>
-        </nav>
-    </aside>
-    <section class="math-content">
-        <div class="d-lg-none mb-4"><a href="../../" class="btn btn-outline-custom btn-sm">&larr; Back to Regular Chess</a></div>
-        <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Regular Chess</a> › <a href="../">Opening Theory</a> › <span>2. Opening Principles</span></nav>
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="../../../../css/styles.css"><link rel="stylesheet" href="../../../../css/chess-board.css"><style>main{display:block!important;}.ot-content{max-width:920px;margin:0 auto;padding:2rem 1.5rem;}.ot-card{border-left:3px solid var(--accent-color,#6c8ebf);padding:.85rem 1.25rem;margin-bottom:1.25rem;background:var(--card-bg,#1e1e2e);border-radius:0 8px 8px 0;}.ot-card h3{margin-top:0;font-size:1.1rem;}.notation{background:var(--card-bg,#1e1e2e);border:1px solid var(--border-color,#444);border-radius:8px;padding:.85rem 1rem;font-family:monospace;font-size:.88rem;line-height:2;margin:.75rem 0;}.chapter-pills{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:2rem;}.chapter-pills a{font-size:.74rem;padding:.2rem .55rem;border-radius:99px;border:1px solid var(--border-color,#444);color:var(--text-muted,#9aa0a6);text-decoration:none;transition:all .15s;}.chapter-pills a:hover,.chapter-pills a.active{border-color:var(--accent-color,#6c8ebf);color:var(--accent-color,#6c8ebf);background:rgba(108,142,191,.08);}.board-caption{text-align:center;font-size:.8rem;color:var(--text-muted,#9aa0a6);margin-top:.35rem;margin-bottom:.75rem;}</style><title>Opening Principles - Opening Theory</title></head><body><div class="theme-toggle-container"><button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button></div><header><nav class="navbar navbar-expand-lg site-header"><div class="container"><a class="navbar-brand brand-text" href="../../../../">Sethu Upadhyayula</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto align-items-center"><li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li><li class="nav-item"><a class="nav-link" href="../../../../about/">About Me</a></li><li class="nav-item"><a class="nav-link" href="../../../../math/">Math</a></li><li class="nav-item"><a class="nav-link" href="../../../../quant/">Quant</a></li><li class="nav-item"><a class="nav-link active" href="../../../../chess/">Chess</a></li><li class="nav-item"><a class="nav-link" href="../../../../contact/">Contact</a></li><li class="nav-item ms-3"><label class="theme-switch" for="dt"><input type="checkbox" id="dt"><span class="slider"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></span></label></li></ul></div></div></nav></header><main><div class="ot-content">
+<nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> &rsaquo; <a href="../../../">Regular Chess</a> &rsaquo; <a href="../">Opening Theory</a> &rsaquo; <span>2. Opening Principles</span></nav><div class="chapter-pills"><a href="../01-classifying-openings/">1. Classifying</a><a href="../02-opening-principles/" class="active">2. Principles</a><a href="../03-open-games/">3. Ruy Lopez</a><a href="../04-closed-games/">4. Sicilian</a><a href="../05-italian-and-kg/">5. Italian &amp; KG</a><a href="../06-building-a-repertoire/">6. French &amp; CK</a><a href="../07-queens-gambit/">7. Queen&rsquo;s Gambit</a><a href="../08-indian-defences/">8. Indian Systems</a><a href="../09-english-and-flank/">9. English &amp; Flank</a><a href="../10-building-a-repertoire/">10. Repertoire</a></div><h1 class="text-accent mb-4">2. Opening Principles</h1>
+<p>Before memorising any opening line, master these six principles. They apply in every game, at every level. Grandmasters follow them instinctively; when they deviate, they have a concrete reason. You should too.</p>
 
-        <h1 class="text-accent mb-4">2. Opening Principles</h1>
-  <p>Before diving into specific openings, mastering these core principles will carry you far regardless of which opening you choose:</p>
+<div class="ot-card">
+  <h3>1. Control the Centre</h3>
+  <p>The four central squares &mdash; e4, d4, e5, d5 &mdash; are the most valuable real estate on the board. A piece in the centre controls more squares than one on the edge. A pawn in the centre restricts the opponent's pieces. The classic first moves 1.e4 and 1.d4 stake a claim immediately; hypermodern systems such as 1.Nf3 and 1.c4 control the centre with pieces rather than pawns but pursue the same goal.</p>
+  <div class="notation">Good: 1. e4 &nbsp;e5 &nbsp;2. Nf3 &nbsp;Nc6 &nbsp;3. Bc4 &mdash; all moves develop toward the centre<br>Bad: 1. e4 &nbsp;e5 &nbsp;2. Na3? &mdash; knight heads to the rim where it controls fewer squares</div>
+  <div class="chess-board" id="b-centre"></div>
+  <script>renderChessBoard('b-centre',{e4:'wP',e5:'bP',f3:'wN',c6:'bN',c4:'wB',a2:'wP',b2:'wP',c2:'wP',d2:'wP',f2:'wP',g2:'wP',h2:'wP',a1:'wR',c1:'wB',d1:'wQ',e1:'wK',g1:'wN',h1:'wR',a7:'bP',b7:'bP',c7:'bP',d7:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bR',c8:'bB',d8:'bQ',e8:'bK',f8:'bB',g8:'bN',h8:'bR'});</script>
+  <p class="board-caption">Italian Game after 3.Bc4 &mdash; every White move develops a piece toward the centre</p>
+</div>
 
-  <h3>Control the Centre</h3>
-  <p>The four central squares — <strong>e4, d4, e5, d5</strong> — are the most strategically important on the board. A piece placed in or near the centre controls more squares than one on the edge. Central control restricts your opponent's pieces and gives your own maximum mobility. There are two philosophies:</p>
-  <ul>
-    <li><strong>Classical/Direct control:</strong> Occupy the centre with pawns (1.e4, 1.d4). This is the traditional approach and remains most popular.</li>
-    <li><strong>Hypermodern control:</strong> Allow the opponent to build a large pawn centre, then undermine it with flank pawns and pieces from a distance (Réti, King's Indian Defence, Nimzo-Indian).</li>
-  </ul>
+<div class="ot-card">
+  <h3>2. Develop Your Pieces</h3>
+  <p>Bring knights and bishops off the back rank before moving rooks or queens. Each undeveloped piece is a liability: it cannot participate in the fight. A useful rule: develop a new piece every move for the first six to eight moves. Prioritise knights before bishops (knights need more moves to reach good squares), and develop toward the centre.</p>
+  <p><strong>Don't move the same piece twice</strong> unless there is a concrete reason (a forced tactical sequence or a piece that was attacked). Moving the same piece twice in the opening gives your opponent a free developing move.</p>
+  <div class="notation">Good: develop Nf3, Nc3, Bc4, Be3 &mdash; four pieces in four moves<br>Bad: 1.e4 e5 2.Nf3 Nc6 3.Bc4 Bc5 4.Nc3 Nf6 5.d3 &mdash; fine so far<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;But: 5.Bc4-b3? &mdash; retreating the bishop loses a tempo</div>
+</div>
 
-  <h3>Develop Your Pieces</h3>
-  <ul>
-    <li>Develop <strong>knights before bishops</strong> — knights have fewer destination squares and their best posts are usually clear early; bishop deployment often depends on how the centre forms.</li>
-    <li>Every piece should move <strong>once before any piece moves twice</strong> (except when a recapture or tactical necessity requires it).</li>
-    <li>Connect your rooks by clearing all pieces between them. Rooks on the first rank are doing nothing useful until the pieces in front of them are developed.</li>
-    <li>Aim to develop all pieces within 10 moves in most openings.</li>
-  </ul>
+<div class="ot-card">
+  <h3>3. Castle Early</h3>
+  <p>Castling achieves two goals simultaneously: it tucks the king away from the centre (where it will be attacked by open files and diagonals) and it connects the rooks. Try to castle by move eight to ten. A king stuck in the centre is a chronic weakness in the middlegame. Both sides are often racing to castle before launching an attack.</p>
+  <div class="notation">After 1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Ba4 Nf6 5.0-0 &mdash; White castles move five.<br>The rooks connect; the king is safe; White can now play d3, Re1, and prepare d4.</div>
+</div>
 
-  <h3>Castle Early</h3>
-  <p>Castling serves two purposes: it <strong>tucks the king away safely</strong> and <strong>activates a rook</strong>. A king left in the centre is vulnerable to attacks, especially in open positions. As a general rule, castle before launching any attack. In sharp tactical positions, every tempo matters — don't delay castling unnecessarily.</p>
+<div class="ot-card">
+  <h3>4. Don't Bring the Queen Out Too Early</h3>
+  <p>The queen is powerful but easily harassed. An early queen excursion typically loses time as the opponent chases it with developing moves. The exception is the Scholar's Mate (2.Qh5 or similar), which only works against beginners who don't defend. At any level, after 2.Qh5 Nc6 3.Bc4 g6! the queen must retreat, and Black has developed while White wasted moves.</p>
+  <div class="chess-board" id="b-scholar"></div>
+  <script>renderChessBoard('b-scholar',{e4:'wP',e5:'bP',h5:'wQ',c4:'wB',f3:'wN',c6:'bN',g6:'bP',a2:'wP',b2:'wP',c2:'wP',d2:'wP',f2:'wP',g2:'wP',h2:'wP',a1:'wR',c1:'wB',d1:'wQ',e1:'wK',g1:'wN',h1:'wR',a7:'bP',b7:'bP',c7:'bP',d7:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bR',c8:'bB',d8:'bQ',e8:'bK',f8:'bB',g8:'bN',h8:'bR'});</script>
+  <p class="board-caption">After 3&hellip;g6! the Queen on h5 has no good square. White&rsquo;s attack has collapsed; Black has developed.</p>
+</div>
 
-  <h3>Avoid Common Opening Mistakes</h3>
-  <ul>
-    <li><strong>Don't bring your queen out early</strong> — the opponent will gain tempi by attacking it with minor pieces during their own development.</li>
-    <li><strong>Don't move the same piece twice</strong> unless forced or tactically justified — each tempo is precious in the opening.</li>
-    <li><strong>Don't make unnecessary pawn moves</strong> — every pawn advance creates weaknesses and does not develop a piece.</li>
-    <li><strong>Don't capture pawns greedily</strong> at the cost of development (e.g., the "poisoned pawn" in many openings).</li>
-  </ul>
+<div class="ot-card">
+  <h3>5. Connect Your Rooks</h3>
+  <p>Once you have developed all minor pieces and castled, the rooks should be connected &mdash; nothing standing between them on the back rank. Connected rooks support each other and can be doubled on open or half-open files. The final step of the opening is often placing rooks on the e-file, d-file, or any file likely to open in the middlegame.</p>
+</div>
 
-  <div class="chess-board" id="board-dev"></div>
-  <script>renderChessBoard('board-dev', {e4:'wP',a2:'wP',b2:'wP',c3:'wP',d3:'wP',f2:'wP',g2:'wP',h2:'wP',a1:'wR',g1:'wK',f1:'wR',d1:'wQ',b1:'wN',c1:'wB',c4:'wB',f3:'wN',e5:'bP',a7:'bP',b7:'bP',c7:'bP',d6:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bR',f8:'bR',c8:'bB',c5:'bB',d8:'bQ',g8:'bK',f6:'bN',c6:'bN'});</script>
-  <p class="text-center text-muted mt-2"><small>Ideal opening development (Giuoco Piano): 1.e4 e5 2.Nf3 Nc6 3.Bc4 Bc5 4.O-O Nf6 5.d3 d6 6.c3 O-O — both sides castled, knights and bishops developed, central pawns advanced</small></p>
+<div class="ot-card">
+  <h3>6. Every Move Should Have a Purpose</h3>
+  <p>Ask yourself: what does this move do? Does it develop a piece, contest a central square, open a line, or prepare castling? If you cannot answer that question, reconsider. Passive moves and pawn-shuffling in the opening hand the initiative to your opponent for free.</p>
+</div>
 
-        <hr class="my-5">
-        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
-            <a href="../01-classifying-openings/" class="btn btn-outline-custom">&larr; 1. Classifying Openings</a>
-            <a href="../03-open-games/" class="btn btn-custom">3. Open Games (1.e4 e5) &rarr;</a>
-        </div>
-    </section>
-</main>
-<footer class="site-footer"><div class="container text-center"><div class="social-links">
-<a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a>
-<a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a>
-<a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a>
-</div></div></footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../../../../js/script.js"></script>
-</body></html>
+<h2 class="mt-5 mb-3">When to Break the Rules</h2>
+<p>These principles are guidelines, not laws. Grandmasters break all of them, but only with a specific concrete reason. The Nimzowitsch Variation of the French (1.e4 e6 2.d4 d5 3.Nc3 Bb4 4.e5 b6!? 5.Qg4 Bf8!? &mdash; retreating the bishop twice) is playable because Black has calculated the compensation. Before deviating from a principle, you must have a better reason than just not knowing it applied.</p>
+
+<hr class="my-5">
+<div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+  <a href="../01-classifying-openings/" class="btn btn-outline-custom">&larr; 1. Classifying Openings</a>
+  <a href="../03-open-games/" class="btn btn-custom">3. The Ruy Lopez &rarr;</a>
+</div>
+</div></main><footer class="site-footer"><div class="container text-center"><div class="social-links"><a href="mailto:sethu.upadhyayula@gmail.com"><i class="fas fa-envelope"></i></a><a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://github.com/sethu-upadhyayula" target="_blank"><i class="fab fa-github"></i></a></div></div></footer><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><script src="../../../../js/script.js"></script><script src="../../../../js/chess-board.js"></script></body></html>
