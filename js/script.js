@@ -1,15 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ── Theme toggle ──
+    // ── Theme toggle (single floating FAB, used at all breakpoints) ──
 
-    const desktopToggle = document.getElementById("desktop-theme-toggle");
-    const mobileToggle  = document.getElementById("mobile-theme-toggle");
-    const html          = document.documentElement;
+    const mobileToggle = document.getElementById("mobile-theme-toggle");
+    const html         = document.documentElement;
 
     const setTheme = (theme) => {
         html.setAttribute("data-theme", theme);
         localStorage.setItem("theme", theme);
-        if (desktopToggle) desktopToggle.checked = (theme === "light");
         if (mobileToggle) {
             mobileToggle.querySelector("i").className =
                 (theme === "light") ? "fas fa-sun" : "fas fa-moon";
@@ -18,29 +16,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTheme(localStorage.getItem("theme") || "light");
 
-    if (desktopToggle) {
-        desktopToggle.addEventListener("change", () =>
-            setTheme(desktopToggle.checked ? "light" : "dark")
-        );
-    }
     if (mobileToggle) {
         mobileToggle.addEventListener("click", () =>
             setTheme(html.getAttribute("data-theme") === "dark" ? "light" : "dark")
         );
     }
 
-    // ── Active nav link ──
+    // ── Nav dock (floating cross-section menu) ──
+
+    const navDock       = document.getElementById("nav-dock");
+    const navDockToggle = document.getElementById("nav-dock-toggle");
+
+    if (navDock && navDockToggle) {
+        navDockToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = navDock.classList.toggle("open");
+            navDockToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+        document.addEventListener("click", (e) => {
+            if (!navDock.contains(e.target)) {
+                navDock.classList.remove("open");
+                navDockToggle.setAttribute("aria-expanded", "false");
+            }
+        });
+    }
+
+    // ── Active cross-link dot (accessibility hint; visual state is CSS-only via [data-section]) ──
 
     const currentPath = window.location.pathname;
-    document.querySelectorAll(".nav-link").forEach(link => {
-        const linkPath = new URL(link.href).pathname;
-        if (currentPath === linkPath ||
-            (currentPath === "/" && linkPath === "/index.html")) {
-            link.classList.add("active");
-        } else {
-            link.classList.remove("active");
-        }
-    });
+    const activeSection = html.dataset.section;
+    if (activeSection) {
+        const activeDot = document.querySelector(`.crosslink-dot[data-crosslink="${activeSection}"]`);
+        if (activeDot) activeDot.setAttribute("aria-current", "page");
+    }
 
     // ── TOC accordion ──
 

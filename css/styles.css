@@ -6,10 +6,9 @@
     --accent: #b8860b;
     --border-color: rgba(0, 0, 0, 0.15);
 
-    --header-height: 72px;
-    --footer-height: 58px;
-
     --transition: all 0.25s ease;
+
+    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='6' fill='%23b8860b'/%3E%3Ccircle cx='30' cy='8' r='3' fill='%23b8860b'/%3E%3Ccircle cx='50' cy='40' r='3' fill='%23b8860b'/%3E%3Ccircle cx='10' cy='40' r='3' fill='%23b8860b'/%3E%3C/svg%3E");
 }
 
 [data-theme="dark"] {
@@ -32,97 +31,246 @@ html {
 }
 
 body {
-    padding-top: var(--header-height);
-    padding-bottom: var(--footer-height);
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     overflow-x: hidden;
 }
 
-/* ── Header ── */
-
-.site-header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    min-height: var(--header-height);
-    background-color: var(--nav-bg) !important;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.brand-text,
-.brand-text:hover,
-.brand-text:focus,
-.brand-text:active {
-    color: var(--accent) !important;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-decoration: none;
-}
-
-.nav-link {
-    color: var(--text-color) !important;
-    font-weight: 500;
-    padding: 8px 14px !important;
-    border-radius: 8px;
-    margin: 0 3px;
-    border: 1px solid transparent;
-    transition: var(--transition);
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--accent) !important;
-    border-color: var(--accent);
-    background-color: rgba(184, 134, 11, 0.1);
-}
-
-.site-header .nav-link.active,
-.site-header .nav-link[aria-current="page"] {
-    color: var(--accent) !important;
-    border-color: var(--accent) !important;
-    background-color: rgba(184, 134, 11, 0.18) !important;
-}
-
-[data-theme="dark"] .navbar-toggler-icon {
-    filter: invert(1);
-}
-
-/* ── Main ── */
-
 main {
-    min-height: calc(100vh - var(--header-height) - var(--footer-height));
-    padding-bottom: var(--footer-height);
+    min-height: 100vh;
 }
 
-/* ── Footer ── */
+/* ── Section theming ── */
 
-.site-footer {
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    height: var(--footer-height);
-    background-color: var(--nav-bg);
-    border-top: 1px solid var(--border-color);
+:root {
+    --section-math:  #3a6ea5;
+    --section-quant: #b8860b;
+    --section-chess: #a5303a;
+    --section-bio:   #3f8f5f;
+    --section-dev:   #0e7c86;
+    --section-music: #7952b3;
+}
+
+html[data-section="math"]  { --accent: var(--section-math); }
+html[data-section="quant"] { --accent: var(--section-quant); }
+html[data-section="chess"] { --accent: var(--section-chess); }
+html[data-section="bio"]   { --accent: var(--section-bio); }
+html[data-section="dev"]   { --accent: var(--section-dev); }
+html[data-section="music"] { --accent: var(--section-music); }
+
+[data-theme="dark"][data-section="math"]  { --accent: #6fa8dc; }
+[data-theme="dark"][data-section="quant"] { --accent: #f5c542; }
+[data-theme="dark"][data-section="chess"] { --accent: #e0707a; }
+[data-theme="dark"][data-section="bio"]   { --accent: #6fcf97; }
+[data-theme="dark"][data-section="dev"]   { --accent: #4dd0e1; }
+[data-theme="dark"][data-section="music"] { --accent: #b39ddb; }
+
+html[data-section="math"] {
+    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M10,50 L10,8 M10,50 L52,50 M14,44 Q30,12 48,30' stroke='%233a6ea5' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+html[data-section="quant"] {
+    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect x='10' y='38' width='7' height='14' fill='%23b8860b'/%3E%3Crect x='24' y='28' width='7' height='24' fill='%23b8860b'/%3E%3Crect x='38' y='16' width='7' height='36' fill='%23b8860b'/%3E%3Cpath d='M10,40 L27,26 L41,14' stroke='%23b8860b' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+html[data-section="chess"] {
+    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect x='8' y='8' width='18' height='18' fill='%23a5303a'/%3E%3Crect x='26' y='8' width='18' height='18' fill='none' stroke='%23a5303a' stroke-width='2'/%3E%3Crect x='8' y='26' width='18' height='18' fill='none' stroke='%23a5303a' stroke-width='2'/%3E%3Crect x='26' y='26' width='18' height='18' fill='%23a5303a'/%3E%3C/svg%3E");
+}
+
+html[data-section="bio"] {
+    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M15,45 C15,20 45,15 48,10 C45,35 30,48 15,45 Z' fill='none' stroke='%233f8f5f' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='M18,42 C25,32 32,24 46,12' stroke='%233f8f5f' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+html[data-section="dev"] {
+    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M20,16 L8,30 L20,44' stroke='%230e7c86' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M40,16 L52,30 L40,44' stroke='%230e7c86' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M33,10 L27,50' stroke='%230e7c86' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+html[data-section="music"] {
+    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='18' cy='42' r='7' fill='%237952b3'/%3E%3Cpath d='M25,42 L25,12 L40,16 L40,24' stroke='%237952b3' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.07;
+    background-repeat: repeat;
+    background-size: 100px 100px;
+    background-image: var(--doodle);
+    transition: opacity 0.4s ease;
+}
+
+[data-theme="dark"] body::before {
+    opacity: 0.12;
+}
+
+/* ── Brand mark ── */
+
+.brand-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #000 !important;
+    font-weight: 800;
+    font-size: 1.3rem;
+    text-decoration: none !important;
+    transition: var(--transition);
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.brand-mark:hover {
+    transform: scale(1.08);
+}
+
+/* ── Nav dock (floating cross-section navigation, replaces the old header) ── */
+
+.nav-dock {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-dock-toggle,
+.nav-dock-home {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--nav-bg);
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-color);
     display: flex;
     align-items: center;
-}
-
-.social-links a {
-    color: var(--text-color);
-    font-size: 1.25rem;
-    margin: 0 12px;
+    justify-content: center;
+    cursor: pointer;
     transition: var(--transition);
-    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
-.social-links a:hover {
+.nav-dock-toggle:hover,
+.nav-dock.open .nav-dock-toggle,
+.nav-dock-home:hover {
     color: var(--accent);
+    border-color: var(--accent) !important;
+}
+
+.nav-dock-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 22px;
+    padding: 10px 8px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+    pointer-events: none;
+    transition: var(--transition);
+}
+
+.nav-dock.open .nav-dock-panel {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+@media (max-width: 575px) {
+    .nav-dock {
+        top: 14px;
+        right: 14px;
+    }
+}
+
+/* ── Cross-link dots (used in the nav dock panel and the homepage pie fallback) ── */
+
+.crosslink-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    color: var(--text-color);
+    opacity: 0.7;
+    text-decoration: none !important;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.crosslink-dot:hover {
+    opacity: 1;
+    border-color: currentColor;
+    transform: translateY(-2px);
+}
+
+.crosslink-dot[data-crosslink="math"]  { color: var(--section-math); }
+.crosslink-dot[data-crosslink="quant"] { color: var(--section-quant); }
+.crosslink-dot[data-crosslink="chess"] { color: var(--section-chess); }
+.crosslink-dot[data-crosslink="bio"]   { color: var(--section-bio); }
+.crosslink-dot[data-crosslink="dev"]   { color: var(--section-dev); }
+.crosslink-dot[data-crosslink="music"] { color: var(--section-music); }
+
+html[data-section="math"]  .crosslink-dot[data-crosslink="math"],
+html[data-section="quant"] .crosslink-dot[data-crosslink="quant"],
+html[data-section="chess"] .crosslink-dot[data-crosslink="chess"],
+html[data-section="bio"]   .crosslink-dot[data-crosslink="bio"],
+html[data-section="dev"]   .crosslink-dot[data-crosslink="dev"],
+html[data-section="music"] .crosslink-dot[data-crosslink="music"] {
+    opacity: 1;
+    border-color: currentColor;
+    background: color-mix(in srgb, currentColor 14%, transparent);
+}
+
+/* ── Social dock (floating, replaces the old footer) ── */
+
+.social-dock {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+}
+
+.social-dock a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--nav-bg);
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-color);
+    font-size: 1.05rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.social-dock a:hover {
+    color: var(--accent);
+    border-color: var(--accent) !important;
+}
+
+@media (max-width: 575px) {
+    .social-dock {
+        bottom: 14px;
+        right: 14px;
+    }
 }
 
 /* ── Cards ── */
@@ -201,67 +349,11 @@ main {
 
 /* ── Theme Toggle ── */
 
-.theme-switch {
-    position: relative;
-    width: 54px;
-    height: 28px;
-    display: none;
-}
-
-@media (min-width: 1150px) {
-    .theme-switch {
-        display: block;
-    }
-}
-
-.theme-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.theme-switch .slider {
-    position: absolute;
-    inset: 0;
-    background: #333;
-    border-radius: 34px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.theme-switch .slider i {
-    font-size: 12px;
-    color: var(--accent);
-}
-
-.theme-switch .slider::before {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    left: 4px;
-    background-color: white;
-    border-radius: 50%;
-    transition: 0.3s;
-}
-
-.theme-switch input:checked + .slider::before {
-    transform: translateX(26px);
-}
-
 .theme-toggle-container {
     position: fixed;
     left: 20px;
-    bottom: calc(var(--footer-height) + 16px);
+    bottom: 20px;
     z-index: 2000;
-}
-
-@media (min-width: 1150px) {
-    .theme-toggle-container {
-        display: none;
-    }
 }
 
 .theme-toggle-fab {
@@ -274,14 +366,15 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
 /* ── Textbook / notes layout ── */
 
 .math-toc {
     position: fixed;
-    top: var(--header-height);
-    bottom: var(--footer-height);
+    top: 0;
+    bottom: 0;
     left: 0;
     width: 320px;
     overflow-y: auto;
@@ -484,6 +577,232 @@ main {
     margin-bottom: 0;
 }
 
+/* ── Homepage: dark celestial theme ── */
+
+html[data-section="home"] {
+    --bg-color: #06060c;
+}
+
+.orbital-rings {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+}
+
+.orbital-rings .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(230, 187, 77, 0.1);
+}
+
+.orbital-rings .ring.r1 { width: 70vmax; height: 70vmax; top: -18vmax; left: -14vmax; }
+.orbital-rings .ring.r2 { width: 48vmax; height: 48vmax; bottom: -18vmax; right: -12vmax; border-color: rgba(230, 187, 77, 0.08); }
+.orbital-rings .ring.r3 { width: 96vmax; height: 96vmax; top: 50%; left: 50%; transform: translate(-50%, -50%); border-color: rgba(230, 187, 77, 0.05); }
+.orbital-rings .ring.r4 { width: 34vmax; height: 34vmax; top: 8vh; right: 6vw; border-color: rgba(111, 159, 209, 0.1); }
+.orbital-rings .ring.r5 { width: 26vmax; height: 26vmax; bottom: 10vh; left: 8vw; border-color: rgba(178, 146, 224, 0.1); }
+
+.nebula {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -2;
+    filter: blur(60px);
+}
+
+.nebula.n1 { width: 55vmax; height: 55vmax; top: -18vmax; left: 2vw; background: radial-gradient(circle, rgba(230, 187, 77, 0.12), transparent 70%); }
+.nebula.n2 { width: 60vmax; height: 60vmax; bottom: -22vmax; right: -4vw; background: radial-gradient(circle, rgba(111, 159, 209, 0.1), transparent 70%); }
+.nebula.n3 { width: 45vmax; height: 45vmax; top: 62%; left: 8%; background: radial-gradient(circle, rgba(178, 146, 224, 0.08), transparent 70%); }
+.nebula.n4 { width: 40vmax; height: 40vmax; top: 8%; right: 10%; background: radial-gradient(circle, rgba(123, 199, 154, 0.08), transparent 70%); }
+
+.constellation-lines {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.constellation-lines path {
+    stroke: rgba(230, 187, 77, 0.16);
+    stroke-width: 1;
+    fill: none;
+}
+
+/* ── Homepage pie ── */
+
+.pie-stage {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pie-wrap {
+    position: relative;
+    width: 90vw;
+    height: 90vh;
+}
+
+.pie-chart {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* SVG elements clip to their own box by default; without this, a hovered wedge
+       scaling past the ellipse's edge gets cut off at that invisible rectangular boundary. */
+    overflow: visible;
+}
+
+.pie-wedge {
+    stroke: var(--bg-color);
+    stroke-width: 4;
+    transition: var(--transition);
+    /* Scale from the pie's own center (not each wedge's bounding-box center) so a hovered
+       wedge grows straight outward along its existing radial edges, instead of bulging
+       sideways into its neighbors. */
+    transform-box: view-box;
+    transform-origin: center;
+    cursor: pointer;
+}
+
+/* Hover state is synced (by JS, via the shared "wedge-hovered" class) between a wedge's
+   SVG path and its Font Awesome icon link, since they're separate elements in the DOM
+   (the icon is a plain HTML link positioned over the SVG, not a child of the wedge's
+   own <a>) — so hovering either one drives the identical effect on both, together. */
+.pie-wedge.wedge-hovered {
+    transform: scale(1.05);
+    filter: brightness(1.15) saturate(1.15);
+}
+
+.wedge-icon-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 0.25s ease, filter 0.25s ease;
+    animation: icon-breathe 5s ease-in-out infinite;
+    text-decoration: none !important;
+}
+
+.wedge-icon-link.wedge-hovered {
+    transform: translate(-50%, -50%) scale(1.28);
+}
+
+.wedge-icon-link[data-section="math"]  { color: #4da6ff; filter: drop-shadow(0 0 12px rgba(77, 166, 255, 0.9)); }
+.wedge-icon-link[data-section="quant"] { color: #ffc94d; filter: drop-shadow(0 0 12px rgba(255, 201, 77, 0.9)); }
+.wedge-icon-link[data-section="chess"] { color: #ff9d4d; filter: drop-shadow(0 0 12px rgba(255, 157, 77, 0.9)); }
+.wedge-icon-link[data-section="bio"]   { color: #4ade80; filter: drop-shadow(0 0 12px rgba(74, 222, 128, 0.9)); }
+.wedge-icon-link[data-section="dev"]   { color: #22d3ee; filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.9)); }
+.wedge-icon-link[data-section="music"] { color: #c084fc; filter: drop-shadow(0 0 12px rgba(192, 132, 252, 0.9)); }
+
+@keyframes icon-breathe {
+    0%, 100% { opacity: 0.75; }
+    50%      { opacity: 1; }
+}
+
+@keyframes icon-twinkle {
+    0%, 100% { opacity: 0.4; }
+    50%      { opacity: 1; }
+}
+
+/* Center "S" badge sits outside the (non-uniformly scaled) SVG so it always stays a circle. */
+
+.pie-center-group {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(16vw, 16vh);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.pie-center-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+    transition: transform 0.25s ease, filter 0.25s ease;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+/* Hovering the "S" only grows the "S" itself — it's an independent hover target,
+   not linked to the wedges/icons (and hovering a wedge/icon doesn't grow the "S" either,
+   handled above via the "wedge-hovered" class only touching wedges/icons). */
+
+.pie-center-group:hover .pie-center-img {
+    transform: scale(1.22);
+}
+
+/* ── Orbit doodles: sparse scattered symbols (decoupled from the pie's angles), with real mouse-parallax ── */
+
+.orbit-doodles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-repeat: repeat;
+    background-size: 260px 260px;
+    background-image:
+        radial-gradient(1.6px 1.6px at 8% 15%, rgba(230, 187, 77, 0.9), transparent),
+        radial-gradient(1.1px 1.1px at 22% 55%, rgba(230, 187, 77, 0.55), transparent),
+        radial-gradient(1.9px 1.9px at 38% 8%, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1.2px 1.2px at 48% 72%, rgba(230, 187, 77, 0.6), transparent),
+        radial-gradient(1.5px 1.5px at 60% 30%, rgba(230, 187, 77, 0.75), transparent),
+        radial-gradient(1px 1px at 70% 85%, rgba(255, 255, 255, 0.45), transparent),
+        radial-gradient(1.7px 1.7px at 82% 45%, rgba(230, 187, 77, 0.7), transparent),
+        radial-gradient(1.1px 1.1px at 92% 12%, rgba(230, 187, 77, 0.5), transparent);
+}
+
+.orbit-doodle {
+    position: absolute;
+    animation: icon-twinkle 5s ease-in-out infinite;
+    will-change: transform;
+    line-height: 1;
+}
+
+/* Three sparse symbols per theme, scattered toward the edges/corners, well clear of the pie and each other.
+   Position/size are static (CSS); js/home-parallax.js drives the transform: translate() on top for the mouse-parallax effect. */
+
+.orbit-doodle[data-section="dev"][data-item="1"]   { left: 6%;  top: 10%; font-size: 30px; opacity: 0.55; }
+.orbit-doodle[data-section="dev"][data-item="2"]   { left: 17%; top: 23%; font-size: 20px; opacity: 0.4;  animation-delay: 1.5s; }
+.orbit-doodle[data-section="dev"][data-item="3"]   { left: 3%;  top: 48%; font-size: 16px; opacity: 0.3;  animation-delay: 3s; }
+
+.orbit-doodle[data-section="bio"][data-item="1"]   { left: 33%; top: 6%;  font-size: 24px; opacity: 0.45; }
+.orbit-doodle[data-section="bio"][data-item="2"]   { left: 9%;  top: 60%; font-size: 32px; opacity: 0.55; animation-delay: 1.7s; }
+.orbit-doodle[data-section="bio"][data-item="3"]   { left: 21%; top: 74%; font-size: 16px; opacity: 0.3;  animation-delay: 3.4s; }
+
+.orbit-doodle[data-section="music"][data-item="1"] { left: 75%; top: 7%;  font-size: 26px; opacity: 0.5; }
+.orbit-doodle[data-section="music"][data-item="2"] { left: 88%; top: 17%; font-size: 22px; opacity: 0.4;  animation-delay: 2.1s; }
+.orbit-doodle[data-section="music"][data-item="3"] { left: 94%; top: 36%; font-size: 16px; opacity: 0.3;  animation-delay: 4s; }
+
+.orbit-doodle[data-section="math"][data-item="1"]  { left: 90%; top: 50%; font-size: 26px; opacity: 0.5; }
+.orbit-doodle[data-section="math"][data-item="2"]  { left: 93%; top: 67%; font-size: 20px; opacity: 0.4;  animation-delay: 2.5s; }
+.orbit-doodle[data-section="math"][data-item="3"]  { left: 81%; top: 78%; font-size: 16px; opacity: 0.3;  animation-delay: 4.3s; }
+
+.orbit-doodle[data-section="chess"][data-item="1"] { left: 8%;  top: 83%; font-size: 28px; opacity: 0.5; }
+.orbit-doodle[data-section="chess"][data-item="2"] { left: 20%; top: 93%; font-size: 20px; opacity: 0.4;  animation-delay: 1.2s; }
+.orbit-doodle[data-section="chess"][data-item="3"] { left: 30%; top: 87%; font-size: 16px; opacity: 0.3;  animation-delay: 3.7s; }
+
+.orbit-doodle[data-section="quant"][data-item="1"] { left: 55%; top: 91%; font-size: 26px; opacity: 0.5; }
+.orbit-doodle[data-section="quant"][data-item="2"] { left: 68%; top: 83%; font-size: 22px; opacity: 0.4;  animation-delay: 2.8s; }
+.orbit-doodle[data-section="quant"][data-item="3"] { left: 84%; top: 91%; font-size: 16px; opacity: 0.3;  animation-delay: 4.6s; }
+
+.orbit-doodle[data-section="math"]  { color: #4da6ff; filter: drop-shadow(0 0 7px rgba(77, 166, 255, 0.85)); }
+.orbit-doodle[data-section="quant"] { color: #ffc94d; filter: drop-shadow(0 0 7px rgba(255, 201, 77, 0.85)); }
+.orbit-doodle[data-section="chess"] { color: #ff9d4d; filter: drop-shadow(0 0 7px rgba(255, 157, 77, 0.85)); }
+.orbit-doodle[data-section="bio"]   { color: #4ade80; filter: drop-shadow(0 0 7px rgba(74, 222, 128, 0.85)); }
+.orbit-doodle[data-section="dev"]   { color: #22d3ee; filter: drop-shadow(0 0 7px rgba(34, 211, 238, 0.85)); }
+.orbit-doodle[data-section="music"] { color: #c084fc; filter: drop-shadow(0 0 7px rgba(192, 132, 252, 0.85)); }
+
 /* ── Placeholder chessboard ── */
 
 .chess-board-placeholder {
@@ -504,4 +823,3 @@ main {
 
 .chess-board-placeholder .sq.light { background: #f0d9b5; }
 .chess-board-placeholder .sq.dark  { background: #b58863; }
-

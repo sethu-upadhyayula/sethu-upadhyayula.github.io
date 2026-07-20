@@ -20,9 +20,19 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
 
 ## Features
 
+- **Homepage pie chart**: a central "S" mark (linking to About) surrounded
+  by six clickable wedges — Math, Quant, Chess (live sections) plus Bio,
+  Dev, Music (coming-soon placeholder pages) — with a stacked-card fallback
+  on narrow viewports.
+- **Floating nav dock / social dock**: no traditional header/footer bars —
+  cross-section navigation and social links live in small floating widgets
+  (alongside the light/dark theme toggle FAB) present on every page.
+- **Per-section theming**: each of Math/Quant/Chess/Bio/Dev/Music has its
+  own accent color and a subtle themed doodle background, driven by a
+  `data-section` attribute on `<html>` and CSS custom properties — see
+  `css/styles.css`.
 - **Responsive Bootstrap 5.3 layout** with a light/dark theme toggle
-  (persisted via the theme switch in the navbar and a floating mobile
-  toggle button).
+  (persisted via a floating toggle button, present at every breakpoint).
 - **KaTeX-rendered math** throughout the Math and Quant sections, with
   consistent "math-box" callouts for Definitions, Theorems, Propositions,
   Lemmas, Corollaries, Examples, Remarks, and Proofs.
@@ -48,15 +58,19 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
   Check (4 chapters each); Compositions covers Endgame Studies, Twomovers,
   Threemovers, Moremovers, Helpmates, Selfmates, Retro Problems, and Fairy
   Chess (6-7 chapters each).
-- **About Me** and **Contact** pages with social links (email, LinkedIn,
-  GitHub).
+- **About Me** page (reached via the "S" mark) with contact details folded
+  in (email, LinkedIn, GitHub).
+- **Bio, Dev, Music**: coming-soon placeholder sections, themed and
+  cross-linked like the rest of the site, ahead of content being written.
 
 ## Site Navigation
 
 ```
-/                       Home
-/about/                 About Me
-/contact/               Contact
+/                       Home (pie chart)
+/about/                 About Me (incl. contact info)
+/bio/                   Bio (coming soon)
+/dev/                   Dev (coming soon)
+/music/                 Music (coming soon)
 
 /math/                  Math (5 groups, 25 subjects)
   /math/<group>/                         Group landing page
