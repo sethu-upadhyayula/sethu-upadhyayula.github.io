@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -127,12 +127,12 @@
             <article>
                 <h1 class="text-accent mb-4">6.2 Optional Stopping</h1>
 
-                <p>The optional stopping theorem (OST) is one of the most powerful tools derived from martingale theory. It says that under appropriate conditions, the martingale property is preserved when a fixed time is replaced by a random stopping time — you cannot gain an advantage over a fair game by choosing a clever stopping rule.</p>
+                <p>The optional stopping theorem (OST) is one of the most powerful tools derived from martingale theory. It says that under appropriate conditions, the martingale property is preserved when a fixed time is replaced by a random stopping time - you cannot gain an advantage over a fair game by choosing a clever stopping rule.</p>
 
                 <h2 class="mt-4 mb-3">Stopping Times</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.2.1 — Stopping Time</div>
+                    <div class="math-box-label">Definition 6.2.1 - Stopping Time</div>
                     <p>A random variable $\tau : \Omega \to [0, \infty]$ is a <strong>stopping time</strong> with respect to filtration $(\mathcal{F}_t)$ if
                     $$\{\tau \le t\} \in \mathcal{F}_t \quad \text{for all } t \ge 0.$$</p>
                     <p>Equivalently (for right-continuous filtrations), $\{\tau < t\} \in \mathcal{F}_t$ for all $t$, or $\{\tau = t\} \in \mathcal{F}_t$ for all $t$.</p>
@@ -140,7 +140,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — First Passage Times are Stopping Times</div>
+                    <div class="math-box-label">Example - First Passage Times are Stopping Times</div>
                     <p>For Brownian motion $(B_t)$ adapted to $(\mathcal{F}_t)$ and $a \in \mathbb{R}$, the first passage time $T_a = \inf\{t \ge 0 : B_t = a\}$ is a stopping time. Indeed, since $B$ has continuous paths, $\{T_a \le t\} = \{\sup_{0 \le s \le t} (a - B_s) \le 0 \text{ if } a > 0\} \in \mathcal{F}_t$. Similarly, the exit time $\tau = \inf\{t : B_t \notin (c, d)\}$ from an interval is a stopping time.</p>
                     <p class="mb-0">On the other hand, the <em>last</em> time a process is at a given level is generally not a stopping time, since one would need to know the future to determine when the process last visited a level.</p>
                 </div>
@@ -148,7 +148,7 @@
                 <h2 class="mt-5 mb-3">The Optional Stopping Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.2 — Optional Stopping Theorem</div>
+                    <div class="math-box-label">Theorem 6.2.2 - Optional Stopping Theorem</div>
                     <p>Let $(M_t)_{t \ge 0}$ be a right-continuous martingale and $\tau$ a stopping time. Then $E[M_\tau] = E[M_0]$ under any of the following conditions:</p>
                     <ol>
                         <li>$\tau \le T$ a.s. for some deterministic constant $T < \infty$ (bounded stopping time).</li>
@@ -159,14 +159,14 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Failure of OST without Conditions</div>
+                    <div class="math-box-label">Remark - Failure of OST without Conditions</div>
                     <p class="mb-0">Without additional conditions, $E[M_\tau] = E[M_0]$ can fail. Classic counterexample: BM hits level 1 at time $T_1$ with $P(T_1 < \infty) = 1$, so $B_{T_1} = 1$, giving $E[B_{T_1}] = 1 \ne 0 = E[B_0]$. The OST fails because $T_1$ has infinite mean and the stopped process is not uniformly integrable. The bounded stopping time version avoids this: $E[B_{T_1 \wedge t}] = 0$ for all $t$, but taking $t \to \infty$ requires uniform integrability to swap limit and expectation.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Wald's Identities for Brownian Motion</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.3 — Wald's Identities for BM</div>
+                    <div class="math-box-label">Theorem 6.2.3 - Wald's Identities for BM</div>
                     <p>Let $\tau$ be a stopping time with $E[\tau] < \infty$. Then:</p>
                     <ol>
                         <li>$E[B_\tau] = 0$ (first Wald identity).</li>
@@ -174,13 +174,13 @@
                     </ol>
                     <p><em>Proof.</em> (1) Apply OST to the martingale $B_t$: under $E[\tau] < \infty$ and continuity of BM, the stopped process is uniformly integrable, giving $E[B_\tau] = E[B_0] = 0$.</p>
                     <p>(2) Apply OST to the martingale $B_t^2 - t$: $E[B_\tau^2 - \tau] = E[B_0^2 - 0] = 0$, so $E[B_\tau^2] = E[\tau]$. $\square$</p>
-                    <p class="mb-0">These identities are the continuous-time analogues of Wald's equations for sums of i.i.d. random variables. They allow us to compute $E[\tau]$ from $E[B_\tau^2]$ — often the latter is easier to determine from the geometry of the stopping region.</p>
+                    <p class="mb-0">These identities are the continuous-time analogues of Wald's equations for sums of i.i.d. random variables. They allow us to compute $E[\tau]$ from $E[B_\tau^2]$ - often the latter is easier to determine from the geometry of the stopping region.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Applications</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Gambler's Ruin for BM</div>
+                    <div class="math-box-label">Example - Gambler's Ruin for BM</div>
                     <p>Let $B_0 = x \in (0, b)$ and $\tau = \inf\{t : B_t \notin (0, b)\} = T_0 \wedge T_b$. Since $B$ has continuous paths, $B_\tau \in \{0, b\}$. By OST applied to the martingale $B_t$:
                     $$x = E[B_0] = E[B_\tau] = b \cdot P(B_\tau = b) + 0 \cdot P(B_\tau = 0),$$
                     so $P(B_\tau = b) = x/b$ and $P(B_\tau = 0) = (b-x)/b$.</p>
@@ -191,7 +191,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — First Passage Time via Exponential Martingale</div>
+                    <div class="math-box-label">Example - First Passage Time via Exponential Martingale</div>
                     <p>For $a > 0$, find $E[e^{-\lambda T_a}]$ (the Laplace transform of $T_a$). Consider the exponential martingale $M_t = e^{\theta B_t - \theta^2 t/2}$ with $\theta > 0$. Apply OST at $\tau = T_a \wedge t$:
                     $$1 = E[M_0] = E[M_{T_a \wedge t}] = E[e^{\theta B_{T_a \wedge t} - \theta^2 (T_a \wedge t)/2}].$$
                     Taking $t \to \infty$ and using dominated convergence (the stopped process is bounded in the appropriate sense):
@@ -202,7 +202,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — BM Hitting Time for an Interval</div>
+                    <div class="math-box-label">Example - BM Hitting Time for an Interval</div>
                     <p>More generally, let $\tau = T_{-b} \wedge T_a$ for $a, b > 0$ (BM starts at 0 and exits $(-b, a)$). By the OST for $B_t$: $E[B_\tau] = 0 = a \cdot P(B_\tau = a) - b \cdot P(B_\tau = -b)$. Combined with $P(B_\tau = a) + P(B_\tau = -b) = 1$:
                     $$P(B_\tau = a) = \frac{b}{a+b}, \quad P(B_\tau = -b) = \frac{a}{a+b}.$$
                     By OST for $B_t^2 - t$: $E[\tau] = E[B_\tau^2] = a^2 \cdot \frac{b}{a+b} + b^2 \cdot \frac{a}{a+b} = ab.$</p>

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,10 +80,10 @@
             <article>
                 <h1 class="text-accent mb-4">2.1 Bootstrapping the Yield Curve</h1>
 
-                <p>The discount curve $T \mapsto P(0,T)$ is not directly observable. What is observable is a finite set of market quotes — deposit rates, futures or FRA rates, and swap rates — each of which constrains the discount curve in a specific way. <em>Bootstrapping</em> is the algorithm that inverts these quotes, instrument by instrument in order of maturity, to recover a discount curve that exactly reprices every input instrument.</p>
+                <p>The discount curve $T \mapsto P(0,T)$ is not directly observable. What is observable is a finite set of market quotes - deposit rates, futures or FRA rates, and swap rates - each of which constrains the discount curve in a specific way. <em>Bootstrapping</em> is the algorithm that inverts these quotes, instrument by instrument in order of maturity, to recover a discount curve that exactly reprices every input instrument.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Bootstrapping</div>
+                    <div class="math-box-label">Definition - Bootstrapping</div>
                     <p class="mb-0">Given a set of market instruments with maturities $T_1 < T_2 < \cdots < T_n$, <em>bootstrapping</em> constructs discount factors $P(0,T_1), \ldots, P(0,T_n)$ sequentially: at each step $i$, the discount factor $P(0,T_i)$ is chosen so that instrument $i$ is priced exactly at its market quote, using the discount factors $P(0,T_1), \ldots, P(0,T_{i-1})$ already determined (and interpolation for any cash flow dates that fall between pillars). The result is a discount curve that reprices the entire set of input instruments to zero (or to par, for swaps).</p>
                 </div>
 
@@ -92,7 +92,7 @@
                 <p>A typical USD curve is built from three tiers of instruments, layered by maturity to balance liquidity against the desire for a smooth curve.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Instrument Tiers</div>
+                    <div class="math-box-label">Remark - Instrument Tiers</div>
                     <p><strong>Short end (cash deposits, 1 day - ~3 months).</strong> Money market deposit rates (or SOFR fixings) give the discount factor directly via simple compounding:
                     $$P(0,T) = \frac{1}{1 + L(0,T)\,\delta(0,T)}$$
                     where $L(0,T)$ is the quoted deposit rate and $\delta$ is the Act/360 year fraction.</p>
@@ -107,7 +107,7 @@
                 <p>The swap-rate step is the conceptual heart of bootstrapping: each additional par swap maturity adds exactly one new discount factor to solve for, using the previously bootstrapped discount factors for the earlier coupon dates.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Bootstrapping a Swap Pillar</div>
+                    <div class="math-box-label">Theorem - Bootstrapping a Swap Pillar</div>
                     <p>Let the par swap rate for maturity $T_n$ be $c_n$, with fixed payment dates $t_1 < \cdots < t_n = T_n$ and accrual fractions $\delta_i$. Suppose $P(0,t_1), \ldots, P(0,t_{n-1})$ have already been determined from shorter-maturity instruments. The par swap condition
                     $$1 = c_n \sum_{i=1}^n \delta_i P(0,t_i) + P(0,t_n)$$
                     contains exactly one unknown, $P(0,t_n)$, which is recovered as:
@@ -116,23 +116,23 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Two-Step Bootstrap</div>
+                    <div class="math-box-label">Example - Two-Step Bootstrap</div>
                     <p>Suppose annual-pay par swap rates are $c_1 = 4.00\%$ and $c_2 = 4.50\%$, with $\delta_1 = \delta_2 = 1$.</p>
                     <p>Step 1 ($T_1 = 1$): $1 = c_1 \delta_1 P(0,1) + P(0,1) = (1+c_1)P(0,1)$, so
                     $$P(0,1) = \frac{1}{1.04} = 0.96154$$</p>
                     <p class="mb-0">Step 2 ($T_2 = 2$): $1 = c_2[\delta_1 P(0,1) + \delta_2 P(0,2)] + P(0,2)$, so
                     $$P(0,2) = \frac{1 - c_2 \cdot P(0,1)}{1 + c_2} = \frac{1 - 0.045 \times 0.96154}{1.045} = \frac{0.95673}{1.045} = 0.91553$$
-                    Each step uses only previously solved discount factors — the defining feature of a bootstrap.</p>
+                    Each step uses only previously solved discount factors - the defining feature of a bootstrap.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Handling Overlapping Instrument Maturities</h2>
 
-                <p>In practice, the maturities of deposits, futures, and swaps overlap — a 2-year swap might mature on a date that also falls within the range of quoted futures contracts. Several practical issues arise from this overlap.</p>
+                <p>In practice, the maturities of deposits, futures, and swaps overlap - a 2-year swap might mature on a date that also falls within the range of quoted futures contracts. Several practical issues arise from this overlap.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Overlap and Ordering Issues</div>
-                    <p><strong>Choosing which instruments to use.</strong> When multiple instruments imply discount factors over the same horizon, the curve builder must choose a single set of non-redundant, maximally liquid instruments — typically deposits at the very short end, futures or FRAs out to 1-3 years, and swaps beyond that, with a smooth "splice" between tiers.</p>
-                    <p><strong>Stub periods.</strong> A futures contract's reference period may not align exactly with the previous pillar date, requiring interpolation of $P(0,T_{i-1})$ at a non-pillar date — which feeds back into the choice of interpolation scheme (Section 2.2).</p>
+                    <div class="math-box-label">Remark - Overlap and Ordering Issues</div>
+                    <p><strong>Choosing which instruments to use.</strong> When multiple instruments imply discount factors over the same horizon, the curve builder must choose a single set of non-redundant, maximally liquid instruments - typically deposits at the very short end, futures or FRAs out to 1-3 years, and swaps beyond that, with a smooth "splice" between tiers.</p>
+                    <p><strong>Stub periods.</strong> A futures contract's reference period may not align exactly with the previous pillar date, requiring interpolation of $P(0,T_{i-1})$ at a non-pillar date - which feeds back into the choice of interpolation scheme (Section 2.2).</p>
                     <p class="mb-0"><strong>Jacobian and re-bootstrapping.</strong> If an intermediate quote changes, all downstream discount factors that were computed using interpolated values at that pillar must be recomputed. Production curve-building systems solve the entire system of equations jointly (often via Newton's method on the full pillar vector) rather than purely sequentially, precisely to handle these interdependencies robustly.</p>
                 </div>
 
@@ -141,11 +141,11 @@
                 <p>Since the 2008 financial crisis, a single discount curve no longer suffices. Collateralized derivatives are discounted using the overnight rate that accrues on posted collateral (OIS/SOFR), while floating coupons are projected using a separate <em>forward</em> or <em>projection</em> curve appropriate to the index (e.g. 3-month Term SOFR, or historically 3-month LIBOR).</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Multi-Curve Framework</div>
+                    <div class="math-box-label">Definition - Multi-Curve Framework</div>
                     <p>In the multi-curve framework, valuation uses (at least) two curves:</p>
                     <ul>
-                        <li><strong>Discount curve</strong> $P_{OIS}(0,T)$ — built by bootstrapping OIS/SOFR swap rates, used to discount <em>all</em> cash flows of a collateralized trade.</li>
-                        <li><strong>Forward (projection) curve</strong> $P_{fwd}(0,T)$ — built by bootstrapping instruments referencing the floating index (e.g. SOFR-based term instruments or, historically, LIBOR), used <em>only</em> to compute the forward rates that determine floating coupon amounts:
+                        <li><strong>Discount curve</strong> $P_{OIS}(0,T)$ - built by bootstrapping OIS/SOFR swap rates, used to discount <em>all</em> cash flows of a collateralized trade.</li>
+                        <li><strong>Forward (projection) curve</strong> $P_{fwd}(0,T)$ - built by bootstrapping instruments referencing the floating index (e.g. SOFR-based term instruments or, historically, LIBOR), used <em>only</em> to compute the forward rates that determine floating coupon amounts:
                         $$F(0;T_{i-1},T_i) = \frac{1}{\delta_i}\left(\frac{P_{fwd}(0,T_{i-1})}{P_{fwd}(0,T_i)} - 1\right)$$</li>
                     </ul>
                     <p class="mb-0">A floating leg cash flow is computed using the forward curve but discounted using the OIS curve:
@@ -154,8 +154,8 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Multi-Curve Matters</div>
-                    <p class="mb-0">Before the financial crisis, LIBOR and OIS rates tracked each other closely (a few basis points apart), so a single LIBOR-based curve was used for both discounting and projection. After 2008, LIBOR-OIS spreads widened to over 300bp at times, reflecting bank credit and liquidity risk embedded in LIBOR but absent from collateralized OIS rates. Using a single curve for both purposes would misprice swaps by failing to reflect the true cost of funding (collateral) versus the floating index being referenced. The multi-curve framework — and its continuation in the SOFR era, discussed further in the Interest Rate Swaps notes — corrects this by cleanly separating the discounting and projection roles.</p>
+                    <div class="math-box-label">Remark - Why Multi-Curve Matters</div>
+                    <p class="mb-0">Before the financial crisis, LIBOR and OIS rates tracked each other closely (a few basis points apart), so a single LIBOR-based curve was used for both discounting and projection. After 2008, LIBOR-OIS spreads widened to over 300bp at times, reflecting bank credit and liquidity risk embedded in LIBOR but absent from collateralized OIS rates. Using a single curve for both purposes would misprice swaps by failing to reflect the true cost of funding (collateral) versus the floating index being referenced. The multi-curve framework - and its continuation in the SOFR era, discussed further in the Interest Rate Swaps notes - corrects this by cleanly separating the discounting and projection roles.</p>
                 </div>
 
                 <hr class="my-5">

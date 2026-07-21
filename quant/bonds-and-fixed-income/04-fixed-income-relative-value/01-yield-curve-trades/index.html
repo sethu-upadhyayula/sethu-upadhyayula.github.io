@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,22 +81,22 @@
             <article>
                 <h1 class="text-accent mb-4">4.1 Yield Curve Trades</h1>
 
-                <p>A yield curve trade takes a view on the <em>shape</em> of the yield curve — how yields at different maturities move relative to each other — while remaining largely neutral to the overall level of rates. By combining a long position in one maturity with a short position in another, sized so that the net exposure to a parallel shift is approximately zero, a trader isolates exposure to changes in the curve's slope or curvature.</p>
+                <p>A yield curve trade takes a view on the <em>shape</em> of the yield curve - how yields at different maturities move relative to each other - while remaining largely neutral to the overall level of rates. By combining a long position in one maturity with a short position in another, sized so that the net exposure to a parallel shift is approximately zero, a trader isolates exposure to changes in the curve's slope or curvature.</p>
 
                 <h2 class="mt-5 mb-3">Steepeners and Flatteners</h2>
                 <p>The simplest curve trade involves two points on the curve: a short maturity and a long maturity.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Steepener and Flattener</div>
-                    <p>A <strong>steepener</strong> is a trade that profits when the spread between a long-maturity yield $y_L$ and a short-maturity yield $y_S$ <em>widens</em> — i.e. when $y_L - y_S$ increases (the curve becomes more steeply upward-sloping, or less inverted). It is implemented by being long the short-maturity bond and short the long-maturity bond, in duration-weighted amounts.</p>
+                    <div class="math-box-label">Definition - Steepener and Flattener</div>
+                    <p>A <strong>steepener</strong> is a trade that profits when the spread between a long-maturity yield $y_L$ and a short-maturity yield $y_S$ <em>widens</em> - i.e. when $y_L - y_S$ increases (the curve becomes more steeply upward-sloping, or less inverted). It is implemented by being long the short-maturity bond and short the long-maturity bond, in duration-weighted amounts.</p>
                     <p class="mb-0">A <strong>flattener</strong> is the opposite: it profits when $y_L - y_S$ <em>narrows</em>, implemented by being short the short-maturity bond and long the long-maturity bond, again duration-weighted.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Duration-Neutral Weighting</h2>
-                <p>For a curve trade to express a pure view on slope rather than on the overall level of rates, the legs must be sized so that the portfolio's net DV01 is (approximately) zero — a parallel shift in yields produces no first-order P&amp;L.</p>
+                <p>For a curve trade to express a pure view on slope rather than on the overall level of rates, the legs must be sized so that the portfolio's net DV01 is (approximately) zero - a parallel shift in yields produces no first-order P&amp;L.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — DV01-Neutral Curve Trade</div>
+                    <div class="math-box-label">Definition - DV01-Neutral Curve Trade</div>
                     <p>For a two-leg trade with face amounts $N_S$ (short maturity, DV01 per unit $\text{DV01}_S$) and $N_L$ (long maturity, DV01 per unit $\text{DV01}_L$), DV01-neutrality requires:
                     $$N_S \cdot \text{DV01}_S = N_L \cdot \text{DV01}_L$$
                     so that the <em>hedge ratio</em> is:
@@ -105,34 +105,34 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — P&amp;L of a DV01-Neutral Steepener</div>
-                    <p class="mb-0">With the hedge ratio above, a parallel shift $\Delta y$ in both yields produces approximately zero net P&amp;L, because the dollar gain on one leg offsets the dollar loss on the other. If instead the curve <em>steepens</em> — $y_L$ rises by more than $y_S$ (or falls by less) — the short leg in the long-maturity bond gains more than the long leg in the short-maturity bond loses, producing a net profit proportional to $\text{DV01}_S \times \Delta(y_L - y_S)$ (using the short leg's DV01 as the common scaling, since the position is sized in those units).</p>
+                    <div class="math-box-label">Remark - P&amp;L of a DV01-Neutral Steepener</div>
+                    <p class="mb-0">With the hedge ratio above, a parallel shift $\Delta y$ in both yields produces approximately zero net P&amp;L, because the dollar gain on one leg offsets the dollar loss on the other. If instead the curve <em>steepens</em> - $y_L$ rises by more than $y_S$ (or falls by less) - the short leg in the long-maturity bond gains more than the long leg in the short-maturity bond loses, producing a net profit proportional to $\text{DV01}_S \times \Delta(y_L - y_S)$ (using the short leg's DV01 as the common scaling, since the position is sized in those units).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Butterfly Trades</h2>
-                <p>A butterfly trade extends the curve trade to three points on the curve — a short, a middle ("belly"), and a long maturity — and takes a view on the curve's <em>curvature</em> rather than its slope.</p>
+                <p>A butterfly trade extends the curve trade to three points on the curve - a short, a middle ("belly"), and a long maturity - and takes a view on the curve's <em>curvature</em> rather than its slope.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Butterfly Spread</div>
+                    <div class="math-box-label">Definition - Butterfly Spread</div>
                     <p>The butterfly spread is defined as:
                     $$\text{Fly} = 2y_M - y_S - y_L$$
-                    where $y_S, y_M, y_L$ are the yields at the short, middle, and long maturities. A <em>long belly</em> (or "long the butterfly") position profits when $\text{Fly}$ decreases — the middle of the curve richens (its yield falls) relative to the wings — and is implemented by being long the belly and short the wings, with weights chosen so the trade is DV01-neutral against both a parallel shift <em>and</em> a change in slope.</p>
+                    where $y_S, y_M, y_L$ are the yields at the short, middle, and long maturities. A <em>long belly</em> (or "long the butterfly") position profits when $\text{Fly}$ decreases - the middle of the curve richens (its yield falls) relative to the wings - and is implemented by being long the belly and short the wings, with weights chosen so the trade is DV01-neutral against both a parallel shift <em>and</em> a change in slope.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Trade Butterflies</div>
-                    <p class="mb-0">A butterfly is doubly hedged: properly weighted, it has near-zero exposure to both the level and the slope of the curve, leaving exposure only to curvature — changes in how "bowed" the curve is. This makes butterflies attractive when a trader believes a specific maturity is mispriced relative to its neighbors (e.g. due to a large issuance concentrated at that point, Section 3.1) without taking a view on the broader direction or steepness of the curve.</p>
+                    <div class="math-box-label">Remark - Why Trade Butterflies</div>
+                    <p class="mb-0">A butterfly is doubly hedged: properly weighted, it has near-zero exposure to both the level and the slope of the curve, leaving exposure only to curvature - changes in how "bowed" the curve is. This makes butterflies attractive when a trader believes a specific maturity is mispriced relative to its neighbors (e.g. due to a large issuance concentrated at that point, Section 3.1) without taking a view on the broader direction or steepness of the curve.</p>
                 </div>
 
-                <h2 class="mt-5 mb-3">Worked Example — Constructing a DV01-Neutral Steepener</h2>
+                <h2 class="mt-5 mb-3">Worked Example - Constructing a DV01-Neutral Steepener</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — 2s10s Steepener</div>
+                    <div class="math-box-label">Example - 2s10s Steepener</div>
                     <p>A trader believes the curve will steepen between the 2-year and 10-year points (a "2s10s steepener"). The 2-year bond has $\text{DV01}_2 = \$0.018$ per $\$100$ face value; the 10-year bond has $\text{DV01}_{10} = \$0.085$ per $\$100$ face value.</p>
                     <p>The trade is: short $\$100\text{mm}$ face of the 10-year bond, and long enough of the 2-year bond to match its DV01. The hedge ratio is:
                     $$\frac{N_2}{N_{10}} = \frac{\text{DV01}_{10}}{\text{DV01}_2} = \frac{0.085}{0.018} \approx 4.72$$
                     So the trader buys $\$100\text{mm} \times 4.72 \approx \$472\text{mm}$ face value of the 2-year bond against the $\$100\text{mm}$ short in the 10-year bond.</p>
                     <p>Check: 2-year leg DV01 $= \$472\text{mm} \times 0.018/100 = \$84{,}960$. 10-year leg DV01 $= \$100\text{mm} \times 0.085/100 = \$85{,}000$. The two are approximately equal (small residual due to rounding the hedge ratio), so a parallel 1bp move in both yields produces close to zero net P&amp;L.</p>
-                    <p class="mb-0">If instead the 2-year yield falls by 5bp while the 10-year yield is unchanged (curve steepens by 5bp), the long 2-year leg gains $\$84{,}960 \times 5 \approx \$424{,}800$, while the short 10-year leg has no P&amp;L — a net gain of approximately $\$424{,}800$ from the steepening, with negligible exposure to the parallel level of rates.</p>
+                    <p class="mb-0">If instead the 2-year yield falls by 5bp while the 10-year yield is unchanged (curve steepens by 5bp), the long 2-year leg gains $\$84{,}960 \times 5 \approx \$424{,}800$, while the short 10-year leg has no P&amp;L - a net gain of approximately $\$424{,}800$ from the steepening, with negligible exposure to the parallel level of rates.</p>
                 </div>
 
                 <hr class="my-5">

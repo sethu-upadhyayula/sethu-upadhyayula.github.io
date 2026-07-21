@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Distributed Transactions</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Distributed Systems</a>
+                <hr>
+                <a href="../01-models-of-distributed-computation/" class="text-decoration-none toc-chapter-link"><strong>1.</strong> Models of Distributed Computation</a>
+                <a href="../02-time-clocks-and-event-ordering/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> Time, Clocks, and Event Ordering</a>
+                <a href="../03-consensus-paxos-and-raft/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Consensus: Paxos and Raft</a>
+                <a href="../04-replication-and-consistency-models/" class="text-decoration-none toc-chapter-link"><strong>4.</strong> Replication and Consistency Models</a>
+                <a href="../05-distributed-transactions/" class="text-decoration-none toc-chapter-link toc-active"><strong>5.</strong> Distributed Transactions</a>
+                <a href="../06-failure-detection-and-fault-tolerance/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Failure Detection and Fault Tolerance</a>
+                <a href="../07-partitioning-and-consistent-hashing/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Partitioning and Consistent Hashing</a>
+                <a href="../08-distributed-systems-in-practice/" class="text-decoration-none toc-chapter-link"><strong>8.</strong> Distributed Systems in Practice</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">Distributed Systems</a> ›
+                <span>5. Distributed Transactions</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">5. Distributed Transactions</h1>
+
+                <p>Chapter 4 of Database Systems covered ACID transactions within a single database — this chapter covers what happens when a single logical operation must atomically span multiple independent databases or services, a substantially harder problem.</p>
+
+                <h2 class="mt-5 mb-3">Two-Phase Commit</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Two-Phase Commit (2PC)</div>
+                    <p class="mb-0"><strong>Two-phase commit</strong> coordinates an atomic commit across multiple participants via a designated coordinator: in the <strong>prepare</strong> phase, the coordinator asks every participant if it can commit, and each participant durably records its vote; in the <strong>commit</strong> phase, only if every participant voted yes does the coordinator instruct all of them to actually commit (otherwise, all abort) — guaranteeing atomicity across systems, but at the cost of every participant being <strong>blocked</strong>, holding locks, while awaiting the coordinator's final decision.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Blocking Problem</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — 2PC's Central Weakness</div>
+                    <p class="mb-0">If the coordinator fails after participants have voted but before they receive the final commit/abort decision, those participants are stuck holding their locks indefinitely, unable to safely proceed on their own — a genuine availability cost that has driven both refinements (three-phase commit, which adds an extra round specifically to reduce, though not eliminate, this blocking window) and, more often in practice, a move away from 2PC entirely toward the alternative approaches below.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The Saga Pattern</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Saga</div>
+                    <p class="mb-0">A <strong>saga</strong> breaks a long-lived, multi-step business transaction into a sequence of local transactions, each with a corresponding <strong>compensating action</strong> that can undo its effect if a later step in the sequence fails — rather than holding locks across all participants for the transaction's full duration (as 2PC does), each local transaction commits independently and immediately, with correctness restored via compensation if something downstream later goes wrong, at the cost of the overall sequence being only <em>eventually</em> atomic rather than instantaneously so.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Choreography versus Orchestration</h2>
+
+                <p>A saga can be coordinated via <strong>choreography</strong> (each service reacts to events from others, with no central coordinator, favouring loose coupling at the cost of a less visible, harder-to-trace overall flow) or <strong>orchestration</strong> (a central coordinator explicitly directs each step, easier to understand and monitor but reintroducing a degree of central coordination the saga pattern otherwise seeks to avoid).</p>
+
+                <h2 class="mt-5 mb-3">Why Sagas Are Common in Microservices</h2>
+
+                <p>Because microservices (Chapter 4 of Software Engineering & Systems Design) typically each own their own database, a single business operation spanning several services cannot use a simple local ACID transaction (Chapter 4 of Database Systems) at all — sagas, despite their weaker atomicity guarantee, have become the dominant practical pattern for maintaining correctness across service boundaries in this architecture, precisely because 2PC's blocking cost is particularly unacceptable in a system built around many independent, frequently-deployed services.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../04-replication-and-consistency-models/" class="btn btn-outline-custom">&larr; 4. Replication and Consistency Models</a>
+                    <a href="../06-failure-detection-and-fault-tolerance/" class="btn btn-custom">6. Failure Detection and Fault Tolerance &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

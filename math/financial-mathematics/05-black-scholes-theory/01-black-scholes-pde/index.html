@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -51,7 +51,7 @@
 
                 <h2 class="mt-5 mb-3">Stock Price Dynamics</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Geometric Brownian Motion</div>
+                    <div class="math-box-label">Definition - Geometric Brownian Motion</div>
                     <p class="mb-0">Under the real-world measure $P$, the stock price follows geometric Brownian motion:
                     $$dS = \mu S\,dt + \sigma S\,dW_t,$$
                     where $\mu$ is the expected return, $\sigma > 0$ is the volatility, and $W_t$ is a standard Brownian motion. By Itô's formula, $\ln S_T \sim \mathcal{N}(\ln S_0 + (\mu - \tfrac{1}{2}\sigma^2)T,\;\sigma^2 T)$.</p>
@@ -59,19 +59,19 @@
 
                 <h2 class="mt-5 mb-3">Delta-Hedging Derivation</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Black-Scholes PDE</div>
+                    <div class="math-box-label">Theorem - Black-Scholes PDE</div>
                     <p>Let $V(S,t)$ be the price of a derivative. By Itô's lemma:
                     $$dV = \left(\frac{\partial V}{\partial t} + \mu S\frac{\partial V}{\partial S} + \frac{1}{2}\sigma^2 S^2\frac{\partial^2 V}{\partial S^2}\right)dt + \sigma S\frac{\partial V}{\partial S}\,dW_t.$$
                     Form the delta-neutral portfolio $\Pi = V - \Delta S$ with $\Delta = \partial V/\partial S$. The $dW_t$ terms cancel:
                     $$d\Pi = \left(\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2\frac{\partial^2 V}{\partial S^2}\right)dt.$$
                     Since $\Pi$ is riskless, $d\Pi = r\Pi\,dt = r(V - \Delta S)dt$. Equating:
                     $$\boxed{\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2\frac{\partial^2 V}{\partial S^2} + rS\frac{\partial V}{\partial S} - rV = 0.}$$</p>
-                    <p class="mb-0">Note: $\mu$ does not appear. The derivative price is independent of the investor's expected return under GBM — a profound result.</p>
+                    <p class="mb-0">Note: $\mu$ does not appear. The derivative price is independent of the investor's expected return under GBM - a profound result.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Reduction to the Heat Equation</h2>
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Transformation to Heat Equation</div>
+                    <div class="math-box-label">Proposition - Transformation to Heat Equation</div>
                     <p class="mb-0">Under the substitutions $x = \ln S$, $\tau = T - t$ (time to maturity), $V(S,t) = e^{-r\tau}u(x,\tau)$, the Black-Scholes PDE becomes the heat equation:
                     $$\frac{\partial u}{\partial \tau} = \frac{\sigma^2}{2}\frac{\partial^2 u}{\partial x^2} + \left(r - \frac{\sigma^2}{2}\right)\frac{\partial u}{\partial x} - ru.$$
                     A further change of variable eliminates the first-order term, yielding the pure heat equation $\partial u/\partial \tau = \tfrac{\sigma^2}{2}\partial^2 u/\partial x^2$. Its fundamental solution (the Gaussian kernel) then yields the Black-Scholes formula.</p>

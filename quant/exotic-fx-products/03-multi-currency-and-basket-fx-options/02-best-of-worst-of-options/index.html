@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,42 +80,42 @@
             <article>
                 <h1 class="text-accent mb-4">3.2 Best-of/Worst-of Options</h1>
 
-                <p>Best-of and worst-of options are multi-asset options whose payoff depends on the maximum or minimum performance among a set of underlyings — in the FX context, typically a basket of exchange rates relative to a common reference currency. They are popular in structured notes (e.g., a note that pays a high coupon if the <em>worst-performing</em> of three currency pairs stays within a range) because they allow the issuer to offer an enhanced coupon or strike in exchange for the buyer taking on exposure to whichever underlying performs worst — a form of correlation-dependent risk that is often poorly priced into the headline terms.</p>
+                <p>Best-of and worst-of options are multi-asset options whose payoff depends on the maximum or minimum performance among a set of underlyings - in the FX context, typically a basket of exchange rates relative to a common reference currency. They are popular in structured notes (e.g., a note that pays a high coupon if the <em>worst-performing</em> of three currency pairs stays within a range) because they allow the issuer to offer an enhanced coupon or strike in exchange for the buyer taking on exposure to whichever underlying performs worst - a form of correlation-dependent risk that is often poorly priced into the headline terms.</p>
 
                 <h2 class="mt-5 mb-3">Payoff Structures</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Best-of and Worst-of Call Options</div>
+                    <div class="math-box-label">Definition - Best-of and Worst-of Call Options</div>
                     <p class="mb-0">For underlyings $S^{(1)}, \dots, S^{(n)}$ (e.g., $n$ exchange rates, each normalised to its return relative to $t=0$) and strike $K$, the maturity payoffs are:</p>
                     <p class="mb-0">$$\text{Best-of call: } \left(\max_i S^{(i)}_T - K\right)^+ \qquad \text{Worst-of call: } \left(\min_i S^{(i)}_T - K\right)^+$$</p>
-                    <p class="mb-0">and analogously for puts. A common FX application is a "worst-of digital" embedded in a yield-enhancement note: the note pays an enhanced coupon unless <em>any</em> of $n$ specified currency pairs moves outside a pre-defined range, in which case the coupon is reduced or the note's redemption is adjusted — economically, the investor has sold the issuer a worst-of digital option across all $n$ pairs.</p>
+                    <p class="mb-0">and analogously for puts. A common FX application is a "worst-of digital" embedded in a yield-enhancement note: the note pays an enhanced coupon unless <em>any</em> of $n$ specified currency pairs moves outside a pre-defined range, in which case the coupon is reduced or the note's redemption is adjusted - economically, the investor has sold the issuer a worst-of digital option across all $n$ pairs.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Correlation Sensitivity</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Best-of/Worst-of Options Are Short/Long Correlation</div>
+                    <div class="math-box-label">Remark - Best-of/Worst-of Options Are Short/Long Correlation</div>
                     <p class="mb-0">Consider a worst-of call as $n \to$ many underlyings, or even just $n=2$. Holding the individual marginal distributions of $S^{(1)}, \dots, S^{(n)}$ fixed:</p>
                     <ul class="mb-0 mt-2">
-                        <li>If the underlyings are <strong>highly correlated</strong> ($\rho \to 1$), they tend to move together, so $\min_i S^{(i)}_T$ behaves similarly to any single $S^{(i)}_T$ — the worst-of payoff is close to a single-asset option.</li>
-                        <li>If the underlyings are <strong>weakly or negatively correlated</strong> ($\rho \to 0$ or below), it becomes more likely that <em>at least one</em> underlying performs poorly even if others perform well — the minimum of several largely-independent draws tends to be lower than any single draw, dragging down $\min_i S^{(i)}_T$ on average.</li>
+                        <li>If the underlyings are <strong>highly correlated</strong> ($\rho \to 1$), they tend to move together, so $\min_i S^{(i)}_T$ behaves similarly to any single $S^{(i)}_T$ - the worst-of payoff is close to a single-asset option.</li>
+                        <li>If the underlyings are <strong>weakly or negatively correlated</strong> ($\rho \to 0$ or below), it becomes more likely that <em>at least one</em> underlying performs poorly even if others perform well - the minimum of several largely-independent draws tends to be lower than any single draw, dragging down $\min_i S^{(i)}_T$ on average.</li>
                     </ul>
-                    <p class="mb-0">A worst-of call therefore <em>increases in value as correlation decreases</em> (lower correlation pushes the distribution of the minimum down, which is bad news for a worst-of <em>call</em>... but the issuer of a worst-of-conditioned note, who is short this optionality, benefits from lower correlation — equivalently, the note's investor, who has implicitly sold worst-of downside protection, is exposed to a "short correlation" position: they lose more, in expectation, the less correlated the underlyings are). Symmetrically, a best-of call <em>increases</em> in value as correlation <em>decreases</em>, since a lower correlation makes it more likely that <em>at least one</em> underlying performs very well, pushing up $\max_i S^{(i)}_T$.</p>
+                    <p class="mb-0">A worst-of call therefore <em>increases in value as correlation decreases</em> (lower correlation pushes the distribution of the minimum down, which is bad news for a worst-of <em>call</em>... but the issuer of a worst-of-conditioned note, who is short this optionality, benefits from lower correlation - equivalently, the note's investor, who has implicitly sold worst-of downside protection, is exposed to a "short correlation" position: they lose more, in expectation, the less correlated the underlyings are). Symmetrically, a best-of call <em>increases</em> in value as correlation <em>decreases</em>, since a lower correlation makes it more likely that <em>at least one</em> underlying performs very well, pushing up $\max_i S^{(i)}_T$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Pricing Intuition via Correlation Skew</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — There Is No Single Market "Correlation"</div>
-                    <p class="mb-0">Unlike single-pair implied volatility, which is directly observable from vanilla option prices across a continuum of strikes, pairwise correlations between exchange rates are not directly traded as a liquid instrument across a range of "correlation strikes." Dealers infer an implied correlation from the relatively small set of multi-asset products that do trade (basket options, worst-of notes, and similar structures), but this implied correlation typically exhibits its own "skew": the correlation level that reprices an out-of-the-money worst-of put (sensitive to joint tail co-movement, i.e. all currencies weakening together — a classic "risk-off" scenario) is often higher than the correlation level that reprices an at-the-money best-of/worst-of structure, reflecting the market's view that correlations between currency pairs tend to rise sharply in stressed, risk-off scenarios even if they are more modest in calm markets.</p>
+                    <div class="math-box-label">Remark - There Is No Single Market "Correlation"</div>
+                    <p class="mb-0">Unlike single-pair implied volatility, which is directly observable from vanilla option prices across a continuum of strikes, pairwise correlations between exchange rates are not directly traded as a liquid instrument across a range of "correlation strikes." Dealers infer an implied correlation from the relatively small set of multi-asset products that do trade (basket options, worst-of notes, and similar structures), but this implied correlation typically exhibits its own "skew": the correlation level that reprices an out-of-the-money worst-of put (sensitive to joint tail co-movement, i.e. all currencies weakening together - a classic "risk-off" scenario) is often higher than the correlation level that reprices an at-the-money best-of/worst-of structure, reflecting the market's view that correlations between currency pairs tend to rise sharply in stressed, risk-off scenarios even if they are more modest in calm markets.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Practical Calibration Challenges</div>
+                    <div class="math-box-label">Remark - Practical Calibration Challenges</div>
                     <p class="mb-0">Because liquid correlation-sensitive instruments are scarce, dealers often calibrate the correlation matrix used for best-of/worst-of pricing from a combination of: (i) historical realised correlations between the relevant exchange rate returns, typically over several different lookback windows to gauge stability; (ii) any observable prices of similar multi-asset structures, inverted to back out an implied correlation; and (iii) a stressed correlation overlay applied to tail scenarios, reflecting the empirical tendency (documented across many crisis episodes) for cross-asset and cross-currency correlations to spike towards 1 (for "risk-off" co-movements) during market stress, even when calmer-period historical correlations are much lower. The gap between calm-period and stressed correlation assumptions can be a significant source of model risk and of day-one P&amp;L volatility if a position is re-marked using a different correlation regime than the one used at inception.</p>
                 </div>
 
-                <p>Best-of and worst-of structures thus require not just a volatility surface for each underlying exchange rate (as for the single-pair exotics of earlier chapters) but a full correlation matrix — itself effectively a surface with its own skew and term structure — making these among the most model-dependent products in the exotic FX universe, and a natural bridge to the broader risk management themes of model risk and smile dynamics taken up in the final chapter.</p>
+                <p>Best-of and worst-of structures thus require not just a volatility surface for each underlying exchange rate (as for the single-pair exotics of earlier chapters) but a full correlation matrix - itself effectively a surface with its own skew and term structure - making these among the most model-dependent products in the exotic FX universe, and a natural bridge to the broader risk management themes of model risk and smile dynamics taken up in the final chapter.</p>
 
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

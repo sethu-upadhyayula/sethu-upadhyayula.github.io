@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,11 +128,11 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">1.1 Floating-Point Representation</h1>
-                <p>Real numbers are infinite objects; computers store only finite approximations. The IEEE 754 standard governs how virtually all modern hardware represents and computes with floating-point numbers. Understanding its structure — sign, exponent, mantissa — is the foundation for analysing numerical error.</p>
+                <p>Real numbers are infinite objects; computers store only finite approximations. The IEEE 754 standard governs how virtually all modern hardware represents and computes with floating-point numbers. Understanding its structure - sign, exponent, mantissa - is the foundation for analysing numerical error.</p>
 
                 <h2 class="mt-4 mb-3">IEEE 754 Double Precision</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — IEEE 754 Double Precision</div>
+                    <div class="math-box-label">Definition - IEEE 754 Double Precision</div>
                     <p>A <strong>double-precision</strong> floating-point number occupies 64 bits partitioned as:</p>
                     <ul>
                         <li>1 sign bit $s \in \{0,1\}$</li>
@@ -146,27 +146,27 @@
 
                 <h2 class="mt-5 mb-3">Normalised Form and Range</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Normalised Floating-Point Number</div>
+                    <div class="math-box-label">Definition - Normalised Floating-Point Number</div>
                     <p class="mb-0">A floating-point number $x \ne 0$ is <strong>normalised</strong> when its significand satisfies $1 \le |m| < 2$ (base 2). In double precision, normalised numbers span the range:
                     $$|x| \in [2^{-1022},\; (2-2^{-52})\cdot 2^{1023}] \approx [2.2\times 10^{-308},\; 1.8\times 10^{308}].$$</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Machine Epsilon</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Machine Epsilon</div>
+                    <div class="math-box-label">Definition - Machine Epsilon</div>
                     <p class="mb-0"><strong>Machine epsilon</strong> $\varepsilon_{\text{mach}}$ is the smallest positive floating-point number such that $\text{fl}(1 + \varepsilon_{\text{mach}}) > 1$. For IEEE 754 double precision with round-to-nearest:
                     $$\varepsilon_{\text{mach}} = 2^{-52} \approx 2.22 \times 10^{-16}.$$
                     Equivalently, for any real $x$ in the normalised range, its floating-point representation $\text{fl}(x)$ satisfies $|\text{fl}(x) - x| \le \tfrac{1}{2}\varepsilon_{\text{mach}}|x|$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Relative Error Bound</div>
+                    <div class="math-box-label">Remark - Relative Error Bound</div>
                     <p class="mb-0">The fundamental property of floating-point arithmetic is that each basic operation $\circ \in \{+,-,\times,\div\}$ satisfies $\text{fl}(x \circ y) = (x \circ y)(1+\delta)$ for some $|\delta| \le \varepsilon_{\text{mach}}$, provided no overflow or underflow occurs. This is the <em>unit roundoff</em> model.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Subnormal Numbers</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Subnormal (Denormalised) Numbers</div>
+                    <div class="math-box-label">Definition - Subnormal (Denormalised) Numbers</div>
                     <p class="mb-0">When the exponent field is all zeros, the leading bit is taken as 0 rather than 1, giving <strong>subnormal</strong> numbers:
                     $$x = (-1)^s \cdot 2^{-1022} \cdot (0.f_1\cdots f_{52})_2.$$
                     Subnormals fill the gap between 0 and the smallest normalised number, enabling <em>gradual underflow</em> down to $2^{-1074} \approx 5\times 10^{-324}$.</p>
@@ -174,7 +174,7 @@
 
                 <h2 class="mt-5 mb-3">Overflow, Underflow, and Special Values</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Special Values</div>
+                    <div class="math-box-label">Definition - Special Values</div>
                     <p><strong>Overflow</strong> occurs when a result exceeds $(2 - 2^{-52})\cdot 2^{1023}$; the result is set to $\pm\infty$.</p>
                     <p><strong>Underflow</strong> occurs when a positive result is smaller than $2^{-1022}$; gradual underflow produces a subnormal, and <em>flush-to-zero</em> underflow sets the result to 0.</p>
                     <p class="mb-0">IEEE 754 defines four special values via reserved bit patterns:
@@ -187,12 +187,12 @@
 
                 <h2 class="mt-5 mb-3">Floating-Point Density</h2>
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Distribution of Floating-Point Numbers</div>
+                    <div class="math-box-label">Proposition - Distribution of Floating-Point Numbers</div>
                     <p class="mb-0">In each binade $[2^k, 2^{k+1})$, there are exactly $2^{52}$ normalised double-precision numbers uniformly spaced with gap $2^{k-52}$. The spacing therefore doubles as the magnitude doubles: large numbers are more sparsely represented than small numbers, which is why relative error (not absolute) is the natural measure.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Exact Representation</div>
+                    <div class="math-box-label">Example - Exact Representation</div>
                     <p>The number $0.1$ has no exact binary representation. In double precision:
                     $$\text{fl}(0.1) = 0.1000000000000000055511151231257827021181583404541015625\ldots$$
                     This is an error of roughly $5.6 \times 10^{-18}$, well within $\tfrac{1}{2}\varepsilon_{\text{mach}} \times 0.1 \approx 1.1 \times 10^{-17}$.</p>

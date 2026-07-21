@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -127,19 +127,19 @@
             <article>
                 <h1 class="text-accent mb-4">1.1 Convex Sets</h1>
 
-                <p>Convex sets are the fundamental geometric objects of optimisation theory. A set is convex if the straight line between any two of its points lies entirely within the set — a simple condition with surprisingly rich algebraic and geometric consequences.</p>
+                <p>Convex sets are the fundamental geometric objects of optimisation theory. A set is convex if the straight line between any two of its points lies entirely within the set - a simple condition with surprisingly rich algebraic and geometric consequences.</p>
 
                 <h2 class="mt-4 mb-3">Definition and Basic Examples</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.1.1 — Convex Set</div>
+                    <div class="math-box-label">Definition 1.1.1 - Convex Set</div>
                     <p>A set $C\subseteq\mathbb{R}^n$ is <strong>convex</strong> if for all $x,y\in C$ and all $\lambda\in[0,1]$,
                     $$\lambda x + (1-\lambda)y \in C.$$</p>
                     <p class="mb-0">Geometrically: the line segment connecting any two points in $C$ stays in $C$. Examples: the empty set, all of $\mathbb{R}^n$, halfspaces $\{x:a^Tx\le b\}$, balls $\{x:\|x-c\|\le r\}$, hyperplanes, and convex cones.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Polyhedra</div>
+                    <div class="math-box-label">Example - Polyhedra</div>
                     <p>A <strong>polyhedron</strong> is a set of the form $\{x\in\mathbb{R}^n : Ax\le b\}$ for a matrix $A\in\mathbb{R}^{m\times n}$ and vector $b\in\mathbb{R}^m$. Polyhedra are convex because they are finite intersections of halfspaces, and each halfspace is convex.</p>
                     <p class="mb-0">A bounded polyhedron is called a <strong>polytope</strong>. The feasible region of a linear program is a polyhedron.</p>
                 </div>
@@ -147,7 +147,7 @@
                 <h2 class="mt-5 mb-3">Operations Preserving Convexity</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.1.2 — Convexity-Preserving Operations</div>
+                    <div class="math-box-label">Theorem 1.1.2 - Convexity-Preserving Operations</div>
                     <p>The following operations preserve convexity:</p>
                     <ul>
                         <li><strong>Intersection:</strong> if $C_\alpha$ is convex for each $\alpha$, then $\bigcap_\alpha C_\alpha$ is convex.</li>
@@ -161,14 +161,14 @@
                 <h2 class="mt-5 mb-3">Convex Hull and Extreme Points</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.1.3 — Convex Hull</div>
+                    <div class="math-box-label">Definition 1.1.3 - Convex Hull</div>
                     <p>The <strong>convex hull</strong> of a set $S\subseteq\mathbb{R}^n$ is the smallest convex set containing $S$:
                     $$\operatorname{conv}(S) = \left\{\sum_{i=1}^k \lambda_i x_i : k\ge1,\, x_i\in S,\, \lambda_i\ge0,\, \sum_i\lambda_i=1\right\}.$$</p>
                     <p class="mb-0">The convex hull of finitely many points is a polytope.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.1.4 — Extreme Point</div>
+                    <div class="math-box-label">Definition 1.1.4 - Extreme Point</div>
                     <p>A point $x\in C$ is an <strong>extreme point</strong> (vertex) of a convex set $C$ if it cannot be written as $x=\lambda y+(1-\lambda)z$ with $y,z\in C$, $y\ne z$, and $\lambda\in(0,1)$. Extreme points cannot be expressed as non-trivial convex combinations of other points in $C$.</p>
                     <p class="mb-0"><strong>Minkowski-Weyl Theorem:</strong> every compact convex set is the convex hull of its extreme points. For polytopes, the extreme points are exactly the vertices of the polyhedron.</p>
                 </div>
@@ -176,14 +176,14 @@
                 <h2 class="mt-5 mb-3">Recession Cone</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.1.5 — Recession Cone</div>
+                    <div class="math-box-label">Definition 1.1.5 - Recession Cone</div>
                     <p>The <strong>recession cone</strong> of a convex set $C$ is
                     $$\operatorname{rec}(C) = \{d\in\mathbb{R}^n : x+td\in C \text{ for all } x\in C,\, t\ge0\}.$$</p>
                     <p class="mb-0">It captures the directions in which $C$ is unbounded. A convex set is bounded if and only if $\operatorname{rec}(C)=\{0\}$. For the polyhedron $\{x:Ax\le b\}$, the recession cone is $\{d:Ad\le0\}$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Convex Cones</div>
+                    <div class="math-box-label">Remark - Convex Cones</div>
                     <p class="mb-0">A set $K$ is a <strong>convex cone</strong> if it is convex and closed under non-negative scaling: $x\in K$ and $\lambda\ge0$ imply $\lambda x\in K$. Important examples: the non-negative orthant $\mathbb{R}^n_+$, the second-order cone $\{(x,t):\|x\|\le t\}$, and the cone of positive semidefinite matrices $\mathbb{S}^n_+$.</p>
                 </div>
 

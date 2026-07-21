@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -112,37 +112,37 @@
 <h1 class="text-accent mb-4">4.2 Diagonalisation</h1>
 
 <div class="math-box definition">
-<div class="math-box-label">Definition — Diagonalisable Matrix</div>
+<div class="math-box-label">Definition - Diagonalisable Matrix</div>
 <p>A matrix $A\in M_n(\mathbb{C})$ is <strong>diagonalisable</strong> if it is similar to a diagonal matrix: there exists an invertible $P$ and diagonal $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$ such that:</p>
 $$A = PDP^{-1},\qquad\text{equivalently}\quad AP=PD.$$
 <p class="mb-0">The columns of $P$ are linearly independent eigenvectors of $A$, and the diagonal entries of $D$ are the corresponding eigenvalues. Equivalently, $A$ is diagonalisable if and only if $\mathbb{C}^n$ (resp. $\mathbb{R}^n$) has a basis consisting of eigenvectors of $A$.</p>
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Sufficient Condition: Distinct Eigenvalues</div>
+<div class="math-box-label">Theorem - Sufficient Condition: Distinct Eigenvalues</div>
 <p class="mb-0">If $A\in M_n(\mathbb{C})$ has $n$ <em>distinct</em> eigenvalues, then $A$ is diagonalisable. (The converse is false: repeated eigenvalues do not necessarily prevent diagonalisability.)</p>
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Necessary and Sufficient Condition</div>
+<div class="math-box-label">Theorem - Necessary and Sufficient Condition</div>
 <p class="mb-0">$A$ is diagonalisable if and only if for every eigenvalue $\lambda$, the geometric multiplicity equals the algebraic multiplicity: $\dim\ker(A-\lambda I)=$ (multiplicity of $\lambda$ as root of $p$).</p>
 </div>
 
 <div class="math-box example">
-<div class="math-box-label">Example — Diagonalisable vs Non-Diagonalisable (Defective)</div>
+<div class="math-box-label">Example - Diagonalisable vs Non-Diagonalisable (Defective)</div>
 <p><strong>Diagonalisable:</strong> $A=\begin{pmatrix}1&1\\0&2\end{pmatrix}$ has eigenvalues $\lambda_1=1$, $\lambda_2=2$ (distinct), so it is diagonalisable. Eigenvectors: $v_1=\begin{pmatrix}1\\0\end{pmatrix}$, $v_2=\begin{pmatrix}1\\1\end{pmatrix}$. Then $P=\begin{pmatrix}1&1\\0&1\end{pmatrix}$, $D=\begin{pmatrix}1&0\\0&2\end{pmatrix}$.</p>
 <p><strong>Defective (non-diagonalisable):</strong> $B=\begin{pmatrix}1&1\\0&1\end{pmatrix}$ has $p(\lambda)=(\lambda-1)^2$, so $\lambda=1$ with algebraic multiplicity 2. But $\ker(B-I)=\ker\begin{pmatrix}0&1\\0&0\end{pmatrix}=\operatorname{span}\{e_1\}$ has dimension 1. Geometric multiplicity $1\neq2$, so $B$ is <em>not</em> diagonalisable.</p>
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Computing Matrix Powers</div>
+<div class="math-box-label">Theorem - Computing Matrix Powers</div>
 <p>If $A=PDP^{-1}$, then for any $k\ge0$:</p>
 $$A^k = PD^kP^{-1},\qquad\text{where }D^k=\operatorname{diag}(\lambda_1^k,\ldots,\lambda_n^k).$$
-<p class="mb-0">This reduces computing $A^k$ to a diagonal power, which is trivial — a major computational advantage over repeated matrix multiplication.</p>
+<p class="mb-0">This reduces computing $A^k$ to a diagonal power, which is trivial - a major computational advantage over repeated matrix multiplication.</p>
 </div>
 
 <div class="math-box example">
-<div class="math-box-label">Example — Fibonacci Sequence via Diagonalisation</div>
+<div class="math-box-label">Example - Fibonacci Sequence via Diagonalisation</div>
 <p>The Fibonacci recurrence $F_{n+1}=F_n+F_{n-1}$ can be written as:
 $$\begin{pmatrix}F_{n+1}\\F_n\end{pmatrix}=\underbrace{\begin{pmatrix}1&1\\1&0\end{pmatrix}}_{A}\begin{pmatrix}F_n\\F_{n-1}\end{pmatrix}.$$
 The characteristic polynomial of $A$ is $\lambda^2-\lambda-1=0$, with roots (the golden ratio and its conjugate):

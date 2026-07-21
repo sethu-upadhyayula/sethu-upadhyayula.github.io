@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -139,12 +139,12 @@
                 <p>A proper colouring of a graph assigns a colour to each vertex so that no two adjacent vertices share the same colour. The chromatic number measures the minimum number of colours required.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.1.1 — Proper Colouring and Chromatic Number</div>
+                    <div class="math-box-label">Definition 6.1.1 - Proper Colouring and Chromatic Number</div>
                     <p class="mb-0">A <strong>proper $k$-colouring</strong> of $G$ is a function $c: V(G) \to \{1,\ldots,k\}$ such that $c(u) \neq c(v)$ whenever $\{u,v\} \in E(G)$. The <strong>chromatic number</strong> $\chi(G)$ is the smallest $k$ for which a proper $k$-colouring exists.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 6.1.2 — Basic Chromatic Numbers</div>
+                    <div class="math-box-label">Example 6.1.2 - Basic Chromatic Numbers</div>
                     <p>$\chi(K_n) = n$; $\chi(C_{2k}) = 2$ (even cycle); $\chi(C_{2k+1}) = 3$ (odd cycle); $\chi(\text{bipartite, non-empty}) = 2$; $\chi(\text{empty graph}) = 1$.</p>
                     <p class="mb-0">$\chi(\text{Petersen graph}) = 3$; $\chi(\text{planar graph}) \le 4$ (Four Colour Theorem).</p>
                 </div>
@@ -152,19 +152,19 @@
                 <h2 class="mt-5 mb-3">Bounds on the Chromatic Number</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.1.3 — Greedy Bound</div>
+                    <div class="math-box-label">Theorem 6.1.3 - Greedy Bound</div>
                     <p class="mb-0">For any graph $G$, $\chi(G) \le \Delta(G) + 1$, where $\Delta(G)$ is the maximum degree. The greedy algorithm colours vertices one by one; each vertex has at most $\Delta$ already-coloured neighbours, so at least one of the $\Delta+1$ colours is always available.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.1.4 — Brooks' Theorem (1941)</div>
+                    <div class="math-box-label">Theorem 6.1.4 - Brooks' Theorem (1941)</div>
                     <p class="mb-0">If $G$ is a connected graph that is neither a complete graph $K_n$ nor an odd cycle, then $\chi(G) \le \Delta(G)$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Chromatic Polynomial</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.1.5 — Chromatic Polynomial</div>
+                    <div class="math-box-label">Definition 6.1.5 - Chromatic Polynomial</div>
                     <p class="mb-0">The <strong>chromatic polynomial</strong> $P(G, k)$ counts the number of proper $k$-colourings of $G$. It satisfies the deletion-contraction recurrence:
                     $$P(G, k) = P(G - e, k) - P(G/e, k)$$
                     where $G - e$ removes edge $e$ and $G/e$ contracts it. For the complete graph, $P(K_n, k) = k(k-1)(k-2)\cdots(k-n+1)$. For a tree $T_n$ on $n$ vertices, $P(T_n, k) = k(k-1)^{n-1}$.</p>
@@ -178,12 +178,12 @@
                 <h2 class="mt-5 mb-3">Clique Number and Perfect Graphs</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.1.6 — Clique Lower Bound</div>
+                    <div class="math-box-label">Theorem 6.1.6 - Clique Lower Bound</div>
                     <p class="mb-0">$\chi(G) \ge \omega(G)$, where $\omega(G)$ is the <strong>clique number</strong> (size of the largest complete subgraph). This bound is not always tight: there exist triangle-free graphs with arbitrarily large chromatic number (Mycielski's construction).</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.1.7 — Perfect Graph</div>
+                    <div class="math-box-label">Definition 6.1.7 - Perfect Graph</div>
                     <p class="mb-0">$G$ is <strong>perfect</strong> if $\chi(H) = \omega(H)$ for every induced subgraph $H$. By the Strong Perfect Graph Theorem (Chudnovsky et al. 2006), $G$ is perfect if and only if it contains no odd hole (odd induced cycle of length $\ge 5$) and no odd antihole as an induced subgraph. Bipartite graphs, chordal graphs, and interval graphs are all perfect.</p>
                 </div>
 

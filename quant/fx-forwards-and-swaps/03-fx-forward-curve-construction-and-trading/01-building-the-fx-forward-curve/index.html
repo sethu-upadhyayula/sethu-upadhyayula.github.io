@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,12 +81,12 @@
             <article>
                 <h1 class="text-accent mb-4">3.1 Building the FX Forward Curve</h1>
 
-                <p>A trading desk or valuation system needs an FX forward rate not just for the handful of standard tenors (1 week, 1 month, 3 months, 1 year) that are directly quoted, but for arbitrary dates — any settlement date that appears in a client trade, a hedge, or a cash flow schedule. This requires building a continuous <em>FX forward curve</em>: a function $F(T)$ defined for all $T \geq 0$, calibrated to the discrete set of market-quoted points.</p>
+                <p>A trading desk or valuation system needs an FX forward rate not just for the handful of standard tenors (1 week, 1 month, 3 months, 1 year) that are directly quoted, but for arbitrary dates - any settlement date that appears in a client trade, a hedge, or a cash flow schedule. This requires building a continuous <em>FX forward curve</em>: a function $F(T)$ defined for all $T \geq 0$, calibrated to the discrete set of market-quoted points.</p>
 
                 <h2 class="mt-5 mb-3">Inputs to the Curve</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Market Inputs for an FX Forward Curve</div>
+                    <div class="math-box-label">Definition - Market Inputs for an FX Forward Curve</div>
                     <p class="mb-0">Building an FX forward curve for a currency pair requires three categories of market data:</p>
                     <ul class="mb-0 mt-2">
                         <li><strong>Spot rate $S$:</strong> the current spot exchange rate, for value on the spot date (typically T+2).</li>
@@ -98,33 +98,33 @@
                 <h2 class="mt-5 mb-3">From Points to Forward Rates</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Construction — Forward Rate at Each Quoted Tenor</div>
+                    <div class="math-box-label">Construction - Forward Rate at Each Quoted Tenor</div>
                     <p class="mb-0">For each quoted tenor $T_i$, the outright forward rate is obtained directly from the spot rate and the quoted swap points:</p>
                     <p class="mb-0">$$F(T_i) = S + \text{Points}(T_i)$$</p>
-                    <p class="mb-0">where $\text{Points}(T_i)$ is converted from pips to the same units as $S$ (dividing by $10^4$ for most pairs, $10^2$ for JPY pairs). Because $\text{Points}(T_i)$ is taken directly from the market — rather than computed from $r_d(T_i)$ and $r_f(T_i)$ via the idealized CIP formula — this construction automatically and correctly embeds whatever cross-currency basis the market is pricing at that tenor, with no separate basis adjustment needed.</p>
+                    <p class="mb-0">where $\text{Points}(T_i)$ is converted from pips to the same units as $S$ (dividing by $10^4$ for most pairs, $10^2$ for JPY pairs). Because $\text{Points}(T_i)$ is taken directly from the market - rather than computed from $r_d(T_i)$ and $r_f(T_i)$ via the idealized CIP formula - this construction automatically and correctly embeds whatever cross-currency basis the market is pricing at that tenor, with no separate basis adjustment needed.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Interpolation Across Tenors</h2>
 
-                <p>The quoted tenor grid is discrete (e.g., O/N, T/N, 1W, 1M, 2M, 3M, 6M, 9M, 1Y, 2Y, ...), but a valuation system needs $F(T)$ for arbitrary dates between these pillars. The standard approach is to interpolate not on the forward rate or the points directly, but on a quantity that varies more smoothly — the implied forward-points-per-day or, equivalently, the log of the forward/spot ratio.</p>
+                <p>The quoted tenor grid is discrete (e.g., O/N, T/N, 1W, 1M, 2M, 3M, 6M, 9M, 1Y, 2Y, ...), but a valuation system needs $F(T)$ for arbitrary dates between these pillars. The standard approach is to interpolate not on the forward rate or the points directly, but on a quantity that varies more smoothly - the implied forward-points-per-day or, equivalently, the log of the forward/spot ratio.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Interpolate on Log-Forward, Not Raw Points</div>
-                    <p>The forward points $\text{Points}(T) = F(T) - S$ do not grow linearly in $T$ in general — under CIP, $\text{Points}(T) = S(e^{(r_d-r_f)T}-1)$, which is approximately linear only for small $T(r_d-r_f)$. For long tenors or large rate differentials, linear interpolation on raw points can introduce small but systematic errors, particularly when the rate differential itself changes sign across the curve (common for currency pairs where the rate differential narrows or inverts at longer tenors).</p>
-                    <p class="mb-0">Instead, define $g(T) = \ln(F(T)/S)$, the cumulative log-return implied by the forward curve. Since $g(T) \approx (r_d - r_f) T$ under CIP, $g(T)$ is close to piecewise-linear in $T$ when the rate differential is roughly constant between pillars, making linear interpolation on $g(T)$ — equivalent to "flat-forward" interpolation on the implied overnight rate differential — far more accurate than linear interpolation on the points themselves. This mirrors the log-discount-factor interpolation used for interest rate curves (Section 2.2 of Rates Fundamentals).</p>
+                    <div class="math-box-label">Remark - Why Interpolate on Log-Forward, Not Raw Points</div>
+                    <p>The forward points $\text{Points}(T) = F(T) - S$ do not grow linearly in $T$ in general - under CIP, $\text{Points}(T) = S(e^{(r_d-r_f)T}-1)$, which is approximately linear only for small $T(r_d-r_f)$. For long tenors or large rate differentials, linear interpolation on raw points can introduce small but systematic errors, particularly when the rate differential itself changes sign across the curve (common for currency pairs where the rate differential narrows or inverts at longer tenors).</p>
+                    <p class="mb-0">Instead, define $g(T) = \ln(F(T)/S)$, the cumulative log-return implied by the forward curve. Since $g(T) \approx (r_d - r_f) T$ under CIP, $g(T)$ is close to piecewise-linear in $T$ when the rate differential is roughly constant between pillars, making linear interpolation on $g(T)$ - equivalent to "flat-forward" interpolation on the implied overnight rate differential - far more accurate than linear interpolation on the points themselves. This mirrors the log-discount-factor interpolation used for interest rate curves (Section 2.2 of Rates Fundamentals).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example: A Short Forward Curve</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Constructing a USD/JPY Forward Curve</div>
+                    <div class="math-box-label">Example - Constructing a USD/JPY Forward Curve</div>
                     <p>Suppose USD/JPY spot is $S = 150.00$, and the market quotes the following swap points (in JPY per USD, i.e. already in the same units as spot, so no pip scaling is needed for this pair at this precision):</p>
                     <ul class="mb-0">
                         <li>1-month points: $-0.62$ (i.e., $F(1m) = 149.38$)</li>
                         <li>3-month points: $-1.83$ (i.e., $F(3m) = 148.17$)</li>
                         <li>6-month points: $-3.55$ (i.e., $F(6m) = 146.45$)</li>
                     </ul>
-                    <p class="mt-2">All points are negative, reflecting that USD rates exceed JPY rates (JPY trades at a forward premium to USD — fewer yen are needed to buy a dollar forward, consistent with JPY being the lower-yielding currency).</p>
+                    <p class="mt-2">All points are negative, reflecting that USD rates exceed JPY rates (JPY trades at a forward premium to USD - fewer yen are needed to buy a dollar forward, consistent with JPY being the lower-yielding currency).</p>
                     <p>To find the forward rate for a 2-month settlement date, compute $g(T) = \ln(F(T)/S)$ at the 1-month and 3-month pillars:</p>
                     <p>$$g(1m) = \ln(149.38/150.00) = \ln(0.99587) \approx -0.004141$$</p>
                     <p>$$g(3m) = \ln(148.17/150.00) = \ln(0.98780) \approx -0.012274$$</p>
@@ -134,8 +134,8 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Looking Ahead</div>
-                    <p class="mb-0">With the forward curve constructed, the next section turns to how this curve is used directly in trading — the conventions for quoting forward points, how a carry trade is implemented as a position in the forward curve, and how the position's value evolves ("rolls down") as time passes and the curve's shape is realized.</p>
+                    <div class="math-box-label">Remark - Looking Ahead</div>
+                    <p class="mb-0">With the forward curve constructed, the next section turns to how this curve is used directly in trading - the conventions for quoting forward points, how a carry trade is implemented as a position in the forward curve, and how the position's value evolves ("rolls down") as time passes and the curve's shape is realized.</p>
                 </div>
 
                 <hr class="my-5">

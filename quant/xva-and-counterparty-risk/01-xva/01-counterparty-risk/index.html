@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,23 +81,23 @@
             <article>
                 <h1 class="text-accent mb-4">1.1 Counterparty Credit Risk</h1>
 
-                <p>Counterparty Credit Risk (CCR) is the risk that a counterparty to an OTC derivatives contract will default before the final settlement of the trade's cash flows, at a time when the contract has positive value to the surviving party. Unlike bond credit risk where the loss is fixed, CCR exposure is stochastic — it depends on future market moves that determine the contract's replacement cost.</p>
+                <p>Counterparty Credit Risk (CCR) is the risk that a counterparty to an OTC derivatives contract will default before the final settlement of the trade's cash flows, at a time when the contract has positive value to the surviving party. Unlike bond credit risk where the loss is fixed, CCR exposure is stochastic - it depends on future market moves that determine the contract's replacement cost.</p>
 
                 <h2 class="mt-5 mb-3">Exposure Concepts</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Mark-to-Market, Current and Potential Exposure</div>
+                    <div class="math-box-label">Definition - Mark-to-Market, Current and Potential Exposure</div>
                     <p>Let $V(t)$ denote the mark-to-market value of a derivatives portfolio with a counterparty at time $t$, from our perspective (positive = we are owed money).</p>
                     <ul class="mb-0">
-                        <li><strong>Current Exposure (CE):</strong> $CE(t) = \max(V(t), 0)$ — the replacement cost if the counterparty defaulted today.</li>
-                        <li><strong>Expected Exposure (EE):</strong> $EE(t) = \mathbb{E}[\max(V(t), 0)]$ — the expected positive exposure at future time $t$.</li>
-                        <li><strong>Expected Negative Exposure (ENE):</strong> $ENE(t) = \mathbb{E}[\min(V(t), 0)]$ — relevant for DVA (our own default risk to the counterparty).</li>
-                        <li><strong>Potential Future Exposure (PFE):</strong> a high-quantile (e.g. 95th or 99th percentile) of $\max(V(t),0)$ at time $t$ — used for credit limit monitoring.</li>
+                        <li><strong>Current Exposure (CE):</strong> $CE(t) = \max(V(t), 0)$ - the replacement cost if the counterparty defaulted today.</li>
+                        <li><strong>Expected Exposure (EE):</strong> $EE(t) = \mathbb{E}[\max(V(t), 0)]$ - the expected positive exposure at future time $t$.</li>
+                        <li><strong>Expected Negative Exposure (ENE):</strong> $ENE(t) = \mathbb{E}[\min(V(t), 0)]$ - relevant for DVA (our own default risk to the counterparty).</li>
+                        <li><strong>Potential Future Exposure (PFE):</strong> a high-quantile (e.g. 95th or 99th percentile) of $\max(V(t),0)$ at time $t$ - used for credit limit monitoring.</li>
                     </ul>
                 </div>
 
                 <h2 class="mt-5 mb-3">Expected Positive Exposure Profile</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — EPE and Effective EPE</div>
+                    <div class="math-box-label">Definition - EPE and Effective EPE</div>
                     <p>The <em>Expected Positive Exposure</em> (EPE) is the time-average of the EE profile over the life of the trade:
                     $$EPE = \frac{1}{T}\int_0^T EE(t)\,dt \approx \frac{1}{T}\sum_{k} EE(t_k)\,\Delta t_k$$
                     The <em>Effective EPE</em> is a non-decreasing version: $\overline{EE}(t_k) = \max(\overline{EE}(t_{k-1}), EE(t_k))$, which prevents roll-down of exposure when trades are within their initial settlement window. Effective EPE is the basis for the Basel III alpha-factor CCR capital charge.</p>
@@ -105,7 +105,7 @@
 
                 <h2 class="mt-5 mb-3">Netting and Collateral</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Netting Agreements and CSA</div>
+                    <div class="math-box-label">Definition - Netting Agreements and CSA</div>
                     <p>Under a bilateral netting agreement (ISDA Master Agreement), the exposure to a counterparty is not the sum of individual trade exposures but the net portfolio value:
                     $$CE_{\text{net}}(t) = \max\!\left(\sum_i V_i(t),\, 0\right) \leq \sum_i \max(V_i(t), 0)$$
                     Netting significantly reduces exposure when trades have offsetting market sensitivities.</p>
@@ -115,13 +115,13 @@
 
                 <h2 class="mt-5 mb-3">Wrong-Way Risk</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Wrong-Way Risk (WWR)</div>
+                    <div class="math-box-label">Definition - Wrong-Way Risk (WWR)</div>
                     <p><em>Wrong-Way Risk</em> arises when the exposure to a counterparty is positively correlated with the counterparty's probability of default: the position is worth more to us precisely when the counterparty is most likely to default.</p>
                     <p class="mb-0"><strong>Specific WWR example:</strong> a bank buys protection on a sovereign via a CDS from a domestic bank in that country. If the sovereign defaults, the CDS has high positive value (we are owed the protection payment) but the domestic bank is also likely to default simultaneously (wrong-way: high exposure coincides with high counterparty PD). Basel III applies a specific capital add-on for identified WWR. General wrong-way risk is modelled by introducing correlation between the underlying risk factor and the counterparty hazard rate in the exposure simulation.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Exposure Simulation Framework</div>
+                    <div class="math-box-label">Remark - Exposure Simulation Framework</div>
                     <p class="mb-0">In practice, EE and PFE profiles are computed by Monte Carlo simulation: simulate thousands of risk-factor scenarios (rates, FX, equities) over the trade life, reprice the netting set on each path and at each time step, then average (for EE) or take quantiles (for PFE) across paths. The simulation must account for netting, CSA margining with the margin period of risk (MPOR), and collateral haircuts. This is the core engine of every CCR system at a major derivatives dealer.</p>
                 </div>
 

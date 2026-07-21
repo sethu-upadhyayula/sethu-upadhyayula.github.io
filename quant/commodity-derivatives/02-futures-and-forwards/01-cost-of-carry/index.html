@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,23 +81,23 @@
             <article>
                 <h1 class="text-accent mb-4">2.1 Cost of Carry Model</h1>
 
-                <p>The cost-of-carry model is the foundational no-arbitrage relationship linking spot and forward prices. For financial assets it is a tight, two-sided identity. For physical commodities, the presence of storage costs, convenience yield, and — critically — the practical impossibility of short-selling the physical good weakens this identity to a one-sided bound in general.</p>
+                <p>The cost-of-carry model is the foundational no-arbitrage relationship linking spot and forward prices. For financial assets it is a tight, two-sided identity. For physical commodities, the presence of storage costs, convenience yield, and - critically - the practical impossibility of short-selling the physical good weakens this identity to a one-sided bound in general.</p>
 
                 <h2 class="mt-5 mb-3">The Financial Asset Benchmark</h2>
 
                 <p>For a financial asset that pays no income (e.g., a non-dividend-paying stock, or a zero-coupon bond), the forward price for delivery at time $T$ is determined purely by the cost of financing a position in the underlying:</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Forward Price of a Financial Asset</div>
+                    <div class="math-box-label">Definition - Forward Price of a Financial Asset</div>
                     <p class="mb-0">$$F(t,T) = S_t \, e^{r(T-t)}$$ where $S_t$ is the spot price and $r$ is the continuously compounded risk-free rate over $[t,T]$. This relationship holds as a strict equality because both buying-and-holding the asset and entering the forward are costless to replicate, and the asset can be freely bought, sold, and shorted.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Extending to Commodities: Storage and Convenience Yield</h2>
 
-                <p>Holding a physical commodity from $t$ to $T$ involves an additional cash outflow — storage, insurance, and spoilage costs — and an additional non-cash benefit — the convenience yield discussed in the previous section. Both must be incorporated into the cost-of-carry relationship.</p>
+                <p>Holding a physical commodity from $t$ to $T$ involves an additional cash outflow - storage, insurance, and spoilage costs - and an additional non-cash benefit - the convenience yield discussed in the previous section. Both must be incorporated into the cost-of-carry relationship.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Commodity Cost of Carry</div>
+                    <div class="math-box-label">Theorem - Commodity Cost of Carry</div>
                     <p>Let $u \geq 0$ denote the continuously compounded proportional cost of storing the commodity from $t$ to $T$, and let $y \geq 0$ denote the continuously compounded convenience yield. Then, subject to the caveats discussed below regarding short-selling, the forward price satisfies</p>
                     <p>$$F(t,T) = S_t \, e^{(r+u-y)(T-t)}$$</p>
                     <p class="mb-0">The quantity $r + u - y$ is sometimes called the <em>net cost of carry</em>. When $y > r+u$, the net cost of carry is negative and the curve is in backwardation ($F < S_t$); when $y < r+u$, the net cost of carry is positive and the curve is in contango ($F > S_t$).</p>
@@ -108,15 +108,15 @@
                 <p>The relationship can be derived by comparing two strategies for guaranteeing delivery of one unit of the commodity at time $T$:</p>
 
                 <div class="math-box proof">
-                    <div class="math-box-label">Derivation — Cash-and-Carry</div>
+                    <div class="math-box-label">Derivation - Cash-and-Carry</div>
                     <p><strong>Strategy A:</strong> Enter a long forward contract at price $F(t,T)$, paying $F(t,T)$ at time $T$ to receive one unit of the commodity.</p>
                     <p><strong>Strategy B (cash-and-carry):</strong> At time $t$, borrow $S_t$ at rate $r$ and buy one unit of the commodity for $S_t$. Pay storage costs continuously at rate $u$ on the value of the position (so the stored quantity effectively grows at rate $u$ in cost terms), and receive the convenience yield $y$ as an offsetting benefit. At time $T$, repay the loan with interest and deliver the commodity.</p>
                     <p>The total cost of carrying the commodity from $t$ to $T$ under Strategy B is $S_t e^{(r+u-y)(T-t)}$. If $F(t,T) \neq S_t e^{(r+u-y)(T-t)}$, an arbitrageur could:</p>
                     <ul>
                         <li>If $F(t,T) > S_t e^{(r+u-y)(T-t)}$: execute Strategy B and simultaneously sell a forward contract at $F(t,T)$, locking in a riskless profit at $T$.</li>
-                        <li>If $F(t,T) < S_t e^{(r+u-y)(T-t)}$: do the reverse — sell the commodity short, invest the proceeds at $r$, and buy the forward, again locking in a riskless profit.</li>
+                        <li>If $F(t,T) < S_t e^{(r+u-y)(T-t)}$: do the reverse - sell the commodity short, invest the proceeds at $r$, and buy the forward, again locking in a riskless profit.</li>
                     </ul>
-                    <p class="mb-0">The first arbitrage (cash-and-carry, exploiting an overpriced forward) is always available to anyone who can buy and store the physical commodity. The second arbitrage (reverse cash-and-carry) requires the ability to <em>short the physical commodity</em> — to borrow it, sell it, and return an equivalent unit later. This is the crux of the issue for commodities.</p>
+                    <p class="mb-0">The first arbitrage (cash-and-carry, exploiting an overpriced forward) is always available to anyone who can buy and store the physical commodity. The second arbitrage (reverse cash-and-carry) requires the ability to <em>short the physical commodity</em> - to borrow it, sell it, and return an equivalent unit later. This is the crux of the issue for commodities.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Why Commodities Violate the Two-Sided Identity</h2>
@@ -124,21 +124,21 @@
                 <p>For financial securities, short-selling is routine: a stock or bond can be borrowed from a custodian and sold, with the short seller obligated to return an equivalent security later. For physical commodities, there is generally no equivalent mechanism. Few market participants hold commodity inventory purely as an investment that can be lent out; most physical holders (refiners, smelters, grain elevators) need their inventory for operational reasons and will not lend it out at a price low enough to make reverse cash-and-carry arbitrage profitable.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — One-Sided No-Arbitrage Bound</div>
+                    <div class="math-box-label">Theorem - One-Sided No-Arbitrage Bound</div>
                     <p>Because reverse cash-and-carry arbitrage is generally infeasible for physical commodities, no-arbitrage guarantees only an <strong>upper bound</strong> on the forward price:</p>
                     <p>$$F(t,T) \leq S_t \, e^{(r+u)(T-t)}$$</p>
-                    <p class="mb-0">The cash-and-carry arbitrage (going long spot, short forward) remains available to anyone holding or able to acquire physical inventory, so $F(t,T)$ cannot exceed the full cost of buying and storing the commodity. But $F(t,T)$ can fall below $S_t e^{r(T-t)}$ — and even below $S_t e^{(r+u)(T-t)}$ — by an amount that reflects the convenience yield $y$, without creating an arbitrage opportunity, because the implied "discount" cannot be costlessly captured by a short seller. The equality $F(t,T) = S_t e^{(r+u-y)(T-t)}$ is therefore best understood as an <em>equilibrium</em> relationship — defining $y$ as whatever residual is needed to match observed prices — rather than a strict no-arbitrage identity in both directions.</p>
+                    <p class="mb-0">The cash-and-carry arbitrage (going long spot, short forward) remains available to anyone holding or able to acquire physical inventory, so $F(t,T)$ cannot exceed the full cost of buying and storing the commodity. But $F(t,T)$ can fall below $S_t e^{r(T-t)}$ - and even below $S_t e^{(r+u)(T-t)}$ - by an amount that reflects the convenience yield $y$, without creating an arbitrage opportunity, because the implied "discount" cannot be costlessly captured by a short seller. The equality $F(t,T) = S_t e^{(r+u-y)(T-t)}$ is therefore best understood as an <em>equilibrium</em> relationship - defining $y$ as whatever residual is needed to match observed prices - rather than a strict no-arbitrage identity in both directions.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Practical Implication</div>
+                    <div class="math-box-label">Remark - Practical Implication</div>
                     <p class="mb-0">This asymmetry explains why commodity futures curves can sit in steep backwardation for extended periods without attracting arbitrage capital that would flatten the curve. A trader cannot manufacture "synthetic inventory" by shorting the physical commodity to exploit the apparent mispricing; only those who already hold (or produce) the physical good can respond, and their decisions are driven by operational needs, not pure arbitrage.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example: Crude Oil</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Cost of Carry for Crude Oil</div>
+                    <div class="math-box-label">Example - Cost of Carry for Crude Oil</div>
                     <p>Suppose WTI crude oil spot is $S_0 = \$75$ per barrel. The risk-free rate is $r = 4\%$ per annum, and storage costs at Cushing, Oklahoma run at $u = 6\%$ per annum (tank rental and insurance are relatively expensive for crude oil, particularly when storage capacity is scarce).</p>
                     <p>The full cost-of-carry upper bound for the six-month forward ($T-t = 0.5$) is</p>
                     <p>$$F(0,0.5) \leq 75 \, e^{(0.04+0.06)(0.5)} = 75 \, e^{0.05} \approx 75 \times 1.0513 \approx \$78.85$$</p>
@@ -147,7 +147,7 @@
                     <p class="mb-0">An implied convenience yield of roughly $15.4\%$ signals a tight physical market: refiners and traders place a high value on holding crude inventory right now, consistent with low stock levels at Cushing. No arbitrageur can "sell short" physical crude at Cushing to bring $F(0,0.5)$ back up to the $\$78.85$ upper bound, so this backwardated curve can persist.</p>
                 </div>
 
-                <p>The cost-of-carry model with convenience yield thus provides both a pricing relationship and a diagnostic tool: by comparing observed futures prices to the financing-and-storage upper bound, we can read off a market-implied measure of inventory tightness. The next section examines the resulting curve shapes — contango and backwardation — in more depth, including their connection to roll yield and the historical theory of normal backwardation.</p>
+                <p>The cost-of-carry model with convenience yield thus provides both a pricing relationship and a diagnostic tool: by comparing observed futures prices to the financing-and-storage upper bound, we can read off a market-implied measure of inventory tightness. The next section examines the resulting curve shapes - contango and backwardation - in more depth, including their connection to roll yield and the historical theory of normal backwardation.</p>
 
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -85,10 +85,10 @@
                 <h2 class="mt-5 mb-3">Basic Order Types</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Market, Limit, and Stop Orders</div>
+                    <div class="math-box-label">Definition - Market, Limit, and Stop Orders</div>
                     <ul class="mb-0">
-                        <li>A <em>market order</em> instructs immediate execution at the best available price. It guarantees execution but not price — the achieved price (especially for larger sizes) may differ from the price quoted at the moment the order was sent, a difference known as <em>slippage</em>.</li>
-                        <li>A <em>limit order</em> specifies a price beyond which the order should not be executed — e.g., "buy EUR/USD at 1.0840 or better." It guarantees price (or better) but not execution: if the market never reaches the limit price, the order remains unfilled.</li>
+                        <li>A <em>market order</em> instructs immediate execution at the best available price. It guarantees execution but not price - the achieved price (especially for larger sizes) may differ from the price quoted at the moment the order was sent, a difference known as <em>slippage</em>.</li>
+                        <li>A <em>limit order</em> specifies a price beyond which the order should not be executed - e.g., "buy EUR/USD at 1.0840 or better." It guarantees price (or better) but not execution: if the market never reaches the limit price, the order remains unfilled.</li>
                         <li>A <em>stop order</em> (or stop-loss order) becomes a market order once the market trades through a specified trigger price. Stop orders are commonly used to limit losses on an existing position or to enter a position on a breakout.</li>
                     </ul>
                 </div>
@@ -97,10 +97,10 @@
 
                 <h2 class="mt-5 mb-3">Algorithmic Execution</h2>
 
-                <p>For orders that are large relative to the liquidity available at the current price, executing the entire order at once via a single market order can move the price adversely — a cost known as <em>market impact</em>. Execution algorithms break a large "parent" order into a sequence of smaller "child" orders executed over time, with the goal of reducing market impact while controlling timing risk (the risk that the price moves adversely while the order is being worked).</p>
+                <p>For orders that are large relative to the liquidity available at the current price, executing the entire order at once via a single market order can move the price adversely - a cost known as <em>market impact</em>. Execution algorithms break a large "parent" order into a sequence of smaller "child" orders executed over time, with the goal of reducing market impact while controlling timing risk (the risk that the price moves adversely while the order is being worked).</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — TWAP and VWAP</div>
+                    <div class="math-box-label">Definition - TWAP and VWAP</div>
                     <p><strong>Time-Weighted Average Price (TWAP)</strong> algorithms divide the parent order into equal-sized child orders executed at regular time intervals over a specified horizon, targeting an average execution price close to the simple time average of the market price over that horizon:</p>
                     <p>$$\text{TWAP} = \frac{1}{N}\sum_{i=1}^{N} S_{t_i}$$</p>
                     <p><strong>Volume-Weighted Average Price (VWAP)</strong> algorithms instead size each child order in proportion to expected (or realised) market volume in each interval, targeting the volume-weighted average price:</p>
@@ -111,24 +111,24 @@
                 <p>Beyond TWAP and VWAP, FX algorithmic execution suites typically include <em>liquidity-seeking</em> algorithms that opportunistically access multiple venues and dark pools, <em>implementation shortfall</em> algorithms that explicitly trade off market impact against timing risk according to a risk-aversion parameter, and <em>passive/aggressive</em> algorithms that adjust their posting behaviour (resting limit orders vs. crossing the spread) based on real-time signals about urgency and adverse selection.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why FX Algo Execution Differs from Equities</div>
-                    <p class="mb-0">Unlike equities, FX has no consolidated tape and no single "official" volume series — each ECN and platform reports its own activity, and a meaningful fraction of FX volume occurs in bilateral, non-displayed channels. As a result, FX VWAP benchmarks are typically constructed from a chosen set of reference venues and are inherently less standardised than their equity counterparts. Liquidity in FX is also far more concentrated in time around major economic releases and the London/New York overlap, which algorithmic schedules must account for.</p>
+                    <div class="math-box-label">Remark - Why FX Algo Execution Differs from Equities</div>
+                    <p class="mb-0">Unlike equities, FX has no consolidated tape and no single "official" volume series - each ECN and platform reports its own activity, and a meaningful fraction of FX volume occurs in bilateral, non-displayed channels. As a result, FX VWAP benchmarks are typically constructed from a chosen set of reference venues and are inherently less standardised than their equity counterparts. Liquidity in FX is also far more concentrated in time around major economic releases and the London/New York overlap, which algorithmic schedules must account for.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Transaction Cost Analysis (TCA)</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Transaction Cost Analysis</div>
+                    <div class="math-box-label">Definition - Transaction Cost Analysis</div>
                     <p class="mb-0"><em>Transaction cost analysis (TCA)</em> is the post-trade measurement of execution quality, typically expressed as the difference between the achieved execution price and one or more <em>benchmark</em> prices. Common benchmarks include the <em>arrival price</em> (the mid-market price at the moment the order was received), the interval VWAP over the execution horizon, and the price at a fixed point after the order completes (to measure reversion).</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Arrival Price Slippage</div>
+                    <div class="math-box-label">Example - Arrival Price Slippage</div>
                     <p>A portfolio manager sends an order to buy EUR 50 million against USD when the arrival mid-price is 1.08500. The order is worked over 30 minutes via a VWAP algorithm and achieves an average execution price of 1.08512.</p>
                     <p class="mb-0">The slippage versus arrival is $1.08512 - 1.08500 = 0.00012$, or 1.2 pips, equivalent to a cost of $50{,}000{,}000 \times 0.00012 = \$6{,}000$. TCA reports typically express this cost both in absolute terms and in basis points of notional ($1.2$ pips $\approx 1.1$ bp on a EUR/USD notional), and compare it against a peer universe of similar-sized orders to assess whether the execution was good, average, or poor relative to prevailing market conditions.</p>
                 </div>
 
-                <p>TCA serves both a performance-measurement role — helping buy-side desks evaluate which brokers, algorithms, and venues deliver the best execution — and a regulatory role, since best-execution obligations under frameworks such as MiFID II require firms to be able to demonstrate that they have taken all sufficient steps to obtain the best possible result for their clients.</p>
+                <p>TCA serves both a performance-measurement role - helping buy-side desks evaluate which brokers, algorithms, and venues deliver the best execution - and a regulatory role, since best-execution obligations under frameworks such as MiFID II require firms to be able to demonstrate that they have taken all sufficient steps to obtain the best possible result for their clients.</p>
 
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

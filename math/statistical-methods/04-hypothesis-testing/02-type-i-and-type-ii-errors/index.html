@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,7 +128,7 @@
                 <p>Any decision rule based on finite data is susceptible to two fundamental types of mistakes. Understanding and controlling these error probabilities is central to the design and interpretation of statistical tests.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.1 — Error Types</div>
+                    <div class="math-box-label">Definition 4.2.1 - Error Types</div>
                     <p>For a test of $H_0$ vs.\ $H_1$:</p>
                     <ul class="mb-0">
                         <li>A <strong>Type I error</strong> (false positive) occurs when $H_0$ is rejected even though $H_0$ is true. Its probability is $\alpha = P(\text{reject } H_0 \mid H_0 \text{ true})$.</li>
@@ -140,14 +140,14 @@
                 <h2 class="mt-5">The Error-Power Trade-off</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 4.2.2 — Trade-off Between $\alpha$ and $\beta$</div>
+                    <div class="math-box-label">Proposition 4.2.2 - Trade-off Between $\alpha$ and $\beta$</div>
                     <p class="mb-0">For a fixed sample size $n$ and a fixed alternative $\theta_1$, reducing $\alpha$ (tightening the rejection region) necessarily increases $\beta$ (reduces power). To simultaneously decrease both $\alpha$ and $\beta$, one must increase $n$. The power function $\beta(\theta) = P_\theta(\text{reject } H_0)$ increases monotonically toward 1 as $|\theta - \theta_0| \to \infty$ for well-designed tests.</p>
                 </div>
 
                 <h2 class="mt-5">Sample Size Calculation</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.3 — Sample Size for $Z$-Test</div>
+                    <div class="math-box-label">Theorem 4.2.3 - Sample Size for $Z$-Test</div>
                     <p>To detect a true mean $\mu_1 = \mu_0 + \delta$ ($\delta > 0$) in a one-sided $Z$-test at level $\alpha$ with power $1 - \beta$, we need
                     $$n = \left(\frac{(z_\alpha + z_\beta)\,\sigma}{\delta}\right)^2,$$</p>
                     <p class="mb-0">where $z_\alpha, z_\beta$ are standard normal upper quantiles. For a two-sided test at level $\alpha$ detecting $|\delta|$, replace $z_\alpha$ with $z_{\alpha/2}$. The effect size $\delta/\sigma$ is the key driver: doubling the required effect size reduces $n$ by a factor of 4.</p>
@@ -157,12 +157,12 @@
                 <p>When $m$ tests are conducted simultaneously, the probability of at least one false rejection inflates dramatically under per-test significance level $\alpha$.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.4 — Family-Wise Error Rate (FWER)</div>
+                    <div class="math-box-label">Definition 4.2.4 - Family-Wise Error Rate (FWER)</div>
                     <p class="mb-0">The <strong>family-wise error rate</strong> is $\mathrm{FWER} = P(\text{at least one Type I error among all } m \text{ tests})$. Under independence, $\mathrm{FWER} = 1 - (1-\alpha)^m \to 1$ as $m \to \infty$. The <strong>Bonferroni correction</strong> controls FWER $\le \alpha$ by testing each hypothesis at level $\alpha/m$: reject $H_{0j}$ if $p_j \le \alpha/m$. This is conservative (FWER can be well below $\alpha$) and has low power when $m$ is large.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.5 — False Discovery Rate (FDR)</div>
+                    <div class="math-box-label">Definition 4.2.5 - False Discovery Rate (FDR)</div>
                     <p>The <strong>FDR</strong> is the expected proportion of rejected nulls that are true nulls:
                     $$\mathrm{FDR} = E\!\left[\frac{V}{R \vee 1}\right],$$
                     where $V$ = number of false rejections and $R$ = total rejections.</p>
@@ -170,8 +170,8 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 4.2.6 — ROC Curves</div>
-                    <p class="mb-0">A <strong>receiver operating characteristic (ROC) curve</strong> plots power $= 1 - \beta$ (true positive rate) against $\alpha$ (false positive rate) as the threshold varies. The <strong>area under the ROC curve (AUC)</strong> summarises overall discriminatory ability: $\mathrm{AUC} = 0.5$ corresponds to random guessing, $\mathrm{AUC} = 1$ to perfect separation. The Neyman-Pearson lemma guarantees that the likelihood ratio test traces out the optimal ROC curve — no other test achieves higher power for any given level.</p>
+                    <div class="math-box-label">Remark 4.2.6 - ROC Curves</div>
+                    <p class="mb-0">A <strong>receiver operating characteristic (ROC) curve</strong> plots power $= 1 - \beta$ (true positive rate) against $\alpha$ (false positive rate) as the threshold varies. The <strong>area under the ROC curve (AUC)</strong> summarises overall discriminatory ability: $\mathrm{AUC} = 0.5$ corresponds to random guessing, $\mathrm{AUC} = 1$ to perfect separation. The Neyman-Pearson lemma guarantees that the likelihood ratio test traces out the optimal ROC curve - no other test achieves higher power for any given level.</p>
                 </div>
 
                 <hr class="my-5">

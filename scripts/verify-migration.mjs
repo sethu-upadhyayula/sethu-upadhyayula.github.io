@@ -41,7 +41,7 @@ function main() {
         const src = fs.readFileSync(file, "utf8");
         const rel = path.relative(ROOT, file);
 
-        // The homepage is intentionally chrome-free (no nav-dock/social-dock/theme toggle) —
+        // The homepage is intentionally chrome-free (no nav-dock/social-dock/theme toggle) -
         // it's just the section grid. Every other page keeps the standard chrome.
         const isHome = rel === "index.html";
 

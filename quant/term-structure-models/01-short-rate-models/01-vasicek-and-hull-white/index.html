@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,22 +81,22 @@
             <article>
                 <h1 class="text-accent mb-4">1.1 Vasicek and Hull-White Models</h1>
 
-                <p>Short-rate models specify the dynamics of the instantaneous short rate $r(t)$ — the (idealised) interest rate earned over an infinitesimal time interval — and derive the entire term structure of discount factors and bond prices as a consequence. The Vasicek model (1977) is the simplest mean-reverting short-rate model with closed-form bond prices, and the Hull-White model (1990) extends it to be exactly consistent with today's observed yield curve.</p>
+                <p>Short-rate models specify the dynamics of the instantaneous short rate $r(t)$ - the (idealised) interest rate earned over an infinitesimal time interval - and derive the entire term structure of discount factors and bond prices as a consequence. The Vasicek model (1977) is the simplest mean-reverting short-rate model with closed-form bond prices, and the Hull-White model (1990) extends it to be exactly consistent with today's observed yield curve.</p>
 
                 <h2 class="mt-5 mb-3">The Vasicek Model</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Vasicek Short Rate Dynamics</div>
+                    <div class="math-box-label">Definition - Vasicek Short Rate Dynamics</div>
                     <p class="mb-0">Under the risk-neutral measure $\mathbb{Q}$, the short rate follows an Ornstein-Uhlenbeck process:
                     $$dr(t) = a(b - r(t))\,dt + \sigma\, dW_t$$
                     where $a > 0$ is the speed of mean reversion, $b$ is the long-run mean level, and $\sigma > 0$ is the (constant) instantaneous volatility. The drift $a(b-r(t))$ pulls $r(t)$ back towards $b$: when $r(t) > b$ the drift is negative, and vice versa.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Solving the SDE</div>
+                    <div class="math-box-label">Remark - Solving the SDE</div>
                     <p class="mb-0">The Vasicek SDE is linear (an OU process) and can be solved explicitly:
                     $$r(t) = r(0)e^{-at} + b(1-e^{-at}) + \sigma \int_0^t e^{-a(t-s)}\,dW_s$$
-                    so $r(t)$ is normally distributed with mean $r(0)e^{-at}+b(1-e^{-at})$ and variance $\frac{\sigma^2}{2a}(1-e^{-2at})$. As $t\to\infty$, $r(t)$ converges in distribution to $\mathcal{N}(b, \sigma^2/2a)$ — a stationary distribution.</p>
+                    so $r(t)$ is normally distributed with mean $r(0)e^{-at}+b(1-e^{-at})$ and variance $\frac{\sigma^2}{2a}(1-e^{-2at})$. As $t\to\infty$, $r(t)$ converges in distribution to $\mathcal{N}(b, \sigma^2/2a)$ - a stationary distribution.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Bond Pricing Under Vasicek</h2>
@@ -104,14 +104,14 @@
                 <p>Because the short rate is the only state variable and its dynamics are affine (linear drift, constant diffusion), zero-coupon bond prices have an exponential-affine form in $r(t)$.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Vasicek Bond Price Formula</div>
+                    <div class="math-box-label">Theorem - Vasicek Bond Price Formula</div>
                     <p>The price at time $t$ of a zero-coupon bond maturing at $T$ is:
                     $$P(t,T) = A(t,T)\,e^{-B(t,T)\,r(t)}$$
                     where
                     $$B(t,T) = \frac{1-e^{-a(T-t)}}{a}$$
                     $$A(t,T) = \exp\left[\left(b - \frac{\sigma^2}{2a^2}\right)\big(B(t,T)-(T-t)\big) - \frac{\sigma^2}{4a}B(t,T)^2\right]$$
                     This follows from solving the bond-pricing PDE $\frac{\partial P}{\partial t} + a(b-r)\frac{\partial P}{\partial r} + \frac{1}{2}\sigma^2\frac{\partial^2 P}{\partial r^2} - rP = 0$ with terminal condition $P(T,T)=1$, using the affine ansatz $P(t,T) = A(t,T)e^{-B(t,T)r(t)}$.</p>
-                    <p class="mb-0">The corresponding continuously-compounded spot rate is $r(t,T) = -\frac{1}{T-t}\ln P(t,T) = \frac{B(t,T)r(t) - \ln A(t,T)}{T-t}$, which is an affine function of $r(t)$ — the defining feature of an affine term-structure model.</p>
+                    <p class="mb-0">The corresponding continuously-compounded spot rate is $r(t,T) = -\frac{1}{T-t}\ln P(t,T) = \frac{B(t,T)r(t) - \ln A(t,T)}{T-t}$, which is an affine function of $r(t)$ - the defining feature of an affine term-structure model.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Hull-White Extension</h2>
@@ -119,27 +119,27 @@
                 <p>The Vasicek model has only three free parameters $(a,b,\sigma)$, far too few to exactly match the entire observed yield curve $T \mapsto P(0,T)$, which can have an arbitrary shape. The Hull-White model resolves this by allowing the mean-reversion level to be time-dependent, calibrated so the model exactly reproduces today's curve.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Hull-White (Extended Vasicek) Model</div>
+                    <div class="math-box-label">Definition - Hull-White (Extended Vasicek) Model</div>
                     <p class="mb-0">The Hull-White short rate dynamics are:
                     $$dr(t) = \big(\theta(t) - a\,r(t)\big)\,dt + \sigma\, dW_t$$
                     where $a$ and $\sigma$ are constants (as in Vasicek) but $\theta(t)$ is a deterministic function of time, chosen to fit the initial term structure exactly.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Fitting $\theta(t)$ to the Initial Curve</div>
+                    <div class="math-box-label">Theorem - Fitting $\theta(t)$ to the Initial Curve</div>
                     <p>Let $f(0,t) = -\frac{\partial}{\partial T}\ln P(0,T)\big|_{T=t}$ denote today's instantaneous forward rate curve, observed from the market. The function $\theta(t)$ that makes the Hull-White model exactly consistent with $\{P(0,T)\}_{T\geq0}$ is:
                     $$\theta(t) = \frac{\partial f(0,t)}{\partial t} + a f(0,t) + \frac{\sigma^2}{2a}\left(1-e^{-2at}\right)$$
                     Bond prices retain the same exponential-affine form as Vasicek, $P(t,T) = A(t,T)e^{-B(t,T)r(t)}$, with $B(t,T) = \frac{1-e^{-a(T-t)}}{a}$ unchanged, but $A(t,T)$ is now expressed directly in terms of the market discount curve:
                     $$A(t,T) = \frac{P(0,T)}{P(0,t)}\exp\left[B(t,T)f(0,t) - \frac{\sigma^2}{4a}\big(1-e^{-2at}\big)B(t,T)^2\right]$$</p>
-                    <p class="mb-0">This guarantees $P(0,T)$ computed from the model matches the market discount factor for every $T$ — by construction the model reprices all zero-coupon bonds (and hence the swap curve used to build $P(0,\cdot)$) exactly.</p>
+                    <p class="mb-0">This guarantees $P(0,T)$ computed from the model matches the market discount factor for every $T$ - by construction the model reprices all zero-coupon bonds (and hence the swap curve used to build $P(0,\cdot)$) exactly.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Calibration to Caps and Swaptions</h2>
 
-                <p>Fitting the initial curve pins down $\theta(t)$ but leaves $(a,\sigma)$ free. These are calibrated to market prices of liquid options — typically caps/floors or co-terminal swaptions — so the model's implied volatility of bond prices matches observed option-implied volatilities.</p>
+                <p>Fitting the initial curve pins down $\theta(t)$ but leaves $(a,\sigma)$ free. These are calibrated to market prices of liquid options - typically caps/floors or co-terminal swaptions - so the model's implied volatility of bond prices matches observed option-implied volatilities.</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Hull-White Caplet Price</div>
+                    <div class="math-box-label">Example - Hull-White Caplet Price</div>
                     <p class="mb-0">Hull-White admits closed-form prices for caplets and European swaptions (via Jamshidian's decomposition), making calibration to vanilla options computationally cheap. The Hull-White caplet price has the same structural form as a bond option price under Vasicek:
                     $$\text{ZBO}(t,T,S,K) = N\big[P(t,S)\,\Phi(\pm h) - K\,P(t,T)\,\Phi(\pm(h-\sigma_P))\big], \qquad \sigma_P = \sigma\sqrt{\frac{1-e^{-2a(T-t)}}{2a}}\,B(T,S)$$
                     Calibrating $(a,\sigma)$ to a strip of ATM caplets or swaptions of varying expiries gives a single global mean-reversion speed $a$ and volatility $\sigma$ (or, in the "piecewise constant $\sigma(t)$" extension, a term structure of volatilities) that best matches the observed cap/swaption volatility curve.</p>
@@ -148,13 +148,13 @@
                 <h2 class="mt-5 mb-3">Limitations: Negative Rates and Single-Factor Structure</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Negative Rates</div>
-                    <p class="mb-0">Because $r(t)$ is normally distributed under both Vasicek and Hull-White, the short rate (and hence yields and forwards) can become negative with positive probability, regardless of the parameters. Historically this was viewed as a major theoretical flaw — short rates were assumed to be bounded below by zero. However, the period from roughly 2012 to 2022 saw persistently negative policy rates and government bond yields across the Eurozone, Switzerland, and Japan, which made the Gaussian short-rate assumption look more like a feature than a bug: Hull-White (and other Gaussian models) handle negative rates naturally, with no special modification needed, unlike CIR-type or lognormal models which require ad-hoc shifting. Since rates have moved back into positive territory in most major currencies post-2022-2023 hiking cycles, the practical relevance of this issue has diminished again, but Hull-White's robustness to the sign of rates remains a reason for its continued popularity.</p>
+                    <div class="math-box-label">Remark - Negative Rates</div>
+                    <p class="mb-0">Because $r(t)$ is normally distributed under both Vasicek and Hull-White, the short rate (and hence yields and forwards) can become negative with positive probability, regardless of the parameters. Historically this was viewed as a major theoretical flaw - short rates were assumed to be bounded below by zero. However, the period from roughly 2012 to 2022 saw persistently negative policy rates and government bond yields across the Eurozone, Switzerland, and Japan, which made the Gaussian short-rate assumption look more like a feature than a bug: Hull-White (and other Gaussian models) handle negative rates naturally, with no special modification needed, unlike CIR-type or lognormal models which require ad-hoc shifting. Since rates have moved back into positive territory in most major currencies post-2022-2023 hiking cycles, the practical relevance of this issue has diminished again, but Hull-White's robustness to the sign of rates remains a reason for its continued popularity.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Single-Factor Limitation</div>
-                    <p class="mb-0">A more persistent limitation is that Vasicek and (single-factor) Hull-White are driven by a single Brownian motion, so all points on the yield curve are perfectly (and instantaneously) correlated — the entire curve moves as a deterministic function $B(t,T)$ of one state variable $r(t)$. This means the model cannot capture independent twisting or steepening/flattening of the curve beyond what is implied by the shape of $B(t,T)$, and produces unrealistic correlations between, e.g., 2-year and 30-year rate changes. Two-factor Hull-White models (adding a second mean-reverting factor) partially address this and are common in practice for products sensitive to curve shape, such as CMS spread options. The general solution — modelling the full forward curve with potentially many factors — is the subject of the HJM framework, covered next.</p>
+                    <div class="math-box-label">Remark - Single-Factor Limitation</div>
+                    <p class="mb-0">A more persistent limitation is that Vasicek and (single-factor) Hull-White are driven by a single Brownian motion, so all points on the yield curve are perfectly (and instantaneously) correlated - the entire curve moves as a deterministic function $B(t,T)$ of one state variable $r(t)$. This means the model cannot capture independent twisting or steepening/flattening of the curve beyond what is implied by the shape of $B(t,T)$, and produces unrealistic correlations between, e.g., 2-year and 30-year rate changes. Two-factor Hull-White models (adding a second mean-reverting factor) partially address this and are common in practice for products sensitive to curve shape, such as CMS spread options. The general solution - modelling the full forward curve with potentially many factors - is the subject of the HJM framework, covered next.</p>
                 </div>
 
                 <hr class="my-5">

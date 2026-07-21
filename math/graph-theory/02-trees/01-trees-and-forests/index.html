@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -136,12 +136,12 @@
             <article>
                 <h1 class="text-accent mb-4">2.1 Trees and Forests</h1>
 
-                <p>Trees are the simplest connected graphs and appear in virtually every branch of mathematics and computer science. Their defining property — connected and acyclic — leads to many elegant equivalent characterisations.</p>
+                <p>Trees are the simplest connected graphs and appear in virtually every branch of mathematics and computer science. Their defining property - connected and acyclic - leads to many elegant equivalent characterisations.</p>
 
                 <h2 class="mt-5 mb-3">Definition</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 2.1.1 — Tree and Forest</div>
+                    <div class="math-box-label">Definition 2.1.1 - Tree and Forest</div>
                     <p>A <strong>tree</strong> is a connected acyclic graph. A <strong>forest</strong> is an acyclic graph (not necessarily connected); equivalently, a forest is a disjoint union of trees.</p>
                     <p class="mb-0">A <strong>leaf</strong> (or <strong>pendant vertex</strong>) is a vertex of degree 1.</p>
                 </div>
@@ -149,7 +149,7 @@
                 <h2 class="mt-5 mb-3">Equivalent Characterisations</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.1.2 — Six Equivalent Characterisations of Trees</div>
+                    <div class="math-box-label">Theorem 2.1.2 - Six Equivalent Characterisations of Trees</div>
                     <p>Let $G$ be a graph on $n$ vertices. The following are equivalent:</p>
                     <ol>
                         <li>$G$ is connected and has $n - 1$ edges.</li>
@@ -163,32 +163,32 @@
 
                 <div class="math-box proof">
                     <div class="math-box-label">Proof Sketch</div>
-                    <p>The key facts are: a connected graph on $n$ vertices has at least $n-1$ edges; an acyclic graph on $n$ vertices has at most $n-1$ edges. Together with the definitions, these give the equivalences. For (4): uniqueness of path fails iff two internally disjoint paths exist between some pair, creating a cycle. For (5): adding edge $\{u,v\}$ to an acyclic $G$ creates a cycle iff $u$ and $v$ are already connected — but then there is a unique path from $u$ to $v$ in $G$, and together with the new edge it forms the unique new cycle. $\square$</p>
+                    <p>The key facts are: a connected graph on $n$ vertices has at least $n-1$ edges; an acyclic graph on $n$ vertices has at most $n-1$ edges. Together with the definitions, these give the equivalences. For (4): uniqueness of path fails iff two internally disjoint paths exist between some pair, creating a cycle. For (5): adding edge $\{u,v\}$ to an acyclic $G$ creates a cycle iff $u$ and $v$ are already connected - but then there is a unique path from $u$ to $v$ in $G$, and together with the new edge it forms the unique new cycle. $\square$</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Leaves in Trees</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.1.3 — Every Non-Trivial Tree Has at Least Two Leaves</div>
+                    <div class="math-box-label">Theorem 2.1.3 - Every Non-Trivial Tree Has at Least Two Leaves</div>
                     <p class="mb-0">Every tree $T$ with $n \ge 2$ vertices has at least two leaves.</p>
                 </div>
 
                 <div class="math-box proof">
                     <div class="math-box-label">Proof</div>
-                    <p>Consider a longest path $P = v_0 v_1 \cdots v_k$ in $T$ (it has $k \ge 1$ since $n \ge 2$). We claim $v_0$ and $v_k$ are leaves. If $v_0$ had a neighbour $u \notin \{v_1\}$, then $u$ is not on $P$ (otherwise $T$ would contain a cycle), so $u v_0 v_1 \cdots v_k$ is a longer path — contradiction. By the same argument $v_k$ is a leaf. $\square$</p>
+                    <p>Consider a longest path $P = v_0 v_1 \cdots v_k$ in $T$ (it has $k \ge 1$ since $n \ge 2$). We claim $v_0$ and $v_k$ are leaves. If $v_0$ had a neighbour $u \notin \{v_1\}$, then $u$ is not on $P$ (otherwise $T$ would contain a cycle), so $u v_0 v_1 \cdots v_k$ is a longer path - contradiction. By the same argument $v_k$ is a leaf. $\square$</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Forests</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.1.4 — Forests</div>
+                    <div class="math-box-label">Theorem 2.1.4 - Forests</div>
                     <p class="mb-0">A forest on $n$ vertices with $k$ connected components has exactly $n - k$ edges. In particular, a tree ($k = 1$) has $n - 1$ edges.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Rooted Trees</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 2.1.5 — Rooted Tree</div>
+                    <div class="math-box-label">Definition 2.1.5 - Rooted Tree</div>
                     <p>A <strong>rooted tree</strong> is a tree with a designated vertex $r$ called the <strong>root</strong>. The unique path from $r$ to any vertex $v$ defines a natural parent-child relationship: the parent of $v \ne r$ is the vertex preceding $v$ on the path from $r$ to $v$.</p>
                     <p>The <strong>depth</strong> of $v$ is $d(r, v)$; the <strong>height</strong> of the tree is $\max_v d(r, v)$. The <strong>subtree} rooted at $v$</strong> is the induced subgraph on all descendants of $v$ (including $v$ itself).</p>
                     <p class="mb-0">Rooted trees model hierarchical data (file systems, XML, decision trees) and are fundamental in algorithm design.</p>

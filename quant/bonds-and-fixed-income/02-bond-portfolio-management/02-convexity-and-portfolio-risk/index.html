@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,13 +81,13 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Convexity and Portfolio Risk</h1>
 
-                <p>Section 1.2 introduced convexity $\mathcal{C}$ as the second-order term in the price-yield relationship. At the single-bond level it is a minor refinement; at the portfolio level, convexity becomes a tool that portfolio managers actively trade — and the difference between two portfolios with identical duration but different convexity can be the dominant driver of relative performance in a large rate move.</p>
+                <p>Section 1.2 introduced convexity $\mathcal{C}$ as the second-order term in the price-yield relationship. At the single-bond level it is a minor refinement; at the portfolio level, convexity becomes a tool that portfolio managers actively trade - and the difference between two portfolios with identical duration but different convexity can be the dominant driver of relative performance in a large rate move.</p>
 
                 <h2 class="mt-5 mb-3">Portfolio Convexity</h2>
                 <p>Just as portfolio duration is the value-weighted average of the constituent durations (Section 2.1), portfolio convexity is the value-weighted average of the constituent convexities.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Portfolio Convexity</div>
+                    <div class="math-box-label">Definition - Portfolio Convexity</div>
                     <p>$$\mathcal{C}_{\text{portfolio}} = \sum_{i=1}^N w_i\, \mathcal{C}_i, \qquad w_i = \frac{P_i}{\sum_{j=1}^N P_j}$$
                     and the portfolio's second-order price approximation under a parallel shift $\Delta y$ is:
                     $$\frac{\Delta P_{\text{portfolio}}}{P_{\text{portfolio}}} \approx -D_{\text{portfolio}}\,\Delta y + \frac{1}{2}\mathcal{C}_{\text{portfolio}}\,(\Delta y)^2$$</p>
@@ -96,13 +96,13 @@
                 <h2 class="mt-5 mb-3">Barbell vs Bullet Portfolios</h2>
                 <p>Consider two portfolios with the same market value and the same modified duration, but constructed differently:</p>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Bullet and Barbell</div>
+                    <div class="math-box-label">Remark - Bullet and Barbell</div>
                     <p><strong>Bullet portfolio:</strong> all the capital is invested in bonds clustered around a single maturity (e.g. all 7-year bonds). Its cashflows are concentrated in time.</p>
                     <p class="mb-0"><strong>Barbell portfolio:</strong> the capital is split between short-dated and long-dated bonds (e.g. half in 2-year bonds, half in 15-year bonds) chosen so the value-weighted duration equals the same 7 years. Its cashflows are spread across the two ends of the curve.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Barbells Have Higher Convexity</div>
+                    <div class="math-box-label">Theorem - Barbells Have Higher Convexity</div>
                     <p>For two portfolios with equal value and equal duration $D$, the one whose cashflows are more dispersed in time has higher convexity. Formally, since convexity involves a weighted average of squared times-to-cashflow ($\mathcal{C} \propto \sum_i w_i t_i^2$, roughly), and variance is non-negative:
                     $$\mathcal{C}_{\text{barbell}} \geq \mathcal{C}_{\text{bullet}}$$
                     with equality only in the degenerate case where the barbell collapses to the bullet's maturity. Intuitively, a portfolio with cashflows at $t=2$ and $t=15$ averaging to duration $7$ has more "spread" in $t_i$ around the mean than one with all cashflows near $t=7$, and $\mathcal{C}$ grows with the second moment of that distribution.</p>
@@ -111,20 +111,20 @@
                 <h2 class="mt-5 mb-3">Convexity's Effect on P&amp;L for Large Rate Moves</h2>
                 <p>The second-order term $\tfrac{1}{2}\mathcal{C}(\Delta y)^2$ is always non-negative (since $\mathcal{C} > 0$ for vanilla bonds and $(\Delta y)^2 \geq 0$), regardless of the direction of the rate move. This means that for two portfolios with the same duration but different convexity, the higher-convexity portfolio:</p>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Convexity Trade-Off</div>
-                    <p class="mb-0">Outperforms the lower-convexity portfolio whenever yields move by a large amount in <em>either</em> direction (gains more when rates fall, loses less when rates rise). The duration-matched first-order effects are identical by construction, so any difference in realized P&amp;L for a large parallel move is attributable entirely to the convexity gap. This benefit is not free: in a market priced by no-arbitrage, higher-convexity portfolios (like barbells) typically offer a lower yield than lower-convexity portfolios (bullets) of the same duration — the yield give-up is the market price of the convexity. This trade-off between yield pickup and convexity is a recurring theme across fixed income relative value (Chapter 4).</p>
+                    <div class="math-box-label">Remark - The Convexity Trade-Off</div>
+                    <p class="mb-0">Outperforms the lower-convexity portfolio whenever yields move by a large amount in <em>either</em> direction (gains more when rates fall, loses less when rates rise). The duration-matched first-order effects are identical by construction, so any difference in realized P&amp;L for a large parallel move is attributable entirely to the convexity gap. This benefit is not free: in a market priced by no-arbitrage, higher-convexity portfolios (like barbells) typically offer a lower yield than lower-convexity portfolios (bullets) of the same duration - the yield give-up is the market price of the convexity. This trade-off between yield pickup and convexity is a recurring theme across fixed income relative value (Chapter 4).</p>
                 </div>
 
-                <h2 class="mt-5 mb-3">Worked Example — Barbell vs Bullet Comparison</h2>
+                <h2 class="mt-5 mb-3">Worked Example - Barbell vs Bullet Comparison</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — P&amp;L Under a Large Parallel Shift</div>
+                    <div class="math-box-label">Example - P&amp;L Under a Large Parallel Shift</div>
                     <p>Two portfolios, each worth $P = 100$, have the same modified duration $D = 7$. The bullet portfolio (all 7-year bonds) has convexity $\mathcal{C}_{\text{bullet}} = 55$. The barbell portfolio (split between 2-year and 15-year bonds, weighted to the same duration) has convexity $\mathcal{C}_{\text{barbell}} = 95$.</p>
                     <p>Suppose yields rise by $\Delta y = +200\text{bp} = 0.02$. The second-order approximation gives:</p>
                     <p>Bullet: $\dfrac{\Delta P}{P} \approx -7(0.02) + \tfrac{1}{2}(55)(0.02)^2 = -0.14 + 0.011 = -0.129$, i.e. $-12.9\%$.</p>
                     <p>Barbell: $\dfrac{\Delta P}{P} \approx -7(0.02) + \tfrac{1}{2}(95)(0.02)^2 = -0.14 + 0.019 = -0.121$, i.e. $-12.1\%$.</p>
                     <p>Now suppose instead yields <em>fall</em> by $\Delta y = -0.02$. Both portfolios gain from the linear term, but the convexity term is again positive (since $(\Delta y)^2$ is the same):</p>
                     <p>Bullet: $\dfrac{\Delta P}{P} \approx +0.14 + 0.011 = +0.151$, i.e. $+15.1\%$. Barbell: $\dfrac{\Delta P}{P} \approx +0.14 + 0.019 = +0.159$, i.e. $+15.9\%$.</p>
-                    <p class="mb-0">In both directions the barbell outperforms the bullet by roughly $0.8$ percentage points — the convexity advantage of $40$ units ($\mathcal{C}_{\text{barbell}} - \mathcal{C}_{\text{bullet}} = 40$) times $\tfrac{1}{2}(\Delta y)^2 = \tfrac{1}{2}(0.0004) = 0.0002$, giving $40 \times 0.0002 = 0.008$, i.e. $0.8\%$. For a $200$bp move this convexity premium is meaningful; for a $10$bp move it would be negligible ($40 \times \tfrac{1}{2}(0.001)^2 \approx 0.002\%$), which is why convexity differences matter primarily in volatile rate environments or for large stress scenarios.</p>
+                    <p class="mb-0">In both directions the barbell outperforms the bullet by roughly $0.8$ percentage points - the convexity advantage of $40$ units ($\mathcal{C}_{\text{barbell}} - \mathcal{C}_{\text{bullet}} = 40$) times $\tfrac{1}{2}(\Delta y)^2 = \tfrac{1}{2}(0.0004) = 0.0002$, giving $40 \times 0.0002 = 0.008$, i.e. $0.8\%$. For a $200$bp move this convexity premium is meaningful; for a $10$bp move it would be negligible ($40 \times \tfrac{1}{2}(0.001)^2 \approx 0.002\%$), which is why convexity differences matter primarily in volatile rate environments or for large stress scenarios.</p>
                 </div>
 
                 <hr class="my-5">

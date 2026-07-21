@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -130,7 +130,7 @@
                 <h2 class="mt-4 mb-3">The Nodal Interpolation Operator</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Nodal Interpolant</div>
+                    <div class="math-box-label">Definition - Nodal Interpolant</div>
                     <p>Let $\mathcal{T}_h$ be a triangulation of $\Omega$ and let $V_h$ be the space of continuous piecewise polynomials of degree $k$. The <strong>nodal interpolation operator</strong> $I_h: C^0(\bar\Omega) \to V_h$ is defined by requiring that $I_h u$ agrees with $u$ at all nodal points $\{x_i\}$:
                     $$I_h u = \sum_i u(x_i)\,\varphi_i,$$
                     where $\{\varphi_i\}$ are the global Lagrange basis functions satisfying $\varphi_i(x_j) = \delta_{ij}$. On each element $K$, the local interpolant is
@@ -143,14 +143,14 @@
                 <p>The Bramble-Hilbert lemma is an abstract result that quantifies how well a bounded linear functional (here, the error $u \mapsto u - Pu$) can fail to vanish on polynomials of degree $\leq k$.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Bramble-Hilbert Lemma</div>
+                    <div class="math-box-label">Theorem - Bramble-Hilbert Lemma</div>
                     <p>Let $K \subset \mathbb{R}^d$ be a bounded Lipschitz domain with diameter $h_K$. Let $P: W^{k+1,p}(K) \to \mathcal{P}_k(K)$ be a bounded linear operator that reproduces polynomials of degree $\leq k$, i.e., $Pp = p$ for all $p \in \mathcal{P}_k(K)$. Then there exists a constant $C$ depending only on $k$, $p$, and the shape of $K$ (not on $h_K$) such that
                     $$\|u - Pu\|_{W^{m,p}(K)} \leq C\, h_K^{k+1-m}\, |u|_{W^{k+1,p}(K)} \quad \forall\, u \in W^{k+1,p}(K),$$
                     for $0 \leq m \leq k+1$, where $|u|_{W^{k+1,p}(K)}$ denotes the $(k+1)$-th order Sobolev seminorm.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Scaling Argument</div>
+                    <div class="math-box-label">Remark - Scaling Argument</div>
                     <p class="mb-0">The power $h_K^{k+1-m}$ arises from a scaling argument: map $K$ to a reference element $\hat K$ of unit size, apply the estimate on $\hat K$, then scale back. Each spatial derivative contributes a factor of $h_K^{-1}$, and a $(k+1)$-th order seminorm scaled by $h_K^{k+1}$ gives net $h_K^{k+1-m}$ in the $W^{m,p}$ norm.</p>
                 </div>
 
@@ -159,7 +159,7 @@
                 <p>For the nodal interpolant $I_h$ onto $P_k$ elements ($k \geq 1$), the operator $I_h$ reproduces all polynomials of degree $\leq k$. Applying the Bramble-Hilbert lemma directly (using $p=2$ for $L^2$-based Sobolev spaces):</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Local Interpolation Error ($P_k$ Elements)</div>
+                    <div class="math-box-label">Theorem - Local Interpolation Error ($P_k$ Elements)</div>
                     <p class="mb-0">Let $K$ be a shape-regular element with diameter $h_K$. For $u \in H^{k+1}(K)$ and $0 \leq m \leq k+1$:
                     $$\|u - I_h u\|_{H^m(K)} \leq C\, h_K^{k+1-m}\, |u|_{H^{k+1}(K)},$$
                     where $C$ depends on $k$, $d$, and the shape regularity constant of the mesh but not on $h_K$ or $u$. In particular, for $P_1$ elements ($k=1$):
@@ -171,7 +171,7 @@
                 <p>Summing the local estimates over all elements in the triangulation $\mathcal{T}_h$, with global mesh size $h = \max_{K \in \mathcal{T}_h} h_K$:</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Global Interpolation Error</div>
+                    <div class="math-box-label">Theorem - Global Interpolation Error</div>
                     <p class="mb-0">Let $\mathcal{T}_h$ be a shape-regular family of triangulations. For $u \in H^{k+1}(\Omega)$ and $0 \leq m \leq k+1$:
                     $$\|u - I_h u\|_{H^m(\Omega)} \leq C\, h^{k+1-m}\, \|u\|_{H^{k+1}(\Omega)}.$$
                     For $P_1$ elements:
@@ -185,7 +185,7 @@
                 <h2 class="mt-5 mb-3">Shape Regularity</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Shape Regularity</div>
+                    <div class="math-box-label">Definition - Shape Regularity</div>
                     <p class="mb-0">A family of triangulations $\{\mathcal{T}_h\}$ is <strong>shape-regular</strong> if there exists a constant $\sigma > 0$ such that for all $h$ and all $K \in \mathcal{T}_h$:
                     $$\frac{h_K}{\rho_K} \leq \sigma,$$
                     where $\rho_K$ is the diameter of the largest ball inscribed in $K$. Shape regularity prevents elements from degenerating (becoming flat or needle-like), which would destroy the scaling argument in the Bramble-Hilbert estimate. Under shape regularity, the constant $C$ in the interpolation estimates is uniform across all mesh refinements.</p>

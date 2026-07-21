@@ -16,7 +16,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -101,21 +101,21 @@
 <nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Generating Functions</a> › <span>Exponential Generating Functions</span></nav>
 <article><h1 class="text-accent mb-4">2.2 Exponential Generating Functions</h1>
 
-<p>The <strong>exponential generating function</strong> (EGF) is the right tool for counting <em>labelled</em> combinatorial structures — those where the elements carry distinct identities (labels). The $1/n!$ denominators absorb the over-counting from permutations of labels.</p>
+<p>The <strong>exponential generating function</strong> (EGF) is the right tool for counting <em>labelled</em> combinatorial structures - those where the elements carry distinct identities (labels). The $1/n!$ denominators absorb the over-counting from permutations of labels.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — EGF</div>
+<div class="math-box definition"><div class="math-box-label">Definition - EGF</div>
 <p>The <strong>exponential generating function</strong> of $(a_n)_{n \ge 0}$ is:
 $$\hat{A}(x) = \sum_{n=0}^{\infty} a_n \frac{x^n}{n!}.$$
 We have $a_n = n!\, [x^n]\, \hat{A}(x)$.</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Product of EGFs (Labelled Convolution)</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - Product of EGFs (Labelled Convolution)</div>
 <p>If $\hat{A}(x)\hat{B}(x) = \hat{C}(x)$, then:
 $$c_n = \sum_{k=0}^{n} \binom{n}{k} a_k b_{n-k}.$$
 This counts structures on $[n]$ obtained by splitting $[n]$ into a $k$-element subset carrying an $A$-structure and the remaining $(n-k)$-element subset carrying a $B$-structure.</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Key EGFs</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - Key EGFs</div>
 <p>$$e^x = \sum_{n \ge 0} \frac{x^n}{n!}: \text{ all permutations (one per } n\text{)}.$$
 $$e^x - 1 = \sum_{n \ge 1} \frac{x^n}{n!}: \text{ non-empty sets.}$$
 $$\frac{e^x + e^{-x}}{2} = \cosh x: \text{ even-size subsets.}$$
@@ -123,16 +123,16 @@ $$\frac{1}{1-x} = \sum_{n \ge 0} n! \cdot \frac{x^n}{n!}: \text{ EGF for } a_n =
 $$\ln\frac{1}{1-x} = \sum_{n \ge 1} (n-1)!\, \frac{x^n}{n!}: \text{ EGF for cycles.}$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Labelled Structures: Set Partitions into Even Sets</div>
+<div class="math-box example"><div class="math-box-label">Example - Labelled Structures: Set Partitions into Even Sets</div>
 <p>The EGF for even-size sets is $\cosh x = (e^x + e^{-x})/2$. By the product formula (or more generally, $e^{\cosh x - 1}$), one can build EGFs for structures composed of even-size blocks.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Involutions</div>
-<p>An involution is a permutation $\sigma$ with $\sigma^2 = \text{id}$ — it consists only of fixed points and transpositions. Let $a_n$ be the number of involutions of $[n]$. Then $a_n = a_{n-1} + (n-1)a_{n-2}$ (either $n$ is fixed, or $n$ pairs with one of the $n-1$ others). The EGF is:
+<div class="math-box example"><div class="math-box-label">Example - Involutions</div>
+<p>An involution is a permutation $\sigma$ with $\sigma^2 = \text{id}$ - it consists only of fixed points and transpositions. Let $a_n$ be the number of involutions of $[n]$. Then $a_n = a_{n-1} + (n-1)a_{n-2}$ (either $n$ is fixed, or $n$ pairs with one of the $n-1$ others). The EGF is:
 $$\hat{A}(x) = e^{x + x^2/2}.$$</p>
 </div>
 
-<div class="math-box remark"><div class="math-box-label">Remark — Labelled vs Unlabelled</div>
+<div class="math-box remark"><div class="math-box-label">Remark - Labelled vs Unlabelled</div>
 <p>OGFs are used for unlabelled structures (integer partitions, non-crossing partitions, plane trees). EGFs are used for labelled structures (permutations, labelled graphs, set partitions). The symbolic method systematises which to use based on whether the objects carry labels.</p>
 </div>
 

@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,18 +132,18 @@
 
                 <h2 class="mt-4 mb-3">The Intermediate Value Theorem</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Intermediate Value Theorem</div>
+                    <div class="math-box-label">Theorem - Intermediate Value Theorem</div>
                     <p class="mb-0">Let $f : [a,b] \to \mathbb{R}$ be continuous. If $f(a) \cdot f(b) < 0$, then there exists at least one $r \in (a,b)$ with $f(r) = 0$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Bracket Condition</div>
+                    <div class="math-box-label">Remark - Bracket Condition</div>
                     <p class="mb-0">The condition $f(a)f(b) < 0$ means $f$ has opposite signs at the endpoints. Finding an initial bracket is a separate task; for many practical problems it can be done by sign sampling or physical reasoning. The bisection method itself only requires function evaluations, not derivatives or any other smoothness.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Algorithm</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm — Bisection</div>
+                    <div class="math-box-label">Algorithm - Bisection</div>
                     <p><strong>Input:</strong> continuous $f$, bracket $[a_0, b_0]$ with $f(a_0)f(b_0) < 0$, tolerance $\text{tol} > 0$.</p>
                     <p><strong>Iteration:</strong> for $n = 0, 1, 2, \ldots$:</p>
                     <ol>
@@ -157,20 +157,20 @@
 
                 <h2 class="mt-5 mb-3">Convergence Analysis</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Linear Convergence of Bisection</div>
+                    <div class="math-box-label">Theorem - Linear Convergence of Bisection</div>
                     <p>After $n$ steps, the error satisfies:</p>
                     $$|c_n - r| \le \frac{b_0 - a_0}{2^{n+1}},$$
                     <p class="mb-0">where $r$ is any root in $(a_0, b_0)$. This is <strong>linear convergence</strong> with rate $1/2$: each iteration reduces the error bound by a factor of 2. Equivalently, to achieve $|c_n - r| < \varepsilon$, one needs $n \ge \log_2\!\left((b_0-a_0)/\varepsilon\right)$ iterations. To gain one decimal digit of accuracy requires approximately $\log_2(10) \approx 3.32$ iterations.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Stopping Criteria</div>
+                    <div class="math-box-label">Remark - Stopping Criteria</div>
                     <p class="mb-0">Two natural stopping criteria are: (i) bracket width $|b_n - a_n| < \text{tol}$, which controls the absolute error in $x$; (ii) residual $|f(c_n)| < \text{tol}_f$, which checks how close $c_n$ is to a root in function value. For ill-conditioned functions, criterion (i) is preferable; for well-conditioned ones, (ii) may stop sooner.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Example: Finding $\sqrt[3]{2}$</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Cube Root of 2</div>
+                    <div class="math-box-label">Example - Cube Root of 2</div>
                     <p>We find $r = 2^{1/3}$ as the root of $f(x) = x^3 - 2$ on $[1, 2]$. Note $f(1) = -1 < 0$ and $f(2) = 6 > 0$, so the bracket condition holds. The bracket width starts at $b_0 - a_0 = 1$.</p>
                     <table class="table table-sm table-bordered text-center" style="max-width:500px;">
                         <thead><tr><th>$n$</th><th>$a_n$</th><th>$b_n$</th><th>$c_n$</th><th>$f(c_n)$</th></tr></thead>
@@ -188,7 +188,7 @@
 
                 <h2 class="mt-5 mb-3">Advantages and Disadvantages</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Strengths and Limitations</div>
+                    <div class="math-box-label">Remark - Strengths and Limitations</div>
                     <ul class="mb-0">
                         <li><strong>Guaranteed convergence:</strong> provided the initial bracket is valid and $f$ is continuous, bisection cannot fail.</li>
                         <li><strong>No derivative required:</strong> only function evaluations are needed.</li>

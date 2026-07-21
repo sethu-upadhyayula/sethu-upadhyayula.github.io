@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,13 +81,13 @@
             <article>
                 <h1 class="text-accent mb-4">1.2 Yield, Duration and DV01</h1>
 
-                <p>Once we can price a bond, the natural next questions are: how sensitive is the price to changes in interest rates, and how do we measure that sensitivity? The answers are duration and DV01 — the workhorses of interest rate risk management on every fixed income desk.</p>
+                <p>Once we can price a bond, the natural next questions are: how sensitive is the price to changes in interest rates, and how do we measure that sensitivity? The answers are duration and DV01 - the workhorses of interest rate risk management on every fixed income desk.</p>
 
                 <h2 class="mt-5 mb-3">Yield to Maturity</h2>
                 <p>The <em>yield to maturity</em> $y$ of a bond is its internal rate of return: the single flat discount rate that equates the present value of all future cashflows to the observed market dirty price $P$.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Yield to Maturity</div>
+                    <div class="math-box-label">Definition - Yield to Maturity</div>
                     <p>For a bond with cashflows $C_i$ at times $t_i$ (coupons) and principal $F$ at maturity $T$, the yield $y$ satisfies under continuous compounding:
                     $$P = \sum_{i=1}^{n} C_i\, e^{-y\,t_i} + F\,e^{-y\,T}$$
                     With semi-annual compounding ($m=2$):
@@ -99,7 +99,7 @@
                 <p>Duration measures the <em>weighted average time</em> until a bondholder receives cashflows, where weights are proportional to the present value of each cashflow.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Macaulay Duration</div>
+                    <div class="math-box-label">Definition - Macaulay Duration</div>
                     <p>The Macaulay duration $D_{\text{Mac}}$ is:
                     $$D_{\text{Mac}} = \frac{1}{P}\sum_{i=1}^{n} t_i \cdot PV(C_i) = \frac{\displaystyle\sum_{i=1}^{n} t_i\, C_i\,e^{-y\,t_i} + T\,F\,e^{-y\,T}}{P}$$
                     For a zero-coupon bond, $D_{\text{Mac}} = T$ exactly. For a coupon bond, $D_{\text{Mac}} < T$ because cashflows received before maturity reduce the effective average timing.</p>
@@ -109,7 +109,7 @@
                 <p>Modified duration converts Macaulay duration into a direct measure of price sensitivity to yield changes.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Modified Duration</div>
+                    <div class="math-box-label">Definition - Modified Duration</div>
                     <p>$$D_{\text{mod}} = -\frac{1}{P}\frac{dP}{dy} = \frac{D_{\text{Mac}}}{1 + y/m}$$
                     where $m$ is the compounding frequency. For continuous compounding, $D_{\text{mod}} = D_{\text{Mac}}$.
                     The first-order price change approximation for a parallel yield shift $\Delta y$ is:
@@ -117,7 +117,7 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Duration as Price-Yield Sensitivity</div>
+                    <div class="math-box-label">Theorem - Duration as Price-Yield Sensitivity</div>
                     <p>Under continuous compounding, differentiating $P = \sum_i C_i e^{-y t_i} + F e^{-yT}$ with respect to $y$:
                     $$\frac{dP}{dy} = -\left(\sum_{i=1}^{n} t_i\,C_i\,e^{-y t_i} + T\,F\,e^{-yT}\right) = -D_{\text{Mac}}\cdot P$$
                     Hence $D_{\text{mod}} = D_{\text{Mac}}$ under continuous compounding, and the approximation $\Delta P \approx -D_{\text{Mac}} \cdot P \cdot \Delta y$ holds to first order.</p>
@@ -127,31 +127,31 @@
                 <p>The <em>DV01</em> (Dollar Value of a Basis Point) or <em>PVBP</em> (Price Value of a Basis Point) is the change in bond price for a 1 basis point (0.0001) parallel shift in yields.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — DV01</div>
+                    <div class="math-box-label">Definition - DV01</div>
                     <p>$$\text{DV01} = -\frac{dP}{dy}\times 0.0001 = D_{\text{mod}}\cdot P \cdot 0.0001$$
                     For a notional of $N$, the full DV01 is $D_{\text{mod}} \cdot P \cdot N \cdot 0.0001$. DV01 is quoted in currency units per basis point per unit notional and is the primary tool for hedging and risk aggregation on rates desks.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Duration and DV01</div>
+                    <div class="math-box-label">Example - Duration and DV01</div>
                     <p>Consider a 5-year 4% semi-annual bond priced at par ($P = 100$, $y = 4\%$, $m = 2$). Macaulay duration: $D_{\text{Mac}} \approx 4.49$ years.</p>
                     <p>Modified duration: $D_{\text{mod}} = 4.49\, /\, (1 + 0.04/2) = 4.49\, /\, 1.02 \approx 4.40$ years.</p>
                     <p class="mb-0">DV01 $= 4.40 \times 100 \times 0.0001 = \$0.044$ per \$100 notional. A 10 bp yield rise reduces the price by approximately $\$0.44$ per \$100 face value.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Convexity</h2>
-                <p>Duration is a linear (first-order) approximation. Convexity captures the curvature — the second-order correction to the price-yield relationship, which matters for large yield moves.</p>
+                <p>Duration is a linear (first-order) approximation. Convexity captures the curvature - the second-order correction to the price-yield relationship, which matters for large yield moves.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Convexity</div>
+                    <div class="math-box-label">Definition - Convexity</div>
                     <p>$$\mathcal{C} = \frac{1}{P}\frac{d^2 P}{dy^2} = \frac{\displaystyle\sum_{i=1}^{n} t_i^2\,C_i\,e^{-y t_i} + T^2\,F\,e^{-yT}}{P}$$
                     The second-order price approximation is:
                     $$\frac{\Delta P}{P} \approx -D_{\text{mod}}\,\Delta y + \frac{1}{2}\mathcal{C}\,(\Delta y)^2$$
-                    Convexity is always positive for plain vanilla fixed-rate bonds. This means a bond gains more when yields fall than it loses when yields rise by the same amount — a desirable property investors pay for.</p>
+                    Convexity is always positive for plain vanilla fixed-rate bonds. This means a bond gains more when yields fall than it loses when yields rise by the same amount - a desirable property investors pay for.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Portfolio Duration and Rate Hedging</div>
+                    <div class="math-box-label">Remark - Portfolio Duration and Rate Hedging</div>
                     <p class="mb-0">The DV01 of a bond portfolio is the sum of individual DV01s (linearity of the first-order approximation). To hedge $\$H$ of DV01 exposure using a government bond future with DV01 $d$ per contract, one sells (or buys) $H/d$ contracts. This duration-neutral construction is the foundation of all parallel-shift hedging in fixed income.</p>
                 </div>
 

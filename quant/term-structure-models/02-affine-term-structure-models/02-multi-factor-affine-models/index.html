@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,17 +81,17 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Multi-Factor Affine Models</h1>
 
-                <p>All models so far — Vasicek, Hull-White, CIR — are driven by a single Brownian motion, so every point on the yield curve moves as a deterministic function of one state variable $r(t)$. Real yield curves do not move this way: empirically, curve changes are well described by two or three largely independent modes of variation. Multi-factor affine models add additional state variables to capture this.</p>
+                <p>All models so far - Vasicek, Hull-White, CIR - are driven by a single Brownian motion, so every point on the yield curve moves as a deterministic function of one state variable $r(t)$. Real yield curves do not move this way: empirically, curve changes are well described by two or three largely independent modes of variation. Multi-factor affine models add additional state variables to capture this.</p>
 
                 <h2 class="mt-5 mb-3">Motivation: Level, Slope, and Curvature</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Three Principal Components of Yield Curve Moves</div>
+                    <div class="math-box-label">Remark - The Three Principal Components of Yield Curve Moves</div>
                     <p class="mb-0">Principal component analysis (PCA) of historical changes in yield curves across many currencies and time periods consistently finds that the first three principal components explain the overwhelming majority (often &gt;95%) of total variance, and have a clear interpretation:</p>
                     <ul>
-                        <li><strong>Level</strong> — a roughly parallel shift of the entire curve up or down, typically the dominant factor (60-80% of variance).</li>
-                        <li><strong>Slope</strong> — a steepening or flattening, where short and long rates move in opposite directions or by different amounts.</li>
-                        <li><strong>Curvature</strong> — a "butterfly" move where the middle of the curve moves relative to both ends.</li>
+                        <li><strong>Level</strong> - a roughly parallel shift of the entire curve up or down, typically the dominant factor (60-80% of variance).</li>
+                        <li><strong>Slope</strong> - a steepening or flattening, where short and long rates move in opposite directions or by different amounts.</li>
+                        <li><strong>Curvature</strong> - a "butterfly" move where the middle of the curve moves relative to both ends.</li>
                     </ul>
                     <p class="mb-0">A single-factor model like Hull-White can only generate level-type moves (up to the shape of $B(t,T)$); it has no mechanism for an independent slope or curvature factor. Capturing these additional modes requires additional state variables.</p>
                 </div>
@@ -99,7 +99,7 @@
                 <h2 class="mt-5 mb-3">Multi-Factor Affine Model Structure</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Multi-Factor Affine Short Rate Model</div>
+                    <div class="math-box-label">Definition - Multi-Factor Affine Short Rate Model</div>
                     <p class="mb-0">A multi-factor affine model writes the short rate as a (typically linear) combination of $n$ state variables $X(t) = (X_1(t),\ldots,X_n(t))^\top$:
                     $$r(t) = \delta_0 + \delta^\top X(t)$$
                     where each $X_i(t)$ follows its own affine diffusion (e.g. Gaussian OU or CIR-type square-root), possibly correlated:
@@ -108,23 +108,23 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — A Two-Factor Gaussian Model</div>
+                    <div class="math-box-label">Example - A Two-Factor Gaussian Model</div>
                     <p class="mb-0">A common two-factor specification sets $r(t) = X_1(t) + X_2(t)$ with
                     $$dX_1(t) = -a_1 X_1(t)\,dt + \sigma_1\,dW_1(t), \qquad dX_2(t) = -a_2 X_2(t)\,dt + \sigma_2\,dW_2(t)$$
-                    and $d\langle W_1,W_2\rangle_t = \rho\,dt$. With $a_1 \ll a_2$, $X_1$ is a slow-moving, persistent factor (driving the long end and overall level) while $X_2$ is a fast-mean-reverting factor (driving the short end). The combination produces independent level and slope movements, and — with a suitable choice of $\rho$ and the two mean-reversion speeds — a curvature-like effect in the belly of the curve, none of which a single-factor model can reproduce. This is the natural multi-factor extension of Hull-White, and is widely used for products sensitive to curve shape such as CMS spread options.</p>
+                    and $d\langle W_1,W_2\rangle_t = \rho\,dt$. With $a_1 \ll a_2$, $X_1$ is a slow-moving, persistent factor (driving the long end and overall level) while $X_2$ is a fast-mean-reverting factor (driving the short end). The combination produces independent level and slope movements, and - with a suitable choice of $\rho$ and the two mean-reversion speeds - a curvature-like effect in the belly of the curve, none of which a single-factor model can reproduce. This is the natural multi-factor extension of Hull-White, and is widely used for products sensitive to curve shape such as CMS spread options.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Comparison to Single-Factor Models</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Trade-offs of Adding Factors</div>
+                    <div class="math-box-label">Remark - Trade-offs of Adding Factors</div>
                     <p><strong>Realism of curve dynamics.</strong> A two- or three-factor model can match observed correlations between rate changes at different maturities far better than a single-factor model, which forces a correlation of (near) one between all points on the curve.</p>
-                    <p><strong>Pricing of curve-shape-sensitive products.</strong> Products whose payoff depends on the relationship between two or more points on the curve — CMS spread options, steepener/flattener structures, basis products — are essentially unpriceable in a meaningful sense by a single-factor model, since the model has no mechanism for the curve to twist. Multi-factor models give such products genuine, calibratable volatility and correlation exposure.</p>
-                    <p class="mb-0"><strong>Cost: more parameters, harder calibration.</strong> Each additional factor brings additional mean-reversion, volatility, and correlation parameters that must be calibrated to market data — and the market may not contain enough independent information (e.g. enough liquid CMS spread option quotes) to pin down all of them robustly. This calibration burden, and the model risk that comes with it, is the subject of the next chapter.</p>
+                    <p><strong>Pricing of curve-shape-sensitive products.</strong> Products whose payoff depends on the relationship between two or more points on the curve - CMS spread options, steepener/flattener structures, basis products - are essentially unpriceable in a meaningful sense by a single-factor model, since the model has no mechanism for the curve to twist. Multi-factor models give such products genuine, calibratable volatility and correlation exposure.</p>
+                    <p class="mb-0"><strong>Cost: more parameters, harder calibration.</strong> Each additional factor brings additional mean-reversion, volatility, and correlation parameters that must be calibrated to market data - and the market may not contain enough independent information (e.g. enough liquid CMS spread option quotes) to pin down all of them robustly. This calibration burden, and the model risk that comes with it, is the subject of the next chapter.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Affine Models in Context</div>
+                    <div class="math-box-label">Remark - Affine Models in Context</div>
                     <p class="mb-0">The affine framework unifies Vasicek, Hull-White, CIR, and their multi-factor extensions under a single closed-form bond-pricing machinery. In practice, the choice between a single-factor Hull-White, a two-factor Gaussian model, or a CIR-type model is driven by the product being priced: vanilla swaptions and caps are often adequately handled by a well-calibrated single-factor Hull-White; products with explicit curve-shape sensitivity demand at least two factors; and the LIBOR Market Model of Chapter 1, while not affine in this narrow sense, can be viewed as a very high-dimensional generalisation where every forward rate is (approximately) its own factor. The next chapter addresses how any of these models are actually calibrated in practice, and the risks that arise from that process.</p>
                 </div>
 

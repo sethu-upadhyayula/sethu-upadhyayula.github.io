@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,28 +128,28 @@
                 <p>Multiple regression extends simple linear regression to $p$ predictors, allowing the modelling of complex relationships while controlling for confounding variables. The matrix formulation unifies estimation and inference elegantly.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.2.1 — Multiple Regression Model</div>
+                    <div class="math-box-label">Definition 5.2.1 - Multiple Regression Model</div>
                     <p class="mb-0">With $n$ observations and $p$ predictors (plus intercept), the model is
                     $$\mathbf{Y} = \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\varepsilon}, \quad \boldsymbol{\varepsilon} \sim N(\mathbf{0}, \sigma^2 \mathbf{I}_n),$$
                     where $\mathbf{Y} \in \mathbb{R}^n$, $\mathbf{X} \in \mathbb{R}^{n\times(p+1)}$ is the design matrix (first column all 1s), $\boldsymbol{\beta} \in \mathbb{R}^{p+1}$, and $\mathbf{I}_n$ is the $n\times n$ identity matrix. We assume $\mathbf{X}$ has full column rank $p+1$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.2.2 — OLS Estimator</div>
+                    <div class="math-box-label">Theorem 5.2.2 - OLS Estimator</div>
                     <p>Minimising $\|\mathbf{Y} - \mathbf{X}\boldsymbol{\beta}\|^2$ yields the unique OLS estimator
                     $$\hat{\boldsymbol{\beta}} = (\mathbf{X}^\top \mathbf{X})^{-1}\mathbf{X}^\top \mathbf{Y}.$$</p>
                     <p class="mb-0">This is the BLUE (Gauss-Markov). Under normality, $\hat{\boldsymbol{\beta}} \sim N(\boldsymbol{\beta},\, \sigma^2(\mathbf{X}^\top\mathbf{X})^{-1})$. The fitted values are $\hat{\mathbf{Y}} = \mathbf{H}\mathbf{Y}$ where the <strong>hat matrix</strong> $\mathbf{H} = \mathbf{X}(\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top$ is the orthogonal projection onto the column space of $\mathbf{X}$.</p>
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 5.2.3 — Properties of the Hat Matrix</div>
+                    <div class="math-box-label">Proposition 5.2.3 - Properties of the Hat Matrix</div>
                     <p class="mb-0">$\mathbf{H}$ is symmetric ($\mathbf{H}^\top = \mathbf{H}$) and idempotent ($\mathbf{H}^2 = \mathbf{H}$) with $\mathrm{rank}(\mathbf{H}) = p+1$. The residuals are $\hat{\boldsymbol{\varepsilon}} = (\mathbf{I}-\mathbf{H})\mathbf{Y}$, and $\mathrm{SSE} = \hat{\boldsymbol{\varepsilon}}^\top\hat{\boldsymbol{\varepsilon}}$ with $E[\mathrm{SSE}] = (n-p-1)\sigma^2$, giving unbiased estimator $\hat{\sigma}^2 = \mathrm{SSE}/(n-p-1)$.</p>
                 </div>
 
                 <h2 class="mt-5">$F$-Test for Overall Significance</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.2.4 — Global $F$-Test</div>
+                    <div class="math-box-label">Theorem 5.2.4 - Global $F$-Test</div>
                     <p>Test $H_0:\beta_1=\cdots=\beta_p=0$ (intercept-only model). Under $H_0$:
                     $$F = \frac{\mathrm{SSR}/p}{\mathrm{SSE}/(n-p-1)} \sim F_{p,\,n-p-1}.$$</p>
                     <p class="mb-0">The adjusted $R^2$ corrects for the number of predictors:
@@ -160,14 +160,14 @@
                 <h2 class="mt-5">Multicollinearity and VIF</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.2.5 — Variance Inflation Factor</div>
+                    <div class="math-box-label">Definition 5.2.5 - Variance Inflation Factor</div>
                     <p class="mb-0"><strong>Multicollinearity</strong> refers to near-linear dependencies among predictors. It inflates $\mathrm{Var}(\hat{\beta}_j)$ without biasing $\hat{\boldsymbol{\beta}}$. The <strong>Variance Inflation Factor</strong> for predictor $j$ is $\mathrm{VIF}_j = 1/(1-R_j^2)$, where $R_j^2$ is the $R^2$ from regressing $x_j$ on all other predictors. $\mathrm{VIF}_j > 10$ is often taken as indicating problematic collinearity.</p>
                 </div>
 
                 <h2 class="mt-5">Model Selection Criteria</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.2.6 — AIC and BIC</div>
+                    <div class="math-box-label">Definition 5.2.6 - AIC and BIC</div>
                     <p class="mb-0">For a model with $p+1$ parameters fitted by maximum likelihood:
                     $$\mathrm{AIC} = -2\ell(\hat{\boldsymbol{\theta}}) + 2(p+1), \qquad \mathrm{BIC} = -2\ell(\hat{\boldsymbol{\theta}}) + (p+1)\log n.$$
                     Lower values indicate a better bias-variance trade-off. BIC penalises complexity more heavily and is consistent (selects the true model as $n\to\infty$ if it is among the candidates), while AIC targets predictive performance.</p>
@@ -176,7 +176,7 @@
                 <h2 class="mt-5">Ridge Regression</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.2.7 — Ridge Estimator</div>
+                    <div class="math-box-label">Definition 5.2.7 - Ridge Estimator</div>
                     <p>When $\mathbf{X}^\top\mathbf{X}$ is ill-conditioned, the <strong>ridge estimator</strong> adds an $L_2$ penalty:
                     $$\hat{\boldsymbol{\beta}}_{\mathrm{ridge}} = \underset{\boldsymbol{\beta}}{\arg\min}\left\{\|\mathbf{Y}-\mathbf{X}\boldsymbol{\beta}\|^2 + \lambda\|\boldsymbol{\beta}\|^2\right\} = (\mathbf{X}^\top\mathbf{X}+\lambda\mathbf{I})^{-1}\mathbf{X}^\top\mathbf{Y}, \quad \lambda > 0.$$</p>
                     <p class="mb-0">The ridge estimator is biased but can substantially reduce variance, improving mean squared error when predictors are highly correlated. The tuning parameter $\lambda$ is typically chosen by cross-validation. Ridge is equivalent to placing a $N(0,\sigma^2/\lambda)$ prior on each coefficient in a Bayesian framework.</p>

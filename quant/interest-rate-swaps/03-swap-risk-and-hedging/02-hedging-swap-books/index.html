@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,40 +80,40 @@
             <article>
                 <h1 class="text-accent mb-4">3.2 Hedging Swap Books</h1>
 
-                <p>A swap desk's book typically contains hundreds or thousands of swaps across many maturities, tenors, and currencies, each contributing PV01 with respect to multiple curves as described in Section 3.1. The desk's job is not to eliminate every individual swap's risk, but to manage the book's <em>aggregate</em> exposure — and to do so efficiently, using a small number of liquid hedging instruments.</p>
+                <p>A swap desk's book typically contains hundreds or thousands of swaps across many maturities, tenors, and currencies, each contributing PV01 with respect to multiple curves as described in Section 3.1. The desk's job is not to eliminate every individual swap's risk, but to manage the book's <em>aggregate</em> exposure - and to do so efficiently, using a small number of liquid hedging instruments.</p>
 
                 <h2 class="mt-5 mb-3">Aggregating Risk Across a Book</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Net PV01 of a Book</div>
+                    <div class="math-box-label">Definition - Net PV01 of a Book</div>
                     <p class="mb-0">For a book of swaps with positions $N_k$ (signed, payer positive say) and individual PV01s $\text{PV01}_k$ (with respect to a given curve), the book's net PV01 with respect to that curve is simply the sum:
                     $$\text{PV01}_{\text{book}} = \sum_k N_k \cdot \text{pv01}_k$$
-                    where $\text{pv01}_k$ is the per-unit-notional PV01 of swap $k$. A book is "PV01-flat" with respect to a curve if this sum is (close to) zero — a parallel 1bp shift in that curve has negligible first-order effect on the book's value.</p>
+                    where $\text{pv01}_k$ is the per-unit-notional PV01 of swap $k$. A book is "PV01-flat" with respect to a curve if this sum is (close to) zero - a parallel 1bp shift in that curve has negligible first-order effect on the book's value.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Hedging with Swaps and Futures</h2>
 
-                <p>The simplest hedge for a single swap is an offsetting swap of the same maturity and tenor — a receiver can be hedged with a payer of equal notional and maturity, leaving (in principle) zero net PV01. In practice, desks prefer to hedge with the most liquid instruments available, which are not always identical to the swaps in the book.</p>
+                <p>The simplest hedge for a single swap is an offsetting swap of the same maturity and tenor - a receiver can be hedged with a payer of equal notional and maturity, leaving (in principle) zero net PV01. In practice, desks prefer to hedge with the most liquid instruments available, which are not always identical to the swaps in the book.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Common Hedging Instruments</div>
+                    <div class="math-box-label">Remark - Common Hedging Instruments</div>
                     <p><strong>Benchmark on-the-run swaps.</strong> Standard maturities (2Y, 5Y, 10Y, 30Y) trade with the tightest bid-offer and are the natural hedge for any swap whose risk is concentrated near those points on the curve.</p>
-                    <p><strong>SOFR futures.</strong> Short-end risk (out to roughly 2-3 years) is often hedged with SOFR futures (3-month and 1-month contracts), which are exchange-traded, highly liquid, and closely track the front end of the SOFR curve — an efficient alternative to OIS swaps for short-dated discount-curve risk.</p>
-                    <p class="mb-0"><strong>Spread/butterfly trades.</strong> A swap with risk concentrated between two benchmark maturities (e.g. a 7-year swap, between the 5Y and 10Y benchmarks) is often hedged with a combination of the two adjacent benchmarks, weighted so the combination's PV01 and approximate curve-shape exposure matches the target swap — a "PV01-weighted" spread or butterfly hedge.</p>
+                    <p><strong>SOFR futures.</strong> Short-end risk (out to roughly 2-3 years) is often hedged with SOFR futures (3-month and 1-month contracts), which are exchange-traded, highly liquid, and closely track the front end of the SOFR curve - an efficient alternative to OIS swaps for short-dated discount-curve risk.</p>
+                    <p class="mb-0"><strong>Spread/butterfly trades.</strong> A swap with risk concentrated between two benchmark maturities (e.g. a 7-year swap, between the 5Y and 10Y benchmarks) is often hedged with a combination of the two adjacent benchmarks, weighted so the combination's PV01 and approximate curve-shape exposure matches the target swap - a "PV01-weighted" spread or butterfly hedge.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Bucket Hedging vs. Key-Rate Hedging</h2>
 
-                <p>A single net PV01 number (Definition above) only captures sensitivity to a <em>parallel</em> shift. A book can be flat to parallel shifts while still being exposed to changes in the curve's <em>shape</em> — steepening, flattening, or twists at specific maturities. Two related but distinct approaches address this.</p>
+                <p>A single net PV01 number (Definition above) only captures sensitivity to a <em>parallel</em> shift. A book can be flat to parallel shifts while still being exposed to changes in the curve's <em>shape</em> - steepening, flattening, or twists at specific maturities. Two related but distinct approaches address this.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Bucket Hedging</div>
-                    <p class="mb-0"><em>Bucket hedging</em> partitions the curve into maturity buckets (e.g. 0-2Y, 2-5Y, 5-10Y, 10-30Y) and requires the book's net PV01 to be approximately zero <em>within each bucket</em>, not just in aggregate. A book with +\$10,000 PV01 in the 2-5Y bucket and -\$10,000 in the 5-10Y bucket has zero total PV01 but is exposed to a steepening or flattening between those buckets — bucket hedging would flag and hedge each bucket separately, typically using the benchmark swap (or futures) whose maturity falls within that bucket.</p>
+                    <div class="math-box-label">Remark - Bucket Hedging</div>
+                    <p class="mb-0"><em>Bucket hedging</em> partitions the curve into maturity buckets (e.g. 0-2Y, 2-5Y, 5-10Y, 10-30Y) and requires the book's net PV01 to be approximately zero <em>within each bucket</em>, not just in aggregate. A book with +\$10,000 PV01 in the 2-5Y bucket and -\$10,000 in the 5-10Y bucket has zero total PV01 but is exposed to a steepening or flattening between those buckets - bucket hedging would flag and hedge each bucket separately, typically using the benchmark swap (or futures) whose maturity falls within that bucket.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Key-Rate Hedging</div>
-                    <p class="mb-0"><em>Key-rate hedging</em> is a finer-grained version of the same idea: rather than buckets, it computes the book's sensitivity to a shift in each individual <em>node</em> of the curve (e.g. each of the 1Y, 2Y, 3Y, 5Y, 7Y, 10Y, 20Y, 30Y curve-building instruments, perturbed one at a time while holding the others fixed — the "key-rate durations" or "key-rate PV01s" introduced in Rates Fundamentals Section 3.1). A book is fully curve-shape-hedged when its key-rate PV01 is approximately zero at every node, which generally requires hedging with an instrument at (or near) each node where the book has exposure — the limiting, most granular case of bucket hedging.</p>
+                    <div class="math-box-label">Remark - Key-Rate Hedging</div>
+                    <p class="mb-0"><em>Key-rate hedging</em> is a finer-grained version of the same idea: rather than buckets, it computes the book's sensitivity to a shift in each individual <em>node</em> of the curve (e.g. each of the 1Y, 2Y, 3Y, 5Y, 7Y, 10Y, 20Y, 30Y curve-building instruments, perturbed one at a time while holding the others fixed - the "key-rate durations" or "key-rate PV01s" introduced in Rates Fundamentals Section 3.1). A book is fully curve-shape-hedged when its key-rate PV01 is approximately zero at every node, which generally requires hedging with an instrument at (or near) each node where the book has exposure - the limiting, most granular case of bucket hedging.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Residual Curve Risk</h2>
@@ -121,13 +121,13 @@
                 <p>Even a carefully bucket- or key-rate-hedged book retains risk that does not reduce to a clean PV01 number, for several reasons specific to the multi-curve setting of this chapter.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Sources of Residual Risk</div>
+                    <div class="math-box-label">Remark - Sources of Residual Risk</div>
                     <p><strong>Curve vs. curve basis risk.</strong> A book hedged to be flat in discount-curve PV01 and flat in 3M-forecast-curve PV01 can still be exposed to a change in the tenor basis spread (Section 2.2) between the 3M and 6M curves, if its swaps and hedges reference different tenors.</p>
-                    <p><strong>Interpolation and node-placement risk.</strong> Hedging at discrete nodes (key rates or benchmark maturities) leaves residual exposure to changes in the curve <em>between</em> nodes — interpolation risk, which is small for smooth curves but can matter around features like the turn-of-year jumps discussed in Rates Fundamentals Section 4.2.</p>
-                    <p class="mb-0"><strong>Non-parallel and higher-order moves.</strong> PV01 (a first-derivative, linear measure) does not capture convexity — the second-order sensitivity to large rate moves — which matters for swaps with embedded optionality (Section 4.1) or for very large parallel shifts. Desks typically monitor convexity (gamma) separately and hedge it, where material, with options or convexity-bearing structures.</p>
+                    <p><strong>Interpolation and node-placement risk.</strong> Hedging at discrete nodes (key rates or benchmark maturities) leaves residual exposure to changes in the curve <em>between</em> nodes - interpolation risk, which is small for smooth curves but can matter around features like the turn-of-year jumps discussed in Rates Fundamentals Section 4.2.</p>
+                    <p class="mb-0"><strong>Non-parallel and higher-order moves.</strong> PV01 (a first-derivative, linear measure) does not capture convexity - the second-order sensitivity to large rate moves - which matters for swaps with embedded optionality (Section 4.1) or for very large parallel shifts. Desks typically monitor convexity (gamma) separately and hedge it, where material, with options or convexity-bearing structures.</p>
                 </div>
 
-                <p class="mb-0">The overall picture is one of successive refinement: net PV01 controls the dominant parallel-shift risk, bucket and key-rate hedging control curve-shape risk, and basis, interpolation, and convexity risk remain as smaller residuals that are monitored and managed — but rarely reduced to exactly zero — as part of the ongoing risk management of a swap book.</p>
+                <p class="mb-0">The overall picture is one of successive refinement: net PV01 controls the dominant parallel-shift risk, bucket and key-rate hedging control curve-shape risk, and basis, interpolation, and convexity risk remain as smaller residuals that are monitored and managed - but rarely reduced to exactly zero - as part of the ongoing risk management of a swap book.</p>
 
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

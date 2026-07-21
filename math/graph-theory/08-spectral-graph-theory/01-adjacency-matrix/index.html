@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -139,19 +139,19 @@
                 <p>The adjacency matrix is the most natural matrix representation of a graph. Its eigenvalues capture global structural properties that are difficult to read off directly from the graph.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 8.1.1 — Adjacency Matrix</div>
+                    <div class="math-box-label">Definition 8.1.1 - Adjacency Matrix</div>
                     <p class="mb-0">For a graph $G$ on $n$ vertices labelled $1, \ldots, n$, the <strong>adjacency matrix</strong> $A \in \{0,1\}^{n \times n}$ has $A_{ij} = 1$ if $\{i,j\} \in E(G)$ and $A_{ij} = 0$ otherwise. Since $G$ is undirected, $A$ is symmetric, so all eigenvalues $\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_n$ are real.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 8.1.2 — Walks and Powers of $A$</div>
+                    <div class="math-box-label">Theorem 8.1.2 - Walks and Powers of $A$</div>
                     <p class="mb-0">$(A^k)_{ij}$ counts the number of walks of length $k$ from vertex $i$ to vertex $j$ in $G$. In particular, $\mathrm{tr}(A^2) = 2|E|$ and $\mathrm{tr}(A^3)/6$ equals the number of triangles.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Spectral Radius Bounds</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 8.1.3 — Bounds on the Largest Eigenvalue</div>
+                    <div class="math-box-label">Theorem 8.1.3 - Bounds on the Largest Eigenvalue</div>
                     <p>Let $\bar{d}$ be the average degree and $\Delta$ the maximum degree. Then:
                     $$\bar{d} \le \lambda_1 \le \Delta.$$
                     The lower bound follows since $\mathbf{1}^T A \mathbf{1} = 2|E| = n\bar{d}$, giving $\lambda_1 \ge \bar{d}$ by the Rayleigh quotient. The upper bound follows since the spectral norm of $A$ is bounded by its row sums.</p>
@@ -159,19 +159,19 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 8.1.4 — Bipartite Graphs and Symmetric Spectra</div>
+                    <div class="math-box-label">Theorem 8.1.4 - Bipartite Graphs and Symmetric Spectra</div>
                     <p class="mb-0">$G$ is bipartite if and only if its spectrum is symmetric about $0$: $\lambda_i = -\lambda_{n+1-i}$ for all $i$. Equivalently, $G$ is bipartite iff $-\lambda_1$ is also an eigenvalue.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Interlacing and Quotient Matrices</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 8.1.5 — Interlacing Theorem</div>
+                    <div class="math-box-label">Theorem 8.1.5 - Interlacing Theorem</div>
                     <p class="mb-0">If $H$ is an induced subgraph of $G$ on $m$ vertices with eigenvalues $\mu_1 \ge \cdots \ge \mu_m$, then $\lambda_k \ge \mu_k \ge \lambda_{n-m+k}$ for $1 \le k \le m$ (eigenvalue interlacing). In particular, $\lambda_1(H) \le \lambda_1(G)$ and $\lambda_n(G) \le \lambda_m(H)$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 8.1.6 — Equitable Partition and Quotient Matrix</div>
+                    <div class="math-box-label">Definition 8.1.6 - Equitable Partition and Quotient Matrix</div>
                     <p class="mb-0">A partition $V = V_1 \cup \cdots \cup V_r$ is <strong>equitable</strong> if the number of neighbours of any $v \in V_i$ in $V_j$ depends only on $i$ and $j$ (not on $v$). The <strong>quotient matrix</strong> $B_{ij}$ records this count. Eigenvalues of $B$ are also eigenvalues of $A$ (the quotient interlacing theorem).</p>
                 </div>
 

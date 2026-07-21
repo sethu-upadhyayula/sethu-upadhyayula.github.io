@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,15 +80,15 @@
             <article>
                 <h1 class="text-accent mb-4">1.1 Structure and Decomposition: Bond Floor and Conversion Option</h1>
 
-                <p>A convertible bond is issued like an ordinary corporate bond — with a face value, a coupon rate, and a maturity date — but carries an additional contractual right: at any time up to maturity (or during specified conversion windows), the holder may surrender the bond in exchange for a fixed number of the issuer's common shares instead of cash redemption. This single embedded right transforms the security's risk profile entirely, coupling its value to the issuer's equity in addition to its credit and interest-rate exposure.</p>
+                <p>A convertible bond is issued like an ordinary corporate bond - with a face value, a coupon rate, and a maturity date - but carries an additional contractual right: at any time up to maturity (or during specified conversion windows), the holder may surrender the bond in exchange for a fixed number of the issuer's common shares instead of cash redemption. This single embedded right transforms the security's risk profile entirely, coupling its value to the issuer's equity in addition to its credit and interest-rate exposure.</p>
 
                 <h2 class="mt-5 mb-3">Conversion Ratio and Conversion Price</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Conversion Ratio and Conversion Price</div>
-                    <p class="mb-0">A convertible bond with face value $F$ has a <em>conversion ratio</em> $C_r$ — the number of shares of common stock received per bond upon conversion, fixed at issuance. The implied <em>conversion price</em> is:
+                    <div class="math-box-label">Definition - Conversion Ratio and Conversion Price</div>
+                    <p class="mb-0">A convertible bond with face value $F$ has a <em>conversion ratio</em> $C_r$ - the number of shares of common stock received per bond upon conversion, fixed at issuance. The implied <em>conversion price</em> is:
                     $$P_{\text{conv}} = \frac{F}{C_r}$$
-                    The conversion price is the effective price per share an investor pays for the stock if the bond is converted at par. It is typically set at a premium to the stock price prevailing at issuance — a 20%-40% "conversion premium" is common in primary issuance — meaning the stock must appreciate by roughly that amount before conversion becomes more valuable than redemption at par.</p>
+                    The conversion price is the effective price per share an investor pays for the stock if the bond is converted at par. It is typically set at a premium to the stock price prevailing at issuance - a 20%-40% "conversion premium" is common in primary issuance - meaning the stock must appreciate by roughly that amount before conversion becomes more valuable than redemption at par.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Conversion Value and Parity</h2>
@@ -96,7 +96,7 @@
                 <p>At any point during the bond's life, the value of immediately converting is determined entirely by the current stock price and the fixed conversion ratio.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Conversion Value (Parity)</div>
+                    <div class="math-box-label">Definition - Conversion Value (Parity)</div>
                     <p class="mb-0">The <em>conversion value</em>, also called <em>parity</em>, at time $t$ is the value of the shares an investor would receive by converting immediately:
                     $$\text{Parity}_t = C_r \times S_t$$
                     where $S_t$ is the current stock price. Parity is often expressed as a percentage of face value, $\text{Parity}_t / F \times 100$, so it can be compared directly with the convertible's clean price (also quoted per 100 of face value). A convertible whose price trades close to parity is said to be "trading on parity," while one trading well above parity carries significant time value in its embedded option.</p>
@@ -107,28 +107,28 @@
                 <p>The standard way to understand a convertible's value is to decompose it, conceptually, into two pieces: a hypothetical straight bond with the same coupon, maturity, and credit risk but without the conversion right, and an embedded option on the issuer's stock.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Bond Floor</div>
+                    <div class="math-box-label">Definition - Bond Floor</div>
                     <p class="mb-0">The <em>bond floor</em> (or <em>investment value</em>) $B_t$ is the present value of the convertible's remaining coupon and principal cash flows, discounted at the issuer's credit-risky yield $y$ (the yield a comparable straight bond from the same issuer would carry), ignoring the conversion option entirely:
                     $$B_t = \sum_{i: t_i > t} c \, F \,\delta_i\, e^{-y(t_i - t)} + F\, e^{-y(T-t)}$$
-                    where $c$ is the annual coupon rate, $\delta_i$ the accrual fraction for coupon $i$, and $T$ the maturity. The bond floor represents the minimum value of the convertible if the stock price falls to a level where conversion is never economically attractive — the convertible then behaves like an ordinary credit-risky bond from the same issuer.</p>
+                    where $c$ is the annual coupon rate, $\delta_i$ the accrual fraction for coupon $i$, and $T$ the maturity. The bond floor represents the minimum value of the convertible if the stock price falls to a level where conversion is never economically attractive - the convertible then behaves like an ordinary credit-risky bond from the same issuer.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Embedded Conversion Option</div>
-                    <p class="mb-0">The difference between the convertible's market price $V_t$ and its bond floor $B_t$ is, loosely, the value of the embedded option to exchange the bond for $C_r$ shares of stock — an option whose payoff at maturity (ignoring early exercise and credit effects) resembles $C_r \times \max(S_T - P_{\text{conv}}, 0)$ plus the recovered principal, i.e. structurally similar to a call option on the stock struck at the conversion price, scaled by the conversion ratio. In practice the option is American-style (exercisable at any time, subject to call/put provisions covered in Section 1.2) and its value depends on the joint dynamics of the stock price and the issuer's credit spread, since both affect the discounting of the bond component.</p>
+                    <div class="math-box-label">Remark - The Embedded Conversion Option</div>
+                    <p class="mb-0">The difference between the convertible's market price $V_t$ and its bond floor $B_t$ is, loosely, the value of the embedded option to exchange the bond for $C_r$ shares of stock - an option whose payoff at maturity (ignoring early exercise and credit effects) resembles $C_r \times \max(S_T - P_{\text{conv}}, 0)$ plus the recovered principal, i.e. structurally similar to a call option on the stock struck at the conversion price, scaled by the conversion ratio. In practice the option is American-style (exercisable at any time, subject to call/put provisions covered in Section 1.2) and its value depends on the joint dynamics of the stock price and the issuer's credit spread, since both affect the discounting of the bond component.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Lower Bound on Convertible Value</div>
+                    <div class="math-box-label">Theorem - Lower Bound on Convertible Value</div>
                     <p class="mb-0">In the absence of arbitrage, the convertible's market price must satisfy:
                     $$V_t \geq \max(B_t, \text{Parity}_t)$$
-                    If $V_t < B_t$, an investor could buy the convertible and hold it to maturity for a payoff at least as good as a straight bond, strictly dominating the straight bond's price — an arbitrage. If $V_t < \text{Parity}_t$, an investor could buy the convertible, convert immediately, and sell the resulting shares for an instant profit. The excess $V_t - \max(B_t, \text{Parity}_t) \geq 0$ is the convertible's <em>premium</em>, representing the value of retaining optionality rather than converting or simply holding a straight bond.</p>
+                    If $V_t < B_t$, an investor could buy the convertible and hold it to maturity for a payoff at least as good as a straight bond, strictly dominating the straight bond's price - an arbitrage. If $V_t < \text{Parity}_t$, an investor could buy the convertible, convert immediately, and sell the resulting shares for an instant profit. The excess $V_t - \max(B_t, \text{Parity}_t) \geq 0$ is the convertible's <em>premium</em>, representing the value of retaining optionality rather than converting or simply holding a straight bond.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example: Decomposing a Convertible</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Bond Floor, Parity, and Premium</div>
+                    <div class="math-box-label">Example - Bond Floor, Parity, and Premium</div>
                     <p>Consider a 5-year convertible bond with face value $F = 1{,}000$, an annual coupon of $4\%$ (paid annually), and a conversion ratio of $C_r = 25$ shares per bond, giving a conversion price $P_{\text{conv}} = 1{,}000/25 = \$40$.</p>
                     <table class="table table-sm table-bordered" style="max-width:480px;">
                         <thead><tr><th>Quantity</th><th>Value</th></tr></thead>
@@ -145,7 +145,7 @@
                     $$\text{Parity}_t = C_r \times S_t = 25 \times 32 = 800 \quad (80.0\% \text{ of face})$$</p>
                     <p class="mb-0"><strong>Premium.</strong> The convertible trades at $98.5\%$, above both the bond floor ($87.0\%$) and parity ($80.0\%$):
                     $$\text{Premium} = V_t - \max(B_t,\text{Parity}_t) = 98.5\% - 87.0\% = 11.5\%$$
-                    This $11.5$-point premium over the bond floor is the market's valuation of the embedded conversion option — at this stock price ($32 vs. a $40 conversion price, i.e. $20\%$ below conversion price), the convertible is trading closer to its bond floor than to parity, placing it in the "bond-like" regime discussed in the next section.</p>
+                    This $11.5$-point premium over the bond floor is the market's valuation of the embedded conversion option - at this stock price ($32 vs. a $40 conversion price, i.e. $20\%$ below conversion price), the convertible is trading closer to its bond floor than to parity, placing it in the "bond-like" regime discussed in the next section.</p>
                 </div>
 
                 <hr class="my-5">

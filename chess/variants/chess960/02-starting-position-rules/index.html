@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="light" data-section="chess"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Starting Position Rules — Chess 960</title>
+<title>Starting Position Rules - Chess 960</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -45,25 +45,25 @@
 
         <h1 class="text-accent mb-4">2. Starting Position Rules</h1>
 
-  <p>The 960 starting positions of Chess960 are not arbitrary shuffles of the back rank — they are generated according to a small set of constraints that preserve the essential character of chess while maximising variety. Understanding these rules helps you quickly read any new position you are given.</p>
+  <p>The 960 starting positions of Chess960 are not arbitrary shuffles of the back rank - they are generated according to a small set of constraints that preserve the essential character of chess while maximising variety. Understanding these rules helps you quickly read any new position you are given.</p>
 
   <h3>The Three Constraints</h3>
   <ol>
-    <li><strong>Bishops must be on opposite-coloured squares</strong> — one bishop on a light square, one on a dark square. This ensures that both diagonal colour complexes are covered, exactly as in standard chess, and preserves the usual bishop-pair dynamics.</li>
-    <li><strong>The king must be placed somewhere between the two rooks</strong> on the back rank, with both rooks on the same side or one on each side of the king — i.e. the king cannot start on a or h, and at least one rook must be on each side... more precisely, the king is placed on any of the squares between the two rooks (which may themselves be anywhere). This guarantees that both kingside and queenside castling remain meaningful and legal to define.</li>
+    <li><strong>Bishops must be on opposite-coloured squares</strong> - one bishop on a light square, one on a dark square. This ensures that both diagonal colour complexes are covered, exactly as in standard chess, and preserves the usual bishop-pair dynamics.</li>
+    <li><strong>The king must be placed somewhere between the two rooks</strong> on the back rank, with both rooks on the same side or one on each side of the king - i.e. the king cannot start on a or h, and at least one rook must be on each side... more precisely, the king is placed on any of the squares between the two rooks (which may themselves be anywhere). This guarantees that both kingside and queenside castling remain meaningful and legal to define.</li>
     <li><strong>The queen and the two knights</strong> fill whichever squares remain, in any order, with no further restriction.</li>
   </ol>
-  <p>Pawns are always placed on rank 2 (for White) and rank 7 (for Black), exactly as in standard chess — only the back-rank piece arrangement is randomised. Black's setup is always the mirror image of White's: whatever square a White piece occupies on rank 1, the same file holds the corresponding Black piece on rank 8. This symmetry preserves the fairness of the starting position between the two colours.</p>
+  <p>Pawns are always placed on rank 2 (for White) and rank 7 (for Black), exactly as in standard chess - only the back-rank piece arrangement is randomised. Black's setup is always the mirror image of White's: whatever square a White piece occupies on rank 1, the same file holds the corresponding Black piece on rank 8. This symmetry preserves the fairness of the starting position between the two colours.</p>
 
   <h3>How Many Positions Satisfy These Rules?</h3>
-  <p>There are 8! = 40,320 ways to arrange 8 distinct objects in a row, but many of these arrangements are equivalent once we account for the fact that the two bishops, two knights, and two rooks of the same colour are each interchangeable (the rule only cares about which <em>squares</em> they occupy, not which physical piece sits where). Careful counting of the arrangements satisfying the bishop-colour and king-between-rooks constraints yields exactly <strong>960</strong> distinct legal starting positions — hence the name "Chess960." Each position is traditionally assigned an identifying number from 1 to 960 using a standard indexing scheme, so that "Chess960 position #534" unambiguously describes a specific setup.</p>
+  <p>There are 8! = 40,320 ways to arrange 8 distinct objects in a row, but many of these arrangements are equivalent once we account for the fact that the two bishops, two knights, and two rooks of the same colour are each interchangeable (the rule only cares about which <em>squares</em> they occupy, not which physical piece sits where). Careful counting of the arrangements satisfying the bishop-colour and king-between-rooks constraints yields exactly <strong>960</strong> distinct legal starting positions - hence the name "Chess960." Each position is traditionally assigned an identifying number from 1 to 960 using a standard indexing scheme, so that "Chess960 position #534" unambiguously describes a specific setup.</p>
 
   <h3>Example Starting Positions</h3>
-  <p>The standard chess starting position is itself one of the 960 valid Chess960 setups — conventionally numbered <strong>position 518</strong>, roughly the midpoint of the numbering scheme.</p>
+  <p>The standard chess starting position is itself one of the 960 valid Chess960 setups - conventionally numbered <strong>position 518</strong>, roughly the midpoint of the numbering scheme.</p>
 
   <div class="chess-board" id="board-sp1"></div>
   <script>renderChessBoard('board-sp1', {a1:'wR',b1:'wN',c1:'wB',d1:'wQ',e1:'wK',f1:'wB',g1:'wN',h1:'wR',a2:'wP',b2:'wP',c2:'wP',d2:'wP',e2:'wP',f2:'wP',g2:'wP',h2:'wP',a7:'bP',b7:'bP',c7:'bP',d7:'bP',e7:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bR',b8:'bN',c8:'bB',d8:'bQ',e8:'bK',f8:'bB',g8:'bN',h8:'bR'});</script>
-  <p class="text-center text-muted mt-2"><small>Position 518: the standard chess starting position — R N B Q K B N R. Bishops on c1 (dark) and f1 (light), opposite colours; king on e1 sits between the rooks on a1 and h1.</small></p>
+  <p class="text-center text-muted mt-2"><small>Position 518: the standard chess starting position - R N B Q K B N R. Bishops on c1 (dark) and f1 (light), opposite colours; king on e1 sits between the rooks on a1 and h1.</small></p>
 
   <div class="chess-board" id="board-sp2"></div>
   <script>renderChessBoard('board-sp2', {a1:'wR',b1:'wN',c1:'wB',d1:'wK',e1:'wQ',f1:'wB',g1:'wN',h1:'wR',a2:'wP',b2:'wP',c2:'wP',d2:'wP',e2:'wP',f2:'wP',g2:'wP',h2:'wP',a7:'bP',b7:'bP',c7:'bP',d7:'bP',e7:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bR',b8:'bN',c8:'bB',d8:'bK',e8:'bQ',f8:'bB',g8:'bN',h8:'bR'});</script>
@@ -71,24 +71,24 @@
 
   <div class="chess-board" id="board-sp3"></div>
   <script>renderChessBoard('board-sp3', {a1:'wQ',b1:'wN',c1:'wN',d1:'wR',e1:'wK',f1:'wB',g1:'wB',h1:'wR',a2:'wP',b2:'wP',c2:'wP',d2:'wP',e2:'wP',f2:'wP',g2:'wP',h2:'wP',a7:'bP',b7:'bP',c7:'bP',d7:'bP',e7:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bQ',b8:'bN',c8:'bN',d8:'bR',e8:'bK',f8:'bB',g8:'bB',h8:'bR'});</script>
-  <p class="text-center text-muted mt-2"><small>Another valid position: Q N N R K B B R. Queen on a1, both knights on b1/c1, rook on d1, king on e1 between the rooks (d1 and h1), bishops on f1 (light) and g1 (dark) — opposite colours.</small></p>
+  <p class="text-center text-muted mt-2"><small>Another valid position: Q N N R K B B R. Queen on a1, both knights on b1/c1, rook on d1, king on e1 between the rooks (d1 and h1), bishops on f1 (light) and g1 (dark) - opposite colours.</small></p>
 
   <div class="chess-board" id="board-sp4"></div>
   <script>renderChessBoard('board-sp4', {a1:'wB',b1:'wN',c1:'wR',d1:'wK',e1:'wR',f1:'wB',g1:'wN',h1:'wQ',a2:'wP',b2:'wP',c2:'wP',d2:'wP',e2:'wP',f2:'wP',g2:'wP',h2:'wP',a7:'bP',b7:'bP',c7:'bP',d7:'bP',e7:'bP',f7:'bP',g7:'bP',h7:'bP',a8:'bB',b8:'bN',c8:'bR',d8:'bK',e8:'bR',f8:'bB',g8:'bN',h8:'bQ'});</script>
-  <p class="text-center text-muted mt-2"><small>A position where the king starts between the rooks but very close to the centre: B N R K R B N Q. King on d1 is sandwiched directly between the rooks on c1 and e1 — both castling moves will require the king to move only one or two squares.</small></p>
+  <p class="text-center text-muted mt-2"><small>A position where the king starts between the rooks but very close to the centre: B N R K R B N Q. King on d1 is sandwiched directly between the rooks on c1 and e1 - both castling moves will require the king to move only one or two squares.</small></p>
 
   <h3>What Cannot Happen</h3>
   <p>Because of the three constraints above, certain arrangements that might otherwise be possible are excluded:</p>
   <ul>
     <li>The king can never start on the <strong>a-file or h-file</strong>, because it must have at least one rook to either side of it on the back rank.</li>
-    <li>Both bishops can never start on the same colour of square — so you will never see, for example, both bishops starting on light squares only.</li>
-    <li>The standard chess setup (position 518) is just one of 960 equally likely outcomes — there is nothing special about it from the variant's perspective, though it is the one most players recognise.</li>
+    <li>Both bishops can never start on the same colour of square - so you will never see, for example, both bishops starting on light squares only.</li>
+    <li>The standard chess setup (position 518) is just one of 960 equally likely outcomes - there is nothing special about it from the variant's perspective, though it is the one most players recognise.</li>
   </ul>
 
   <h3>Generating a Position</h3>
-  <p>In practice, online platforms and tournament arbiters generate Chess960 positions using a pseudo-random number generator (often seeded so both players can verify the same position was produced fairly), or by physically rolling dice / drawing pieces from a bag before the game in over-the-board events. Either way, both players see the resulting position at the same time, immediately before the game begins — there is no opportunity to prepare for a specific setup in advance.</p>
+  <p>In practice, online platforms and tournament arbiters generate Chess960 positions using a pseudo-random number generator (often seeded so both players can verify the same position was produced fairly), or by physically rolling dice / drawing pieces from a bag before the game in over-the-board events. Either way, both players see the resulting position at the same time, immediately before the game begins - there is no opportunity to prepare for a specific setup in advance.</p>
 
-  <p>Once you understand how a position was generated, the next question is how the special rule of castling works when the king and rooks no longer start on their familiar e-, a-, and h-file squares — this is the subject of <a href="../03-castling-in-chess-960/">Chapter 3</a>.</p>
+  <p>Once you understand how a position was generated, the next question is how the special rule of castling works when the king and rooks no longer start on their familiar e-, a-, and h-file squares - this is the subject of <a href="../03-castling-in-chess-960/">Chapter 3</a>.</p>
 
         <hr class="my-5">
         <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

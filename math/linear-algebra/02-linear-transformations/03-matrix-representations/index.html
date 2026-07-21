@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -47,7 +47,7 @@
 <h1 class="text-accent mb-4">2.3 Matrix Representations</h1>
 
 <div class="math-box definition">
-<div class="math-box-label">Definition — Matrix of a Linear Transformation</div>
+<div class="math-box-label">Definition - Matrix of a Linear Transformation</div>
 <p>Let $T:V\to W$ be linear, $\mathcal{B}=(b_1,\ldots,b_n)$ a basis for $V$, and $\mathcal{C}=(c_1,\ldots,c_m)$ a basis for $W$. The <strong>matrix of $T$ with respect to $\mathcal{B}$ and $\mathcal{C}$</strong> is the $m\times n$ matrix
 $$[T]_{\mathcal{B}}^{\mathcal{C}}$$
 whose $j$-th column is $[T(b_j)]_{\mathcal{C}}$, the coordinate vector of $T(b_j)$ in basis $\mathcal{C}$.</p>
@@ -57,7 +57,7 @@ That is, applying $T$ corresponds to matrix-vector multiplication in coordinates
 </div>
 
 <div class="math-box example">
-<div class="math-box-label">Example — Differentiation Matrix</div>
+<div class="math-box-label">Example - Differentiation Matrix</div>
 <p>Take $D:\mathcal{P}_2\to\mathcal{P}_1$ with $\mathcal{B}=(1,t,t^2)$ and $\mathcal{C}=(1,t)$. Then:
 $$D(1)=0=0\cdot1+0\cdot t, \quad D(t)=1=1\cdot1+0\cdot t, \quad D(t^2)=2t=0\cdot1+2\cdot t.$$
 So $[D]_{\mathcal{B}}^{\mathcal{C}} = \begin{pmatrix}0&1&0\\0&0&2\end{pmatrix}$.
@@ -65,14 +65,14 @@ Check: $[D(3+5t-2t^2)]_{\mathcal{C}} = \begin{pmatrix}0&1&0\\0&0&2\end{pmatrix}\
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Composition = Matrix Multiplication</div>
+<div class="math-box-label">Theorem - Composition = Matrix Multiplication</div>
 <p>If $T:U\to V$ and $S:V\to W$ are linear with bases $\mathcal{A},\mathcal{B},\mathcal{C}$ for $U,V,W$ respectively, then:
 $$[S\circ T]_{\mathcal{A}}^{\mathcal{C}} = [S]_{\mathcal{B}}^{\mathcal{C}}\,[T]_{\mathcal{A}}^{\mathcal{B}}.$$
 This is why matrix multiplication is defined the way it is: it encodes function composition.</p>
 </div>
 
 <div class="math-box remark">
-<div class="math-box-label">Remark — Change of Representation</div>
+<div class="math-box-label">Remark - Change of Representation</div>
 <p>The matrix $[T]_{\mathcal{B}}^{\mathcal{C}}$ depends on the choice of bases. If we change from $\mathcal{B}$ to $\mathcal{B}'$ and from $\mathcal{C}$ to $\mathcal{C}'$, the matrix changes by:
 $$[T]_{\mathcal{B}'}^{\mathcal{C}'} = [I_W]_{\mathcal{C}}^{\mathcal{C}'}[T]_{\mathcal{B}}^{\mathcal{C}}[I_V]_{\mathcal{B}'}^{\mathcal{B}}.$$
 For the special case $V=W$ and $\mathcal{B}=\mathcal{C}$, this becomes $[T]_{\mathcal{B}'} = P^{-1}[T]_{\mathcal{B}}P$ (similar matrices), the topic of §2.4.</p>

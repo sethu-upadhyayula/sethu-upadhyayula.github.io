@@ -47,7 +47,7 @@ function buildNavDock(prefix) {
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="${prefix}math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="${prefix}bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="${prefix}biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="${prefix}quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="${prefix}dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="${prefix}chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -129,7 +129,7 @@ function main() {
     if (results.failed.length) {
         console.log("\nFailures:");
         for (const f of results.failed) {
-            console.log(`  ${path.relative(ROOT, f.file)} — ${f.reason}`);
+            console.log(`  ${path.relative(ROOT, f.file)} - ${f.reason}`);
         }
         process.exitCode = 1;
     }

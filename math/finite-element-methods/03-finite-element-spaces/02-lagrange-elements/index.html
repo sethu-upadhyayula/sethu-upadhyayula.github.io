@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -125,19 +125,19 @@
             <article>
                 <h1 class="text-accent mb-4">3.2 Lagrange Elements</h1>
 
-                <p>Lagrange elements are the most widely used finite elements. The key idea is the <strong>nodal basis</strong>: basis functions are uniquely determined by the requirement that each function equals 1 at one node and 0 at all other nodes — a natural generalisation of Lagrange interpolation to two and three dimensions.</p>
+                <p>Lagrange elements are the most widely used finite elements. The key idea is the <strong>nodal basis</strong>: basis functions are uniquely determined by the requirement that each function equals 1 at one node and 0 at all other nodes - a natural generalisation of Lagrange interpolation to two and three dimensions.</p>
 
                 <h2 class="mt-4 mb-3">$P_1$ Linear Elements</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — $P_1$ Basis Functions (Hat Functions)</div>
+                    <div class="math-box-label">Definition - $P_1$ Basis Functions (Hat Functions)</div>
                     <p>On a triangulation $\mathcal{T}_h$, number the vertices (nodes) globally as $x_1, \ldots, x_N$. The <strong>$P_1$ nodal basis function</strong> $\varphi_i$ associated with node $x_i$ is the unique continuous, piecewise linear function satisfying
                     $$\varphi_i(x_j) = \delta_{ij} = \begin{cases} 1 & i = j, \\ 0 & i \neq j. \end{cases}$$
                     On each triangle $K$, $\varphi_i|_K$ is the unique linear polynomial with these values at the three vertices of $K$. These are sometimes called <strong>tent functions</strong> or <strong>hat functions</strong> because of their shape in 1D.</p>
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Support and Global Continuity</div>
+                    <div class="math-box-label">Proposition - Support and Global Continuity</div>
                     <p class="mb-0">The support of $\varphi_i$ is the union of all triangles sharing node $x_i$:
                     $$\operatorname{supp}(\varphi_i) = \bigcup_{\substack{K \in \mathcal{T}_h \\ x_i \in K}} K.$$
                     The compactness of this support is essential for the sparsity of the stiffness matrix: $K_{ij} = a(\varphi_j, \varphi_i) \neq 0$ only when $\operatorname{supp}(\varphi_i) \cap \operatorname{supp}(\varphi_j) \neq \emptyset$, which happens only when $x_i$ and $x_j$ are connected by an edge in $\mathcal{T}_h$.</p>
@@ -146,7 +146,7 @@
                 <h2 class="mt-5 mb-3">Barycentric Coordinates</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Barycentric Coordinates</div>
+                    <div class="math-box-label">Definition - Barycentric Coordinates</div>
                     <p class="mb-0">For a triangle $K$ with vertices $a_1, a_2, a_3$, the <strong>barycentric coordinates</strong> $\lambda_1, \lambda_2, \lambda_3$ of a point $x \in K$ are the unique non-negative reals satisfying
                     $$x = \lambda_1 a_1 + \lambda_2 a_2 + \lambda_3 a_3, \qquad \lambda_1 + \lambda_2 + \lambda_3 = 1.$$
                     The local $P_1$ basis functions on $K$ are simply $\hat\varphi_i = \lambda_i$. These are linear, satisfy the Kronecker property, and have unit sum, i.e.\ $\sum_i \lambda_i = 1$ (partition of unity).</p>
@@ -155,7 +155,7 @@
                 <h2 class="mt-5 mb-3">$P_2$ Quadratic Elements</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — $P_2$ Nodes and Basis</div>
+                    <div class="math-box-label">Definition - $P_2$ Nodes and Basis</div>
                     <p>The $P_2$ space on a triangle $K$ has $\dim P_2 = 6$. The 6 nodes are:
                     <ul>
                         <li>the 3 <strong>vertex nodes</strong> $a_1, a_2, a_3$, and</li>
@@ -170,14 +170,14 @@
                 <h2 class="mt-5 mb-3">Nodal Interpolation and Interpolation Error</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Nodal Interpolant</div>
+                    <div class="math-box-label">Definition - Nodal Interpolant</div>
                     <p class="mb-0">Given $u \in C^0(\bar\Omega)$ (or $u \in H^2(\Omega) \hookrightarrow C^0(\bar\Omega)$ by Sobolev embedding in 2D), the <strong>nodal interpolant</strong> $I_h u \in V_h$ is defined by
                     $$I_h u = \sum_{i=1}^N u(x_i)\,\varphi_i,$$
                     where the $x_i$ are the nodes of the space. It satisfies $(I_h u)(x_i) = u(x_i)$ at every node.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Interpolation Error Estimate</div>
+                    <div class="math-box-label">Theorem - Interpolation Error Estimate</div>
                     <p>Let $K$ be a shape-regular triangle with diameter $h_K$. For $u \in H^{k+1}(K)$ and $0 \leq m \leq k+1$, the local $P_k$ nodal interpolant satisfies
                     $$|u - I_h u|_{H^m(K)} \leq C\, h_K^{k+1-m}\, |u|_{H^{k+1}(K)},$$
                     where $C > 0$ depends on $k$, $m$, and the shape-regularity constant $\sigma$, but not on $h_K$ or $u$.</p>
@@ -185,12 +185,12 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Global Interpolation Error</div>
+                    <div class="math-box-label">Remark - Global Interpolation Error</div>
                     <p class="mb-0">Summing element contributions over the mesh: $\|u - I_h u\|_{H^m(\Omega)}^2 = \sum_K |u - I_h u|_{H^m(K)}^2 \leq C^2 h^{2(k+1-m)} |u|_{H^{k+1}(\Omega)}^2$. This gives the global estimate $\|u - I_h u\|_{H^m(\Omega)} \leq Ch^{k+1-m}\|u\|_{H^{k+1}(\Omega)}$, which feeds directly into the a priori error analysis of Chapter 5.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Global Assembly</div>
+                    <div class="math-box-label">Example - Global Assembly</div>
                     <p class="mb-0">To assemble the global stiffness matrix $K$ for $P_1$ elements: loop over each triangle $K$, compute the $3 \times 3$ element stiffness matrix $K^e$ using the local gradients $\nabla\varphi_i|_K$, then scatter entries to global positions using the element-to-global DOF map. The global $\varphi_i$ is the sum over all element contributions from triangles sharing node $i$. See Section 4.1 for the assembly algorithm in detail.</p>
                 </div>
 

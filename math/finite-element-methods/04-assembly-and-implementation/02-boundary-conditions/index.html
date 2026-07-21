@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -125,14 +125,14 @@
             <article>
                 <h1 class="text-accent mb-4">4.2 Boundary Conditions</h1>
 
-                <p>After global assembly, the unconstrained stiffness matrix $K$ is positive semi-definite — it has a non-trivial null space spanned by the constant function. Boundary conditions are required to eliminate this degeneracy and produce a well-posed system. Different types of boundary conditions require different treatment in the discrete system.</p>
+                <p>After global assembly, the unconstrained stiffness matrix $K$ is positive semi-definite - it has a non-trivial null space spanned by the constant function. Boundary conditions are required to eliminate this degeneracy and produce a well-posed system. Different types of boundary conditions require different treatment in the discrete system.</p>
 
                 <h2 class="mt-4 mb-3">Essential (Dirichlet) Boundary Conditions</h2>
 
                 <p>A Dirichlet condition $u = g$ on $\partial\Omega_D$ is called <strong>essential</strong> because it must be built into the trial space. For homogeneous Dirichlet ($g = 0$), the assembly restricts to interior DOFs from the start. For non-homogeneous Dirichlet data, there are two standard implementation strategies.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Elimination Method</div>
+                    <div class="math-box-label">Definition - Elimination Method</div>
                     <p>Let $\mathcal{I}$ denote the set of interior (free) DOF indices and $\mathcal{B}$ the set of boundary DOF indices. The assembled system $K\mathbf{u} = \mathbf{f}$ partitions as:
                     $$\begin{pmatrix} K_{\mathcal{I}\mathcal{I}} & K_{\mathcal{I}\mathcal{B}} \\ K_{\mathcal{B}\mathcal{I}} & K_{\mathcal{B}\mathcal{B}} \end{pmatrix} \begin{pmatrix} \mathbf{u}_\mathcal{I} \\ \mathbf{g}_\mathcal{B} \end{pmatrix} = \begin{pmatrix} \mathbf{f}_\mathcal{I} \\ \mathbf{f}_\mathcal{B} \end{pmatrix},$$
                     where $\mathbf{g}_\mathcal{B}$ is the vector of prescribed boundary values $g(x_i)$ at boundary nodes $i \in \mathcal{B}$. The interior unknowns satisfy the reduced system:
@@ -141,7 +141,7 @@
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Penalty Method</div>
+                    <div class="math-box-label">Definition - Penalty Method</div>
                     <p class="mb-0">The <strong>penalty method</strong> keeps the full $N \times N$ system and enforces Dirichlet conditions approximately by adding a large penalty $M \gg \|K\|$: for each boundary DOF $i \in \mathcal{B}$, replace
                     $$K_{ii} \leftarrow K_{ii} + M, \qquad f_i \leftarrow f_i + M\cdot g(x_i).$$
                     The solution satisfies $u_i \approx g(x_i)$ with error $O(\|K\|/M)$. Advantage: simple to implement without reindexing. Disadvantage: introduces ill-conditioning ($\kappa(K) \sim M$), requiring careful choice of $M$ (typically $M \sim h^{-d}\|K\|$ for optimal accuracy).</p>
@@ -150,7 +150,7 @@
                 <h2 class="mt-5 mb-3">Natural (Neumann) Boundary Conditions</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Neumann Condition in the Load Vector</div>
+                    <div class="math-box-label">Definition - Neumann Condition in the Load Vector</div>
                     <p>A Neumann condition $\partial u/\partial n = g$ on $\partial\Omega_N$ is <strong>natural</strong>: it arises from integration by parts in the weak form and enters the load vector as a boundary integral. For a boundary edge $e \subset \partial\Omega_N$ shared by element $K$, the contribution to $\mathbf{f}$ is:
                     $$f_i^{\partial} = \int_e g\,\varphi_i\,dS,$$
                     assembled via a 1D quadrature rule on the edge $e$. For $P_1$ elements and constant $g$: $f_i^{\partial} = g\cdot|e|/2$ for each endpoint node of $e$. No modification to $K$ is needed; the condition is automatically incorporated.</p>
@@ -159,7 +159,7 @@
                 <h2 class="mt-5 mb-3">Robin Boundary Conditions</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Robin Condition</div>
+                    <div class="math-box-label">Definition - Robin Condition</div>
                     <p class="mb-0">A Robin (or mixed) condition $\alpha u + \partial u/\partial n = g$ on $\partial\Omega_R$ modifies both the bilinear form and the load vector. The weak contribution is:
                     $$a_R(u,v) = \int_{\partial\Omega_R} \alpha\,u\,v\,dS, \qquad \ell_R(v) = \int_{\partial\Omega_R} g\,v\,dS.$$
                     The total bilinear form becomes $a(u,v) + a_R(u,v)$, which is still continuous and coercive (for $\alpha > 0$). This adds a boundary mass matrix $M_{\partial}$ to $K$: $K \leftarrow K + \alpha M_{\partial}$, with $M_{\partial}$ assembled from boundary edge integrals $\int_e \varphi_j\varphi_i\,dS$.</p>
@@ -168,7 +168,7 @@
                 <h2 class="mt-5 mb-3">Mixed Boundary Conditions</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Mixed BCs in Practice</div>
+                    <div class="math-box-label">Remark - Mixed BCs in Practice</div>
                     <p class="mb-0">When $\partial\Omega = \Gamma_D \cup \Gamma_N \cup \Gamma_R$ (disjoint parts), apply each condition to the corresponding boundary DOFs and edges:
                     <ul class="mb-0">
                         <li>Nodes on $\Gamma_D$: apply Dirichlet (elimination or penalty).</li>
@@ -179,7 +179,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Enforcing Homogeneous Dirichlet by Exclusion</div>
+                    <div class="math-box-label">Example - Enforcing Homogeneous Dirichlet by Exclusion</div>
                     <p class="mb-0">The simplest and most efficient strategy for homogeneous Dirichlet is to <em>never assemble</em> DOFs on $\partial\Omega$. The global assembly loop simply maps boundary local DOFs to a sentinel (e.g.\ index $-1$) and skips contributions to/from those DOFs. The resulting global matrix is already $K_{\mathcal{I}\mathcal{I}}$, SPD by construction, with no post-processing required. This is the standard approach in most FEM codes (FEniCS, deal.II, etc.).</p>
                 </div>
 

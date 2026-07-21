@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -100,38 +100,38 @@
                 <p>Decidability distinguishes problems that can be solved algorithmically (in all cases, always halting) from those that cannot. This is one of the deepest results in the foundations of mathematics and computer science.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.1 — Decidable and Recognisable Languages</div>
+                    <div class="math-box-label">Definition 4.2.1 - Decidable and Recognisable Languages</div>
                     <p><strong>Decidable (recursive):</strong> A language $L$ is decidable if there exists a TM $M$ that halts on every input and accepts iff the input is in $L$. Such a TM is called a <em>decider</em>.</p>
                     <p class="mb-0"><strong>Turing-recognisable (recursively enumerable):</strong> A language $L$ is recognisable if there exists a TM $M$ that accepts every $w \in L$ and either rejects or loops on $w \notin L$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.1 — Complement Characterisation</div>
+                    <div class="math-box-label">Theorem 4.2.1 - Complement Characterisation</div>
                     <p class="mb-0">A language $L$ is decidable if and only if both $L$ and its complement $\bar{L}$ are Turing-recognisable. In particular, if $L$ is decidable then $\bar{L}$ is also decidable.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Halting Problem</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.2 — Halting Problem</div>
+                    <div class="math-box-label">Definition 4.2.2 - Halting Problem</div>
                     <p class="mb-0">The <strong>Halting Problem</strong> is the language
                     $$HP = \{\langle M, w \rangle : M \text{ is a TM that halts on input } w\}.$$
                     It asks: given a TM $M$ and input $w$, does $M$ eventually halt?</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.2 — Undecidability of the Halting Problem</div>
+                    <div class="math-box-label">Theorem 4.2.2 - Undecidability of the Halting Problem</div>
                     <p>$HP$ is Turing-recognisable but not decidable.</p>
                 </div>
 
                 <div class="math-box proof">
-                    <div class="math-box-label">Proof — Diagonalisation</div>
+                    <div class="math-box-label">Proof - Diagonalisation</div>
                     <p>Suppose for contradiction that a decider $H$ for $HP$ exists. Construct TM $D$ as follows:</p>
                     <p>$D(\langle M \rangle)$: run $H(\langle M, \langle M \rangle\rangle)$; if $H$ accepts (i.e., $M$ halts on $\langle M \rangle$), then <em>loop forever</em>; if $H$ rejects, then <em>accept</em>.</p>
                     <p>Now consider $D(\langle D \rangle)$:</p>
                     <ul>
-                        <li>If $D$ halts on $\langle D \rangle$: then $H$ accepts $\langle D, \langle D \rangle\rangle$, so $D$ loops — contradiction.</li>
-                        <li>If $D$ does not halt on $\langle D \rangle$: then $H$ rejects $\langle D, \langle D \rangle\rangle$, so $D$ accepts (halts) — contradiction.</li>
+                        <li>If $D$ halts on $\langle D \rangle$: then $H$ accepts $\langle D, \langle D \rangle\rangle$, so $D$ loops - contradiction.</li>
+                        <li>If $D$ does not halt on $\langle D \rangle$: then $H$ rejects $\langle D, \langle D \rangle\rangle$, so $D$ accepts (halts) - contradiction.</li>
                     </ul>
                     <p class="mb-0">In both cases we have a contradiction. Therefore no such $H$ exists. $\square$</p>
                 </div>
@@ -139,24 +139,24 @@
                 <h2 class="mt-5 mb-3">Rice's Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.3 — Rice's Theorem</div>
+                    <div class="math-box-label">Theorem 4.2.3 - Rice's Theorem</div>
                     <p>Let $P$ be any property of Turing-recognisable languages that is <em>non-trivial</em> (holds for some TMs and fails for others). Then the language
                     $$L_P = \{\langle M \rangle : \mathcal{L}(M) \text{ has property } P\}$$
                     is undecidable.</p>
-                    <p class="mb-0">In other words, no algorithm can decide any non-trivial semantic property of TMs — such as "does this TM accept the empty string?" or "does this TM recognise a regular language?"</p>
+                    <p class="mb-0">In other words, no algorithm can decide any non-trivial semantic property of TMs - such as "does this TM accept the empty string?" or "does this TM recognise a regular language?"</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Reductions</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.3 — Many-One Reduction</div>
+                    <div class="math-box-label">Definition 4.2.3 - Many-One Reduction</div>
                     <p>A language $A$ is <strong>mapping-reducible</strong> (many-one reducible) to $B$, written $A \le_m B$, if there exists a computable function $f$ such that for all $w$:
                     $$w \in A \iff f(w) \in B.$$</p>
                     <p class="mb-0"><strong>Consequence:</strong> If $A \le_m B$ and $B$ is decidable, then $A$ is decidable. Contrapositively: if $A \le_m B$ and $A$ is undecidable, then $B$ is undecidable. Reductions are the primary tool for proving undecidability of new problems.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — $A_{TM}$ is Undecidable</div>
+                    <div class="math-box-label">Example - $A_{TM}$ is Undecidable</div>
                     <p class="mb-0">The acceptance problem $A_{TM} = \{\langle M, w\rangle : M \text{ accepts } w\}$ is undecidable (by reduction from $HP$). It is Turing-recognisable: simply run $M$ on $w$ and accept if it does. But its complement is not recognisable, confirming $A_{TM}$ is not decidable.</p>
                 </div>
 

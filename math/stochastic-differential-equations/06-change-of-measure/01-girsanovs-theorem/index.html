@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -54,15 +54,15 @@
                 <h2 class="mt-5 mb-3">Radon-Nikodym Derivative and Equivalent Measures</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.1.1 — Equivalent Probability Measures</div>
-                    <p>Two probability measures $P$ and $Q$ on $(\Omega, \mathcal{F})$ are <strong>equivalent</strong>, written $P \sim Q$, if they have the same null sets: $P(A) = 0 \iff Q(A) = 0$. By the Radon-Nikodym theorem, $Q \ll P$ (meaning $Q$ is absolutely continuous with respect to $P$) if and only if there exists a non-negative $\mathcal{F}$-measurable random variable $Z$ — the <strong>Radon-Nikodym derivative</strong> — such that $Q(A) = E^P[Z\,\mathbf{1}_A]$ for all $A \in \mathcal{F}$. We write $dQ/dP = Z$. Equivalence $P \sim Q$ holds iff $Z > 0$ $P$-a.s.</p>
+                    <div class="math-box-label">Definition 6.1.1 - Equivalent Probability Measures</div>
+                    <p>Two probability measures $P$ and $Q$ on $(\Omega, \mathcal{F})$ are <strong>equivalent</strong>, written $P \sim Q$, if they have the same null sets: $P(A) = 0 \iff Q(A) = 0$. By the Radon-Nikodym theorem, $Q \ll P$ (meaning $Q$ is absolutely continuous with respect to $P$) if and only if there exists a non-negative $\mathcal{F}$-measurable random variable $Z$ - the <strong>Radon-Nikodym derivative</strong> - such that $Q(A) = E^P[Z\,\mathbf{1}_A]$ for all $A \in \mathcal{F}$. We write $dQ/dP = Z$. Equivalence $P \sim Q$ holds iff $Z > 0$ $P$-a.s.</p>
                     <p class="mb-0">The conditional Radon-Nikodym derivative is $Z_t = E^P[Z \mid \mathcal{F}_t]$, and $(Z_t)_{t \geq 0}$ is a non-negative $P$-martingale.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Girsanov Exponential</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.1.2 — Doléans-Dade Exponential / Girsanov Density</div>
+                    <div class="math-box-label">Definition 6.1.2 - Doléans-Dade Exponential / Girsanov Density</div>
                     <p>Let $(\theta_t)_{0 \leq t \leq T}$ be a progressively measurable process. Define the <strong>Girsanov exponential</strong> (Doléans-Dade exponential of $-\int \theta\,dW$):</p>
                     $$Z_t = \exp\!\left(-\int_0^t \theta_s\,dW_s - \frac{1}{2}\int_0^t \theta_s^2\,ds\right), \quad 0 \leq t \leq T.$$
                     <p>By Itô's formula, $Z$ satisfies $dZ_t = -\theta_t Z_t\,dW_t$, so $Z$ is a non-negative local martingale with $Z_0 = 1$.</p>
@@ -72,7 +72,7 @@
                 <h2 class="mt-5 mb-3">Girsanov's Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.1.3 — Girsanov's Theorem</div>
+                    <div class="math-box-label">Theorem 6.1.3 - Girsanov's Theorem</div>
                     <p>Let $W$ be a $P$-Brownian motion and let $\theta$ be progressively measurable satisfying Novikov's condition. Define $Q$ by $dQ/dP = Z_T$ as above. Then the process</p>
                     $$\widetilde{W}_t = W_t + \int_0^t \theta_s\,ds, \quad 0 \leq t \leq T,$$
                     <p>is a standard Brownian motion under $Q$.</p>
@@ -85,14 +85,14 @@
                 </div>
 
                 <div class="math-box corollary">
-                    <div class="math-box-label">Corollary 6.1.4 — Change of Drift</div>
+                    <div class="math-box-label">Corollary 6.1.4 - Change of Drift</div>
                     <p>Suppose under $P$ the process $X$ satisfies $dX_t = b(t,X_t)\,dt + \sigma(t,X_t)\,dW_t$. With $\theta_t$ such that $\sigma\theta = b - \tilde{b}$ for some target drift $\tilde{b}$, under $Q$ (with $dQ/dP = Z_T$) the process $X$ satisfies</p>
                     $$dX_t = \tilde{b}(t,X_t)\,dt + \sigma(t,X_t)\,d\widetilde{W}_t.$$
                     <p class="mb-0">In particular, choosing $\tilde{b} = 0$ removes the drift entirely, and choosing $\tilde{b} = r\sigma/\sigma = r$ (in one dimension) converts physical drift $\mu$ to risk-free rate $r$.</p>
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 6.1.5 — Abstract Bayes Formula</div>
+                    <div class="math-box-label">Proposition 6.1.5 - Abstract Bayes Formula</div>
                     <p>Let $Y$ be an integrable random variable and $0 \leq t \leq T$. Then</p>
                     $$E^Q[Y \mid \mathcal{F}_t] = \frac{E^P[Z_T Y \mid \mathcal{F}_t]}{E^P[Z_T \mid \mathcal{F}_t]} = \frac{E^P[Z_T Y \mid \mathcal{F}_t]}{Z_t}.$$
                     <p class="mb-0">This formula is essential for computing conditional expectations under $Q$ using $P$-based calculations.</p>

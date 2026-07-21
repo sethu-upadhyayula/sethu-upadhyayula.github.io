@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -130,14 +130,14 @@
                 <p>Stationary distributions for CTMCs are defined through the generator $Q$, not through $P(t)$. They characterise the long-run time-average behaviour of the chain and arise as the null space of $Q^T$.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 3.3.1 — Stationary Distribution for a CTMC</div>
+                    <div class="math-box-label">Definition 3.3.1 - Stationary Distribution for a CTMC</div>
                     <p class="mb-0">A probability vector $\pi$ is a <strong>stationary distribution</strong> for the CTMC with generator $Q$ if
                     $$\pi Q = 0 \quad \text{and} \quad \sum_i \pi_i = 1, \quad \pi_i \ge 0.$$
                     Entry-wise: $\sum_i \pi_i q_{ij} = 0$ for all $j$, i.e., the rate of flow into $j$ equals the rate of flow out of $j$ (global balance).</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 3.3.2 — Detailed Balance for CTMCs</div>
+                    <div class="math-box-label">Definition 3.3.2 - Detailed Balance for CTMCs</div>
                     <p class="mb-0">A distribution $\pi$ satisfies <strong>detailed balance</strong> with $Q$ if
                     $$\pi_i q_{ij} = \pi_j q_{ji} \quad \text{for all } i \ne j.$$
                     Summing over $j$ shows that detailed balance implies $\pi Q = 0$. A CTMC with a detailed balance solution is called <strong>reversible in equilibrium</strong>.</p>
@@ -146,7 +146,7 @@
                 <h2 class="mt-5 mb-3">M/M/1 Queue</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — M/M/1 Queue Stationary Distribution</div>
+                    <div class="math-box-label">Example - M/M/1 Queue Stationary Distribution</div>
                     <p>The M/M/1 queue is a birth-death CTMC on $\{0, 1, 2, \ldots\}$ with $q_{n,n+1} = \lambda$ and $q_{n,n-1} = \mu$ ($n \ge 1$). Detailed balance gives
                     $$\pi_n \lambda = \pi_{n+1} \mu \implies \pi_{n+1} = \rho \pi_n, \quad \rho = \frac{\lambda}{\mu}.$$
                     For stability ($\rho < 1$), normalising gives:
@@ -155,14 +155,14 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.3.3 — Ergodic Theorem for CTMCs</div>
+                    <div class="math-box-label">Theorem 3.3.3 - Ergodic Theorem for CTMCs</div>
                     <p class="mb-0">For an irreducible positive recurrent CTMC with stationary distribution $\pi$,
                     $$\frac{1}{t} \int_0^t \mathbf{1}_{X(s)=j} \, ds \xrightarrow{a.s.} \pi_j \quad \text{as } t \to \infty.$$
                     That is, $\pi_j$ equals the long-run proportion of time spent in state $j$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — PASTA Property</div>
+                    <div class="math-box-label">Remark - PASTA Property</div>
                     <p class="mb-0">For Poisson arrivals to a CTMC system, the <strong>PASTA property</strong> (Poisson Arrivals See Time Averages) states that arriving customers see the system in state $j$ with probability $\pi_j$. This is because Poisson arrivals are independent of the system history, making each arrival an independent sample from the stationary distribution.</p>
                 </div>
 

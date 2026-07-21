@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -127,20 +127,20 @@
             <article>
                 <h1 class="text-accent mb-4">3.3 Constraint Qualifications</h1>
 
-                <p>Constraint qualifications (CQs) are regularity conditions ensuring that the KKT necessary conditions hold at a local minimum. Without a CQ, a local minimiser may fail to have Lagrange multipliers — the KKT conditions may be violated even though $x^*$ is genuinely optimal.</p>
+                <p>Constraint qualifications (CQs) are regularity conditions ensuring that the KKT necessary conditions hold at a local minimum. Without a CQ, a local minimiser may fail to have Lagrange multipliers - the KKT conditions may be violated even though $x^*$ is genuinely optimal.</p>
 
                 <h2 class="mt-4 mb-3">Why CQs Are Needed</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Failure Without CQ</div>
+                    <div class="math-box-label">Example - Failure Without CQ</div>
                     <p>Minimise $f(x_1,x_2)=x_1$ subject to $g_1(x)=x_1^2-x_2^3\le0$ and $g_2(x)=-x_2\le0$. The unique feasible point (and hence minimiser) is $x^*=(0,0)$. The active constraint gradients are $\nabla g_1(0,0)=(0,0)$ and $\nabla g_2(0,0)=(0,-1)$.</p>
-                    <p class="mb-0">Stationarity would require $(1,0)+\mu_1(0,0)+\mu_2(0,-1)=0$, giving $1=0$ — impossible. So no KKT multipliers exist at $x^*$. The problem is that $\nabla g_1(0,0)=0$ makes the active constraint gradients linearly dependent (LICQ fails).</p>
+                    <p class="mb-0">Stationarity would require $(1,0)+\mu_1(0,0)+\mu_2(0,-1)=0$, giving $1=0$ - impossible. So no KKT multipliers exist at $x^*$. The problem is that $\nabla g_1(0,0)=0$ makes the active constraint gradients linearly dependent (LICQ fails).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">LICQ</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 3.3.1 — Linear Independence CQ (LICQ)</div>
+                    <div class="math-box-label">Definition 3.3.1 - Linear Independence CQ (LICQ)</div>
                     <p>At a feasible point $x^*$, <strong>LICQ</strong> holds if the gradients of all active inequality constraints and all equality constraints are linearly independent:
                     $$\{\nabla g_i(x^*):i\in\mathcal{A}(x^*)\}\cup\{\nabla h_j(x^*):j=1,\ldots,p\}\text{ are linearly independent.}$$</p>
                     <p class="mb-0">LICQ $\Rightarrow$ KKT necessary conditions hold with unique multipliers $(\mu^*,\lambda^*)$. LICQ is the standard CQ used in SQP algorithms and is satisfied generically (for most problems).</p>
@@ -149,7 +149,7 @@
                 <h2 class="mt-5 mb-3">Slater's Condition</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 3.3.2 — Slater's Condition</div>
+                    <div class="math-box-label">Definition 3.3.2 - Slater's Condition</div>
                     <p>For a <strong>convex programme</strong> ($f,g_i$ convex, $h_j$ affine), <strong>Slater's condition</strong> holds if there exists a strictly feasible point $\bar x$:
                     $$g_i(\bar x) < 0 \quad\text{for all } i, \qquad h_j(\bar x) = 0 \quad\text{for all } j.$$</p>
                     <p class="mb-0">Slater's condition $\Rightarrow$ KKT conditions hold at any global minimiser. It is much weaker and easier to verify than LICQ for convex problems. It also implies strong duality ($p^*=d^*$). Any interior point of the feasible set is Slater-feasible.</p>
@@ -158,13 +158,13 @@
                 <h2 class="mt-5 mb-3">Other Constraint Qualifications</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 3.3.3 — MFCQ</div>
+                    <div class="math-box-label">Definition 3.3.3 - MFCQ</div>
                     <p>The <strong>Mangasarian-Fromovitz CQ (MFCQ)</strong> requires: (i) $\{\nabla h_j(x^*)\}$ are linearly independent; and (ii) there exists $d\in\mathbb{R}^n$ with $\nabla g_i(x^*)^Td<0$ for all $i\in\mathcal{A}(x^*)$ and $\nabla h_j(x^*)^Td=0$ for all $j$.</p>
                     <p class="mb-0">LICQ $\Rightarrow$ MFCQ $\Rightarrow$ KKT necessary conditions. MFCQ is strictly weaker than LICQ (it allows active constraint gradients to be linearly dependent provided the direction condition holds) and is often the right condition to verify in practice.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Hierarchy of CQs</div>
+                    <div class="math-box-label">Remark - Hierarchy of CQs</div>
                     <p class="mb-0">From strongest to weakest (for convex problems): LICQ $\Rightarrow$ MFCQ $\Rightarrow$ Slater $\Rightarrow$ KKT conditions hold. For LP, any basic feasible solution satisfies LICQ automatically (assuming non-degeneracy). For general nonlinear programming, verifying a CQ is part of validating the KKT optimality certificate.</p>
                 </div>
 

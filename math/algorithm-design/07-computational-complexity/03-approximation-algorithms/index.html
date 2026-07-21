@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -133,71 +133,71 @@
                 <h2 class="mt-5 mb-3">Approximation Ratios</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.3.1 — Approximation Ratio</div>
+                    <div class="math-box-label">Definition 7.3.1 - Approximation Ratio</div>
                     <p>For a minimisation problem, an algorithm $A$ is a <strong>$\rho$-approximation algorithm</strong> ($\rho \ge 1$) if, for every instance $I$, $A$ runs in polynomial time and produces a solution with value $A(I)$ satisfying</p>
                     <p>$$A(I) \le \rho \cdot \text{OPT}(I).$$</p>
                     <p class="mb-0">For a maximisation problem, the inequality is reversed and $\rho \le 1$ (often written as the algorithm guaranteeing at least $\rho \cdot \text{OPT}(I)$, with $\rho \in (0,1]$). Smaller $\rho$ (minimisation) or larger $\rho$ (maximisation, closer to 1) is better.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.3.2 — PTAS and FPTAS</div>
-                    <p>A <strong>polynomial-time approximation scheme (PTAS)</strong> is a family of algorithms $A_\varepsilon$, one for each $\varepsilon > 0$, such that $A_\varepsilon$ is a $(1+\varepsilon)$-approximation and runs in time polynomial in the input size $n$ (for fixed $\varepsilon$) — but the dependence on $\varepsilon$ may be arbitrarily bad, e.g. $O(n^{1/\varepsilon})$.</p>
+                    <div class="math-box-label">Definition 7.3.2 - PTAS and FPTAS</div>
+                    <p>A <strong>polynomial-time approximation scheme (PTAS)</strong> is a family of algorithms $A_\varepsilon$, one for each $\varepsilon > 0$, such that $A_\varepsilon$ is a $(1+\varepsilon)$-approximation and runs in time polynomial in the input size $n$ (for fixed $\varepsilon$) - but the dependence on $\varepsilon$ may be arbitrarily bad, e.g. $O(n^{1/\varepsilon})$.</p>
                     <p class="mb-0">A <strong>fully polynomial-time approximation scheme (FPTAS)</strong> additionally requires the running time to be polynomial in <em>both</em> $n$ and $1/\varepsilon$, e.g. $O(n^2/\varepsilon)$. FPTAS is the strongest form of approximation guarantee short of an exact polynomial algorithm.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Vertex Cover: A 2-Approximation</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.3.3 — Greedy Matching Gives a 2-Approximation for Vertex Cover</div>
+                    <div class="math-box-label">Theorem 7.3.3 - Greedy Matching Gives a 2-Approximation for Vertex Cover</div>
                     <p class="mb-0">The following algorithm is a 2-approximation for Minimum Vertex Cover: repeatedly pick any edge $(u,v)$ whose endpoints are not yet covered, add <em>both</em> $u$ and $v$ to the cover, and discard all edges incident to $u$ or $v$. Repeat until no edges remain.</p>
                 </div>
 
                 <div class="math-box proof">
                     <div class="math-box-label">Proof</div>
                     <p>Let $M$ be the set of edges chosen by the algorithm (one per iteration). Since each chosen edge has both endpoints newly added to the cover and all incident edges immediately discarded, $M$ is a <strong>matching</strong> (no two edges in $M$ share an endpoint).</p>
-                    <p>The algorithm's cover has size $|C| = 2|M|$ (two new vertices per chosen edge). Every edge in $M$ must be covered by <em>some</em> vertex in any valid vertex cover, and since $M$ is a matching, these covering vertices are all distinct — so $\text{OPT} \ge |M|$.</p>
+                    <p>The algorithm's cover has size $|C| = 2|M|$ (two new vertices per chosen edge). Every edge in $M$ must be covered by <em>some</em> vertex in any valid vertex cover, and since $M$ is a matching, these covering vertices are all distinct - so $\text{OPT} \ge |M|$.</p>
                     <p class="mb-0">Therefore $|C| = 2|M| \le 2 \cdot \text{OPT}$, giving a 2-approximation. The algorithm runs in $O(|V| + |E|)$ time. $\blacksquare$</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Tightness and Limits</div>
+                    <div class="math-box-label">Remark - Tightness and Limits</div>
                     <p class="mb-0">This 2-approximation has resisted improvement for decades; under the Unique Games Conjecture, no $(2 - \varepsilon)$-approximation exists for any $\varepsilon > 0$. Vertex Cover is also a canonical example of a problem with a good constant-factor approximation despite being NP-hard to solve exactly.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Set Cover: A Logarithmic Approximation</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.3.4 — Set Cover</div>
+                    <div class="math-box-label">Definition 7.3.4 - Set Cover</div>
                     <p class="mb-0">Given a universe $U$ of $n$ elements and a collection of subsets $S_1, \ldots, S_m \subseteq U$ (with $\bigcup_i S_i = U$), find the minimum number of subsets whose union is $U$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.3.5 — Greedy Set Cover is an $H_n$-Approximation</div>
-                    <p class="mb-0">The greedy algorithm — at each step, pick the set $S_i$ covering the largest number of currently-uncovered elements — produces a cover of size at most $H_n \cdot \text{OPT}$, where $H_n = 1 + \frac12 + \cdots + \frac1n = \Theta(\ln n)$ is the $n$-th harmonic number.</p>
+                    <div class="math-box-label">Theorem 7.3.5 - Greedy Set Cover is an $H_n$-Approximation</div>
+                    <p class="mb-0">The greedy algorithm - at each step, pick the set $S_i$ covering the largest number of currently-uncovered elements - produces a cover of size at most $H_n \cdot \text{OPT}$, where $H_n = 1 + \frac12 + \cdots + \frac1n = \Theta(\ln n)$ is the $n$-th harmonic number.</p>
                 </div>
 
                 <div class="math-box proof">
                     <div class="math-box-label">Proof Sketch</div>
                     <p>Charge each element $e \in U$ a cost of $\frac{1}{k}$ when it is covered by a set that newly covers $k$ previously-uncovered elements, so the total cost equals the size of the greedy cover.</p>
-                    <p>Fix an optimal cover $\mathcal{O}$ of size $\text{OPT}$. Consider any set $S \in \mathcal{O}$ and the elements of $S$ in the order the greedy algorithm covers them. When the $j$-th element of $S$ (in this order) is covered, at least $|S| - j + 1$ elements of $S$ are still uncovered, so $S$ alone could cover $\ge |S|-j+1$ new elements — hence the greedy choice at that step covers at least that many elements too, so the charge to this element is at most $\frac{1}{|S|-j+1}$.</p>
+                    <p>Fix an optimal cover $\mathcal{O}$ of size $\text{OPT}$. Consider any set $S \in \mathcal{O}$ and the elements of $S$ in the order the greedy algorithm covers them. When the $j$-th element of $S$ (in this order) is covered, at least $|S| - j + 1$ elements of $S$ are still uncovered, so $S$ alone could cover $\ge |S|-j+1$ new elements - hence the greedy choice at that step covers at least that many elements too, so the charge to this element is at most $\frac{1}{|S|-j+1}$.</p>
                     <p class="mb-0">Summing over $j = 1, \ldots, |S|$ gives total charge to elements of $S$ at most $\sum_{j=1}^{|S|} \frac{1}{|S|-j+1} = H_{|S|} \le H_n$. Summing over all $\text{OPT}$ sets in $\mathcal{O}$ (which cover all of $U$, possibly with overlap, only increasing the bound) gives total cost $\le \text{OPT} \cdot H_n$. $\blacksquare$</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Optimality of $\ln n$</div>
+                    <div class="math-box-label">Remark - Optimality of $\ln n$</div>
                     <p class="mb-0">It is NP-hard to approximate Set Cover within $(1-\varepsilon)\ln n$ for any $\varepsilon > 0$ (Dinur-Steurer), so the greedy algorithm's $\ln n$-ish ratio is essentially the best possible for a polynomial-time algorithm.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Travelling Salesman Problem with Triangle Inequality</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.3.6 — Metric TSP</div>
+                    <div class="math-box-label">Definition 7.3.6 - Metric TSP</div>
                     <p class="mb-0"><strong>Metric TSP:</strong> given a complete graph $K_n$ with edge weights $w$ satisfying the triangle inequality $w(u,v) \le w(u,x) + w(x,v)$ for all $u,v,x$, find a minimum-weight Hamiltonian cycle (tour visiting every vertex exactly once and returning to the start).</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.3.7 — MST Doubling Gives a 2-Approximation</div>
-                    <p class="mb-0">The following algorithm is a 2-approximation for Metric TSP: (1) compute a minimum spanning tree $T$ of the graph; (2) double every edge of $T$ to form an Eulerian multigraph (every vertex now has even degree); (3) find an Eulerian circuit in this multigraph; (4) convert it to a Hamiltonian cycle by "shortcutting" — skip any vertex already visited, going directly to the next unvisited vertex (valid by the triangle inequality, since shortcuts can only decrease total weight).</p>
+                    <div class="math-box-label">Theorem 7.3.7 - MST Doubling Gives a 2-Approximation</div>
+                    <p class="mb-0">The following algorithm is a 2-approximation for Metric TSP: (1) compute a minimum spanning tree $T$ of the graph; (2) double every edge of $T$ to form an Eulerian multigraph (every vertex now has even degree); (3) find an Eulerian circuit in this multigraph; (4) convert it to a Hamiltonian cycle by "shortcutting" - skip any vertex already visited, going directly to the next unvisited vertex (valid by the triangle inequality, since shortcuts can only decrease total weight).</p>
                 </div>
 
                 <div class="math-box proof">
@@ -207,8 +207,8 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.3.8 — Christofides' Algorithm: a $\frac{3}{2}$-Approximation</div>
-                    <p>Improve the doubling idea: (1) compute MST $T$; (2) let $O$ be the set of vertices with odd degree in $T$ (an even-sized set, by the handshake lemma); (3) find a minimum-weight perfect matching $M$ on $O$ (using only edges of the original metric); (4) form the multigraph $T \cup M$ — every vertex now has even degree; (5) find an Eulerian circuit and shortcut as before.</p>
+                    <div class="math-box-label">Theorem 7.3.8 - Christofides' Algorithm: a $\frac{3}{2}$-Approximation</div>
+                    <p>Improve the doubling idea: (1) compute MST $T$; (2) let $O$ be the set of vertices with odd degree in $T$ (an even-sized set, by the handshake lemma); (3) find a minimum-weight perfect matching $M$ on $O$ (using only edges of the original metric); (4) form the multigraph $T \cup M$ - every vertex now has even degree; (5) find an Eulerian circuit and shortcut as before.</p>
                 </div>
 
                 <div class="math-box proof">
@@ -218,24 +218,24 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — General TSP and Inapproximability</div>
-                    <p class="mb-0">Without the triangle inequality (general TSP), no polynomial-time $\rho$-approximation exists for <em>any</em> constant $\rho$, unless $P = NP$ — a simple "gap" reduction from Hamiltonian Cycle shows that distinguishing tours of weight $n$ from weight $> \rho n$ would solve an NP-complete problem. This illustrates that the metric assumption is essential for the constant-factor results above.</p>
+                    <div class="math-box-label">Remark - General TSP and Inapproximability</div>
+                    <p class="mb-0">Without the triangle inequality (general TSP), no polynomial-time $\rho$-approximation exists for <em>any</em> constant $\rho$, unless $P = NP$ - a simple "gap" reduction from Hamiltonian Cycle shows that distinguishing tours of weight $n$ from weight $> \rho n$ would solve an NP-complete problem. This illustrates that the metric assumption is essential for the constant-factor results above.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">PTAS Example and the Limits of Approximation</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.3.9 — A PTAS for Euclidean TSP</div>
+                    <div class="math-box-label">Example 7.3.9 - A PTAS for Euclidean TSP</div>
                     <p class="mb-0">For points in the Euclidean plane, Arora and Mitchell (1996, independently) gave a PTAS: for any $\varepsilon > 0$, a $(1+\varepsilon)$-approximate tour can be found in time $n \cdot (\log n)^{O(1/\varepsilon)}$, using a recursive spatial decomposition (a randomized shifted quadtree) combined with dynamic programming over a bounded number of crossing points per cell boundary. This shows that geometric structure can defeat NP-hardness in the approximation sense, even though exact Euclidean TSP remains NP-hard.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.3.10 — Knapsack has an FPTAS</div>
-                    <p class="mb-0">The 0/1 Knapsack optimisation problem (NP-hard) admits an FPTAS: scale and round item values to $O(n/\varepsilon)$ discrete levels, then run the pseudo-polynomial DP (Section 3.3) on the rounded values. This runs in $O(n^3/\varepsilon)$ time and returns a solution with value $\ge (1-\varepsilon)\cdot \text{OPT}$ — illustrating that pseudo-polynomial algorithms often yield FPTAS via rounding.</p>
+                    <div class="math-box-label">Example 7.3.10 - Knapsack has an FPTAS</div>
+                    <p class="mb-0">The 0/1 Knapsack optimisation problem (NP-hard) admits an FPTAS: scale and round item values to $O(n/\varepsilon)$ discrete levels, then run the pseudo-polynomial DP (Section 3.3) on the rounded values. This runs in $O(n^3/\varepsilon)$ time and returns a solution with value $\ge (1-\varepsilon)\cdot \text{OPT}$ - illustrating that pseudo-polynomial algorithms often yield FPTAS via rounding.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The PCP Theorem and Hardness of Approximation</div>
+                    <div class="math-box-label">Remark - The PCP Theorem and Hardness of Approximation</div>
                     <p>The <strong>PCP theorem</strong> (Probabilistically Checkable Proofs; Arora-Safra, Arora-Lund-Motwani-Sudan-Szegedy, 1992) states that $NP = \text{PCP}(O(\log n), O(1))$: every NP language has proofs that can be verified by reading only $O(1)$ randomly-chosen bits, with constant soundness/completeness gaps.</p>
                     <p class="mb-0">This deep result is the engine behind essentially all known <strong>inapproximability</strong> results: it converts NP-hardness of exact decision problems into NP-hardness of <em>distinguishing</em> "near-optimal" from "far-from-optimal" instances of optimisation problems, giving lower bounds on approximation ratios (e.g., Max-3SAT cannot be approximated within $\frac{7}{8}+\varepsilon$, and Set Cover cannot be approximated within $(1-\varepsilon)\ln n$, unless $P=NP$). Together with constructive approximation algorithms, the PCP theorem essentially completes the picture of which approximation ratios are achievable for major NP-hard optimisation problems.</p>
                 </div>

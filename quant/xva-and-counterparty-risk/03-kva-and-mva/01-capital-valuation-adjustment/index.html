@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,11 +81,11 @@
             <article>
                 <h1 class="text-accent mb-4">3.1 Capital Valuation Adjustment</h1>
 
-                <p>The Capital Valuation Adjustment (KVA) is the present value of the cost of holding regulatory capital against a derivatives position over its entire life. Since the Basel III reforms, banks must hold significant capital against counterparty credit risk (CCR capital, via SA-CCR or IMM), CVA risk (the CVA capital charge), and market risk. Capital is expensive — shareholders demand a return on equity well above the bank's funding rate — so the requirement to hold it represents a real economic cost that, like FVA, must be priced into trades.</p>
+                <p>The Capital Valuation Adjustment (KVA) is the present value of the cost of holding regulatory capital against a derivatives position over its entire life. Since the Basel III reforms, banks must hold significant capital against counterparty credit risk (CCR capital, via SA-CCR or IMM), CVA risk (the CVA capital charge), and market risk. Capital is expensive - shareholders demand a return on equity well above the bank's funding rate - so the requirement to hold it represents a real economic cost that, like FVA, must be priced into trades.</p>
 
                 <h2 class="mt-5 mb-3">Regulatory Capital for a Derivative</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Capital Profile $K(t)$</div>
+                    <div class="math-box-label">Definition - Capital Profile $K(t)$</div>
                     <p>For a given netting set, define $K(t)$ as the regulatory capital the bank must hold at time $t$ against that position, summing the relevant components:
                     $$K(t) = K_{\text{CCR}}(t) + K_{\text{CVA}}(t) + K_{\text{market risk}}(t)$$
                     where $K_{\text{CCR}}(t)$ is driven by the exposure-at-default (EAD) profile under SA-CCR, $K_{\text{CCR}}(t) \approx \alpha \cdot EAD(t) \cdot RW \cdot 8\%$ for risk-weight $RW$ and Basel multiplier $\alpha = 1.4$, and $K_{\text{CVA}}(t)$ is the capital charge against CVA volatility (BA-CVA or SA-CVA under the Fundamental Review of the Trading Book). $K(t)$ is projected forward over the life of the trade as the exposure profile amortises.</p>
@@ -93,14 +93,14 @@
 
                 <h2 class="mt-5 mb-3">KVA as the PV of the Cost of Capital</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — KVA Formula</div>
-                    <p>Let $h$ denote the bank's hurdle rate — the cost of equity capital in excess of the risk-free rate, often 8-12% p.a. KVA is the present value of the future cost of holding capital $K(t)$ against the trade, discounted at the risk-free rate, over the remaining life $T$:
+                    <div class="math-box-label">Theorem - KVA Formula</div>
+                    <p>Let $h$ denote the bank's hurdle rate - the cost of equity capital in excess of the risk-free rate, often 8-12% p.a. KVA is the present value of the future cost of holding capital $K(t)$ against the trade, discounted at the risk-free rate, over the remaining life $T$:
                     $$\text{KVA} = h \int_0^T K(t)\cdot P(0,t)\cdot Q_B(t)\,dt \approx h\sum_{k=1}^{n} K(t_k)\cdot P(0,t_k)\cdot \Delta t_k$$
                     where $Q_B(t)$ is the bank's own survival probability (capital need not be held against a trade once the bank itself has defaulted). KVA is charged to the client at trade inception (added to the price) as compensation for the capital the trade will consume over its life, and is held internally by the desk as a capital reserve.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — KVA on a 10-Year Swap</div>
+                    <div class="math-box-label">Example - KVA on a 10-Year Swap</div>
                     <p>A bank books a 10-year USD interest rate swap with a corporate client. SA-CCR produces an exposure-at-default profile that starts at \$8m and amortises roughly linearly to zero over 10 years, giving an average EAD of \$4m. The risk weight on the corporate counterparty is 100%, so:</p>
                     <p>$K_{\text{CCR}} \approx 1.4 \times \$4\text{m} \times 1.00 \times 8\% \approx \$448{,}000$ (average capital held over the life).</p>
                     <p>Adding a CVA capital charge of roughly \$150,000 average, total average capital $K \approx \$600{,}000$. With a hurdle rate $h = 10\%$ and a 10-year annuity factor of approximately 8.1:</p>
@@ -110,8 +110,8 @@
 
                 <h2 class="mt-5 mb-3">Practical Considerations</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — KVA, Hurdle Rates, and the RWA Optimisation Problem</div>
-                    <p class="mb-0">Because KVA is proportional to capital consumption (risk-weighted assets, RWA) rather than to market risk sensitivities, it behaves very differently from CVA or FVA: it is large for long-dated trades with high-risk-weight counterparties (e.g. uncleared trades with corporates or non-bank financials, which attract higher SA-CCR add-ons than centrally cleared trades with CCPs). KVA is also one of the most contentious XVA components in client negotiations, since the hurdle rate $h$ is a bank-specific, judgemental input — different desks and different banks will quote materially different KVA for the same trade. This has made KVA a key driver of the post-crisis trend toward central clearing (which dramatically reduces SA-CCR capital relative to bilateral trades) and toward exiting capital-intensive legacy portfolios entirely.</p>
+                    <div class="math-box-label">Remark - KVA, Hurdle Rates, and the RWA Optimisation Problem</div>
+                    <p class="mb-0">Because KVA is proportional to capital consumption (risk-weighted assets, RWA) rather than to market risk sensitivities, it behaves very differently from CVA or FVA: it is large for long-dated trades with high-risk-weight counterparties (e.g. uncleared trades with corporates or non-bank financials, which attract higher SA-CCR add-ons than centrally cleared trades with CCPs). KVA is also one of the most contentious XVA components in client negotiations, since the hurdle rate $h$ is a bank-specific, judgemental input - different desks and different banks will quote materially different KVA for the same trade. This has made KVA a key driver of the post-crisis trend toward central clearing (which dramatically reduces SA-CCR capital relative to bilateral trades) and toward exiting capital-intensive legacy portfolios entirely.</p>
                 </div>
 
                 <hr class="my-5">

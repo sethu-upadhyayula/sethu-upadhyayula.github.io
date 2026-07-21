@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,25 +81,25 @@
             <article>
                 <h1 class="text-accent mb-4">4.1 Vega, Vanna, and Volga</h1>
 
-                <p>Section 2.1 introduced vega, vanna, and volga as the building blocks of the vanna-volga smile construction. For a desk running an actual book of FX options, these same three Greeks are the primary risk dimensions reported, limited, and hedged on a daily basis — alongside the standard delta and gamma. This section develops the intuition for each, how they are used in practice to risk-manage a vol book, and works through the P&amp;L a vanna/volga exposure generates from a spot move.</p>
+                <p>Section 2.1 introduced vega, vanna, and volga as the building blocks of the vanna-volga smile construction. For a desk running an actual book of FX options, these same three Greeks are the primary risk dimensions reported, limited, and hedged on a daily basis - alongside the standard delta and gamma. This section develops the intuition for each, how they are used in practice to risk-manage a vol book, and works through the P&amp;L a vanna/volga exposure generates from a spot move.</p>
 
                 <h2 class="mt-5 mb-3">Definitions and Intuition</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Vega, Vanna, Volga (Restated)</div>
+                    <div class="math-box-label">Definition - Vega, Vanna, Volga (Restated)</div>
                     <p class="mb-0">For an option (or portfolio) with Garman-Kohlhagen value $V(S_0,\sigma)$:</p>
                     $$\text{Vega} = \frac{\partial V}{\partial \sigma}, \qquad \text{Vanna} = \frac{\partial^2 V}{\partial S_0\,\partial\sigma} = \frac{\partial \text{Vega}}{\partial S_0} = \frac{\partial \Delta}{\partial \sigma}, \qquad \text{Volga} = \frac{\partial^2 V}{\partial \sigma^2} = \frac{\partial\text{Vega}}{\partial \sigma}$$
                 </div>
 
                 <ul class="mb-4">
                     <li><strong>Vega</strong> is the most familiar: dollar sensitivity to a parallel shift in implied volatility. A long-vega book benefits from rising volatility.</li>
-                    <li><strong>Vanna</strong> can be read two equivalent ways: how vega changes as spot moves, or — more useful for hedging — how <em>delta</em> changes as implied volatility moves. A book with positive vanna will see its delta become more positive if volatility rises, requiring a re-hedge even with no spot movement.</li>
-                    <li><strong>Volga</strong> measures the convexity of the position's value with respect to volatility — how much vega itself changes as volatility moves. A position with positive volga benefits from volatility being volatile (large moves in implied vol in either direction increase value), independent of the direction of the move — directly analogous to gamma's role for spot.</li>
+                    <li><strong>Vanna</strong> can be read two equivalent ways: how vega changes as spot moves, or - more useful for hedging - how <em>delta</em> changes as implied volatility moves. A book with positive vanna will see its delta become more positive if volatility rises, requiring a re-hedge even with no spot movement.</li>
+                    <li><strong>Volga</strong> measures the convexity of the position's value with respect to volatility - how much vega itself changes as volatility moves. A position with positive volga benefits from volatility being volatile (large moves in implied vol in either direction increase value), independent of the direction of the move - directly analogous to gamma's role for spot.</li>
                 </ul>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Which Instruments Carry Which Exposure</div>
-                    <p class="mb-0">Recall the vanna-volga benchmark instruments from Section 2.1: the ATM straddle is (to first order) a pure vega instrument with near-zero vanna and volga; the risk reversal (long one wing, short the other) is primarily a <em>vanna</em> instrument — its value is highly sensitive to the interaction between spot and the skew; the butterfly (long both wings, short the straddle) is primarily a <em>volga</em> instrument — its value responds to changes in the curvature/convexity of the smile. This is precisely why these three instruments suffice to hedge a smile-dependent exotic: together they span vega, vanna, and volga exposure.</p>
+                    <div class="math-box-label">Remark - Which Instruments Carry Which Exposure</div>
+                    <p class="mb-0">Recall the vanna-volga benchmark instruments from Section 2.1: the ATM straddle is (to first order) a pure vega instrument with near-zero vanna and volga; the risk reversal (long one wing, short the other) is primarily a <em>vanna</em> instrument - its value is highly sensitive to the interaction between spot and the skew; the butterfly (long both wings, short the straddle) is primarily a <em>volga</em> instrument - its value responds to changes in the curvature/convexity of the smile. This is precisely why these three instruments suffice to hedge a smile-dependent exotic: together they span vega, vanna, and volga exposure.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Risk-Managing a Vol Book</h2>
@@ -107,27 +107,27 @@
                 <p>A market-making desk in FX options accumulates vega, vanna, and volga exposure across its book of vanilla and exotic positions, aggregated across strikes and tenors (often "bucketed" into standard tenor and delta buckets for reporting). Managing this book involves keeping each of these exposures within limits, typically by trading offsetting vanilla structures.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Hedging Each Greek with the Natural Instrument</div>
-                    <p>Net vega is hedged by trading ATM straddles (adding or removing pure vega with minimal effect on vanna/volga). Net vanna is hedged by trading risk reversals — a risk reversal trade changes the book's vanna with comparatively little effect on its vega (since the long and short legs have similar vega magnitudes that largely offset) and a smaller effect on volga than on vanna. Net volga is hedged by trading butterflies, similarly chosen to be vega- and vanna-neutral at inception.</p>
-                    <p class="mb-0">In practice, hedging is iterative and approximate: trading a risk reversal to fix a vanna problem will perturb vega and volga slightly, requiring a follow-up adjustment, and the three Greeks of any real position are never perfectly orthogonal. But this decomposition — vega via straddles, vanna via risk reversals, volga via butterflies — is the standard mental model and the standard set of hedging instruments used across FX options desks.</p>
+                    <div class="math-box-label">Remark - Hedging Each Greek with the Natural Instrument</div>
+                    <p>Net vega is hedged by trading ATM straddles (adding or removing pure vega with minimal effect on vanna/volga). Net vanna is hedged by trading risk reversals - a risk reversal trade changes the book's vanna with comparatively little effect on its vega (since the long and short legs have similar vega magnitudes that largely offset) and a smaller effect on volga than on vanna. Net volga is hedged by trading butterflies, similarly chosen to be vega- and vanna-neutral at inception.</p>
+                    <p class="mb-0">In practice, hedging is iterative and approximate: trading a risk reversal to fix a vanna problem will perturb vega and volga slightly, requiring a follow-up adjustment, and the three Greeks of any real position are never perfectly orthogonal. But this decomposition - vega via straddles, vanna via risk reversals, volga via butterflies - is the standard mental model and the standard set of hedging instruments used across FX options desks.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example: Vanna/Volga P&amp;L from a Spot Move</h2>
 
-                <p>The practical importance of vanna and volga becomes concrete when a book that is reported as "flat" on vega nonetheless generates significant P&amp;L from a spot move — because the spot move itself changes the implied volatilities the book is marked at (per the sticky-rule dynamics of Section 2.2), and the vanna/volga exposures translate that volatility change into value changes.</p>
+                <p>The practical importance of vanna and volga becomes concrete when a book that is reported as "flat" on vega nonetheless generates significant P&amp;L from a spot move - because the spot move itself changes the implied volatilities the book is marked at (per the sticky-rule dynamics of Section 2.2), and the vanna/volga exposures translate that volatility change into value changes.</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Vanna P&amp;L on a Risk-Reversal Position</div>
-                    <p>A desk holds a long 25-delta risk reversal position (long EUR call/USD put, short EUR put/USD call — i.e., positioned for EUR strength and/or richening skew) on EUR/USD, with vega approximately flat (the two legs' vegas roughly offset) but vanna of $+50{,}000$ (USD P&amp;L per 1% move in $\sigma$ per 1% move in spot, in suitable units).</p>
-                    <p>Suppose EUR/USD spot rallies by 1%, and — consistent with sticky-delta-ish dynamics and the negative typical EUR/USD risk reversal — the skew moves further negative is <em>not</em> what happens here; instead suppose the rally is accompanied by a $+0.20\%$ shift in the risk-reversal level itself (i.e., $\text{RR}_{25}$ becomes less negative / more positive by 0.20 vol points), consistent with a "risk-on" move where EUR calls richen.</p>
+                    <div class="math-box-label">Example - Vanna P&amp;L on a Risk-Reversal Position</div>
+                    <p>A desk holds a long 25-delta risk reversal position (long EUR call/USD put, short EUR put/USD call - i.e., positioned for EUR strength and/or richening skew) on EUR/USD, with vega approximately flat (the two legs' vegas roughly offset) but vanna of $+50{,}000$ (USD P&amp;L per 1% move in $\sigma$ per 1% move in spot, in suitable units).</p>
+                    <p>Suppose EUR/USD spot rallies by 1%, and - consistent with sticky-delta-ish dynamics and the negative typical EUR/USD risk reversal - the skew moves further negative is <em>not</em> what happens here; instead suppose the rally is accompanied by a $+0.20\%$ shift in the risk-reversal level itself (i.e., $\text{RR}_{25}$ becomes less negative / more positive by 0.20 vol points), consistent with a "risk-on" move where EUR calls richen.</p>
                     <p>The vanna P&amp;L contribution is approximately:</p>
                     $$\text{P\&L}_{\text{vanna}} \approx \text{Vanna} \times \Delta S_0(\%) \times \Delta \sigma_{\text{skew}}(\%) = 50{,}000 \times 1 \times 0.20 = 10{,}000$$
-                    <p class="mb-0">In this scenario, the position gains approximately USD 10,000 purely from the vanna exposure — even though the position's vega was reported as flat and no straddle-level volatility change occurred. This is exactly the kind of P&amp;L that a desk monitoring only vega (and delta) would fail to anticipate, and is why vanna and volga are reported and limited as first-class risk measures, not just as inputs to the smile-construction formula of Section 2.1.</p>
+                    <p class="mb-0">In this scenario, the position gains approximately USD 10,000 purely from the vanna exposure - even though the position's vega was reported as flat and no straddle-level volatility change occurred. This is exactly the kind of P&amp;L that a desk monitoring only vega (and delta) would fail to anticipate, and is why vanna and volga are reported and limited as first-class risk measures, not just as inputs to the smile-construction formula of Section 2.1.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Volga and "Vol-of-Vol" Scenarios</div>
-                    <p class="mb-0">An analogous example applies to volga: a book with large positive volga (e.g., from being long butterflies / long the wings relative to the ATM) will show P&amp;L gains if the smile's curvature increases — i.e., if $\text{BF}_{25}$ widens — even if $\sigma_{\text{ATM}}$ itself is unchanged and net vega is flat. Stress-testing a vol book therefore requires scenario shocks not just to the ATM volatility level, but separately to the risk reversal and butterfly — the vanna and volga "axes" of the surface — to capture the full range of P&amp;L outcomes the book can realize.</p>
+                    <div class="math-box-label">Remark - Volga and "Vol-of-Vol" Scenarios</div>
+                    <p class="mb-0">An analogous example applies to volga: a book with large positive volga (e.g., from being long butterflies / long the wings relative to the ATM) will show P&amp;L gains if the smile's curvature increases - i.e., if $\text{BF}_{25}$ widens - even if $\sigma_{\text{ATM}}$ itself is unchanged and net vega is flat. Stress-testing a vol book therefore requires scenario shocks not just to the ATM volatility level, but separately to the risk reversal and butterfly - the vanna and volga "axes" of the surface - to capture the full range of P&amp;L outcomes the book can realize.</p>
                 </div>
 
                 <hr class="my-5">

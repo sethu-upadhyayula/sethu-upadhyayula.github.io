@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,11 +81,11 @@
             <article>
                 <h1 class="text-accent mb-4">2.1 CSAs and Variation Margin</h1>
 
-                <p>The Credit Support Annex (CSA) is the legal document — typically an annex to an ISDA Master Agreement — that governs the exchange of collateral between two counterparties to mitigate the counterparty credit risk identified in Chapter 1. Variation margin (VM) is the collateral that tracks the mark-to-market value of the netting set, exchanged periodically (usually daily) so that the secured exposure remains close to zero.</p>
+                <p>The Credit Support Annex (CSA) is the legal document - typically an annex to an ISDA Master Agreement - that governs the exchange of collateral between two counterparties to mitigate the counterparty credit risk identified in Chapter 1. Variation margin (VM) is the collateral that tracks the mark-to-market value of the netting set, exchanged periodically (usually daily) so that the secured exposure remains close to zero.</p>
 
                 <h2 class="mt-5 mb-3">CSA Mechanics</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Variation Margin Call</div>
+                    <div class="math-box-label">Definition - Variation Margin Call</div>
                     <p>On each margin call date $t$, the collateral-taking party computes the net mark-to-market $V(t) = \sum_i V_i(t)$ of the netting set under the CSA. The required collateral balance is:
                     $$C^{\star}(t) = \max\big(V(t) - H,\, 0\big) \quad \text{(from the perspective of the party owed money)}$$
                     where $H$ is the unsecured <em>threshold</em>. If the existing posted collateral balance $C(t^-)$ differs from $C^{\star}(t)$ by more than the <em>Minimum Transfer Amount (MTA)</em>, a margin call is issued for the difference $\Delta C = C^{\star}(t) - C(t^-)$, rounded to the nearest collateral increment.</p>
@@ -93,7 +93,7 @@
 
                 <h2 class="mt-5 mb-3">Threshold and Minimum Transfer Amount</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Threshold (H) and MTA</div>
+                    <div class="math-box-label">Definition - Threshold (H) and MTA</div>
                     <ul class="mb-0">
                         <li><strong>Threshold $H$:</strong> the amount of exposure that may remain uncollateralised before a margin call is triggered. A "zero-threshold" CSA collateralises from the first dollar of exposure; a positive threshold leaves a permanent unsecured exposure band of size $H$ even with daily margining.</li>
                         <li><strong>Minimum Transfer Amount (MTA):</strong> the smallest collateral movement that will actually be called, to avoid the operational burden of transferring trivial amounts every day. A typical MTA is \$100k-\$500k for an interdealer CSA.</li>
@@ -103,24 +103,24 @@
 
                 <h2 class="mt-5 mb-3">Residual Exposure Under a CSA</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Collateralised Exposure</div>
+                    <div class="math-box-label">Theorem - Collateralised Exposure</div>
                     <p>Under a one-way or two-way CSA with threshold $H$ and margin period of risk (MPOR) $\Delta$, the current exposure at the moment of counterparty default is approximately:
                     $$CE_{\text{CSA}}(t) \approx \max\!\Big(V(t) - C(t-\Delta) ,\, 0\Big)$$
-                    where $C(t-\Delta)$ is the collateral balance held $\Delta$ days before default — the lag during which the portfolio may move further against the collateral-taker before collateral can be liquidated. The MPOR (typically 10 business days for non-cleared bilateral trades, 5-7 for cleared) captures the operational delay: notification of default, dispute resolution, and close-out.</p>
-                    <p class="mb-0">The residual exposure that survives collateralisation is therefore driven by three components: the threshold $H$, the MTA/rounding band, and the potential market move over the MPOR. CVA on a well-collateralised netting set is dominated by the latter — the "gap risk" over the margin period of risk.</p>
+                    where $C(t-\Delta)$ is the collateral balance held $\Delta$ days before default - the lag during which the portfolio may move further against the collateral-taker before collateral can be liquidated. The MPOR (typically 10 business days for non-cleared bilateral trades, 5-7 for cleared) captures the operational delay: notification of default, dispute resolution, and close-out.</p>
+                    <p class="mb-0">The residual exposure that survives collateralisation is therefore driven by three components: the threshold $H$, the MTA/rounding band, and the potential market move over the MPOR. CVA on a well-collateralised netting set is dominated by the latter - the "gap risk" over the margin period of risk.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — VM Call on a Swap Portfolio</div>
+                    <div class="math-box-label">Example - VM Call on a Swap Portfolio</div>
                     <p>Two dealers run a two-way CSA with $H = \$0$, MTA $= \$250{,}000$, daily margining, USD cash collateral. At close of business the net MTM of the netting set (from Dealer A's perspective) moves from $+\$4.10\text{m}$ to $+\$4.42\text{m}$.</p>
                     <p>$\Delta C = \$4.42\text{m} - \$4.10\text{m} = \$320{,}000 > \text{MTA} = \$250{,}000$, so Dealer A issues a call to Dealer B for $\$320{,}000$ of additional variation margin.</p>
-                    <p class="mb-0">If instead the move had been $+\$180{,}000$, no call would be made — that amount remains uncollateralised until cumulative moves exceed the MTA, contributing a small residual exposure to CVA.</p>
+                    <p class="mb-0">If instead the move had been $+\$180{,}000$, no call would be made - that amount remains uncollateralised until cumulative moves exceed the MTA, contributing a small residual exposure to CVA.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Eligible Collateral and Haircuts</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Collateral Quality, FX and ColVA</div>
-                    <p class="mb-0">CSAs specify eligible collateral types (cash in one or more currencies, government bonds) and apply <em>haircuts</em> to non-cash collateral to absorb potential value declines before the next margin call. When variation margin can be posted in a currency other than the trade's discounting currency, the embedded optionality to choose the cheapest-to-deliver collateral currency gives rise to a "cheapest-to-deliver" (CTD) discounting curve and a small additional valuation adjustment sometimes called <em>ColVA</em>. Because most major interdealer CSAs now mandate cash VM in the trade's settlement currency remunerated at the overnight index rate (e.g. SOFR, €STR), discounting collateralised derivatives at the relevant overnight rate — OIS discounting — has become the market standard, as introduced in the Interest Rate Swaps module.</p>
+                    <div class="math-box-label">Remark - Collateral Quality, FX and ColVA</div>
+                    <p class="mb-0">CSAs specify eligible collateral types (cash in one or more currencies, government bonds) and apply <em>haircuts</em> to non-cash collateral to absorb potential value declines before the next margin call. When variation margin can be posted in a currency other than the trade's discounting currency, the embedded optionality to choose the cheapest-to-deliver collateral currency gives rise to a "cheapest-to-deliver" (CTD) discounting curve and a small additional valuation adjustment sometimes called <em>ColVA</em>. Because most major interdealer CSAs now mandate cash VM in the trade's settlement currency remunerated at the overnight index rate (e.g. SOFR, €STR), discounting collateralised derivatives at the relevant overnight rate - OIS discounting - has become the market standard, as introduced in the Interest Rate Swaps module.</p>
                 </div>
 
                 <hr class="my-5">

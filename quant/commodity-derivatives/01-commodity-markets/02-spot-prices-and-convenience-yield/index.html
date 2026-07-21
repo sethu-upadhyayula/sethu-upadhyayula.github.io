@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,24 +81,24 @@
             <article>
                 <h1 class="text-accent mb-4">1.2 Spot Prices and Convenience Yield</h1>
 
-                <p>The relationship between spot and futures prices in commodity markets cannot be explained by interest rates and storage costs alone. A crucial additional ingredient — the <strong>convenience yield</strong> — captures the non-monetary benefit that accrues to the holder of physical inventory, and it is the key to understanding why commodity forward curves so often depart from the simple cost-of-carry relationships familiar from financial markets.</p>
+                <p>The relationship between spot and futures prices in commodity markets cannot be explained by interest rates and storage costs alone. A crucial additional ingredient - the <strong>convenience yield</strong> - captures the non-monetary benefit that accrues to the holder of physical inventory, and it is the key to understanding why commodity forward curves so often depart from the simple cost-of-carry relationships familiar from financial markets.</p>
 
                 <h2 class="mt-5 mb-3">Spot Price Formation</h2>
 
                 <p>The spot price $S_t$ of a commodity is determined by the immediate balance of physical supply and demand at a given location and quality specification. Unlike a financial asset, a commodity spot price reflects not only current valuation of future cash flows but also the immediate, localised state of the physical market: how much inventory sits in storage, how close production is running to capacity, and how urgently consumers need to take delivery.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Spot Price Formation</div>
+                    <div class="math-box-label">Definition - Spot Price Formation</div>
                     <p class="mb-0">The spot price of a commodity at time $t$ is the price at which the marginal unit of physical supply clears against the marginal unit of physical demand for immediate delivery. Because storage and transportation are costly and time-consuming, spot prices can differ substantially across locations (the basis) and can exhibit short-lived spikes or collapses that are absent from longer-dated futures prices, which embed expectations about the resolution of current imbalances.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Concept of Convenience Yield</h2>
 
-                <p>Consider a refiner holding a tank of crude oil. That inventory is not merely a financial position — it is operational insurance. If a supplier shipment is delayed, the refiner can keep its plant running by drawing down the tank rather than halting production. This option-like benefit of holding the physical good, over and above any cash flow it generates, is the convenience yield.</p>
+                <p>Consider a refiner holding a tank of crude oil. That inventory is not merely a financial position - it is operational insurance. If a supplier shipment is delayed, the refiner can keep its plant running by drawing down the tank rather than halting production. This option-like benefit of holding the physical good, over and above any cash flow it generates, is the convenience yield.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Convenience Yield</div>
-                    <p class="mb-0">The convenience yield $y$ is the implicit, non-monetary benefit (expressed as an annualised rate) that accrues to the holder of the physical commodity, arising from the ability to profit from temporary local shortages, avoid the costs and disruption of stockouts, and maintain flexibility in production and delivery scheduling. It behaves like a "dividend yield" earned only by holders of the physical good — not by holders of a futures contract.</p>
+                    <div class="math-box-label">Definition - Convenience Yield</div>
+                    <p class="mb-0">The convenience yield $y$ is the implicit, non-monetary benefit (expressed as an annualised rate) that accrues to the holder of the physical commodity, arising from the ability to profit from temporary local shortages, avoid the costs and disruption of stockouts, and maintain flexibility in production and delivery scheduling. It behaves like a "dividend yield" earned only by holders of the physical good - not by holders of a futures contract.</p>
                 </div>
 
                 <p>Crucially, the convenience yield is <em>not</em> a cash flow that can be captured by an arbitrageur who is short the physical commodity. A trader who sells crude oil short receives no compensation for the operational flexibility that a refiner gives up; this asymmetry is what allows commodity forward curves to behave very differently from those of financial assets.</p>
@@ -108,24 +108,24 @@
                 <p>Incorporating storage costs and convenience yield into the standard cost-of-carry framework gives the fundamental commodity forward pricing relationship.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Forward Price with Storage and Convenience Yield</div>
+                    <div class="math-box-label">Theorem - Forward Price with Storage and Convenience Yield</div>
                     <p>Let $S_t$ be the spot price at time $t$, $r$ the continuously compounded risk-free rate, $u$ the continuously compounded proportional storage cost, and $y$ the continuously compounded convenience yield. The futures (forward) price for delivery at $T$ satisfies</p>
                     <p>$$F(t,T) = S_t \, e^{(r+u-y)(T-t)}$$</p>
-                    <p class="mb-0">The convenience yield $y$ enters with a negative sign because it is a benefit accruing to the holder of the spot asset — analogous to a dividend yield reducing the forward price of an equity index, or a foreign interest rate reducing the forward price of a currency.</p>
+                    <p class="mb-0">The convenience yield $y$ enters with a negative sign because it is a benefit accruing to the holder of the spot asset - analogous to a dividend yield reducing the forward price of an equity index, or a foreign interest rate reducing the forward price of a currency.</p>
                 </div>
 
                 <p>Rearranging, the convenience yield can be inferred from observed spot and futures prices:</p>
 
                 <p>$$y = r + u - \frac{1}{T-t}\ln\!\left(\frac{F(t,T)}{S_t}\right)$$</p>
 
-                <p>This makes the convenience yield, in practice, a residual quantity — it is whatever is needed to make the no-arbitrage relationship hold given the observed market prices, storage costs, and financing rates. As such it is best thought of as a summary statistic for the current tightness of the physical market rather than a directly observable cash flow.</p>
+                <p>This makes the convenience yield, in practice, a residual quantity - it is whatever is needed to make the no-arbitrage relationship hold given the observed market prices, storage costs, and financing rates. As such it is best thought of as a summary statistic for the current tightness of the physical market rather than a directly observable cash flow.</p>
 
                 <h2 class="mt-5 mb-3">The Theory of Storage</h2>
 
                 <p>The <strong>theory of storage</strong>, developed by Kaldor, Working, and Brennan, explains the convenience yield as an equilibrium outcome of inventory holding decisions. Market participants hold inventory only when the benefits of doing so (avoiding stockouts, smoothing production, capturing local price spikes) outweigh the costs (storage, insurance, financing). The convenience yield is the market-clearing "price" of this inventory benefit.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Convenience Yield and Inventory Levels</div>
+                    <div class="math-box-label">Theorem - Convenience Yield and Inventory Levels</div>
                     <p>The theory of storage predicts an inverse relationship between the level of physical inventories and the convenience yield:</p>
                     <ul>
                         <li><strong>High inventories</strong> &rarr; the marginal unit of inventory provides little extra insurance against stockout &rarr; <strong>low convenience yield</strong> &rarr; $y < r+u$ &rarr; $F(t,T) > S_t$, i.e., the curve is in <em>contango</em>.</li>
@@ -137,7 +137,7 @@
                 <h2 class="mt-5 mb-3">Worked Example</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Inferring the Convenience Yield</div>
+                    <div class="math-box-label">Example - Inferring the Convenience Yield</div>
                     <p>Suppose the spot price of crude oil is $S_0 = \$80$ per barrel, the one-year futures price is $F(0,1) = \$78$, the risk-free rate is $r = 5\%$, and the annual cost of storing a barrel of oil (insurance, tank rental, financing) is $u = 3\%$ of the spot price.</p>
                     <p>Using the cost-of-carry relationship,</p>
                     <p>$$y = r + u - \ln\!\left(\frac{F}{S_0}\right) = 0.05 + 0.03 - \ln\!\left(\frac{78}{80}\right)$$</p>
@@ -146,7 +146,7 @@
                     <p class="mb-0">The implied convenience yield is approximately $10.5\%$, which exceeds $r+u = 8\%$. This is consistent with the observed backwardation ($F < S_0$): the market is signalling that inventories are tight and the marginal barrel of oil in storage is highly valuable to refiners right now.</p>
                 </div>
 
-                <p>This example illustrates the central insight of this section: convenience yield is not an exotic add-on to commodity pricing models, but the variable that absorbs all the information about physical market conditions that interest rates and storage costs cannot capture. Understanding how it varies — across commodities, over time, and with the level of inventories — is essential for interpreting futures curves, which we turn to next in the cost-of-carry framework for futures and forwards.</p>
+                <p>This example illustrates the central insight of this section: convenience yield is not an exotic add-on to commodity pricing models, but the variable that absorbs all the information about physical market conditions that interest rates and storage costs cannot capture. Understanding how it varies - across commodities, over time, and with the level of inventories - is essential for interpreting futures curves, which we turn to next in the cost-of-carry framework for futures and forwards.</p>
 
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

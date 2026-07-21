@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -54,7 +54,7 @@
                 <h2 class="mt-5 mb-3">Risk-Neutral Pricing</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 6.2.1 — From Physical to Risk-Neutral Measure</div>
+                    <div class="math-box-label">Example 6.2.1 - From Physical to Risk-Neutral Measure</div>
                     <p>Under the physical measure $P$, a stock satisfies $dS_t = \mu S_t\,dt + \sigma S_t\,dW_t$. The discounted price $\widetilde{S}_t = e^{-rt}S_t$ satisfies</p>
                     $$d\widetilde{S}_t = (\mu - r)\widetilde{S}_t\,dt + \sigma\widetilde{S}_t\,dW_t.$$
                     <p>This is not a $P$-martingale if $\mu \neq r$. Choose the <strong>market price of risk</strong> $\theta = (\mu - r)/\sigma$ (assumed constant). By Girsanov's theorem with this $\theta$, under $Q$ (with $dQ/dP = Z_T$, $Z_T = e^{-\theta W_T - \frac{1}{2}\theta^2 T}$) the process $\widetilde{W}_t = W_t + \theta t$ is a $Q$-Brownian motion. Then</p>
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.2 — Risk-Neutral Pricing Formula</div>
+                    <div class="math-box-label">Theorem 6.2.2 - Risk-Neutral Pricing Formula</div>
                     <p>In the Black-Scholes market (one stock, one bond), under the risk-neutral measure $Q$: $S_t = S_0 e^{(r-\sigma^2/2)t + \sigma\widetilde{W}_t}$. The fair price at time $0$ of a European option with payoff $g(S_T)$ is</p>
                     $$V_0 = e^{-rT} E^Q[g(S_T)].$$
                     <p>For a call option $g(S) = (S-K)^+$, explicit computation gives the <strong>Black-Scholes formula</strong>:</p>
@@ -82,13 +82,13 @@
                 <h2 class="mt-5 mb-3">Martingale Representation Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.3 — Martingale Representation Theorem</div>
+                    <div class="math-box-label">Theorem 6.2.3 - Martingale Representation Theorem</div>
                     <p>Let $(\widetilde{W}_t)_{0 \leq t \leq T}$ be a $Q$-Brownian motion on a filtered probability space with the $\widetilde{W}$-generated filtration. Let $M$ be a square-integrable $Q$-martingale. Then there exists a unique progressively measurable process $H$ with $E^Q\!\left[\int_0^T H_s^2\,ds\right] < \infty$ such that</p>
                     $$M_t = M_0 + \int_0^t H_s\,d\widetilde{W}_s, \quad 0 \leq t \leq T.$$
                 </div>
 
                 <div class="math-box corollary">
-                    <div class="math-box-label">Corollary 6.2.4 — Replicating Portfolio and Market Completeness</div>
+                    <div class="math-box-label">Corollary 6.2.4 - Replicating Portfolio and Market Completeness</div>
                     <p>Let $C = g(S_T)$ be a contingent claim with $E^Q[e^{-rT}C]^2 < \infty$. Define $V_t = e^{-r(T-t)}E^Q[C \mid \mathcal{F}_t]$. Then the discounted value process $e^{-rt}V_t$ is a $Q$-martingale, and by the martingale representation theorem</p>
                     $$e^{-rt}V_t = V_0 + \int_0^t \Delta_s\,d\widetilde{S}_s,$$
                     <p>for some $\Delta_s$. In terms of the original (un-discounted) quantities, the portfolio holding $\Delta_t$ shares and a cash position $V_t - \Delta_t S_t$ in the bond replicates $C$ at time $T$. This proves <strong>market completeness</strong>: every contingent claim in the Black-Scholes model can be perfectly hedged.</p>
@@ -98,7 +98,7 @@
                 <h2 class="mt-5 mb-3">Change of Numeraire</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 6.2.5 — Change of Numeraire as a Special Case</div>
+                    <div class="math-box-label">Remark 6.2.5 - Change of Numeraire as a Special Case</div>
                     <p>A <strong>numeraire</strong> is a positive asset $N_t$ used to deflate prices. If $Q^N$ is the measure under which $S_t/N_t$ is a martingale (the <em>forward measure</em> when $N_t = P(t,T)$, the zero-coupon bond price), then Girsanov's theorem applied with $\theta = \sigma_N$ (the volatility of $N$) converts the risk-neutral $Q$ to $Q^N$. The change-of-numeraire formula is</p>
                     $$\frac{dQ^N}{dQ}\Big|_{\mathcal{F}_T} = \frac{N_T/N_0}{B_T},$$
                     <p class="mb-0">where $B_T = e^{rT}$ is the money-market account. This technique simplifies the pricing of instruments such as swaptions and bond options where the natural numeraire is not the money-market account.</p>

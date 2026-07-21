@@ -1,6 +1,6 @@
-/* Shared chess board diagram renderer — used by Chess section pages.
+/* Shared chess board diagram renderer - used by Chess section pages.
    Renders an 8x8 static diagram using SVG piece graphics (lichess
-   "cburnett" piece set) inside a target element. New, additive file —
+   "cburnett" piece set) inside a target element. New, additive file -
    does not modify script.js and is only loaded by pages that opt in.
 
    Usage:

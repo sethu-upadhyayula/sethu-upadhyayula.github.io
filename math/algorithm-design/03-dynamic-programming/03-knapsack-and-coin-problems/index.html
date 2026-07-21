@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,12 +128,12 @@
             <article>
                 <h1 class="text-accent mb-4">3.3 Knapsack and Coin Problems</h1>
 
-                <p>The knapsack and coin-change problems are fundamental examples of DP on "capacity" states. Their $O(nW)$ time complexity is <em>pseudopolynomial</em> — polynomial in the numeric value of the input, not in the number of bits needed to represent it.</p>
+                <p>The knapsack and coin-change problems are fundamental examples of DP on "capacity" states. Their $O(nW)$ time complexity is <em>pseudopolynomial</em> - polynomial in the numeric value of the input, not in the number of bits needed to represent it.</p>
 
                 <h2 class="mt-4 mb-3">0-1 Knapsack</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 3.3.1 — 0-1 Knapsack</div>
+                    <div class="math-box-label">Algorithm 3.3.1 - 0-1 Knapsack</div>
                     <p>Given $n$ items with weights $w_i$ and values $v_i$, and capacity $W$: choose a subset maximising total value subject to total weight $\le W$. Each item is used at most once.</p>
                     <p>State: $\mathrm{dp}[i][w]$ = max value using items $1, \ldots, i$ with capacity $w$.</p>
                     <p>Recurrence: $\mathrm{dp}[i][w] = \max\bigl(\mathrm{dp}[i-1][w],\; v_i + \mathrm{dp}[i-1][w-w_i]\bigr)$ (skip or take item $i$).</p>
@@ -143,7 +143,7 @@
                 <h2 class="mt-5 mb-3">Coin Change</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 3.3.2 — Coin Change (Minimum Coins)</div>
+                    <div class="math-box-label">Algorithm 3.3.2 - Coin Change (Minimum Coins)</div>
                     <p>Given coin denominations $c_1, \ldots, c_k$ and target $C$, find the minimum number of coins summing to $C$. Coins can be reused (unbounded knapsack variant).</p>
                     <p>$\mathrm{dp}[0] = 0$; $\mathrm{dp}[w] = \min_{j:\, c_j \le w}\bigl(1 + \mathrm{dp}[w - c_j]\bigr)$.</p>
                     <p class="mb-0">Time: $O(kC)$. For counting the number of ways: replace $\min$ with $+$ and initialise $\mathrm{dp}[0] = 1$.</p>
@@ -152,12 +152,12 @@
                 <h2 class="mt-5 mb-3">Rod Cutting and Subset Sum</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 3.3.3 — Rod Cutting</div>
+                    <div class="math-box-label">Example 3.3.3 - Rod Cutting</div>
                     <p class="mb-0">A rod of length $n$ can be cut into pieces of lengths $1, \ldots, n$ with prices $p_1, \ldots, p_n$. Maximise revenue. This is equivalent to unbounded knapsack with $w_i = i$ and $v_i = p_i$. $\mathrm{dp}[w] = \max_{i \le w}(p_i + \mathrm{dp}[w-i])$. Time: $O(n^2)$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 3.3.4 — Subset Sum</div>
+                    <div class="math-box-label">Example 3.3.4 - Subset Sum</div>
                     <p class="mb-0">Given integers $a_1, \ldots, a_n$ and target $T$, does any subset sum to $T$? This is 0-1 knapsack with $v_i = w_i = a_i$: $\mathrm{dp}[i][t] = \mathrm{dp}[i-1][t] \lor \mathrm{dp}[i-1][t-a_i]$. Time: $O(nT)$. Subset sum is NP-complete (as a decision problem for arbitrary $T$), but pseudopolynomial DP solves it efficiently when $T$ is bounded.</p>
                 </div>
 

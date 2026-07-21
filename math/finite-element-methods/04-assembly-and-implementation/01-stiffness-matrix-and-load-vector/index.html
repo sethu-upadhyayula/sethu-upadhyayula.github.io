@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -130,7 +130,7 @@
                 <h2 class="mt-4 mb-3">Element Stiffness Matrix</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Element Stiffness Matrix</div>
+                    <div class="math-box-label">Definition - Element Stiffness Matrix</div>
                     <p>For triangle $K$ with local DOFs $\{\varphi_1^K, \varphi_2^K, \varphi_3^K\}$ (indexed locally $i = 1,2,3$), the <strong>element stiffness matrix</strong> $K^e \in \mathbb{R}^{3\times 3}$ has entries
                     $$K^e_{ij} = \int_K \nabla\varphi_j^K \cdot \nabla\varphi_i^K\,dx, \quad i,j = 1,2,3.$$
                     For $P_1$ elements, $\nabla\varphi_i^K$ is constant on $K$, so:
@@ -140,14 +140,14 @@
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Explicit Formula for $P_1$ Stiffness</div>
+                    <div class="math-box-label">Proposition - Explicit Formula for $P_1$ Stiffness</div>
                     <p class="mb-0">Let $K$ have vertices $a_1, a_2, a_3$ and let $B_K = [a_2-a_1 \;|\; a_3-a_1]$. Define $C_K = B_K^{-\top}$. Then $K^e = |K|\,G^\top G$, where $G = [C_K\nabla_{\hat{x}}\hat\lambda_1 \;|\; C_K\nabla_{\hat{x}}\hat\lambda_2 \;|\; C_K\nabla_{\hat{x}}\hat\lambda_3] \in \mathbb{R}^{2\times 3}$. The reference gradients are $\nabla_{\hat{x}}\hat\lambda_1 = (-1,-1)^\top$, $\nabla_{\hat{x}}\hat\lambda_2 = (1,0)^\top$, $\nabla_{\hat{x}}\hat\lambda_3 = (0,1)^\top$, so $K^e$ is computable with $O(1)$ flops per element.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Element Load Vector</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Element Load Vector</div>
+                    <div class="math-box-label">Definition - Element Load Vector</div>
                     <p class="mb-0">The <strong>element load vector</strong> $\mathbf{f}^e \in \mathbb{R}^3$ has components
                     $$f^e_i = \int_K f\,\varphi_i^K\,dx \approx |K|\sum_{q=1}^{n_q} w_q\, f(F_K(\hat{x}_q))\,\hat\lambda_i(\hat{x}_q),$$
                     where the quadrature weights and points are on $\hat{K}$. For a constant $f$ and $P_1$ elements, using the 1-point centroid rule: $f^e_i = \frac{|K|}{3}f(\text{centroid})$ for each $i = 1,2,3$.</p>
@@ -156,7 +156,7 @@
                 <h2 class="mt-5 mb-3">Global Assembly</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — DOF Map and Assembly</div>
+                    <div class="math-box-label">Definition - DOF Map and Assembly</div>
                     <p>Let $\mathrm{dof}(K, i)$ denote the global DOF index corresponding to local DOF $i$ on element $K$. The global stiffness matrix and load vector are:
                     $$K = \sum_{K \in \mathcal{T}_h} \mathcal{A}_K K^e, \qquad \mathbf{f} = \sum_{K \in \mathcal{T}_h} \mathcal{A}_K \mathbf{f}^e,$$
                     where $\mathcal{A}_K$ is the <strong>assembly operator</strong> that maps local entries to global positions. Explicitly, the assembly pseudocode is:
@@ -175,20 +175,20 @@ For each element K in T_h:
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Sparsity of $K$</div>
+                    <div class="math-box-label">Proposition - Sparsity of $K$</div>
                     <p class="mb-0">The global stiffness matrix $K$ has at most $O(N)$ nonzero entries for a shape-regular, quasi-uniform mesh in $\mathbb{R}^2$. Specifically, $K_{IJ} \neq 0$ only when global nodes $I$ and $J$ belong to a common element, i.e.\ are connected by an edge in $\mathcal{T}_h$. The average vertex valence (number of neighbouring edges) is bounded independently of $h$, so the number of nonzeros per row is $O(1)$, giving $O(N)$ nonzeros globally.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Sparse Storage (CSR Format)</div>
+                    <div class="math-box-label">Remark - Sparse Storage (CSR Format)</div>
                     <p class="mb-0">In practice $K$ is stored in Compressed Sparse Row (CSR) or Compressed Sparse Column (CSC) format, which stores only the nonzero entries and their column/row indices. This enables matrix-vector products in $O(N)$ time (vs. $O(N^2)$ for dense storage) and is essential for iterative solvers such as Conjugate Gradient.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — $P_1$ on Unit Right Triangle</div>
+                    <div class="math-box-label">Example - $P_1$ on Unit Right Triangle</div>
                     <p class="mb-0">Let $K$ be the triangle with $a_1=(0,0)$, $a_2=(1,0)$, $a_3=(0,1)$; then $|K|=1/2$ and $B_K = I$, so $C_K = I$. The physical gradients are $\nabla\lambda_1=(-1,-1)^\top$, $\nabla\lambda_2=(1,0)^\top$, $\nabla\lambda_3=(0,1)^\top$. The element stiffness is:
                     $$K^e = \frac{1}{2}\begin{pmatrix} 2 & -1 & -1 \\ -1 & 1 & 0 \\ -1 & 0 & 1 \end{pmatrix}.$$
-                    This is symmetric, positive semi-definite (with one zero eigenvalue from the constant), and sums to zero along each row/column — reflecting that the Poisson bilinear form annihilates constants.</p>
+                    This is symmetric, positive semi-definite (with one zero eigenvalue from the constant), and sums to zero along each row/column - reflecting that the Poisson bilinear form annihilates constants.</p>
                 </div>
 
                 <hr class="my-5">

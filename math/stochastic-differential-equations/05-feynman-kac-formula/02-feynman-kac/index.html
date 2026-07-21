@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -49,10 +49,10 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">5.2 Feynman-Kac Formula</h1>
-                <p>The Feynman-Kac formula gives a probabilistic representation of the solution to a broad class of linear parabolic PDEs in terms of expectations over diffusion paths. It is both a theoretical tool — providing existence results via probabilistic arguments — and a computational tool — enabling Monte Carlo simulation of PDE solutions.</p>
+                <p>The Feynman-Kac formula gives a probabilistic representation of the solution to a broad class of linear parabolic PDEs in terms of expectations over diffusion paths. It is both a theoretical tool - providing existence results via probabilistic arguments - and a computational tool - enabling Monte Carlo simulation of PDE solutions.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.2.1 — Feynman-Kac Formula</div>
+                    <div class="math-box-label">Theorem 5.2.1 - Feynman-Kac Formula</div>
                     <p>Let $X$ satisfy $dX_s = b(s,X_s)\,ds + \sigma(s,X_s)\,dW_s$ with $X_t = x$. Let $c, f, g$ be smooth with $c \geq 0$ bounded. Define</p>
                     $$u(t,x) = E\!\left[e^{-\int_t^T c(s,X_s)\,ds}\,g(X_T) + \int_t^T e^{-\int_t^s c(r,X_r)\,dr}\,f(s,X_s)\,ds\;\Big|\;X_t = x\right].$$
                     <p>Then $u \in C^{1,2}([0,T)\times\mathbb{R}^n)$ and satisfies</p>
@@ -70,7 +70,7 @@
                 <h2 class="mt-5 mb-3">Application 1: Black-Scholes PDE</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 5.2.2 — Black-Scholes PDE via Feynman-Kac</div>
+                    <div class="math-box-label">Example 5.2.2 - Black-Scholes PDE via Feynman-Kac</div>
                     <p>Under the risk-neutral measure $Q$, the stock price satisfies $dS = rS\,dt + \sigma S\,d\widetilde{W}$ (geometric Brownian motion with drift $r$). The price of a European call option with payoff $g(S_T) = (S_T - K)^+$ and discount rate $c = r$ is</p>
                     $$V(t,S) = E^Q\!\left[e^{-r(T-t)}(S_T - K)^+\;\Big|\;S_t = S\right].$$
                     <p>By Feynman-Kac with $b = rS$, $\sigma(S) = \sigma S$, $c = r$, $f = 0$, $g(S) = (S-K)^+$, the function $V$ satisfies the <strong>Black-Scholes PDE</strong>:</p>
@@ -81,12 +81,12 @@
                 <h2 class="mt-5 mb-3">Application 2: Monte Carlo Simulation</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 5.2.3 — Monte Carlo via Feynman-Kac</div>
+                    <div class="math-box-label">Remark 5.2.3 - Monte Carlo via Feynman-Kac</div>
                     <p>The Feynman-Kac representation $u(t,x) = E[\cdots \mid X_t = x]$ converts a PDE problem into a statistical estimation problem. Given a PDE that is expensive to solve numerically (high-dimensional, complex geometry), one can instead:</p>
                     <p>1. Simulate $N$ independent paths $X^{(1)}, \ldots, X^{(N)}$ of the SDE starting from $X_t = x$.</p>
                     <p>2. Compute the sample mean $\hat{u}_N = \frac{1}{N}\sum_{k=1}^N \left[e^{-\int_t^T c\,ds}g(X_T^{(k)}) + \int_t^T e^{-\int_t^s c}f\,ds\right]$.</p>
                     <p>3. By the law of large numbers, $\hat{u}_N \to u(t,x)$ almost surely as $N \to \infty$, with statistical error $O(N^{-1/2})$ by the central limit theorem.</p>
-                    <p class="mb-0">This Monte Carlo method scales well with dimension — unlike finite difference or finite element methods — making it the method of choice for high-dimensional financial PDEs.</p>
+                    <p class="mb-0">This Monte Carlo method scales well with dimension - unlike finite difference or finite element methods - making it the method of choice for high-dimensional financial PDEs.</p>
                 </div>
 
                 <hr class="my-5">

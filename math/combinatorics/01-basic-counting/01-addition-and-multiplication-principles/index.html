@@ -16,7 +16,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -103,42 +103,42 @@
 
 <p>The two most fundamental counting tools are the <em>addition principle</em> (for disjoint choices) and the <em>multiplication principle</em> (for sequential independent choices). Every counting argument ultimately rests on one or both of these.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Addition Principle</div>
+<div class="math-box definition"><div class="math-box-label">Definition - Addition Principle</div>
 <p>If $A$ and $B$ are <em>disjoint</em> finite sets (i.e., $A \cap B = \emptyset$), then
 $$|A \cup B| = |A| + |B|.$$
 More generally, for pairwise disjoint sets $A_1, A_2, \ldots, A_k$:
 $$\left|\bigsqcup_{i=1}^k A_i\right| = \sum_{i=1}^k |A_i|.$$</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Multiplication Principle</div>
+<div class="math-box definition"><div class="math-box-label">Definition - Multiplication Principle</div>
 <p>If a task consists of $k$ sequential steps, where step $i$ can be performed in $n_i$ ways <em>independently</em> of the choices at other steps, then the total number of ways to complete the task is
 $$n_1 \times n_2 \times \cdots \times n_k = \prod_{i=1}^k n_i.$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Functions Between Sets</div>
+<div class="math-box example"><div class="math-box-label">Example - Functions Between Sets</div>
 <p>Let $A$ and $B$ be finite sets with $|A| = m$ and $|B| = n$. How many functions $f : A \to B$ are there?</p>
 <p>For each of the $m$ elements of $A$, we independently choose one of $n$ elements of $B$ as its image. By the multiplication principle:</p>
 $$|B^A| = n^m = |B|^{|A|}.$$
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Power Set</div>
+<div class="math-box example"><div class="math-box-label">Example - Power Set</div>
 <p>How many subsets does a set $A$ with $|A| = n$ have?</p>
 <p>Each element independently either belongs to the subset (1) or does not (0). By the multiplication principle with $n$ binary choices:</p>
 $$|\mathcal{P}(A)| = 2^n.$$
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Binary Strings</div>
+<div class="math-box example"><div class="math-box-label">Example - Binary Strings</div>
 <p>The number of binary strings of length $n$ is $2^n$ (each position is independently 0 or 1).</p>
 <p>Among these, how many contain at least one 1? By the addition principle, this is $2^n - 1$ (all strings minus the all-zeros string).</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Subsets Containing a Fixed Element</div>
+<div class="math-box example"><div class="math-box-label">Example - Subsets Containing a Fixed Element</div>
 <p>How many subsets of $\{1, 2, \ldots, n\}$ contain element 1?</p>
 <p>Element 1 is fixed in the subset; each of the remaining $n-1$ elements independently belongs or not. So the count is $2^{n-1}$.</p>
 <p>Alternatively, by the addition principle: subsets containing 1 and subsets not containing 1 partition all $2^n$ subsets equally, giving $2^n / 2 = 2^{n-1}$ each.</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Complement Counting</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - Complement Counting</div>
 <p>To count the elements of $A$ satisfying property $P$, it is often easier to count those <em>not</em> satisfying $P$ and subtract:
 $$|\{x \in A : P(x)\}| = |A| - |\{x \in A : \lnot P(x)\}|.$$</p>
 </div>

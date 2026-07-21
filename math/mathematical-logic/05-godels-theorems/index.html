@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -101,22 +101,22 @@
                 <h2 class="mt-5 mb-3">Prerequisite: Gödel Numbering</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.1 — Gödel Numbering</div>
+                    <div class="math-box-label">Definition 5.1 - Gödel Numbering</div>
                     <p>A <strong>Gödel numbering</strong> is an effective assignment of a unique natural number $\ulcorner \phi \urcorner$ (the <em>Gödel number</em>) to every formula $\phi$ of the formal language. This encoding allows the formal system to talk about its own formulas as numbers.</p>
-                    <p class="mb-0">Given such an encoding, a predicate $\text{Prov}_T(n)$ — meaning "the formula with Gödel number $n$ is provable in $T$" — is expressible as a formula of arithmetic within $T$ itself.</p>
+                    <p class="mb-0">Given such an encoding, a predicate $\text{Prov}_T(n)$ - meaning "the formula with Gödel number $n$ is provable in $T$" - is expressible as a formula of arithmetic within $T$ itself.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">First Incompleteness Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.1 — Gödel's First Incompleteness Theorem (1931)</div>
+                    <div class="math-box-label">Theorem 5.1 - Gödel's First Incompleteness Theorem (1931)</div>
                     <p>Let $T$ be a consistent formal system that is sufficiently expressive (i.e., interprets Peano Arithmetic). Then there exists a sentence $G_T$ such that:
                     $$T \nvdash G_T \quad \text{and} \quad T \nvdash \neg G_T.$$</p>
                     <p class="mb-0">That is, $T$ is <strong>incomplete</strong>: there are true statements of arithmetic that $T$ cannot prove.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Construction — The Gödel Sentence</div>
+                    <div class="math-box-label">Construction - The Gödel Sentence</div>
                     <p>The <strong>Gödel sentence</strong> $G_T$ is constructed to assert its own unprovability:
                     $$G_T \equiv \neg\,\text{Prov}_T(\ulcorner G_T \urcorner).$$
                     In plain language: "$G_T$ says: I am not provable in $T$."</p>
@@ -124,16 +124,16 @@
                 </div>
 
                 <div class="math-box proof">
-                    <div class="math-box-label">Proof Sketch — Why $G_T$ is Independent of $T$</div>
-                    <p><strong>Case 1:</strong> Suppose $T \vdash G_T$. Then $G_T$ is provable in $T$, so $\text{Prov}_T(\ulcorner G_T \urcorner)$ is true. But $G_T$ asserts $\neg\,\text{Prov}_T(\ulcorner G_T \urcorner)$. Since $T$ proves $G_T$ and $G_T$ is false under this assumption, $T$ proves a false statement — contradicting the consistency of $T$.</p>
-                    <p><strong>Case 2:</strong> Suppose $T \vdash \neg G_T$. Then $G_T$ is not provable in $T$, making $G_T$ true (it correctly says it is unprovable). So $T$ proves a false sentence $\neg G_T$ — contradicting the soundness (or $\omega$-consistency) of $T$.</p>
+                    <div class="math-box-label">Proof Sketch - Why $G_T$ is Independent of $T$</div>
+                    <p><strong>Case 1:</strong> Suppose $T \vdash G_T$. Then $G_T$ is provable in $T$, so $\text{Prov}_T(\ulcorner G_T \urcorner)$ is true. But $G_T$ asserts $\neg\,\text{Prov}_T(\ulcorner G_T \urcorner)$. Since $T$ proves $G_T$ and $G_T$ is false under this assumption, $T$ proves a false statement - contradicting the consistency of $T$.</p>
+                    <p><strong>Case 2:</strong> Suppose $T \vdash \neg G_T$. Then $G_T$ is not provable in $T$, making $G_T$ true (it correctly says it is unprovable). So $T$ proves a false sentence $\neg G_T$ - contradicting the soundness (or $\omega$-consistency) of $T$.</p>
                     <p class="mb-0">In both cases we reach a contradiction, so neither $G_T$ nor $\neg G_T$ is provable in $T$. $\square$</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Second Incompleteness Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.2 — Gödel's Second Incompleteness Theorem</div>
+                    <div class="math-box-label">Theorem 5.2 - Gödel's Second Incompleteness Theorem</div>
                     <p>Under the same hypotheses as Theorem 5.1, let $\text{Con}(T)$ be the arithmetical statement asserting the consistency of $T$ (i.e., $\neg\,\text{Prov}_T(\ulcorner \bot \urcorner)$). Then:
                     $$T \nvdash \text{Con}(T).$$</p>
                     <p class="mb-0">A consistent theory that is strong enough to interpret arithmetic cannot prove its own consistency.</p>

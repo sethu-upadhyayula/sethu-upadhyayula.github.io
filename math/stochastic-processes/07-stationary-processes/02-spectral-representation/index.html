@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,14 +132,14 @@
                 <h2 class="mt-4 mb-3">Positive Semidefinite Functions and Bochner's Theorem</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.1 — Positive Semidefinite Function</div>
+                    <div class="math-box-label">Definition 7.2.1 - Positive Semidefinite Function</div>
                     <p>A function $R: \mathbb{R} \to \mathbb{R}$ is <strong>positive semidefinite</strong> (or positive definite in the sense of Bochner) if for all $n \ge 1$, all $t_1, \ldots, t_n \in \mathbb{R}$, and all $c_1, \ldots, c_n \in \mathbb{C}$:
                     $$\sum_{j=1}^n \sum_{k=1}^n c_j \overline{c_k} R(t_j - t_k) \ge 0.$$</p>
                     <p class="mb-0">Equivalently, the matrix $(R(t_j - t_k))_{j,k=1}^n$ is positive semidefinite for every choice of time points. An autocovariance function is always positive semidefinite, since $\sum_{j,k} c_j \overline{c_k} R(t_j - t_k) = \operatorname{Var}\!\left(\sum_j c_j X_{t_j}\right) \ge 0$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.2 — Bochner's Theorem</div>
+                    <div class="math-box-label">Theorem 7.2.2 - Bochner's Theorem</div>
                     <p>A continuous function $R: \mathbb{R} \to \mathbb{R}$ with $R(0) \ge 0$ is positive semidefinite if and only if it is the Fourier transform of a finite non-negative measure $\mu$ on $\mathbb{R}$:
                     $$R(\tau) = \int_{-\infty}^\infty e^{i\omega \tau}\,d\mu(\omega).$$</p>
                     <p>The measure $\mu$ is called the <strong>spectral measure</strong> of the process. It is unique and satisfies $\mu(\mathbb{R}) = R(0) = \operatorname{Var}(X_t)$.</p>
@@ -149,14 +149,14 @@
                 <h2 class="mt-5 mb-3">Spectral Density and the Wiener-Khinchin Theorem</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.3 — Spectral Density</div>
+                    <div class="math-box-label">Definition 7.2.3 - Spectral Density</div>
                     <p>If the spectral measure $\mu$ is absolutely continuous with respect to Lebesgue measure, it has a density $f(\omega) \ge 0$ called the <strong>spectral density</strong> (or <strong>power spectral density</strong>):
                     $$d\mu(\omega) = f(\omega)\,d\omega, \quad R(\tau) = \int_{-\infty}^\infty e^{i\omega\tau} f(\omega)\,d\omega.$$</p>
                     <p class="mb-0">The spectral density $f(\omega)$ describes how the variance of the process is distributed across frequencies $\omega$. The total power is $\int_{-\infty}^\infty f(\omega)\,d\omega = R(0) = \operatorname{Var}(X_t)$. Processes with most power at low frequencies have slowly-varying realisations; high-frequency power means rapid fluctuations.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.4 — Wiener-Khinchin Theorem</div>
+                    <div class="math-box-label">Theorem 7.2.4 - Wiener-Khinchin Theorem</div>
                     <p>For a weakly stationary process $(X_t)$ with spectral density $f$, the autocovariance and spectral density are a Fourier pair:
                     $$R(\tau) = \int_{-\infty}^\infty e^{i\omega\tau} f(\omega)\,d\omega, \qquad f(\omega) = \frac{1}{2\pi}\int_{-\infty}^\infty e^{-i\omega\tau} R(\tau)\,d\tau$$
                     (when $R \in L^1(\mathbb{R})$).</p>
@@ -168,24 +168,24 @@
                 <h2 class="mt-5 mb-3">Examples</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Spectral Density of AR(1)</div>
+                    <div class="math-box-label">Example - Spectral Density of AR(1)</div>
                     <p>For the discrete-time AR(1) process with $R(k) = \frac{\sigma^2}{1-\phi^2} \phi^{|k|}$ (Section 7.1), the spectral density is:
                     $$f(\omega) = \frac{1}{2\pi}\sum_{k=-\infty}^\infty e^{-i\omega k} \frac{\sigma^2 \phi^{|k|}}{1-\phi^2} = \frac{\sigma^2}{2\pi} \cdot \frac{1}{|1 - \phi e^{-i\omega}|^2} = \frac{\sigma^2}{2\pi(1 + \phi^2 - 2\phi\cos\omega)},$$
                     for $\omega \in (-\pi, \pi]$.</p>
-                    <p>For $\phi > 0$ (positive autocorrelation), $f$ is peaked near $\omega = 0$ (low frequencies dominate — long-memory-like behaviour). For $\phi < 0$, $f$ is peaked near $\omega = \pm\pi$ (high-frequency oscillation).</p>
+                    <p>For $\phi > 0$ (positive autocorrelation), $f$ is peaked near $\omega = 0$ (low frequencies dominate - long-memory-like behaviour). For $\phi < 0$, $f$ is peaked near $\omega = \pm\pi$ (high-frequency oscillation).</p>
                     <p class="mb-0">The spectral density of the AR(1) innovations is $\sigma^2/(2\pi)$ (flat/white noise). The AR filter $1/(1-\phi z)$ shapes this flat spectrum into the peaked AR(1) spectrum. More generally, an ARMA$(p,q)$ process has spectral density $f(\omega) = \frac{\sigma^2}{2\pi} \cdot \frac{|\Theta(e^{-i\omega})|^2}{|\Phi(e^{-i\omega})|^2}$ where $\Phi$ and $\Theta$ are the AR and MA polynomials.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — White Noise and Ornstein-Uhlenbeck</div>
-                    <p><strong>White noise:</strong> The process with $R(\tau) = \sigma^2 \delta(\tau)$ (Dirac delta) has flat spectral density $f(\omega) = \sigma^2/(2\pi)$ — equal power at all frequencies. This is the continuous-time analogue of i.i.d. noise, though it does not have a classical sample-path interpretation.</p>
+                    <div class="math-box-label">Example - White Noise and Ornstein-Uhlenbeck</div>
+                    <p><strong>White noise:</strong> The process with $R(\tau) = \sigma^2 \delta(\tau)$ (Dirac delta) has flat spectral density $f(\omega) = \sigma^2/(2\pi)$ - equal power at all frequencies. This is the continuous-time analogue of i.i.d. noise, though it does not have a classical sample-path interpretation.</p>
                     <p><strong>Ornstein-Uhlenbeck process:</strong> The stationary solution of $dX_t = -\theta X_t\,dt + \sigma\,dB_t$ (with $\theta > 0$) has $R(\tau) = \frac{\sigma^2}{2\theta} e^{-\theta|\tau|}$ and spectral density
                     $$f(\omega) = \frac{\sigma^2}{2\pi(\theta^2 + \omega^2)}.$$</p>
-                    <p class="mb-0">The OU spectral density is the Lorentzian (Cauchy) function of $\omega$, with half-power bandwidth $\theta$. As $\theta \to 0$ (less damping), the power concentrates at $\omega = 0$ (the process approaches a random walk). As $\theta \to \infty$ (strong damping), $f \to \sigma^2/(2\pi\theta^2)$ (flat) — the process becomes rapidly decorrelated.</p>
+                    <p class="mb-0">The OU spectral density is the Lorentzian (Cauchy) function of $\omega$, with half-power bandwidth $\theta$. As $\theta \to 0$ (less damping), the power concentrates at $\omega = 0$ (the process approaches a random walk). As $\theta \to \infty$ (strong damping), $f \to \sigma^2/(2\pi\theta^2)$ (flat) - the process becomes rapidly decorrelated.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.5 — Spectral Representation Theorem</div>
+                    <div class="math-box-label">Theorem 7.2.5 - Spectral Representation Theorem</div>
                     <p>Every zero-mean weakly stationary process $(X_t)_{t \in \mathbb{R}}$ with spectral measure $\mu$ has a <strong>spectral representation</strong>:
                     $$X_t = \int_{-\infty}^\infty e^{i\omega t}\,dZ(\omega),$$
                     where $Z$ is a stochastic process with orthogonal increments satisfying $E[|dZ(\omega)|^2] = d\mu(\omega)$.</p>
@@ -194,7 +194,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Discrete-Time Spectral Representation</div>
+                    <div class="math-box-label">Remark - Discrete-Time Spectral Representation</div>
                     <p>For a discrete-time weakly stationary process $(X_n)_{n \in \mathbb{Z}}$, the spectral representation is:
                     $$X_n = \int_{-\pi}^\pi e^{in\omega}\,dZ(\omega),$$
                     where $Z$ has orthogonal increments with $E[|dZ(\omega)|^2] = f(\omega)\,d\omega$. The spectral representation is unique given the spectral measure $\mu$.</p>

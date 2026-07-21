@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,37 +80,37 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Basket and Rainbow Options</h1>
 
-                <p>Multi-asset options extend the single-underlying framework to payoffs that depend on several underlyings simultaneously. The two most common families are basket options, whose payoff depends on a weighted combination of the underlyings, and rainbow options, whose payoff picks out the best- or worst-performing member of a group. In both cases, the correlation between the underlyings becomes a pricing input of comparable importance to each underlying's individual volatility — and one that is considerably harder to observe and hedge.</p>
+                <p>Multi-asset options extend the single-underlying framework to payoffs that depend on several underlyings simultaneously. The two most common families are basket options, whose payoff depends on a weighted combination of the underlyings, and rainbow options, whose payoff picks out the best- or worst-performing member of a group. In both cases, the correlation between the underlyings becomes a pricing input of comparable importance to each underlying's individual volatility - and one that is considerably harder to observe and hedge.</p>
 
                 <h2 class="mt-5 mb-3">Basket Options</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Basket Option Payoff</div>
+                    <div class="math-box-label">Definition - Basket Option Payoff</div>
                     <p class="mb-0">A basket option's payoff depends on a weighted sum of the prices of $k$ underlyings $S^{(1)},\dots,S^{(k)}$ with weights $w_1,\dots,w_k$ (often $w_j = 1/k$ for an equal-weighted basket, or weights chosen to match an index composition). The basket value at time $t$ is:
                     $$B_t = \sum_{j=1}^{k} w_j S_t^{(j)}$$
-                    and a basket call pays $\max(B_T - K, 0)$, a basket put $\max(K - B_T, 0)$ — exactly the vanilla payoff structure, but applied to the basket value $B_T$ rather than a single underlying.</p>
+                    and a basket call pays $\max(B_T - K, 0)$, a basket put $\max(K - B_T, 0)$ - exactly the vanilla payoff structure, but applied to the basket value $B_T$ rather than a single underlying.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Correlation Sensitivity of Basket Options</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Result — Basket Variance and Correlation</div>
-                    <p class="mb-0">Even if each $S^{(j)}$ individually follows a lognormal process with volatility $\sigma_j$, the sum $B_T$ is generally not lognormal — but its variance can still be computed directly. For a basket with weights $w_j$ and pairwise correlations $\rho_{ij}$ between the (log-)returns of $S^{(i)}$ and $S^{(j)}$, the instantaneous variance of the basket's return is approximately:
+                    <div class="math-box-label">Result - Basket Variance and Correlation</div>
+                    <p class="mb-0">Even if each $S^{(j)}$ individually follows a lognormal process with volatility $\sigma_j$, the sum $B_T$ is generally not lognormal - but its variance can still be computed directly. For a basket with weights $w_j$ and pairwise correlations $\rho_{ij}$ between the (log-)returns of $S^{(i)}$ and $S^{(j)}$, the instantaneous variance of the basket's return is approximately:
                     $$\sigma_B^2 \approx \sum_{i=1}^{k}\sum_{j=1}^{k} w_i w_j \sigma_i \sigma_j \rho_{ij}$$
-                    (where $w_i$ here denotes the dollar-weight of each constituent in the basket value). When $\rho_{ij}=1$ for all $i,j$, this reduces to $\sigma_B = \sum_j w_j \sigma_j$ — the basket behaves like a single asset with volatility equal to the weighted sum of constituent volatilities. As correlations fall below $1$, $\sigma_B$ decreases — diversification reduces the basket's overall volatility relative to the weighted-average volatility of its constituents.</p>
+                    (where $w_i$ here denotes the dollar-weight of each constituent in the basket value). When $\rho_{ij}=1$ for all $i,j$, this reduces to $\sigma_B = \sum_j w_j \sigma_j$ - the basket behaves like a single asset with volatility equal to the weighted sum of constituent volatilities. As correlations fall below $1$, $\sigma_B$ decreases - diversification reduces the basket's overall volatility relative to the weighted-average volatility of its constituents.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why a Basket Option is Cheaper Than the Corresponding Sum of Vanillas</div>
-                    <p class="mb-0">A basket call $\max(\sum_j w_j S_T^{(j)} - K, 0)$ is always worth less than or equal to the corresponding sum of individual calls $\sum_j w_j \max(S_T^{(j)} - K_j, 0)$ for any decomposition of $K = \sum_j w_j K_j$, because the $\max(\cdot,0)$ operator applied to a sum is bounded above by the sum of the individual $\max(\cdot,0)$ terms (a consequence of the convexity inequality $\max(\sum x_j, 0) \leq \sum \max(x_j,0)$). The gap between the basket option's price and the sum-of-vanillas price — sometimes called the "correlation discount" — widens as correlation falls: low correlation means the constituents are less likely to all be in-the-money together, so the basket payoff is "smoothed" relative to the sum of individual option payoffs. This makes basket options systematically cheaper to buy (and a basket call seller systematically long correlation — they benefit when correlation rises and the basket starts moving like a single, more volatile asset).</p>
+                    <div class="math-box-label">Remark - Why a Basket Option is Cheaper Than the Corresponding Sum of Vanillas</div>
+                    <p class="mb-0">A basket call $\max(\sum_j w_j S_T^{(j)} - K, 0)$ is always worth less than or equal to the corresponding sum of individual calls $\sum_j w_j \max(S_T^{(j)} - K_j, 0)$ for any decomposition of $K = \sum_j w_j K_j$, because the $\max(\cdot,0)$ operator applied to a sum is bounded above by the sum of the individual $\max(\cdot,0)$ terms (a consequence of the convexity inequality $\max(\sum x_j, 0) \leq \sum \max(x_j,0)$). The gap between the basket option's price and the sum-of-vanillas price - sometimes called the "correlation discount" - widens as correlation falls: low correlation means the constituents are less likely to all be in-the-money together, so the basket payoff is "smoothed" relative to the sum of individual option payoffs. This makes basket options systematically cheaper to buy (and a basket call seller systematically long correlation - they benefit when correlation rises and the basket starts moving like a single, more volatile asset).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Pricing Approaches for Basket Options</h2>
 
-                <p>Because the sum of lognormal random variables is not itself lognormal, basket options generally lack exact closed-form prices (with the exception of the two-asset geometric-basket case, which — like the geometric Asian — reduces to a lognormal and admits a Black-Scholes-style formula). In practice, three approaches dominate:</p>
+                <p>Because the sum of lognormal random variables is not itself lognormal, basket options generally lack exact closed-form prices (with the exception of the two-asset geometric-basket case, which - like the geometric Asian - reduces to a lognormal and admits a Black-Scholes-style formula). In practice, three approaches dominate:</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Common Approximation Methods</div>
+                    <div class="math-box-label">Remark - Common Approximation Methods</div>
                     <p><strong>Moment matching:</strong> approximate the distribution of $B_T$ with a lognormal (or shifted lognormal) distribution whose first two moments (mean and variance) match those of the true basket, computed analytically from the individual volatilities, weights, and correlation matrix. This is fast and reasonably accurate for baskets that are not too skewed, but can misprice deep out-of-the-money options where tail behavior matters most.</p>
                     <p class="mb-0"><strong>Monte Carlo simulation:</strong> simulate correlated paths for all $k$ underlyings (using a Cholesky decomposition of the correlation matrix to generate correlated normal increments), compute $B_T$ along each path, and average the discounted payoff. This is the standard approach for baskets with more than a handful of constituents, non-trivial skew per name, or path-dependent features layered on top.</p>
                 </div>
@@ -118,30 +118,30 @@
                 <h2 class="mt-5 mb-3">Rainbow Options</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Best-Of and Worst-Of Rainbow Options</div>
+                    <div class="math-box-label">Definition - Best-Of and Worst-Of Rainbow Options</div>
                     <p>A rainbow option's payoff depends on an order statistic of multiple underlyings rather than a weighted sum. A <em>best-of call</em> on $k$ underlyings pays:
                     $$\max\left(\max_{j=1,\dots,k} S_T^{(j)} - K, 0\right)$$
-                    while a <em>worst-of call</em> pays $\max\left(\min_{j} S_T^{(j)} - K, 0\right)$. Worst-of structures (recall their role in autocallables from Chapter 1) are far more common in practice — a worst-of call is cheaper than a single-asset call (the "worst" performer is, by definition, no better than any individual asset), while a best-of call is more expensive than a single-asset call on the best-performing constituent ex-ante.</p>
+                    while a <em>worst-of call</em> pays $\max\left(\min_{j} S_T^{(j)} - K, 0\right)$. Worst-of structures (recall their role in autocallables from Chapter 1) are far more common in practice - a worst-of call is cheaper than a single-asset call (the "worst" performer is, by definition, no better than any individual asset), while a best-of call is more expensive than a single-asset call on the best-performing constituent ex-ante.</p>
                     <p class="mb-0">A <em>call-on-max</em> (best-of) and <em>call-on-min</em> (worst-of) are related by a parity-like identity for the sum of payoffs across all assets, analogous to how knock-in plus knock-out reconstructs a vanilla.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Correlation Sensitivity of Rainbow Options</div>
-                    <p><strong>Worst-of options are long the spread, short correlation:</strong> a worst-of call's value increases as correlation falls. With low correlation, the $k$ underlyings are more likely to spread apart — some up, some down — so the minimum tends to be lower, but there is also more <em>dispersion</em> in outcomes, and the option on the minimum benefits from the increased variance of $\min_j S_T^{(j)}$ in the tails relevant to the option's value. Conversely, as $\rho \to 1$, all underlyings move together, $\min_j S_T^{(j)} \to S_T^{(1)}$ (a single asset), and the worst-of option converges to a vanilla option on that single (representative) asset — typically a higher value than the worst-of case with imperfect correlation.</p>
-                    <p class="mb-0"><strong>Best-of options are long correlation</strong> in the analogous sense — as $\rho \to 1$ the best-of converges to the same single-asset vanilla, which is typically <em>less</em> valuable than the best-of with dispersion, since low correlation gives the "best" performer more room to outperform.</p>
+                    <div class="math-box-label">Remark - Correlation Sensitivity of Rainbow Options</div>
+                    <p><strong>Worst-of options are long the spread, short correlation:</strong> a worst-of call's value increases as correlation falls. With low correlation, the $k$ underlyings are more likely to spread apart - some up, some down - so the minimum tends to be lower, but there is also more <em>dispersion</em> in outcomes, and the option on the minimum benefits from the increased variance of $\min_j S_T^{(j)}$ in the tails relevant to the option's value. Conversely, as $\rho \to 1$, all underlyings move together, $\min_j S_T^{(j)} \to S_T^{(1)}$ (a single asset), and the worst-of option converges to a vanilla option on that single (representative) asset - typically a higher value than the worst-of case with imperfect correlation.</p>
+                    <p class="mb-0"><strong>Best-of options are long correlation</strong> in the analogous sense - as $\rho \to 1$ the best-of converges to the same single-asset vanilla, which is typically <em>less</em> valuable than the best-of with dispersion, since low correlation gives the "best" performer more room to outperform.</p>
                 </div>
 
-                <h2 class="mt-5 mb-3">Worked Example — Correlation Impact on a Basket Option</h2>
+                <h2 class="mt-5 mb-3">Worked Example - Correlation Impact on a Basket Option</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Two-Asset Basket Call Under Varying Correlation</div>
+                    <div class="math-box-label">Example - Two-Asset Basket Call Under Varying Correlation</div>
                     <p>Consider an equal-weighted basket of two stocks, each at $S_0^{(1)}=S_0^{(2)}=100$, each with $\sigma=25\%$, $r=0$, $T=1$, basket value $B_0 = 100$, and an at-the-money basket call struck at $K=100$.</p>
                     <p>Using the moment-matching result above with weights $w_1=w_2=0.5$, the basket's effective volatility is:
                     $$\sigma_B = \sqrt{w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + 2w_1w_2\sigma_1\sigma_2\rho} = \sigma\sqrt{\frac{1+\rho}{2}}$$
                     (using $\sigma_1=\sigma_2=\sigma=25\%$ and $w_1=w_2=0.5$).</p>
-                    <p><strong>At $\rho=1$:</strong> $\sigma_B = 25\%$ — the basket behaves exactly like a single $25\%$-vol asset, and the basket call is worth the same as a vanilla ATM call at $25\%$ vol, roughly $\approx 9.95$ (ATM approximation $S_0\sigma\sqrt{T/2\pi}$).</p>
-                    <p><strong>At $\rho=0$:</strong> $\sigma_B = 25\%\times\sqrt{0.5} \approx 17.7\%$ — diversification cuts the effective volatility by about $30\%$, and the basket call is worth roughly $\approx 7.04$, a price reduction of about $29\%$ relative to the perfectly correlated case.</p>
-                    <p class="mb-0"><strong>At $\rho=-0.5$ (unusual but illustrative):</strong> $\sigma_B = 25\%\times\sqrt{0.25} = 12.5\%$, and the basket call falls to roughly $\approx 4.98$ — about half the perfectly-correlated price. This example makes concrete why correlation is sometimes called "the new volatility" for multi-asset desks: for a fixed set of individual volatilities, the basket option's price can vary by a factor of two or more purely as a function of an input — correlation — that is notoriously difficult to hedge, since there is no liquid, exchange-traded "correlation" instrument analogous to a vanilla option for hedging single-name volatility.</p>
+                    <p><strong>At $\rho=1$:</strong> $\sigma_B = 25\%$ - the basket behaves exactly like a single $25\%$-vol asset, and the basket call is worth the same as a vanilla ATM call at $25\%$ vol, roughly $\approx 9.95$ (ATM approximation $S_0\sigma\sqrt{T/2\pi}$).</p>
+                    <p><strong>At $\rho=0$:</strong> $\sigma_B = 25\%\times\sqrt{0.5} \approx 17.7\%$ - diversification cuts the effective volatility by about $30\%$, and the basket call is worth roughly $\approx 7.04$, a price reduction of about $29\%$ relative to the perfectly correlated case.</p>
+                    <p class="mb-0"><strong>At $\rho=-0.5$ (unusual but illustrative):</strong> $\sigma_B = 25\%\times\sqrt{0.25} = 12.5\%$, and the basket call falls to roughly $\approx 4.98$ - about half the perfectly-correlated price. This example makes concrete why correlation is sometimes called "the new volatility" for multi-asset desks: for a fixed set of individual volatilities, the basket option's price can vary by a factor of two or more purely as a function of an input - correlation - that is notoriously difficult to hedge, since there is no liquid, exchange-traded "correlation" instrument analogous to a vanilla option for hedging single-name volatility.</p>
                 </div>
 
                 <hr class="my-5">

@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -112,24 +112,24 @@
 <h1 class="text-accent mb-4">3.2 Properties</h1>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Multiplicativity</div>
+<div class="math-box-label">Theorem - Multiplicativity</div>
 <p>For any $n\times n$ matrices $A$ and $B$:</p>
 $$\det(AB) = \det A \cdot \det B.$$
 <p class="mb-0">Consequently: $\det(A^k)=(\det A)^k$, and if $A$ is invertible then $\det(A^{-1})=(\det A)^{-1}$.</p>
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Transpose</div>
+<div class="math-box-label">Theorem - Transpose</div>
 <p class="mb-0">For any square matrix $A$: $\det(A^T)=\det A$. This implies that every property of the determinant stated for rows holds equally for columns.</p>
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Invertibility Criterion</div>
+<div class="math-box-label">Theorem - Invertibility Criterion</div>
 <p class="mb-0">A matrix $A\in M_n(\mathbb{R})$ is invertible if and only if $\det A\neq 0$. Equivalently, the rows (or columns) of $A$ are linearly independent if and only if $\det A\neq 0$.</p>
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Effect of Row Operations</div>
+<div class="math-box-label">Theorem - Effect of Row Operations</div>
 <p>Elementary row operations change $\det$ as follows:</p>
 <ul>
 <li><strong>Row swap</strong> ($R_i \leftrightarrow R_j$, $i\neq j$): $\det\mapsto -\det A$.</li>
@@ -140,7 +140,7 @@ $$\det(AB) = \det A \cdot \det B.$$
 </div>
 
 <div class="math-box example">
-<div class="math-box-label">Example — Computing a $3\times 3$ Determinant via Row Reduction</div>
+<div class="math-box-label">Example - Computing a $3\times 3$ Determinant via Row Reduction</div>
 <p>Let $A=\begin{pmatrix}2&1&3\\0&-1&2\\4&0&5\end{pmatrix}$. We row-reduce to upper triangular form, tracking the effect on $\det$:</p>
 <p>$R_3\leftarrow R_3-2R_1$: no sign change.</p>
 $$\begin{pmatrix}2&1&3\\0&-1&2\\0&-2&-1\end{pmatrix}$$
@@ -151,14 +151,14 @@ $$\det A = 2\cdot(-1)\cdot(-5) = 10.$$
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Cramer's Rule</div>
+<div class="math-box-label">Theorem - Cramer's Rule</div>
 <p>Let $A$ be an invertible $n\times n$ matrix and $\mathbf{b}\in\mathbb{R}^n$. The unique solution $x$ to $Ax=\mathbf{b}$ has components:</p>
 $$x_i = \frac{\det(A_i)}{\det A},\qquad i=1,\ldots,n,$$
 <p class="mb-0">where $A_i$ is the matrix obtained from $A$ by replacing its $i$-th column with $\mathbf{b}$. Cramer's rule is theoretically important but computationally expensive for large $n$; Gaussian elimination is preferred in practice.</p>
 </div>
 
 <div class="math-box example">
-<div class="math-box-label">Example — Cramer's Rule for $2\times2$</div>
+<div class="math-box-label">Example - Cramer's Rule for $2\times2$</div>
 <p>Solve $\begin{pmatrix}3&1\\2&5\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}7\\4\end{pmatrix}$.</p>
 <p>$\det A=15-2=13$. Then:
 $$x_1=\frac{\det\begin{pmatrix}7&1\\4&5\end{pmatrix}}{13}=\frac{35-4}{13}=\frac{31}{13},\qquad x_2=\frac{\det\begin{pmatrix}3&7\\2&4\end{pmatrix}}{13}=\frac{12-14}{13}=\frac{-2}{13}.$$</p>

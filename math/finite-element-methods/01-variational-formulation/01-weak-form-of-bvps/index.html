@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -125,12 +125,12 @@
             <article>
                 <h1 class="text-accent mb-4">1.1 Weak Form of Boundary Value Problems</h1>
 
-                <p>The starting point of the finite element method is the <strong>strong form</strong> of a boundary value problem — a classical PDE that the solution must satisfy pointwise. We then derive a weaker formulation by multiplying by a test function and integrating by parts, which requires less regularity and opens the door to Galerkin approximation.</p>
+                <p>The starting point of the finite element method is the <strong>strong form</strong> of a boundary value problem - a classical PDE that the solution must satisfy pointwise. We then derive a weaker formulation by multiplying by a test function and integrating by parts, which requires less regularity and opens the door to Galerkin approximation.</p>
 
                 <h2 class="mt-4 mb-3">The Model Problem</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Strong Form (Poisson Equation)</div>
+                    <div class="math-box-label">Definition - Strong Form (Poisson Equation)</div>
                     <p>Let $\Omega \subset \mathbb{R}^d$ ($d = 2$ or $3$) be a bounded Lipschitz domain with boundary $\partial\Omega$. Given $f \in L^2(\Omega)$, the <strong>strong form</strong> of the Poisson problem with homogeneous Dirichlet boundary conditions is:
                     $$-\Delta u = f \quad \text{in } \Omega, \qquad u = 0 \quad \text{on } \partial\Omega.$$
                     A <strong>classical solution</strong> is a function $u \in C^2(\Omega) \cap C^0(\bar\Omega)$ satisfying these equations pointwise.</p>
@@ -141,7 +141,7 @@
                 <p>To derive the weak form, we multiply the PDE by a test function $v$ and integrate over $\Omega$. The key tool is Green's first identity.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Green's First Identity</div>
+                    <div class="math-box-label">Theorem - Green's First Identity</div>
                     <p class="mb-0">Let $u \in C^2(\bar\Omega)$ and $v \in C^1(\bar\Omega)$. Then:
                     $$\int_\Omega (-\Delta u)\, v\,dx = \int_\Omega \nabla u \cdot \nabla v\,dx - \int_{\partial\Omega} \frac{\partial u}{\partial n}\, v\,dS,$$
                     where $\mathbf{n}$ is the outward unit normal to $\partial\Omega$.</p>
@@ -151,7 +151,7 @@
                 $$\int_\Omega (-\Delta u)\,v\,dx = \int_\Omega \nabla u \cdot \nabla v\,dx = \int_\Omega f\,v\,dx.$$
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Weak Form</div>
+                    <div class="math-box-label">Definition - Weak Form</div>
                     <p>Define the bilinear form $a: H^1_0(\Omega) \times H^1_0(\Omega) \to \mathbb{R}$ and linear functional $\ell: H^1_0(\Omega) \to \mathbb{R}$ by:
                     $$a(u,v) = \int_\Omega \nabla u \cdot \nabla v\,dx, \qquad \ell(v) = \int_\Omega f\,v\,dx.$$
                     The <strong>weak form</strong> of the Poisson problem is: find $u \in H^1_0(\Omega)$ such that
@@ -161,13 +161,13 @@
                 <h2 class="mt-5 mb-3">Equivalence with the Strong Form</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Equivalence</div>
+                    <div class="math-box-label">Theorem - Equivalence</div>
                     <p>If $u \in C^2(\Omega) \cap C^0(\bar\Omega)$ is a classical solution to the strong form, then $u$ satisfies the weak form. Conversely, if $u \in H^1_0(\Omega)$ satisfies the weak form and additionally $u \in C^2(\Omega)$, then $u$ is a classical solution.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Weaker is Better</div>
-                    <p class="mb-0">The weak form requires only $u \in H^1_0(\Omega)$ — one weak derivative in $L^2$ — rather than two classical derivatives. This broader function space admits solutions to problems with discontinuous data $f$ or non-smooth domains where classical solutions may not exist. The Lax-Milgram theorem then guarantees existence and uniqueness in $H^1_0$.</p>
+                    <div class="math-box-label">Remark - Why Weaker is Better</div>
+                    <p class="mb-0">The weak form requires only $u \in H^1_0(\Omega)$ - one weak derivative in $L^2$ - rather than two classical derivatives. This broader function space admits solutions to problems with discontinuous data $f$ or non-smooth domains where classical solutions may not exist. The Lax-Milgram theorem then guarantees existence and uniqueness in $H^1_0$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Neumann Boundary Conditions</h2>
@@ -175,7 +175,7 @@
                 <p>When we prescribe the flux $\partial u / \partial n = g$ on (part of) the boundary, the boundary integral in Green's identity does not vanish. This is called a <strong>natural boundary condition</strong> because it arises naturally in the weak form without special treatment.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Pure Neumann Problem</div>
+                    <div class="math-box-label">Definition - Pure Neumann Problem</div>
                     <p>The strong form $-\Delta u = f$ in $\Omega$, $\partial u/\partial n = g$ on $\partial\Omega$ leads to the weak form: find $u \in H^1(\Omega)$ such that
                     $$\int_\Omega \nabla u \cdot \nabla v\,dx = \int_\Omega f\,v\,dx + \int_{\partial\Omega} g\,v\,dS \quad \forall\, v \in H^1(\Omega).$$
                     Note that $u$ is now sought in $H^1(\Omega)$ (not $H^1_0$), since no Dirichlet condition is imposed. A compatibility condition $\int_\Omega f\,dx + \int_{\partial\Omega} g\,dS = 0$ is required for existence.</p>
@@ -186,15 +186,15 @@
                 <p>Many physical problems involve different boundary conditions on different parts of the boundary. Let $\partial\Omega = \Gamma_D \cup \Gamma_N$ (disjoint, $|\Gamma_D| > 0$).</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Mixed Boundary Problem</div>
+                    <div class="math-box-label">Definition - Mixed Boundary Problem</div>
                     <p>Strong form: $-\Delta u = f$ in $\Omega$, $u = 0$ on $\Gamma_D$, $\partial u/\partial n = g$ on $\Gamma_N$. Define $V = \{v \in H^1(\Omega) : v = 0 \text{ on } \Gamma_D\}$. The weak form is: find $u \in V$ such that
                     $$\int_\Omega \nabla u \cdot \nabla v\,dx = \int_\Omega f\,v\,dx + \int_{\Gamma_N} g\,v\,dS \quad \forall\, v \in V.$$
                     The Dirichlet condition is enforced as an essential condition on the space $V$; the Neumann condition enters the right-hand side naturally.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — 1D BVP</div>
-                    <p>Consider $-u'' = f$ on $(0,1)$, $u(0) = 0$, $u'(1) = g$. Multiplying by $v \in H^1_0(0,1)$ (wait — here we only have $u(0)=0$, so $V = \{v \in H^1(0,1): v(0)=0\}$) and integrating by parts:
+                    <div class="math-box-label">Example - 1D BVP</div>
+                    <p>Consider $-u'' = f$ on $(0,1)$, $u(0) = 0$, $u'(1) = g$. Multiplying by $v \in H^1_0(0,1)$ (wait - here we only have $u(0)=0$, so $V = \{v \in H^1(0,1): v(0)=0\}$) and integrating by parts:
                     $$\int_0^1 u'v'\,dx = \int_0^1 fv\,dx + g\,v(1) \quad \forall\,v \in V.$$
                     The Neumann data $g$ enters as a point load at $x=1$.</p>
                 </div>

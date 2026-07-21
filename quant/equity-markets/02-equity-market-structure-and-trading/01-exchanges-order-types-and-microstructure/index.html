@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,30 +80,30 @@
             <article>
                 <h1 class="text-accent mb-4">2.1 Exchanges, Order Types, and Market Microstructure</h1>
 
-                <p>Modern equity markets are not a single venue but a network of competing exchanges and alternative trading systems, all of which interact through a continuous limit order book to determine the price at which a trade actually executes. Understanding the mechanics of this order book — how orders are queued, matched, and prioritised — is the foundation for everything from estimating transaction costs to designing execution algorithms.</p>
+                <p>Modern equity markets are not a single venue but a network of competing exchanges and alternative trading systems, all of which interact through a continuous limit order book to determine the price at which a trade actually executes. Understanding the mechanics of this order book - how orders are queued, matched, and prioritised - is the foundation for everything from estimating transaction costs to designing execution algorithms.</p>
 
                 <h2 class="mt-5 mb-3">The Limit Order Book</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Limit Order Book</div>
+                    <div class="math-box-label">Definition - Limit Order Book</div>
                     <p>A limit order book (LOB) is a record of outstanding buy orders (bids) and sell orders (offers/asks) for a security, organised by price level. At each price level, orders are typically queued by arrival time (<em>price-time priority</em>): the first order to arrive at the best price is the first to be matched against an incoming marketable order.</p>
                     <p class="mb-0">The <strong>best bid</strong> $B_t$ is the highest price at which someone is willing to buy, and the <strong>best ask</strong> (or offer) $A_t$ is the lowest price at which someone is willing to sell. The <strong>mid-price</strong> is $M_t = \frac{B_t + A_t}{2}$, commonly used as a reference price for valuation and benchmarking.</p>
                 </div>
 
-                <p>A trade occurs whenever an incoming order is willing to transact at a price that crosses the existing book — for example, a buy order priced at or above the current best ask immediately executes against the resting sell orders at that price, "walking up the book" to worse prices if the order size exceeds the liquidity available at the best level.</p>
+                <p>A trade occurs whenever an incoming order is willing to transact at a price that crosses the existing book - for example, a buy order priced at or above the current best ask immediately executes against the resting sell orders at that price, "walking up the book" to worse prices if the order size exceeds the liquidity available at the best level.</p>
 
                 <h2 class="mt-5 mb-3">Order Types</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Common Order Types</div>
-                    <p><strong>Market order:</strong> an instruction to buy or sell immediately at the best available price(s) in the book. Market orders guarantee execution but not price — they are "marketable" by construction and consume liquidity (they are <em>liquidity takers</em>).</p>
+                    <div class="math-box-label">Definition - Common Order Types</div>
+                    <p><strong>Market order:</strong> an instruction to buy or sell immediately at the best available price(s) in the book. Market orders guarantee execution but not price - they are "marketable" by construction and consume liquidity (they are <em>liquidity takers</em>).</p>
                     <p><strong>Limit order:</strong> an instruction to buy (sell) at a specified price or better. A limit order placed away from the inside spread rests in the book and provides liquidity (it is a <em>liquidity provider</em>) until it is matched by an incoming marketable order or cancelled.</p>
                     <p><strong>Stop order (stop-loss):</strong> an order that becomes a market order once the security trades at or through a specified trigger price. Stop orders are used to limit losses on an existing position but can exacerbate price moves when many stops cluster at similar levels and are triggered in sequence.</p>
                     <p class="mb-0"><strong>Iceberg (reserve) order:</strong> a large limit order that displays only a small portion of its total size to the market at any time. As the displayed portion is executed, additional hidden quantity is automatically replenished from the reserve. Iceberg orders let large participants work an order without immediately revealing the full size to other market participants, reducing information leakage.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Liquidity Takers vs Liquidity Providers</div>
+                    <div class="math-box-label">Remark - Liquidity Takers vs Liquidity Providers</div>
                     <p class="mb-0">Marketable orders (market orders, or limit orders priced to cross the spread) remove resting liquidity from the book and are charged a "taker" fee on many exchanges. Passive limit orders that rest in the book and are subsequently executed against provide liquidity and often receive a "maker" rebate. This <em>maker-taker</em> fee structure, common on US equity exchanges, creates an incentive for market makers and algorithmic traders to post passive liquidity, and is itself a subject of debate regarding its effect on displayed spreads and order routing incentives.</p>
                 </div>
 
@@ -112,14 +112,14 @@
                 <p>The bid-ask spread is the most visible cost of trading and a key indicator of a security's liquidity. It is the price a liquidity taker pays for the immediacy of execution.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Spread and Depth</div>
+                    <div class="math-box-label">Definition - Spread and Depth</div>
                     <p>The <strong>quoted spread</strong> is $S_t = A_t - B_t$, often expressed in basis points relative to the mid-price as $\dfrac{A_t - B_t}{M_t} \times 10^4$.</p>
                     <p class="mb-0"><strong>Market depth</strong> refers to the quantity of shares available at and near the best bid and offer. A "deep" book has large quantities resting at the best prices and at levels just behind them, so that a moderately sized order can execute with little price impact. A "thin" book has only small quantities at each level, so even modest orders move the price materially.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Components of the Spread</div>
-                    <p><strong>Order processing costs:</strong> the fixed cost of operating as a market maker — exchange fees, technology, and back-office costs — recovered through the spread.</p>
+                    <div class="math-box-label">Remark - Components of the Spread</div>
+                    <p><strong>Order processing costs:</strong> the fixed cost of operating as a market maker - exchange fees, technology, and back-office costs - recovered through the spread.</p>
                     <p><strong>Inventory risk:</strong> a market maker who buys at the bid accumulates a long position that is exposed to adverse price moves before it can be offloaded. The spread compensates for the risk of holding this unwanted inventory.</p>
                     <p class="mb-0"><strong>Adverse selection:</strong> some counterparties trade because they possess short-term information the market maker does not. The spread must be wide enough that profits from uninformed flow offset losses to informed flow. Stocks with more uncertain near-term news (e.g. ahead of earnings) tend to have wider spreads for this reason.</p>
                 </div>
@@ -129,13 +129,13 @@
                 <p>Exchanges impose a minimum price increment, or <em>tick size</em>, that constrains the prices at which orders can be quoted. The tick size has a first-order effect on spreads, depth, and the economics of market making.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Tick Size</div>
+                    <div class="math-box-label">Definition - Tick Size</div>
                     <p class="mb-0">The tick size $\delta$ is the minimum allowable increment between consecutive quoted prices. US equities generally trade in $\delta = \$0.01$ increments for stocks priced above $1, though sub-penny pricing is permitted in certain circumstances (e.g. for hidden or midpoint-pegged orders in dark venues). For a low-priced stock, a one-tick spread of $\$0.01$ can represent tens of basis points, while for a high-priced stock the same one-tick spread is a fraction of a basis point.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Tick Size and Relative Spread</div>
-                    <p>Consider two stocks both quoted with a one-tick spread of $\$0.01$: Stock A trades at $\$5.00$ and Stock B trades at $\$500.00$. The relative spread for Stock A is $\frac{0.01}{5.00} = 20$ basis points, while for Stock B it is $\frac{0.01}{500.00} = 0.2$ basis points — a 100-fold difference driven purely by price level.</p>
+                    <div class="math-box-label">Example - Tick Size and Relative Spread</div>
+                    <p>Consider two stocks both quoted with a one-tick spread of $\$0.01$: Stock A trades at $\$5.00$ and Stock B trades at $\$500.00$. The relative spread for Stock A is $\frac{0.01}{5.00} = 20$ basis points, while for Stock B it is $\frac{0.01}{500.00} = 0.2$ basis points - a 100-fold difference driven purely by price level.</p>
                     <p class="mb-0">This is why a stock split (Section 3.1) that lowers a high-priced stock's price can mechanically widen its relative spread: the same $\$0.01$ minimum tick becomes a larger fraction of the new, lower price, even though nothing about the company's fundamentals has changed.</p>
                 </div>
 

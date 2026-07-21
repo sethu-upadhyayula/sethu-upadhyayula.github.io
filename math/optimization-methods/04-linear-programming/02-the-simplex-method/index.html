@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,21 +132,21 @@
                 <h2 class="mt-4 mb-3">Reduced Costs</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.1 — Reduced Costs</div>
+                    <div class="math-box-label">Definition 4.2.1 - Reduced Costs</div>
                     <p>Given a basis $B$ with $x_B = A_B^{-1}b$ and $x_N = 0$, the objective value is $c^\top x = c_B^\top x_B = c_B^\top A_B^{-1} b$. Define $y = A_B^{-\top} c_B$ (the dual variables / simplex multipliers). The <strong>reduced cost</strong> of variable $j$ is
                     $$\bar{c}_j = c_j - c_B^\top A_B^{-1} A_j = c_j - y^\top A_j.$$</p>
                     <p class="mb-0">For basic indices $j \in B$, $\bar{c}_j = 0$ by construction. The reduced cost measures how much the objective changes per unit increase in $x_j$ from zero, holding the basis fixed.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.2 — Optimality Condition</div>
+                    <div class="math-box-label">Theorem 4.2.2 - Optimality Condition</div>
                     <p class="mb-0">A BFS $x$ with basis $B$ is optimal if and only if $\bar{c}_j \ge 0$ for all non-basic $j \in N$. If some $\bar{c}_j < 0$, then increasing $x_j$ from zero will decrease the objective, so $x$ is not optimal.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Pivot Rules</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.3 — Entering and Leaving Variables</div>
+                    <div class="math-box-label">Definition 4.2.3 - Entering and Leaving Variables</div>
                     <p><strong>Entering variable (most-negative rule):</strong> Choose the non-basic index $q$ with the most negative reduced cost:
                     $$q = \arg\min_{j \in N}\; \bar{c}_j.$$</p>
                     <p>Let $d = A_B^{-1} A_q$ (the <em>direction</em> of change in basic variables when $x_q$ increases). <strong>Minimum ratio test (leaving variable):</strong> the maximum step $\theta^*$ before some basic variable hits zero is
@@ -158,7 +158,7 @@
                 <h2 class="mt-5 mb-3">Two-Phase Method for Initial BFS</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.4 — Two-Phase Simplex</div>
+                    <div class="math-box-label">Definition 4.2.4 - Two-Phase Simplex</div>
                     <p>When no initial BFS is available, the two-phase method proceeds as follows.</p>
                     <p><strong>Phase I:</strong> Introduce artificial variables $a_i \ge 0$ and solve
                     $$\min\; \sum_{i=1}^m a_i \quad\text{s.t.}\quad Ax + a = b,\; x, a \ge 0.$$
@@ -169,7 +169,7 @@
                 <h2 class="mt-5 mb-3">Bland's Rule and Cycling Prevention</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.5 — Bland's Rule</div>
+                    <div class="math-box-label">Theorem 4.2.5 - Bland's Rule</div>
                     <p><strong>Bland's rule:</strong> Among all eligible entering variables ($\bar{c}_j < 0$), choose the one with the <em>smallest index</em>; among eligible leaving variables (ties in the ratio test), choose the one with the smallest index.</p>
                     <p class="mb-0">Under Bland's rule, the simplex method is guaranteed to terminate in finitely many steps, even for degenerate problems (where $\theta^* = 0$ and the BFS does not change). The proof shows that under Bland's rule, no basis can be repeated, so the finite number of bases implies termination.</p>
                 </div>
@@ -177,13 +177,13 @@
                 <h2 class="mt-5 mb-3">Complexity</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Worst-Case and Average-Case Complexity</div>
+                    <div class="math-box-label">Remark - Worst-Case and Average-Case Complexity</div>
                     <p>Klee and Minty (1972) constructed an $n$-variable LP for which the simplex method (with the most-negative reduced cost rule) visits all $2^n$ vertices of a deformed hypercube, giving <strong>worst-case exponential</strong> complexity.</p>
                     <p class="mb-0">However, empirically and under probabilistic models of random LPs, the simplex method runs in expected <strong>polynomial time</strong> (Borgwardt, Spielman-Teng smoothed analysis). In practice it is highly efficient, solving problems with millions of variables in seconds.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — One Simplex Iteration</div>
+                    <div class="math-box-label">Example - One Simplex Iteration</div>
                     <p>Consider $\min\; -2x_1 - 3x_2$ s.t. $x_1 + x_2 + s_1 = 4$, $2x_1 + x_2 + s_2 = 6$, $x_1, x_2, s_1, s_2 \ge 0$. Initial BFS: $B = \{s_1, s_2\}$, $x_B = (4, 6)$, $\bar{c}_{x_1} = -2$, $\bar{c}_{x_2} = -3$.</p>
                     <p>Most negative: $x_2$ enters. Direction $d = A_B^{-1} A_{x_2} = (1, 1)^\top$. Ratio test: $\min(4/1, 6/1) = 4$, so $s_1$ leaves. New basis $B = \{x_2, s_2\}$: $x_2 = 4$, $s_2 = 2$, objective $= -12$.</p>
                     <p class="mb-0">After next iteration with $x_1$ entering, one finds the optimal BFS $(x_1, x_2) = (2, 2)$ with objective $-10$. (Verify: $\bar{c}_j \ge 0$ for all non-basic variables.)</p>

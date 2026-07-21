@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,21 +81,21 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Prepayment Models for MBS</h1>
 
-                <p>Section 1.2 introduced the SMM/CPR/PSA conventions used to describe prepayment speeds. At the pool level, these conventions become the primary modelling lever: the prepayment speed assumption determines the entire cash flow profile of a pass-through, and therefore its price, duration, and convexity. This section focuses on the economic drivers behind realistic prepayment speeds, and on the resulting effect on MBS risk measures — most importantly, the phenomenon of negative convexity.</p>
+                <p>Section 1.2 introduced the SMM/CPR/PSA conventions used to describe prepayment speeds. At the pool level, these conventions become the primary modelling lever: the prepayment speed assumption determines the entire cash flow profile of a pass-through, and therefore its price, duration, and convexity. This section focuses on the economic drivers behind realistic prepayment speeds, and on the resulting effect on MBS risk measures - most importantly, the phenomenon of negative convexity.</p>
 
                 <h2 class="mt-5 mb-3">Drivers of Prepayment Speed</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Three Components of Prepayment</div>
+                    <div class="math-box-label">Remark - The Three Components of Prepayment</div>
                     <ul class="mb-0">
-                        <li><strong>Refinancing incentive:</strong> the gap between the pool's WAC and the current mortgage rate available to borrowers. A larger positive gap makes refinancing economically attractive, increasing the SMM. The relationship is highly non-linear: a small positive incentive produces little response, but once the incentive crosses a threshold (covering closing costs and the value of the borrower's prepayment option), refinancing activity accelerates sharply — an "S-curve" response.</li>
+                        <li><strong>Refinancing incentive:</strong> the gap between the pool's WAC and the current mortgage rate available to borrowers. A larger positive gap makes refinancing economically attractive, increasing the SMM. The relationship is highly non-linear: a small positive incentive produces little response, but once the incentive crosses a threshold (covering closing costs and the value of the borrower's prepayment option), refinancing activity accelerates sharply - an "S-curve" response.</li>
                         <li><strong>Burnout:</strong> within a pool, borrowers differ in their propensity and ability to refinance (credit quality, loan size, awareness). After a period of high refinancing incentive, the borrowers most likely to refinance have already done so, leaving a pool of "sticky" remaining borrowers who respond more slowly to renewed incentive. Burnout is typically modelled as a function of the cumulative past refinancing incentive experienced by the pool.</li>
-                        <li><strong>Seasonality:</strong> housing turnover — and therefore prepayment via home sale — is seasonal, peaking in spring and summer months in most markets and troughing in winter. Seasonal multipliers are applied on top of the refinancing-driven component.</li>
+                        <li><strong>Seasonality:</strong> housing turnover - and therefore prepayment via home sale - is seasonal, peaking in spring and summer months in most markets and troughing in winter. Seasonal multipliers are applied on top of the refinancing-driven component.</li>
                         <li><strong>Seasoning:</strong> newly originated loans prepay slowly (borrowers have just made a financing decision and transaction costs of moving are high); prepayment speeds ramp up over the first 30 months as captured by the PSA curve in Section 1.2, then stabilise.</li>
                     </ul>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Refinancing Incentive and S-Curve Response</div>
+                    <div class="math-box-label">Definition - Refinancing Incentive and S-Curve Response</div>
                     <p class="mb-0">Define the refinancing incentive as $\Delta = \text{WAC} - r_{\text{mkt}}$, the spread of the pool's coupon over the current market mortgage rate. A stylised S-curve prepayment function might take the form:
                     $$\text{CPR}(\Delta) = \text{CPR}_{\min} + \frac{\text{CPR}_{\max}-\text{CPR}_{\min}}{1+e^{-k(\Delta - \Delta_0)}}$$
                     where $\Delta_0$ is the incentive at which response is half-maximal and $k$ controls the steepness of the curve. Production prepayment models (Andrew Davidson, BlackRock, Bloomberg) estimate such curves from historical pool-level prepayment data, segmented by loan size, FICO, LTV, and geography.</p>
@@ -105,7 +105,7 @@
                 <p>Because cash flow timing depends on the rate path, the effective duration of an MBS must account for the change in expected cash flows as rates move, not just the discounting effect that applies to a fixed cash flow stream.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Effective Duration and Convexity</div>
+                    <div class="math-box-label">Definition - Effective Duration and Convexity</div>
                     <p>Given prices $P_-$ and $P_+$ computed by shocking the discount curve down and up by $\Delta y$ (and re-running the prepayment model to obtain new path-dependent cash flows), effective duration and convexity are:
                     $$D_{\text{eff}} = \frac{P_- - P_+}{2 \cdot P_0 \cdot \Delta y}, \qquad C_{\text{eff}} = \frac{P_+ + P_- - 2P_0}{P_0 \cdot (\Delta y)^2}$$
                     Unlike a fixed-coupon bond, $P_+$ and $P_-$ for an MBS are not symmetric around $P_0$ because the cash flows themselves change with the rate shock.</p>
@@ -113,19 +113,19 @@
 
                 <h2 class="mt-5 mb-3">Negative Convexity</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Result — Negative Convexity of Pass-Throughs</div>
-                    <p class="mb-0">When rates fall ($\Delta y < 0$), the refinancing incentive increases, prepayments accelerate, and principal is returned earlier than expected — at par, even if the security was trading at a premium. This caps the price appreciation that would otherwise follow from discounting at a lower rate: $P_-$ rises by less than a comparable fixed-cash-flow bond would. When rates rise ($\Delta y > 0$), prepayments slow, extending the weighted average life and the duration of the security precisely when discount rates are higher — compounding the price decline. The net effect is $C_{\text{eff}} < 0$: the price-yield curve is concave rather than convex, the opposite of the behaviour of a standard option-free bond.</p>
+                    <div class="math-box-label">Result - Negative Convexity of Pass-Throughs</div>
+                    <p class="mb-0">When rates fall ($\Delta y < 0$), the refinancing incentive increases, prepayments accelerate, and principal is returned earlier than expected - at par, even if the security was trading at a premium. This caps the price appreciation that would otherwise follow from discounting at a lower rate: $P_-$ rises by less than a comparable fixed-cash-flow bond would. When rates rise ($\Delta y > 0$), prepayments slow, extending the weighted average life and the duration of the security precisely when discount rates are higher - compounding the price decline. The net effect is $C_{\text{eff}} < 0$: the price-yield curve is concave rather than convex, the opposite of the behaviour of a standard option-free bond.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Price Response Asymmetry</div>
+                    <div class="math-box-label">Example - Price Response Asymmetry</div>
                     <p>Consider a premium pass-through (price 102) at 100 PSA with effective duration 4.5. Suppose a parallel 100 bp rate decline pushes the prepayment speed to 300 PSA. The accelerated return of principal at par pulls the price toward par, so the security might rise only to 102.8 (effective duration realised $\approx$ 0.8) rather than the $\approx$107 a fixed-cash-flow bond with duration 4.5 would reach.</p>
-                    <p class="mb-0">A 100 bp rate rise that slows the pool to 60 PSA extends the WAL, raising effective duration to perhaps 6.5 and the security might fall to 96 — a larger move than the duration-4.5 bond's symmetric decline to about 97.5. The asymmetric response — smaller gains on rallies, larger losses on sell-offs — is the practical manifestation of negative convexity, and is why MBS investors typically hedge with interest rate swaps and swaptions whose convexity offsets this exposure.</p>
+                    <p class="mb-0">A 100 bp rate rise that slows the pool to 60 PSA extends the WAL, raising effective duration to perhaps 6.5 and the security might fall to 96 - a larger move than the duration-4.5 bond's symmetric decline to about 97.5. The asymmetric response - smaller gains on rallies, larger losses on sell-offs - is the practical manifestation of negative convexity, and is why MBS investors typically hedge with interest rate swaps and swaptions whose convexity offsets this exposure.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Hedging Negative Convexity</div>
-                    <p class="mb-0">Because negative convexity means an MBS portfolio's duration shortens when rates fall and lengthens when rates rise — the opposite of what a static hedge can address — MBS investors must dynamically rebalance hedges (duration "drift") or hold convexity-positive instruments such as long-dated swaptions and Treasury options. This dynamic hedging activity by mortgage investors is a significant source of flow in the interest rate options market discussed in Chapter 2 of the Interest Rate Options module.</p>
+                    <div class="math-box-label">Remark - Hedging Negative Convexity</div>
+                    <p class="mb-0">Because negative convexity means an MBS portfolio's duration shortens when rates fall and lengthens when rates rise - the opposite of what a static hedge can address - MBS investors must dynamically rebalance hedges (duration "drift") or hold convexity-positive instruments such as long-dated swaptions and Treasury options. This dynamic hedging activity by mortgage investors is a significant source of flow in the interest rate options market discussed in Chapter 2 of the Interest Rate Options module.</p>
                 </div>
 
                 <hr class="my-5">

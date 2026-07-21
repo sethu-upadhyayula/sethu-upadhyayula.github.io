@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="light" data-section="chess"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zugzwang, Triangulation, and Corresponding Squares — Endgame Theory</title>
+<title>Zugzwang, Triangulation, and Corresponding Squares - Endgame Theory</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,7 +21,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -49,26 +49,26 @@
         <nav class="breadcrumb-nav"><a href="../../../../chess/">Chess</a> › <a href="../../../">Regular Chess</a> › <a href="../">Endgame Theory</a> › <span>7. Zugzwang, Triangulation, and Corresponding Squares</span></nav>
 
         <h1 class="text-accent mb-4">7. Zugzwang, Triangulation, and Corresponding Squares</h1>
-  <p>Chapter 1 introduced zugzwang informally as "every move makes things worse." This final chapter treats it more formally, and introduces the two main techniques players use to <em>engineer</em> zugzwang on the opponent: triangulation (losing a tempo with your own king) and corresponding squares (a generalisation of opposition to positions with more pawns). These ideas tie together everything else in this chapter — opposition, key squares, and fortress-breaking all ultimately come down to who is, or is not, in zugzwang.</p>
+  <p>Chapter 1 introduced zugzwang informally as "every move makes things worse." This final chapter treats it more formally, and introduces the two main techniques players use to <em>engineer</em> zugzwang on the opponent: triangulation (losing a tempo with your own king) and corresponding squares (a generalisation of opposition to positions with more pawns). These ideas tie together everything else in this chapter - opposition, key squares, and fortress-breaking all ultimately come down to who is, or is not, in zugzwang.</p>
 
   <div class="technique-card">
     <h3>Zugzwang, Formally</h3>
-    <p><strong>Zugzwang</strong> (German for "compulsion to move") describes a position where the player to move would prefer to "pass" — every available move worsens their position — but the rules require them to move anyway. In most of the game zugzwang is rare or irrelevant, because there are usually neutral moves available. In the endgame, however, with few pieces left and limited space, zugzwang becomes one of the most common and most decisive themes.</p>
+    <p><strong>Zugzwang</strong> (German for "compulsion to move") describes a position where the player to move would prefer to "pass" - every available move worsens their position - but the rules require them to move anyway. In most of the game zugzwang is rare or irrelevant, because there are usually neutral moves available. In the endgame, however, with few pieces left and limited space, zugzwang becomes one of the most common and most decisive themes.</p>
     <p>There are two flavours:</p>
     <ul>
       <li><strong>Simple zugzwang:</strong> one side is in zugzwang, the other is not. Whoever is "on move" in the critical position loses (or fails to win).</li>
-      <li><strong>Mutual zugzwang:</strong> <em>whoever</em> has to move in this exact position is worse off — the position itself favours "not moving," regardless of which side it is. Mutual zugzwang positions are the foundation of corresponding squares, discussed below.</li>
+      <li><strong>Mutual zugzwang:</strong> <em>whoever</em> has to move in this exact position is worse off - the position itself favours "not moving," regardless of which side it is. Mutual zugzwang positions are the foundation of corresponding squares, discussed below.</li>
     </ul>
 
     <div class="chess-board" id="board-zugzwang"></div>
     <script>renderChessBoard('board-zugzwang', {d5:'wK',d4:'wP',d7:'bK'});</script>
-    <p class="text-center text-muted mt-2"><small>A simple zugzwang: it is Black to move. The kings are in direct opposition over the pawn's path. Black must step aside (to c7, c8, d8, e7, or e8), and whichever square Black chooses, White's king advances and the pawn eventually promotes. Black's hand is "forced" — this is zugzwang.</small></p>
+    <p class="text-center text-muted mt-2"><small>A simple zugzwang: it is Black to move. The kings are in direct opposition over the pawn's path. Black must step aside (to c7, c8, d8, e7, or e8), and whichever square Black chooses, White's king advances and the pawn eventually promotes. Black's hand is "forced" - this is zugzwang.</small></p>
   </div>
 
   <div class="technique-card">
     <h3>Triangulation</h3>
-    <p><strong>Triangulation</strong> is the technique of moving your king around a "triangle" of three squares so that you arrive at the same destination square as a direct route would reach — but with the <em>opposite</em> side to move. Because the king has more than one path to a given square (e.g. two squares away via two different two-move routes, both ending on the same square), you can choose the route whose move-count gives your opponent the move instead of you, putting them in zugzwang at the critical moment.</p>
-    <p>The classic setting is a king and pawn endgame where the position is a draw if it is the attacker's move (because the defender then gets the opposition), but a win if it is the defender's move (zugzwang). Triangulation is how the attacker "passes" the move to the opponent without actually passing — something chess does not otherwise allow.</p>
+    <p><strong>Triangulation</strong> is the technique of moving your king around a "triangle" of three squares so that you arrive at the same destination square as a direct route would reach - but with the <em>opposite</em> side to move. Because the king has more than one path to a given square (e.g. two squares away via two different two-move routes, both ending on the same square), you can choose the route whose move-count gives your opponent the move instead of you, putting them in zugzwang at the critical moment.</p>
+    <p>The classic setting is a king and pawn endgame where the position is a draw if it is the attacker's move (because the defender then gets the opposition), but a win if it is the defender's move (zugzwang). Triangulation is how the attacker "passes" the move to the opponent without actually passing - something chess does not otherwise allow.</p>
 
     <div class="chess-board" id="board-triangulation"></div>
     <script>renderChessBoard('board-triangulation', {c2:'wK',d5:'wP',d7:'bK'});</script>
@@ -79,18 +79,18 @@
 
   <div class="technique-card">
     <h3>Corresponding Squares</h3>
-    <p><strong>Corresponding squares</strong> generalise the idea of opposition to positions with several pawns (often on both wings), where the kings' maneuvering is governed by more than one pair of "opposition" squares at once. Instead of a single pair of squares (as in basic opposition), there is a <em>map</em>: for every square the defending king might occupy, there is a corresponding square (or squares) the attacking king must occupy <em>at the same time</em> to maintain the zugzwang relationship — and vice versa.</p>
-    <p>The technique for finding corresponding squares works backwards from the final breakthrough: identify the squares from which each side would be in zugzwang if it were their move (the "key" stand-off), then work outward, square by square, matching up which squares correspond to which. If the attacking king can manoeuvre so that the two kings land on a corresponding pair <em>with the defender to move</em>, the defender is in zugzwang and must concede space — often allowing a decisive pawn breakthrough on one wing while the king is tied down on the other.</p>
+    <p><strong>Corresponding squares</strong> generalise the idea of opposition to positions with several pawns (often on both wings), where the kings' maneuvering is governed by more than one pair of "opposition" squares at once. Instead of a single pair of squares (as in basic opposition), there is a <em>map</em>: for every square the defending king might occupy, there is a corresponding square (or squares) the attacking king must occupy <em>at the same time</em> to maintain the zugzwang relationship - and vice versa.</p>
+    <p>The technique for finding corresponding squares works backwards from the final breakthrough: identify the squares from which each side would be in zugzwang if it were their move (the "key" stand-off), then work outward, square by square, matching up which squares correspond to which. If the attacking king can manoeuvre so that the two kings land on a corresponding pair <em>with the defender to move</em>, the defender is in zugzwang and must concede space - often allowing a decisive pawn breakthrough on one wing while the king is tied down on the other.</p>
 
     <div class="chess-board" id="board-corresponding"></div>
     <script>renderChessBoard('board-corresponding', {c3:'wK',b4:'wP',d4:'wP',c6:'bK',b5:'bP',d5:'bP'});</script>
-    <p class="text-center text-muted mt-2"><small>A closed position with corresponding squares on both wings: the b- and d-pawns are mutually blocked, so neither side can make a pawn move without consequences. The two kings (c3 and c6) "correspond" — if White's king reaches c4 while Black's king is still on c6, Black is in zugzwang (no safe king move keeps the balance on both wings simultaneously). Mapping out which squares correspond to which, on both flanks at once, tells White exactly which route to take.</small></p>
+    <p class="text-center text-muted mt-2"><small>A closed position with corresponding squares on both wings: the b- and d-pawns are mutually blocked, so neither side can make a pawn move without consequences. The two kings (c3 and c6) "correspond" - if White's king reaches c4 while Black's king is still on c6, Black is in zugzwang (no safe king move keeps the balance on both wings simultaneously). Mapping out which squares correspond to which, on both flanks at once, tells White exactly which route to take.</small></p>
 
-    <p>Corresponding squares are a generalisation, not a replacement, of opposition: in a position with a single pawn and nothing else, the "map" of corresponding squares collapses to the familiar direct-opposition relationship from Chapter 1. With more pawns, the map becomes richer, but the underlying logic — find the mutual-zugzwang stand-off, then work out which squares force it — is exactly the same.</p>
+    <p>Corresponding squares are a generalisation, not a replacement, of opposition: in a position with a single pawn and nothing else, the "map" of corresponding squares collapses to the familiar direct-opposition relationship from Chapter 1. With more pawns, the map becomes richer, but the underlying logic - find the mutual-zugzwang stand-off, then work out which squares force it - is exactly the same.</p>
   </div>
 
   <div class="endgame-note mt-3">
-    <strong>Putting it together:</strong> zugzwang is the <em>goal</em> — a position where the opponent's move is forced and damaging. Opposition (Chapter 1) is the simplest tool for reaching it. Triangulation is the technique for <em>transferring</em> the move when the direct route doesn't achieve the right parity. Corresponding squares is the <em>map</em> that tells you, in richer positions with pawns on both wings, exactly which squares the two kings need to occupy &mdash; and in what order &mdash; to force zugzwang. Mastering these three ideas together is often the difference between a "drawn" and a "won" king and pawn ending that looks identical to an untrained eye.
+    <strong>Putting it together:</strong> zugzwang is the <em>goal</em> - a position where the opponent's move is forced and damaging. Opposition (Chapter 1) is the simplest tool for reaching it. Triangulation is the technique for <em>transferring</em> the move when the direct route doesn't achieve the right parity. Corresponding squares is the <em>map</em> that tells you, in richer positions with pawns on both wings, exactly which squares the two kings need to occupy &mdash; and in what order &mdash; to force zugzwang. Mastering these three ideas together is often the difference between a "drawn" and a "won" king and pawn ending that looks identical to an untrained eye.
   </div>
 
         <hr class="my-5">

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -85,17 +85,17 @@
                 <h2 class="mt-5 mb-3">The Zero-Coupon Inflation Swap</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Zero-Coupon Inflation Swap Payoff</div>
+                    <div class="math-box-label">Definition - Zero-Coupon Inflation Swap Payoff</div>
                     <p class="mb-0">A ZC inflation swap with maturity $T$ and fixed rate $\pi_{\text{fixed}}$ has a single exchange of cash flows at $T$. Per unit notional, the floating-rate payer pays the fixed-rate payer:
                     $$\left(\frac{\text{CPI}(T)}{\text{CPI}(0)} - 1\right) - \left((1+\pi_{\text{fixed}})^T - 1\right) = \frac{\text{CPI}(T)}{\text{CPI}(0)} - (1+\pi_{\text{fixed}})^T$$
                     i.e., the difference between realised cumulative inflation (the ratio of the reference CPI at maturity to the reference CPI at inception, using the same lag conventions as Section 1.1) and the cumulative inflation implied by the fixed rate compounded annually over $T$ years.</p>
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — The Fair ZC Swap Rate</div>
-                    <p class="mb-0">At inception, the fixed rate $\pi_{\text{fixed}}$ is set so the swap has zero value. Under the standard market convention of valuing the floating leg as the expected value of the CPI ratio under the relevant forward measure — which, absent convexity effects, equals the ratio of forward price index levels implied by the nominal and real discount curves — the fair ZC rate satisfies:
+                    <div class="math-box-label">Proposition - The Fair ZC Swap Rate</div>
+                    <p class="mb-0">At inception, the fixed rate $\pi_{\text{fixed}}$ is set so the swap has zero value. Under the standard market convention of valuing the floating leg as the expected value of the CPI ratio under the relevant forward measure - which, absent convexity effects, equals the ratio of forward price index levels implied by the nominal and real discount curves - the fair ZC rate satisfies:
                     $$(1+\pi_{\text{fixed}})^T = \mathbb{E}\left[\frac{\text{CPI}(T)}{\text{CPI}(0)}\right] \approx \left(\frac{1+y_n(T)}{1+y_r(T)}\right)^T$$
-                    so that $\pi_{\text{fixed}} \approx \dfrac{1+y_n(T)}{1+y_r(T)} - 1$, exactly the exact-Fisher breakeven of Section 1.2. The ZC inflation swap rate and the bond-market breakeven inflation rate are therefore, in principle, the same object — the difference between them in practice (the "inflation swap-breakeven basis") reflects the TIPS liquidity premium and any inflation-swap-specific risk premia.</p>
+                    so that $\pi_{\text{fixed}} \approx \dfrac{1+y_n(T)}{1+y_r(T)} - 1$, exactly the exact-Fisher breakeven of Section 1.2. The ZC inflation swap rate and the bond-market breakeven inflation rate are therefore, in principle, the same object - the difference between them in practice (the "inflation swap-breakeven basis") reflects the TIPS liquidity premium and any inflation-swap-specific risk premia.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Year-on-Year Inflation Swap</h2>
@@ -103,7 +103,7 @@
                 <p>Rather than a single payment based on cumulative inflation over the full term, a YoY inflation swap exchanges a series of payments, each based on the inflation rate realised over a single (usually annual) period.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Year-on-Year Inflation Swap Payoff</div>
+                    <div class="math-box-label">Definition - Year-on-Year Inflation Swap Payoff</div>
                     <p class="mb-0">A YoY inflation swap with annual payment dates $t_1 < t_2 < \cdots < t_n$ (with $t_0 = 0$) and fixed rate $\pi_{\text{YoY}}$ exchanges, at each $t_k$, the floating-rate payer paying the fixed-rate payer:
                     $$\left(\frac{\text{CPI}(t_k)}{\text{CPI}(t_{k-1})} - 1\right) - \pi_{\text{YoY}}$$
                     i.e., the year-on-year inflation rate realised over $[t_{k-1}, t_k]$ less the fixed rate, applied to the notional for that period. Unlike the ZC swap, each payment depends only on the CPI ratio over a single year, not on the cumulative path from time $0$.</p>
@@ -111,25 +111,25 @@
 
                 <h2 class="mt-5 mb-3">Inflation Convexity in the YoY Swap</h2>
 
-                <p>The key structural difference between ZC and YoY swaps lies in how each forward CPI ratio is valued. The ZC swap's payoff depends only on $\text{CPI}(T)/\text{CPI}(0)$ — a single ratio, valued under a single forward measure. The YoY swap's payoff is a <em>sum</em> of forward-starting ratios $\text{CPI}(t_k)/\text{CPI}(t_{k-1})$, each of which must be valued under its own forward measure, and each of these forward CPI ratios requires a convexity correction relative to the "naive" forward computed from the ratio of forward price index levels.</p>
+                <p>The key structural difference between ZC and YoY swaps lies in how each forward CPI ratio is valued. The ZC swap's payoff depends only on $\text{CPI}(T)/\text{CPI}(0)$ - a single ratio, valued under a single forward measure. The YoY swap's payoff is a <em>sum</em> of forward-starting ratios $\text{CPI}(t_k)/\text{CPI}(t_{k-1})$, each of which must be valued under its own forward measure, and each of these forward CPI ratios requires a convexity correction relative to the "naive" forward computed from the ratio of forward price index levels.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why YoY Forwards Need a Convexity Adjustment</div>
-                    <p class="mb-0">The forward price index level $F_k = \mathbb{E}^{Q_{t_k}}[\text{CPI}(t_k)]$ under the $t_k$-forward measure is observable (in principle) from the ZC swap curve. But the YoY leg requires $\mathbb{E}^{Q_{t_k}}\left[\dfrac{\text{CPI}(t_k)}{\text{CPI}(t_{k-1})}\right]$, the expectation of a <em>ratio</em> of two random index levels under the $t_k$-forward measure — and because $\text{CPI}(t_{k-1})$ and $\text{CPI}(t_k)$ are positively correlated and the ratio is a convex/concave function of the joint distribution, this expectation is generally <strong>not</strong> equal to the naive ratio of forwards $F_k/F_{k-1}$. The difference is the <em>YoY inflation convexity adjustment</em>, which depends on the volatility of CPI, the volatility of nominal and real rates, and the correlations between them — typically modelled with a multi-factor model of nominal rates, real rates, and the price index (e.g. a Jarrow-Yildirim-style framework).</p>
+                    <div class="math-box-label">Remark - Why YoY Forwards Need a Convexity Adjustment</div>
+                    <p class="mb-0">The forward price index level $F_k = \mathbb{E}^{Q_{t_k}}[\text{CPI}(t_k)]$ under the $t_k$-forward measure is observable (in principle) from the ZC swap curve. But the YoY leg requires $\mathbb{E}^{Q_{t_k}}\left[\dfrac{\text{CPI}(t_k)}{\text{CPI}(t_{k-1})}\right]$, the expectation of a <em>ratio</em> of two random index levels under the $t_k$-forward measure - and because $\text{CPI}(t_{k-1})$ and $\text{CPI}(t_k)$ are positively correlated and the ratio is a convex/concave function of the joint distribution, this expectation is generally <strong>not</strong> equal to the naive ratio of forwards $F_k/F_{k-1}$. The difference is the <em>YoY inflation convexity adjustment</em>, which depends on the volatility of CPI, the volatility of nominal and real rates, and the correlations between them - typically modelled with a multi-factor model of nominal rates, real rates, and the price index (e.g. a Jarrow-Yildirim-style framework).</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Sign and Magnitude</div>
+                    <div class="math-box-label">Remark - Sign and Magnitude</div>
                     <p class="mb-0">In most market conditions, the YoY convexity adjustment is small (a few basis points) relative to ZC swap rates of similar maturity, but it grows with CPI volatility and with the tenor of the underlying period, and its sign depends on the correlation structure between the price index and the real and nominal rate curves used to discount each leg. For long-dated YoY swaps or in high-inflation-volatility regimes, ignoring this adjustment can lead to material mispricing relative to the ZC curve, even though both contracts are, in principle, referencing the same underlying inflation process.</p>
                 </div>
 
-                <h2 class="mt-5 mb-3">Worked Example — Pricing a Short-Dated ZC Swap</h2>
+                <h2 class="mt-5 mb-3">Worked Example - Pricing a Short-Dated ZC Swap</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Fair ZC Rate from the Real and Nominal Curves</div>
+                    <div class="math-box-label">Example - Fair ZC Rate from the Real and Nominal Curves</div>
                     <p>Suppose the 5-year nominal swap rate is $y_n(5) = 4.20\%$ and the 5-year real rate (from the inflation-linked bond curve or, equivalently, the real leg of an asset swap) is $y_r(5) = 1.70\%$. Using the exact Fisher relation from Section 1.2, the fair 5-year ZC inflation swap rate is:
                     $$\pi_{\text{fixed}} = \frac{1+y_n(5)}{1+y_r(5)} - 1 = \frac{1.0420}{1.0170} - 1 = 1.02458 - 1 = 2.458\%$$</p>
-                    <p>The notional cash flow exchanged at maturity (per $\$100$ notional) is then $100 \times \left[\dfrac{\text{CPI}(5)}{\text{CPI}(0)} - (1.02458)^5\right]$. Since $(1.02458)^5 \approx 1.1293$, the floating-rate payer pays the fixed-rate payer $100 \times \left[\dfrac{\text{CPI}(5)}{\text{CPI}(0)} - 1.1293\right]$ — positive if cumulative realised inflation exceeds about $12.93\%$ over the 5 years, negative otherwise.</p>
+                    <p>The notional cash flow exchanged at maturity (per $\$100$ notional) is then $100 \times \left[\dfrac{\text{CPI}(5)}{\text{CPI}(0)} - (1.02458)^5\right]$. Since $(1.02458)^5 \approx 1.1293$, the floating-rate payer pays the fixed-rate payer $100 \times \left[\dfrac{\text{CPI}(5)}{\text{CPI}(0)} - 1.1293\right]$ - positive if cumulative realised inflation exceeds about $12.93\%$ over the 5 years, negative otherwise.</p>
                     <p class="mb-0">In practice this 2.458% would typically trade with a small spread to the ZC swap quoted directly in the market, reflecting the inflation-swap-breakeven basis discussed above, rather than being derived purely from the bond curves.</p>
                 </div>
 

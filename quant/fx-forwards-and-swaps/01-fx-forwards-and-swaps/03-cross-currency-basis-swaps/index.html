@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,10 +81,10 @@
             <article>
                 <h1 class="text-accent mb-4">1.3 Cross-Currency Basis Swaps</h1>
 
-                <p>A cross-currency basis swap (CCBS, sometimes "cross-currency swap" or "FX basis swap") extends the FX swap concept to medium and long maturities — typically one to thirty years. Where an FX swap is a single spot/forward pair with no interim cash flows, a cross-currency basis swap involves an exchange of principal at inception, periodic exchanges of floating-rate interest payments in each currency over the life of the trade, and a re-exchange of the (same) principal amounts at maturity.</p>
+                <p>A cross-currency basis swap (CCBS, sometimes "cross-currency swap" or "FX basis swap") extends the FX swap concept to medium and long maturities - typically one to thirty years. Where an FX swap is a single spot/forward pair with no interim cash flows, a cross-currency basis swap involves an exchange of principal at inception, periodic exchanges of floating-rate interest payments in each currency over the life of the trade, and a re-exchange of the (same) principal amounts at maturity.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Cross-Currency Basis Swap</div>
+                    <div class="math-box-label">Definition - Cross-Currency Basis Swap</div>
                     <p class="mb-0">A cross-currency basis swap between currencies A and B, with notional $N_A$ in currency A and $N_B = N_A \cdot S$ in currency B (at the initial spot rate $S$), consists of:</p>
                     <ul class="mb-0 mt-2">
                         <li><strong>Initial exchange:</strong> party 1 pays $N_A$ and receives $N_B$ at time 0.</li>
@@ -98,41 +98,41 @@
                 <h2 class="mt-5 mb-3">The Cross-Currency Basis Spread</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Cross-Currency Basis</div>
+                    <div class="math-box-label">Definition - Cross-Currency Basis</div>
                     <p class="mb-0">The cross-currency basis spread $b$ (often quoted in basis points) is the spread added to one leg's floating reference rate so that the present value of the swap is zero at inception. By convention it is typically quoted on the non-USD leg: a EUR/USD basis swap might be structured as "pay €STR flat in EUR, receive SOFR + $b$ in USD," where $b$ is the basis.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — CIP and the Basis</div>
-                    <p>If covered interest rate parity held exactly at all maturities — i.e., if the forward curve implied by FX forwards were always consistent with the ratio of discount factors built from each currency's own risk-free curve — then a cross-currency basis swap with $b = 0$ would have zero value at inception. Equivalently:</p>
+                    <div class="math-box-label">Theorem - CIP and the Basis</div>
+                    <p>If covered interest rate parity held exactly at all maturities - i.e., if the forward curve implied by FX forwards were always consistent with the ratio of discount factors built from each currency's own risk-free curve - then a cross-currency basis swap with $b = 0$ would have zero value at inception. Equivalently:</p>
                     <p>$$F(T) = S \cdot \frac{P_d(0,T)}{P_f(0,T)}$$</p>
-                    <p class="mb-0">where $P_d, P_f$ are the domestic and foreign discount factors to time $T$. A non-zero observed basis $b \neq 0$ is precisely the market's statement that this equality fails — and the deviation must be absorbed somewhere, conventionally in the floating-rate spread of the cross-currency swap.</p>
+                    <p class="mb-0">where $P_d, P_f$ are the domestic and foreign discount factors to time $T$. A non-zero observed basis $b \neq 0$ is precisely the market's statement that this equality fails - and the deviation must be absorbed somewhere, conventionally in the floating-rate spread of the cross-currency swap.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Why CIP Fails: The Basis as Dollar Funding Stress</h2>
 
-                <p>Before 2008, covered interest rate parity held to within a few basis points for major currency pairs — deviations were arbitraged away by banks borrowing in one currency, swapping into another, and lending, at essentially no cost or risk. Since the 2008 financial crisis, however, a persistent and often large negative cross-currency basis against the US dollar has been observed for most major currencies (EUR, JPY, GBP, CHF), meaning that borrowing dollars synthetically via the FX swap/cross-currency market costs more than borrowing dollars directly — a clear violation of CIP that has not been arbitraged away.</p>
+                <p>Before 2008, covered interest rate parity held to within a few basis points for major currency pairs - deviations were arbitraged away by banks borrowing in one currency, swapping into another, and lending, at essentially no cost or risk. Since the 2008 financial crisis, however, a persistent and often large negative cross-currency basis against the US dollar has been observed for most major currencies (EUR, JPY, GBP, CHF), meaning that borrowing dollars synthetically via the FX swap/cross-currency market costs more than borrowing dollars directly - a clear violation of CIP that has not been arbitraged away.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Explanations for the Persistent Basis</div>
+                    <div class="math-box-label">Remark - Explanations for the Persistent Basis</div>
                     <p><strong>Balance sheet costs:</strong> post-crisis regulation (leverage ratios, the supplementary leverage ratio, liquidity coverage ratios) makes it costly for banks to hold the large, low-margin matched books of FX swaps and cross-currency swaps that arbitrage would require. The basis compensates the banks willing to use scarce balance sheet for this activity.</p>
-                    <p><strong>Dollar funding demand:</strong> non-US banks and institutions (particularly in Europe and Japan) have structural USD asset holdings (e.g., USD-denominated bonds, loans) funded in their home currency, creating persistent demand to swap home currency into dollars — pushing the basis more negative against USD.</p>
-                    <p class="mb-0"><strong>Stress indicator:</strong> the basis widens sharply (becomes more negative) during periods of dollar funding stress — most dramatically in late 2008 and again in March 2020 — as the demand for synthetic dollar funding via FX swaps spikes relative to the willingness/capacity of banks to supply it. Central bank USD swap lines exist precisely to relieve this pressure.</p>
+                    <p><strong>Dollar funding demand:</strong> non-US banks and institutions (particularly in Europe and Japan) have structural USD asset holdings (e.g., USD-denominated bonds, loans) funded in their home currency, creating persistent demand to swap home currency into dollars - pushing the basis more negative against USD.</p>
+                    <p class="mb-0"><strong>Stress indicator:</strong> the basis widens sharply (becomes more negative) during periods of dollar funding stress - most dramatically in late 2008 and again in March 2020 - as the demand for synthetic dollar funding via FX swaps spikes relative to the willingness/capacity of banks to supply it. Central bank USD swap lines exist precisely to relieve this pressure.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Synthetic Dollar Borrowing Cost</div>
+                    <div class="math-box-label">Example - Synthetic Dollar Borrowing Cost</div>
                     <p>A European bank wants to raise USD funding for 5 years. It can either (a) issue USD debt directly, or (b) issue EUR debt and swap the proceeds into USD via a cross-currency basis swap.</p>
-                    <p class="mb-0">If the EUR/USD 5-year cross-currency basis is $b = -20\text{bp}$ (i.e., the bank receives SOFR $- 20\text{bp}$ in the swap rather than flat SOFR), then route (b) effectively costs the bank 20bp more per annum than borrowing USD directly at SOFR-flat would — even though, absent the basis, CIP would imply the two routes are equivalent.</p>
+                    <p class="mb-0">If the EUR/USD 5-year cross-currency basis is $b = -20\text{bp}$ (i.e., the bank receives SOFR $- 20\text{bp}$ in the swap rather than flat SOFR), then route (b) effectively costs the bank 20bp more per annum than borrowing USD directly at SOFR-flat would - even though, absent the basis, CIP would imply the two routes are equivalent.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Implications for Pricing and Discounting</h2>
 
-                <p>The existence of a non-zero cross-currency basis has direct consequences for derivatives valuation. A bank pricing a multi-currency derivative — say, a USD-denominated swap collateralised in EUR — cannot simply discount each currency's cash flows on its own risk-free curve and convert at the spot rate; it must use a discount curve that is consistent with the observed cross-currency basis for the relevant collateral currency, often called "OIS discounting with cross-currency basis adjustment" or a "collateral curve."</p>
+                <p>The existence of a non-zero cross-currency basis has direct consequences for derivatives valuation. A bank pricing a multi-currency derivative - say, a USD-denominated swap collateralised in EUR - cannot simply discount each currency's cash flows on its own risk-free curve and convert at the spot rate; it must use a discount curve that is consistent with the observed cross-currency basis for the relevant collateral currency, often called "OIS discounting with cross-currency basis adjustment" or a "collateral curve."</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — From Forwards and Swaps to Options</div>
-                    <p class="mb-0">Forwards, FX swaps, and cross-currency basis swaps together determine the FX forward curve and, via the discount curves in each currency, the inputs needed to price FX options under the Garman-Kohlhagen model — the subject of the next chapter. The interest rate differential $r_d - r_f$ that appears in Garman-Kohlhagen is, in practice, derived from exactly these instruments.</p>
+                    <div class="math-box-label">Remark - From Forwards and Swaps to Options</div>
+                    <p class="mb-0">Forwards, FX swaps, and cross-currency basis swaps together determine the FX forward curve and, via the discount curves in each currency, the inputs needed to price FX options under the Garman-Kohlhagen model - the subject of the next chapter. The interest rate differential $r_d - r_f$ that appears in Garman-Kohlhagen is, in practice, derived from exactly these instruments.</p>
                 </div>
 
                 <hr class="my-5">

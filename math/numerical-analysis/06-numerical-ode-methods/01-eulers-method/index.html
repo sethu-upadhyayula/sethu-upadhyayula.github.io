@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -51,11 +51,11 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">6.1 Euler's Method</h1>
-                <p>Euler's method is the simplest numerical scheme for the initial value problem. Though rarely used in practice due to its low accuracy, it introduces all the key ideas — local truncation error, global error accumulation, stability, consistency, and convergence — that carry over to higher-order methods.</p>
+                <p>Euler's method is the simplest numerical scheme for the initial value problem. Though rarely used in practice due to its low accuracy, it introduces all the key ideas - local truncation error, global error accumulation, stability, consistency, and convergence - that carry over to higher-order methods.</p>
 
                 <h2 class="mt-5 mb-3">The Initial Value Problem</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Initial Value Problem</div>
+                    <div class="math-box-label">Definition - Initial Value Problem</div>
                     <p class="mb-0">The <strong>initial value problem (IVP)</strong> is: find $y:[t_0,T]\to\mathbb{R}$ satisfying
                     $$y'(t) = f(t,y(t)), \quad y(t_0) = y_0.$$
                     Under the Picard-Lindelöf theorem, a unique solution exists on $[t_0,T]$ whenever $f$ is continuous and Lipschitz in $y$: $|f(t,u)-f(t,v)|\le L|u-v|$.</p>
@@ -63,7 +63,7 @@
 
                 <h2 class="mt-5 mb-3">Forward (Explicit) Euler</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Forward Euler Method</div>
+                    <div class="math-box-label">Definition - Forward Euler Method</div>
                     <p>Partition $[t_0,T]$ into $N$ equal steps of size $h = (T-t_0)/N$, so $t_n = t_0+nh$. The <strong>forward Euler</strong> scheme is:
                     $$y_{n+1} = y_n + h\,f(t_n,y_n), \quad n = 0,1,\ldots,N-1.$$</p>
                     <p class="mb-0">This follows from truncating the Taylor expansion $y(t_{n+1}) = y(t_n) + h\,y'(t_n) + \tfrac{h^2}{2}y''(t_n) + \cdots$ after the first-order term and replacing $y'(t_n)$ by $f(t_n,y_n)$.</p>
@@ -71,7 +71,7 @@
 
                 <h2 class="mt-5 mb-3">Local Truncation Error</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Local Truncation Error</div>
+                    <div class="math-box-label">Definition - Local Truncation Error</div>
                     <p class="mb-0">The <strong>local truncation error (LTE)</strong> is the residual when the exact solution is substituted into the scheme:
                     $$\tau_n = \frac{y(t_{n+1})-y(t_n)}{h} - f(t_n,y(t_n)) = \frac{h}{2}y''(t_n) + O(h^2).$$
                     So $\tau_n = O(h)$, and the forward Euler method is <strong>first-order consistent</strong>.</p>
@@ -79,7 +79,7 @@
 
                 <h2 class="mt-5 mb-3">Global Error</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Global Error of Forward Euler</div>
+                    <div class="math-box-label">Theorem - Global Error of Forward Euler</div>
                     <p class="mb-0">Let $e_n = y(t_n) - y_n$ be the global error. Under the Lipschitz condition with constant $L$,
                     $$|e_n| \le \frac{h\,M_2}{2L}\bigl(e^{L(t_n-t_0)}-1\bigr),$$
                     where $M_2 = \max_{[t_0,T]}|y''(t)|$. In particular the global error is $O(h)$: halving $h$ halves the error. Note that $n = (T-t_0)/h$ steps each contribute LTE $O(h^2)$, and $n \cdot O(h^2) = O(h)$.</p>
@@ -87,7 +87,7 @@
 
                 <h2 class="mt-5 mb-3">Backward (Implicit) Euler</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Backward Euler Method</div>
+                    <div class="math-box-label">Definition - Backward Euler Method</div>
                     <p class="mb-0">The <strong>backward Euler</strong> scheme evaluates $f$ at the new time level:
                     $$y_{n+1} = y_n + h\,f(t_{n+1},y_{n+1}).$$
                     This is an implicit equation in $y_{n+1}$ and must be solved at each step, typically by Newton's method. It has the same first-order accuracy as forward Euler ($\tau_n = O(h)$), but its stability properties are dramatically better.</p>
@@ -95,19 +95,19 @@
 
                 <h2 class="mt-5 mb-3">Stability on the Test Equation</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Dahlquist Test Equation</div>
+                    <div class="math-box-label">Definition - Dahlquist Test Equation</div>
                     <p class="mb-0">The <strong>test equation</strong> is $y' = \lambda y$ with $\lambda \in \mathbb{C}$, $\text{Re}\,\lambda < 0$ (so the exact solution $y(t) = y_0 e^{\lambda t}\to 0$). Applied to this equation, any one-step method produces $y_{n+1} = R(h\lambda)\,y_n$ for some <strong>stability function</strong> $R(z)$. The method is <em>stable</em> on this equation iff $|R(h\lambda)| \le 1$.</p>
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Stability Regions</div>
+                    <div class="math-box-label">Proposition - Stability Regions</div>
                     <p>For forward Euler, $R(z) = 1+z$, so $|R(h\lambda)|\le 1$ iff $h\lambda$ lies in the unit disk centred at $-1$: the stability region is $\{z\in\mathbb{C}: |1+z|\le 1\}$.</p>
                     <p class="mb-0">For backward Euler, $R(z)=1/(1-z)$, so $|R(h\lambda)|\le 1$ for all $\text{Re}(h\lambda)\le 0$: backward Euler is <strong>unconditionally stable</strong> (A-stable) for the test equation. This is why implicit methods are essential for stiff problems.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Dahlquist's Convergence Theorem</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Dahlquist: Consistency + Zero-Stability $\Rightarrow$ Convergence</div>
+                    <div class="math-box-label">Theorem - Dahlquist: Consistency + Zero-Stability $\Rightarrow$ Convergence</div>
                     <p class="mb-0">A linear multistep method is <strong>convergent</strong> (global error $\to 0$ as $h\to 0$) if and only if it is <strong>consistent</strong> (LTE $\to 0$) and <strong>zero-stable</strong> (all roots of the first characteristic polynomial lie in the unit disk, with those on the boundary being simple). Both forward and backward Euler satisfy this theorem and converge at first order.</p>
                 </div>
 

@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,11 +128,11 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">4.3 Spline Interpolation</h1>
-                <p>Splines replace a single high-degree polynomial with piecewise low-degree polynomials joined smoothly at the data points (knots). The cubic spline achieves $C^2$ smoothness — making it visually smooth and physically meaningful — while avoiding the Runge phenomenon entirely and attaining fourth-order convergence.</p>
+                <p>Splines replace a single high-degree polynomial with piecewise low-degree polynomials joined smoothly at the data points (knots). The cubic spline achieves $C^2$ smoothness - making it visually smooth and physically meaningful - while avoiding the Runge phenomenon entirely and attaining fourth-order convergence.</p>
 
                 <h2 class="mt-4 mb-3">Cubic Spline Definition</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Cubic Spline</div>
+                    <div class="math-box-label">Definition - Cubic Spline</div>
                     <p>Given nodes $a = x_0 < x_1 < \cdots < x_n = b$ and values $y_i = f(x_i)$, a <strong>cubic spline</strong> $S$ satisfies:</p>
                     <ol>
                         <li>$S(x_i) = y_i$ for all $i = 0, 1, \ldots, n$ (interpolation).</li>
@@ -144,7 +144,7 @@
 
                 <h2 class="mt-5 mb-3">Natural and Clamped Boundary Conditions</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Boundary Conditions</div>
+                    <div class="math-box-label">Definition - Boundary Conditions</div>
                     <ul class="mb-0">
                         <li><strong>Natural (free) spline:</strong> $S''(x_0) = S''(x_n) = 0$. This minimises $\int_a^b [S''(x)]^2\,dx$ among all interpolants, giving the physically natural "relaxed ruler" shape.</li>
                         <li><strong>Clamped spline:</strong> $S'(x_0) = f'(x_0)$, $S'(x_n) = f'(x_n)$. Requires knowing the derivative at the endpoints; gives better approximation when $f'$ is available.</li>
@@ -154,7 +154,7 @@
 
                 <h2 class="mt-5 mb-3">Tridiagonal System for Second Derivatives</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Construction via Second Derivatives</div>
+                    <div class="math-box-label">Theorem - Construction via Second Derivatives</div>
                     <p>Let $M_i = S''(x_i)$ and $h_i = x_i - x_{i-1}$. The $C^2$ continuity conditions lead to the tridiagonal system (for the natural spline with $M_0 = M_n = 0$):</p>
                     $$h_i M_{i-1} + 2(h_i + h_{i+1})M_i + h_{i+1}M_{i+1} = 6\left(\frac{y_{i+1}-y_i}{h_{i+1}} - \frac{y_i - y_{i-1}}{h_i}\right), \quad i=1,\ldots,n-1.$$
                     <p class="mb-0">This is a strictly diagonally dominant tridiagonal system, solvable in $O(n)$ by the Thomas algorithm. Once the $M_i$ are found, each cubic piece is determined on $[x_{i-1},x_i]$.</p>
@@ -162,7 +162,7 @@
 
                 <h2 class="mt-5 mb-3">Approximation Error</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Fourth-Order Convergence</div>
+                    <div class="math-box-label">Theorem - Fourth-Order Convergence</div>
                     <p>If $f \in C^4[a,b]$ and $S$ is the natural or clamped cubic spline with uniform mesh spacing $h = (b-a)/n$, then:</p>
                     $$\|f - S\|_\infty \le C h^4 \|f^{(4)}\|_\infty,$$
                     <p class="mb-0">for a constant $C$ depending on the boundary conditions. This optimal $O(h^4)$ rate matches that of fourth-degree polynomial interpolation, but is achieved robustly without Runge oscillations for any smooth $f$.</p>
@@ -170,7 +170,7 @@
 
                 <h2 class="mt-5 mb-3">B-Splines</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — B-Spline Basis</div>
+                    <div class="math-box-label">Definition - B-Spline Basis</div>
                     <p>The <strong>B-spline basis functions</strong> $B_{i,k}(x)$ of degree $k$ are defined recursively via the Cox-de Boor formula:</p>
                     $$B_{i,0}(x) = \begin{cases}1 & x_{i} \le x < x_{i+1}\\ 0 & \text{otherwise}\end{cases},$$
                     $$B_{i,k}(x) = \frac{x - x_i}{x_{i+k}-x_i}B_{i,k-1}(x) + \frac{x_{i+k+1}-x}{x_{i+k+1}-x_{i+1}}B_{i+1,k-1}(x).$$
@@ -178,7 +178,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — NURBS</div>
+                    <div class="math-box-label">Remark - NURBS</div>
                     <p class="mb-0"><strong>NURBS</strong> (Non-Uniform Rational B-Splines) extend B-splines by allowing non-uniform knot vectors and rational (weighted) control points: $C(x) = \sum_i w_i c_i B_{i,k}(x) / \sum_i w_i B_{i,k}(x)$. NURBS can represent conic sections and other algebraic curves exactly, making them the standard curve representation in CAD software (IGES, STEP) and computer graphics (OpenGL, DirectX surface patches).</p>
                 </div>
 

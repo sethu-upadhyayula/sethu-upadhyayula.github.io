@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="light" data-section="chess"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tactical Motifs — Racing Kings</title>
+<title>Tactical Motifs - Racing Kings</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,7 +21,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -47,7 +47,7 @@
         <h1 class="text-accent mb-4">3. Tactical Motifs</h1>
 
   <h3>Tempo Moves and Zugzwang</h3>
-  <p>Because every move must be legal (not giving check), there are positions where <em>all</em> available moves are suboptimal — every move either brings you no closer to the 8th rank, or actively helps the opponent close the gap. Zugzwang-like situations arise where the player to move is at a disadvantage simply because it is their turn and they are forced to weaken their own position or improve their opponent's.</p>
+  <p>Because every move must be legal (not giving check), there are positions where <em>all</em> available moves are suboptimal - every move either brings you no closer to the 8th rank, or actively helps the opponent close the gap. Zugzwang-like situations arise where the player to move is at a disadvantage simply because it is their turn and they are forced to weaken their own position or improve their opponent's.</p>
   <p>This is conceptually similar to zugzwang in king-and-pawn endgames in standard chess, but it appears far more often in Racing Kings because the no-check rule frequently eliminates "useful" moves, leaving only moves that cost time.</p>
 
   <h3>The Race Calculation</h3>
@@ -56,24 +56,24 @@
     <li>Counting the minimum path length for your own king, square by square, to rank 8.</li>
     <li>Identifying which of your own pieces are currently blocking that path and how many moves it takes to clear them.</li>
     <li>Doing the same analysis for the opponent's king and pieces.</li>
-    <li>Accounting for the Black draw rule — if you are White, you typically need to arrive at least <em>two</em> moves ahead of Black's earliest possible arrival, not just one.</li>
+    <li>Accounting for the Black draw rule - if you are White, you typically need to arrive at least <em>two</em> moves ahead of Black's earliest possible arrival, not just one.</li>
   </ul>
-  <p>The player who can accurately count that their king arrives first — with enough margin to actually win rather than draw — has found the winning plan. Miscounting by even one tempo can turn a win into a draw, or a draw into a loss.</p>
+  <p>The player who can accurately count that their king arrives first - with enough margin to actually win rather than draw - has found the winning plan. Miscounting by even one tempo can turn a win into a draw, or a draw into a loss.</p>
 
   <div class="chess-board" id="board-calc"></div>
   <script>renderChessBoard('board-calc', {d5:'wK',d4:'bK',a8:'wR',h1:'bR'}, {highlight:{a8:'goal',b8:'goal',c8:'goal',d8:'goal',e8:'goal',f8:'goal',g8:'goal',h8:'goal'}});</script>
-  <p class="text-center text-muted mt-2"><small>White king on d5 needs three moves to reach rank 8 (d5-d6-d7-d8 or similar). Black king on d4 needs four moves. White's rook already occupies a8 (one of the goal squares, but also a potential blocker for Black). White appears to be a clear tempo ahead — but every intervening move must still be legal under the no-check rule.</small></p>
+  <p class="text-center text-muted mt-2"><small>White king on d5 needs three moves to reach rank 8 (d5-d6-d7-d8 or similar). Black king on d4 needs four moves. White's rook already occupies a8 (one of the goal squares, but also a potential blocker for Black). White appears to be a clear tempo ahead - but every intervening move must still be legal under the no-check rule.</small></p>
 
   <h3>Deflection and Interference</h3>
-  <p>Advanced Racing Kings tactics involve <strong>deflection</strong> — forcing the opponent to move a key blocking piece away from the critical path. If the opponent's rook is guarding several 8th-rank squares, threatening to capture that rook (or maneuvering a piece so that the rook's current square becomes untenable) can force the opponent to relocate it, opening the winning lane for your racing king.</p>
-  <p><strong>Interference</strong> works the other way: you place one of your own pieces between the opponent's blocking piece and the squares it is covering, neutralising the block without needing to capture anything. Because there are no pawns, interference tactics in Racing Kings rely entirely on rooks, bishops, knights, and queens — long-range pieces are especially useful for interference since they can interpose from a distance.</p>
+  <p>Advanced Racing Kings tactics involve <strong>deflection</strong> - forcing the opponent to move a key blocking piece away from the critical path. If the opponent's rook is guarding several 8th-rank squares, threatening to capture that rook (or maneuvering a piece so that the rook's current square becomes untenable) can force the opponent to relocate it, opening the winning lane for your racing king.</p>
+  <p><strong>Interference</strong> works the other way: you place one of your own pieces between the opponent's blocking piece and the squares it is covering, neutralising the block without needing to capture anything. Because there are no pawns, interference tactics in Racing Kings rely entirely on rooks, bishops, knights, and queens - long-range pieces are especially useful for interference since they can interpose from a distance.</p>
 
   <h3>The Check-Block Paradox</h3>
-  <p>Sometimes you want to move a piece to a square that would, in standard chess, be a perfectly natural developing or blocking move — except that in Racing Kings it would <em>check</em> the opponent's king, making it illegal. This creates the fascinating situation where a powerful-looking piece move is simply forbidden, and you must find an indirect route to achieve the same goal.</p>
-  <p>Learning to quickly identify which moves are "pseudo-illegal" due to the no-check rule is a key skill in Racing Kings. Experienced players develop an intuition for the squares around each king that are effectively "off-limits" to enemy pieces — not because those squares are defended, but because occupying them would constitute check.</p>
+  <p>Sometimes you want to move a piece to a square that would, in standard chess, be a perfectly natural developing or blocking move - except that in Racing Kings it would <em>check</em> the opponent's king, making it illegal. This creates the fascinating situation where a powerful-looking piece move is simply forbidden, and you must find an indirect route to achieve the same goal.</p>
+  <p>Learning to quickly identify which moves are "pseudo-illegal" due to the no-check rule is a key skill in Racing Kings. Experienced players develop an intuition for the squares around each king that are effectively "off-limits" to enemy pieces - not because those squares are defended, but because occupying them would constitute check.</p>
 
   <h3>Knight Tactics</h3>
-  <p>Knights are particularly tricky in Racing Kings because their movement pattern makes it easy to <em>accidentally</em> give check — a knight's jump can land on a checking square without any obvious "line of attack" warning, the way a rook or bishop's check would be visually apparent along a rank, file, or diagonal. Always double-check knight moves against both kings' positions before committing.</p>
+  <p>Knights are particularly tricky in Racing Kings because their movement pattern makes it easy to <em>accidentally</em> give check - a knight's jump can land on a checking square without any obvious "line of attack" warning, the way a rook or bishop's check would be visually apparent along a rank, file, or diagonal. Always double-check knight moves against both kings' positions before committing.</p>
 
   <h3>Self-Blocking Mistakes</h3>
   <p>A common beginner error is moving a piece onto a square that your <em>own</em> king needs to pass through later, without realising the piece will be hard to move again without wasting a tempo or without giving check. Always plan your king's intended route several moves ahead before deciding where to send your other pieces.</p>

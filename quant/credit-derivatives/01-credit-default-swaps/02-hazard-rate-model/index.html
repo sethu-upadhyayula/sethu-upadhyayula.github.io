@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -86,7 +86,7 @@
                 <h2 class="mt-5 mb-3">The Hazard Rate</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Hazard Rate and Survival Probability</div>
+                    <div class="math-box-label">Definition - Hazard Rate and Survival Probability</div>
                     <p class="mb-0">Let $\tau$ denote the random default time. The hazard rate (or default intensity) $\lambda(t)$ is defined such that, conditional on survival to time $t$, the probability of default in the next instant $dt$ is $\lambda(t)\,dt$:</p>
                     <p class="mb-0">$$\mathbb{P}(\tau \in [t, t+dt) \mid \tau > t) = \lambda(t)\,dt$$</p>
                     <p class="mb-0">The survival probability to time $T$ is then given by:</p>
@@ -99,24 +99,24 @@
                 <p>Under a flat hazard rate and a flat risk-free rate $r$, a simple approximation relates the CDS spread $s$, the hazard rate $\lambda$, and the recovery rate $R$:</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Credit Triangle</div>
+                    <div class="math-box-label">Theorem - Credit Triangle</div>
                     <p class="mb-0">In the continuous-time limit (continuous premium accrual, immediate protection payment on default), the fair CDS spread satisfies:</p>
                     <p class="mb-0">$$s \approx \lambda (1 - R)$$</p>
-                    <p class="mb-0">This relationship — often called the "credit triangle" — links the three quantities: spread, hazard rate, and loss given default $(1-R)$. It allows a quick back-of-envelope conversion: a 5-year CDS trading at $s = 100$bp with an assumed recovery of $R = 40\%$ implies a hazard rate of $\lambda = 0.0100 / 0.60 \approx 1.67\%$ per annum, i.e., roughly a 1.67% annual probability of default.</p>
+                    <p class="mb-0">This relationship - often called the "credit triangle" - links the three quantities: spread, hazard rate, and loss given default $(1-R)$. It allows a quick back-of-envelope conversion: a 5-year CDS trading at $s = 100$bp with an assumed recovery of $R = 40\%$ implies a hazard rate of $\lambda = 0.0100 / 0.60 \approx 1.67\%$ per annum, i.e., roughly a 1.67% annual probability of default.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Bootstrapping the Hazard Rate Curve</h2>
 
-                <p>In practice, CDS spreads are quoted at multiple maturities (1Y, 3Y, 5Y, 7Y, 10Y), and a term structure of hazard rates $\lambda(t)$ — typically piecewise constant between these tenors — is bootstrapped so that each quoted spread is exactly reproduced by the corresponding CDS pricing formula (see <a href="../03-cds-pricing/">CDS Pricing</a>).</p>
+                <p>In practice, CDS spreads are quoted at multiple maturities (1Y, 3Y, 5Y, 7Y, 10Y), and a term structure of hazard rates $\lambda(t)$ - typically piecewise constant between these tenors - is bootstrapped so that each quoted spread is exactly reproduced by the corresponding CDS pricing formula (see <a href="../03-cds-pricing/">CDS Pricing</a>).</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Piecewise-Constant Bootstrap</div>
+                    <div class="math-box-label">Example - Piecewise-Constant Bootstrap</div>
                     <p class="mb-0">Suppose 1Y and 3Y CDS spreads are observed. The hazard rate $\lambda_1$ on $[0,1]$ is first chosen so that the 1Y CDS prices to par (zero upfront) given the 1Y spread. Then, holding $\lambda_1$ fixed, the hazard rate $\lambda_2$ on $(1,3]$ is chosen so that the 3Y CDS prices to par given the 3Y spread, with survival probabilities on $[0,1]$ already pinned down by $\lambda_1$. This sequential procedure is repeated outward across all quoted maturities, exactly analogous to bootstrapping a discount curve from swap rates.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Default Correlation and Copulas</h2>
 
-                <p>For single-name CDS, only the marginal distribution of $\tau$ matters. When pricing instruments referencing multiple names — such as CDS index tranches — the joint distribution of default times across names becomes critical, and is typically modelled via a copula function applied to the marginal hazard-rate-implied survival distributions; see <a href="../../../structured-credit/">Structured Credit</a> for the Gaussian copula approach.</p>
+                <p>For single-name CDS, only the marginal distribution of $\tau$ matters. When pricing instruments referencing multiple names - such as CDS index tranches - the joint distribution of default times across names becomes critical, and is typically modelled via a copula function applied to the marginal hazard-rate-implied survival distributions; see <a href="../../../structured-credit/">Structured Credit</a> for the Gaussian copula approach.</p>
 
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

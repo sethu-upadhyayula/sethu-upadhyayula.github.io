@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -129,12 +129,12 @@
             <article>
                 <h1 class="text-accent mb-4">4.2 Monotone Convergence Theorem</h1>
 
-                <p>The Monotone Convergence Theorem (MCT) is the first and most fundamental interchange-of-limits result in Lebesgue integration. It says that for an increasing sequence of non-negative measurable functions, the integral of the limit equals the limit of the integrals — no domination condition is needed, only monotonicity and non-negativity.</p>
+                <p>The Monotone Convergence Theorem (MCT) is the first and most fundamental interchange-of-limits result in Lebesgue integration. It says that for an increasing sequence of non-negative measurable functions, the integral of the limit equals the limit of the integrals - no domination condition is needed, only monotonicity and non-negativity.</p>
 
                 <h2 class="mt-5 mb-3">Statement and Proof</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.1 — Monotone Convergence Theorem (Beppo Levi)</div>
+                    <div class="math-box-label">Theorem 4.2.1 - Monotone Convergence Theorem (Beppo Levi)</div>
                     <p>Let $(X, \mathcal{M}, \mu)$ be a measure space and let $\{f_n\}_{n=1}^\infty$ be a sequence of measurable functions satisfying:</p>
                     <ol>
                         <li>$f_n \geq 0$ for all $n$ (non-negativity),</li>
@@ -155,7 +155,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Necessity of Hypotheses</div>
+                    <div class="math-box-label">Remark - Necessity of Hypotheses</div>
                     <p>Both hypotheses are essential. Without non-negativity: $f_n = -\mathbf{1}_{[n, n+1]}$ is decreasing to 0 yet $\int f_n = -1$ for all $n$, and $\int 0 = 0 \neq -1$. Without monotonicity: $f_n = n \mathbf{1}_{(0, 1/n]}$ converges to 0 pointwise but $\int f_n = 1$ for all $n$.</p>
                     <p class="mb-0">The theorem allows $\int f \, d\mu = +\infty$; it is valid throughout $[0,\infty]$.</p>
                 </div>
@@ -165,7 +165,7 @@
                 <p>Fatou's lemma is a companion result that requires no monotonicity assumption, giving instead a one-sided inequality.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.2 — Fatou's Lemma</div>
+                    <div class="math-box-label">Theorem 4.2.2 - Fatou's Lemma</div>
                     <p>Let $\{f_n\}$ be a sequence of non-negative measurable functions. Then:
                     $$\int \liminf_{n\to\infty} f_n \, d\mu \leq \liminf_{n\to\infty} \int f_n \, d\mu.$$</p>
                     <p class="mb-0">In particular, if $f_n \to f$ pointwise a.e., then $\int f \, d\mu \leq \liminf_n \int f_n \, d\mu$.</p>
@@ -178,7 +178,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.2.3 — Strict Inequality in Fatou</div>
+                    <div class="math-box-label">Example 4.2.3 - Strict Inequality in Fatou</div>
                     <p class="mb-0">Let $f_n = \mathbf{1}_{[n, n+1]}$ on $(\mathbb{R}, \lambda)$. Then $f_n \to 0$ pointwise, so $\int \liminf f_n = 0$. But $\int f_n = 1$ for all $n$, so $\liminf \int f_n = 1 > 0$. This shows the inequality in Fatou's lemma can be strict: "mass can escape to infinity."</p>
                 </div>
 
@@ -187,14 +187,14 @@
                 <p>MCT immediately yields one of its most useful corollaries: for non-negative series, summation and integration commute.</p>
 
                 <div class="math-box corollary">
-                    <div class="math-box-label">Corollary 4.2.4 — Series and Integrals</div>
+                    <div class="math-box-label">Corollary 4.2.4 - Series and Integrals</div>
                     <p>Let $\{f_n\}$ be a sequence of non-negative measurable functions. Then:
                     $$\int \sum_{n=1}^\infty f_n \, d\mu = \sum_{n=1}^\infty \int f_n \, d\mu.$$</p>
                     <p class="mb-0">This follows by applying MCT to the partial sums $S_N = \sum_{n=1}^N f_n \nearrow \sum_{n=1}^\infty f_n$ and using linearity of the integral for finite sums.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.2.5 — Power Series Integration</div>
+                    <div class="math-box-label">Example 4.2.5 - Power Series Integration</div>
                     <p>Let $f(x) = \sum_{n=0}^\infty x^n$ for $x \in [0,1)$. Each term $x^n$ is non-negative and measurable. By Corollary 4.2.4:
                     $$\int_0^1 \frac{1}{1-x} \, dx = \int_0^1 \sum_{n=0}^\infty x^n \, dx = \sum_{n=0}^\infty \int_0^1 x^n \, dx = \sum_{n=0}^\infty \frac{1}{n+1} = +\infty,$$
                     consistently with the divergence of the harmonic series and the fact that $\int_0^1 \frac{dx}{1-x} = +\infty$.</p>

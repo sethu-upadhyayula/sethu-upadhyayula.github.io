@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,7 +128,7 @@
                 <p>Kernel density estimation (KDE) produces a smooth, continuous estimate of an unknown density from data, without assuming any parametric form. It generalises the histogram by replacing the discrete bin indicator with a smooth kernel function, yielding a differentiable density estimate.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.3.1 — Kernel Density Estimator</div>
+                    <div class="math-box-label">Definition 7.3.1 - Kernel Density Estimator</div>
                     <p>Given observations $X_1,\ldots,X_n$, the <strong>kernel density estimator</strong> with kernel $K$ and bandwidth $h > 0$ is
                     $$\hat{f}_h(x) = \frac{1}{nh}\sum_{i=1}^n K\!\left(\frac{x - X_i}{h}\right),$$</p>
                     <p class="mb-0">where $K$ is a symmetric density function (i.e.\ $\int K(u)\,du = 1$, $K(u) \ge 0$, $\int u\,K(u)\,du = 0$). The <strong>Gaussian kernel</strong> is $K(u) = (2\pi)^{-1/2}e^{-u^2/2}$, the most widely used choice. The bandwidth $h$ controls the smoothness: small $h$ gives a spiky estimate, large $h$ gives an oversmoothed one.</p>
@@ -137,7 +137,7 @@
                 <h2 class="mt-5">Bias-Variance Trade-off</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.3.2 — Bias and Variance of KDE</div>
+                    <div class="math-box-label">Theorem 7.3.2 - Bias and Variance of KDE</div>
                     <p>Under smoothness conditions on $f$ (specifically $\int u^2 K(u)\,du = \kappa_2 < \infty$ and $f''$ exists and is square-integrable):
                     $$\mathrm{Bias}[\hat{f}_h(x)] \approx \frac{h^2 \kappa_2}{2} f''(x), \qquad \mathrm{Var}[\hat{f}_h(x)] \approx \frac{f(x)\int K^2}{nh}.$$</p>
                     <p class="mb-0">The <strong>mean integrated squared error (MISE)</strong> is $\mathrm{MISE}(h) = \int E[(\hat{f}_h(x) - f(x))^2]\,dx \approx \frac{h^4\kappa_2^2}{4}\int(f'')^2 + \frac{\int K^2}{nh}$. This is minimised at the <strong>optimal bandwidth</strong>
@@ -148,7 +148,7 @@
                 <h2 class="mt-5">Bandwidth Selection</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.3.3 — Silverman's Rule of Thumb</div>
+                    <div class="math-box-label">Definition 7.3.3 - Silverman's Rule of Thumb</div>
                     <p class="mb-0"><strong>Silverman's rule</strong> estimates $h^*$ by assuming $f$ is Gaussian to approximate $\int(f'')^2$:
                     $$h_{\mathrm{Silverman}} = 1.06\,\hat\sigma\, n^{-1/5},$$
                     where $\hat\sigma = \min(s, \mathrm{IQR}/1.34)$ is a robust spread estimate (the IQR-based term guards against inflation by heavy tails). Despite being a rough estimate, it performs well in practice for unimodal distributions. For multimodal distributions, more sophisticated methods (cross-validation, plug-in bandwidth selectors) are needed.</p>
@@ -157,7 +157,7 @@
                 <h2 class="mt-5">Multivariate KDE</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.3.4 — Multivariate KDE</div>
+                    <div class="math-box-label">Definition 7.3.4 - Multivariate KDE</div>
                     <p class="mb-0">For $d$-dimensional data $\mathbf{X}_1,\ldots,\mathbf{X}_n \in \mathbb{R}^d$, the KDE with bandwidth matrix $\mathbf{H}$ (positive definite, $d\times d$) is
                     $$\hat{f}_{\mathbf{H}}(\mathbf{x}) = \frac{1}{n|\mathbf{H}|^{1/2}}\sum_{i=1}^n K\!\left(\mathbf{H}^{-1/2}(\mathbf{x}-\mathbf{X}_i)\right).$$
                     The optimal bandwidth matrix scales as $\mathbf{H}^* \propto n^{-2/(d+4)}\mathbf{I}_d$, exhibiting the curse of dimensionality: the convergence rate $O(n^{-4/(d+4)})$ deteriorates as $d$ increases, making KDE impractical for $d \gg 5$.</p>
@@ -166,8 +166,8 @@
                 <h2 class="mt-5">Applications</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 7.3.5 — Applications of KDE</div>
-                    <p class="mb-0">KDE is used for: (i) <strong>exploratory data analysis</strong> — visualising distributional shape, identifying modes and skewness without committing to a parametric family; (ii) <strong>density-based classification</strong> — estimating class-conditional densities $\hat{f}(x\mid Y=k)$ and classifying via estimated posterior probabilities (non-parametric Bayes classifier); (iii) <strong>anomaly detection</strong> — observations in low-density regions $\{\hat{f}_h(x) < c\}$ are flagged as anomalies; (iv) <strong>bandwidth cross-validation</strong> — leave-one-out likelihood $\sum_i \log \hat{f}_{h,-i}(X_i)$ is maximised to select $h$ data-adaptively.</p>
+                    <div class="math-box-label">Remark 7.3.5 - Applications of KDE</div>
+                    <p class="mb-0">KDE is used for: (i) <strong>exploratory data analysis</strong> - visualising distributional shape, identifying modes and skewness without committing to a parametric family; (ii) <strong>density-based classification</strong> - estimating class-conditional densities $\hat{f}(x\mid Y=k)$ and classifying via estimated posterior probabilities (non-parametric Bayes classifier); (iii) <strong>anomaly detection</strong> - observations in low-density regions $\{\hat{f}_h(x) < c\}$ are flagged as anomalies; (iv) <strong>bandwidth cross-validation</strong> - leave-one-out likelihood $\sum_i \log \hat{f}_{h,-i}(X_i)$ is maximised to select $h$ data-adaptively.</p>
                 </div>
 
                 <hr class="my-5">

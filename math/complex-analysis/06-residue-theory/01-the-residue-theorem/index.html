@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,17 +128,17 @@
             <article>
                 <h1 class="text-accent mb-4">6.1 The Residue Theorem</h1>
 
-                <p>The residue theorem is the culmination of complex integration. It reduces the computation of any contour integral around isolated singularities to a sum of residues — a purely algebraic operation once the Laurent expansions are known.</p>
+                <p>The residue theorem is the culmination of complex integration. It reduces the computation of any contour integral around isolated singularities to a sum of residues - a purely algebraic operation once the Laurent expansions are known.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.1.1 — Residue</div>
+                    <div class="math-box-label">Definition 6.1.1 - Residue</div>
                     <p class="mb-0">Let $f$ have an isolated singularity at $z_0$ with Laurent expansion $f(z) = \sum_{n=-\infty}^\infty a_n(z-z_0)^n$ on $0 &lt; |z-z_0| &lt; r$. The <strong>residue</strong> of $f$ at $z_0$ is
                     $$\operatorname{Res}(f, z_0) = a_{-1},$$
                     the coefficient of $(z-z_0)^{-1}$. By the Laurent coefficient formula, $\operatorname{Res}(f,z_0) = \frac{1}{2\pi i}\oint_{|z-z_0|=\rho} f(z)\,dz$ for small $\rho$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.1.2 — The Residue Theorem</div>
+                    <div class="math-box-label">Theorem 6.1.2 - The Residue Theorem</div>
                     <p>Let $f$ be analytic inside and on a simple closed positively-oriented contour $\gamma$, except at finitely many isolated singularities $z_1, \ldots, z_k$ inside $\gamma$. Then
                     $$\oint_\gamma f(z)\,dz = 2\pi i \sum_{j=1}^k \operatorname{Res}(f, z_j).$$
                     Equivalently, $\dfrac{1}{2\pi i}\oint_\gamma f(z)\,dz = \sum_{j=1}^k \operatorname{Res}(f, z_j)$.</p>
@@ -148,7 +148,7 @@
                 <h2 class="mt-5 mb-3">Computing Residues</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.1.3 — Residue Formulas</div>
+                    <div class="math-box-label">Theorem 6.1.3 - Residue Formulas</div>
                     <p>Let $f$ have an isolated singularity at $z_0$.</p>
                     <ul>
                         <li><strong>Simple pole:</strong> $\operatorname{Res}(f, z_0) = \lim_{z \to z_0} (z - z_0) f(z)$.</li>
@@ -162,26 +162,26 @@
                 <h2 class="mt-5 mb-3">Examples</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 6.1.4 — Simple Pole via Quotient Formula</div>
+                    <div class="math-box-label">Example 6.1.4 - Simple Pole via Quotient Formula</div>
                     <p>Compute $\operatorname{Res}\!\left(\dfrac{e^z}{z^2+1}, i\right)$. Note $z^2+1 = (z-i)(z+i)$, so $z=i$ is a simple pole. With $p(z) = e^z$ and $q(z) = z^2+1$, $q'(z) = 2z$:
                     $$\operatorname{Res} = \frac{e^i}{2i} = \frac{\cos 1 + i\sin 1}{2i}.$$</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 6.1.5 — Pole of Order 2</div>
+                    <div class="math-box-label">Example 6.1.5 - Pole of Order 2</div>
                     <p>Compute $\operatorname{Res}\!\left(\dfrac{e^z}{(z-1)^2}, 1\right)$. This is a pole of order $2$:
                     $$\operatorname{Res} = \lim_{z\to 1} \frac{d}{dz}\bigl[(z-1)^2 \cdot \frac{e^z}{(z-1)^2}\bigr] = \lim_{z\to 1} \frac{d}{dz} e^z = e^1 = e.$$</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 6.1.6 — Full Contour Integral</div>
+                    <div class="math-box-label">Example 6.1.6 - Full Contour Integral</div>
                     <p>Evaluate $\displaystyle\oint_{|z|=2} \frac{dz}{z^2-1}$. The singularities $z = \pm 1$ both lie inside $|z|=2$. Write $f = 1/((z-1)(z+1))$. Then:
                     $$\operatorname{Res}(f, 1) = \frac{1}{1+1} = \frac{1}{2}, \qquad \operatorname{Res}(f, -1) = \frac{1}{-1-1} = -\frac{1}{2}.$$</p>
                     <p class="mb-0">Sum of residues $= 0$, so $\oint f\,dz = 2\pi i \cdot 0 = 0$. (This also follows from Cauchy's theorem applied to $1/(z^2-1)$ on a slightly deformed contour, or from the partial fraction $f = \tfrac{1}{2}\bigl(\tfrac{1}{z-1} - \tfrac{1}{z+1}\bigr)$.)</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Generalizations</div>
+                    <div class="math-box-label">Remark - Generalizations</div>
                     <p class="mb-0">The residue theorem extends to multiply-connected domains and to meromorphic functions on compact Riemann surfaces, where it takes the form: sum of all residues on a compact surface is zero. This global statement has deep algebraic geometry implications.</p>
                 </div>
 

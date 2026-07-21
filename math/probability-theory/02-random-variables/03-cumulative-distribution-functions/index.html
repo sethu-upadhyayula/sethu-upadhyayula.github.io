@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -131,14 +131,14 @@
                 <p>The cumulative distribution function (CDF) provides a unified description of a random variable's distribution that works for discrete, continuous, and mixed random variables alike.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 2.3.1 — Cumulative Distribution Function</div>
+                    <div class="math-box-label">Definition 2.3.1 - Cumulative Distribution Function</div>
                     <p>The <strong>cumulative distribution function</strong> of a random variable $X$ is
                     $$F(x) = P(X \le x), \quad x \in \mathbb{R}.$$</p>
                     <p class="mb-0">The CDF completely determines the distribution of $X$: two random variables have the same distribution if and only if they have the same CDF.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.3.2 — Properties of the CDF</div>
+                    <div class="math-box-label">Theorem 2.3.2 - Properties of the CDF</div>
                     <p>Every CDF $F$ satisfies:</p>
                     <ol>
                         <li><strong>Non-decreasing:</strong> $x \le y \Rightarrow F(x) \le F(y)$.</li>
@@ -149,7 +149,7 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.3.3 — Computing Probabilities from the CDF</div>
+                    <div class="math-box-label">Theorem 2.3.3 - Computing Probabilities from the CDF</div>
                     <p class="mb-0">For $a < b$:
                     $$P(a < X \le b) = F(b) - F(a).$$
                     Also, $P(X = x) = F(x) - F(x^-)$ where $F(x^-) = \lim_{y \uparrow x} F(y)$ is the left limit. An atom at $x$ exists precisely when $F$ has a jump at $x$.</p>
@@ -158,13 +158,13 @@
                 <h2 class="mt-5 mb-3">Discrete and Continuous CDFs</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Discrete Case</div>
+                    <div class="math-box-label">Remark - Discrete Case</div>
                     <p class="mb-0">If $X$ is discrete with support $\{x_1 < x_2 < \cdots\}$ and PMF $p$, then $F$ is a <strong>step function</strong> that is constant between consecutive support points and jumps by $p(x_k)$ at each $x_k$:
                     $$F(x) = \sum_{x_k \le x} p(x_k).$$</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Continuous Case</div>
+                    <div class="math-box-label">Remark - Continuous Case</div>
                     <p class="mb-0">If $X$ is continuous with PDF $f$, then $F$ is absolutely continuous and
                     $$F(x) = \int_{-\infty}^x f(t)\, dt.$$
                     In particular, $F$ is differentiable almost everywhere and $f = F'$ wherever $f$ is continuous. $P(X = x) = 0$ for all $x$ (no atoms).</p>
@@ -173,14 +173,14 @@
                 <h2 class="mt-5 mb-3">Quantile Function</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 2.3.4 — Quantile Function</div>
+                    <div class="math-box-label">Definition 2.3.4 - Quantile Function</div>
                     <p>The <strong>quantile function</strong> (or generalised inverse CDF) is
                     $$F^{-1}(p) = \inf\{x : F(x) \ge p\}, \quad p \in (0,1).$$</p>
                     <p class="mb-0">$F^{-1}(0.5)$ is the median. For a continuous strictly increasing CDF, $F^{-1}$ is the ordinary inverse function. Quantiles allow simulation: if $U \sim \text{Uniform}(0,1)$, then $F^{-1}(U) \sim F$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.3.5 — Probability Integral Transform</div>
+                    <div class="math-box-label">Theorem 2.3.5 - Probability Integral Transform</div>
                     <p class="mb-0">Let $X$ be a continuous random variable with CDF $F$. Then
                     $$F(X) \sim \text{Uniform}(0, 1).$$
                     This result is the basis for simulation: to generate a sample from any continuous distribution, apply the quantile function to a uniform random variable.</p>

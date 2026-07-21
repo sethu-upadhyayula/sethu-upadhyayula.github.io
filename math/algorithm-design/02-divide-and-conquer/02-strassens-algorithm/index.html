@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,15 +128,15 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Strassen's Algorithm</h1>
 
-                <p>Volker Strassen's 1969 algorithm demonstrated that matrix multiplication can be done faster than the obvious $O(n^3)$ algorithm, launching the study of fast matrix multiplication — one of the most important algorithmic problems.</p>
+                <p>Volker Strassen's 1969 algorithm demonstrated that matrix multiplication can be done faster than the obvious $O(n^3)$ algorithm, launching the study of fast matrix multiplication - one of the most important algorithmic problems.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 2.2.1 — Naive Matrix Multiplication</div>
+                    <div class="math-box-label">Algorithm 2.2.1 - Naive Matrix Multiplication</div>
                     <p class="mb-0">To compute $C = AB$ for $n \times n$ matrices: $C_{ij} = \sum_{k=1}^n A_{ik} B_{kj}$. Requires $n^3$ multiplications and additions. Recurrence for divide-and-conquer with 8 sub-multiplications: $T(n) = 8T(n/2) + O(n^2) = O(n^3)$ (no improvement).</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.2.2 — Strassen's Algorithm (1969)</div>
+                    <div class="math-box-label">Theorem 2.2.2 - Strassen's Algorithm (1969)</div>
                     <p>Partition each $n \times n$ matrix into four $n/2 \times n/2$ blocks. Define 7 products:
                     $$M_1 = (A_{11}+A_{22})(B_{11}+B_{22}), \quad M_2 = (A_{21}+A_{22})B_{11},$$
                     $$M_3 = A_{11}(B_{12}-B_{22}), \quad M_4 = A_{22}(B_{21}-B_{11}),$$
@@ -149,14 +149,14 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.2.3 — Complexity of Strassen</div>
+                    <div class="math-box-label">Theorem 2.2.3 - Complexity of Strassen</div>
                     <p class="mb-0">The recurrence is $T(n) = 7T(n/2) + \Theta(n^2)$. Here $c^* = \log_2 7 \approx 2.807 > 2$, so Master Theorem Case 1 gives $T(n) = \Theta(n^{\log_2 7}) \approx \Theta(n^{2.807})$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Practical Considerations and Further Progress</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Practicality</div>
+                    <div class="math-box-label">Remark - Practicality</div>
                     <p>Strassen has larger constant factors than naive multiplication. In practice, it is beneficial only for $n \gtrsim 1000$. Cache performance is poor due to non-sequential memory access patterns.</p>
                     <p class="mb-0">The best known algorithm achieves $O(n^\omega)$ where $\omega < 2.372$ (Le Gall 2014; Duan-Wu-Zhou 2023: $\omega < 2.3719$). Whether $\omega = 2$ is possible remains one of the central open problems in theoretical computer science. Fast matrix multiplication also speeds up: LU decomposition, eigenvalue algorithms, polynomial multiplication, and graph problems.</p>
                 </div>

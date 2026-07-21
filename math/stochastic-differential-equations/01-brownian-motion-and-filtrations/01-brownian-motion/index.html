@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -125,10 +125,10 @@
             <article>
                 <h1 class="text-accent mb-4">1.1 Brownian Motion</h1>
 
-                <p>Brownian motion — named after botanist Robert Brown who observed the erratic motion of pollen grains in 1827, and made rigorous by Norbert Wiener in 1923 — is the central building block of stochastic calculus. It is simultaneously a martingale, a Markov process, and a Gaussian process, and its paths are continuous but nowhere differentiable.</p>
+                <p>Brownian motion - named after botanist Robert Brown who observed the erratic motion of pollen grains in 1827, and made rigorous by Norbert Wiener in 1923 - is the central building block of stochastic calculus. It is simultaneously a martingale, a Markov process, and a Gaussian process, and its paths are continuous but nowhere differentiable.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.1.1 — Standard Brownian Motion</div>
+                    <div class="math-box-label">Definition 1.1.1 - Standard Brownian Motion</div>
                     <p>A stochastic process $(W_t)_{t \ge 0}$ defined on a probability space $(\Omega, \mathcal{F}, P)$ is a <strong>standard Brownian motion</strong> (or <strong>Wiener process</strong>) if:</p>
                     <ol>
                         <li>$W_0 = 0$ almost surely.</li>
@@ -139,14 +139,14 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Existence</div>
+                    <div class="math-box-label">Remark - Existence</div>
                     <p class="mb-0">The existence of such a process is non-trivial. Wiener's construction uses the Daniell-Kolmogorov extension theorem and a Hölder continuity argument (Kolmogorov's continuity criterion) to pass from finite-dimensional distributions to a continuous version. One may also construct Brownian motion via the Lévy-Ciesielski series $W_t = \sum_{n=0}^\infty \xi_n \psi_n(t)$ where $\xi_n \sim N(0,1)$ i.i.d. and $\psi_n$ are Haar wavelets.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Basic Properties</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.1.2 — Moments and Covariance</div>
+                    <div class="math-box-label">Theorem 1.1.2 - Moments and Covariance</div>
                     <p>For standard Brownian motion:</p>
                     <ul>
                         <li>$E[W_t] = 0$ for all $t \ge 0$.</li>
@@ -157,23 +157,23 @@
                 </div>
 
                 <div class="math-box proof">
-                    <div class="math-box-label">Proof — Covariance Formula</div>
+                    <div class="math-box-label">Proof - Covariance Formula</div>
                     <p>For $s \le t$: $\text{Cov}(W_s, W_t) = E[W_s W_t] = E[W_s(W_t - W_s + W_s)] = E[W_s(W_t-W_s)] + E[W_s^2]$. By independence of increments, $E[W_s(W_t-W_s)] = E[W_s]E[W_t-W_s] = 0$. Hence $\text{Cov}(W_s,W_t) = E[W_s^2] = s = \min(s,t)$.</p>
                     <p class="mb-0">By symmetry the formula holds for $t \le s$ as well.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Quadratic Variation</h2>
 
-                <p>One of the most striking properties of Brownian motion — and the key that drives Itô's formula — is that its paths have non-zero quadratic variation, unlike any differentiable function.</p>
+                <p>One of the most striking properties of Brownian motion - and the key that drives Itô's formula - is that its paths have non-zero quadratic variation, unlike any differentiable function.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.1.3 — Quadratic Variation</div>
+                    <div class="math-box-label">Definition 1.1.3 - Quadratic Variation</div>
                     <p>For a partition $\Pi = \{0 = t_0 < t_1 < \cdots < t_n = T\}$ with mesh $|\Pi| = \max_k(t_{k+1}-t_k)$, the <strong>quadratic variation</strong> of $W$ on $[0,T]$ is:</p>
                     $$[W]_T = \lim_{|\Pi| \to 0} \sum_{k=0}^{n-1} (W_{t_{k+1}} - W_{t_k})^2$$
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.1.4 — Quadratic Variation of Brownian Motion</div>
+                    <div class="math-box-label">Theorem 1.1.4 - Quadratic Variation of Brownian Motion</div>
                     <p>For standard Brownian motion, $[W]_t = t$ almost surely for all $t \ge 0$. Symbolically, $dW_t^2 = dt$.</p>
                 </div>
 
@@ -186,7 +186,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Itô's Table</div>
+                    <div class="math-box-label">Remark - Itô's Table</div>
                     <p>The quadratic variation rule encodes the Itô multiplication table used in deriving Itô's formula:</p>
                     $$dW_t \cdot dW_t = dt, \qquad dW_t \cdot dt = 0, \qquad dt \cdot dt = 0.$$
                     <p class="mb-0">Any term of order $(dt)^\alpha$ with $\alpha > 1$ vanishes in the limit.</p>
@@ -195,24 +195,24 @@
                 <h2 class="mt-5 mb-3">Path Properties</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.1.5 — Nowhere Differentiability</div>
+                    <div class="math-box-label">Theorem 1.1.5 - Nowhere Differentiability</div>
                     <p class="mb-0">Almost surely, the sample path $t \mapsto W_t$ is nowhere differentiable. In fact, almost surely, $\limsup_{h \to 0} |W_{t+h} - W_t|/\sqrt{h \log \log(1/h)} = \sqrt{2}$ (the law of the iterated logarithm), which shows the paths oscillate far too wildly for any derivative to exist.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.1.6 — Hölder Continuity</div>
+                    <div class="math-box-label">Theorem 1.1.6 - Hölder Continuity</div>
                     <p class="mb-0">Almost surely, sample paths of Brownian motion are Hölder continuous with exponent $\alpha$ for every $\alpha < 1/2$, but not for any $\alpha \ge 1/2$. Precisely, for each $T > 0$ and $\alpha < 1/2$, there exists a finite random variable $C$ such that $|W_t - W_s| \le C|t-s|^\alpha$ for all $s,t \in [0,T]$ a.s.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Natural Filtration</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.1.7 — Natural Filtration of Brownian Motion</div>
+                    <div class="math-box-label">Definition 1.1.7 - Natural Filtration of Brownian Motion</div>
                     <p class="mb-0">The <strong>natural filtration</strong> of Brownian motion is $\mathcal{F}_t^W = \sigma(W_s : s \le t)$, the smallest $\sigma$-algebra making all $W_s$ (for $s \le t$) measurable. It represents the information accumulated by observing the Brownian path up to time $t$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 1.1.8 — Brownian Motion is a Martingale</div>
+                    <div class="math-box-label">Example 1.1.8 - Brownian Motion is a Martingale</div>
                     <p>With respect to its natural filtration, Brownian motion is a martingale: for $s \le t$,</p>
                     $$E[W_t \mid \mathcal{F}_s^W] = E[W_t - W_s + W_s \mid \mathcal{F}_s^W] = E[W_t - W_s] + W_s = 0 + W_s = W_s.$$
                     <p class="mb-0">Similarly, $W_t^2 - t$ is a martingale, which is essentially the statement that $[W]_t = t$.</p>

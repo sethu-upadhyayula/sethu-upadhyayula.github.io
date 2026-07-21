@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -134,7 +134,7 @@
                 <h2 class="mt-5 mb-3">Statement and Proof</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.3.1 — Lebesgue's Dominated Convergence Theorem</div>
+                    <div class="math-box-label">Theorem 4.3.1 - Lebesgue's Dominated Convergence Theorem</div>
                     <p>Let $(X, \mathcal{M}, \mu)$ be a measure space. Suppose $\{f_n\}$ is a sequence of measurable functions such that:</p>
                     <ol>
                         <li>$f_n(x) \to f(x)$ for $\mu$-a.e. $x$ (pointwise convergence a.e.),</li>
@@ -157,22 +157,22 @@
 
                 <h2 class="mt-5 mb-3">When Domination Fails</h2>
 
-                <p>The domination condition is not merely a technical assumption — it is genuinely necessary. The following examples show what can go wrong without it.</p>
+                <p>The domination condition is not merely a technical assumption - it is genuinely necessary. The following examples show what can go wrong without it.</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.3.2 — Escaping Mass</div>
+                    <div class="math-box-label">Example 4.3.2 - Escaping Mass</div>
                     <p>Let $f_n = \mathbf{1}_{[n, n+1]}$ on $(\mathbb{R}, \lambda)$. Then $f_n \to 0$ pointwise but $\int f_n = 1 \not\to 0 = \int 0$. No integrable dominating function exists since $\sup_n f_n = \mathbf{1}_{\bigcup [n,n+1]}$, whose integral diverges.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.3.3 — Concentrating Spike</div>
+                    <div class="math-box-label">Example 4.3.3 - Concentrating Spike</div>
                     <p class="mb-0">Let $f_n = n \mathbf{1}_{(0, 1/n]}$ on $([0,1], \lambda)$. Then $f_n \to 0$ pointwise on $(0,1]$ but $\int f_n = 1$ for all $n$. Any dominating function $g$ must satisfy $g(x) \geq n$ for $x \in (0, 1/n]$, i.e., $g(x) \geq 1/x$ near 0. But $\int_0^1 \frac{1}{x}\,dx = \infty$, so no $L^1$ dominator exists.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Generalisation: Vitali Convergence</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.3.4 — Vitali Convergence Theorem</div>
+                    <div class="math-box-label">Theorem 4.3.4 - Vitali Convergence Theorem</div>
                     <p>On a finite measure space, $f_n \to f$ in $L^1$ if and only if:</p>
                     <ol>
                         <li>$f_n \to f$ in measure,</li>
@@ -184,14 +184,14 @@
                 <h2 class="mt-5 mb-3">Applications</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.3.5 — Differentiation Under the Integral Sign</div>
+                    <div class="math-box-label">Example 4.3.5 - Differentiation Under the Integral Sign</div>
                     <p>Suppose $F(\theta) = \int_0^\infty f(x, \theta) \, dx$ where $\frac{\partial f}{\partial \theta}$ exists and $\left|\frac{\partial f}{\partial \theta}\right| \leq g(x)$ with $g \in L^1$. Then:
                     $$F'(\theta) = \int_0^\infty \frac{\partial f}{\partial \theta}(x, \theta) \, dx.$$</p>
                     <p class="mb-0">This follows by writing $F'(\theta) = \lim_{h\to 0} \int \frac{f(x,\theta+h)-f(x,\theta)}{h}\,dx$, applying DCT with dominator $g$ (via the mean value theorem). This technique, sometimes called "Leibniz's rule," is one of the most practical uses of DCT.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.3.6 — A Classic Limit</div>
+                    <div class="math-box-label">Example 4.3.6 - A Classic Limit</div>
                     <p class="mb-0">Compute $\lim_{n\to\infty} \int_0^1 \frac{n x^{n-1}}{1+x} \, dx$. Let $f_n(x) = \frac{n x^{n-1}}{1+x}$. Note $f_n \to 0$ on $[0,1)$ and $f_n(1) = n/2$. The dominator approach fails directly. Instead, integrate by parts: $\int_0^1 f_n \, dx = \frac{n}{n+1}\int_0^1 \frac{x^n}{(1+x)^2}\,dx + 1/2$... Alternatively, write $f_n = \frac{n x^{n-1}}{1+x} \leq n x^{n-1}$ and check: $\int_0^1 n x^{n-1}\,dx = 1$. The functions $f_n$ are dominated by $g = 1/(1-x)$ near 1, which is not integrable. A careful computation gives limit $= 0$ via the substitution $x = t^{1/n}$ and DCT on $[0,\infty)$.</p>
                 </div>
 

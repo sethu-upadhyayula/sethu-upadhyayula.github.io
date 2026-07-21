@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -69,7 +69,7 @@
                 <p>A <em>fixed point</em> of a function $g$ is a value $x^*$ satisfying $g(x^*) = x^*$. Many root-finding problems can be reformulated as fixed point problems: solving $f(x) = 0$ is equivalent to finding a fixed point of $g(x) = x - f(x)$ or any other equivalent rearrangement $g(x) = x$.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Fixed Point Iteration</div>
+                    <div class="math-box-label">Definition - Fixed Point Iteration</div>
                     <p>Given a function $g$, the <strong>fixed point iteration</strong> generates a sequence by choosing an initial guess $x_0$ and repeatedly applying:
                     $$x_{n+1} = g(x_n), \quad n = 0, 1, 2, \ldots$$
                     If the sequence $(x_n)$ converges to some $x^*$, and $g$ is continuous, then $x^* = g(x^*)$ is a fixed point of $g$.</p>
@@ -80,7 +80,7 @@
                 <p>The central theoretical result guaranteeing convergence of fixed point iteration is the Banach (or Picard) Contraction Mapping Theorem. It provides conditions under which the iteration converges to a unique fixed point regardless of the starting point.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Banach Contraction Mapping</div>
+                    <div class="math-box-label">Theorem - Banach Contraction Mapping</div>
                     <p>Let $g:[a,b]\to[a,b]$ be continuous, and suppose there exists a constant $k\in[0,1)$ such that
                     $$|g'(x)| \le k \quad \text{for all } x \in (a,b).$$
                     Then:</p>
@@ -93,27 +93,27 @@
 
                 <div class="math-box proof">
                     <div class="math-box-label">Proof Sketch</div>
-                    <p><strong>Step 1 — $(x_n)$ is Cauchy.</strong> By the Mean Value Theorem applied to $g$:
+                    <p><strong>Step 1 - $(x_n)$ is Cauchy.</strong> By the Mean Value Theorem applied to $g$:
                     $$|x_{n+1} - x_n| = |g(x_n) - g(x_{n-1})| \le k|x_n - x_{n-1}|.$$
                     By induction, $|x_{n+1} - x_n| \le k^n|x_1 - x_0|$. For $m > n$:
                     $$|x_m - x_n| \le \sum_{j=n}^{m-1}|x_{j+1}-x_j| \le |x_1-x_0|\sum_{j=n}^{m-1}k^j \le \frac{k^n}{1-k}|x_1-x_0|.$$
                     Since $k < 1$, this tends to $0$ as $n \to \infty$, so $(x_n)$ is Cauchy, hence convergent in $[a,b]$.</p>
-                    <p><strong>Step 2 — The limit is a fixed point.</strong> Let $x^* = \lim x_n$. By continuity of $g$:
+                    <p><strong>Step 2 - The limit is a fixed point.</strong> Let $x^* = \lim x_n$. By continuity of $g$:
                     $$g(x^*) = g(\lim_{n\to\infty} x_n) = \lim_{n\to\infty} g(x_n) = \lim_{n\to\infty} x_{n+1} = x^*.$$</p>
-                    <p><strong>Step 3 — Uniqueness.</strong> If $x^*$ and $y^*$ are both fixed points in $[a,b]$:
+                    <p><strong>Step 3 - Uniqueness.</strong> If $x^*$ and $y^*$ are both fixed points in $[a,b]$:
                     $$|x^* - y^*| = |g(x^*) - g(y^*)| \le k|x^* - y^*|.$$
                     Since $k < 1$, we must have $|x^* - y^*| = 0$, i.e., $x^* = y^*$. $\square$</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Contraction Constant</div>
+                    <div class="math-box-label">Remark - Contraction Constant</div>
                     <p class="mb-0">The condition $|g'(x)| \le k < 1$ is called the <em>contraction condition</em>. The smaller $k$ is, the faster the convergence: the error bound decays geometrically as $k^n$. A function satisfying this is called a <em>contraction mapping</em> on $[a,b]$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Example 1: Solving $x = \cos x$ (Dottie Number)</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — $g(x) = \cos x$</div>
+                    <div class="math-box-label">Example - $g(x) = \cos x$</div>
                     <p>We wish to find $x^*$ such that $x^* = \cos x^*$. Take $g(x) = \cos x$. Then $g'(x) = -\sin x$, so $|g'(x)| = |\sin x|$.</p>
                     <p>On the interval $[0.7, 0.8]$, we have $|\sin x| \le \sin(0.8) \approx 0.717 < 1$, so the contraction condition holds. Starting from $x_0 = 1$:</p>
                     <ul>
@@ -130,7 +130,7 @@
                 <h2 class="mt-5 mb-3">Example 2: Solving $x^3 - x - 1 = 0$</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — $g(x) = \sqrt[3]{x+1}$</div>
+                    <div class="math-box-label">Example - $g(x) = \sqrt[3]{x+1}$</div>
                     <p>Rearrange $x^3 = x + 1$ as $x = (x+1)^{1/3}$. Set $g(x) = (x+1)^{1/3}$. Then:
                     $$g'(x) = \frac{1}{3}(x+1)^{-2/3}.$$
                     Near the root (approximately $x \approx 1.3247$): $g'(1.3) \approx \frac{1}{3(2.3)^{2/3}} \approx \frac{1}{3 \cdot 1.69} \approx 0.197 < \frac{1}{3}$.</p>
@@ -142,11 +142,11 @@
                         <li>$x_4 \approx 1.3248$</li>
                         <li>$x_n \to x^* \approx 1.3247$</li>
                     </ul>
-                    <p class="mb-0">Since $k < 1/3$, convergence is rapid. The other rearrangement $g(x) = x^3 - 1$ gives $g'(x) = 3x^2 > 1$ near the root, and diverges — highlighting that the rearrangement matters.</p>
+                    <p class="mb-0">Since $k < 1/3$, convergence is rapid. The other rearrangement $g(x) = x^3 - 1$ gives $g'(x) = 3x^2 > 1$ near the root, and diverges - highlighting that the rearrangement matters.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Choice of $g$</div>
+                    <div class="math-box-label">Remark - Choice of $g$</div>
                     <p class="mb-0">Many different rearrangements of $f(x) = 0$ as $x = g(x)$ are possible. Only those for which $|g'|$ is strictly less than $1$ near the root will converge. In practice one tries rearrangements and checks the derivative condition. Newton's method (Section 9.2) is a systematic way to construct a $g$ with $g'(x^*) = 0$, giving quadratic convergence.</p>
                 </div>
 

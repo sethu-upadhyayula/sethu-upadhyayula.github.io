@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,12 +80,12 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Credit Risk and Hazard-Rate Models</h1>
 
-                <p>The lattice recursion in Section 2.1 discounted continuation values at a "credit-risky rate" $y = r + h$ without specifying how $h$ is determined or how it should vary across the lattice. This section develops the reduced-form (hazard-rate) framework for issuer credit risk, the standard approach for convertible valuation, and discusses why a convertible's credit risk cannot be modelled independently of its embedded equity option — the so-called credit-equity coupling problem.</p>
+                <p>The lattice recursion in Section 2.1 discounted continuation values at a "credit-risky rate" $y = r + h$ without specifying how $h$ is determined or how it should vary across the lattice. This section develops the reduced-form (hazard-rate) framework for issuer credit risk, the standard approach for convertible valuation, and discusses why a convertible's credit risk cannot be modelled independently of its embedded equity option - the so-called credit-equity coupling problem.</p>
 
                 <h2 class="mt-5 mb-3">The Hazard-Rate (Reduced-Form) Model</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Hazard Rate and Survival Probability</div>
+                    <div class="math-box-label">Definition - Hazard Rate and Survival Probability</div>
                     <p class="mb-0">In a reduced-form credit model, default is modelled as the first arrival of a Poisson-type process with intensity (hazard rate) $h(t)$, possibly time- and state-dependent. The probability that the issuer has not defaulted by time $T$, conditional on no default by $t < T$, is the <em>survival probability</em>:
                     $$Q(t,T) = \exp\left(-\int_t^T h(u)\,du\right)$$
                     For a constant hazard rate $h$, this simplifies to $Q(t,T) = e^{-h(T-t)}$. The hazard rate is directly related to the credit spread: for a bond with recovery rate $R$ on default, the credit spread $s$ over the risk-free rate satisfies approximately $s \approx h(1-R)$, so a hazard rate of $h=4\%$ with $40\%$ recovery corresponds to a credit spread of roughly $240$ basis points.</p>
@@ -96,28 +96,28 @@
                 <p>The bond floor introduced in Section 1.1 discounted cash flows at a flat credit-risky yield $y$. The hazard-rate model makes this precise: a cash flow promised at time $T$ is received only if the issuer survives to $T$, and is otherwise replaced (in expectation) by a recovery payment.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Risky Discount Factor</div>
+                    <div class="math-box-label">Theorem - Risky Discount Factor</div>
                     <p class="mb-0">Under a reduced-form model with constant risk-free rate $r$, constant hazard rate $h$, and zero recovery on the cash flow in question, the value today of $1$ promised at $T$, contingent on survival, is:
                     $$P^{\text{risky}}(0,T) = e^{-rT}\,Q(0,T) = e^{-rT}e^{-hT} = e^{-(r+h)T}$$
-                    The risky discount factor is therefore the risk-free discount factor multiplied by the survival probability, and for constant $r$ and $h$ this is equivalent to discounting at the flat rate $y = r+h$ — recovering the "credit-risky yield" used informally in Section 1.1. With non-zero recovery $R$ on the cash flow, a recovery-adjusted term $R \cdot h \int_0^T e^{-(r+h)u}\,du$ is added to account for the expected recovery payment received if default occurs before $T$.</p>
+                    The risky discount factor is therefore the risk-free discount factor multiplied by the survival probability, and for constant $r$ and $h$ this is equivalent to discounting at the flat rate $y = r+h$ - recovering the "credit-risky yield" used informally in Section 1.1. With non-zero recovery $R$ on the cash flow, a recovery-adjusted term $R \cdot h \int_0^T e^{-(r+h)u}\,du$ is added to account for the expected recovery payment received if default occurs before $T$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Applying $e^{-(r+h)t}$ in the Lattice</div>
-                    <p class="mb-0">In the binomial recursion of Section 2.1, the bond component of the continuation value (the portion of $H_{i,j}$ that represents a promise of cash, as opposed to the value the holder would get by converting into shares) should be discounted at $r+h$, while the equity-like portion (the part of value attributable to potential conversion into shares) should be discounted at the risk-free rate $r$, since converted shares are not subject to the issuer's default. A common simplification splits $V_{i,j} = (\text{equity component}) + (\text{debt component})$ at each node — e.g. by a regression-based decomposition such as the Tsiveriotis-Fernandes method — and applies $r$ to the equity component and $r+h$ to the debt component, rather than a single blended rate for the whole node value.</p>
+                    <div class="math-box-label">Remark - Applying $e^{-(r+h)t}$ in the Lattice</div>
+                    <p class="mb-0">In the binomial recursion of Section 2.1, the bond component of the continuation value (the portion of $H_{i,j}$ that represents a promise of cash, as opposed to the value the holder would get by converting into shares) should be discounted at $r+h$, while the equity-like portion (the part of value attributable to potential conversion into shares) should be discounted at the risk-free rate $r$, since converted shares are not subject to the issuer's default. A common simplification splits $V_{i,j} = (\text{equity component}) + (\text{debt component})$ at each node - e.g. by a regression-based decomposition such as the Tsiveriotis-Fernandes method - and applies $r$ to the equity component and $r+h$ to the debt component, rather than a single blended rate for the whole node value.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Credit-Equity Coupling</h2>
 
-                <p>A defining feature of convertible bond valuation — distinguishing it from valuing a vanilla equity option or a vanilla corporate bond in isolation — is that the issuer's hazard rate $h$ and its stock price $S_t$ are not independent: both reflect the same underlying firm value.</p>
+                <p>A defining feature of convertible bond valuation - distinguishing it from valuing a vanilla equity option or a vanilla corporate bond in isolation - is that the issuer's hazard rate $h$ and its stock price $S_t$ are not independent: both reflect the same underlying firm value.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Credit-Equity Coupling Problem</div>
-                    <p class="mb-0">As a firm's stock price falls (signalling deteriorating fundamentals, or directly via leverage effects — a lower equity value typically corresponds to higher leverage and hence higher default risk), the market's perception of the issuer's hazard rate $h$ tends to <em>rise</em>. Conversely, a rising stock price is typically associated with a declining (or stable) hazard rate. A model that treats $h$ as constant, independent of $S_t$, will understate the convertible's downside risk: in a scenario where the stock falls sharply (making the conversion option worthless), the bond floor — which the convertible would fall back to — is itself eroded by the simultaneous widening of the credit spread. This is precisely the scenario that matters most for convertible holders, since it is exactly the regime (bond-like, Section 1.2) in which the bond floor is supposed to provide protection.</p>
+                    <div class="math-box-label">Remark - The Credit-Equity Coupling Problem</div>
+                    <p class="mb-0">As a firm's stock price falls (signalling deteriorating fundamentals, or directly via leverage effects - a lower equity value typically corresponds to higher leverage and hence higher default risk), the market's perception of the issuer's hazard rate $h$ tends to <em>rise</em>. Conversely, a rising stock price is typically associated with a declining (or stable) hazard rate. A model that treats $h$ as constant, independent of $S_t$, will understate the convertible's downside risk: in a scenario where the stock falls sharply (making the conversion option worthless), the bond floor - which the convertible would fall back to - is itself eroded by the simultaneous widening of the credit spread. This is precisely the scenario that matters most for convertible holders, since it is exactly the regime (bond-like, Section 1.2) in which the bond floor is supposed to provide protection.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Stock-Dependent Hazard Rate (Common Specification)</div>
+                    <div class="math-box-label">Definition - Stock-Dependent Hazard Rate (Common Specification)</div>
                     <p class="mb-0">A widely used practical specification ties the hazard rate to the stock price via a power-law relationship:
                     $$h(S) = h_0 \left(\frac{S_0}{S}\right)^{\alpha}$$
                     for some reference level $S_0$, base hazard rate $h_0$, and sensitivity parameter $\alpha > 0$ (often $\alpha \approx 1$ to $2$). As $S \to 0$, $h(S) \to \infty$, capturing the intuition that a firm whose equity value has collapsed to near zero is in (or very near) default; as $S$ rises, $h(S)$ decreases toward (but never reaches) zero. This functional form is then used node-by-node in the lattice: at each node $(i,j)$, the hazard rate applied to discount the bond component is $h(S_{i,j})$, coupling the credit discounting directly to the equity process being modelled in the same tree.</p>
@@ -126,11 +126,11 @@
                 <h2 class="mt-5 mb-3">Worked Example</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Risky Discounting with a Stock-Dependent Hazard Rate</div>
+                    <div class="math-box-label">Example - Risky Discounting with a Stock-Dependent Hazard Rate</div>
                     <p>Take $r = 4\%$, $S_0 = 100$, $h_0 = 3\%$, and $\alpha = 1.5$, so $h(S) = 0.03\,(100/S)^{1.5}$.</p>
                     <p><strong>At-the-money node ($S=100$):</strong> $h(100) = 0.03 \times 1 = 3.0\%$, giving $y = r+h = 7.0\%$. The 1-year risky discount factor is $P^{\text{risky}}(0,1) = e^{-0.07} = 0.9324$.</p>
-                    <p><strong>Stock has fallen to $S=50$ (bond-like regime):</strong> $h(50) = 0.03 \times (100/50)^{1.5} = 0.03 \times 2.828 = 8.49\%$, giving $y = 4\% + 8.49\% = 12.49\%$. The 1-year risky discount factor falls to $P^{\text{risky}}(0,1) = e^{-0.1249} = 0.8826$ — noticeably lower than the at-the-money case.</p>
-                    <p class="mb-0">The bond floor computed at $S=50$ is therefore discounted more heavily ($0.8826$ vs. $0.9324$ per year) precisely in the scenario where the convertible's value depends most on that bond floor — the stock-dependent hazard rate causes the bond floor itself to erode as the stock falls, rather than remaining a fixed "floor" computed at a constant credit spread. This is the quantitative expression of the credit-equity coupling discussed above, and it is the reason convertible models that hold $h$ fixed tend to overstate the protection offered by the bond floor in adverse scenarios.</p>
+                    <p><strong>Stock has fallen to $S=50$ (bond-like regime):</strong> $h(50) = 0.03 \times (100/50)^{1.5} = 0.03 \times 2.828 = 8.49\%$, giving $y = 4\% + 8.49\% = 12.49\%$. The 1-year risky discount factor falls to $P^{\text{risky}}(0,1) = e^{-0.1249} = 0.8826$ - noticeably lower than the at-the-money case.</p>
+                    <p class="mb-0">The bond floor computed at $S=50$ is therefore discounted more heavily ($0.8826$ vs. $0.9324$ per year) precisely in the scenario where the convertible's value depends most on that bond floor - the stock-dependent hazard rate causes the bond floor itself to erode as the stock falls, rather than remaining a fixed "floor" computed at a constant credit spread. This is the quantitative expression of the credit-equity coupling discussed above, and it is the reason convertible models that hold $h$ fixed tend to overstate the protection offered by the bond floor in adverse scenarios.</p>
                 </div>
 
                 <hr class="my-5">

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,12 +80,12 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Inflation Caps, Floors, and Options</h1>
 
-                <p>Inflation caps and floors are option contracts on realised inflation, used to hedge against inflation rising above (cap) or falling below (floor) a specified strike level. They are widely used to hedge pension liabilities with explicit inflation caps and floors written into their indexation rules — for example, UK defined-benefit pensions frequently apply a "0% floor, 5% cap" (an "LPI 0-5") to annual benefit increases. This section defines the payoffs of YoY and cumulative inflation caps and floors, and outlines a Black-style approach to pricing them.</p>
+                <p>Inflation caps and floors are option contracts on realised inflation, used to hedge against inflation rising above (cap) or falling below (floor) a specified strike level. They are widely used to hedge pension liabilities with explicit inflation caps and floors written into their indexation rules - for example, UK defined-benefit pensions frequently apply a "0% floor, 5% cap" (an "LPI 0-5") to annual benefit increases. This section defines the payoffs of YoY and cumulative inflation caps and floors, and outlines a Black-style approach to pricing them.</p>
 
                 <h2 class="mt-5 mb-3">Year-on-Year Inflation Caps and Floors</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Year-on-Year Inflation Caplet</div>
+                    <div class="math-box-label">Definition - Year-on-Year Inflation Caplet</div>
                     <p class="mb-0">A YoY inflation caplet for the period $[t_{k-1}, t_k]$, with strike $K$, pays at $t_k$:
                     $$\max\left(\frac{\text{CPI}(t_k)}{\text{CPI}(t_{k-1})} - 1 - K,\; 0\right)$$
                     A YoY inflation cap is a strip of such caplets across consecutive annual periods. The corresponding YoY floorlet pays $\max\left(K - \left(\dfrac{\text{CPI}(t_k)}{\text{CPI}(t_{k-1})}-1\right),\,0\right)$, and a YoY floor is a strip of floorlets. Each caplet/floorlet is, structurally, a call/put option on the YoY inflation rate underlying the corresponding leg of a YoY inflation swap (Section 2.1).</p>
@@ -96,15 +96,15 @@
                 <p>A second family of inflation options pays based on <em>cumulative</em> inflation from the trade's inception to each payment date, analogous to the ZC inflation swap's payoff rather than the YoY swap's.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Cumulative Inflation Cap/Floor</div>
+                    <div class="math-box-label">Definition - Cumulative Inflation Cap/Floor</div>
                     <p class="mb-0">A cumulative inflation caplet maturing at $T$ with strike rate $K$ pays:
                     $$\max\left(\frac{\text{CPI}(T)}{\text{CPI}(0)} - (1+K)^T,\; 0\right)$$
                     i.e., a call option on the cumulative CPI ratio struck at the cumulative growth implied by the fixed rate $K$. The corresponding floor pays $\max\left((1+K)^T - \dfrac{\text{CPI}(T)}{\text{CPI}(0)},\,0\right)$. This structure is the natural option analogue of the ZC inflation swap (Section 2.1), just as the YoY cap/floor is the option analogue of the YoY swap.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Which Structure Matches a Given Liability</div>
-                    <p class="mb-0">The choice between YoY and cumulative structures should match the liability being hedged. Pension benefits that apply an annual cap/floor to each year's increase (e.g. "increases capped at 5% per annum, floored at 0% per annum") are naturally hedged with YoY caps/floors, because the option triggers (or doesn't) independently each year regardless of the path of inflation in other years. A liability that caps/floors only the <em>cumulative</em> increase over the full term — much rarer in practice — would instead be hedged with a cumulative structure. Because annual floors compound (a 0% floor every year for 10 years floors cumulative inflation at 0% only if every single year individually floors, which is far more valuable than a single 0% floor on 10-year cumulative inflation), YoY floor strips are typically significantly more expensive than the corresponding cumulative floor of the same strike and maturity — a frequent source of confusion when comparing quotes.</p>
+                    <div class="math-box-label">Remark - Which Structure Matches a Given Liability</div>
+                    <p class="mb-0">The choice between YoY and cumulative structures should match the liability being hedged. Pension benefits that apply an annual cap/floor to each year's increase (e.g. "increases capped at 5% per annum, floored at 0% per annum") are naturally hedged with YoY caps/floors, because the option triggers (or doesn't) independently each year regardless of the path of inflation in other years. A liability that caps/floors only the <em>cumulative</em> increase over the full term - much rarer in practice - would instead be hedged with a cumulative structure. Because annual floors compound (a 0% floor every year for 10 years floors cumulative inflation at 0% only if every single year individually floors, which is far more valuable than a single 0% floor on 10-year cumulative inflation), YoY floor strips are typically significantly more expensive than the corresponding cumulative floor of the same strike and maturity - a frequent source of confusion when comparing quotes.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Black-Style Pricing</h2>
@@ -112,29 +112,29 @@
                 <p>A common practical approach prices each caplet/floorlet by treating the relevant forward inflation rate as a lognormally (or normally) distributed underlying and applying the Black (or Bachelier) option pricing formula, with an implied volatility taken from the inflation options market (itself often quoted, broker-sourced, and relatively illiquid compared to nominal rate option markets).</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Black Formula for a YoY Inflation Caplet</div>
+                    <div class="math-box-label">Definition - Black Formula for a YoY Inflation Caplet</div>
                     <p class="mb-0">Let $F_k$ denote the forward YoY inflation rate for $[t_{k-1},t_k]$ (from the YoY swap curve, including the convexity adjustment of Section 2.1), $\sigma_k$ the Black implied volatility for that caplet, $K$ the strike, and $P(0,t_k)$ the relevant discount factor. The Black price of the caplet is:
                     $$\text{Caplet} = P(0,t_k)\left[(1+F_k)\,N(d_1) - (1+K)\,N(d_2)\right]$$
                     $$d_{1,2} = \frac{\ln\left(\frac{1+F_k}{1+K}\right) \pm \frac{1}{2}\sigma_k^2 t_k}{\sigma_k\sqrt{t_k}}$$
-                    where $N(\cdot)$ is the standard normal CDF. This is the standard Black formula applied to the "gross" inflation ratio $1 + \pi_{\text{YoY}}$ rather than to $\pi_{\text{YoY}}$ directly, which avoids issues with the lognormal assumption when inflation rates can be negative — though for very low or negative strikes, a normal (Bachelier) model applied directly to $\pi_{\text{YoY}}$ is often preferred in practice.</p>
+                    where $N(\cdot)$ is the standard normal CDF. This is the standard Black formula applied to the "gross" inflation ratio $1 + \pi_{\text{YoY}}$ rather than to $\pi_{\text{YoY}}$ directly, which avoids issues with the lognormal assumption when inflation rates can be negative - though for very low or negative strikes, a normal (Bachelier) model applied directly to $\pi_{\text{YoY}}$ is often preferred in practice.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Limitations of the Black Approach</div>
+                    <div class="math-box-label">Remark - Limitations of the Black Approach</div>
                     <p class="mb-0">The Black approach treats each caplet/floorlet independently with its own implied volatility, ignoring the term structure correlations between consecutive YoY periods that matter for path-dependent structures (e.g. cumulative caps/floors, or caps/floors on multi-year compounded inflation). More sophisticated approaches use a full term-structure model of the price index jointly with nominal and real rates (again, typically in a Jarrow-Yildirim-style framework), calibrated to both the ZC/YoY swap curves and the available cap/floor volatility surface. For a first-pass valuation or risk estimate, however, the Black approach with a YoY volatility surface remains the market standard quoting convention.</p>
                 </div>
 
-                <h2 class="mt-5 mb-3">Worked Example — Pricing a YoY Floorlet</h2>
+                <h2 class="mt-5 mb-3">Worked Example - Pricing a YoY Floorlet</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — 1-Year Forward-Starting YoY Inflation Floorlet at 0% Strike</div>
+                    <div class="math-box-label">Example - 1-Year Forward-Starting YoY Inflation Floorlet at 0% Strike</div>
                     <p>Consider a 1-year YoY inflation floorlet, forward-starting in 4 years (so it pays at $t_k = 5$ based on inflation realised over $[4,5]$), struck at $K=0\%$ (a "zero floor"). Suppose the forward YoY inflation rate for that period is $F_k = 2.50\%$, the Black implied volatility is $\sigma_k = 90\%$ (YoY inflation volatilities are often quoted very high in relative terms because the underlying rate itself is small), and the relevant discount factor is $P(0,5) = 0.85$.</p>
                     <p>Using $1+F_k = 1.0250$ and $1+K=1.0000$:
                     $$d_{1} = \frac{\ln(1.0250/1.0000) + \tfrac{1}{2}(0.90)^2 (5)}{0.90\sqrt{5}} = \frac{0.02469 + 2.025}{2.0125} \approx 1.018$$
                     $$d_2 = d_1 - \sigma_k\sqrt{t_k} \approx 1.018 - 2.0125 \approx -0.995$$</p>
                     <p>With $N(d_1)\approx 0.846$ and $N(d_2)\approx 0.160$, the corresponding caplet value is $P(0,5)\left[1.0250 \times 0.846 - 1.0000\times 0.160\right] \approx 0.85 \times (0.867 - 0.160) \approx 0.601$. By put-call parity for this gross-ratio formulation, $\text{Floorlet} - \text{Caplet} = P(0,5)\left[(1+K) - (1+F_k)\right] = 0.85 \times (1.0000-1.0250) = -0.02125$, so:
                     $$\text{Floorlet} \approx \text{Caplet} - 0.02125 \approx 0.601 - 0.021 = 0.580$$</p>
-                    <p class="mb-0">In annualised running-spread terms this would be converted to a small fraction of a percent of notional — but the key takeaway is qualitative: with a positive forward inflation rate and very high implied volatility, a 0%-strike YoY floorlet carries substantial value, since there is meaningful probability that a single year's inflation print comes in below zero even when the long-run forward is comfortably positive.</p>
+                    <p class="mb-0">In annualised running-spread terms this would be converted to a small fraction of a percent of notional - but the key takeaway is qualitative: with a positive forward inflation rate and very high implied volatility, a 0%-strike YoY floorlet carries substantial value, since there is meaningful probability that a single year's inflation print comes in below zero even when the long-run forward is comfortably positive.</p>
                 </div>
 
                 <hr class="my-5">

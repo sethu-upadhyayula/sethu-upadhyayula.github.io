@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -131,63 +131,63 @@
                 <p>Conditional probability formalises the notion of updating probabilities when we learn that some event has occurred. Independence captures the idea that knowing one event gives no information about another.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.3.1 — Conditional Probability</div>
+                    <div class="math-box-label">Definition 1.3.1 - Conditional Probability</div>
                     <p>If $P(B) > 0$, the <strong>conditional probability of $A$ given $B$</strong> is:
                     $$P(A \mid B) = \frac{P(A \cap B)}{P(B)}$$</p>
                     <p class="mb-0">Intuitively, we restrict the sample space to $B$ and rescale so the total probability is 1.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.3.2 — Chain Rule</div>
+                    <div class="math-box-label">Theorem 1.3.2 - Chain Rule</div>
                     <p class="mb-0">For events $A_1, \ldots, A_n$ with $P(A_1 \cap \cdots \cap A_{n-1}) > 0$:
                     $$P(A_1 \cap A_2 \cap \cdots \cap A_n) = P(A_1) \cdot P(A_2|A_1) \cdot P(A_3|A_1 \cap A_2) \cdots P(A_n | A_1 \cap \cdots \cap A_{n-1})$$</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.3.3 — Law of Total Probability</div>
+                    <div class="math-box-label">Theorem 1.3.3 - Law of Total Probability</div>
                     <p>If $\{B_i\}_{i=1}^n$ is a partition of $\Omega$ with $P(B_i) > 0$ for all $i$, then:
                     $$P(A) = \sum_{i=1}^n P(A \mid B_i) P(B_i)$$</p>
                     <p class="mb-0">This allows us to compute $P(A)$ by conditioning on a partition.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.3.4 — Bayes' Formula</div>
+                    <div class="math-box-label">Theorem 1.3.4 - Bayes' Formula</div>
                     <p>If $\{B_i\}$ partitions $\Omega$ and $P(A) > 0$:
                     $$P(B_i \mid A) = \frac{P(A \mid B_i) P(B_i)}{\sum_j P(A \mid B_j) P(B_j)}$$</p>
                     <p class="mb-0">$P(B_i)$ is the <em>prior</em> probability; $P(B_i|A)$ is the <em>posterior</em> probability after observing $A$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 1.3.5 — Medical Test</div>
+                    <div class="math-box-label">Example 1.3.5 - Medical Test</div>
                     <p>A disease has prevalence 1%. A test has sensitivity $P(\text{pos}|\text{disease}) = 0.99$ and specificity $P(\text{neg}|\text{no disease}) = 0.95$. The false positive rate is $5\%$. What is the probability of disease given a positive test?</p>
                     <p>$$P(\text{disease}|\text{pos}) = \frac{0.99 \times 0.01}{0.99 \times 0.01 + 0.05 \times 0.99} \approx \frac{0.0099}{0.0099 + 0.0495} \approx 0.167$$</p>
-                    <p class="mb-0">Despite the accurate test, only about 17% of positive testers actually have the disease — illustrating the base rate fallacy.</p>
+                    <p class="mb-0">Despite the accurate test, only about 17% of positive testers actually have the disease - illustrating the base rate fallacy.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Independence</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.3.6 — Independence of Events</div>
+                    <div class="math-box-label">Definition 1.3.6 - Independence of Events</div>
                     <p>Events $A$ and $B$ are <strong>independent</strong> if:
                     $$P(A \cap B) = P(A) P(B)$$</p>
                     <p class="mb-0">Equivalently (when $P(B)>0$): $P(A|B) = P(A)$, so knowing $B$ does not change the probability of $A$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.3.7 — Mutual Independence</div>
+                    <div class="math-box-label">Definition 1.3.7 - Mutual Independence</div>
                     <p>Events $A_1, \ldots, A_n$ are <strong>mutually independent</strong> if for every subset $S \subseteq \{1,\ldots,n\}$:
                     $$P\!\left(\bigcap_{i \in S} A_i\right) = \prod_{i \in S} P(A_i)$$</p>
                     <p class="mb-0"><strong>Pairwise independence</strong> (only requiring $P(A_i \cap A_j) = P(A_i)P(A_j)$ for $i \ne j$) does <em>not</em> imply mutual independence.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 1.3.8 — Pairwise but not Mutually Independent</div>
+                    <div class="math-box-label">Example 1.3.8 - Pairwise but not Mutually Independent</div>
                     <p>Toss two fair coins. Let $A = \{\text{1st is H}\}$, $B = \{\text{2nd is H}\}$, $C = \{\text{both same}\}$. Then $P(A) = P(B) = P(C) = 1/2$ and $P(A\cap B) = P(A\cap C) = P(B\cap C) = 1/4$, so pairwise independent. But $P(A\cap B\cap C) = 1/4 \ne 1/8 = P(A)P(B)P(C)$.</p>
-                    <p class="mb-0">Mutual independence requires checking all subsets — pairwise independence is strictly weaker.</p>
+                    <p class="mb-0">Mutual independence requires checking all subsets - pairwise independence is strictly weaker.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.3.9 — Conditional Independence</div>
+                    <div class="math-box-label">Definition 1.3.9 - Conditional Independence</div>
                     <p class="mb-0">$A$ and $B$ are <strong>conditionally independent given $C$</strong> (with $P(C) > 0$) if:
                     $$P(A \cap B \mid C) = P(A \mid C) P(B \mid C)$$</p>
                 </div>

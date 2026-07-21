@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -86,37 +86,37 @@
                 <h2 class="mt-5 mb-3">VIX Index Construction Recap</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The VIX as a "Constant Maturity" Index</div>
+                    <div class="math-box-label">Remark - The VIX as a "Constant Maturity" Index</div>
                     <p class="mb-0">The crucial conceptual point is that the VIX is a <em>constant-maturity</em> index: every trading day, it represents the model-free implied volatility for a fresh 30-calendar-day window starting from that day, interpolated from the two nearest standard option expiries. It does not refer to any single fixed option series. This is analogous to how a constant-maturity Treasury yield (e.g., the "10-year yield") is a continuously-updated point on the yield curve rather than the yield of one specific bond. The VIX level on any given day therefore reflects the market's current view of volatility over the <em>next</em> 30 days, recomputed fresh each day.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">VIX Futures</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — VIX Futures Contract</div>
-                    <p class="mb-0">A VIX future with expiry $T_e$ is a cash-settled contract that pays, at expiry, the special opening quotation (SOQ) of the VIX — computed using the same model-free methodology as the standard VIX, but using S&P 500 options that expire exactly 30 days after $T_e$ (so that, on the future's expiry date, the underlying 30-day VIX calculation and the future's settlement value coincide exactly). Before expiry, the future trades at a market-determined price $F_t(T_e)$ representing the market's current expectation of where this settlement value will land.</p>
+                    <div class="math-box-label">Definition - VIX Futures Contract</div>
+                    <p class="mb-0">A VIX future with expiry $T_e$ is a cash-settled contract that pays, at expiry, the special opening quotation (SOQ) of the VIX - computed using the same model-free methodology as the standard VIX, but using S&P 500 options that expire exactly 30 days after $T_e$ (so that, on the future's expiry date, the underlying 30-day VIX calculation and the future's settlement value coincide exactly). Before expiry, the future trades at a market-determined price $F_t(T_e)$ representing the market's current expectation of where this settlement value will land.</p>
                 </div>
 
-                <p>Because the VIX is forward-looking and mean-reverting (it tends to oscillate around a long-run average, spiking during stress and subsiding afterward), a VIX future's price reflects not the current spot VIX but the market's expectation of the 30-day-forward VIX as of the future's expiry — combined with any risk premium investors demand for holding the position.</p>
+                <p>Because the VIX is forward-looking and mean-reverting (it tends to oscillate around a long-run average, spiking during stress and subsiding afterward), a VIX future's price reflects not the current spot VIX but the market's expectation of the 30-day-forward VIX as of the future's expiry - combined with any risk premium investors demand for holding the position.</p>
 
                 <h2 class="mt-5 mb-3">Contango and Backwardation</h2>
 
                 <p>Plotting VIX futures prices $F_t(T_e)$ against time to expiry $T_e - t$ for a fixed observation date $t$ produces the VIX futures term structure. Its shape is one of the most-watched signals in volatility markets.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Two Drivers of Contango</div>
-                    <p><strong>Mean reversion:</strong> when spot VIX is unusually low (a calm market), the market expects it to revert upward toward its long-run average over the coming months, so longer-dated futures price in higher expected VIX levels than the current spot — pushing the curve into contango ($F_t(T_2) > F_t(T_1) > \text{VIX}_t$ for $T_2 > T_1$). Conversely, when spot VIX is unusually high (a stressed market), the market expects mean reversion downward, and the curve tends toward backwardation ($\text{VIX}_t > F_t(T_1) > F_t(T_2)$).</p>
-                    <p class="mb-0"><strong>Volatility risk premium:</strong> independent of the current level of spot VIX, futures prices embed a structural premium because the "natural" buyers of volatility protection (investors hedging equity portfolios) are willing to pay more than the expected future spot VIX, while sellers of volatility (who bear the risk of sharp upward moves) demand compensation for doing so. This premium pushes the futures curve upward relative to the risk-neutral expectation of future spot VIX, contributing to contango even independent of the mean-reversion effect. Empirically, the VIX futures curve is in contango roughly 80% of the time — backwardation is associated almost exclusively with episodes of market stress.</p>
+                    <div class="math-box-label">Remark - The Two Drivers of Contango</div>
+                    <p><strong>Mean reversion:</strong> when spot VIX is unusually low (a calm market), the market expects it to revert upward toward its long-run average over the coming months, so longer-dated futures price in higher expected VIX levels than the current spot - pushing the curve into contango ($F_t(T_2) > F_t(T_1) > \text{VIX}_t$ for $T_2 > T_1$). Conversely, when spot VIX is unusually high (a stressed market), the market expects mean reversion downward, and the curve tends toward backwardation ($\text{VIX}_t > F_t(T_1) > F_t(T_2)$).</p>
+                    <p class="mb-0"><strong>Volatility risk premium:</strong> independent of the current level of spot VIX, futures prices embed a structural premium because the "natural" buyers of volatility protection (investors hedging equity portfolios) are willing to pay more than the expected future spot VIX, while sellers of volatility (who bear the risk of sharp upward moves) demand compensation for doing so. This premium pushes the futures curve upward relative to the risk-neutral expectation of future spot VIX, contributing to contango even independent of the mean-reversion effect. Empirically, the VIX futures curve is in contango roughly 80% of the time - backwardation is associated almost exclusively with episodes of market stress.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Roll Yield</h2>
 
-                <p>An investor who holds a constant-maturity position in VIX futures — by periodically selling the expiring (front-month) future and buying a longer-dated one — experiences a "roll" each time this rebalancing occurs. The P&L impact of this roll is the roll yield.</p>
+                <p>An investor who holds a constant-maturity position in VIX futures - by periodically selling the expiring (front-month) future and buying a longer-dated one - experiences a "roll" each time this rebalancing occurs. The P&L impact of this roll is the roll yield.</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Roll Yield Under Contango</div>
+                    <div class="math-box-label">Example - Roll Yield Under Contango</div>
                     <p>Suppose the front-month VIX future trades at $F_1 = 18$ and the second-month future trades at $F_2 = 20$ (a contango of 2 points). An investor holding a constant-maturity long position must, as the front-month future approaches expiry, sell it (receiving approximately its current price, close to spot VIX as $T_1 \to 0$) and buy the new front-month future (which was the second-month future, priced at $F_2=20$, but which itself will have drifted toward spot as time passes).</p>
-                    <p class="mb-0">Roughly speaking, if the term structure shape is stable and spot VIX does not change, each future's price must converge toward spot VIX as it approaches expiry — meaning a future bought at $F_2=20$ that is now the front month must fall in price toward spot VIX (say, 18) by the time it is rolled again. A long position therefore systematically buys high (at $F_2$) and "sells low" relative to that purchase price as the future decays toward spot — a negative roll yield. Conversely, a short position in a contango curve earns a positive roll yield from this same effect, which is the mechanical source of the volatility risk premium realized by systematic short-VIX-futures strategies (and the structural decay of long-VIX ETPs discussed in the next section).</p>
+                    <p class="mb-0">Roughly speaking, if the term structure shape is stable and spot VIX does not change, each future's price must converge toward spot VIX as it approaches expiry - meaning a future bought at $F_2=20$ that is now the front month must fall in price toward spot VIX (say, 18) by the time it is rolled again. A long position therefore systematically buys high (at $F_2$) and "sells low" relative to that purchase price as the future decays toward spot - a negative roll yield. Conversely, a short position in a contango curve earns a positive roll yield from this same effect, which is the mechanical source of the volatility risk premium realized by systematic short-VIX-futures strategies (and the structural decay of long-VIX ETPs discussed in the next section).</p>
                 </div>
 
                 <hr class="my-5">

@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -143,14 +143,14 @@
                 The determinant of the coefficient matrix is $W = W[y_1,y_2] \neq 0$, so by Cramer's rule:</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.3.1 — Variation of Parameters Formulas</div>
+                    <div class="math-box-label">Theorem 2.3.1 - Variation of Parameters Formulas</div>
                     <p>Let $\{y_1, y_2\}$ be a fundamental solution set of $y'' + py' + qy = 0$ with Wronskian $W$. A particular solution of $y'' + py' + qy = g$ is $y_p = u_1 y_1 + u_2 y_2$ where
                     $$u_1'(x) = -\frac{y_2(x)\,g(x)}{W(x)}, \qquad u_2'(x) = \frac{y_1(x)\,g(x)}{W(x)}.$$</p>
                     <p class="mb-0">Integrating: $u_1 = -\int \frac{y_2 g}{W}\,dx$ and $u_2 = \int \frac{y_1 g}{W}\,dx$. The general solution is $y = c_1 y_1 + c_2 y_2 + y_p$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 2.3.2 — $y'' + y = \sec x$</div>
+                    <div class="math-box-label">Example 2.3.2 - $y'' + y = \sec x$</div>
                     <p>The homogeneous equation $y'' + y = 0$ has solutions $y_1 = \cos x$, $y_2 = \sin x$, and $W = 1$.</p>
                     <p>$u_1' = -\sin x \cdot \sec x = -\tan x$, so $u_1 = \ln|\cos x|$.</p>
                     <p>$u_2' = \cos x \cdot \sec x = 1$, so $u_2 = x$.</p>
@@ -158,7 +158,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 2.3.3 — $y'' + y = \tan x$</div>
+                    <div class="math-box-label">Example 2.3.3 - $y'' + y = \tan x$</div>
                     <p>With $y_1 = \cos x$, $y_2 = \sin x$, $W = 1$, $g = \tan x$:</p>
                     <p>$u_1' = -\sin x\tan x = -\sin^2 x/\cos x$, integrated to $u_1 = \sin x - \ln|\sec x + \tan x|$.</p>
                     <p>$u_2' = \cos x\tan x = \sin x$, giving $u_2 = -\cos x$.</p>
@@ -166,7 +166,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Green's Function</div>
+                    <div class="math-box-label">Remark - Green's Function</div>
                     <p class="mb-0">The variation of parameters formula can be written as a convolution:
                     $$y_p(x) = \int_{x_0}^x G(x,t)\,g(t)\,dt, \quad G(x,t) = \frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)}.$$
                     The function $G(x,t)$ is the <em>Green's function</em> for the operator $L[y] = y'' + py' + qy$. It encodes the response to a unit impulse at $t$ and is fundamental to the study of boundary value problems.</p>

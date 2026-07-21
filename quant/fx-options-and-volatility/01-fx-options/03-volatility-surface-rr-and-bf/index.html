@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,14 +81,14 @@
             <article>
                 <h1 class="text-accent mb-4">1.3 Volatility Surface: Risk Reversals and Butterflies</h1>
 
-                <p>The Garman-Kohlhagen model assumes a single constant volatility $\sigma$, yet market option prices imply different volatilities for options of different strikes and maturities — the volatility smile or skew. In FX, the implied volatility surface is not parameterised directly by strike, as in equities, but by <em>delta</em>, and is constructed from three market-quoted instruments at each tenor: the at-the-money (ATM) volatility, the risk reversal, and the butterfly.</p>
+                <p>The Garman-Kohlhagen model assumes a single constant volatility $\sigma$, yet market option prices imply different volatilities for options of different strikes and maturities - the volatility smile or skew. In FX, the implied volatility surface is not parameterised directly by strike, as in equities, but by <em>delta</em>, and is constructed from three market-quoted instruments at each tenor: the at-the-money (ATM) volatility, the risk reversal, and the butterfly.</p>
 
                 <h2 class="mt-5 mb-3">Quoting Conventions: Delta-Based Strikes</h2>
 
-                <p>Recall from the previous section that FX options are quoted by delta rather than strike. For a given tenor, the market quotes implied volatilities for a small number of standard delta points — typically the 25-delta put, the at-the-money, and the 25-delta call, with 10-delta points also common in liquid pairs for the wings of the smile.</p>
+                <p>Recall from the previous section that FX options are quoted by delta rather than strike. For a given tenor, the market quotes implied volatilities for a small number of standard delta points - typically the 25-delta put, the at-the-money, and the 25-delta call, with 10-delta points also common in liquid pairs for the wings of the smile.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — ATM, Risk Reversal, Butterfly</div>
+                    <div class="math-box-label">Definition - ATM, Risk Reversal, Butterfly</div>
                     <p class="mb-0">For a given tenor and a delta level $\Delta$ (e.g., 25 or 10), define:</p>
                     <ul class="mb-0 mt-2">
                         <li>$\sigma_{\text{ATM}}$: the at-the-money volatility (typically the delta-neutral straddle volatility).</li>
@@ -101,26 +101,26 @@
 
                 <h2 class="mt-5 mb-3">Risk Reversal: A Measure of Skew</h2>
 
-                <p>The risk reversal is the difference in implied volatility between an out-of-the-money call and an out-of-the-money put of the same delta. It measures the asymmetry — or skew — of the smile: which side of the distribution the market prices with relatively higher volatility, and hence which direction of currency move the market regards as relatively more likely or more feared.</p>
+                <p>The risk reversal is the difference in implied volatility between an out-of-the-money call and an out-of-the-money put of the same delta. It measures the asymmetry - or skew - of the smile: which side of the distribution the market prices with relatively higher volatility, and hence which direction of currency move the market regards as relatively more likely or more feared.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Interpreting the Risk Reversal</div>
-                    <p>A positive risk reversal ($\text{RR}_\Delta > 0$) means OTM calls trade at a higher implied volatility than OTM puts of the same delta — the market assigns relatively more value (and perceives more risk) to a sharp upward move in the base currency. A negative risk reversal means the opposite: puts are richer than calls, reflecting greater fear of (or demand for protection against) a sharp depreciation of the base currency.</p>
+                    <div class="math-box-label">Remark - Interpreting the Risk Reversal</div>
+                    <p>A positive risk reversal ($\text{RR}_\Delta > 0$) means OTM calls trade at a higher implied volatility than OTM puts of the same delta - the market assigns relatively more value (and perceives more risk) to a sharp upward move in the base currency. A negative risk reversal means the opposite: puts are richer than calls, reflecting greater fear of (or demand for protection against) a sharp depreciation of the base currency.</p>
                     <p class="mb-0">Risk reversals are themselves directly traded as a single instrument: a risk reversal position is long the OTM call and short the OTM put (or vice versa) of the same delta and tenor, isolating the skew exposure with the bulk of the vega and gamma exposure of the two legs offsetting.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — USD/JPY Risk Reversal</div>
-                    <p class="mb-0">Suppose the 1-month 25-delta risk reversal for USD/JPY is quoted at $-1.5\%$ (often written "USD calls over JPY calls" is negative here, i.e. JPY calls/USD puts are richer). This indicates the market is paying up for protection against a sharp JPY appreciation (USD depreciation) — consistent with JPY's traditional role as a safe-haven currency that tends to strengthen sharply during risk-off episodes.</p>
+                    <div class="math-box-label">Example - USD/JPY Risk Reversal</div>
+                    <p class="mb-0">Suppose the 1-month 25-delta risk reversal for USD/JPY is quoted at $-1.5\%$ (often written "USD calls over JPY calls" is negative here, i.e. JPY calls/USD puts are richer). This indicates the market is paying up for protection against a sharp JPY appreciation (USD depreciation) - consistent with JPY's traditional role as a safe-haven currency that tends to strengthen sharply during risk-off episodes.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Butterfly: A Measure of Convexity</h2>
 
-                <p>The butterfly measures the curvature, or convexity, of the smile: how much richer the wings (both OTM calls and OTM puts) are relative to the ATM volatility, on average. A positive butterfly means both wings trade above the ATM vol — a "smile" in the literal sense — reflecting the market's view that large moves in either direction are more likely than a lognormal (constant-vol) model would suggest.</p>
+                <p>The butterfly measures the curvature, or convexity, of the smile: how much richer the wings (both OTM calls and OTM puts) are relative to the ATM volatility, on average. A positive butterfly means both wings trade above the ATM vol - a "smile" in the literal sense - reflecting the market's view that large moves in either direction are more likely than a lognormal (constant-vol) model would suggest.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Market-Quoted "Smile-Strangle"</div>
-                    <p class="mb-0">In practice, the butterfly is not traded directly using the simple average above — the market-traded butterfly (sometimes the "smile strangle" or "vega-weighted butterfly") is constructed so that a butterfly trade (long the OTM call and put, short two ATM straddles in appropriate proportions) is approximately vega- and delta-neutral at inception. The simple average definition above is the "broker-quote" or "smile" butterfly used for surface construction; converting between quoting conventions is a standard but important market-microstructure detail.</p>
+                    <div class="math-box-label">Remark - The Market-Quoted "Smile-Strangle"</div>
+                    <p class="mb-0">In practice, the butterfly is not traded directly using the simple average above - the market-traded butterfly (sometimes the "smile strangle" or "vega-weighted butterfly") is constructed so that a butterfly trade (long the OTM call and put, short two ATM straddles in appropriate proportions) is approximately vega- and delta-neutral at inception. The simple average definition above is the "broker-quote" or "smile" butterfly used for surface construction; converting between quoting conventions is a standard but important market-microstructure detail.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Constructing the Smile</h2>
@@ -128,30 +128,30 @@
                 <p>Given $\sigma_{\text{ATM}}$, $\text{RR}_{25}$, and $\text{BF}_{25}$ (and similarly for the 10-delta points if quoted), the implied volatilities at the 25-delta call and put strikes can be recovered:</p>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Recovering Wing Volatilities</div>
+                    <div class="math-box-label">Proposition - Recovering Wing Volatilities</div>
                     <p class="mb-0">From the definitions of RR and BF:</p>
                     <p>$$\sigma_{25\text{C}} = \sigma_{\text{ATM}} + \text{BF}_{25} + \tfrac{1}{2}\text{RR}_{25}, \qquad \sigma_{25\text{P}} = \sigma_{\text{ATM}} + \text{BF}_{25} - \tfrac{1}{2}\text{RR}_{25}$$</p>
-                    <p class="mb-0">Each of these volatilities corresponds to a delta, not a strike. To plot the smile against strike (or to use it in a pricing model), each delta must first be converted to the corresponding strike via the Garman-Kohlhagen delta formula — itself a function of the volatility at that point, requiring an iterative or analytic inversion (see the previous section on delta conventions).</p>
+                    <p class="mb-0">Each of these volatilities corresponds to a delta, not a strike. To plot the smile against strike (or to use it in a pricing model), each delta must first be converted to the corresponding strike via the Garman-Kohlhagen delta formula - itself a function of the volatility at that point, requiring an iterative or analytic inversion (see the previous section on delta conventions).</p>
                 </div>
 
-                <p>With three (or five, including 10-delta) volatility points per tenor, a smooth interpolation — common choices include cubic splines in delta-space, the SABR model, or the Vanna-Volga method — is used to obtain implied volatilities at arbitrary strikes for pricing exotic structures. The Vanna-Volga approach is particularly popular in FX because it has an intuitive interpretation: it adjusts the Garman-Kohlhagen (Black-Scholes) price of an exotic by the cost of hedging its vanna and volga (vega convexity) exposures using the three liquid market instruments — the ATM straddle, the risk reversal, and the butterfly.</p>
+                <p>With three (or five, including 10-delta) volatility points per tenor, a smooth interpolation - common choices include cubic splines in delta-space, the SABR model, or the Vanna-Volga method - is used to obtain implied volatilities at arbitrary strikes for pricing exotic structures. The Vanna-Volga approach is particularly popular in FX because it has an intuitive interpretation: it adjusts the Garman-Kohlhagen (Black-Scholes) price of an exotic by the cost of hedging its vanna and volga (vega convexity) exposures using the three liquid market instruments - the ATM straddle, the risk reversal, and the butterfly.</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — A Typical EUR/USD Surface</div>
+                    <div class="math-box-label">Example - A Typical EUR/USD Surface</div>
                     <p>A representative 3-month EUR/USD surface might be quoted as:</p>
                     <ul class="mb-0">
                         <li>$\sigma_{\text{ATM}} = 7.50\%$</li>
-                        <li>$\text{RR}_{25} = -0.30\%$ (puts slightly richer than calls — modest EUR downside skew)</li>
+                        <li>$\text{RR}_{25} = -0.30\%$ (puts slightly richer than calls - modest EUR downside skew)</li>
                         <li>$\text{BF}_{25} = 0.20\%$ (mild positive convexity)</li>
                     </ul>
-                    <p class="mt-2 mb-0">This gives $\sigma_{25\text{C}} = 7.50 + 0.20 - 0.15 = 7.55\%$ and $\sigma_{25\text{P}} = 7.50 + 0.20 + 0.15 = 7.85\%$ — a smile that is slightly higher on the put wing, consistent with the negative risk reversal.</p>
+                    <p class="mt-2 mb-0">This gives $\sigma_{25\text{C}} = 7.50 + 0.20 - 0.15 = 7.55\%$ and $\sigma_{25\text{P}} = 7.50 + 0.20 + 0.15 = 7.85\%$ - a smile that is slightly higher on the put wing, consistent with the negative risk reversal.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">From Vanilla Surfaces to Exotics</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Looking Ahead</div>
-                    <p class="mb-0">The vanilla volatility surface constructed from ATM, RR, and BF quotes is the primary input for pricing FX exotics — barrier options, digitals, and target redemption structures — all of which are highly sensitive to the shape of the smile, particularly in the wings. The next chapter introduces these exotic products and the additional modelling considerations (such as smile dynamics and barrier monitoring conventions) they require beyond the static vanilla surface.</p>
+                    <div class="math-box-label">Remark - Looking Ahead</div>
+                    <p class="mb-0">The vanilla volatility surface constructed from ATM, RR, and BF quotes is the primary input for pricing FX exotics - barrier options, digitals, and target redemption structures - all of which are highly sensitive to the shape of the smile, particularly in the wings. The next chapter introduces these exotic products and the additional modelling considerations (such as smile dynamics and barrier monitoring conventions) they require beyond the static vanilla surface.</p>
                 </div>
 
                 <hr class="my-5">

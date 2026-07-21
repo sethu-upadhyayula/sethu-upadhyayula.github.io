@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="light" data-section="chess"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>An Illustrative Selfmate — Selfmates</title>
+<title>An Illustrative Selfmate - Selfmates</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -47,7 +47,7 @@
 
         <h1 class="text-accent mb-4">5. An Illustrative Selfmate</h1>
 
-  <p>Reading about selfmate techniques in the abstract only goes so far. This chapter walks through a complete miniature, move by move, to show how the ideas from Chapters 3 and 4 — zugzwang, controlled captures, and stalemate avoidance — combine in a single short sequence. The position is a constructed didactic miniature designed to illustrate the <em>mechanism</em> as clearly as possible, rather than a tournament-award composition reproduced from a database.</p>
+  <p>Reading about selfmate techniques in the abstract only goes so far. This chapter walks through a complete miniature, move by move, to show how the ideas from Chapters 3 and 4 - zugzwang, controlled captures, and stalemate avoidance - combine in a single short sequence. The position is a constructed didactic miniature designed to illustrate the <em>mechanism</em> as clearly as possible, rather than a tournament-award composition reproduced from a database.</p>
 
   <h3>The Position</h3>
   <p><strong>Position:</strong> White: &#9812;e4, &#9813;d6, &#9814;h5 &nbsp;|&nbsp; Black: &#9818;a8, &#9819;b6, &#9823;a6</p>
@@ -55,27 +55,27 @@
 
   <div class="chess-board" id="board-self"></div>
   <script>renderChessBoard('board-self', {e4:'wK',d6:'wQ',h5:'wR',a8:'bK',b6:'bQ',a6:'bP'});</script>
-  <p class="text-center text-muted mt-2"><small>Illustrative selfmate — White's task is to force the Black queen to deliver checkmate on the White king within two moves.</small></p>
+  <p class="text-center text-muted mt-2"><small>Illustrative selfmate - White's task is to force the Black queen to deliver checkmate on the White king within two moves.</small></p>
 
   <h3>Reading the Diagram Before Calculating</h3>
   <p>Before searching for moves, it helps to take stock of the position the way an experienced selfmate solver would:</p>
   <ul>
-    <li>The <strong>White king on e4</strong> is in the open — no White pawns shelter it, and several squares around it (d4, d5, e5, f5, f4, f3, e3, d3) are potential flight squares unless covered.</li>
-    <li>The <strong>White queen on d6</strong> and <strong>rook on h5</strong> are White's only other pieces. Since White must eventually engineer its <em>own</em> mate, at least one of these pieces will likely play a role in restricting the White king's flights or in controlling which Black moves are legal — not in attacking Black.</li>
+    <li>The <strong>White king on e4</strong> is in the open - no White pawns shelter it, and several squares around it (d4, d5, e5, f5, f4, f3, e3, d3) are potential flight squares unless covered.</li>
+    <li>The <strong>White queen on d6</strong> and <strong>rook on h5</strong> are White's only other pieces. Since White must eventually engineer its <em>own</em> mate, at least one of these pieces will likely play a role in restricting the White king's flights or in controlling which Black moves are legal - not in attacking Black.</li>
     <li>The <strong>Black king on a8</strong> is tucked in the corner, with the <strong>Black queen on b6</strong> nearby and a <strong>Black pawn on a6</strong> giving the king some shelter (and some restriction).</li>
-    <li>Critically, the <strong>Black queen</strong> is the piece best placed, geometrically, to reach the vicinity of e4 in one move — note that b6 and e4 are not on a shared line yet, but a queen move along the long diagonal or a rank/file could change that quickly.</li>
+    <li>Critically, the <strong>Black queen</strong> is the piece best placed, geometrically, to reach the vicinity of e4 in one move - note that b6 and e4 are not on a shared line yet, but a queen move along the long diagonal or a rank/file could change that quickly.</li>
   </ul>
-  <p>This last observation is the seed of the solution: if White can manoeuvre so that the Black queen's <em>only</em> legal move places it on a square from which it checks — and mates — the White king on e4, the problem is solved.</p>
+  <p>This last observation is the seed of the solution: if White can manoeuvre so that the Black queen's <em>only</em> legal move places it on a square from which it checks - and mates - the White king on e4, the problem is solved.</p>
 
   <h3>Solution</h3>
   <div class="notation-box">
     <strong>1. Qd5!</strong><br><br>
-    This is the key move. On the surface it looks modest — the White queen simply steps from d6 to d5, a square adjacent to its own king. Three things happen at once:<br><br>
+    This is the key move. On the surface it looks modest - the White queen simply steps from d6 to d5, a square adjacent to its own king. Three things happen at once:<br><br>
     &bull; The queen on d5 takes over the guard of several squares around the White king (d4, e5, c5, c6, etc.), <em>tightening</em> the net around White's own king rather than loosening it.<br>
-    &bull; The queen vacates d6, removing a guard from a square that was previously covered — specifically opening a path relevant to the Black queen's mobility.<br>
+    &bull; The queen vacates d6, removing a guard from a square that was previously covered - specifically opening a path relevant to the Black queen's mobility.<br>
     &bull; Most importantly, the queen on d5 places itself on the <strong>same diagonal as e4</strong> (d5&ndash;e4) and, working together with the rook on h5, leaves the Black queen on b6 with exactly <strong>one legal move</strong>.<br><br>
     After 1.Qd5, Black is in <strong>zugzwang</strong>. The Black king on a8 has no moves (boxed in by its own pawn on a6 and the edge of the board, with b7/b8 covered by the White queen's new diagonal). The Black pawn on a6 has no moves (blocked/covered). The <strong>only legal move in the entire position belongs to the Black queen</strong>.<br><br>
-    <strong>1...Qxd5</strong> (forced — the sole legal Black move)<br><br>
+    <strong>1...Qxd5</strong> (forced - the sole legal Black move)<br><br>
     The Black queen captures on d5, landing on a square immediately adjacent to the White king on e4 and delivering check. Because every flight square around e4 (d4, e3, e5, f3, f4, f5, d3) is covered &mdash; by the rook on h5 along the 5th rank and 4th... and by the Black king's own pawn structure restricting nothing further is needed &mdash; the check is <strong>checkmate</strong>.<br><br>
     <strong>1...Qxd5 is therefore s#2: Qxd5#</strong>
   </div>
@@ -83,20 +83,20 @@
   <h3>Why Every Alternative Fails</h3>
   <p>A selfmate solution is only complete once every <em>other</em> possible Black reply to 1.Qd5 has been ruled out. In this position:</p>
   <ul>
-    <li><strong>1...Kb8, Ka7, Kb7?</strong> — all illegal: the Black king on a8 has no flight square. b8 and b7 are covered by the White queen's new diagonal from d5, and a7 is covered by the same diagonal extended (or by the rook, depending on the exact geometry of the full position). The king simply cannot move.</li>
-    <li><strong>1...a5?</strong> — illegal if the pawn on a6 has no legal advance (blocked by the board edge logic of this miniature — in the full, fully-verified setting, an additional White unit would guard a5 to make this illegal, or the pawn would already be unable to move for structural reasons).</li>
-    <li><strong>Any Black queen move other than Qxd5?</strong> — illegal, because 1.Qd5 covers every other square the queen could otherwise reach from b6 (b-file, 6th rank, and both diagonals through b6 are all now controlled by the combined action of the White queen and rook), leaving capture on d5 as the queen's only legal destination.</li>
+    <li><strong>1...Kb8, Ka7, Kb7?</strong> - all illegal: the Black king on a8 has no flight square. b8 and b7 are covered by the White queen's new diagonal from d5, and a7 is covered by the same diagonal extended (or by the rook, depending on the exact geometry of the full position). The king simply cannot move.</li>
+    <li><strong>1...a5?</strong> - illegal if the pawn on a6 has no legal advance (blocked by the board edge logic of this miniature - in the full, fully-verified setting, an additional White unit would guard a5 to make this illegal, or the pawn would already be unable to move for structural reasons).</li>
+    <li><strong>Any Black queen move other than Qxd5?</strong> - illegal, because 1.Qd5 covers every other square the queen could otherwise reach from b6 (b-file, 6th rank, and both diagonals through b6 are all now controlled by the combined action of the White queen and rook), leaving capture on d5 as the queen's only legal destination.</li>
   </ul>
   <p>This is the signature shape of a selfmate solution: a single quiet-looking White move that simultaneously (a) tightens the guard around White's own king so that the inevitable Black check will be mate, and (b) strips away every Black option except the one that delivers that check.</p>
 
   <h3>What This Example Demonstrates</h3>
   <p>Three ideas from the earlier chapters appear together in this miniature:</p>
   <ul>
-    <li><strong>Zugzwang</strong> (Chapter 3) — after 1.Qd5, Black has exactly one legal move, and it is the mating move.</li>
-    <li><strong>Controlled capture</strong> (Chapter 3) — the White queen voluntarily lands on a square (d5) from which the Black queen is compelled to capture it, with the resulting recapture square (d5) being adjacent to the White king.</li>
-    <li><strong>Reluctant executioner</strong> (Chapter 1/2) — the Black queen, which has no interest in checkmating White, is left with literally no other option.</li>
+    <li><strong>Zugzwang</strong> (Chapter 3) - after 1.Qd5, Black has exactly one legal move, and it is the mating move.</li>
+    <li><strong>Controlled capture</strong> (Chapter 3) - the White queen voluntarily lands on a square (d5) from which the Black queen is compelled to capture it, with the resulting recapture square (d5) being adjacent to the White king.</li>
+    <li><strong>Reluctant executioner</strong> (Chapter 1/2) - the Black queen, which has no interest in checkmating White, is left with literally no other option.</li>
   </ul>
-  <p>Real, tournament-quality selfmates layer several more of these ideas — often across longer sequences (s#3, s#4, and beyond) with try play, multiple thematic tries that each fail to exactly one defence, and model mates in every variation. But the underlying logic is always this same combination: restrict, sacrifice, and force.</p>
+  <p>Real, tournament-quality selfmates layer several more of these ideas - often across longer sequences (s#3, s#4, and beyond) with try play, multiple thematic tries that each fail to exactly one defence, and model mates in every variation. But the underlying logic is always this same combination: restrict, sacrifice, and force.</p>
 
         <hr class="my-5">
         <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

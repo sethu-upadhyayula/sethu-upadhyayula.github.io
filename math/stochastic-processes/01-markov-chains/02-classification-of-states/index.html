@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -127,12 +127,12 @@
             <article>
                 <h1 class="text-accent mb-4">1.2 Classification of States</h1>
 
-                <p>Not all states of a Markov chain behave alike. Some are visited infinitely often; others are eventually abandoned forever. The classification of states — into communicating classes, by period, and by recurrence type — is the key to understanding the long-run behaviour of the chain.</p>
+                <p>Not all states of a Markov chain behave alike. Some are visited infinitely often; others are eventually abandoned forever. The classification of states - into communicating classes, by period, and by recurrence type - is the key to understanding the long-run behaviour of the chain.</p>
 
                 <h2 class="mt-4 mb-3">Communicating Classes</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.2.1 — Accessibility and Communication</div>
+                    <div class="math-box-label">Definition 1.2.1 - Accessibility and Communication</div>
                     <p>State $j$ is <strong>accessible</strong> from $i$ (written $i \to j$) if $(P^n)_{ij} > 0$ for some $n \ge 0$. States $i$ and $j$ <strong>communicate</strong> (written $i \leftrightarrow j$) if $i \to j$ and $j \to i$.</p>
                     <p class="mb-0">Communication is an equivalence relation, and the state space partitions into disjoint <strong>communicating classes</strong>. A Markov chain is <strong>irreducible</strong> if all states communicate, i.e., there is only one communicating class.</p>
                 </div>
@@ -140,31 +140,31 @@
                 <h2 class="mt-5 mb-3">Period</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.2.2 — Period</div>
+                    <div class="math-box-label">Definition 1.2.2 - Period</div>
                     <p class="mb-0">The <strong>period</strong> of state $i$ is
                     $$d(i) = \gcd\{n \ge 1 : (P^n)_{ii} > 0\}.$$
                     A state is <strong>aperiodic</strong> if $d(i) = 1$. Period is a class property: all states in a communicating class have the same period.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Simple Random Walk</div>
+                    <div class="math-box-label">Example - Simple Random Walk</div>
                     <p class="mb-0">On $\mathbb{Z}$, the simple random walk (step $+1$ or $-1$ with equal probability) has $(P^n)_{00} > 0$ only for even $n$, so $d(0) = 2$. The chain is periodic with period 2.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Recurrence and Transience</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.2.3 — First Return Time</div>
+                    <div class="math-box-label">Definition 1.2.3 - First Return Time</div>
                     <p class="mb-0">Let $T_i = \min\{n \ge 1 : X_n = i\}$ be the <strong>first return time</strong> to state $i$. Define the <strong>return probability</strong> $f_i = P_i(T_i < \infty) = P(T_i < \infty \mid X_0 = i)$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.2.4 — Recurrent and Transient</div>
+                    <div class="math-box-label">Definition 1.2.4 - Recurrent and Transient</div>
                     <p class="mb-0">State $i$ is <strong>recurrent</strong> if $f_i = 1$ (the chain returns to $i$ with probability 1) and <strong>transient</strong> if $f_i < 1$ (the chain escapes $i$ forever with positive probability). Recurrence/transience is a class property.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.2.5 — Recurrence Criterion</div>
+                    <div class="math-box-label">Theorem 1.2.5 - Recurrence Criterion</div>
                     <p class="mb-0">State $i$ is recurrent if and only if $\sum_{n=0}^{\infty} (P^n)_{ii} = \infty$. It is transient if and only if $\sum_{n=0}^{\infty} (P^n)_{ii} < \infty$.</p>
                 </div>
 
@@ -176,13 +176,13 @@
                 <h2 class="mt-5 mb-3">Positive and Null Recurrence</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.2.6 — Positive and Null Recurrent</div>
+                    <div class="math-box-label">Definition 1.2.6 - Positive and Null Recurrent</div>
                     <p>A recurrent state $i$ is <strong>positive recurrent</strong> if $E_i[T_i] < \infty$ (finite mean return time) and <strong>null recurrent</strong> if $E_i[T_i] = \infty$.</p>
                     <p class="mb-0">For finite irreducible chains, every state is positive recurrent. For the simple random walk on $\mathbb{Z}$, every state is null recurrent ($E_0[T_0] = \infty$). In $\mathbb{Z}^d$ with $d \ge 3$, the simple random walk is transient.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Polya's Theorem</div>
+                    <div class="math-box-label">Remark - Polya's Theorem</div>
                     <p class="mb-0">The simple symmetric random walk on $\mathbb{Z}^d$ is recurrent for $d = 1, 2$ and transient for $d \ge 3$. This striking dimension-dependence is a fundamental result in probability theory.</p>
                 </div>
 

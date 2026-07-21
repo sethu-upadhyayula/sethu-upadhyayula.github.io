@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,38 +81,38 @@
             <article>
                 <h1 class="text-accent mb-4">4.1 XVA Aggregation and Netting Sets</h1>
 
-                <p>Every valuation adjustment developed so far — CVA, DVA, FVA, KVA, MVA — has been framed in terms of a portfolio's exposure profile, $EE(t)$, $ENE(t)$, $EAD(t)$, or $IM(t)$. The unit over which these profiles are computed is not the individual trade but the <strong>netting set</strong>: the collection of trades with a single counterparty that fall under a common ISDA Master Agreement and CSA, and whose values are legally netted against each other on default.</p>
+                <p>Every valuation adjustment developed so far - CVA, DVA, FVA, KVA, MVA - has been framed in terms of a portfolio's exposure profile, $EE(t)$, $ENE(t)$, $EAD(t)$, or $IM(t)$. The unit over which these profiles are computed is not the individual trade but the <strong>netting set</strong>: the collection of trades with a single counterparty that fall under a common ISDA Master Agreement and CSA, and whose values are legally netted against each other on default.</p>
 
                 <h2 class="mt-5 mb-3">The Netting Set as the Unit of XVA</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Netting Set</div>
+                    <div class="math-box-label">Definition - Netting Set</div>
                     <p>A netting set $\mathcal{N}$ is the maximal collection of trades $\{1, \dots, m\}$ with counterparty $C$ that are subject to a single enforceable netting agreement. The netting set's value at time $t$ is:
                     $$V_{\mathcal{N}}(t) = \sum_{i \in \mathcal{N}} V_i(t)$$
-                    and it is $V_{\mathcal{N}}(t)$ — not the individual $V_i(t)$ — that determines the exposure (Chapter 1), the collateral call under the CSA (Chapter 2), and hence the EE, ENE, EAD and IM profiles that feed into CVA, FVA, KVA and MVA. A bank may have a single netting set with a counterparty covering hundreds of trades across many asset classes, or several separate netting sets if multiple ISDAs are in place (e.g. one per legal entity pairing).</p>
+                    and it is $V_{\mathcal{N}}(t)$ - not the individual $V_i(t)$ - that determines the exposure (Chapter 1), the collateral call under the CSA (Chapter 2), and hence the EE, ENE, EAD and IM profiles that feed into CVA, FVA, KVA and MVA. A bank may have a single netting set with a counterparty covering hundreds of trades across many asset classes, or several separate netting sets if multiple ISDAs are in place (e.g. one per legal entity pairing).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Why Trade-Level XVA Is Not Additive</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Non-Additivity of XVA</div>
-                    <p class="mb-0">Because $\max(\cdot, 0)$ is a convex function, $\max(\sum_i V_i, 0) \leq \sum_i \max(V_i, 0)$ — netting can only reduce exposure, never increase it. Consequently, the CVA (and FVA, KVA, MVA) of the netting set as a whole is generally <em>less than</em> the sum of the CVAs that would be computed if each trade were priced in isolation:
+                    <div class="math-box-label">Remark - Non-Additivity of XVA</div>
+                    <p class="mb-0">Because $\max(\cdot, 0)$ is a convex function, $\max(\sum_i V_i, 0) \leq \sum_i \max(V_i, 0)$ - netting can only reduce exposure, never increase it. Consequently, the CVA (and FVA, KVA, MVA) of the netting set as a whole is generally <em>less than</em> the sum of the CVAs that would be computed if each trade were priced in isolation:
                     $$\text{CVA}_{\mathcal{N}} \leq \sum_{i \in \mathcal{N}} \text{CVA}_i^{\text{standalone}}$$
-                    This has a direct pricing consequence: the "incremental XVA" of a new trade depends on the entire existing netting set, not just on the new trade's own risk. A new trade that happens to offset existing exposure (e.g. a payer swap added to a netting set already containing a receiver swap with the same counterparty) can have <em>negative</em> incremental CVA — it reduces the netting set's overall exposure and therefore reduces the total CVA charge, even though its standalone CVA would be positive.</p>
+                    This has a direct pricing consequence: the "incremental XVA" of a new trade depends on the entire existing netting set, not just on the new trade's own risk. A new trade that happens to offset existing exposure (e.g. a payer swap added to a netting set already containing a receiver swap with the same counterparty) can have <em>negative</em> incremental CVA - it reduces the netting set's overall exposure and therefore reduces the total CVA charge, even though its standalone CVA would be positive.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Incremental CVA of a New Trade</div>
+                    <div class="math-box-label">Example - Incremental CVA of a New Trade</div>
                     <p>A netting set with counterparty $C$ currently has EPE $= \$5\text{m}$ and CVA $= \$200{,}000$. The desk is asked to price a new 5-year swap that, in isolation, would have EPE $= \$1.5\text{m}$ and standalone CVA $\approx \$60{,}000$. However, the new swap is a receiver swap that offsets much of the existing netting set's rate exposure (which is a net payer position).</p>
-                    <p>Running the exposure simulation for the netting set <em>including</em> the new trade gives a combined EPE of \$4.2m and CVA of \$168,000 — <em>lower</em> than the existing standalone CVA of \$200,000.</p>
+                    <p>Running the exposure simulation for the netting set <em>including</em> the new trade gives a combined EPE of \$4.2m and CVA of \$168,000 - <em>lower</em> than the existing standalone CVA of \$200,000.</p>
                     $$\text{Incremental CVA} = \$168{,}000 - \$200{,}000 = -\$32{,}000$$
-                    <p class="mb-0">The new trade reduces the netting set's total CVA by \$32,000 — a CVA <em>credit</em> to the desk, despite the trade having a positive standalone CVA of \$60,000. This is why XVA desks must reprice the entire netting set (and often the entire portfolio with that counterparty across legal entities) for every new trade, not just the incremental trade.</p>
+                    <p class="mb-0">The new trade reduces the netting set's total CVA by \$32,000 - a CVA <em>credit</em> to the desk, despite the trade having a positive standalone CVA of \$60,000. This is why XVA desks must reprice the entire netting set (and often the entire portfolio with that counterparty across legal entities) for every new trade, not just the incremental trade.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Portfolio-Level Aggregation</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — From Netting Sets to the Whole Bank</div>
+                    <div class="math-box-label">Remark - From Netting Sets to the Whole Bank</div>
                     <p class="mb-0">A bank's total XVA exposure is the sum of the per-netting-set adjustments across all counterparties:
                     $$\text{Total CVA} = \sum_{\mathcal{N}} \text{CVA}_{\mathcal{N}}, \qquad \text{Total FVA} = \sum_{\mathcal{N}} \text{FVA}_{\mathcal{N}}, \quad \text{etc.}$$
-                    because netting sets across different counterparties cannot legally offset each other. Computing this at scale — often tens of thousands of netting sets, each requiring a Monte Carlo exposure simulation across hundreds of risk factors and thousands of future time/scenario combinations — is one of the largest computational workloads in a bank's risk infrastructure, typically run overnight on large grid-computing or cloud clusters and feeding directly into the desk's daily P&amp;L, hedging, and capital reporting.</p>
+                    because netting sets across different counterparties cannot legally offset each other. Computing this at scale - often tens of thousands of netting sets, each requiring a Monte Carlo exposure simulation across hundreds of risk factors and thousands of future time/scenario combinations - is one of the largest computational workloads in a bank's risk infrastructure, typically run overnight on large grid-computing or cloud clusters and feeding directly into the desk's daily P&amp;L, hedging, and capital reporting.</p>
                 </div>
 
                 <hr class="my-5">

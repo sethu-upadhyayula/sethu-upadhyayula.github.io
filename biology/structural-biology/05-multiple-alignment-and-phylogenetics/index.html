@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="bio">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Multiple Sequence Alignment and Phylogenetics</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../biology/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Biology</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Structural & Computational Biology</a>
+                <hr>
+                <a href="../01-structure-determination-techniques/" class="text-decoration-none toc-chapter-link"><strong>1.</strong> Structure Determination Techniques</a>
+                <a href="../02-molecular-modelling-and-dynamics/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> Molecular Modelling and Dynamics</a>
+                <a href="../03-protein-structure-prediction/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Protein Structure Prediction</a>
+                <a href="../04-sequence-databases-and-alignment/" class="text-decoration-none toc-chapter-link"><strong>4.</strong> Sequence Databases and Alignment</a>
+                <a href="../05-multiple-alignment-and-phylogenetics/" class="text-decoration-none toc-chapter-link toc-active"><strong>5.</strong> Multiple Sequence Alignment and Phylogenetics</a>
+                <a href="../06-gene-annotation-and-comparative-genomics/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Gene Annotation and Comparative Genomics</a>
+                <a href="../07-structure-based-and-ligand-based-drug-design/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Structure-Based and Ligand-Based Drug Design</a>
+                <a href="../08-systems-biology/" class="text-decoration-none toc-chapter-link"><strong>8.</strong> Systems Biology</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../biology/" class="btn btn-outline-custom btn-sm">&larr; Back to Biology</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../biology/">Biology</a> ›
+                <a href="../">Structural & Computational Biology</a> ›
+                <span>5. Multiple Sequence Alignment and Phylogenetics</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">5. Multiple Sequence Alignment and Phylogenetics</h1>
+
+                <p>Extending alignment from a pair of sequences to many at once reveals conserved positions across an entire protein family, and provides the raw material for reconstructing how those sequences are evolutionarily related.</p>
+
+                <h2 class="mt-5 mb-3">Multiple Sequence Alignment (MSA)</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition - Multiple Sequence Alignment</div>
+                    <p class="mb-0">An alignment of three or more sequences into a common set of columns, positioning homologous residues together across all sequences simultaneously. Because finding the mathematically optimal MSA is computationally very expensive as the number of sequences grows, practical tools use heuristic strategies - commonly <strong>progressive alignment</strong>, which builds up the full alignment by successively adding sequences in order of similarity, guided by a preliminary phylogenetic tree.</p>
+                </div>
+
+                <p>MSAs reveal <strong>conserved positions</strong> - often functionally or structurally critical residues under strong evolutionary constraint - and are a required input for both protein structure prediction (Chapter 3) and phylogenetic reconstruction.</p>
+
+                <h2 class="mt-5 mb-3">Building Phylogenetic Trees</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Tree-Building Methods</div>
+                    <ul class="mb-0">
+                        <li><strong>Distance-based methods</strong> (e.g., neighbor-joining) compute a pairwise distance matrix from the alignment and cluster sequences to minimize total branch length.</li>
+                        <li><strong>Character-based methods</strong> - maximum parsimony (finding the tree requiring the fewest evolutionary changes) and maximum likelihood (finding the tree most likely to have produced the observed sequences, under an explicit model of sequence evolution) - use the alignment's individual columns directly rather than a summary distance.</li>
+                        <li><strong>Bayesian methods</strong> sample a distribution of plausible trees, providing a natural measure of confidence in the resulting relationships.</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Applications in Taxonomy and Comparative Genomics</h2>
+
+                <p>Molecular phylogenetics has become the primary tool for classifying organisms (Chapter 4 of Diversity, Taxonomy &amp; Phylogenetics) and underlies comparative genomics - identifying which genomic features are shared by common descent versus acquired independently, and calibrating rates of molecular evolution.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../04-sequence-databases-and-alignment/" class="btn btn-outline-custom">&larr; 4. Sequence Databases and Alignment</a>
+                    <a href="../06-gene-annotation-and-comparative-genomics/" class="btn btn-custom">6. Gene Annotation and Comparative Genomics &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

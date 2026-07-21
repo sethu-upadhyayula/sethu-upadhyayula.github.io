@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,12 +81,12 @@
             <article>
                 <h1 class="text-accent mb-4">2.1 Covered Interest Parity and Its Breakdown</h1>
 
-                <p>Section 1.1 introduced covered interest rate parity (CIP) as the no-arbitrage relationship linking spot rates, forward rates, and the interest rate differential between two currencies. This section revisits CIP from the funding perspective: why it was, for decades, one of the most reliable relationships in all of finance, and why — since the 2008 financial crisis — it has persistently failed to hold, leaving a measurable "basis" that has become a fixture of FX and rates markets.</p>
+                <p>Section 1.1 introduced covered interest rate parity (CIP) as the no-arbitrage relationship linking spot rates, forward rates, and the interest rate differential between two currencies. This section revisits CIP from the funding perspective: why it was, for decades, one of the most reliable relationships in all of finance, and why - since the 2008 financial crisis - it has persistently failed to hold, leaving a measurable "basis" that has become a fixture of FX and rates markets.</p>
 
                 <h2 class="mt-5 mb-3">The CIP Formula, Revisited</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Recap — Covered Interest Rate Parity</div>
+                    <div class="math-box-label">Recap - Covered Interest Rate Parity</div>
                     <p>For spot rate $S$ (domestic currency per unit of foreign currency), domestic rate $r_d$, foreign rate $r_f$, and maturity $T$, CIP states that the no-arbitrage forward rate satisfies:</p>
                     <p>$$F(T) = S \, e^{(r_d - r_f) T}$$</p>
                     <p class="mb-0">Equivalently, the implied forward points must equal exactly the interest rate differential between the two currencies, scaled by spot and time. Any deviation from this relationship represents, in principle, a riskless arbitrage: borrow in the cheap currency, convert at spot, invest in the expensive currency, and lock in the reverse conversion via a forward.</p>
@@ -95,46 +95,46 @@
                 <h2 class="mt-5 mb-3">Why CIP Held Pre-2008</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Pre-Crisis World</div>
+                    <div class="math-box-label">Remark - The Pre-Crisis World</div>
                     <p>Before the 2008 financial crisis, the covered carry trade described in Section 1.1 was, for a large bank, close to a genuinely free trade. Major dealer banks had:</p>
                     <ul>
-                        <li><strong>Abundant balance sheet capacity:</strong> regulatory capital and leverage constraints were loose enough that adding a matched-book FX swap position — long one currency, short another, fully hedged — consumed negligible regulatory resources.</li>
+                        <li><strong>Abundant balance sheet capacity:</strong> regulatory capital and leverage constraints were loose enough that adding a matched-book FX swap position - long one currency, short another, fully hedged - consumed negligible regulatory resources.</li>
                         <li><strong>Cheap, plentiful unsecured funding:</strong> banks could borrow and lend in interbank markets (e.g., LIBOR) at rates very close to each other across currencies, with minimal credit spread differences between major banks.</li>
                         <li><strong>Deep arbitrage capital:</strong> any deviation of even 1-2bp from CIP would attract arbitrage flows from multiple dealers simultaneously, closing the gap within minutes.</li>
                     </ul>
-                    <p class="mb-0">As a result, CIP deviations for major currency pairs (EUR/USD, USD/JPY, GBP/USD) were typically within 1-5bp — essentially noise relative to bid-offer spreads — for the several decades leading up to the crisis.</p>
+                    <p class="mb-0">As a result, CIP deviations for major currency pairs (EUR/USD, USD/JPY, GBP/USD) were typically within 1-5bp - essentially noise relative to bid-offer spreads - for the several decades leading up to the crisis.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Persistent Cross-Currency Basis Since 2008</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — CIP Deviation / Cross-Currency Basis</div>
+                    <div class="math-box-label">Definition - CIP Deviation / Cross-Currency Basis</div>
                     <p class="mb-0">Define the CIP deviation (basis) as the gap between the interest rate differential implied by the cash money markets and the differential implied by the FX forward points:</p>
                     <p class="mb-0">$$\text{basis} = (r_d - r_f) - \frac{1}{T}\ln\!\left(\frac{F(T)}{S}\right)$$</p>
-                    <p class="mb-0">A basis of zero means CIP holds exactly. Since 2008, the basis has been persistently negative for USD against most G10 currencies (EUR, JPY, GBP, CHF, AUD), meaning synthetic dollar borrowing — raising foreign currency and swapping it into USD — costs more than the interest rate differential alone would suggest.</p>
+                    <p class="mb-0">A basis of zero means CIP holds exactly. Since 2008, the basis has been persistently negative for USD against most G10 currencies (EUR, JPY, GBP, CHF, AUD), meaning synthetic dollar borrowing - raising foreign currency and swapping it into USD - costs more than the interest rate differential alone would suggest.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why the Arbitrage Is No Longer Free</div>
-                    <p><strong>Regulatory balance sheet costs.</strong> Post-crisis regulation — the Basel III leverage ratio, the supplementary leverage ratio (SLR) in the US, the net stable funding ratio (NSFR), and internal risk-weighted-asset (RWA) charges — means that every dollar of notional on a bank's balance sheet, including a "riskless" matched FX swap book, now consumes scarce regulatory capital and liquidity buffers. A trade that used to be free now has an embedded cost proportional to notional, regardless of its market risk.</p>
-                    <p><strong>Dealer balance sheet constraints.</strong> Because the leverage ratio is a denominator constraint on total assets (not risk-weighted), it penalizes large gross notional positions even when offsetting. Dealers therefore charge a spread — the basis — to compensate for using balance sheet to intermediate the CIP arbitrage on behalf of clients who need synthetic dollar funding.</p>
+                    <div class="math-box-label">Remark - Why the Arbitrage Is No Longer Free</div>
+                    <p><strong>Regulatory balance sheet costs.</strong> Post-crisis regulation - the Basel III leverage ratio, the supplementary leverage ratio (SLR) in the US, the net stable funding ratio (NSFR), and internal risk-weighted-asset (RWA) charges - means that every dollar of notional on a bank's balance sheet, including a "riskless" matched FX swap book, now consumes scarce regulatory capital and liquidity buffers. A trade that used to be free now has an embedded cost proportional to notional, regardless of its market risk.</p>
+                    <p><strong>Dealer balance sheet constraints.</strong> Because the leverage ratio is a denominator constraint on total assets (not risk-weighted), it penalizes large gross notional positions even when offsetting. Dealers therefore charge a spread - the basis - to compensate for using balance sheet to intermediate the CIP arbitrage on behalf of clients who need synthetic dollar funding.</p>
                     <p class="mb-0"><strong>Reduced arbitrage capacity.</strong> Fewer dealers are willing to run large, low-margin matched books purely to close small CIP gaps, especially around quarter-end and year-end reporting dates when balance sheet is most constrained (the "turn" effect, analogous to the turn-of-year effects discussed for rates curves). The basis therefore widens predictably around these dates and during episodes of broad market stress.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example: Computing a CIP Deviation</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — EUR/USD CIP Deviation</div>
+                    <div class="math-box-label">Example - EUR/USD CIP Deviation</div>
                     <p>Suppose EUR/USD spot is $S = 1.0850$, the 1-year USD OIS rate is $r_d = 5.00\%$, the 1-year EUR €STR rate is $r_f = 3.20\%$, and the observed 1-year EUR/USD forward is $F(1) = 1.1010$.</p>
                     <p>The interest rate differential is $r_d - r_f = 1.80\%$. The forward-implied differential is:</p>
                     <p>$$\frac{1}{T}\ln\left(\frac{F(1)}{S}\right) = \ln\left(\frac{1.1010}{1.0850}\right) = \ln(1.01475) \approx 1.465\%$$</p>
                     <p>The CIP deviation (basis) is therefore:</p>
                     <p>$$\text{basis} = 1.80\% - 1.465\% \approx 0.335\% = 33.5\text{bp}$$</p>
-                    <p class="mb-0">A basis of $-33.5\text{bp}$ (negative from the USD perspective, since the forward implies a smaller USD rate advantage than the cash money markets do) means that a European bank attempting to borrow USD synthetically — by borrowing EUR, converting to USD at spot, and locking in the reverse conversion via the forward — pays an effective rate roughly 33.5bp higher than directly observed USD rates would imply. This 33.5bp is, in essence, the price the market charges for the balance sheet used to intermediate that synthetic borrowing.</p>
+                    <p class="mb-0">A basis of $-33.5\text{bp}$ (negative from the USD perspective, since the forward implies a smaller USD rate advantage than the cash money markets do) means that a European bank attempting to borrow USD synthetically - by borrowing EUR, converting to USD at spot, and locking in the reverse conversion via the forward - pays an effective rate roughly 33.5bp higher than directly observed USD rates would imply. This 33.5bp is, in essence, the price the market charges for the balance sheet used to intermediate that synthetic borrowing.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Looking Ahead</div>
+                    <div class="math-box-label">Remark - Looking Ahead</div>
                     <p class="mb-0">The next section connects this basis directly to the underlying funding markets: the money market spreads, collateral arrangements, and CSA currency choices that determine where the basis trades day to day, and why it is best understood not as an anomaly to be arbitraged away, but as a persistent price for funding and balance sheet that must be incorporated into multi-currency derivatives valuation.</p>
                 </div>
 

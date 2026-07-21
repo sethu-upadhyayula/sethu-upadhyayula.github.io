@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,7 +132,7 @@
                 <h2 class="mt-4 mb-3">LP Primal and Dual</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.1.1 — LP Primal and Dual</div>
+                    <div class="math-box-label">Definition 5.1.1 - LP Primal and Dual</div>
                     <p>The <strong>primal LP</strong> in inequality form is
                     $$\text{(P)}\quad p^* = \min_{x \ge 0}\; c^\top x \quad\text{s.t.}\quad Ax \ge b.$$
                     Multiplying the $i$-th constraint by $y_i \ge 0$ and summing gives $y^\top Ax \ge y^\top b$. For any feasible $x$, $c^\top x \ge y^\top A x \ge y^\top b$ whenever $A^\top y \le c$ and $y \ge 0$. This motivates the <strong>dual LP</strong>:
@@ -143,7 +143,7 @@
                 <h2 class="mt-5 mb-3">The Lagrangian and Dual Function</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.1.2 — Lagrangian and Dual Function</div>
+                    <div class="math-box-label">Definition 5.1.2 - Lagrangian and Dual Function</div>
                     <p>For a general problem $\min f(x)$ s.t. $g_i(x) \le 0$, $i=1,\ldots,m$, the <strong>Lagrangian</strong> is
                     $$L(x, \lambda) = f(x) + \sum_{i=1}^m \lambda_i g_i(x), \quad \lambda \ge 0.$$
                     The <strong>Lagrangian dual function</strong> is
@@ -153,16 +153,16 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — LP Dual Function</div>
+                    <div class="math-box-label">Example - LP Dual Function</div>
                     <p>For the LP $\min c^\top x$ s.t. $Ax \ge b$, $x \ge 0$, the Lagrangian is $L(x, y) = c^\top x - y^\top(Ax - b) = (c - A^\top y)^\top x + b^\top y$ with $y \ge 0$. The infimum over $x \ge 0$ is
                     $$g(y) = \inf_{x \ge 0} L(x, y) = \begin{cases} b^\top y & \text{if } c - A^\top y \ge 0, \\ -\infty & \text{otherwise.} \end{cases}$$</p>
-                    <p class="mb-0">So the dual problem $\max_{y \ge 0} g(y)$ is $\max b^\top y$ s.t. $A^\top y \le c$, $y \ge 0$ — exactly the LP dual of Definition 5.1.1.</p>
+                    <p class="mb-0">So the dual problem $\max_{y \ge 0} g(y)$ is $\max b^\top y$ s.t. $A^\top y \le c$, $y \ge 0$ - exactly the LP dual of Definition 5.1.1.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Slater's Condition and Strong Duality</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.1.3 — Slater's Condition (Strong Duality for Convex Problems)</div>
+                    <div class="math-box-label">Theorem 5.1.3 - Slater's Condition (Strong Duality for Convex Problems)</div>
                     <p>Consider a convex problem: $f$ convex, $g_i$ convex, $i = 1,\ldots,m$. Suppose <strong>Slater's condition</strong> holds: there exists a strictly feasible point $\tilde{x}$ with $g_i(\tilde{x}) < 0$ for all $i$ (strict interior). Then:
                     $$d^* = p^*,$$
                     i.e., strong duality holds and the dual optimum is attained.</p>
@@ -170,7 +170,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Duality Gap and Non-Convex Problems</div>
+                    <div class="math-box-label">Remark - Duality Gap and Non-Convex Problems</div>
                     <p>For non-convex problems, the duality gap $p^* - d^* \ge 0$ can be strictly positive. The Lagrangian relaxation still provides a lower bound and is widely used in branch-and-bound algorithms for integer programming (Section 7.1): the dual function $g(\lambda)$ gives a lower bound on the IP optimum, and the best lower bound $d^*$ is obtained by maximising $g$ (the Lagrangian dual).</p>
                     <p class="mb-0">For quadratic programs with equality constraints (QPs), strong duality also holds under rank conditions on the constraint matrix. For semidefinite programmes (SDPs), Slater's condition is again the standard qualification.</p>
                 </div>

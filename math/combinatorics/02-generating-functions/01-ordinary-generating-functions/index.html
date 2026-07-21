@@ -16,7 +16,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -101,15 +101,15 @@
 <nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">Generating Functions</a> › <span>Ordinary Generating Functions</span></nav>
 <article><h1 class="text-accent mb-4">2.1 Ordinary Generating Functions</h1>
 
-<p>The <strong>ordinary generating function</strong> (OGF) of a sequence $(a_n)_{n \ge 0}$ is the formal power series $A(x) = \sum_{n \ge 0} a_n x^n$. We treat $x$ as a formal variable — convergence is secondary to algebraic structure.</p>
+<p>The <strong>ordinary generating function</strong> (OGF) of a sequence $(a_n)_{n \ge 0}$ is the formal power series $A(x) = \sum_{n \ge 0} a_n x^n$. We treat $x$ as a formal variable - convergence is secondary to algebraic structure.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — OGF</div>
+<div class="math-box definition"><div class="math-box-label">Definition - OGF</div>
 <p>Given a sequence $(a_n)_{n \ge 0}$, its <strong>ordinary generating function</strong> is:
 $$A(x) = \sum_{n=0}^{\infty} a_n x^n.$$
 We write $[x^n] A(x) = a_n$ for the coefficient extraction operator.</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Operations on OGFs</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - Operations on OGFs</div>
 <p>If $A(x) = \sum a_n x^n$ and $B(x) = \sum b_n x^n$, then:</p>
 <ul>
   <li><strong>Sum:</strong> $A(x) + B(x) = \sum (a_n + b_n)x^n$.</li>
@@ -119,26 +119,26 @@ We write $[x^n] A(x) = a_n$ for the coefficient extraction operator.</p>
 </ul>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Key OGFs</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - Key OGFs</div>
 <p>$$\frac{1}{1-x} = \sum_{n \ge 0} x^n, \qquad \frac{1}{1-x^k} = \sum_{n \ge 0} x^{kn}.$$
 $$\frac{1}{(1-x)^k} = \sum_{n \ge 0} \binom{n+k-1}{k-1} x^n \quad (k \ge 1).$$
 $$(1+x)^n = \sum_{k=0}^n \binom{n}{k} x^k.$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Fibonacci Numbers via OGF</div>
+<div class="math-box example"><div class="math-box-label">Example - Fibonacci Numbers via OGF</div>
 <p>The Fibonacci sequence satisfies $F_0=0$, $F_1=1$, $F_n = F_{n-1}+F_{n-2}$ for $n \ge 2$. Let $F(x) = \sum F_n x^n$. Then:
 $$F(x) - xF(x) - x^2F(x) = x \implies F(x) = \frac{x}{1-x-x^2}.$$
 Using partial fractions with roots $\phi = (1+\sqrt5)/2$ and $\hat\phi = (1-\sqrt5)/2$:
 $$F_n = \frac{\phi^n - \hat\phi^n}{\sqrt{5}} \quad \text{(Binet's formula)}.$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Number of Coin Compositions</div>
+<div class="math-box example"><div class="math-box-label">Example - Number of Coin Compositions</div>
 <p>The number of ways to write $n$ as an ordered sum of positive integers (compositions) is $[x^n]$ in:
 $$\sum_{k \ge 0}\left(\frac{x}{1-x}\right)^k = \frac{1}{1-\frac{x}{1-x}} = \frac{1-x}{1-2x} = 1 + \sum_{n \ge 1} 2^{n-1} x^n.$$
 So there are $2^{n-1}$ compositions of $n$ for $n \ge 1$.</p>
 </div>
 
-<div class="math-box remark"><div class="math-box-label">Remark — Formal vs Analytic</div>
+<div class="math-box remark"><div class="math-box-label">Remark - Formal vs Analytic</div>
 <p>We work with formal power series: algebraic manipulations are valid regardless of convergence. However, when the generating function converges in a neighbourhood of 0, analytic techniques (contour integration, singularity analysis) yield asymptotic estimates for $a_n$.</p>
 </div>
 

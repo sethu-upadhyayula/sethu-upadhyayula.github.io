@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,14 +81,14 @@
             <article>
                 <h1 class="text-accent mb-4">1.1 Caps and Floors</h1>
 
-                <p>Caps and floors are the most basic interest rate options. A cap protects a floating-rate borrower against rising rates by paying out whenever a reference rate exceeds a fixed strike; a floor protects a floating-rate lender against falling rates by paying out whenever the reference rate falls below a strike. Each is a portfolio of simpler building blocks — caplets and floorlets — each of which is an option on a single forward rate.</p>
+                <p>Caps and floors are the most basic interest rate options. A cap protects a floating-rate borrower against rising rates by paying out whenever a reference rate exceeds a fixed strike; a floor protects a floating-rate lender against falling rates by paying out whenever the reference rate falls below a strike. Each is a portfolio of simpler building blocks - caplets and floorlets - each of which is an option on a single forward rate.</p>
 
                 <h2 class="mt-5 mb-3">Caplets and Floorlets</h2>
 
                 <p>Consider a future accrual period $[T_i, T_{i+1}]$ with day count fraction $\delta_i = T_{i+1} - T_i$, governed by the forward rate $F_i(t) = F(t; T_i, T_{i+1})$ observed at time $t \leq T_i$ and set (fixed) at $T_i$.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Caplet and Floorlet</div>
+                    <div class="math-box-label">Definition - Caplet and Floorlet</div>
                     <p>A <em>caplet</em> on the period $[T_i,T_{i+1}]$ with strike $K$ pays at time $T_{i+1}$ the amount:
                     $$\text{Caplet payoff} = \delta_i \cdot N \cdot \max(F_i(T_i) - K, 0)$$
                     where $N$ is the notional. A <em>floorlet</em> pays:
@@ -97,14 +97,14 @@
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Cap and Floor</div>
+                    <div class="math-box-label">Definition - Cap and Floor</div>
                     <p class="mb-0">A <em>cap</em> with strike $K$, notional $N$, and tenor structure $T_0 < T_1 < \cdots < T_n$ is a portfolio of caplets, one for each accrual period $[T_{i},T_{i+1}]$, $i = 0, \ldots, n-1$:
                     $$\text{Cap} = \sum_{i=0}^{n-1} \text{Caplet}_i(K)$$
-                    A <em>floor</em> is the analogous portfolio of floorlets. The first caplet (covering $[T_0,T_1]$) is sometimes excluded if $F_0(T_0)$ is already known at trade inception — such a cap is called a "cap excluding the first caplet."</p>
+                    A <em>floor</em> is the analogous portfolio of floorlets. The first caplet (covering $[T_0,T_1]$) is sometimes excluded if $F_0(T_0)$ is already known at trade inception - such a cap is called a "cap excluding the first caplet."</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Interpretation</div>
+                    <div class="math-box-label">Remark - Interpretation</div>
                     <p class="mb-0">A borrower paying a floating rate plus a spread can buy a cap to put a ceiling on their effective borrowing cost: if the floating rate exceeds $K$, the caplet payoff offsets the excess interest. Symmetrically, an investor receiving floating can buy a floor to guarantee a minimum return. Caps and floors are therefore the interest-rate analogue of a strip of European call/put options on a sequence of forward rates.</p>
                 </div>
 
@@ -113,14 +113,14 @@
                 <p>The market-standard pricing model for caplets treats the forward rate $F_i(t)$ as a lognormal martingale under the $T_{i+1}$-forward measure $\mathbb{Q}^{T_{i+1}}$ (the measure associated with the numeraire $P(t,T_{i+1})$). Under this measure, $F_i(t)$ is a martingale by construction since it is itself a forward price.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Black's Model Dynamics</div>
+                    <div class="math-box-label">Definition - Black's Model Dynamics</div>
                     <p class="mb-0">Under $\mathbb{Q}^{T_{i+1}}$, the forward rate follows driftless geometric Brownian motion:
                     $$dF_i(t) = \sigma_i F_i(t)\, dW_t^{T_{i+1}}$$
                     where $\sigma_i$ is the (Black) volatility of the forward rate, assumed constant. This implies $F_i(T_i)$ is lognormally distributed conditional on $F_i(t)$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Black's Caplet Formula</div>
+                    <div class="math-box-label">Theorem - Black's Caplet Formula</div>
                     <p>The time-$t$ price of a caplet with strike $K$ on the period $[T_i,T_{i+1}]$ is:
                     $$\text{Caplet}(t) = \delta_i \, N \, P(t,T_{i+1}) \left[ F_i(t)\, \Phi(d_1) - K \, \Phi(d_2) \right]$$
                     where
@@ -132,11 +132,11 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Pricing a Single Caplet</div>
+                    <div class="math-box-label">Example - Pricing a Single Caplet</div>
                     <p>Consider a caplet on a 3-month forward rate, $\delta_i = 0.25$, with $F_i(t) = 4.50\%$, $K = 4.50\%$ (at-the-money), $\sigma_i = 35\%$, time to fixing $T_i - t = 1$ year, $P(t,T_{i+1}) = 0.955$, and notional $N = 10{,}000{,}000$.</p>
                     <p>Compute $d_1 = \tfrac{1}{2}\sigma_i\sqrt{T_i-t} = 0.175$ and $d_2 = -0.175$ (since $\ln(F/K)=0$ at the money). Then $\Phi(d_1) \approx 0.5695$, $\Phi(d_2) \approx 0.4305$.</p>
                     <p class="mb-0">$$\text{Caplet} = 0.25 \times 10{,}000{,}000 \times 0.955 \times 0.045 \times (0.5695 - 0.4305) \approx \$14{,}940$$
-                    The ATM caplet value is driven almost entirely by $\sigma_i \sqrt{T_i-t}$ — for ATM options $F\Phi(d_1) - K\Phi(d_2) \approx F \cdot \sigma\sqrt{T-t}/\sqrt{2\pi}$ to leading order.</p>
+                    The ATM caplet value is driven almost entirely by $\sigma_i \sqrt{T_i-t}$ - for ATM options $F\Phi(d_1) - K\Phi(d_2) \approx F \cdot \sigma\sqrt{T-t}/\sqrt{2\pi}$ to leading order.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Cap-Floor Parity with Swaps</h2>
@@ -144,14 +144,14 @@
                 <p>Caps, floors, and swaps are linked by a static no-arbitrage relationship analogous to put-call parity for equity options.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Cap-Floor-Swap Parity</div>
+                    <div class="math-box-label">Theorem - Cap-Floor-Swap Parity</div>
                     <p class="mb-0">For a cap and floor with the same strike $K$, notional, and tenor structure, written on the same floating index:
                     $$\text{Cap}(K) - \text{Floor}(K) = \text{Value of receive-floating-pay-fixed-at-}K\text{ swap}$$
-                    Equivalently, if $K = R_{\text{swap}}$ (the par swap rate for that tenor structure), then $\text{Cap}(R_{\text{swap}}) = \text{Floor}(R_{\text{swap}})$ — an at-the-money cap and floor (struck at the par rate) have equal value. This follows because $\max(F-K,0) - \max(K-F,0) = F - K$ for each underlying forward rate, so summing caplet-minus-floorlet payoffs reproduces the floating-minus-fixed cash flows of the swap.</p>
+                    Equivalently, if $K = R_{\text{swap}}$ (the par swap rate for that tenor structure), then $\text{Cap}(R_{\text{swap}}) = \text{Floor}(R_{\text{swap}})$ - an at-the-money cap and floor (struck at the par rate) have equal value. This follows because $\max(F-K,0) - \max(K-F,0) = F - K$ for each underlying forward rate, so summing caplet-minus-floorlet payoffs reproduces the floating-minus-fixed cash flows of the swap.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Practical Use</div>
+                    <div class="math-box-label">Remark - Practical Use</div>
                     <p class="mb-0">Cap-floor parity gives a useful pricing check and also explains why a "collar" (long cap, short floor at a lower strike) is a popular zero-cost or low-cost hedge: the premium received from selling the floor partially or fully offsets the premium paid for the cap, while still bounding the effective rate paid within a band $[K_{\text{floor}}, K_{\text{cap}}]$.</p>
                 </div>
 
@@ -160,7 +160,7 @@
                 <p>Black's model assumes $F_i(t)$ is lognormal, which requires $F_i(t) > 0$. After the global rates environment of the 2010s, when many government bond yields and even some swap rates traded at or below zero, lognormal volatility became ill-defined for at-the-money-or-lower strikes. The market responded by adopting an alternative quoting convention based on the Bachelier (normal) model.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Bachelier (Normal) Model</div>
+                    <div class="math-box-label">Definition - Bachelier (Normal) Model</div>
                     <p class="mb-0">Under the Bachelier model, the forward rate follows arithmetic (not geometric) Brownian motion:
                     $$dF_i(t) = \sigma_i^N \, dW_t^{T_{i+1}}$$
                     where $\sigma_i^N$ is the <em>normal volatility</em>, quoted in basis points per $\sqrt{\text{year}}$ (e.g., "65 bps normal vol"). The corresponding caplet price is:
@@ -169,7 +169,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Converting Between Quoting Conventions</div>
+                    <div class="math-box-label">Remark - Converting Between Quoting Conventions</div>
                     <p class="mb-0">Normal and lognormal (Black) volatilities for the same option price are related approximately by $\sigma^N \approx \sigma^{\text{Black}} \cdot F$ near the money (since $dF = \sigma^{\text{Black}} F\,dW$ vs. $dF = \sigma^N dW$). Trading desks today often quote cap/floor and swaption volatilities natively in normal (bps) terms across the entire surface, including strikes below zero, while still using Black's lognormal formula for legacy systems via a shifted-lognormal (displaced diffusion) transformation: replace $F_i(t) \to F_i(t) + s$ and $K \to K + s$ for a positive shift $s$ large enough to keep both arguments positive.</p>
                 </div>
 

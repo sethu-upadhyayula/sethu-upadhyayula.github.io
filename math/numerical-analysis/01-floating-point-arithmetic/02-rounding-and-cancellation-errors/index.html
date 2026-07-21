@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,7 +132,7 @@
 
                 <h2 class="mt-4 mb-3">Rounding Modes</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — IEEE 754 Rounding Modes</div>
+                    <div class="math-box-label">Definition - IEEE 754 Rounding Modes</div>
                     <p>IEEE 754 specifies four rounding modes for the operation of mapping a real number $x$ to its floating-point approximation $\text{fl}(x)$:</p>
                     <ul>
                         <li><strong>Round to nearest, ties to even</strong> (default): choose the floating-point number nearest to $x$; on a tie, choose the one with even last bit.</li>
@@ -145,7 +145,7 @@
 
                 <h2 class="mt-5 mb-3">Absolute and Relative Error</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Absolute and Relative Error</div>
+                    <div class="math-box-label">Definition - Absolute and Relative Error</div>
                     <p>Given the true value $x$ and its floating-point approximation $\tilde{x} = \text{fl}(x)$:</p>
                     <ul>
                         <li><strong>Absolute error</strong>: $|e| = |\tilde{x} - x|$.</li>
@@ -158,33 +158,33 @@
 
                 <h2 class="mt-5 mb-3">Error Propagation</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Unit Roundoff Model</div>
+                    <div class="math-box-label">Theorem - Unit Roundoff Model</div>
                     <p class="mb-0">For any basic arithmetic operation $\circ \in \{+,-,\times,\div\}$, IEEE 754 arithmetic satisfies the <em>unit roundoff model</em>:
                     $$\text{fl}(x \circ y) = (x \circ y)(1 + \delta), \quad |\delta| \le \varepsilon_{\text{mach}},$$
                     provided no overflow or underflow occurs. Each operation introduces at most one unit of relative error.</p>
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Error Propagation through a Chain</div>
+                    <div class="math-box-label">Proposition - Error Propagation through a Chain</div>
                     <p>For a sequence of $n$ operations, the accumulated relative error is bounded by approximately $n\varepsilon_{\text{mach}}$ (using $(1+\delta_1)(1+\delta_2)\cdots(1+\delta_n) \approx 1 + \sum\delta_i$ for small $\delta_i$). More precisely, $\prod_{i=1}^n(1+\delta_i) = 1+\theta_n$ where $|\theta_n| \le \frac{n\varepsilon_{\text{mach}}}{1-n\varepsilon_{\text{mach}}}$ for $n\varepsilon_{\text{mach}} < 1$.</p>
                     <p class="mb-0">This is typically denoted $|\theta_n| \lesssim n\varepsilon_{\text{mach}}$ and forms the basis of rounding error analysis of algorithms.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Catastrophic Cancellation</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Catastrophic Cancellation</div>
+                    <div class="math-box-label">Definition - Catastrophic Cancellation</div>
                     <p class="mb-0"><strong>Catastrophic cancellation</strong> occurs when two nearly equal floating-point numbers are subtracted. The leading significant digits cancel, leaving only the trailing (potentially erroneous) digits. If $a$ and $b$ agree to $k$ decimal digits, the result $a - b$ loses up to $k$ significant digits of precision.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Loss of Significance</div>
-                    <p>Suppose $a = 1.23456789012345$ and $b = 1.23456789012344$ (differ only in the last digit). In double precision both are stored with relative error $\sim \varepsilon_{\text{mach}}$. Their difference $a - b \approx 10^{-14}$ retains only about $10^{-16}/10^{-14} = 1\%$ correct relative precision — effectively all precision is lost.</p>
+                    <div class="math-box-label">Example - Loss of Significance</div>
+                    <p>Suppose $a = 1.23456789012345$ and $b = 1.23456789012344$ (differ only in the last digit). In double precision both are stored with relative error $\sim \varepsilon_{\text{mach}}$. Their difference $a - b \approx 10^{-14}$ retains only about $10^{-16}/10^{-14} = 1\%$ correct relative precision - effectively all precision is lost.</p>
                     <p class="mb-0">More concretely: $\text{fl}(a) - \text{fl}(b)$ has relative error of order 1 when $|a-b|/|a| \sim \varepsilon_{\text{mach}}$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Quadratic Formula: A Case Study</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Unstable vs Stable Quadratic Formula</div>
+                    <div class="math-box-label">Example - Unstable vs Stable Quadratic Formula</div>
                     <p>The roots of $ax^2 + bx + c = 0$ are nominally:
                     $$x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.$$
                     When $b^2 \gg 4ac$, we have $\sqrt{b^2 - 4ac} \approx |b|$, and one of the roots involves subtracting two nearly equal quantities.</p>
@@ -198,7 +198,7 @@
 
                 <h2 class="mt-5 mb-3">Kahan Summation Algorithm</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm — Kahan Compensated Summation</div>
+                    <div class="math-box-label">Algorithm - Kahan Compensated Summation</div>
                     <p>Naive summation $S = \sum_{i=1}^n x_i$ accumulates rounding error proportional to $n\varepsilon_{\text{mach}}$. The <strong>Kahan summation algorithm</strong> reduces this to $O(\varepsilon_{\text{mach}})$ independent of $n$ by tracking a running compensation term $c$:</p>
                     <pre style="background:var(--bg-card);padding:1em;border-radius:6px;overflow-x:auto;">S = 0; c = 0
 for i = 1 to n:
@@ -211,7 +211,7 @@ return S</pre>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Benign vs Catastrophic Cancellation</div>
+                    <div class="math-box-label">Remark - Benign vs Catastrophic Cancellation</div>
                     <p class="mb-0">Not all cancellation is catastrophic. If both operands are exact (e.g., $\text{fl}(a) = a$ and $\text{fl}(b) = b$), then $\text{fl}(a-b) = a - b$ exactly by Sterbenz's lemma (when $a/2 \le b \le 2a$). Cancellation is only harmful when the operands themselves carry earlier rounding errors that are amplified by the subtraction.</p>
                 </div>
 

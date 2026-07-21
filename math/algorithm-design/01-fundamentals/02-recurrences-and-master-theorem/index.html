@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -131,7 +131,7 @@
                 <p>Divide-and-conquer algorithms naturally produce recurrences of the form $T(n) = aT(n/b) + f(n)$. The Master Theorem gives the asymptotic solution in three clean cases determined by comparing $f(n)$ with the "watershed" function $n^{\log_b a}$.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.2.1 — Master Theorem</div>
+                    <div class="math-box-label">Theorem 1.2.1 - Master Theorem</div>
                     <p>Let $T(n) = aT(n/b) + f(n)$ where $a \ge 1$, $b > 1$ are constants, and set $c^* = \log_b a$.</p>
                     <p><strong>Case 1:</strong> If $f(n) = O(n^{c^* - \varepsilon})$ for some $\varepsilon > 0$, then $T(n) = \Theta(n^{c^*})$. (Subproblems dominate.)</p>
                     <p><strong>Case 2:</strong> If $f(n) = \Theta(n^{c^*} \log^k n)$ for some $k \ge 0$, then $T(n) = \Theta(n^{c^*} \log^{k+1} n)$. (Even split.)</p>
@@ -141,29 +141,29 @@
                 <h2 class="mt-5 mb-3">Key Examples</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 1.2.2 — Merge Sort</div>
+                    <div class="math-box-label">Example 1.2.2 - Merge Sort</div>
                     <p class="mb-0">$T(n) = 2T(n/2) + \Theta(n)$. Here $a = 2$, $b = 2$, $c^* = \log_2 2 = 1$, $f(n) = \Theta(n) = \Theta(n^1 \log^0 n)$. Case 2 with $k = 0$: $T(n) = \Theta(n \log n)$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 1.2.3 — Binary Search</div>
+                    <div class="math-box-label">Example 1.2.3 - Binary Search</div>
                     <p class="mb-0">$T(n) = T(n/2) + O(1)$. Here $a = 1$, $b = 2$, $c^* = 0$, $f(n) = O(1) = \Theta(n^0)$. Case 2 with $k = 0$: $T(n) = \Theta(\log n)$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 1.2.4 — Strassen's Algorithm</div>
+                    <div class="math-box-label">Example 1.2.4 - Strassen's Algorithm</div>
                     <p class="mb-0">$T(n) = 7T(n/2) + \Theta(n^2)$. Here $c^* = \log_2 7 \approx 2.807$, $f(n) = \Theta(n^2) = O(n^{2.807 - 0.8})$. Case 1: $T(n) = \Theta(n^{\log_2 7}) \approx O(n^{2.807})$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 1.2.5 — Karatsuba Multiplication</div>
+                    <div class="math-box-label">Example 1.2.5 - Karatsuba Multiplication</div>
                     <p class="mb-0">$T(n) = 3T(n/2) + \Theta(n)$. Here $c^* = \log_2 3 \approx 1.585$, $f(n) = \Theta(n) = O(n^{1.585 - 0.5})$. Case 1: $T(n) = \Theta(n^{\log_2 3}) \approx \Theta(n^{1.585})$, beating the $O(n^2)$ naive algorithm.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Beyond the Master Theorem</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Akra-Bazzi Theorem</div>
+                    <div class="math-box-label">Remark - Akra-Bazzi Theorem</div>
                     <p class="mb-0">The Akra-Bazzi theorem generalises the Master Theorem to recurrences $T(n) = \sum_{i=1}^k a_i T(b_i n) + f(n)$ with possibly different ratios $b_i$. The solution is $T(n) = \Theta\!\left(n^p\!\left(1 + \int_1^n \frac{f(u)}{u^{p+1}} du\right)\right)$ where $p$ satisfies $\sum a_i b_i^p = 1$.</p>
                 </div>
 

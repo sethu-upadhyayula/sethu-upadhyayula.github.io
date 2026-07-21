@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="light" data-section="chess"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Practical Tips and Typical Patterns — Racing Kings</title>
+<title>Practical Tips and Typical Patterns - Racing Kings</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,7 +21,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -49,14 +49,14 @@
   <h3>Opening Strategy</h3>
   <p>In the opening moves, priorities are, roughly in order:</p>
   <ol>
-    <li><strong>Move your king immediately</strong> — every turn the king doesn't advance is a wasted tempo in the race. Stepping the king from rank 2 to rank 3 on move one is almost always reasonable.</li>
-    <li><strong>Clear the path</strong> — move pieces that block your king's direct march up the board first, so the king is never stuck behind its own army.</li>
-    <li><strong>Establish a blocker</strong> — getting a rook, bishop, or queen toward the 8th rank early to control key squares there denies the opponent easy access and can buy you the tempo you need for the win (rather than just a draw).</li>
-    <li><strong>Watch for accidental checks</strong> — every candidate move should be checked against both kings before playing it, especially knight and queen moves which can give check from unexpected angles.</li>
+    <li><strong>Move your king immediately</strong> - every turn the king doesn't advance is a wasted tempo in the race. Stepping the king from rank 2 to rank 3 on move one is almost always reasonable.</li>
+    <li><strong>Clear the path</strong> - move pieces that block your king's direct march up the board first, so the king is never stuck behind its own army.</li>
+    <li><strong>Establish a blocker</strong> - getting a rook, bishop, or queen toward the 8th rank early to control key squares there denies the opponent easy access and can buy you the tempo you need for the win (rather than just a draw).</li>
+    <li><strong>Watch for accidental checks</strong> - every candidate move should be checked against both kings before playing it, especially knight and queen moves which can give check from unexpected angles.</li>
   </ol>
 
   <h3>Choosing a Lane</h3>
-  <p>Because both kings start in the centre-right area of the board (g/h files for White, a/b files for Black, on rank 2), each side typically has a "natural" lane to advance through — broadly central or toward their own side of the board. Committing early to a lane and clearing it efficiently is usually better than wavering between two different routes, since switching lanes costs tempi that you cannot recover.</p>
+  <p>Because both kings start in the centre-right area of the board (g/h files for White, a/b files for Black, on rank 2), each side typically has a "natural" lane to advance through - broadly central or toward their own side of the board. Committing early to a lane and clearing it efficiently is usually better than wavering between two different routes, since switching lanes costs tempi that you cannot recover.</p>
 
   <h3>The Draw Mechanism in Practice</h3>
   <p>The Black draw rule creates a fascinating dynamic: White often needs to be <em>two</em> moves ahead of Black to actually win rather than draw. If White reaches the 8th rank while Black's king is already on the 7th rank with a clear path, Black can step up to the 8th rank immediately on the reply and draw. White must either:</p>
@@ -67,27 +67,27 @@
 
   <div class="notation-box">
     Example: White plays Ke8 (reaching the goal).<br>
-    — If Black's king is on d6, Black cannot reach rank 8 in one move from there — White wins outright.<br>
-    — If Black's king is on d7, Black can play Kd8 (or Ke8/Kc8, whichever is legal and unoccupied) on the very next move — the game is drawn.<br><br>
+    - If Black's king is on d6, Black cannot reach rank 8 in one move from there - White wins outright.<br>
+    - If Black's king is on d7, Black can play Kd8 (or Ke8/Kc8, whichever is legal and unoccupied) on the very next move - the game is drawn.<br><br>
     Conclusion: White must either win the race by a margin of at least two moves, or actively block every square on rank 8 that Black's king could reach on its very next move.
   </div>
 
   <h3>Sample Blocking Plan</h3>
-  <p>Consider a scenario where White's king is one move from rank 8, and Black's king is also one move from rank 8 (so by the raw rule above this would be a draw). White's saving idea is to use a rook or bishop to occupy or attack the specific square Black's king would land on — if that square becomes unavailable to Black (occupied by a piece, or would-be-occupying it gives check to White's king, which is itself illegal for Black to do), Black cannot equalise and White's arrival on rank 8 wins outright.</p>
+  <p>Consider a scenario where White's king is one move from rank 8, and Black's king is also one move from rank 8 (so by the raw rule above this would be a draw). White's saving idea is to use a rook or bishop to occupy or attack the specific square Black's king would land on - if that square becomes unavailable to Black (occupied by a piece, or would-be-occupying it gives check to White's king, which is itself illegal for Black to do), Black cannot equalise and White's arrival on rank 8 wins outright.</p>
 
   <div class="chess-board" id="board-block"></div>
   <script>renderChessBoard('board-block', {f7:'wK',c7:'bK',d8:'wB'}, {highlight:{a8:'goal',b8:'goal',c8:'goal',d8:'goal',e8:'goal',f8:'goal',g8:'goal',h8:'goal'}});</script>
-  <p class="text-center text-muted mt-2"><small>White king on f7 (one move from goal via e8, f8, or g8). Black king on c7 (one move from goal via b8, c8, or d8). White's bishop has already taken d8, removing one of Black's three escape squares to rank 8 — but b8 and c8 remain available to Black, so White must calculate carefully which square(s) still need covering before committing to Ke8/f8/g8.</small></p>
+  <p class="text-center text-muted mt-2"><small>White king on f7 (one move from goal via e8, f8, or g8). Black king on c7 (one move from goal via b8, c8, or d8). White's bishop has already taken d8, removing one of Black's three escape squares to rank 8 - but b8 and c8 remain available to Black, so White must calculate carefully which square(s) still need covering before committing to Ke8/f8/g8.</small></p>
 
   <h3>Endgame Races</h3>
-  <p>When both kings are deep in the board and close to the 8th rank, the calculation becomes precise and thrilling. Count every square, every tempo. A single unnecessary piece move — even one that looks "free" — can cost the race entirely. Racing Kings endgames are some of the most exciting positions in any chess variant: pure calculation, pure geometry, almost no positional ambiguity once the kings are close enough to the goal.</p>
+  <p>When both kings are deep in the board and close to the 8th rank, the calculation becomes precise and thrilling. Count every square, every tempo. A single unnecessary piece move - even one that looks "free" - can cost the race entirely. Racing Kings endgames are some of the most exciting positions in any chess variant: pure calculation, pure geometry, almost no positional ambiguity once the kings are close enough to the goal.</p>
 
   <h3>Common Beginner Mistakes</h3>
   <ul>
-    <li><strong>Forgetting the no-check rule mid-calculation</strong> — planning a sequence of moves and only realising several moves deep that one of them would be illegal due to check.</li>
-    <li><strong>Racing without counting</strong> — moving the king forward instinctively without comparing your total move count to the opponent's, and missing that you are actually behind in the race.</li>
-    <li><strong>Ignoring the draw margin</strong> — as White, assuming that simply reaching rank 8 first is enough, without checking whether Black can immediately equalise.</li>
-    <li><strong>Over-investing in development</strong> — spending too many moves repositioning pieces for "ideal" blocking setups when a faster, slightly less elegant king march would already win.</li>
+    <li><strong>Forgetting the no-check rule mid-calculation</strong> - planning a sequence of moves and only realising several moves deep that one of them would be illegal due to check.</li>
+    <li><strong>Racing without counting</strong> - moving the king forward instinctively without comparing your total move count to the opponent's, and missing that you are actually behind in the race.</li>
+    <li><strong>Ignoring the draw margin</strong> - as White, assuming that simply reaching rank 8 first is enough, without checking whether Black can immediately equalise.</li>
+    <li><strong>Over-investing in development</strong> - spending too many moves repositioning pieces for "ideal" blocking setups when a faster, slightly less elegant king march would already win.</li>
   </ul>
 
   <h3>Final Thoughts</h3>

@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -48,16 +48,16 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">3.2 Euler's Totient Function</h1>
-                <p>Euler's totient function $\phi(n)$ counts the positive integers up to $n$ that are coprime to $n$. It appears in Euler's theorem — the generalisation of Fermat's little theorem — and is central to RSA cryptography.</p>
+                <p>Euler's totient function $\phi(n)$ counts the positive integers up to $n$ that are coprime to $n$. It appears in Euler's theorem - the generalisation of Fermat's little theorem - and is central to RSA cryptography.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 3.2.1 — Euler's Totient</div>
+                    <div class="math-box-label">Definition 3.2.1 - Euler's Totient</div>
                     <p class="mb-0">$$\phi(n) = \#\{k : 1 \leq k \leq n,\; \gcd(k,n) = 1\} = |(\mathbb{Z}/n\mathbb{Z})^\times|.$$
                     Equivalently, $\phi(n)$ is the order of the multiplicative group of units modulo $n$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.2.2 — Formula for $\phi$</div>
+                    <div class="math-box-label">Theorem 3.2.2 - Formula for $\phi$</div>
                     <p>$\phi$ is multiplicative and for $n = p_1^{a_1} \cdots p_k^{a_k}$:
                     $$\phi(n) = n \prod_{p \mid n} \left(1 - \frac{1}{p}\right) = \prod_{i=1}^k p_i^{a_i - 1}(p_i - 1).$$</p>
                     <p class="mb-0"><em>Proof sketch:</em> By inclusion-exclusion (sieve) and multiplicativity. For prime power: $\phi(p^a) = p^a - p^{a-1}$ since exactly $p^{a-1}$ multiples of $p$ lie in $\{1,\ldots,p^a\}$.</p>
@@ -69,18 +69,18 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.2.4 — Summatory Formula</div>
+                    <div class="math-box-label">Theorem 3.2.4 - Summatory Formula</div>
                     <p class="mb-0">$$\sum_{d \mid n} \phi(d) = n.$$
                     <em>Proof:</em> Partition $\{1/n, 2/n, \ldots, n/n\}$ by reduced form denominators; those with denominator $d \mid n$ contribute $\phi(d)$ fractions.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.2.5 — Euler's Theorem</div>
+                    <div class="math-box-label">Theorem 3.2.5 - Euler's Theorem</div>
                     <p class="mb-0">If $\gcd(a,n)=1$ then $a^{\phi(n)} \equiv 1 \pmod{n}$. This follows because $a \mapsto a \cdot (-)$ is a bijection on $(\mathbb{Z}/n\mathbb{Z})^\times$, so multiplying all elements gives $a^{\phi(n)} \prod u \equiv \prod u$, whence $a^{\phi(n)} \equiv 1$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — RSA</div>
+                    <div class="math-box-label">Remark - RSA</div>
                     <p class="mb-0">RSA cryptography is based on: given $n = pq$ (product of two large primes), encryption $e$ and decryption $d = e^{-1} \bmod \phi(n)$ satisfy $(m^e)^d = m^{ed} \equiv m \pmod n$ for $\gcd(m,n) = 1$, since $ed \equiv 1 \pmod{\phi(n)}$ implies $ed = 1 + k\phi(n)$ and $m^{ed} = m \cdot (m^{\phi(n)})^k \equiv m$ by Euler's theorem.</p>
                 </div>
 

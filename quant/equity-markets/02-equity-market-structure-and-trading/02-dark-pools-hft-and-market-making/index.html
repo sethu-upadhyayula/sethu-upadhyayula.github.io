@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,37 +80,37 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Dark Pools, HFT, and Market Making</h1>
 
-                <p>Not all trading happens on the lit, displayed order books described in Section 2.1. A large fraction of US equity volume executes in <em>dark pools</em> — venues that do not publish a pre-trade order book — and an even larger fraction of displayed liquidity is provided by high-frequency trading (HFT) firms whose strategies operate on millisecond timescales. This section examines how these venues and participants shape the modern market.</p>
+                <p>Not all trading happens on the lit, displayed order books described in Section 2.1. A large fraction of US equity volume executes in <em>dark pools</em> - venues that do not publish a pre-trade order book - and an even larger fraction of displayed liquidity is provided by high-frequency trading (HFT) firms whose strategies operate on millisecond timescales. This section examines how these venues and participants shape the modern market.</p>
 
                 <h2 class="mt-5 mb-3">Dark Pools</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Dark Pool</div>
-                    <p>A dark pool is an alternative trading system (ATS) that matches buy and sell orders without displaying a pre-trade order book to the public. Orders typically rest in the pool waiting for an opposing order to arrive, and execute — when matched — at a reference price derived from the lit market, most commonly the <strong>midpoint</strong> of the National Best Bid and Offer (NBBO), $M_t = \frac{B_t + A_t}{2}$.</p>
+                    <div class="math-box-label">Definition - Dark Pool</div>
+                    <p>A dark pool is an alternative trading system (ATS) that matches buy and sell orders without displaying a pre-trade order book to the public. Orders typically rest in the pool waiting for an opposing order to arrive, and execute - when matched - at a reference price derived from the lit market, most commonly the <strong>midpoint</strong> of the National Best Bid and Offer (NBBO), $M_t = \frac{B_t + A_t}{2}$.</p>
                     <p class="mb-0">Because no quotes are displayed, dark pools allow institutional investors to work large orders without revealing their trading intentions to the broader market, reducing the information leakage and market impact that would result from posting a large visible order on a lit exchange.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Trade-Throughs and Order Protection</div>
-                    <p class="mb-0">A <em>trade-through</em> occurs when a trade executes at a price worse than the best displayed price available on another venue at that moment. In the US, Regulation NMS's Order Protection Rule generally prohibits trading through a protected (displayed, immediately accessible) quote on another exchange. Dark pools, which do not display quotes, are not directly subject to this rule in the same way, but they typically reference the NBBO and execute at or better than it — meaning a dark midpoint execution is, by construction, at least as good as the best displayed price for both sides, even though the trade itself was never shown to the market beforehand.</p>
+                    <div class="math-box-label">Remark - Trade-Throughs and Order Protection</div>
+                    <p class="mb-0">A <em>trade-through</em> occurs when a trade executes at a price worse than the best displayed price available on another venue at that moment. In the US, Regulation NMS's Order Protection Rule generally prohibits trading through a protected (displayed, immediately accessible) quote on another exchange. Dark pools, which do not display quotes, are not directly subject to this rule in the same way, but they typically reference the NBBO and execute at or better than it - meaning a dark midpoint execution is, by construction, at least as good as the best displayed price for both sides, even though the trade itself was never shown to the market beforehand.</p>
                 </div>
 
-                <p>Dark pools raise a persistent debate: midpoint executions benefit both counterparties relative to crossing the lit spread, but if too much volume migrates to dark venues, the lit quotes that dark pools reference become thinner and less informative — a feedback loop sometimes cited as a concern for overall price discovery.</p>
+                <p>Dark pools raise a persistent debate: midpoint executions benefit both counterparties relative to crossing the lit spread, but if too much volume migrates to dark venues, the lit quotes that dark pools reference become thinner and less informative - a feedback loop sometimes cited as a concern for overall price discovery.</p>
 
                 <h2 class="mt-5 mb-3">High-Frequency Trading</h2>
 
-                <p>High-frequency trading (HFT) refers to a set of strategies, implemented in highly automated systems, that trade in and out of positions extremely rapidly — often holding positions for fractions of a second — and that depend on speed advantages measured in microseconds.</p>
+                <p>High-frequency trading (HFT) refers to a set of strategies, implemented in highly automated systems, that trade in and out of positions extremely rapidly - often holding positions for fractions of a second - and that depend on speed advantages measured in microseconds.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — HFT Strategy Archetypes</div>
+                    <div class="math-box-label">Remark - HFT Strategy Archetypes</div>
                     <p><strong>Electronic market making:</strong> continuously posting passive limit orders on both sides of the book, capturing the bid-ask spread (and maker rebates) while managing inventory risk by adjusting quotes as the firm's position accumulates. This is the modern, automated descendant of the traditional specialist or market maker role, but operating across many venues and securities simultaneously.</p>
-                    <p><strong>Latency arbitrage:</strong> exploiting the fact that the same security trades on multiple venues, and that price-relevant information (a trade or quote update on one exchange) takes a small but nonzero amount of time to propagate to others. A firm that receives and acts on this information faster than other participants can trade against quotes on slower venues before they update — a strategy that depends entirely on a speed advantage rather than a view on fundamental value.</p>
+                    <p><strong>Latency arbitrage:</strong> exploiting the fact that the same security trades on multiple venues, and that price-relevant information (a trade or quote update on one exchange) takes a small but nonzero amount of time to propagate to others. A firm that receives and acts on this information faster than other participants can trade against quotes on slower venues before they update - a strategy that depends entirely on a speed advantage rather than a view on fundamental value.</p>
                     <p class="mb-0"><strong>Statistical arbitrage / cross-asset signals:</strong> very short-horizon strategies that trade on transient relationships between correlated instruments (e.g. an ETF and its underlying basket, or two highly correlated stocks), capturing small, fleeting mispricings before they are arbitraged away.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Latency Arbitrage</div>
-                    <p class="mb-0">A large buy order executes on Exchange A, lifting the best offer there and leaving the best offer on Exchange B briefly stale at the old, lower price. A latency arbitrageur whose market data feed and order routing are fast enough can buy at the stale price on Exchange B and immediately sell at the new, higher price on Exchange A, capturing the difference. This trade carries essentially no directional risk — it is purely a function of being faster than the participants whose resting orders on Exchange B have not yet been updated or cancelled.</p>
+                    <div class="math-box-label">Example - Latency Arbitrage</div>
+                    <p class="mb-0">A large buy order executes on Exchange A, lifting the best offer there and leaving the best offer on Exchange B briefly stale at the old, lower price. A latency arbitrageur whose market data feed and order routing are fast enough can buy at the stale price on Exchange B and immediately sell at the new, higher price on Exchange A, capturing the difference. This trade carries essentially no directional risk - it is purely a function of being faster than the participants whose resting orders on Exchange B have not yet been updated or cancelled.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Designated Market Makers</h2>
@@ -118,13 +118,13 @@
                 <p>Alongside the high-frequency electronic market makers described above, many exchanges retain a formal role for designated participants with explicit obligations to provide liquidity in specific securities.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Designated Market Maker (DMM)</div>
-                    <p class="mb-0">A designated market maker (DMM), such as those operating on the New York Stock Exchange floor, is assigned responsibility for one or more specific securities and is subject to exchange-imposed quoting obligations — for example, maintaining a continuous two-sided quote within a specified percentage of the NBBO for a minimum percentage of the trading day. In exchange for meeting these obligations, DMMs typically receive preferential fee treatment and, in some structures, participate in opening and closing auctions with special privileges (e.g. the ability to facilitate price discovery by committing capital around the open and close).</p>
+                    <div class="math-box-label">Definition - Designated Market Maker (DMM)</div>
+                    <p class="mb-0">A designated market maker (DMM), such as those operating on the New York Stock Exchange floor, is assigned responsibility for one or more specific securities and is subject to exchange-imposed quoting obligations - for example, maintaining a continuous two-sided quote within a specified percentage of the NBBO for a minimum percentage of the trading day. In exchange for meeting these obligations, DMMs typically receive preferential fee treatment and, in some structures, participate in opening and closing auctions with special privileges (e.g. the ability to facilitate price discovery by committing capital around the open and close).</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Designated Obligations Still Matter</div>
-                    <p class="mb-0">Even in a market dominated by electronic liquidity provision, designated market makers play a stabilising role during periods of stress: while purely opportunistic HFT market makers can widen their quotes or withdraw from the market entirely when volatility spikes (since they have no obligation to remain present), a DMM's exchange-imposed quoting obligations require a continued presence, which can dampen — though not eliminate — episodes of evaporating liquidity such as "flash crash" events.</p>
+                    <div class="math-box-label">Remark - Why Designated Obligations Still Matter</div>
+                    <p class="mb-0">Even in a market dominated by electronic liquidity provision, designated market makers play a stabilising role during periods of stress: while purely opportunistic HFT market makers can widen their quotes or withdraw from the market entirely when volatility spikes (since they have no obligation to remain present), a DMM's exchange-imposed quoting obligations require a continued presence, which can dampen - though not eliminate - episodes of evaporating liquidity such as "flash crash" events.</p>
                 </div>
 
                 <hr class="my-5">

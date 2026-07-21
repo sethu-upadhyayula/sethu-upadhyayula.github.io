@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,7 +132,7 @@
                 <p>The <strong>$\theta$-scheme</strong> is a one-parameter family of one-step methods that unifies the three most commonly used time-steppers. Replace the time derivative by a backward difference and evaluate the spatial operator at a weighted average of the current and next time levels:</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — $\theta$-Scheme</div>
+                    <div class="math-box-label">Definition - $\theta$-Scheme</div>
                     <p class="mb-0">Given $\mathbf{u}^n$, find $\mathbf{u}^{n+1}$ such that
                     $$M\,\frac{\mathbf{u}^{n+1} - \mathbf{u}^n}{\Delta t} + K\bigl[\theta\,\mathbf{u}^{n+1} + (1-\theta)\,\mathbf{u}^n\bigr] = \theta\,\mathbf{f}^{n+1} + (1-\theta)\,\mathbf{f}^n,$$
                     where $\mathbf{f}^m = \mathbf{f}(t_m)$ and $\theta \in [0,1]$. Rearranging, this is the linear system
@@ -188,7 +188,7 @@
                 The amplification factor is $g_j = \frac{1-(1-\theta)\mu}{1+\theta\mu}$ where $\mu = \Delta t\,\lambda_j > 0$. For stability we need $|g_j| \leq 1$.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Stability of the $\theta$-Scheme</div>
+                    <div class="math-box-label">Theorem - Stability of the $\theta$-Scheme</div>
                     <p class="mb-0"><ul class="mb-0">
                         <li>For $\theta \geq 1/2$: $|g_j| < 1$ for all $\mu > 0$, so the scheme is <strong>unconditionally stable</strong>.</li>
                         <li>For $0 \leq \theta < 1/2$: $|g_j| \leq 1$ requires $\mu \leq \frac{2}{1-2\theta}$, i.e., $\Delta t\,\lambda_{\max} \leq \frac{2}{1-2\theta}$. Since the largest eigenvalue satisfies $\lambda_{\max} \sim Ch^{-2}$ for FEM on quasi-uniform meshes, this gives the <strong>CFL condition</strong> $\Delta t \leq C'h^2$.</li>
@@ -198,7 +198,7 @@
                 <h2 class="mt-5 mb-3">Fully Discrete Error Estimates</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Fully Discrete Error</div>
+                    <div class="math-box-label">Theorem - Fully Discrete Error</div>
                     <p>Let $u(x,t_n)$ be the exact solution and $u_h^n$ the fully discrete approximation from the $\theta$-scheme with $P_1$ FEM. Under sufficient regularity of $u$:
                     <ul class="mb-0">
                         <li><strong>Implicit Euler ($\theta=1$):</strong> $\|u(t_n) - u_h^n\|_{L^2} \leq C\bigl(h^2 + \Delta t\bigr)$.</li>
@@ -212,7 +212,7 @@
                 <p>The semi-discrete system $M\dot{\mathbf{u}} = -K\mathbf{u} + \mathbf{f}(t)$ can be integrated with any Runge-Kutta (RK) method. The combination of FEM in space with a $p$-stage RK method in time is called a <strong>method of lines</strong> discretisation. The accuracy in time is $O(\Delta t^p)$ for a $p$th-order RK scheme.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Stiffness and Implicit RK</div>
+                    <div class="math-box-label">Remark - Stiffness and Implicit RK</div>
                     <p class="mb-0">For fine meshes, the eigenvalues $\lambda_j$ of $M^{-1}K$ span a wide range up to $O(h^{-2})$, making the semi-discrete system <strong>stiff</strong>. Explicit RK methods require $\Delta t = O(h^2)$ for stability (same as explicit Euler), which is prohibitively small. Implicit or IMEX (implicit-explicit) RK methods are preferred: they allow larger time steps while treating the stiff diffusion term implicitly and any non-stiff terms (e.g., nonlinear reactions) explicitly.</p>
                 </div>
 

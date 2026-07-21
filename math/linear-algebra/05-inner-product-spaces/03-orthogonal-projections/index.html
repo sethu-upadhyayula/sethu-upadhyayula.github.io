@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -112,21 +112,21 @@
 <h1 class="text-accent mb-4">5.3 Orthogonal Projections</h1>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Projection onto a Subspace</div>
+<div class="math-box-label">Theorem - Projection onto a Subspace</div>
 <p>Let $W$ be a subspace of an inner product space $V$ with orthonormal basis $\{e_1,\ldots,e_k\}$. The <strong>orthogonal projection</strong> of $v\in V$ onto $W$ is:</p>
 $$\operatorname{proj}_W(v)=\sum_{i=1}^k\langle v,e_i\rangle e_i.$$
 <p class="mb-0">This is the unique element of $W$ that minimises $\|v-w\|$ over all $w\in W$: the error $v-\operatorname{proj}_W(v)$ is orthogonal to every vector in $W$.</p>
 </div>
 
 <div class="math-box definition">
-<div class="math-box-label">Definition — Orthogonal Complement</div>
+<div class="math-box-label">Definition - Orthogonal Complement</div>
 <p>The <strong>orthogonal complement</strong> of a subspace $W\subseteq V$ is:
 $$W^\perp=\{x\in V:\langle x,w\rangle=0\text{ for all }w\in W\}.$$</p>
 <p class="mb-0">$W^\perp$ is always a subspace of $V$. If $V$ is finite-dimensional: $V=W\oplus W^\perp$ (every $v$ decomposes uniquely as $v=w+w^\perp$ with $w\in W$, $w^\perp\in W^\perp$), and $\dim W+\dim W^\perp=\dim V$.</p>
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Projection Matrix</div>
+<div class="math-box-label">Theorem - Projection Matrix</div>
 <p>If $Q\in M_{m\times k}(\mathbb{R})$ has orthonormal columns spanning $W$, the projection matrix onto $W$ is:</p>
 $$P=QQ^T.$$
 <p>Key properties of a projection matrix:</p>
@@ -140,7 +140,7 @@ $$P=QQ^T.$$
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Least Squares</div>
+<div class="math-box-label">Theorem - Least Squares</div>
 <p>Given $A\in M_{m\times n}(\mathbb{R})$ (with $m>n$) and $\mathbf{b}\in\mathbb{R}^m$, when the system $Ax=\mathbf{b}$ has no exact solution, the <strong>least-squares solution</strong> minimises $\|Ax-\mathbf{b}\|^2$. It satisfies the <strong>normal equations</strong>:</p>
 $$A^TAx=A^T\mathbf{b}.$$
 <p>If $A$ has full column rank (columns linearly independent), then $A^TA$ is invertible and:
@@ -149,7 +149,7 @@ $$\hat x=(A^TA)^{-1}A^T\mathbf{b}.$$</p>
 </div>
 
 <div class="math-box example">
-<div class="math-box-label">Example — Fitting a Line to Data</div>
+<div class="math-box-label">Example - Fitting a Line to Data</div>
 <p>Find the best-fit line $y=a+bx$ to the data points $(0,1),(1,2),(2,4)$.</p>
 <p>Set up $Ax=\mathbf{b}$:
 $$A=\begin{pmatrix}1&0\\1&1\\1&2\end{pmatrix},\quad\mathbf{b}=\begin{pmatrix}1\\2\\4\end{pmatrix},\quad x=\begin{pmatrix}a\\b\end{pmatrix}.$$</p>

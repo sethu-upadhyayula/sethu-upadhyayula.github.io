@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -125,12 +125,12 @@
             <article>
                 <h1 class="text-accent mb-4">3.1 Triangulations and Meshes</h1>
 
-                <p>Before assembling a finite element space, we must partition the computational domain $\Omega$ into simple geometric pieces. The quality of this partition — its conformity, regularity, and refinement level — directly controls the approximation properties of the resulting finite element space and the conditioning of the stiffness matrix.</p>
+                <p>Before assembling a finite element space, we must partition the computational domain $\Omega$ into simple geometric pieces. The quality of this partition - its conformity, regularity, and refinement level - directly controls the approximation properties of the resulting finite element space and the conditioning of the stiffness matrix.</p>
 
                 <h2 class="mt-4 mb-3">Triangulations</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Triangulation</div>
+                    <div class="math-box-label">Definition - Triangulation</div>
                     <p>A <strong>triangulation</strong> (or simplicial mesh) $\mathcal{T}_h$ of a polygonal domain $\Omega \subset \mathbb{R}^2$ is a finite collection of closed triangles $\{K\}$ such that:</p>
                     <ol>
                         <li>$\bar{\Omega} = \bigcup_{K \in \mathcal{T}_h} K$.</li>
@@ -143,21 +143,21 @@
                 <h2 class="mt-5 mb-3">Mesh Size and Shape Regularity</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Mesh Size</div>
+                    <div class="math-box-label">Definition - Mesh Size</div>
                     <p class="mb-0">For each element $K$, define the <strong>diameter</strong> $h_K = \operatorname{diam}(K) = \max_{x,y \in K}|x-y|$. The <strong>global mesh size</strong> is
                     $$h = \max_{K \in \mathcal{T}_h} h_K.$$
                     A sequence of meshes $\{\mathcal{T}_h\}_{h \to 0}$ is obtained by successive refinement; convergence of the FEM solution to the exact solution is studied as $h \to 0$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Shape Regularity</div>
+                    <div class="math-box-label">Definition - Shape Regularity</div>
                     <p>Let $\rho_K$ denote the <strong>inradius</strong> of $K$ (radius of the largest inscribed ball). The triangulation $\mathcal{T}_h$ is <strong>shape regular</strong> if there exists a constant $\sigma > 0$, independent of $h$, such that
                     $$\frac{\rho_K}{h_K} \geq \sigma \quad \forall\, K \in \mathcal{T}_h, \quad \forall\, h.$$
                     Shape regularity prevents elements from becoming arbitrarily flat (degenerate) as the mesh is refined. Equivalently, all interior angles of triangles are bounded away from $0$ and $\pi$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Quasi-Uniform Mesh</div>
+                    <div class="math-box-label">Definition - Quasi-Uniform Mesh</div>
                     <p class="mb-0">A shape-regular family of meshes is <strong>quasi-uniform</strong> if there exists $c > 0$ such that
                     $$h_K \geq c\, h \quad \forall\, K \in \mathcal{T}_h, \quad \forall\, h.$$
                     This means all elements have comparable size; no element is much smaller than the global mesh size. Quasi-uniformity is needed for certain inverse estimates but can be relaxed for adaptive methods.</p>
@@ -166,7 +166,7 @@
                 <h2 class="mt-5 mb-3">The Finite Element Space</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — $P_k$ Lagrange Finite Element Space</div>
+                    <div class="math-box-label">Definition - $P_k$ Lagrange Finite Element Space</div>
                     <p>Given a triangulation $\mathcal{T}_h$ and polynomial degree $k \geq 1$, the <strong>$P_k$ conforming finite element space</strong> with homogeneous Dirichlet conditions is
                     $$V_h = \{v_h \in C^0(\bar\Omega) : v_h|_K \in P_k(K) \text{ for all } K \in \mathcal{T}_h,\; v_h|_{\partial\Omega} = 0\},$$
                     where $P_k(K)$ denotes the space of polynomials of total degree $\leq k$ on $K$.</p>
@@ -174,12 +174,12 @@
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Dimension of $V_h$</div>
+                    <div class="math-box-label">Proposition - Dimension of $V_h$</div>
                     <p class="mb-0">For a $P_1$ triangulation of $\Omega \subset \mathbb{R}^2$, the nodes of $V_h$ are the interior vertices of $\mathcal{T}_h$, and $\dim V_h$ equals the number of interior vertices $N_{\text{int}}$. For $P_2$, the nodes include interior vertices and interior/boundary edge midpoints; $\dim V_h$ counts all such nodes not on $\partial\Omega$. In general, $\dim V_h = O(h^{-2})$ for $d=2$ as $h \to 0$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Node Counts for $P_1$ and $P_2$</div>
+                    <div class="math-box-label">Remark - Node Counts for $P_1$ and $P_2$</div>
                     <p class="mb-0">On a shape-regular, quasi-uniform mesh of $\Omega \subset \mathbb{R}^2$:</p>
                     <ul class="mb-0">
                         <li><strong>$P_1$:</strong> 3 nodes per triangle (vertices); globally $N_v$ vertices, so $\dim V_h \approx N_v - N_{\partial}$ where $N_\partial$ is the number of boundary vertices.</li>
@@ -188,7 +188,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Uniform Mesh on the Unit Square</div>
+                    <div class="math-box-label">Example - Uniform Mesh on the Unit Square</div>
                     <p class="mb-0">Let $\Omega = (0,1)^2$ and divide into $n \times n$ squares, each split into 2 triangles. Then $h = \sqrt{2}/n$, $|\mathcal{T}_h| = 2n^2$ elements, and the number of interior vertices is $(n-1)^2$. For $P_1$, $\dim V_h = (n-1)^2 \approx h^{-2}/2$. The shape-regularity constant $\sigma = \rho_K/h_K = (h/\sqrt{2})/(h) = 1/\sqrt{2}$ is uniform, confirming shape regularity.</p>
                 </div>
 

@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -131,7 +131,7 @@
                 <p>Matroids capture the exact algebraic structure that makes greedy algorithms work optimally. The theory, developed by Whitney (1935), unifies Kruskal's MST algorithm, Huffman coding, and many other greedy methods under a single framework.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.3.1 — Matroid</div>
+                    <div class="math-box-label">Definition 4.3.1 - Matroid</div>
                     <p>A <strong>matroid</strong> is a pair $(E, \mathcal{I})$ where $E$ is a finite ground set and $\mathcal{I} \subseteq 2^E$ is a collection of <strong>independent sets</strong> satisfying:</p>
                     <ol>
                         <li><strong>Non-emptiness:</strong> $\emptyset \in \mathcal{I}$.</li>
@@ -144,36 +144,36 @@
                 <h2 class="mt-5 mb-3">Examples of Matroids</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.3.2 — Graphic Matroid</div>
+                    <div class="math-box-label">Example 4.3.2 - Graphic Matroid</div>
                     <p class="mb-0">$E = E(G)$ (edges of a graph $G$), $\mathcal{I} = \{\text{forests in } G\}$ (edge sets inducing no cycle). The bases are spanning forests (spanning trees if $G$ is connected). This is a matroid by the well-known properties of forests.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.3.3 — Uniform Matroid $U_{k,n}$</div>
+                    <div class="math-box-label">Example 4.3.3 - Uniform Matroid $U_{k,n}$</div>
                     <p class="mb-0">$E = \{1,\ldots,n\}$, $\mathcal{I} = \{S \subseteq E : |S| \le k\}$. The rank is $k$. Every subset of size $\le k$ is independent.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.3.4 — Linear Matroid (Vector Matroid)</div>
+                    <div class="math-box-label">Example 4.3.4 - Linear Matroid (Vector Matroid)</div>
                     <p class="mb-0">Given a matrix $A$ over a field $\mathbb{F}$, let $E$ index the columns, and $\mathcal{I}$ = collections of columns that are linearly independent. The rank of the matroid equals the rank of the matrix.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Greedy Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.3.5 — Greedy Theorem for Matroids</div>
+                    <div class="math-box-label">Theorem 4.3.5 - Greedy Theorem for Matroids</div>
                     <p>Given a matroid $(E, \mathcal{I})$ with weight function $w: E \to \mathbb{R}_{\ge 0}$, the following greedy algorithm finds a maximum-weight base:</p>
                     <p>Sort elements by weight: $w(e_1) \ge w(e_2) \ge \cdots \ge w(e_{|E|})$. Initialise $A = \emptyset$. For each $e_i$: if $A \cup \{e_i\} \in \mathcal{I}$, set $A \leftarrow A \cup \{e_i\}$.</p>
                     <p class="mb-0">Moreover, a set system $(E, \mathcal{I})$ satisfying properties (1) and (2) is a matroid if and only if the greedy algorithm finds a maximum-weight independent set for every weight function.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.3.6 — Kruskal's MST as Greedy on Graphic Matroid</div>
+                    <div class="math-box-label">Example 4.3.6 - Kruskal's MST as Greedy on Graphic Matroid</div>
                     <p class="mb-0">Kruskal's algorithm: sort edges by weight (ascending), add an edge if it does not create a cycle. This is exactly the greedy algorithm on the graphic matroid with weights $-w(e)$ (negated to turn min-weight spanning tree into max-weight base). The graphic matroid guarantees optimality.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Matroid Intersection</div>
+                    <div class="math-box-label">Remark - Matroid Intersection</div>
                     <p class="mb-0">The intersection of two matroids $(E, \mathcal{I}_1)$ and $(E, \mathcal{I}_2)$ is $(E, \mathcal{I}_1 \cap \mathcal{I}_2)$. Finding a maximum-weight common independent set can be solved in polynomial time via the matroid intersection algorithm (Edmonds 1970). Intersection of three or more matroids is NP-hard in general.</p>
                 </div>
 

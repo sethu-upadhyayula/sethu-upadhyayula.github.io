@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -134,22 +134,22 @@
                 <h2 class="mt-5 mb-3">Problem Formulation</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.1 — Two-Point BVP</div>
+                    <div class="math-box-label">Definition 7.1.1 - Two-Point BVP</div>
                     <p class="mb-0">A <strong>two-point boundary value problem</strong> consists of the ODE
                     $$y'' = f(x, y, y'), \quad a \leq x \leq b,$$
                     together with boundary conditions $y(a) = \alpha$ and $y(b) = \beta$ (Dirichlet conditions). More generally, boundary conditions may involve $y'$, e.g. $y'(a) = \alpha$ (Neumann) or $y(a) + \gamma y'(a) = \alpha$ (Robin). Unlike IVPs, the BVP may have zero, one, or infinitely many solutions.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.1.2 — Non-uniqueness and Non-existence</div>
-                    <p>Consider $y'' + y = 0$, $y(0) = 0$, $y(\pi) = 0$. The general solution is $y = A\sin x + B\cos x$. Applying $y(0)=0$: $B=0$, so $y = A\sin x$. Then $y(\pi) = 0$ for <em>every</em> $A$ — infinitely many solutions. Changing the right endpoint: $y'' + y = 0$, $y(0)=0$, $y(\pi) = 1$ has <em>no</em> solution (since $y(\pi) = 0$ for all solutions satisfying $y(0)=0$).</p>
+                    <div class="math-box-label">Example 7.1.2 - Non-uniqueness and Non-existence</div>
+                    <p>Consider $y'' + y = 0$, $y(0) = 0$, $y(\pi) = 0$. The general solution is $y = A\sin x + B\cos x$. Applying $y(0)=0$: $B=0$, so $y = A\sin x$. Then $y(\pi) = 0$ for <em>every</em> $A$ - infinitely many solutions. Changing the right endpoint: $y'' + y = 0$, $y(0)=0$, $y(\pi) = 1$ has <em>no</em> solution (since $y(\pi) = 0$ for all solutions satisfying $y(0)=0$).</p>
                     <p class="mb-0">Contrast with the IVP $y''+y=0$, $y(0)=0$, $y'(0)=1$, which has the unique solution $y=\sin x$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Shooting Method</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.3 — Shooting Method</div>
+                    <div class="math-box-label">Definition 7.1.3 - Shooting Method</div>
                     <p>Convert the BVP $y'' = f(x,y,y')$, $y(a)=\alpha$, $y(b)=\beta$ into a root-finding problem. For a parameter $s$ (the initial slope), let $y(x;s)$ solve the IVP
                     $$y'' = f(x,y,y'), \quad y(a)=\alpha,\quad y'(a) = s.$$
                     Define the <strong>shooting function</strong> $\phi(s) = y(b;s) - \beta$. We seek $s^*$ with $\phi(s^*)=0$.</p>
@@ -161,7 +161,7 @@
                 <h2 class="mt-5 mb-3">Finite Difference Discretisation</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.4 — Finite Difference Method</div>
+                    <div class="math-box-label">Definition 7.1.4 - Finite Difference Method</div>
                     <p>Discretise $[a,b]$ with a uniform grid $x_i = a + ih$, $h = (b-a)/N$, $i = 0, 1, \ldots, N$. Replace $y''$ by the second-order central difference:
                     $$y''(x_i) \approx \frac{y_{i-1} - 2y_i + y_{i+1}}{h^2}.$$
                     For the linear BVP $y'' + p(x)y' + q(x)y = r(x)$, $y_0=\alpha$, $y_N=\beta$, this gives a <strong>tridiagonal linear system</strong> for the unknowns $y_1, \ldots, y_{N-1}$:
@@ -172,7 +172,7 @@
                 <h2 class="mt-5 mb-3">Green's Function</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.5 — Green's Function</div>
+                    <div class="math-box-label">Definition 7.1.5 - Green's Function</div>
                     <p>For the linear BVP $\mathcal{L}[y] \equiv y'' + p(x)y' + q(x)y = f(x)$, $y(a)=0$, $y(b)=0$, the <strong>Green's function</strong> $G(x,\xi)$ is defined by $\mathcal{L}_x G(x,\xi) = \delta(x-\xi)$ with homogeneous BCs. The solution is then
                     $$y(x) = \int_a^b G(x,\xi)\,f(\xi)\,d\xi.$$</p>
                     <p>Explicitly, if $y_1, y_2$ are solutions of the homogeneous equation $\mathcal{L}[y]=0$ satisfying $y_1(a)=0$ and $y_2(b)=0$ respectively, and $W = y_1 y_2' - y_1' y_2$ is their (constant, up to $p$-factor) Wronskian, then:
@@ -181,7 +181,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.1.6 — Green's Function for $-y'' = f$</div>
+                    <div class="math-box-label">Example 7.1.6 - Green's Function for $-y'' = f$</div>
                     <p>Solve $-y'' = f(x)$, $y(0)=0$, $y(1)=0$. Homogeneous solutions: $y_1 = x$ (satisfies $y_1(0)=0$) and $y_2 = 1-x$ (satisfies $y_2(1)=0$). Wronskian: $W = y_1 y_2' - y_1' y_2 = x(-1) - (1)(1-x) = -x - 1 + x = -1$. So $W = -1$.
                     $$G(x,\xi) = \begin{cases} \dfrac{x(1-\xi)}{1}, & 0 \leq x \leq \xi,\\[6pt] \dfrac{\xi(1-x)}{1}, & \xi \leq x \leq 1.\end{cases}$$
                     (Here the sign from $-y''=f$ is absorbed.) The solution is $y(x) = \int_0^1 G(x,\xi)f(\xi)\,d\xi.$</p>

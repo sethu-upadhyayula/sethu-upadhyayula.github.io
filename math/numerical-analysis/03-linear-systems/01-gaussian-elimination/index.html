@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,7 +132,7 @@
 
                 <h2 class="mt-4 mb-3">Forward Elimination</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Forward Elimination</div>
+                    <div class="math-box-label">Definition - Forward Elimination</div>
                     <p>Forward elimination proceeds in $n-1$ stages. At <strong>stage $k$</strong> ($k = 1, \ldots, n-1$), for each row $i = k+1, \ldots, n$:</p>
                     <ol>
                         <li>Compute the <em>multiplier</em> $\ell_{ik} = a_{ik}^{(k)} / a_{kk}^{(k)}$ (assuming $a_{kk}^{(k)} \ne 0$).</li>
@@ -143,20 +143,20 @@
 
                 <h2 class="mt-5 mb-3">Operation Count</h2>
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Flop Count</div>
+                    <div class="math-box-label">Proposition - Flop Count</div>
                     <p class="mb-0">Forward elimination requires $\tfrac{2}{3}n^3 + O(n^2)$ floating-point operations (additions and multiplications), and back substitution requires $n^2 + O(n)$ operations. The total cost is dominated by $\tfrac{2}{3}n^3$ flops. Doubling $n$ increases cost eightfold.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Partial Pivoting</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Partial Pivoting</div>
+                    <div class="math-box-label">Definition - Partial Pivoting</div>
                     <p>At stage $k$, <strong>partial pivoting</strong> selects the pivot row as the index $p \ge k$ that maximises $|a_{pk}^{(k)}|$:
                     $$p = \arg\max_{k \le i \le n} |a_{ik}^{(k)}|.$$
                     Row $p$ is swapped with row $k$ before elimination. This is recorded in a permutation matrix $P$ so that the factorisation takes the form $PA = LU$. Partial pivoting ensures $|\ell_{ik}| \le 1$, which controls error growth.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Growth Factor</div>
+                    <div class="math-box-label">Theorem - Growth Factor</div>
                     <p>Define the <strong>growth factor</strong> $g = \max_{i,j,k}|u_{ij}^{(k)}| / \max_{i,j}|a_{ij}|$. With partial pivoting, $g \le 2^{n-1}$ in the worst case. However, growth factors this large essentially never occur in practice; for random matrices, $g$ is typically $O(n^{2/3})$. The backward error of Gaussian elimination with partial pivoting satisfies:</p>
                     $$\frac{\|r\|}{\|A\|\|x\|} = O(g\,\varepsilon_{\text{mach}}),$$
                     <p class="mb-0">where $r = b - A\hat{x}$ is the residual of the computed solution $\hat{x}$.</p>
@@ -164,7 +164,7 @@
 
                 <h2 class="mt-5 mb-3">Worked 3×3 Example</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Gaussian Elimination with Partial Pivoting</div>
+                    <div class="math-box-label">Example - Gaussian Elimination with Partial Pivoting</div>
                     <p>Solve the system with augmented matrix:</p>
                     $$[A|b] = \begin{bmatrix} 1 & 2 & 1 & 4 \\ 3 & 8 & 1 & 12 \\ 0 & 4 & 1 & 3 \end{bmatrix}.$$
                     <p><strong>Stage 1:</strong> Pivot column 1. Max in column: $|3| > |1|$, so swap rows 1 and 2:</p>

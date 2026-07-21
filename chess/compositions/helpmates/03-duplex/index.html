@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="light" data-section="chess"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Duplex — Helpmates</title>
+<title>Duplex - Helpmates</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -50,8 +50,8 @@
 
   <p>A <strong>duplex</strong> helpmate carries the stipulation <strong>h#n duplex</strong> (sometimes written h#n* or with the abbreviation "Dup"). It asks the solver to find <em>two</em> solutions from the <em>same diagram</em>:</p>
   <ul>
-    <li><strong>Solution 1</strong> — the problem as normally stated: Black moves first and cooperates, White delivers checkmate on move n.</li>
-    <li><strong>Solution 2</strong> — the colours are reversed: White moves first and cooperates, and <em>Black</em> delivers checkmate on move n.</li>
+    <li><strong>Solution 1</strong> - the problem as normally stated: Black moves first and cooperates, White delivers checkmate on move n.</li>
+    <li><strong>Solution 2</strong> - the colours are reversed: White moves first and cooperates, and <em>Black</em> delivers checkmate on move n.</li>
   </ul>
   <p>Both solutions must be valid, legal, and (in a sound problem) each must be unique within its colour assignment. A duplex is therefore really <em>two</em> helpmate problems compressed into a single diagram and a single short stipulation word.</p>
 
@@ -61,14 +61,14 @@
     <li><strong>Twins</strong> change the <em>position</em> (a piece moves, a colour swaps, etc.) between parts, and each part keeps the same colour-to-move convention (Black still moves first in each twin).</li>
     <li><strong>Duplex</strong> keeps the <em>position identical</em> between the two solutions, but reverses <em>who moves first and who is mated</em>.</li>
   </ul>
-  <p>The two devices can be combined — a "duplex twin" exists where each twin part itself has two duplex solutions — but this is rare and reserved for the most ambitious compositions.</p>
+  <p>The two devices can be combined - a "duplex twin" exists where each twin part itself has two duplex solutions - but this is rare and reserved for the most ambitious compositions.</p>
 
   <h3>A Simple Illustration</h3>
   <p>Consider a position where, depending on which side is asked to cooperate first, two entirely different mating ideas are latent in the same arrangement of pieces:</p>
 
   <div class="chess-board" id="board-duplex"></div>
   <script>renderChessBoard('board-duplex', {g1:'wK',d1:'wR',e3:'wN',e8:'bK',h8:'bR',b5:'bB',f7:'bP'});</script>
-  <p class="text-center text-muted mt-2"><small>h#2 duplex — a single diagram supporting two distinct cooperative mates</small></p>
+  <p class="text-center text-muted mt-2"><small>h#2 duplex - a single diagram supporting two distinct cooperative mates</small></p>
 
   <div class="notation-box">
     <strong>Solution 1 (Black moves first, White mates):</strong><br>
@@ -83,15 +83,15 @@
   <h3>Composing Constraints</h3>
   <p>Duplex composition is considerably harder than single-solution composition because the composer must satisfy two independent sets of constraints simultaneously from one static diagram:</p>
   <ul>
-    <li>The position must be legal as a starting point for <em>both</em> "Black to move" and "White to move" interpretations — in particular, it must not already be check for the side that is about to move cooperatively (unless the very first move is a checking move that is part of the intended solution).</li>
-    <li>Each solution must be unique on its own — a second, unintended way to achieve either Solution 1 or Solution 2 cooks the problem, exactly as in a single helpmate.</li>
-    <li>Ideally, the two solutions should be thematically related — sharing a motif, an echoing mate, or a reversed role for the same pieces — so that the duplex feels like a single artistic statement rather than two unrelated puzzles glued together.</li>
+    <li>The position must be legal as a starting point for <em>both</em> "Black to move" and "White to move" interpretations - in particular, it must not already be check for the side that is about to move cooperatively (unless the very first move is a checking move that is part of the intended solution).</li>
+    <li>Each solution must be unique on its own - a second, unintended way to achieve either Solution 1 or Solution 2 cooks the problem, exactly as in a single helpmate.</li>
+    <li>Ideally, the two solutions should be thematically related - sharing a motif, an echoing mate, or a reversed role for the same pieces - so that the duplex feels like a single artistic statement rather than two unrelated puzzles glued together.</li>
   </ul>
 
   <h3>Why Duplexes Are Prized</h3>
-  <p>A successful duplex is considered especially elegant because of its <strong>economy</strong>: one diagram, one set of pieces, one stipulation word, and yet the solver is rewarded with two complete cooperative narratives. When the two mates are related by some symmetry — for instance, the mating piece in Solution 1 is the piece that gets mated in Solution 2, or the two mating squares are reflections of each other across the board — the duplex achieves a kind of "two-sided economy" that single-solution helpmates cannot match.</p>
+  <p>A successful duplex is considered especially elegant because of its <strong>economy</strong>: one diagram, one set of pieces, one stipulation word, and yet the solver is rewarded with two complete cooperative narratives. When the two mates are related by some symmetry - for instance, the mating piece in Solution 1 is the piece that gets mated in Solution 2, or the two mating squares are reflections of each other across the board - the duplex achieves a kind of "two-sided economy" that single-solution helpmates cannot match.</p>
 
-  <p>Having covered the major structural devices — twins and duplex — Chapter 4 turns to the practical question every solver eventually asks: given a diagram and a stipulation, <em>how do you actually find the solution?</em></p>
+  <p>Having covered the major structural devices - twins and duplex - Chapter 4 turns to the practical question every solver eventually asks: given a diagram and a stipulation, <em>how do you actually find the solution?</em></p>
 
         <hr class="my-5">
         <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

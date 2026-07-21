@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -127,12 +127,12 @@
             <article>
                 <h1 class="text-accent mb-4">6.1 Barrier Functions and the Central Path</h1>
 
-                <p>Interior point methods (IPMs) traverse the <em>interior</em> of the feasible set rather than its boundary. The log-barrier approach reformulates the constrained problem as a sequence of unconstrained ones, each solved by Newton's method. The solution path — the <strong>central path</strong> — converges to the optimal solution.</p>
+                <p>Interior point methods (IPMs) traverse the <em>interior</em> of the feasible set rather than its boundary. The log-barrier approach reformulates the constrained problem as a sequence of unconstrained ones, each solved by Newton's method. The solution path - the <strong>central path</strong> - converges to the optimal solution.</p>
 
                 <h2 class="mt-4 mb-3">Log-Barrier Problem</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.1.1 — Log-Barrier Formulation</div>
+                    <div class="math-box-label">Definition 6.1.1 - Log-Barrier Formulation</div>
                     <p>Consider the problem $\min f(x)$ s.t. $g_i(x) \le 0$, $i = 1,\ldots,m$, with $f, g_i$ convex and the feasible set having non-empty interior. The <strong>log-barrier function</strong> is
                     $$\phi(x) = -\sum_{i=1}^m \log(-g_i(x)), \quad \text{dom}\,\phi = \{x : g_i(x) < 0\;\forall i\}.$$
                     The <strong>barrier subproblem</strong> with parameter $t > 0$ is the unconstrained problem
@@ -143,15 +143,15 @@
                 <h2 class="mt-5 mb-3">The Central Path</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.1.2 — Central Path</div>
+                    <div class="math-box-label">Definition 6.1.2 - Central Path</div>
                     <p>The <strong>central path</strong> is the curve $\{x^*(t) : t > 0\}$ in the interior of the feasible set. As $t \to \infty$, the barrier term $\phi/t \to 0$ and $x^*(t) \to x^*$ (the constrained minimiser).</p>
                     <p class="mb-0">The first-order condition for $x^*(t)$ is $t\,\nabla f + \nabla\phi = 0$, i.e.,
                     $$t\,\nabla f(x^*(t)) - \sum_i \frac{\nabla g_i(x^*(t))}{-g_i(x^*(t))} = 0.$$
-                    Setting $\lambda_i^*(t) = 1/(-t\,g_i(x^*(t))) > 0$, this becomes $\nabla f + \sum_i \lambda_i^* \nabla g_i = 0$ — the KKT stationarity condition with multipliers $\lambda_i^*$. Thus $x^*(t)$ is the KKT point of the problem with complementary slackness perturbed to $\lambda_i^* g_i = -1/t$.</p>
+                    Setting $\lambda_i^*(t) = 1/(-t\,g_i(x^*(t))) > 0$, this becomes $\nabla f + \sum_i \lambda_i^* \nabla g_i = 0$ - the KKT stationarity condition with multipliers $\lambda_i^*$. Thus $x^*(t)$ is the KKT point of the problem with complementary slackness perturbed to $\lambda_i^* g_i = -1/t$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.1.3 — Duality Gap Along the Central Path</div>
+                    <div class="math-box-label">Theorem 6.1.3 - Duality Gap Along the Central Path</div>
                     <p>At the central path point $x^*(t)$, the duality gap is exactly $m/t$:
                     $$f(x^*(t)) - f(x^*) \le \frac{m}{t}.$$</p>
                     <p class="mb-0"><em>Proof sketch.</em> The dual variables $\lambda_i^*(t) = 1/(-t\,g_i(x^*(t)))$ satisfy $-\sum_i \lambda_i^* g_i = m/t$. By duality, the duality gap $f(x^*(t)) - d^*(\lambda^*(t)) = -\sum_i \lambda_i^* g_i = m/t$. $\square$</p>
@@ -160,7 +160,7 @@
                 <h2 class="mt-5 mb-3">Barrier Method Algorithm</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.1.4 — Barrier Method</div>
+                    <div class="math-box-label">Definition 6.1.4 - Barrier Method</div>
                     <p>The barrier method solves the original problem to tolerance $\varepsilon$ by the following procedure:</p>
                     <ol>
                         <li>Choose initial interior point $x_0$, initial $t_0 > 0$, scaling factor $\mu > 1$.</li>
@@ -173,14 +173,14 @@
                 <h2 class="mt-5 mb-3">Analytic Centre</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.1.5 — Analytic Centre</div>
+                    <div class="math-box-label">Definition 6.1.5 - Analytic Centre</div>
                     <p>The <strong>analytic centre</strong> of the feasible set $\{x : g_i(x) \le 0\}$ is the minimiser of $\phi(x) = -\sum_i \log(-g_i(x))$:
                     $$x_{\mathrm{ac}} = \arg\min_x\; \phi(x).$$</p>
                     <p class="mb-0">This is the central path point $x^*(0^+)$ (formal limit as $t \to 0$). For an LP polytope $\{x : Ax \le b\}$, the analytic centre is the point that maximises the product $\prod_i (b_i - A_i x)$. It lies deep in the interior and is the natural starting point for interior point methods.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Newton Step for the Barrier Subproblem</div>
+                    <div class="math-box-label">Remark - Newton Step for the Barrier Subproblem</div>
                     <p>The barrier subproblem $\min B(x,t) = tf(x) - \sum_i \log(-g_i(x))$ is solved by Newton's method. The Hessian of $B$ is
                     $$\nabla^2 B = t\,\nabla^2 f + \sum_i \frac{\nabla g_i \nabla g_i^\top}{g_i^2} - \sum_i \frac{\nabla^2 g_i}{g_i}.$$</p>
                     <p class="mb-0">For LP, $f$ is linear and $g_i$ are linear, so $\nabla^2 B = \sum_i \frac{a_i a_i^\top}{s_i^2}$ where $s_i = -g_i(x)$ are the slack variables. This is the scaled normal equation system underlying primal-dual methods (Section 6.2).</p>

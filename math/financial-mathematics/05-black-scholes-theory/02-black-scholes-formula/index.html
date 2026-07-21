@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -51,7 +51,7 @@
 
                 <h2 class="mt-5 mb-3">The Formula</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Black-Scholes Formula</div>
+                    <div class="math-box-label">Theorem - Black-Scholes Formula</div>
                     <p>For a European call with spot $S$, strike $K$, risk-free rate $r$, dividend yield $q$, volatility $\sigma$, and time to maturity $T$:
                     $$C = S\,e^{-qT}N(d_1) - K\,e^{-rT}N(d_2),$$
                     $$d_1 = \frac{\ln(S/K) + (r - q + \tfrac{1}{2}\sigma^2)T}{\sigma\sqrt{T}}, \quad d_2 = d_1 - \sigma\sqrt{T},$$
@@ -62,7 +62,7 @@
 
                 <h2 class="mt-5 mb-3">Risk-Neutral Derivation</h2>
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Derivation via Risk-Neutral Expectation</div>
+                    <div class="math-box-label">Proposition - Derivation via Risk-Neutral Expectation</div>
                     <p class="mb-0">Under the risk-neutral measure $Q$, $S_T = S\,e^{(r-q-\frac{1}{2}\sigma^2)T + \sigma\sqrt{T}Z}$ where $Z \sim N(0,1)$. Then
                     $$C = e^{-rT}E^Q[(S_T-K)^+] = e^{-rT}\int_{d_2}^{\infty}(Se^{(r-q-\frac{1}{2}\sigma^2)T+\sigma\sqrt{T}z}-K)\phi(z)\,dz$$
                     where $\phi$ is the standard normal PDF. Splitting the integral and completing the square in the exponent yields the formula above; $N(d_2) = Q(S_T > K)$ is the risk-neutral probability of the call finishing in the money, and $N(d_1)$ is the delta.</p>
@@ -70,7 +70,7 @@
 
                 <h2 class="mt-5 mb-3">Numerical Example</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — ATM Call</div>
+                    <div class="math-box-label">Example - ATM Call</div>
                     <p>$S = K = 100$, $r = 5\%$, $q = 0$, $\sigma = 20\%$, $T = 1$ year.
                     $$d_1 = \frac{0 + (0.05 + 0.02)\times 1}{0.20} = \frac{0.07}{0.20} = 0.35, \quad d_2 = 0.35 - 0.20 = 0.15.$$
                     $N(0.35) \approx 0.6368$, $N(0.15) \approx 0.5596$.

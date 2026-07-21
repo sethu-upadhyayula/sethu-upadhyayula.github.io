@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,7 +132,7 @@
                 <h2 class="mt-4 mb-3">Definition</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.1.1 — Standard Brownian Motion</div>
+                    <div class="math-box-label">Definition 5.1.1 - Standard Brownian Motion</div>
                     <p>A stochastic process $(B_t)_{t \ge 0}$ defined on a probability space $(\Omega, \mathcal{F}, P)$ is a <strong>standard Brownian motion</strong> (or <strong>Wiener process</strong>) if:</p>
                     <ol>
                         <li>$B_0 = 0$ almost surely.</li>
@@ -143,14 +143,14 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Uniqueness of Distribution</div>
-                    <p class="mb-0">Conditions (1)-(3) determine all finite-dimensional distributions of $(B_t)$. By the Kolmogorov extension theorem, there exists a probability measure on $\mathbb{R}^{[0,\infty)}$ with these finite-dimensional marginals. The non-trivial content is that this measure can be supported on the space of continuous functions — this is Wiener's 1923 result.</p>
+                    <div class="math-box-label">Remark - Uniqueness of Distribution</div>
+                    <p class="mb-0">Conditions (1)-(3) determine all finite-dimensional distributions of $(B_t)$. By the Kolmogorov extension theorem, there exists a probability measure on $\mathbb{R}^{[0,\infty)}$ with these finite-dimensional marginals. The non-trivial content is that this measure can be supported on the space of continuous functions - this is Wiener's 1923 result.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Existence: Lévy-Ciesielski Construction</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.1.2 — Existence of Brownian Motion</div>
+                    <div class="math-box-label">Theorem 5.1.2 - Existence of Brownian Motion</div>
                     <p>Standard Brownian motion exists. One explicit construction on $[0,1]$ proceeds via the <strong>Lévy-Ciesielski</strong> (Haar/Schauder) series:</p>
                     $$B_t = Z_0 t + \sum_{n=0}^{\infty} \sum_{k=0}^{2^n - 1} Z_{n,k}\, H_{n,k}(t),$$
                     <p>where $Z_0, Z_{n,k}$ are i.i.d. $\mathcal{N}(0,1)$ and $H_{n,k}$ are the Schauder functions (integrated Haar wavelets). The series converges uniformly a.s., yielding a continuous process with the correct distribution.</p>
@@ -160,7 +160,7 @@
                 <h2 class="mt-5 mb-3">Covariance Structure</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 5.1.3 — Covariance of Brownian Motion</div>
+                    <div class="math-box-label">Proposition 5.1.3 - Covariance of Brownian Motion</div>
                     <p>For $s, t \ge 0$:
                     $$E[B_t] = 0, \qquad \operatorname{Var}(B_t) = t, \qquad \operatorname{Cov}(B_s, B_t) = E[B_s B_t] = \min(s,t).$$</p>
                     <p><em>Proof.</em> WLOG $s \le t$. Write $B_t = B_s + (B_t - B_s)$. By independence of increments, $E[B_s(B_t - B_s)] = E[B_s] \cdot E[B_t-B_s] = 0$. Hence
@@ -171,27 +171,27 @@
                 <h2 class="mt-5 mb-3">Path Properties</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.1.4 — Hölder Continuity</div>
+                    <div class="math-box-label">Theorem 5.1.4 - Hölder Continuity</div>
                     <p>Brownian motion paths are locally Hölder continuous of any exponent $\alpha < 1/2$: for each $T > 0$ and $\alpha < 1/2$, there exists a random $C(\omega) < \infty$ such that
                     $$|B_t(\omega) - B_s(\omega)| \le C(\omega)\, |t-s|^\alpha \quad \text{for all } s,t \in [0,T].$$</p>
                     <p class="mb-0">However, Brownian paths are <strong>not</strong> Hölder-$1/2$: a.s., $\limsup_{h \to 0} |B_{t+h} - B_t|/\sqrt{h} = \infty$ for every $t$ (Lévy's modulus of continuity).</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.1.5 — Non-Differentiability</div>
+                    <div class="math-box-label">Theorem 5.1.5 - Non-Differentiability</div>
                     <p>With probability 1, Brownian motion is <strong>nowhere differentiable</strong>: for almost every $\omega$, the function $t \mapsto B_t(\omega)$ is not differentiable at any point $t \ge 0$.</p>
                     <p><em>Sketch.</em> If $B$ were differentiable at $t_0$, then $|B_{t_0+h}-B_{t_0}| = O(h)$. But $B_{t_0+h} - B_{t_0} \sim \mathcal{N}(0,h)$, so $(B_{t_0+h}-B_{t_0})/h \sim \mathcal{N}(0,1/h) \to \infty$ in distribution, a contradiction. A rigorous argument uses the Borel-Cantelli lemma applied to dyadic intervals.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.1.6 — Quadratic Variation</div>
+                    <div class="math-box-label">Definition 5.1.6 - Quadratic Variation</div>
                     <p>For a partition $\Pi_n = \{0 = t_0 < t_1 < \cdots < t_n = t\}$ with mesh $|\Pi_n| \to 0$, the <strong>quadratic variation</strong> of $B$ on $[0,t]$ is
                     $$[B]_t = \lim_{|\Pi_n| \to 0} \sum_{i=1}^n (B_{t_i} - B_{t_{i-1}})^2.$$</p>
-                    <p class="mb-0">For Brownian motion, $[B]_t = t$ almost surely (and in $L^2$). This is written $d[B]_t = dt$, or informally $(dB_t)^2 = dt$. This identity — that BM accumulates $t$ units of quadratic variation by time $t$ — is fundamental to Itô's formula.</p>
+                    <p class="mb-0">For Brownian motion, $[B]_t = t$ almost surely (and in $L^2$). This is written $d[B]_t = dt$, or informally $(dB_t)^2 = dt$. This identity - that BM accumulates $t$ units of quadratic variation by time $t$ - is fundamental to Itô's formula.</p>
                 </div>
 
                 <div class="math-box proof">
-                    <div class="math-box-label">Proof — Quadratic Variation equals $t$</div>
+                    <div class="math-box-label">Proof - Quadratic Variation equals $t$</div>
                     <p>Let $Q_n = \sum_{i=1}^n (B_{t_i}-B_{t_{i-1}})^2$ for a partition with $t_i = it/n$. Each term has mean $t/n$ and variance $2(t/n)^2$ (since $(B_{t_i}-B_{t_{i-1}})^2 - t/n$ are i.i.d. with mean 0). Thus
                     $$E[Q_n] = t, \qquad \operatorname{Var}(Q_n) = n \cdot 2(t/n)^2 = \frac{2t^2}{n} \to 0.$$</p>
                     <p class="mb-0">Hence $Q_n \to t$ in $L^2$, and a subsequence argument gives a.s. convergence along dyadic partitions. $\square$</p>
@@ -200,7 +200,7 @@
                 <h2 class="mt-5 mb-3">Scaling and Symmetry Properties</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 5.1.7 — Scaling Properties</div>
+                    <div class="math-box-label">Proposition 5.1.7 - Scaling Properties</div>
                     <p>The following processes are also standard Brownian motions:</p>
                     <ul>
                         <li><strong>Scaling:</strong> For $c > 0$, $\tilde{B}_t = c^{-1/2} B_{ct}$ is a standard BM.</li>
@@ -212,7 +212,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Brownian Bridge</div>
+                    <div class="math-box-label">Example - Brownian Bridge</div>
                     <p>The <strong>Brownian bridge</strong> from 0 to 0 on $[0,1]$ is the process $X_t = B_t - t B_1$, which is a centred Gaussian process with covariance $\operatorname{Cov}(X_s, X_t) = \min(s,t) - st$ and $X_0 = X_1 = 0$ a.s.</p>
                     <p class="mb-0">It arises as the conditional distribution of $(B_t)_{0 \le t \le 1}$ given $B_1 = 0$. The Brownian bridge is the object that appears in the Kolmogorov-Smirnov statistic for testing goodness of fit.</p>
                 </div>

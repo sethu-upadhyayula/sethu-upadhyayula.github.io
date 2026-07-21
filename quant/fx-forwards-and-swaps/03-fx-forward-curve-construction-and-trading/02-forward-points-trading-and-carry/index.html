@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,51 +81,51 @@
             <article>
                 <h1 class="text-accent mb-4">3.2 Forward Points Trading and Carry</h1>
 
-                <p>With a forward curve in hand, this section turns to how the curve is traded directly. Forward points are themselves a tradable object — desks quote, trade, and take views on the points independently of spot — and the most common directional use of the forward market is the FX carry trade, which seeks to harvest the interest rate differential embedded in the points.</p>
+                <p>With a forward curve in hand, this section turns to how the curve is traded directly. Forward points are themselves a tradable object - desks quote, trade, and take views on the points independently of spot - and the most common directional use of the forward market is the FX carry trade, which seeks to harvest the interest rate differential embedded in the points.</p>
 
                 <h2 class="mt-5 mb-3">Quoting Conventions for Forward Points</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — How Points Are Quoted</div>
+                    <div class="math-box-label">Remark - How Points Are Quoted</div>
                     <p>Forward points are quoted as a two-way price (bid/offer) in pips, separately from the spot rate. For a currency pair where the points are positive (base currency at a forward premium), the points are added to spot to get the outright forward; where negative (forward discount), they are subtracted.</p>
-                    <p class="mb-0">A trader can transact "points only" via an FX swap (Section 1.2) without taking any net spot risk — buying and selling the same notional at the near and far dates, with the points as the sole economic content of the trade. This is how the points market trades most of its volume: as a funding and positioning tool, not as outright currency speculation.</p>
+                    <p class="mb-0">A trader can transact "points only" via an FX swap (Section 1.2) without taking any net spot risk - buying and selling the same notional at the near and far dates, with the points as the sole economic content of the trade. This is how the points market trades most of its volume: as a funding and positioning tool, not as outright currency speculation.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The FX Carry Trade</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — FX Carry Trade via Forwards</div>
-                    <p class="mb-0">An FX carry trade seeks to profit from the interest rate differential between two currencies by being long the higher-yielding currency and short the lower-yielding currency. Implemented via FX forwards, a carry trade is most simply expressed as: sell the low-yielding currency forward and buy the high-yielding currency forward, at a forward rate that — under CIP — already prices in the rate differential as "negative carry" against the position (the forward rate moves against the high-yielding currency by exactly the rate differential). The trade profits if the <em>realized spot rate</em> at maturity does not move against the position by more than the forward points already embedded in the trade.</p>
+                    <div class="math-box-label">Definition - FX Carry Trade via Forwards</div>
+                    <p class="mb-0">An FX carry trade seeks to profit from the interest rate differential between two currencies by being long the higher-yielding currency and short the lower-yielding currency. Implemented via FX forwards, a carry trade is most simply expressed as: sell the low-yielding currency forward and buy the high-yielding currency forward, at a forward rate that - under CIP - already prices in the rate differential as "negative carry" against the position (the forward rate moves against the high-yielding currency by exactly the rate differential). The trade profits if the <em>realized spot rate</em> at maturity does not move against the position by more than the forward points already embedded in the trade.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Carry Trades Exist Despite CIP</div>
-                    <p class="mb-0">CIP (Section 1.1, Section 2.1) guarantees that the forward rate has no arbitrage relative to the interest rate differential — it does not guarantee that the forward rate is an unbiased predictor of the future spot rate. Empirically, high-yielding currencies have historically depreciated, on average, by <em>less</em> than the forward points would imply (a violation of "uncovered interest rate parity," UIP) — meaning a trader who is long the high-yielding currency forward has, on average and over long samples, earned a positive return. This empirical regularity — sometimes called the "forward rate puzzle" or "carry trade premium" — is what carry strategies aim to harvest, while bearing the risk of sharp reversals ("carry unwinds") typically associated with risk-off market episodes.</p>
+                    <div class="math-box-label">Remark - Why Carry Trades Exist Despite CIP</div>
+                    <p class="mb-0">CIP (Section 1.1, Section 2.1) guarantees that the forward rate has no arbitrage relative to the interest rate differential - it does not guarantee that the forward rate is an unbiased predictor of the future spot rate. Empirically, high-yielding currencies have historically depreciated, on average, by <em>less</em> than the forward points would imply (a violation of "uncovered interest rate parity," UIP) - meaning a trader who is long the high-yielding currency forward has, on average and over long samples, earned a positive return. This empirical regularity - sometimes called the "forward rate puzzle" or "carry trade premium" - is what carry strategies aim to harvest, while bearing the risk of sharp reversals ("carry unwinds") typically associated with risk-off market episodes.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Roll-Down on the Forward Curve</h2>
 
-                <p>A position in an FX forward does not need to be held to maturity to realize carry — as time passes, a forward contract with a fixed maturity date "rolls down" the curve toward spot, and this roll-down itself generates P&amp;L even if spot and interest rates are unchanged.</p>
+                <p>A position in an FX forward does not need to be held to maturity to realize carry - as time passes, a forward contract with a fixed maturity date "rolls down" the curve toward spot, and this roll-down itself generates P&amp;L even if spot and interest rates are unchanged.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Construction — Roll-Down P&amp;L</div>
+                    <div class="math-box-label">Construction - Roll-Down P&amp;L</div>
                     <p>Consider a forward contract entered today to buy the foreign currency at rate $F(T)$ for delivery at time $T$. After a small time $\Delta t$ has elapsed, with spot and rates unchanged, the contract's remaining maturity is $T - \Delta t$, and (assuming the curve shape itself is unchanged, i.e., $F(T-\Delta t)$ today equals what $F(T)$ was $\Delta t$ ago relative to the new "today") the forward rate appropriate for that remaining maturity is $F(T-\Delta t)$.</p>
-                    <p class="mb-0">If $F(T) \neq F(T-\Delta t)$ — which is generically true whenever the rate differential $r_d - r_f \neq 0$ — then the mark-to-market value of the original contract (still obligated to transact at $F(T)$, now compared against a market rate of $F(T-\Delta t)$ for the same remaining maturity) has changed purely due to the passage of time. This is the roll-down component of the position's P&amp;L, distinct from any P&amp;L due to actual spot rate movements.</p>
+                    <p class="mb-0">If $F(T) \neq F(T-\Delta t)$ - which is generically true whenever the rate differential $r_d - r_f \neq 0$ - then the mark-to-market value of the original contract (still obligated to transact at $F(T)$, now compared against a market rate of $F(T-\Delta t)$ for the same remaining maturity) has changed purely due to the passage of time. This is the roll-down component of the position's P&amp;L, distinct from any P&amp;L due to actual spot rate movements.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example: Carry P&amp;L Over Time</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Carry P&amp;L on a EUR/USD Forward Position</div>
+                    <div class="math-box-label">Example - Carry P&amp;L on a EUR/USD Forward Position</div>
                     <p>An investor enters a 3-month forward to buy EUR / sell USD at $F(3m) = 1.0898$, with EUR/USD spot at inception $S_0 = 1.0850$ (so the 3-month points are $+48$ pips, reflecting USD rates above EUR rates by Section 1.1's example).</p>
                     <p>One month later, suppose spot is unchanged at $S_1 = 1.0850$ and rates are unchanged, so the curve shape is the same. The position now has 2 months to maturity. From the curve, the 2-month points (interpolated as in Section 3.1) are $+32$ pips, giving a new 2-month forward of $F(2m) = 1.0850 + 0.0032 = 1.0882$.</p>
-                    <p>The mark-to-market value of the original contract — long EUR at $1.0898$, now valued against a market forward of $1.0882$ for the same remaining maturity — has moved by $1.0882 - 1.0898 = -0.0016$, or $-16$ pips, against the position. This is a <em>loss</em> from roll-down: the investor who is long EUR forward against USD bought EUR at a worse (higher EUR-cost) rate than the market now offers for the same remaining tenor, because EUR was at a forward premium and that premium has partially "rolled off" as time passed.</p>
-                    <p class="mb-0">This illustrates a key point: a position that is long the currency trading at a forward premium (here, EUR, because USD rates exceed EUR rates) suffers negative roll-down carry as time passes with spot unchanged — consistent with the position having effectively "paid away" the rate differential through the forward price, exactly as CIP requires. A genuine carry trade — long the <em>higher-yielding</em> currency outright via the spot/forward combination implied by an FX swap (i.e., effectively depositing in the high-yield currency) — has the <em>opposite</em> sign of roll-down, which is the positive carry the strategy seeks to harvest; the sign depends on precisely how the position is constructed (outright forward vs. funded spot position via FX swap), and care must be taken to identify which leg of the trade is "long carry."</p>
+                    <p>The mark-to-market value of the original contract - long EUR at $1.0898$, now valued against a market forward of $1.0882$ for the same remaining maturity - has moved by $1.0882 - 1.0898 = -0.0016$, or $-16$ pips, against the position. This is a <em>loss</em> from roll-down: the investor who is long EUR forward against USD bought EUR at a worse (higher EUR-cost) rate than the market now offers for the same remaining tenor, because EUR was at a forward premium and that premium has partially "rolled off" as time passed.</p>
+                    <p class="mb-0">This illustrates a key point: a position that is long the currency trading at a forward premium (here, EUR, because USD rates exceed EUR rates) suffers negative roll-down carry as time passes with spot unchanged - consistent with the position having effectively "paid away" the rate differential through the forward price, exactly as CIP requires. A genuine carry trade - long the <em>higher-yielding</em> currency outright via the spot/forward combination implied by an FX swap (i.e., effectively depositing in the high-yield currency) - has the <em>opposite</em> sign of roll-down, which is the positive carry the strategy seeks to harvest; the sign depends on precisely how the position is constructed (outright forward vs. funded spot position via FX swap), and care must be taken to identify which leg of the trade is "long carry."</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Looking Ahead</div>
-                    <p class="mb-0">The curve construction and trading mechanics covered in this chapter apply across the full maturity spectrum — but long-dated FX forwards (5, 10, 20+ years) raise distinct issues of liquidity, curve extrapolation, and risk management, which is the subject of the final chapter.</p>
+                    <div class="math-box-label">Remark - Looking Ahead</div>
+                    <p class="mb-0">The curve construction and trading mechanics covered in this chapter apply across the full maturity spectrum - but long-dated FX forwards (5, 10, 20+ years) raise distinct issues of liquidity, curve extrapolation, and risk management, which is the subject of the final chapter.</p>
                 </div>
 
                 <hr class="my-5">

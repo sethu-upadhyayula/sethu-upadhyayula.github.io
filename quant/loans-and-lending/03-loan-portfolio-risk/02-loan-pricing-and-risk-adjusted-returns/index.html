@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -85,7 +85,7 @@
 
                 <h2 class="mt-5 mb-3">Risk-Based Loan Pricing</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Loan Spread Decomposition</div>
+                    <div class="math-box-label">Definition - Loan Spread Decomposition</div>
                     <p class="mb-0">The all-in lending rate on a loan can be decomposed as:
                     $$r_{\text{loan}} = r_{\text{funding}} + s_{\text{EL}} + s_{\text{capital}} + s_{\text{opex}} + s_{\text{profit}}$$
                     where $r_{\text{funding}}$ is the bank's marginal cost of funds (e.g. SOFR plus the bank's funding spread), $s_{\text{EL}}$ compensates for expected loss, $s_{\text{capital}}$ compensates shareholders for the regulatory or economic capital the loan consumes, $s_{\text{opex}}$ covers origination and servicing costs, and $s_{\text{profit}}$ is the target economic profit margin. The expected-loss component is directly $s_{\text{EL}} \approx PD \times LGD$ (expressed as an annualised spread on EAD).</p>
@@ -93,7 +93,7 @@
 
                 <h2 class="mt-5 mb-3">RAROC</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Risk-Adjusted Return on Capital</div>
+                    <div class="math-box-label">Definition - Risk-Adjusted Return on Capital</div>
                     <p>RAROC measures the return on a loan after deducting expected loss, expressed as a fraction of the economic or regulatory capital allocated to the loan:
                     $$\text{RAROC} = \frac{\text{Revenue} - \text{Funding Cost} - \text{Operating Cost} - EL}{\text{Economic Capital}}$$
                     where Revenue is the interest and fee income on the loan, and Economic Capital is typically computed as $EAD \times LGD \times (CDR_{99.9\%} - PD)$ from the Vasicek unexpected-loss formula of Section 3.1. A loan is accretive to the bank if:
@@ -102,13 +102,13 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Capital, Not Just Expected Loss, Matters for Pricing</div>
-                    <p class="mb-0">A loan priced only to cover expected loss earns zero economic profit in expectation, but exposes shareholders to the risk of losses exceeding the expectation in adverse scenarios (unexpected loss). Capital is held precisely to absorb unexpected loss, and shareholders require a return on that capital regardless of whether losses materialise. Two loans with identical $EL = PD \times LGD \times EAD$ but different $\rho$ (asset correlation) or $PD$ will require different amounts of economic capital and therefore different spreads — RAROC captures this distinction, while a naive expected-loss-only pricing approach does not.</p>
+                    <div class="math-box-label">Remark - Why Capital, Not Just Expected Loss, Matters for Pricing</div>
+                    <p class="mb-0">A loan priced only to cover expected loss earns zero economic profit in expectation, but exposes shareholders to the risk of losses exceeding the expectation in adverse scenarios (unexpected loss). Capital is held precisely to absorb unexpected loss, and shareholders require a return on that capital regardless of whether losses materialise. Two loans with identical $EL = PD \times LGD \times EAD$ but different $\rho$ (asset correlation) or $PD$ will require different amounts of economic capital and therefore different spreads - RAROC captures this distinction, while a naive expected-loss-only pricing approach does not.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Pricing a $10m Loan</div>
+                    <div class="math-box-label">Example - Pricing a $10m Loan</div>
                     <p>Consider a 1-year, \$10m term loan with the following inputs:</p>
                     <ul>
                         <li>Funding cost: $r_{\text{funding}} = 4.5\%$ (1-year SOFR plus the bank's funding spread)</li>
@@ -117,15 +117,15 @@
                         <li>Asset correlation $\rho = 0.20$ (corporate exposure), so from the Vasicek formula at 99.9%: $\ell_{99.9\%} \approx \Phi\!\left(\frac{\Phi^{-1}(0.01)+\sqrt{0.20}\,\Phi^{-1}(0.999)}{\sqrt{0.80}}\right) \approx \Phi\!\left(\frac{-2.326+0.447\times3.090}{0.894}\right) \approx \Phi(-1.054) \approx 14.6\%$</li>
                         <li>Target hurdle rate: 13%</li>
                     </ul>
-                    <p><strong>Step 1 — Expected loss:</strong> $EL = 0.01 \times 0.45 \times \$10\text{m} = \$45{,}000$, or 45 bps of EAD.</p>
-                    <p><strong>Step 2 — Economic capital:</strong> $EC = EAD \times LGD \times (\ell_{99.9\%} - PD) = \$10\text{m} \times 0.45 \times (0.146 - 0.01) = \$10\text{m}\times0.45\times0.136 \approx \$612{,}000$.</p>
-                    <p><strong>Step 3 — Required spread for hurdle:</strong> Required return on capital $= 13\% \times \$612{,}000 \approx \$79{,}560$, i.e. 79.6 bps of EAD.</p>
-                    <p class="mb-0"><strong>Step 4 — All-in pricing:</strong> $r_{\text{loan}} \approx 4.5\% + 0.45\% \,(\text{EL}) + 0.25\%\,(\text{opex}) + 0.80\%\,(\text{capital charge}) = 6.00\%$. The lender should quote a spread of approximately $1.50\%$ over its funding cost (i.e. SOFR + funding spread + 150 bps) to clear its hurdle rate. If the borrower's credit committee approves a spread of only 100 bps, the loan's RAROC would fall below 13% and the relationship manager would need to offset this with ancillary fee revenue or reject the deal.</p>
+                    <p><strong>Step 1 - Expected loss:</strong> $EL = 0.01 \times 0.45 \times \$10\text{m} = \$45{,}000$, or 45 bps of EAD.</p>
+                    <p><strong>Step 2 - Economic capital:</strong> $EC = EAD \times LGD \times (\ell_{99.9\%} - PD) = \$10\text{m} \times 0.45 \times (0.146 - 0.01) = \$10\text{m}\times0.45\times0.136 \approx \$612{,}000$.</p>
+                    <p><strong>Step 3 - Required spread for hurdle:</strong> Required return on capital $= 13\% \times \$612{,}000 \approx \$79{,}560$, i.e. 79.6 bps of EAD.</p>
+                    <p class="mb-0"><strong>Step 4 - All-in pricing:</strong> $r_{\text{loan}} \approx 4.5\% + 0.45\% \,(\text{EL}) + 0.25\%\,(\text{opex}) + 0.80\%\,(\text{capital charge}) = 6.00\%$. The lender should quote a spread of approximately $1.50\%$ over its funding cost (i.e. SOFR + funding spread + 150 bps) to clear its hurdle rate. If the borrower's credit committee approves a spread of only 100 bps, the loan's RAROC would fall below 13% and the relationship manager would need to offset this with ancillary fee revenue or reject the deal.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Portfolio-Level RAROC and Diversification</div>
-                    <p class="mb-0">RAROC can be computed at the single-loan level (marginal RAROC, used for origination decisions) or at the portfolio level (used for strategic allocation across business lines). Because economic capital under a multi-factor model depends on correlations between exposures, adding a loan to a portfolio with low correlation to existing exposures consumes less marginal capital than its stand-alone capital would suggest — a diversification benefit that is the quantitative rationale for portfolio limits by sector and geography discussed in Section 3.1, and for the pooling and tranching of loans into securitizations, the subject of Chapter 4.</p>
+                    <div class="math-box-label">Remark - Portfolio-Level RAROC and Diversification</div>
+                    <p class="mb-0">RAROC can be computed at the single-loan level (marginal RAROC, used for origination decisions) or at the portfolio level (used for strategic allocation across business lines). Because economic capital under a multi-factor model depends on correlations between exposures, adding a loan to a portfolio with low correlation to existing exposures consumes less marginal capital than its stand-alone capital would suggest - a diversification benefit that is the quantitative rationale for portfolio limits by sector and geography discussed in Section 3.1, and for the pooling and tranching of loans into securitizations, the subject of Chapter 4.</p>
                 </div>
 
                 <hr class="my-5">

@@ -16,7 +16,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -103,7 +103,7 @@
 
 <p>The <strong>principle of inclusion-exclusion</strong> (PIE) counts the size of a union of sets by alternately adding and subtracting the sizes of their intersections. It corrects for over-counting when sets overlap.</p>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Inclusion-Exclusion Principle</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - Inclusion-Exclusion Principle</div>
 <p>For finite sets $A_1, \ldots, A_n$:
 $$\left|A_1 \cup \cdots \cup A_n\right| = \sum_{i}|A_i| - \sum_{i < j}|A_i \cap A_j| + \sum_{i<j<k}|A_i \cap A_j \cap A_k| - \cdots + (-1)^{n+1}|A_1 \cap \cdots \cap A_n|.$$
 Compactly:
@@ -116,25 +116,25 @@ $$\mathbf{1}_{A_1 \cup \cdots \cup A_n} = 1 - \prod_{i=1}^n (1 - \mathbf{1}_{A_i
 Expanding the product and using $\mathbf{1}_{A_i}\mathbf{1}_{A_j} = \mathbf{1}_{A_i \cap A_j}$, each element in exactly $m$ of the sets is counted $\binom{m}{1} - \binom{m}{2} + \cdots + (-1)^{m+1}\binom{m}{m} = 1$. $\square$</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Application — Derangements</div>
+<div class="math-box definition"><div class="math-box-label">Application - Derangements</div>
 <p>A <strong>derangement</strong> is a permutation of $[n]$ with no fixed points. Let $A_i = \{\sigma : \sigma(i) = i\}$. Then:
 $$D_n = n! - |A_1 \cup \cdots \cup A_n| = \sum_{k=0}^{n} (-1)^k \frac{n!}{k!} = n!\sum_{k=0}^{n}\frac{(-1)^k}{k!}.$$
 As $n \to \infty$, $D_n/n! \to e^{-1} \approx 0.3679$. Explicit values: $D_0=1, D_1=0, D_2=1, D_3=2, D_4=9, D_5=44$.</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Application — Euler's Totient Function</div>
+<div class="math-box theorem"><div class="math-box-label">Application - Euler's Totient Function</div>
 <p>The number of integers in $\{1,\ldots,n\}$ coprime to $n$ is:
 $$\varphi(n) = n \prod_{p \mid n}\left(1 - \frac{1}{p}\right),$$
 where the product is over distinct prime divisors of $n$. This follows from inclusion-exclusion on the sets $A_p = \{m \le n : p \mid m\}$ for each prime $p \mid n$.</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Application — Surjections</div>
+<div class="math-box theorem"><div class="math-box-label">Application - Surjections</div>
 <p>The number of surjections (onto functions) from $[n]$ to $[k]$ (with $k \le n$) is:
 $$\text{Surj}(n,k) = \sum_{j=0}^{k} (-1)^j \binom{k}{j} (k-j)^n.$$
 Here $A_i = \{f : i \notin f([n])\}$ (functions missing value $i$), and we subtract all non-surjections.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Derangement Count</div>
+<div class="math-box example"><div class="math-box-label">Example - Derangement Count</div>
 <p>For $n = 4$: $D_4 = 4!\left(1 - 1 + \tfrac{1}{2} - \tfrac{1}{6} + \tfrac{1}{24}\right) = 24 \cdot \tfrac{3}{8} = 9$.</p>
 <p>The 9 derangements of $\{1,2,3,4\}$ include $(2,1,4,3)$, $(2,3,4,1)$, etc.</p>
 </div>

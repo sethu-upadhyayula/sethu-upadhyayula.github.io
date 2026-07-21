@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -145,7 +145,7 @@
                 <h2 class="mt-5 mb-3">Equilibrium Equation and Weak Form</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Strong Form of Linear Elasticity</div>
+                    <div class="math-box-label">Definition - Strong Form of Linear Elasticity</div>
                     <p>Given body force $\mathbf{f} \in L^2(\Omega;\mathbb{R}^2)$, find $\mathbf{u}: \Omega \to \mathbb{R}^2$ satisfying
                     $$-\operatorname{div}\boldsymbol{\sigma}(\mathbf{u}) = \mathbf{f} \quad \text{in } \Omega, \qquad \mathbf{u} = \mathbf{0} \quad \text{on } \partial\Omega.$$
                     Componentwise: $-\sum_j \partial_j \sigma_{ij}(\mathbf{u}) = f_i$ for $i = 1, 2$.</p>
@@ -154,7 +154,7 @@
                 <p>Multiply by a test function $\mathbf{v} \in H^1_0(\Omega;\mathbb{R}^2)$ (each component in $H^1_0(\Omega)$), integrate, and apply integration by parts. Using the symmetry of $\boldsymbol{\sigma}$ and the identity $\boldsymbol{\sigma}:\nabla\mathbf{v} = \boldsymbol{\sigma}:\boldsymbol{\varepsilon}(\mathbf{v})$ (since $\boldsymbol{\sigma}$ is symmetric):</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Weak Form of Linear Elasticity</div>
+                    <div class="math-box-label">Definition - Weak Form of Linear Elasticity</div>
                     <p>Let $V = H^1_0(\Omega;\mathbb{R}^2)$. Find $\mathbf{u} \in V$ such that
                     $$a(\mathbf{u},\mathbf{v}) = \ell(\mathbf{v}) \quad \forall\,\mathbf{v} \in V,$$
                     where
@@ -167,15 +167,15 @@
 
                 <h2 class="mt-5 mb-3">FEM Discretisation: Vector $P_1$ Elements</h2>
 
-                <p>For the scalar Poisson problem, a single degree of freedom (DOF) is placed at each node. For elasticity, we place <strong>2 DOFs per node</strong> — one for each displacement component. If the mesh has $N_{\mathrm{int}}$ interior nodes, the global system has $2N_{\mathrm{int}}$ unknowns and a $2N_{\mathrm{int}} \times 2N_{\mathrm{int}}$ stiffness matrix. The structure of the local stiffness matrix on element $K$ is a $6 \times 6$ block (three nodes, two DOFs each) with entries
+                <p>For the scalar Poisson problem, a single degree of freedom (DOF) is placed at each node. For elasticity, we place <strong>2 DOFs per node</strong> - one for each displacement component. If the mesh has $N_{\mathrm{int}}$ interior nodes, the global system has $2N_{\mathrm{int}}$ unknowns and a $2N_{\mathrm{int}} \times 2N_{\mathrm{int}}$ stiffness matrix. The structure of the local stiffness matrix on element $K$ is a $6 \times 6$ block (three nodes, two DOFs each) with entries
                 $$K^K_{(i,\alpha),(j,\beta)} = \int_K \sigma_{\alpha\gamma}(\varphi_i \mathbf{e}_\alpha) \varepsilon_{\gamma\beta}(\varphi_j \mathbf{e}_\beta)\,dx,$$
                 which can be computed exactly since $P_1$ basis functions have constant gradients.</p>
 
                 <h2 class="mt-5 mb-3">Volumetric Locking</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Locking for Nearly Incompressible Materials</div>
-                    <p>As $\nu \to 1/2$ (equivalently $\lambda \to \infty$), the constraint $\operatorname{div}\mathbf{u} \approx 0$ becomes increasingly dominant in the energy. For $P_1$ elements, the discrete space $V_h$ cannot adequately represent divergence-free fields — the constraint is over-enforced, and the FEM solution $\mathbf{u}_h \to \mathbf{0}$ as $\lambda \to \infty$ regardless of the forcing $\mathbf{f}$. This spurious stiffening is called <strong>volumetric locking</strong>.</p>
+                    <div class="math-box-label">Remark - Locking for Nearly Incompressible Materials</div>
+                    <p>As $\nu \to 1/2$ (equivalently $\lambda \to \infty$), the constraint $\operatorname{div}\mathbf{u} \approx 0$ becomes increasingly dominant in the energy. For $P_1$ elements, the discrete space $V_h$ cannot adequately represent divergence-free fields - the constraint is over-enforced, and the FEM solution $\mathbf{u}_h \to \mathbf{0}$ as $\lambda \to \infty$ regardless of the forcing $\mathbf{f}$. This spurious stiffening is called <strong>volumetric locking</strong>.</p>
                 </div>
 
                 <p>Quantitatively, Céa's lemma gives $\|\mathbf{u} - \mathbf{u}_h\|_{H^1} \leq (M/\alpha)\min_{v_h}\|\mathbf{u} - \mathbf{v}_h\|_{H^1}$ where now $M/\alpha \sim \lambda/\mu \to \infty$ for $P_1$ elements applied to nearly-incompressible problems. Standard error estimates deteriorate or fail entirely.</p>

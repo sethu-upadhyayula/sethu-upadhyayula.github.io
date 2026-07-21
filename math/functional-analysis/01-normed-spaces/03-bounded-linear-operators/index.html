@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -117,19 +117,19 @@
             <article>
                 <h1 class="text-accent mb-4">1.3 Bounded Linear Operators</h1>
 
-                <p>Linear operators between normed spaces generalise matrices. In infinite dimensions, not all linear operators are continuous — the crucial condition is <em>boundedness</em>. Bounded linear operators are the morphisms of the category of normed spaces, and the space of all such operators is itself a normed space (and a Banach space when the codomain is Banach).</p>
+                <p>Linear operators between normed spaces generalise matrices. In infinite dimensions, not all linear operators are continuous - the crucial condition is <em>boundedness</em>. Bounded linear operators are the morphisms of the category of normed spaces, and the space of all such operators is itself a normed space (and a Banach space when the codomain is Banach).</p>
 
                 <h2 class="mt-4 mb-3">Bounded Operators and Continuity</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.3.1 — Bounded Linear Operator</div>
+                    <div class="math-box-label">Definition 1.3.1 - Bounded Linear Operator</div>
                     <p>A linear operator $T:X\to Y$ between normed spaces is <strong>bounded</strong> if there exists $M\ge0$ such that
                     $$\|Tx\| \le M\|x\| \quad \text{for all } x\in X.$$</p>
                     <p class="mb-0">The infimum of all such $M$ is the <strong>operator norm</strong> $\|T\|=\sup_{\|x\|=1}\|Tx\|=\sup_{x\ne0}\frac{\|Tx\|}{\|x\|}$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.3.2 — Boundedness Equals Continuity</div>
+                    <div class="math-box-label">Theorem 1.3.2 - Boundedness Equals Continuity</div>
                     <p>For a linear operator $T:X\to Y$, the following are equivalent:</p>
                     <ol>
                         <li>$T$ is bounded.</li>
@@ -150,7 +150,7 @@
                 <h2 class="mt-5 mb-3">The Space $\mathcal{B}(X,Y)$</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.3.3 — $\mathcal{B}(X,Y)$ Is a Banach Space</div>
+                    <div class="math-box-label">Theorem 1.3.3 - $\mathcal{B}(X,Y)$ Is a Banach Space</div>
                     <p>The set $\mathcal{B}(X,Y)$ of all bounded linear operators from $X$ to $Y$, with the operator norm, is a normed space. If $Y$ is a Banach space, then $\mathcal{B}(X,Y)$ is also a Banach space.</p>
                     <p class="mb-0">Moreover, if $T\in\mathcal{B}(X,Y)$ and $S\in\mathcal{B}(Y,Z)$ then $ST\in\mathcal{B}(X,Z)$ and $\|ST\|\le\|S\|\|T\|$ (submultiplicativity).</p>
                 </div>
@@ -158,13 +158,13 @@
                 <h2 class="mt-5 mb-3">Examples</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 1.3.4 — Differentiation Operator</div>
+                    <div class="math-box-label">Example 1.3.4 - Differentiation Operator</div>
                     <p>Define $D:C^1[0,1]\to C[0,1]$ by $Df=f'$, where $C^1[0,1]$ carries the norm $\|f\|_{C^1}=\|f\|_\infty+\|f'\|_\infty$. Then $\|Df\|_\infty=\|f'\|_\infty\le\|f\|_{C^1}$, so $D$ is bounded with $\|D\|\le1$.</p>
                     <p class="mb-0">However, if $C^1[0,1]$ carries only the sup norm $\|f\|_\infty$, then $D$ is <em>unbounded</em>: take $f_n(t)=\sin(nt)/n$, then $\|f_n\|_\infty=1/n\to0$ but $\|Df_n\|_\infty=1$ for all $n$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 1.3.5 — Multiplication Operator on $L^2$</div>
+                    <div class="math-box-label">Example 1.3.5 - Multiplication Operator on $L^2$</div>
                     <p>Let $m\in L^\infty[0,1]$ and define $M_m:L^2[0,1]\to L^2[0,1]$ by $(M_m f)(t)=m(t)f(t)$. Then
                     $$\|M_m f\|_2^2 = \int_0^1|m(t)|^2|f(t)|^2\,dt \le \|m\|_\infty^2\|f\|_2^2,$$
                     so $M_m$ is bounded with $\|M_m\|\le\|m\|_\infty$. In fact $\|M_m\|=\|m\|_\infty$.</p>
@@ -172,8 +172,8 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Unbounded Operators</div>
-                    <p class="mb-0">Unbounded linear operators (defined only on a dense domain) play a crucial role in quantum mechanics — the position and momentum operators are unbounded. Their analysis requires the theory of closed and closable operators, which builds on the closed graph theorem studied in Chapter 3.</p>
+                    <div class="math-box-label">Remark - Unbounded Operators</div>
+                    <p class="mb-0">Unbounded linear operators (defined only on a dense domain) play a crucial role in quantum mechanics - the position and momentum operators are unbounded. Their analysis requires the theory of closed and closable operators, which builds on the closed graph theorem studied in Chapter 3.</p>
                 </div>
 
                 <hr class="my-5">

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,48 +80,48 @@
             <article>
                 <h1 class="text-accent mb-4">4.1 Amortizing, Forward-Starting, and Constant Maturity Swaps</h1>
 
-                <p>This section covers three structures that modify the vanilla swap of Chapter 1 along different dimensions: the notional schedule (amortizing/accreting swaps), the start date (forward-starting swaps), and the floating rate's term structure (constant maturity swaps). The first two require no new valuation machinery — they are valued with the same discount and forecast curves as a vanilla swap, simply applied to a different cash flow schedule. CMS requires one genuinely new ingredient: a convexity adjustment.</p>
+                <p>This section covers three structures that modify the vanilla swap of Chapter 1 along different dimensions: the notional schedule (amortizing/accreting swaps), the start date (forward-starting swaps), and the floating rate's term structure (constant maturity swaps). The first two require no new valuation machinery - they are valued with the same discount and forecast curves as a vanilla swap, simply applied to a different cash flow schedule. CMS requires one genuinely new ingredient: a convexity adjustment.</p>
 
                 <h2 class="mt-5 mb-3">Amortizing and Accreting Swaps</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Amortizing and Accreting Swaps</div>
+                    <div class="math-box-label">Definition - Amortizing and Accreting Swaps</div>
                     <p class="mb-0">An <em>amortizing swap</em> has a notional schedule $N_1 > N_2 > \cdots > N_n$ that decreases over time, typically following a predetermined schedule (e.g. matching the amortization of an underlying loan or mortgage pool). An <em>accreting</em> swap has an increasing notional schedule $N_1 < N_2 < \cdots < N_n$ (e.g. matching drawdowns under a construction loan facility). Both are valued by the same leg-PV formulas as Section 1.1, but with the notional inside each summand replaced by the period-specific $N_i$:
                     $$PV_{fix} = c\sum_{i=1}^n N_i\,\delta_i^{fix} P_d(0,t_i), \qquad PV_{flt} = \sum_{i=1}^n N_i\,\delta_i^{flt} F_{x,i}\,P_d(0,t_i)$$</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Amortizing Swaps Are Used</div>
-                    <p class="mb-0">Amortizing swaps are the natural hedge for floating-rate liabilities whose principal balance declines over time — most commonly mortgage-backed and asset-backed loan pools, or term loans with scheduled principal repayments. Hedging such a liability with a constant-notional vanilla swap would leave the borrower over-hedged (paying fixed on a notional larger than the remaining loan balance) in later years; matching the swap's notional schedule to the amortization schedule keeps the hedge ratio close to 1 throughout the life of the loan. The PV01 (Section 3.1) of an amortizing swap is correspondingly front-loaded relative to a bullet swap of the same final maturity, since later cash flows carry less notional.</p>
+                    <div class="math-box-label">Remark - Why Amortizing Swaps Are Used</div>
+                    <p class="mb-0">Amortizing swaps are the natural hedge for floating-rate liabilities whose principal balance declines over time - most commonly mortgage-backed and asset-backed loan pools, or term loans with scheduled principal repayments. Hedging such a liability with a constant-notional vanilla swap would leave the borrower over-hedged (paying fixed on a notional larger than the remaining loan balance) in later years; matching the swap's notional schedule to the amortization schedule keeps the hedge ratio close to 1 throughout the life of the loan. The PV01 (Section 3.1) of an amortizing swap is correspondingly front-loaded relative to a bullet swap of the same final maturity, since later cash flows carry less notional.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Forward-Starting Swaps</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Forward-Starting Swap</div>
-                    <p class="mb-0">A <em>forward-starting swap</em> (or "forward swap") has its first accrual period beginning at a future date $T_0 > 0$ rather than today, with payments on $t_1 < \cdots < t_n$, all $> T_0$. Its valuation is identical to the vanilla formulas of Section 1.1 — the discount factors $P_d(0,t_i)$ and forward rates $F_{x,i}$ already incorporate the time value between today and each future date, so no additional adjustment is needed:
+                    <div class="math-box-label">Definition - Forward-Starting Swap</div>
+                    <p class="mb-0">A <em>forward-starting swap</em> (or "forward swap") has its first accrual period beginning at a future date $T_0 > 0$ rather than today, with payments on $t_1 < \cdots < t_n$, all $> T_0$. Its valuation is identical to the vanilla formulas of Section 1.1 - the discount factors $P_d(0,t_i)$ and forward rates $F_{x,i}$ already incorporate the time value between today and each future date, so no additional adjustment is needed:
                     $$PV_{fix} = Nc\sum_{i=1}^n \delta_i^{fix}P_d(0,t_i), \qquad PV_{flt} = N\sum_{i=1}^n \delta_i^{flt}F_{x,i}P_d(0,t_i)$$
-                    The par rate for a forward-starting swap is simply $c^*=PV_{flt}/A$ as in Section 1.1, using only the cash flows from $T_0$ onward — equivalently, it is the rate that makes a $T_0\times(t_n-T_0)$ "forward swap" worth zero today.</p>
+                    The par rate for a forward-starting swap is simply $c^*=PV_{flt}/A$ as in Section 1.1, using only the cash flows from $T_0$ onward - equivalently, it is the rate that makes a $T_0\times(t_n-T_0)$ "forward swap" worth zero today.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Uses of Forward-Starting Swaps</div>
-                    <p class="mb-0">Forward-starting swaps are used to hedge anticipated future borrowing or lending — e.g. a company planning to issue a 5-year bond in 6 months can lock in today's forward swap rate for that future period using a 6-month-forward 5-year swap, eliminating the risk that rates rise before issuance. They are also a building block for constructing forward volatility and forward curve views, and underlie the "forward swap rate" that appears as the underlying of a swaption.</p>
+                    <div class="math-box-label">Remark - Uses of Forward-Starting Swaps</div>
+                    <p class="mb-0">Forward-starting swaps are used to hedge anticipated future borrowing or lending - e.g. a company planning to issue a 5-year bond in 6 months can lock in today's forward swap rate for that future period using a 6-month-forward 5-year swap, eliminating the risk that rates rise before issuance. They are also a building block for constructing forward volatility and forward curve views, and underlie the "forward swap rate" that appears as the underlying of a swaption.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Constant Maturity Swaps (CMS)</h2>
 
-                <p>A constant maturity swap references, as its floating rate, not a money-market rate (like 3M SOFR) but a <em>swap rate</em> of a fixed tenor — for example, the prevailing 10-year swap rate, reset periodically.</p>
+                <p>A constant maturity swap references, as its floating rate, not a money-market rate (like 3M SOFR) but a <em>swap rate</em> of a fixed tenor - for example, the prevailing 10-year swap rate, reset periodically.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — CMS Swap</div>
-                    <p class="mb-0">A CMS swap exchanges a fixed rate for a floating leg that pays, at each $t_i$, the $\tau$-year par swap rate $S_\tau(t_{i-1})$ observed (fixed) at $t_{i-1}$ for the period $[t_{i-1},t_i]$ — e.g. a "CMS10Y" leg resets to the then-current 10-year swap rate every quarter or every year, regardless of the swap's own (shorter) maturity. Naively, one might value the floating leg by replacing $S_\tau(t_{i-1})$ with its forward value $\mathbb{E}^{Q_{t_i}}[S_\tau(t_{i-1})]$ under the $t_i$-forward measure — but this forward swap rate is <em>not</em> equal to the textbook forward rate one would read off the curve, due to a convexity effect.</p>
+                    <div class="math-box-label">Definition - CMS Swap</div>
+                    <p class="mb-0">A CMS swap exchanges a fixed rate for a floating leg that pays, at each $t_i$, the $\tau$-year par swap rate $S_\tau(t_{i-1})$ observed (fixed) at $t_{i-1}$ for the period $[t_{i-1},t_i]$ - e.g. a "CMS10Y" leg resets to the then-current 10-year swap rate every quarter or every year, regardless of the swap's own (shorter) maturity. Naively, one might value the floating leg by replacing $S_\tau(t_{i-1})$ with its forward value $\mathbb{E}^{Q_{t_i}}[S_\tau(t_{i-1})]$ under the $t_i$-forward measure - but this forward swap rate is <em>not</em> equal to the textbook forward rate one would read off the curve, due to a convexity effect.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The CMS Convexity Adjustment</div>
-                    <p><strong>Where the adjustment comes from.</strong> A vanilla floating rate (e.g. 3M SOFR) pays out and is discounted over the same short period, so its forward value under the relevant forward measure equals the simple forward rate from the curve — no adjustment needed (this is the content of the "natural" payment timing assumption used throughout Chapters 1-3). A CMS payment, by contrast, pays a <em>swap rate</em> (whose natural "annuity" numeraire spans many years) but the payment itself occurs on a single date $t_i$ — a mismatch between the rate's natural payment timing and its actual payment timing.</p>
-                    <p class="mb-0"><strong>Sign and magnitude.</strong> This timing mismatch means $\mathbb{E}^{Q_{t_i}}[S_\tau(t_{i-1})] = F_\tau(t_{i-1}) + \text{CMS adjustment}$, where $F_\tau(t_{i-1})$ is the "naive" forward swap rate and the adjustment is positive and grows with the swap rate's volatility, the tenor $\tau$, and the time to the fixing date $t_{i-1}$ — longer underlying tenors and longer-dated fixings have larger adjustments. The adjustment is computed by integrating over the implied volatility smile of swaptions on $S_\tau$ (a static replication argument), making CMS pricing intrinsically dependent on the swaption volatility surface, unlike the vanilla swaps of Chapters 1-3 which require no optionality inputs at all.</p>
+                    <div class="math-box-label">Remark - The CMS Convexity Adjustment</div>
+                    <p><strong>Where the adjustment comes from.</strong> A vanilla floating rate (e.g. 3M SOFR) pays out and is discounted over the same short period, so its forward value under the relevant forward measure equals the simple forward rate from the curve - no adjustment needed (this is the content of the "natural" payment timing assumption used throughout Chapters 1-3). A CMS payment, by contrast, pays a <em>swap rate</em> (whose natural "annuity" numeraire spans many years) but the payment itself occurs on a single date $t_i$ - a mismatch between the rate's natural payment timing and its actual payment timing.</p>
+                    <p class="mb-0"><strong>Sign and magnitude.</strong> This timing mismatch means $\mathbb{E}^{Q_{t_i}}[S_\tau(t_{i-1})] = F_\tau(t_{i-1}) + \text{CMS adjustment}$, where $F_\tau(t_{i-1})$ is the "naive" forward swap rate and the adjustment is positive and grows with the swap rate's volatility, the tenor $\tau$, and the time to the fixing date $t_{i-1}$ - longer underlying tenors and longer-dated fixings have larger adjustments. The adjustment is computed by integrating over the implied volatility smile of swaptions on $S_\tau$ (a static replication argument), making CMS pricing intrinsically dependent on the swaption volatility surface, unlike the vanilla swaps of Chapters 1-3 which require no optionality inputs at all.</p>
                 </div>
 
                 <hr class="my-5">

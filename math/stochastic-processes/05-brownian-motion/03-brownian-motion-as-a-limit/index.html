@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,7 +132,7 @@
                 <h2 class="mt-4 mb-3">Rescaled Random Walk</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.1 — Rescaled Random Walk</div>
+                    <div class="math-box-label">Definition 5.3.1 - Rescaled Random Walk</div>
                     <p>Let $X_1, X_2, \ldots$ be i.i.d. with $E[X_i] = 0$ and $E[X_i^2] = \sigma^2 \in (0,\infty)$. Define the partial sums $S_0 = 0$, $S_k = X_1 + \cdots + X_k$. The <strong>rescaled random walk</strong> (or Donsker interpolation) is the process $W^{(n)} \in C[0,1]$ defined by linear interpolation:
                     $$W^{(n)}_t = \frac{1}{\sigma\sqrt{n}} S_{\lfloor nt \rfloor} + \frac{nt - \lfloor nt \rfloor}{\sigma\sqrt{n}} X_{\lfloor nt \rfloor + 1}, \quad t \in [0,1].$$</p>
                     <p class="mb-0">For integer times $t = k/n$, this gives $W^{(n)}_{k/n} = S_k / (\sigma\sqrt{n})$. Between integer multiples of $1/n$, $W^{(n)}$ is linearly interpolated, making it an element of the space $C[0,1]$ of continuous functions on $[0,1]$.</p>
@@ -141,7 +141,7 @@
                 <h2 class="mt-5 mb-3">Weak Convergence in $C[0,1]$</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.2 — Weak Convergence in $C[0,1]$</div>
+                    <div class="math-box-label">Definition 5.3.2 - Weak Convergence in $C[0,1]$</div>
                     <p>The space $C[0,1]$ of continuous functions $f:[0,1]\to\mathbb{R}$ is a separable Banach space under the supremum norm $\|f\|_\infty = \sup_{t\in[0,1]}|f(t)|$. A sequence of probability measures $P_n$ on $C[0,1]$ <strong>converges weakly</strong> to $P$ (written $P_n \Rightarrow P$) if
                     $$\int_{C[0,1]} g\,dP_n \to \int_{C[0,1]} g\,dP$$
                     for every bounded continuous function $g: C[0,1] \to \mathbb{R}$.</p>
@@ -149,7 +149,7 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.3.3 — Donsker's Invariance Principle (Functional CLT)</div>
+                    <div class="math-box-label">Theorem 5.3.3 - Donsker's Invariance Principle (Functional CLT)</div>
                     <p>Under the conditions of Definition 5.3.1, as $n \to \infty$:
                     $$W^{(n)} \xRightarrow{d} B \quad \text{in } C[0,1],$$
                     where $B = (B_t)_{0 \le t \le 1}$ is standard Brownian motion. More precisely, the distributions of $W^{(n)}$ on $(C[0,1], \mathcal{B}(C[0,1]))$ converge weakly to Wiener measure.</p>
@@ -159,20 +159,20 @@
                         <li><strong>Tightness:</strong> The sequence $\{P \circ (W^{(n)})^{-1}\}$ is tight in $C[0,1]$: for every $\varepsilon > 0$, there exists a compact set $K \subset C[0,1]$ with $P(W^{(n)} \in K) \ge 1-\varepsilon$ for all $n$. Tightness follows from the Kolmogorov-Chentsov criterion via $E[|W^{(n)}_t - W^{(n)}_s|^4] \le C|t-s|^2$.</li>
                         <li><strong>Uniqueness of limit points:</strong> By Prokhorov's theorem, tightness implies relative compactness. All subsequential limits must have the same finite-dimensional distributions as BM, so the unique limit is Wiener measure.</li>
                     </ol>
-                    <p class="mb-0">The result holds under the weaker condition $E[X_i^2] < \infty$ (no higher moments needed). The "invariance" in the name refers to the fact that the limit is the same for all distributions with mean 0 and finite variance — it depends only on $\sigma^2$, not on the specific distribution of the $X_i$.</p>
+                    <p class="mb-0">The result holds under the weaker condition $E[X_i^2] < \infty$ (no higher moments needed). The "invariance" in the name refers to the fact that the limit is the same for all distributions with mean 0 and finite variance - it depends only on $\sigma^2$, not on the specific distribution of the $X_i$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Applications: Limits of Functionals</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.3.4 — Continuous Mapping Theorem</div>
+                    <div class="math-box-label">Theorem 5.3.4 - Continuous Mapping Theorem</div>
                     <p>If $W^{(n)} \Rightarrow B$ in $C[0,1]$ and $\phi: C[0,1] \to \mathbb{R}$ is a <strong>continuous</strong> functional (with respect to $\|\cdot\|_\infty$), then
                     $$\phi(W^{(n)}) \xrightarrow{d} \phi(B).$$</p>
                     <p class="mb-0">This is the key tool for computing distributional limits of functionals of random walks. Any functional that is continuous in the uniform topology can be handled this way. Examples include: $\phi(f) = \max_{t \in [0,1]} f(t)$ (maximum), $\phi(f) = \int_0^1 f(t)\,dt$ (integral), and $\phi(f) = f(T)$ for a fixed time $T$ (evaluation map).</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Maximum of Random Walk</div>
+                    <div class="math-box-label">Example - Maximum of Random Walk</div>
                     <p>Let $M_n = \max_{0 \le k \le n} S_k$ be the running maximum of a simple symmetric random walk. The map $f \mapsto \max_{t \in [0,1]} f(t)$ is continuous on $C[0,1]$, so by Donsker and the CMT:
                     $$\frac{M_n}{\sqrt{n}} \xrightarrow{d} \max_{0 \le t \le 1} B_t = M_1,$$
                     where $M_1$ has density $f_{M_1}(x) = \sqrt{2/\pi} e^{-x^2/2}$ for $x \ge 0$ (Section 5.2).</p>
@@ -180,15 +180,15 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Kolmogorov-Smirnov Statistic</div>
+                    <div class="math-box-label">Example - Kolmogorov-Smirnov Statistic</div>
                     <p>Let $X_1, \ldots, X_n$ be i.i.d. $\sim F$ and let $F_n$ be the empirical CDF. The Kolmogorov-Smirnov statistic is $D_n = \sup_{x} |F_n(x) - F(x)|$. Under $H_0 : F = F_0$ (continuous), a change of variables via the probability integral transform shows that $\sqrt{n} D_n$ converges in distribution to $\sup_{0 \le t \le 1} |B^0_t|$, where $B^0$ is the Brownian bridge. This follows from Donsker's theorem applied to the uniform empirical process.</p>
                     <p class="mb-0">The distribution of $\sup_{0 \le t \le 1} |B^0_t|$ is the Kolmogorov distribution, whose CDF is $K(x) = 1 - 2\sum_{k=1}^\infty (-1)^{k-1} e^{-2k^2 x^2}$. This distribution-free limit underpins the KS test for goodness of fit.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Extensions and Limitations</div>
+                    <div class="math-box-label">Remark - Extensions and Limitations</div>
                     <p>Donsker's theorem extends to: (1) triangular arrays (Lindeberg condition replacing identical distribution), (2) weakly dependent sequences (under mixing conditions), and (3) higher dimensions where the limit is $d$-dimensional BM.</p>
-                    <p class="mb-0">The CMT does not apply to all functionals — notably those that are not continuous in $\|\cdot\|_\infty$. For example, passage times require more delicate arguments. For heavy-tailed $X_i$ with $E[X_i^2] = \infty$, the limit is an $\alpha$-stable process rather than BM.</p>
+                    <p class="mb-0">The CMT does not apply to all functionals - notably those that are not continuous in $\|\cdot\|_\infty$. For example, passage times require more delicate arguments. For heavy-tailed $X_i$ with $E[X_i^2] = \infty$, the limit is an $\alpha$-stable process rather than BM.</p>
                 </div>
 
                 <hr class="my-5">

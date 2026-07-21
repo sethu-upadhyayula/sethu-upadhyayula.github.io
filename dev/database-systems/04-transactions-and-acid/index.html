@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Transactions and ACID</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Database Systems</a>
+                <hr>
+                <a href="../01-the-relational-model/" class="text-decoration-none toc-chapter-link"><strong>1.</strong> The Relational Model</a>
+                <a href="../02-sql-querying-relational-data/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> SQL: Querying Relational Data</a>
+                <a href="../03-normalization-and-schema-design/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Normalization and Schema Design</a>
+                <a href="../04-transactions-and-acid/" class="text-decoration-none toc-chapter-link toc-active"><strong>4.</strong> Transactions and ACID</a>
+                <a href="../05-concurrency-control/" class="text-decoration-none toc-chapter-link"><strong>5.</strong> Concurrency Control</a>
+                <a href="../06-indexing-and-query-processing/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Indexing and Query Processing</a>
+                <a href="../07-query-optimization/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Query Optimization</a>
+                <a href="../08-nosql-and-modern-database-systems/" class="text-decoration-none toc-chapter-link"><strong>8.</strong> NoSQL and Modern Database Systems</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">Database Systems</a> ›
+                <span>4. Transactions and ACID</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">4. Transactions and ACID</h1>
+
+                <p>Real applications frequently need to perform several related database operations as a single logical unit - transferring money between two accounts requires debiting one and crediting the other, and either both must happen or neither should. This chapter covers transactions, the mechanism providing this guarantee.</p>
+
+                <h2 class="mt-5 mb-3">What a Transaction Is</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition - Transaction</div>
+                    <p class="mb-0">A <strong>transaction</strong> is a sequence of one or more database operations treated as a single, indivisible logical unit - either fully committed (all its effects become permanent) or fully rolled back (none of its effects persist), with no possibility of a partial, inconsistent result becoming visible to other parts of the system.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The ACID Properties</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition - ACID</div>
+                    <p class="mb-0">
+                        <strong>Atomicity</strong> - a transaction's operations either all happen or none do.<br>
+                        <strong>Consistency</strong> - a transaction moves the database from one valid state (satisfying all declared constraints, Chapter 2) to another.<br>
+                        <strong>Isolation</strong> - concurrently running transactions do not observe each other's intermediate, uncommitted state (Chapter 5 covers the practical nuances here in depth).<br>
+                        <strong>Durability</strong> - once a transaction commits, its effects survive any subsequent crash or power failure.
+                    </p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Achieving Durability: Write-Ahead Logging</h2>
+
+                <p>Durability is typically implemented via <strong>write-ahead logging (WAL)</strong> - before modifying the actual data on disk, the database first writes a durable log record describing the intended change, so that after a crash, the log can be replayed to redo any committed-but-not-yet-fully-applied changes, or undo any uncommitted ones - directly analogous to the journaling technique covered in Chapter 7 of Operating Systems.</p>
+
+                <h2 class="mt-5 mb-3">Achieving Atomicity: Commit and Rollback</h2>
+
+                <p>A transaction ends either with <strong>COMMIT</strong> (making all its changes permanent and visible) or <strong>ROLLBACK</strong> (discarding all its changes as though they never happened) - the database ensures atomicity by only making a transaction's effects durable and visible at the single instant of commit, never partway through.</p>
+
+                <h2 class="mt-5 mb-3">Savepoints</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark - Partial Rollback with Savepoints</div>
+                    <p class="mb-0">A <strong>savepoint</strong> marks an intermediate point within a longer transaction, allowing a rollback to that specific point rather than discarding the entire transaction - useful when a transaction includes an operation that might fail in a way the application wants to handle and recover from without abandoning everything done in that transaction so far.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../03-normalization-and-schema-design/" class="btn btn-outline-custom">&larr; 3. Normalization and Schema Design</a>
+                    <a href="../05-concurrency-control/" class="btn btn-custom">5. Concurrency Control &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

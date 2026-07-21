@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -47,11 +47,11 @@
             <nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Financial Mathematics</a> › <a href="../">7. Interest Rate Models</a> › <span>7.2 Heath-Jarrow-Morton Framework</span></nav>
             <article>
                 <h1 class="text-accent mb-4">7.2 Heath-Jarrow-Morton Framework</h1>
-                <p>The HJM framework (1992) models the dynamics of the entire forward rate curve $f(t,T)$ directly, instead of just the short rate. The key insight is that no-arbitrage places a constraint — the HJM drift condition — on the forward rate dynamics.</p>
+                <p>The HJM framework (1992) models the dynamics of the entire forward rate curve $f(t,T)$ directly, instead of just the short rate. The key insight is that no-arbitrage places a constraint - the HJM drift condition - on the forward rate dynamics.</p>
 
                 <h2 class="mt-5 mb-3">Forward Rates and Bond Prices</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Forward Rate</div>
+                    <div class="math-box-label">Definition - Forward Rate</div>
                     <p class="mb-0">The <strong>instantaneous forward rate</strong> $f(t,T)$ is defined via:
                     $$P(t,T) = \exp\!\left(-\int_t^T f(t,u)\,du\right).$$
                     The short rate is recovered as $r_t = f(t,t)$. HJM specifies dynamics for $f(t,T)$ as a function of the maturity $T$:
@@ -60,15 +60,15 @@
 
                 <h2 class="mt-5 mb-3">HJM Drift Condition</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — HJM No-Arbitrage Drift Condition</div>
+                    <div class="math-box-label">Theorem - HJM No-Arbitrage Drift Condition</div>
                     <p>Under the risk-neutral measure $Q$ (where $W_t$ is a $Q$-Brownian motion), the drift $\alpha(t,T)$ is not free: no-arbitrage requires
                     $$\alpha(t,T) = \sigma(t,T)\int_t^T \sigma(t,u)\,du.$$</p>
-                    <p class="mb-0"><strong>Proof sketch:</strong> Bond price $P(t,T) = \exp(-\int_t^T f(t,u)\,du)$. Applying Itô's lemma, the condition for $e^{-\int_0^t r_s\,ds}P(t,T)$ to be a $Q$-martingale forces the drift of $f(t,T)$ to be exactly $\sigma(t,T)\int_t^T\sigma(t,u)\,du$. Thus specifying the volatility surface $\sigma(t,T)$ completely determines the forward rate drift — only volatility is a free input.</p>
+                    <p class="mb-0"><strong>Proof sketch:</strong> Bond price $P(t,T) = \exp(-\int_t^T f(t,u)\,du)$. Applying Itô's lemma, the condition for $e^{-\int_0^t r_s\,ds}P(t,T)$ to be a $Q$-martingale forces the drift of $f(t,T)$ to be exactly $\sigma(t,T)\int_t^T\sigma(t,u)\,du$. Thus specifying the volatility surface $\sigma(t,T)$ completely determines the forward rate drift - only volatility is a free input.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Short Rate Models as HJM Special Cases</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Vasicek as HJM</div>
+                    <div class="math-box-label">Example - Vasicek as HJM</div>
                     <p class="mb-0">For $\sigma(t,T) = \sigma e^{-\kappa(T-t)}$ (exponentially decaying vol), the HJM drift condition gives
                     $$\alpha(t,T) = \sigma e^{-\kappa(T-t)}\int_t^T \sigma e^{-\kappa(u-t)}\,du = \frac{\sigma^2}{\kappa}e^{-\kappa(T-t)}(1-e^{-\kappa(T-t)}).$$
                     This is precisely the Vasicek forward rate dynamics. Thus the Vasicek model is an HJM model with exponential volatility.</p>
@@ -76,7 +76,7 @@
 
                 <h2 class="mt-5 mb-3">LIBOR Market Model</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — LIBOR Market Model (BGM)</div>
+                    <div class="math-box-label">Definition - LIBOR Market Model (BGM)</div>
                     <p>The HJM framework is theoretically elegant but leads to non-Markovian dynamics unless $\sigma(t,T)$ has special form. The <strong>LIBOR Market Model</strong> (Brace-Gatarek-Musiela 1997) avoids this by modeling discrete LIBOR rates $L_n(t)$ for period $[T_{n}, T_{n+1}]$ directly.</p>
                     <p class="mb-0">Under the $T_{n+1}$-forward measure:
                     $$dL_n(t) = \sigma_n(t)\,L_n(t)\,d\widetilde{W}_t^{T_{n+1}}.$$

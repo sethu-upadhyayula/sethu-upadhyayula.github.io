@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,53 +132,53 @@
 
                 <h2 class="mt-4 mb-3">Absolute and Relative Condition Numbers</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Absolute Condition Number</div>
+                    <div class="math-box-label">Definition - Absolute Condition Number</div>
                     <p>Let $f : \mathbb{R}^m \to \mathbb{R}^n$ be differentiable at $x$. The <strong>absolute condition number</strong> of $f$ at $x$ is:</p>
                     $$\hat{\kappa}(x) = \lim_{\delta \to 0} \max_{\|\delta x\| \le \delta} \frac{\|f(x + \delta x) - f(x)\|}{\|\delta x\|} = \|J_f(x)\|,$$
                     <p class="mb-0">where $J_f(x)$ is the Jacobian of $f$ at $x$ and $\|\cdot\|$ denotes an appropriate operator norm.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Relative Condition Number</div>
+                    <div class="math-box-label">Definition - Relative Condition Number</div>
                     <p>The <strong>relative condition number</strong> normalises by the magnitudes of input and output:</p>
                     $$\kappa(x) = \frac{\|J_f(x)\| \cdot \|x\|}{\|f(x)\|}.$$
                     <p class="mb-0">It measures the ratio of relative output perturbation to relative input perturbation. A problem with $\kappa \approx 1$ is <em>well-conditioned</em>; one with $\kappa \gg 1$ is <em>ill-conditioned</em>.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Interpretation</div>
+                    <div class="math-box-label">Remark - Interpretation</div>
                     <p class="mb-0">If the input $x$ has relative error $\varepsilon_{\text{data}}$ (e.g., from measurement noise or prior computation), then the output $f(x)$ has relative error at most approximately $\kappa(x)\,\varepsilon_{\text{data}}$. For a backward-stable algorithm with backward error of order $\varepsilon_{\text{mach}}$, the forward error in the computed output is therefore bounded by $\kappa(x)\,\varepsilon_{\text{mach}}$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Matrix Condition Number</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Matrix Condition Number</div>
+                    <div class="math-box-label">Definition - Matrix Condition Number</div>
                     <p>For a nonsingular matrix $A \in \mathbb{R}^{n\times n}$, the <strong>condition number</strong> with respect to a matrix norm $\|\cdot\|$ is:</p>
                     $$\kappa(A) = \|A\| \cdot \|A^{-1}\|.$$
                     <p class="mb-0">For the 2-norm, $\kappa_2(A) = \sigma_{\max}(A)/\sigma_{\min}(A)$, the ratio of the largest to smallest singular values. We always have $\kappa(A) \ge 1$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Perturbation of Linear Systems</div>
+                    <div class="math-box-label">Theorem - Perturbation of Linear Systems</div>
                     <p>Let $Ax = b$ with $A$ nonsingular. Suppose $b$ is perturbed to $b + \delta b$, giving $A(x + \delta x) = b + \delta b$. Then:</p>
                     $$\frac{\|\delta x\|}{\|x\|} \le \kappa(A) \cdot \frac{\|\delta b\|}{\|b\|}.$$
                     <p class="mb-0">Similarly, if $A$ is perturbed to $A + \delta A$ with $\|\delta A\| \cdot \|A^{-1}\| < 1$, then $\|\delta x\|/\|x\| \le \kappa(A)\,\|\delta A\|/\|A\| + O(\|\delta A\|^2)$. Thus a linear system can be solved to relative accuracy at most $\kappa(A)$ times the relative perturbation in the data.</p>
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Condition Number and Singular Values</div>
+                    <div class="math-box-label">Proposition - Condition Number and Singular Values</div>
                     <p class="mb-0">For the 2-norm, $\kappa_2(A) = \sigma_1/\sigma_n$ where $\sigma_1 \ge \sigma_2 \ge \cdots \ge \sigma_n > 0$ are the singular values. A matrix is singular if and only if $\sigma_n = 0$, equivalently $\kappa_2(A) = \infty$. Orthogonal matrices satisfy $\kappa_2(Q) = 1$, the minimum possible value, which is why QR factorisation is numerically preferred over methods that destroy orthogonality.</p>
                 </div>
 
-                <h2 class="mt-5 mb-3">The Hilbert Matrix — A Notoriously Ill-Conditioned Example</h2>
+                <h2 class="mt-5 mb-3">The Hilbert Matrix - A Notoriously Ill-Conditioned Example</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Hilbert Matrix</div>
+                    <div class="math-box-label">Definition - Hilbert Matrix</div>
                     <p class="mb-0">The $n \times n$ <strong>Hilbert matrix</strong> $H_n$ has entries $(H_n)_{ij} = 1/(i+j-1)$. It is symmetric positive definite and arises naturally in polynomial least-squares fitting. Its condition number grows as:</p>
                     $$\kappa_2(H_n) \approx e^{3.5n}.$$
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Hilbert Matrix Condition Numbers</div>
+                    <div class="math-box-label">Example - Hilbert Matrix Condition Numbers</div>
                     <p>Selected values of $\kappa_2(H_n)$ illustrate the rapid growth:</p>
                     <table class="table table-sm table-bordered text-center" style="max-width:380px;">
                         <thead><tr><th>$n$</th><th>$\kappa_2(H_n)$</th><th>Significant digits lost</th></tr></thead>
@@ -194,8 +194,8 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Condition vs. Stability</div>
-                    <p class="mb-0">Condition number is a property of the <em>problem</em>, not the algorithm. An ill-conditioned problem cannot be solved accurately by any algorithm regardless of how clever it is — the input data simply does not contain enough information. Stability, by contrast, is a property of the algorithm: a stable algorithm does not introduce errors beyond what the condition number requires. The interplay is captured by the maxim: <em>accuracy = stability × (1/conditioning)</em>.</p>
+                    <div class="math-box-label">Remark - Condition vs. Stability</div>
+                    <p class="mb-0">Condition number is a property of the <em>problem</em>, not the algorithm. An ill-conditioned problem cannot be solved accurately by any algorithm regardless of how clever it is - the input data simply does not contain enough information. Stability, by contrast, is a property of the algorithm: a stable algorithm does not introduce errors beyond what the condition number requires. The interplay is captured by the maxim: <em>accuracy = stability × (1/conditioning)</em>.</p>
                 </div>
 
                 <hr class="my-5">

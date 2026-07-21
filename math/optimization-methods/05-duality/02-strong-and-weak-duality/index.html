@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -127,12 +127,12 @@
             <article>
                 <h1 class="text-accent mb-4">5.2 Strong and Weak Duality</h1>
 
-                <p>Weak duality is a universal lower-bound result requiring no special structure. Strong duality — the equality of primal and dual optima — holds under constraint qualifications and is the cornerstone of LP theory and convex optimisation.</p>
+                <p>Weak duality is a universal lower-bound result requiring no special structure. Strong duality - the equality of primal and dual optima - holds under constraint qualifications and is the cornerstone of LP theory and convex optimisation.</p>
 
                 <h2 class="mt-4 mb-3">Weak Duality</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.2.1 — Weak Duality</div>
+                    <div class="math-box-label">Theorem 5.2.1 - Weak Duality</div>
                     <p>Let $x$ be primal feasible and $y$ dual feasible for the LP pair (P) $\min c^\top x$ s.t. $Ax \ge b$, $x \ge 0$ and (D) $\max b^\top y$ s.t. $A^\top y \le c$, $y \ge 0$. Then
                     $$b^\top y \le c^\top x.$$</p>
                     <p><em>Proof.</em> Since $y \ge 0$ and $Ax \ge b$: $y^\top b \le y^\top Ax$. Since $x \ge 0$ and $A^\top y \le c$: $y^\top A x \le c^\top x$. Thus $b^\top y \le c^\top x$. $\square$</p>
@@ -140,14 +140,14 @@
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.2.2 — Duality Gap</div>
+                    <div class="math-box-label">Definition 5.2.2 - Duality Gap</div>
                     <p class="mb-0">The <strong>duality gap</strong> at a pair $(x, y)$ of primal and dual feasible solutions is $c^\top x - b^\top y \ge 0$. The <strong>optimal duality gap</strong> is $p^* - d^* \ge 0$. Strong duality means the optimal duality gap is zero.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Strong Duality for LP</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.2.3 — LP Strong Duality</div>
+                    <div class="math-box-label">Theorem 5.2.3 - LP Strong Duality</div>
                     <p>If (P) has an optimal solution $x^*$, then (D) has an optimal solution $y^*$ and $c^\top x^* = b^\top y^*$. More precisely:</p>
                     <ul>
                         <li>If (P) is feasible and bounded: both (P) and (D) are solvable and $p^* = d^*$.</li>
@@ -155,13 +155,13 @@
                         <li>If (P) is infeasible: either (D) is unbounded ($d^* = +\infty$) or also infeasible.</li>
                     </ul>
                     <p><em>Proof via simplex.</em> At optimality, the simplex multipliers $y^* = A_B^{-\top} c_B$ satisfy $A^\top y^* \le c$ (reduced costs $\bar{c} \ge 0$) and $b^\top y^* = c_B^\top A_B^{-1} b = c^\top x^*$. So $y^*$ is dual feasible with $b^\top y^* = p^*$, giving $d^* \ge p^*$. By weak duality $d^* \le p^*$. Hence $d^* = p^*$. $\square$</p>
-                    <p class="mb-0">This proof shows that the LP dual is not an abstract construction — the dual solution $y^*$ is directly computed by the simplex method as the multipliers at optimality.</p>
+                    <p class="mb-0">This proof shows that the LP dual is not an abstract construction - the dual solution $y^*$ is directly computed by the simplex method as the multipliers at optimality.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Farkas' Lemma</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.2.4 — Farkas' Lemma</div>
+                    <div class="math-box-label">Theorem 5.2.4 - Farkas' Lemma</div>
                     <p>For $A \in \mathbb{R}^{m \times n}$ and $b \in \mathbb{R}^m$, exactly one of the following systems has a solution:</p>
                     <ul>
                         <li>System I: $Ax = b$, $x \ge 0$.</li>
@@ -174,9 +174,9 @@
                 <h2 class="mt-5 mb-3">Geometric Interpretation</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Separating Hyperplane Interpretation</div>
+                    <div class="math-box-label">Remark - Separating Hyperplane Interpretation</div>
                     <p>Strong duality can be understood geometrically. Consider the set $\mathcal{G} = \{(g, t) : \exists x \ge 0,\; Ax \ge b + g,\; c^\top x \le t\} \subseteq \mathbb{R}^m \times \mathbb{R}$. The optimal value $p^*$ is the infimum over $t$ such that $(0, t) \in \mathcal{G}$.</p>
-                    <p class="mb-0">Strong duality says a supporting hyperplane to $\mathcal{G}$ at $(0, p^*)$ exists with a normal vector $(y^*, -1)$ where $y^* \ge 0$. This hyperplane gives $b^\top y^* = d^* = p^*$. The dual variable $y^*$ is literally the slope of the supporting hyperplane — it measures how much $p^*$ changes when the right-hand side $b$ is perturbed.</p>
+                    <p class="mb-0">Strong duality says a supporting hyperplane to $\mathcal{G}$ at $(0, p^*)$ exists with a normal vector $(y^*, -1)$ where $y^* \ge 0$. This hyperplane gives $b^\top y^* = d^* = p^*$. The dual variable $y^*$ is literally the slope of the supporting hyperplane - it measures how much $p^*$ changes when the right-hand side $b$ is perturbed.</p>
                 </div>
 
                 <hr class="my-5">

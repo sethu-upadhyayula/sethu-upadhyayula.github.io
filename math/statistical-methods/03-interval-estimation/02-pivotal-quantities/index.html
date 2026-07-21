@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,14 +128,14 @@
                 <p>The pivotal quantity method provides a systematic, exact approach to constructing confidence intervals. By identifying a function of the data and the parameter whose distribution is completely known and free of all unknown parameters, we can directly invert probability statements into interval bounds.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 3.2.1 — Pivotal Quantity</div>
-                    <p class="mb-0">A function $Q = Q(X_1,\ldots,X_n;\theta)$ is a <strong>pivotal quantity</strong> (or pivot) if its distribution is completely determined — that is, it does not depend on $\theta$ or any other unknown parameter. Finding bounds $a, b$ such that $P(a \le Q \le b) = 1-\alpha$ and then solving $a \le Q \le b$ for $\theta$ yields an exact $100(1-\alpha)\%$ CI.</p>
+                    <div class="math-box-label">Definition 3.2.1 - Pivotal Quantity</div>
+                    <p class="mb-0">A function $Q = Q(X_1,\ldots,X_n;\theta)$ is a <strong>pivotal quantity</strong> (or pivot) if its distribution is completely determined - that is, it does not depend on $\theta$ or any other unknown parameter. Finding bounds $a, b$ such that $P(a \le Q \le b) = 1-\alpha$ and then solving $a \le Q \le b$ for $\theta$ yields an exact $100(1-\alpha)\%$ CI.</p>
                 </div>
 
                 <h2 class="mt-5">The $t$-Pivot for the Mean</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.2.2 — Student's $t$ Pivot</div>
+                    <div class="math-box-label">Theorem 3.2.2 - Student's $t$ Pivot</div>
                     <p>Let $X_1,\ldots,X_n \stackrel{\text{iid}}{\sim} N(\mu,\sigma^2)$ with both $\mu$ and $\sigma^2$ unknown. Then
                     $$Q = \frac{\bar{X} - \mu}{S/\sqrt{n}} \sim t_{n-1},$$</p>
                     <p class="mb-0">where $S^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i-\bar{X})^2$. This holds exactly for normal data. The $t_{n-1}$ distribution has density proportional to $(1 + t^2/(n-1))^{-n/2}$ and converges to $N(0,1)$ as $n\to\infty$.</p>
@@ -144,7 +144,7 @@
                 <h2 class="mt-5">The $\chi^2$ Pivot for the Variance</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.2.3 — Chi-Squared Pivot</div>
+                    <div class="math-box-label">Theorem 3.2.3 - Chi-Squared Pivot</div>
                     <p>Under the same normal model,
                     $$Q = \frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1},$$</p>
                     <p class="mb-0">and this pivot is independent of $\bar{X}$. Let $\chi^2_{n-1,\alpha/2}$ and $\chi^2_{n-1,1-\alpha/2}$ be the lower and upper $\alpha/2$ quantiles. Inverting $P\!\left(\chi^2_{n-1,\alpha/2} \le \frac{(n-1)S^2}{\sigma^2} \le \chi^2_{n-1,1-\alpha/2}\right)=1-\alpha$ gives the exact CI for $\sigma^2$:
@@ -155,7 +155,7 @@
                 <p>Let $X_1,\ldots,X_m \stackrel{\text{iid}}{\sim} N(\mu_X,\sigma^2)$ and $Y_1,\ldots,Y_n \stackrel{\text{iid}}{\sim} N(\mu_Y,\sigma^2)$ be independent with a <em>common</em> variance $\sigma^2$.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.2.4 — Pooled Two-Sample $t$ CI</div>
+                    <div class="math-box-label">Theorem 3.2.4 - Pooled Two-Sample $t$ CI</div>
                     <p>The <strong>pooled sample variance</strong> is
                     $$S_p^2 = \frac{(m-1)S_X^2 + (n-1)S_Y^2}{m+n-2}.$$
                     Then
@@ -168,7 +168,7 @@
                 <p>When $\sigma_X^2 \ne \sigma_Y^2$ the pooled $t$ is inappropriate.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.2.5 — Welch's Approximate $t$ CI</div>
+                    <div class="math-box-label">Theorem 3.2.5 - Welch's Approximate $t$ CI</div>
                     <p>The statistic
                     $$T_W = \frac{(\bar{X}-\bar{Y})-(\mu_X-\mu_Y)}{\sqrt{S_X^2/m + S_Y^2/n}}$$
                     is approximately $t_\nu$ where the <strong>Welch-Satterthwaite</strong> degrees of freedom are
@@ -177,8 +177,8 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 3.2.6 — Exact vs Approximate Intervals</div>
-                    <p class="mb-0">Pivotal-quantity intervals derived from exact distributional results (e.g.\ $t_{n-1}$, $\chi^2_{n-1}$, $F$) achieve the nominal coverage <em>exactly</em> under the stated model assumptions. Approximate intervals (Wald intervals for proportions, CLT-based intervals for non-normal data, Welch's $t$) achieve nominal coverage only asymptotically, and coverage can be poor for small $n$. One should always verify model assumptions — in particular normality — before claiming exact coverage.</p>
+                    <div class="math-box-label">Remark 3.2.6 - Exact vs Approximate Intervals</div>
+                    <p class="mb-0">Pivotal-quantity intervals derived from exact distributional results (e.g.\ $t_{n-1}$, $\chi^2_{n-1}$, $F$) achieve the nominal coverage <em>exactly</em> under the stated model assumptions. Approximate intervals (Wald intervals for proportions, CLT-based intervals for non-normal data, Welch's $t$) achieve nominal coverage only asymptotically, and coverage can be poor for small $n$. One should always verify model assumptions - in particular normality - before claiming exact coverage.</p>
                 </div>
 
                 <hr class="my-5">

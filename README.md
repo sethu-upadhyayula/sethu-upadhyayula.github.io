@@ -1,6 +1,6 @@
 # sethu-upadhyayula.github.io
 
-Personal website of Sethu Upadhyayula — built as a static site (HTML/CSS/JS,
+Personal website of Sethu Upadhyayula - built as a static site (HTML/CSS/JS,
 Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
 
 ## TODO / Roadmap
@@ -8,9 +8,12 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
 1. **Expand the Math section** with more worked proofs, exercises (with
    solutions), and additional examples per subsection.
 2. **Add a site-wide search bar** (likely a static client-side index, e.g.
-   Pagefind/Lunr/Fuse.js) so users can search across Math, Quant, and Chess
-   content by topic/title rather than only browsing via the sidebar TOC.
-3. Other ideas under consideration:
+   Pagefind/Lunr/Fuse.js) so users can search across all sections' content
+   by topic/title rather than only browsing via the sidebar TOC.
+3. **Break chapters into numbered sub-lessons** across Biology, Music, and
+   Dev, matching the Math/Quant subsection depth, once breadth across all
+   three sections is further along.
+4. Other ideas under consideration:
    - Add a "recently updated" / changelog section so returning visitors can
      see what's new.
    - Cross-link related topics across sections (e.g. Black-Scholes in
@@ -18,28 +21,32 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
    - Light visual polish on the About Me page (e.g. background elements).
    - Add more annotated games to Chess → Master Games.
 
-## Features
-
-- **Homepage pie chart**: a central "S" mark (linking to About) surrounded
-  by six clickable wedges — Math, Quant, Chess (live sections) plus Bio,
-  Dev, Music (coming-soon placeholder pages) — with a stacked-card fallback
-  on narrow viewports.
-- **Floating nav dock / social dock**: no traditional header/footer bars —
-  cross-section navigation and social links live in small floating widgets
-  (alongside the light/dark theme toggle FAB) present on every page.
-- **Per-section theming**: each of Math/Quant/Chess/Bio/Dev/Music has its
-  own accent color and a subtle themed doodle background, driven by a
+## Features-
+-
+- **Homepage pie**: a full-bleed, equal-visual-area six-sector layout
+  (computed numerically in `js/home-pie.js` via `conic-gradient` +-
+  per-sector `clip-path` polygons) covering Math, Quant, Chess, Biology,
+  Dev, and Music, each with its own background image and an opaque
+  text-label pill linking into the section; a center hub (site favicon)
+  links to About.
+- **Floating nav dock / social dock**: no traditional header/foot-r bars —
+  a persistent Home icon, cross-section navigation, and social links (now
+  just LinkedIn) live in small floating widgets (alongside the light/dark
+  theme toggle FAB) present on every page.
+- **Per-section theming**: each of Math/Quant/Chess/Biology/Dev/Music has
+  its own accent color and a subtle themed doodle background, driven by a
   `data-section` attribute on `<html>` and CSS custom properties — see
   `css/styles.css`.
 - **Responsive Bootstrap 5.3 layout** with a light/dark theme toggle
   (persisted via a floating toggle button, present at every breakpoint).
-- **KaTeX-rendered math** throughout the Math and Quant sections, with
-  consistent "math-box" callouts for Definitions, Theorems, Propositions,
-  Lemmas, Corollaries, Examples, Remarks, and Proofs.
-- **Collapsible chapter/subsection sidebar (TOC)** on Math and Quant pages,
-  with breadcrumb navigation and prev/next chapter buttons at the bottom of
-  each page.
-- **Math section**: 25 subjects, each organized into chapters and
+- **KaTeX-rendered math** throughout the Math and Quant sections (and
+  available on all subject/chapter pages generally), with consistent
+  "math-box" callouts for Definitions, Theorems, Propositions, Lemmas,
+  Corollaries, Examples, Remarks, and Proofs.
+- **Collapsible chapter/subsection sidebar (TOC)** on subject/chapter
+  pages across all curriculum sections, with breadcrumb navigation and
+  prev/next chapter buttons at the bottom of each page.
+- **Math section**- 25 subjects, each organized into chapters and
   subsections (~25-30 pages per subject), covering pure and applied
   mathematics from foundations (Set Theory, Logic) through advanced topics
   (Measure Theory, Functional Analysis, SDEs, PDEs, Numerical Analysis,
@@ -58,19 +65,27 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
   Check (4 chapters each); Compositions covers Endgame Studies, Twomovers,
   Threemovers, Moremovers, Helpmates, Selfmates, Retro Problems, and Fairy
   Chess (6-7 chapters each).
-- **About Me** page (reached via the "S" mark) with contact details folded
-  in (email, LinkedIn, GitHub).
-- **Bio, Dev, Music**: coming-soon placeholder sections, themed and
-  cross-linked like the rest of the site, ahead of content being written.
+- **Biology section**: 25 subjects across 5 groups (Molecular & Cell
+  Biology, Genetics & Evolution, Organismal Biology, Ecology & Behaviour,
+  Biotechnology & Applications), each with a subject overview and 6-10
+  chapters, based on GATE/CSIR-NET syllabi.
+- **Music section**: 8 subjects covering Carnatic music (Fundamentals, The
+  Rāga System, The Tāla System, Musical Forms & Compositions, Improvisation
+  & Ornamentation, History & Composers, Instruments, Concert Practice),
+  each with a subject overview and chapters.
+- **Dev section**: 8 subjects covering the systems/applied side of computer
+  science (Operating Systems, Computer Networks, Database Systems, Computer
+  Architecture, Software Engineering & Systems Design, Distributed Systems,
+  Compilers, and a survey-level AI/ML), each with a subject overview and
+  chapters.
+- **About Me** page (reached via the favicon mark) with contact details
+  folded in (email, LinkedIn, GitHub).
 
 ## Site Navigation
 
 ```
-/                       Home (pie chart)
+/                       Home (pie)
 /about/                 About Me (incl. contact info)
-/bio/                   Bio (coming soon)
-/dev/                   Dev (coming soon)
-/music/                 Music (coming soon)
 
 /math/                  Math (5 groups, 25 subjects)
   /math/<group>/                         Group landing page
@@ -122,6 +137,38 @@ Bootstrap 5.3, KaTeX, Font Awesome) and hosted via GitHub Pages.
     selfmates/, retros/, fairies/
     /chess/compositions/<topic>/            Topic overview
     /chess/compositions/<topic>/<chapter>/  Chapter content
+
+/biology/               Biology (5 groups, 25 subjects)
+  /biology/<subject>/                       Subject overview
+  /biology/<subject>/<chapter>/             Chapter content
+
+  Molecular & Cell Biology (molecular-cell-biology/): biomolecules-biochemistry,
+    cell-biology, molecular-biology, cell-signaling, structural-biology
+  Genetics & Evolution (genetics-evolution/): genetics, population-genetics,
+    evolution, taxonomy, genomics
+  Organismal Biology (organismal-biology/): development, plant-biology,
+    animal-physiology, immunology, microbiology
+  Ecology & Behaviour (ecology-behaviour/): population-ecology,
+    ecosystem-ecology, behavioural-ecology, conservation-biology, epidemiology
+  Biotechnology & Applications (biotechnology-applications/): recombinant-dna,
+    bioprocess-engineering, plant-biotechnology, medical-biotechnology,
+    environmental-biotechnology
+
+/music/                 Music (8 subjects)
+  /music/<subject>/                         Subject overview
+  /music/<subject>/<chapter>/               Chapter content
+
+  Fundamentals, The Rāga System, The Tāla System, Musical Forms &
+    Compositions, Improvisation & Ornamentation, History & Composers,
+    Instruments, Concert Practice
+
+/dev/                   Dev (8 subjects)
+  /dev/<subject>/                           Subject overview
+  /dev/<subject>/<chapter>/                 Chapter content
+
+  operating-systems/, computer-networks/, database-systems/,
+    computer-architecture/, software-engineering/, distributed-systems/,
+    compilers/, ai-ml/
 ```
 
 ## Tech Stack

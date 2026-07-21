@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -87,7 +87,7 @@
                 <p>Recall from Section 1.2 that the modified duration of a bond (or portfolio) governs its first-order sensitivity to a parallel shift in yields: $\Delta P / P \approx -D_{\text{mod}}\,\Delta y$. The same applies to a stream of liabilities, which can be valued and assigned a duration in exactly the same way as a bond's cashflows.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Duration Matching</div>
+                    <div class="math-box-label">Definition - Duration Matching</div>
                     <p>A portfolio of assets with present value $A$ and modified duration $D_A$ is <em>duration-matched</em> to a liability stream with present value $L$ and modified duration $D_L$ if:
                     $$A = L \quad \text{and} \quad D_A = D_L$$
                     Under a small parallel shift $\Delta y$, both sides change by approximately the same proportion:
@@ -99,36 +99,36 @@
                 <p>The modified duration of a portfolio of $N$ bonds with values $P_1,\dots,P_N$ and durations $D_1,\dots,D_N$ is the value-weighted average of the individual durations:</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Portfolio Duration</div>
+                    <div class="math-box-label">Definition - Portfolio Duration</div>
                     <p>$$D_{\text{portfolio}} = \sum_{i=1}^{N} w_i D_i, \qquad w_i = \frac{P_i}{\sum_{j=1}^N P_j}$$
                     This follows directly from the linearity of the first-order price sensitivity: the portfolio's dollar duration (DV01) is the sum of the constituents' dollar durations, $\sum_i D_i P_i$, and dividing by the total portfolio value $\sum_i P_i$ gives the weighted-average duration above.</p>
                 </div>
 
-                <p>In practice, a duration-matched portfolio is usually constructed from just two bonds — a short-dated and a long-dated bond — whose durations bracket the liability duration. Solving for the weights that match both the value and the duration gives a unique two-bond portfolio (a "barbell" around the target duration).</p>
+                <p>In practice, a duration-matched portfolio is usually constructed from just two bonds - a short-dated and a long-dated bond - whose durations bracket the liability duration. Solving for the weights that match both the value and the duration gives a unique two-bond portfolio (a "barbell" around the target duration).</p>
 
                 <h2 class="mt-5 mb-3">Immunization Against Parallel Shifts</h2>
                 <p>Duration matching protects the surplus to first order, but a parallel yield shift also changes the future value of reinvested coupons (reinvestment risk) and the price at which the assets must eventually be sold (price risk). The classical immunization result is that these two effects offset exactly when duration is matched to the investment horizon.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Redington Immunization</div>
+                    <div class="math-box-label">Theorem - Redington Immunization</div>
                     <p>A portfolio is immunized against an instantaneous parallel shift $\Delta y$ in the flat yield curve if, in addition to the value and duration matching conditions $A=L$ and $D_A = D_L$, the portfolio's convexity exceeds the liability's convexity:
                     $$\mathcal{C}_A \geq \mathcal{C}_L$$
-                    Under these conditions, the second-order approximation gives $\Delta A - \Delta L \approx \tfrac{1}{2}(\mathcal{C}_A - \mathcal{C}_L)A(\Delta y)^2 \geq 0$ for any $\Delta y$ — the asset side never falls short of the liability side for a parallel shift, in either direction. This is why barbell portfolios (Section 2.2), which have higher convexity than a single bullet bond of the same duration, are the preferred building block for immunized portfolios.</p>
+                    Under these conditions, the second-order approximation gives $\Delta A - \Delta L \approx \tfrac{1}{2}(\mathcal{C}_A - \mathcal{C}_L)A(\Delta y)^2 \geq 0$ for any $\Delta y$ - the asset side never falls short of the liability side for a parallel shift, in either direction. This is why barbell portfolios (Section 2.2), which have higher convexity than a single bullet bond of the same duration, are the preferred building block for immunized portfolios.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Limitations of Immunization</div>
-                    <p class="mb-0">Immunization only protects against parallel shifts evaluated at a single instant. As time passes and yields move, durations drift apart and the portfolio must be <em>rebalanced</em> — periodically rebought to restore the duration match. Immunization also offers no protection against non-parallel (twist or curvature) movements of the yield curve, which is why real liability-driven investment (LDI) programs combine duration matching with key-rate duration hedging across multiple points of the curve.</p>
+                    <div class="math-box-label">Remark - Limitations of Immunization</div>
+                    <p class="mb-0">Immunization only protects against parallel shifts evaluated at a single instant. As time passes and yields move, durations drift apart and the portfolio must be <em>rebalanced</em> - periodically rebought to restore the duration match. Immunization also offers no protection against non-parallel (twist or curvature) movements of the yield curve, which is why real liability-driven investment (LDI) programs combine duration matching with key-rate duration hedging across multiple points of the curve.</p>
                 </div>
 
-                <h2 class="mt-5 mb-3">Worked Example — Immunizing a Single Liability</h2>
+                <h2 class="mt-5 mb-3">Worked Example - Immunizing a Single Liability</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Two-Bond Immunization</div>
+                    <div class="math-box-label">Example - Two-Bond Immunization</div>
                     <p>A pension fund owes $L = \$10{,}000{,}000$ in 7 years. Available bonds: Bond A has duration $D_A = 3$ years and Bond B has duration $D_B = 12$ years. We want a portfolio of value $A = L = \$10{,}000{,}000$ (assuming flat yields equal the liability discount rate) with $D_{\text{portfolio}} = 7$.</p>
                     <p>Let $w$ be the fraction invested in Bond B. The duration matching condition is:
                     $$w \cdot 12 + (1-w)\cdot 3 = 7 \implies 3 + 9w = 7 \implies w = \frac{4}{9} \approx 0.444$$
                     </p>
-                    <p class="mb-0">So the fund allocates $\approx 44.4\%$ ($\$4{,}444{,}444$) to the 12-year bond and $\approx 55.6\%$ ($\$5{,}555{,}556$) to the 3-year bond. This barbell has both higher convexity than a single 7-year bullet bond of the same duration and the value/duration match required to immunize the $7$-year liability against small parallel rate moves — as quantified in Section 2.2.</p>
+                    <p class="mb-0">So the fund allocates $\approx 44.4\%$ ($\$4{,}444{,}444$) to the 12-year bond and $\approx 55.6\%$ ($\$5{,}555{,}556$) to the 3-year bond. This barbell has both higher convexity than a single 7-year bullet bond of the same duration and the value/duration match required to immunize the $7$-year liability against small parallel rate moves - as quantified in Section 2.2.</p>
                 </div>
 
                 <hr class="my-5">

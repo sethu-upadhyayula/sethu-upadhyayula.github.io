@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,38 +81,38 @@
             <article>
                 <h1 class="text-accent mb-4">2.1 Affine Models and the CIR Model</h1>
 
-                <p>Vasicek and Hull-White produced bond prices of the exponential-affine form $P(t,T) = A(t,T)e^{-B(t,T)r(t)}$ as a consequence of having a Gaussian short rate with affine drift and constant diffusion. This section makes that structure explicit and general, then studies the Cox-Ingersoll-Ross (CIR) model — the canonical affine model whose diffusion term depends on the level of the short rate, ruling out negative rates.</p>
+                <p>Vasicek and Hull-White produced bond prices of the exponential-affine form $P(t,T) = A(t,T)e^{-B(t,T)r(t)}$ as a consequence of having a Gaussian short rate with affine drift and constant diffusion. This section makes that structure explicit and general, then studies the Cox-Ingersoll-Ross (CIR) model - the canonical affine model whose diffusion term depends on the level of the short rate, ruling out negative rates.</p>
 
                 <h2 class="mt-5 mb-3">The Affine Term Structure Framework</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Affine Term Structure Model (ATSM)</div>
+                    <div class="math-box-label">Definition - Affine Term Structure Model (ATSM)</div>
                     <p class="mb-0">A short-rate model $dr(t) = \mu(r(t),t)\,dt + \sigma(r(t),t)\,dW_t$ is an <em>affine term structure model</em> if both the drift $\mu$ and the squared diffusion $\sigma^2$ are affine (linear plus constant) functions of $r(t)$:
                     $$\mu(r,t) = \alpha(t) + \beta(t)\,r, \qquad \sigma^2(r,t) = \gamma(t) + \delta(t)\,r$$
                     Under this condition, zero-coupon bond prices admit the exponential-affine form $P(t,T) = A(t,T)\,e^{-B(t,T)\,r(t)}$, where $A$ and $B$ solve a system of ordinary differential equations (Riccati equations) derived from the bond-pricing PDE, rather than requiring a full PDE solution in $r$ and $t$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Affine Structure Matters</div>
+                    <div class="math-box-label">Remark - Why Affine Structure Matters</div>
                     <p class="mb-0">The practical payoff of the affine property is enormous: $A(t,T)$ and $B(t,T)$ depend only on $t$ and $T$ (through ODEs with at most a handful of parameters), not on the current state $r(t)$. This means bond prices, and often option prices, can be computed in closed form or via fast numerical integration of low-dimensional ODEs, rather than by solving a PDE or running Monte Carlo for every valuation. Vasicek and Hull-White are the Gaussian special case ($\delta(t)=0$); CIR, introduced next, is the simplest non-Gaussian affine model.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Cox-Ingersoll-Ross (CIR) Model</h2>
 
-                <p>The Vasicek model's Gaussian short rate can become negative. The CIR model (1985) modifies the diffusion term so that volatility shrinks to zero as $r(t) \to 0$, which — combined with a sufficiently strong upward drift near zero — keeps the short rate non-negative.</p>
+                <p>The Vasicek model's Gaussian short rate can become negative. The CIR model (1985) modifies the diffusion term so that volatility shrinks to zero as $r(t) \to 0$, which - combined with a sufficiently strong upward drift near zero - keeps the short rate non-negative.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — CIR Short Rate Dynamics</div>
+                    <div class="math-box-label">Definition - CIR Short Rate Dynamics</div>
                     <p class="mb-0">Under the risk-neutral measure $\mathbb{Q}$, the CIR short rate follows a mean-reverting square-root diffusion:
                     $$dr(t) = a(b-r(t))\,dt + \sigma\sqrt{r(t)}\,dW_t$$
-                    where $a>0$ is the speed of mean reversion, $b>0$ is the long-run mean, and $\sigma>0$ governs volatility. The $\sqrt{r(t)}$ term means that as $r(t)\to0^+$, the diffusion vanishes while the drift $a(b-r(t)) \to ab > 0$ remains strictly positive, pushing the rate back up — preventing $r(t)$ from going negative.</p>
+                    where $a>0$ is the speed of mean reversion, $b>0$ is the long-run mean, and $\sigma>0$ governs volatility. The $\sqrt{r(t)}$ term means that as $r(t)\to0^+$, the diffusion vanishes while the drift $a(b-r(t)) \to ab > 0$ remains strictly positive, pushing the rate back up - preventing $r(t)$ from going negative.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Feller Condition</div>
+                    <div class="math-box-label">Remark - The Feller Condition</div>
                     <p class="mb-0">Whether $r(t)=0$ is actually attainable depends on the parameters. The <em>Feller condition</em>
                     $$2ab \geq \sigma^2$$
-                    guarantees that $r(t)$ remains strictly positive for all $t>0$ if $r(0)>0$. If $2ab < \sigma^2$, the process can touch zero (and is instantaneously reflected back into positive territory), but never goes negative. Either way, CIR rules out negative rates entirely — in contrast to Vasicek/Hull-White, where $r(t)$ is normally distributed and can be negative with positive probability.</p>
+                    guarantees that $r(t)$ remains strictly positive for all $t>0$ if $r(0)>0$. If $2ab < \sigma^2$, the process can touch zero (and is instantaneously reflected back into positive territory), but never goes negative. Either way, CIR rules out negative rates entirely - in contrast to Vasicek/Hull-White, where $r(t)$ is normally distributed and can be negative with positive probability.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Bond Pricing Under CIR</h2>
@@ -120,23 +120,23 @@
                 <p>Despite the more complicated square-root diffusion, CIR is affine in the sense of the definition above ($\gamma(t)=0$, $\delta(t)=\sigma^2$), and the bond-pricing PDE can still be solved in closed form via the affine ansatz.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — CIR Bond Price Formula</div>
+                    <div class="math-box-label">Theorem - CIR Bond Price Formula</div>
                     <p>The price at time $t$ of a zero-coupon bond maturing at $T$ under CIR is $P(t,T) = A(t,T)\,e^{-B(t,T)\,r(t)}$, where, writing $\tau=T-t$ and $\gamma=\sqrt{a^2+2\sigma^2}$:
                     $$B(t,T) = \frac{2(e^{\gamma\tau}-1)}{(\gamma+a)(e^{\gamma\tau}-1)+2\gamma}$$
                     $$A(t,T) = \left[\frac{2\gamma\,e^{(a+\gamma)\tau/2}}{(\gamma+a)(e^{\gamma\tau}-1)+2\gamma}\right]^{2ab/\sigma^2}$$</p>
-                    <p class="mb-0">As in Vasicek, $B(t,T)$ and $A(t,T)$ depend only on $(t,T)$ and the model parameters $(a,b,\sigma)$, not on $r(t)$ itself — the hallmark of the affine structure. The resulting yield curve $r(t,T) = \big(B(t,T)r(t)-\ln A(t,T)\big)/\tau$ is again affine in $r(t)$.</p>
+                    <p class="mb-0">As in Vasicek, $B(t,T)$ and $A(t,T)$ depend only on $(t,T)$ and the model parameters $(a,b,\sigma)$, not on $r(t)$ itself - the hallmark of the affine structure. The resulting yield curve $r(t,T) = \big(B(t,T)r(t)-\ln A(t,T)\big)/\tau$ is again affine in $r(t)$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Distribution of $r(t)$ Under CIR</div>
-                    <p class="mb-0">Unlike the Gaussian Vasicek short rate, $r(t)$ under CIR follows a (scaled) non-central chi-squared distribution conditional on $r(0)$, which is supported on $[0,\infty)$ — consistent with the non-negativity property above. This non-Gaussianity is what allows CIR to avoid negative rates, but it also means the short rate's marginal distribution is skewed, with a heavier right tail than the Gaussian case for the same mean and variance.</p>
+                    <div class="math-box-label">Remark - The Distribution of $r(t)$ Under CIR</div>
+                    <p class="mb-0">Unlike the Gaussian Vasicek short rate, $r(t)$ under CIR follows a (scaled) non-central chi-squared distribution conditional on $r(0)$, which is supported on $[0,\infty)$ - consistent with the non-negativity property above. This non-Gaussianity is what allows CIR to avoid negative rates, but it also means the short rate's marginal distribution is skewed, with a heavier right tail than the Gaussian case for the same mean and variance.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">CIR in Practice: Trade-offs</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why CIR Is Less Common Than Hull-White Today</div>
-                    <p class="mb-0">CIR's non-negativity was historically viewed as its key advantage over Vasicek. However, it comes at a cost: CIR with constant parameters $(a,b,\sigma)$ cannot, in general, be exactly fit to an arbitrary initial yield curve the way Hull-White's time-dependent $\theta(t)$ can — extending CIR to match an arbitrary curve (the "CIR++" or shifted-CIR approach) requires adding a deterministic shift function, which can reintroduce the possibility of negative rates that the original model was designed to avoid. Combined with the post-2012 era of negative policy rates (where Hull-White's Gaussian negative-rate tolerance became a practical advantage rather than a flaw, as discussed in Section 1.1), CIR's strict non-negativity became less essential, and Hull-White remains more widely used for single-factor short-rate modelling. CIR's lasting importance is instead as the building block for multi-factor affine models — particularly for modelling stochastic volatility and variance processes (e.g. in the Heston model for equity options) — and as the prototype for the general affine framework developed further in the next section.</p>
+                    <div class="math-box-label">Remark - Why CIR Is Less Common Than Hull-White Today</div>
+                    <p class="mb-0">CIR's non-negativity was historically viewed as its key advantage over Vasicek. However, it comes at a cost: CIR with constant parameters $(a,b,\sigma)$ cannot, in general, be exactly fit to an arbitrary initial yield curve the way Hull-White's time-dependent $\theta(t)$ can - extending CIR to match an arbitrary curve (the "CIR++" or shifted-CIR approach) requires adding a deterministic shift function, which can reintroduce the possibility of negative rates that the original model was designed to avoid. Combined with the post-2012 era of negative policy rates (where Hull-White's Gaussian negative-rate tolerance became a practical advantage rather than a flaw, as discussed in Section 1.1), CIR's strict non-negativity became less essential, and Hull-White remains more widely used for single-factor short-rate modelling. CIR's lasting importance is instead as the building block for multi-factor affine models - particularly for modelling stochastic volatility and variance processes (e.g. in the Heston model for equity options) - and as the prototype for the general affine framework developed further in the next section.</p>
                 </div>
 
                 <hr class="my-5">

@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -131,13 +131,13 @@
                 <p>A martingale formalises the concept of a fair game: given all information to date, the expected future value equals the present value. The key inputs are a filtration (representing the flow of information) and an adapted process.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.1 — Filtration and Adapted Process</div>
+                    <div class="math-box-label">Definition 7.1.1 - Filtration and Adapted Process</div>
                     <p>A <em>filtration</em> is an increasing family $(\mathcal{F}_n)_{n \ge 0}$ of sub-$\sigma$-algebras of $\mathcal{F}$: $\mathcal{F}_0 \subseteq \mathcal{F}_1 \subseteq \cdots \subseteq \mathcal{F}$. Intuitively, $\mathcal{F}_n$ is the information available at time $n$.</p>
                     <p class="mb-0">A stochastic process $(M_n)_{n \ge 0}$ is <em>adapted</em> to $(\mathcal{F}_n)$ if $M_n$ is $\mathcal{F}_n$-measurable for each $n$. The <em>natural filtration</em> of $(M_n)$ is $\mathcal{F}_n^M = \sigma(M_0, M_1, \ldots, M_n)$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.2 — Martingale, Submartingale, Supermartingale</div>
+                    <div class="math-box-label">Definition 7.1.2 - Martingale, Submartingale, Supermartingale</div>
                     <p>An adapted integrable process $(M_n, \mathcal{F}_n)$ is a:
                     <ul>
                         <li><strong>Martingale</strong> if $E[M_{n+1} \mid \mathcal{F}_n] = M_n$ a.s. for all $n \ge 0$;</li>
@@ -150,7 +150,7 @@
                 <h2 class="mt-5 mb-3">Standard Examples</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.1.3 — Simple Random Walk</div>
+                    <div class="math-box-label">Example 7.1.3 - Simple Random Walk</div>
                     <p>Let $\xi_1, \xi_2, \ldots$ be i.i.d. with $P(\xi_i = +1) = P(\xi_i = -1) = 1/2$ and $S_n = \xi_1 + \cdots + \xi_n$, $S_0 = 0$. With $\mathcal{F}_n = \sigma(\xi_1,\ldots,\xi_n)$:
                     <ul>
                         <li>$S_n$ is a martingale: $E[S_{n+1}\mid\mathcal{F}_n] = S_n + E[\xi_{n+1}] = S_n$.</li>
@@ -160,14 +160,14 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.1.4 — Product Martingale</div>
+                    <div class="math-box-label">Example 7.1.4 - Product Martingale</div>
                     <p>Let $Y_1, Y_2, \ldots$ be i.i.d. with $E[Y_i] = 1$ and $Y_i \ge 0$. Define $M_0 = 1$ and $M_n = Y_1 Y_2 \cdots Y_n$. Then
                     $$E[M_{n+1}\mid\mathcal{F}_n] = M_n \cdot E[Y_{n+1}] = M_n,$$
                     so $(M_n)$ is a non-negative martingale. This is the Radon-Nikodym derivative of a tilted measure with respect to the original measure, and arises in likelihood ratio tests and sequential analysis.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.1.5 — Doob Martingale</div>
+                    <div class="math-box-label">Example 7.1.5 - Doob Martingale</div>
                     <p>Let $X \in L^1(\mathcal{F})$ and $(\mathcal{F}_n)$ a filtration with $\mathcal{F}_n \nearrow \mathcal{F}$. Define
                     $$M_n = E[X \mid \mathcal{F}_n].$$
                     By the tower property, $E[M_{n+1}\mid\mathcal{F}_n] = E[E[X\mid\mathcal{F}_{n+1}]\mid\mathcal{F}_n] = E[X\mid\mathcal{F}_n] = M_n$, so $(M_n)$ is a martingale.</p>
@@ -177,7 +177,7 @@
                 <h2 class="mt-5 mb-3">Stopped Processes</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 7.1.6 — Optional Sampling</div>
+                    <div class="math-box-label">Proposition 7.1.6 - Optional Sampling</div>
                     <p>Let $\tau$ be a stopping time. The <em>stopped process</em> $M^\tau_n = M_{\min(n,\tau)}$ is also a martingale (resp. sub/supermartingale) whenever $(M_n)$ is. This follows because
                     $$M^\tau_{n+1} - M^\tau_n = (M_{n+1} - M_n)\mathbf{1}_{\tau > n},$$
                     and $\mathbf{1}_{\tau > n}$ is $\mathcal{F}_n$-measurable (since $\tau$ is a stopping time).</p>

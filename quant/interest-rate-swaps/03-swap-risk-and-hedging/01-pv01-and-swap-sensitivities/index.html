@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,12 +80,12 @@
             <article>
                 <h1 class="text-accent mb-4">3.1 PV01 and Swap Sensitivities</h1>
 
-                <p>Section 1.1 introduced DV01 in a single-curve setting as the sensitivity of a swap's value to a parallel one-basis-point shift in the discount/forward curve. In the multi-curve world, "the curve" is no longer a single object — there is a discounting curve and one or more forecasting curves, and a swap's total interest rate sensitivity decomposes across all of them. This section develops that decomposition and the PV01 terminology used to describe it.</p>
+                <p>Section 1.1 introduced DV01 in a single-curve setting as the sensitivity of a swap's value to a parallel one-basis-point shift in the discount/forward curve. In the multi-curve world, "the curve" is no longer a single object - there is a discounting curve and one or more forecasting curves, and a swap's total interest rate sensitivity decomposes across all of them. This section develops that decomposition and the PV01 terminology used to describe it.</p>
 
                 <h2 class="mt-5 mb-3">PV01 Defined</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — PV01</div>
+                    <div class="math-box-label">Definition - PV01</div>
                     <p class="mb-0">The <em>PV01</em> (present value of a basis point) of a swap with respect to a given curve is the change in the swap's value for a $+1\text{bp}$ parallel shift applied to that curve's zero rates, holding all other curves fixed:
                     $$\text{PV01}_{\text{curve}} = V(\text{curve}+1\text{bp}) - V(\text{curve})$$
                     PV01 and DV01 are used largely interchangeably in practice; "DV01" is sometimes reserved for the single-curve case or for sensitivity to a specific instrument's rate, while "PV01" emphasizes sensitivity to a full curve shift. Because a swap depends on (at least) a discount curve and a forecast curve, it has a PV01 with respect to each.</p>
@@ -96,8 +96,8 @@
                 <p>Recall from Section 1.1 that $V_{payer} = PV_{flt} - PV_{fix}$, with $PV_{fix} = Nc\sum_i \delta_i^{fix}P_d(0,t_i)$ and $PV_{flt}=N\sum_i\delta_i^{flt}F_{x,i}P_d(0,t_i)$. A shift in $P_d$ affects both legs through discounting; a shift in the forecast curve $P_x$ affects only $PV_{flt}$, through the forward rates $F_{x,i}$.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Two-Curve PV01 Decomposition</div>
-                    <p><strong>Discount curve PV01.</strong> A parallel shift in $P_d$ changes both $PV_{fix}$ and $PV_{flt}$ proportionally to their respective annuities — but for a swap near par ($PV_{fix}\approx PV_{flt}$), the dominant effect is the same as in the single-curve case: the discount-curve PV01 is approximately the annuity sensitivity,
+                    <div class="math-box-label">Theorem - Two-Curve PV01 Decomposition</div>
+                    <p><strong>Discount curve PV01.</strong> A parallel shift in $P_d$ changes both $PV_{fix}$ and $PV_{flt}$ proportionally to their respective annuities - but for a swap near par ($PV_{fix}\approx PV_{flt}$), the dominant effect is the same as in the single-curve case: the discount-curve PV01 is approximately the annuity sensitivity,
                     $$\text{PV01}_{d} \approx -N\sum_{i=1}^n \delta_i^{fix} P_d(0,t_i) \times \big(\text{duration-weighted shift}\big)$$
                     closely analogous to the single-curve DV01 of Section 1.1's Example.</p>
                     <p class="mb-0"><strong>Forecast curve PV01.</strong> A parallel shift in $P_x$ changes only the forward rates $F_{x,i}$ entering $PV_{flt}$. Since each $F_{x,i}$ moves by approximately the shift size (forward rates from a parallel-shifted curve shift by approximately the same amount, to first order), the forecast-curve PV01 is approximately:
@@ -108,19 +108,19 @@
                 <h2 class="mt-5 mb-3">Why the Decomposition Matters</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Two Independent Risk Factors</div>
-                    <p class="mb-0">A swap book that is flat in $\text{PV01}_d$ but has nonzero $\text{PV01}_x$ (or vice versa) is not flat — it has residual exposure to a relative move between the discount curve and the forecast curve (or between forecast curves of different tenors, via tenor basis as in Section 2.2). This is precisely why curve construction separates these curves in the first place: each is a distinct risk factor that the market prices and trades separately (OIS swaps move the discount curve; tenor swaps and vanilla swaps of a given tenor move the corresponding forecast curve), and a hedging program must offset each one.</p>
+                    <div class="math-box-label">Remark - Two Independent Risk Factors</div>
+                    <p class="mb-0">A swap book that is flat in $\text{PV01}_d$ but has nonzero $\text{PV01}_x$ (or vice versa) is not flat - it has residual exposure to a relative move between the discount curve and the forecast curve (or between forecast curves of different tenors, via tenor basis as in Section 2.2). This is precisely why curve construction separates these curves in the first place: each is a distinct risk factor that the market prices and trades separately (OIS swaps move the discount curve; tenor swaps and vanilla swaps of a given tenor move the corresponding forecast curve), and a hedging program must offset each one.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked PV01 Calculation</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — PV01 of a 5-Year Receiver Swap</div>
+                    <div class="math-box-label">Example - PV01 of a 5-Year Receiver Swap</div>
                     <p>Consider a 5-year annual-pay receiver swap (receive fixed, pay floating) with notional $N=50{,}000{,}000$ and fixed rate $c=4.00\%$. Suppose the SOFR discount curve gives the following discount factors and a $+1\text{bp}$ parallel shift produces the shifted values shown:</p>
                     <p class="mb-0">$$P_d(0,t): \ 0.96154,\ 0.92456,\ 0.88900,\ 0.85480,\ 0.82193 \quad (\text{sum} = A = 4.45183)$$
                     The fixed-leg annuity is $A=4.45183$. The discount-curve PV01 (dominant term, fixed leg's annuity sensitivity to a 1bp drop in rates, which raises discount factors and hence the annuity by approximately $A\times(\text{duration}\times 0.0001)$) is approximated using the standard relation:
                     $$\text{PV01}_d \approx N\times A \times 0.0001 = 50{,}000{,}000 \times 4.45183 \times 0.0001 \approx \$22{,}259.15$$
-                    A $+1\text{bp}$ parallel rise in the discount curve reduces the annuity (and hence the value of the fixed leg the receiver is owed) by roughly \$22,259 — the receiver of fixed loses approximately this amount per basis point, which is its PV01 with respect to the discount curve. The forecast-curve PV01 (sensitivity of the floating leg's forward rates) is a separate, typically smaller, number computed analogously using $\delta^{flt}$ and $P_d$ as in the theorem above, and must be tracked and hedged as its own risk bucket.</p>
+                    A $+1\text{bp}$ parallel rise in the discount curve reduces the annuity (and hence the value of the fixed leg the receiver is owed) by roughly \$22,259 - the receiver of fixed loses approximately this amount per basis point, which is its PV01 with respect to the discount curve. The forecast-curve PV01 (sensitivity of the floating leg's forward rates) is a separate, typically smaller, number computed analogously using $\delta^{flt}$ and $P_d$ as in the theorem above, and must be tracked and hedged as its own risk bucket.</p>
                 </div>
 
                 <hr class="my-5">

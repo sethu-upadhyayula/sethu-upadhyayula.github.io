@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -134,14 +134,14 @@
                 <h2 class="mt-5 mb-3">Absolute Continuity of Measures</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.1 — Absolute Continuity of Measures</div>
+                    <div class="math-box-label">Definition 7.2.1 - Absolute Continuity of Measures</div>
                     <p>Let $\mu, \nu$ be measures on $(X, \mathcal{M})$. We say $\nu$ is <strong>absolutely continuous with respect to $\mu$</strong>, written $\nu \ll \mu$, if:
                     $$\mu(E) = 0 \implies \nu(E) = 0 \quad \text{for all } E \in \mathcal{M}.$$</p>
                     <p class="mb-0">Informally: "$\mu$-null sets are also $\nu$-null." Equivalently (when $\mu, \nu$ are $\sigma$-finite): for every $\varepsilon > 0$ there exists $\delta > 0$ such that $\mu(E) < \delta \Rightarrow \nu(E) < \varepsilon$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.2.2 — Examples of Absolute Continuity</div>
+                    <div class="math-box-label">Example 7.2.2 - Examples of Absolute Continuity</div>
                     <ul>
                         <li>If $g \geq 0$ is measurable and $\nu(E) = \int_E g\,d\mu$, then $\nu \ll \mu$ (if $\mu(E)=0$ then $\int_E g = 0$).</li>
                         <li>The normal distribution $\nu = N(0,1)$ satisfies $\nu \ll \lambda$ (Lebesgue measure on $\mathbb{R}$) with $d\nu/d\lambda = \frac{1}{\sqrt{2\pi}}e^{-x^2/2}$.</li>
@@ -152,7 +152,7 @@
                 <h2 class="mt-5 mb-3">The Radon-Nikodym Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.3 — Radon-Nikodym Theorem</div>
+                    <div class="math-box-label">Theorem 7.2.3 - Radon-Nikodym Theorem</div>
                     <p>Let $(X, \mathcal{M}, \mu)$ be a $\sigma$-finite measure space and $\nu$ a $\sigma$-finite measure with $\nu \ll \mu$. Then there exists a unique (up to $\mu$-a.e. equality) non-negative measurable function $h \in L^1(\mu)$ such that:
                     $$\nu(E) = \int_E h \, d\mu \quad \text{for all } E \in \mathcal{M}.$$</p>
                     <p>The function $h$ is called the <strong>Radon-Nikodym derivative</strong> (or <strong>density</strong>) of $\nu$ with respect to $\mu$, written $h = \frac{d\nu}{d\mu}$.</p>
@@ -168,20 +168,20 @@
                 <h2 class="mt-5 mb-3">Properties and Consequences</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 7.2.4 — Chain Rule for Radon-Nikodym Derivatives</div>
+                    <div class="math-box-label">Proposition 7.2.4 - Chain Rule for Radon-Nikodym Derivatives</div>
                     <p>If $\nu \ll \mu \ll \lambda$ (all $\sigma$-finite), then $\nu \ll \lambda$ and:
                     $$\frac{d\nu}{d\lambda} = \frac{d\nu}{d\mu} \cdot \frac{d\mu}{d\lambda} \quad \mu\text{-a.e.}$$</p>
                     <p class="mb-0">If additionally $\mu \ll \nu$, then $\frac{d\mu}{d\nu} = \left(\frac{d\nu}{d\mu}\right)^{-1}$ $\mu$-a.e.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.5 — Lebesgue Decomposition</div>
+                    <div class="math-box-label">Theorem 7.2.5 - Lebesgue Decomposition</div>
                     <p>For $\sigma$-finite measures $\mu, \nu$, there is a unique decomposition $\nu = \nu_{\text{ac}} + \nu_s$ where $\nu_{\text{ac}} \ll \mu$ (absolutely continuous part) and $\nu_s \perp \mu$ (singular part: there exists $S$ with $\mu(S) = 0$ and $\nu_s(S^c) = 0$).</p>
                     <p class="mb-0">The Radon-Nikodym theorem gives the density for $\nu_{\text{ac}}$. For example, on $\mathbb{R}$: any Borel measure decomposes into an absolutely continuous part (density with respect to $\lambda$), a singular continuous part (like the Cantor measure), and a pure point part (countable sum of point masses).</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.2.6 — Conditional Expectation as Radon-Nikodym Derivative</div>
+                    <div class="math-box-label">Example 7.2.6 - Conditional Expectation as Radon-Nikodym Derivative</div>
                     <p class="mb-0">In probability theory, if $(\Omega, \mathcal{F}, P)$ is a probability space, $X \in L^1(P)$, and $\mathcal{G} \subseteq \mathcal{F}$ is a sub-$\sigma$-algebra, the conditional expectation $\mathbb{E}[X \mid \mathcal{G}]$ is the Radon-Nikodym derivative of the measure $A \mapsto \int_A X\,dP$ with respect to $P|_\mathcal{G}$. This abstract definition captures all the properties of conditional expectation and works for arbitrary $\sigma$-algebras.</p>
                 </div>
 

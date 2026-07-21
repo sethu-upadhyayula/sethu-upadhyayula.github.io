@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,11 +81,11 @@
             <article>
                 <h1 class="text-accent mb-4">4.1 Delta Hedging Tranches</h1>
 
-                <p>A tranche position carries leveraged exposure to the spread of the underlying reference portfolio: a small move in the index spread can produce a much larger move in the value of a thin mezzanine tranche. Before a desk can take a view on correlation, it must first neutralise this index spread exposure — known as <em>delta hedging</em> — by trading the index CDS itself.</p>
+                <p>A tranche position carries leveraged exposure to the spread of the underlying reference portfolio: a small move in the index spread can produce a much larger move in the value of a thin mezzanine tranche. Before a desk can take a view on correlation, it must first neutralise this index spread exposure - known as <em>delta hedging</em> - by trading the index CDS itself.</p>
 
                 <h2 class="mt-5 mb-3">Tranche Delta with Respect to the Index</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Tranche Delta</div>
+                    <div class="math-box-label">Definition - Tranche Delta</div>
                     <p>The delta of a tranche $[A,D]$ with respect to the underlying index is the ratio of the change in the tranche's mark-to-market value to the change in the value of the index CDS, for a small parallel shift $\Delta s$ in the index spread, holding the base correlation curve fixed:
                     $$\delta_{[A,D]} = \frac{\partial V_{[A,D]}}{\partial s_{\text{index}}} \Big/ \frac{\partial V_{\text{index}}}{\partial s_{\text{index}}} \approx \frac{V_{[A,D]}(s+\Delta s) - V_{[A,D]}(s-\Delta s)}{V_{\text{index}}(s+\Delta s) - V_{\text{index}}(s-\Delta s)}$$
                     Both numerator and denominator are computed by bumping the index spread, recalibrating the single-name survival curves $Q_i(t)$ to the bumped index level, and revaluing the tranche premium/protection legs from Section 3.1 at the unchanged base correlation $\rho_{\text{base}}(D)$ for each attachment point.</p>
@@ -93,26 +93,26 @@
 
                 <h2 class="mt-5 mb-3">Why Tranche Delta Is Leveraged</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Equity, Mezzanine, and Senior Deltas</div>
-                    <p class="mb-0">Equity tranches ($0$-$3\%$) are the most leveraged: because the equity tranche absorbs the first losses in the portfolio, its value is highly sensitive to the index spread, typically giving deltas of $5$-$15$ times the tranche notional. Senior tranches (e.g. $22$-$100\%$) are far less sensitive — their delta is often well below $1$ — because a large move in the index spread is needed before losses reach such a high attachment point. Mezzanine tranches sit in between, and the delta of every tranche changes as the index spread moves, so a static hedge ratio must be recalculated regularly (and especially after large spread moves) to remain effective.</p>
+                    <div class="math-box-label">Remark - Equity, Mezzanine, and Senior Deltas</div>
+                    <p class="mb-0">Equity tranches ($0$-$3\%$) are the most leveraged: because the equity tranche absorbs the first losses in the portfolio, its value is highly sensitive to the index spread, typically giving deltas of $5$-$15$ times the tranche notional. Senior tranches (e.g. $22$-$100\%$) are far less sensitive - their delta is often well below $1$ - because a large move in the index spread is needed before losses reach such a high attachment point. Mezzanine tranches sit in between, and the delta of every tranche changes as the index spread moves, so a static hedge ratio must be recalculated regularly (and especially after large spread moves) to remain effective.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Constructing the Hedge</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Index CDS Hedge Notional</div>
+                    <div class="math-box-label">Definition - Index CDS Hedge Notional</div>
                     <p>To delta-hedge a tranche position with notional $N_{[A,D]}$, the desk trades a notional of the index CDS:
                     $$N_{\text{hedge}} = -\delta_{[A,D]} \times N_{[A,D]}$$
-                    on the opposite side from the tranche position. For example, a dealer who has <em>sold protection</em> on the equity tranche (long credit risk on the first-loss piece) is exposed to a widening of the index spread, so the hedge is to <em>buy protection</em> on the index in notional $|\delta_{[A,D]}| \times N_{[A,D]}$. After the hedge is put on, a small parallel move in the index spread leaves the combined position's value approximately unchanged to first order — the residual exposure of the hedged book is to correlation and to relative spread moves of individual names (idiosyncratic risk), covered in Section 4.2.</p>
+                    on the opposite side from the tranche position. For example, a dealer who has <em>sold protection</em> on the equity tranche (long credit risk on the first-loss piece) is exposed to a widening of the index spread, so the hedge is to <em>buy protection</em> on the index in notional $|\delta_{[A,D]}| \times N_{[A,D]}$. After the hedge is put on, a small parallel move in the index spread leaves the combined position's value approximately unchanged to first order - the residual exposure of the hedged book is to correlation and to relative spread moves of individual names (idiosyncratic risk), covered in Section 4.2.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example: Hedging a Mezzanine Tranche</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Delta-Hedging the iTraxx 3-6% Tranche</div>
+                    <div class="math-box-label">Example - Delta-Hedging the iTraxx 3-6% Tranche</div>
                     <p>Continuing the Section 3.2 example, suppose the desk has sold $\$100$ million of protection on the iTraxx $3$-$6\%$ tranche (i.e. is short protection-buyer / long the tranche risk), and the base correlations are $\rho_{\text{base}}(3\%) = 18\%$ and $\rho_{\text{base}}(6\%) = 28\%$ at an index spread of $60$ bps.</p>
                     <p>To estimate delta, the desk bumps the index spread up and down by $1$ bp (to $61$ bps and $59$ bps), recalibrates the implied hazard rates, and revalues the $3$-$6\%$ tranche and the index CDS at the unchanged base correlations. Suppose the revaluation gives a change in tranche value of $\$38{,}000$ per $1$ bp move, while the index CDS (on $\$100$ million notional) changes by $\$4{,}500$ per $1$ bp move. The tranche delta is then:
                     $$\delta_{[3\%,6\%]} = \frac{38{,}000}{4{,}500} \approx 8.4$$</p>
                     <p>The hedge notional on the index is $N_{\text{hedge}} = 8.4 \times \$100\text{m} = \$840$ million. Since the desk is long the tranche risk (short protection-buyer exposure increases in value when spreads tighten and falls when spreads widen, the same direction as being short the index), the desk <em>buys protection</em> on $\$840$ million notional of the index CDS to offset the spread sensitivity.</p>
-                    <p class="mb-0">If the index spread then widens by $5$ bps, the tranche position loses approximately $5 \times \$38{,}000 = \$190{,}000$, while the index hedge (long protection on $\$840$m) gains approximately $5 \times (8.4 \times \$4{,}500) = \$189{,}000$ — the two roughly cancel, leaving the desk's remaining P&L driven by correlation moves and the difference between the realised and assumed spread sensitivity (the delta's own sensitivity to the spread, or "gamma").</p>
+                    <p class="mb-0">If the index spread then widens by $5$ bps, the tranche position loses approximately $5 \times \$38{,}000 = \$190{,}000$, while the index hedge (long protection on $\$840$m) gains approximately $5 \times (8.4 \times \$4{,}500) = \$189{,}000$ - the two roughly cancel, leaving the desk's remaining P&L driven by correlation moves and the difference between the realised and assumed spread sensitivity (the delta's own sensitivity to the spread, or "gamma").</p>
                 </div>
 
                 <hr class="my-5">

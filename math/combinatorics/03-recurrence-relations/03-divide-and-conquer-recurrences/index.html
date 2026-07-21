@@ -16,7 +16,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -109,28 +109,28 @@ $$c^* = \log_b a.$$
 This is the exponent describing the work done purely by the recursive calls ($a^{\log_b n} = n^{c^*}$ leaf nodes).</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Master Theorem</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - Master Theorem</div>
 <p><strong>Case 1:</strong> If $f(n) = O(n^{c^* - \varepsilon})$ for some $\varepsilon > 0$ (leaves dominate), then $T(n) = \Theta(n^{c^*})$.</p>
 <p><strong>Case 2:</strong> If $f(n) = \Theta(n^{c^*} \log^k n)$ for some $k \ge 0$ (balanced), then $T(n) = \Theta(n^{c^*} \log^{k+1} n)$.</p>
 <p><strong>Case 3:</strong> If $f(n) = \Omega(n^{c^* + \varepsilon})$ for some $\varepsilon > 0$ and the <em>regularity condition</em> $af(n/b) \le \delta f(n)$ holds for some $\delta < 1$ and large $n$ (root dominates), then $T(n) = \Theta(f(n))$.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Merge Sort</div>
+<div class="math-box example"><div class="math-box-label">Example - Merge Sort</div>
 <p>$T(n) = 2T(n/2) + n$. Here $a=2$, $b=2$, so $c^* = \log_2 2 = 1$ and $f(n) = n = \Theta(n^1 \log^0 n)$. By Case 2 with $k=0$:
 $$T(n) = \Theta(n \log n).$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Binary Search</div>
+<div class="math-box example"><div class="math-box-label">Example - Binary Search</div>
 <p>$T(n) = T(n/2) + O(1)$. Here $a=1$, $b=2$, $c^* = 0$, $f(n) = O(1) = \Theta(n^0)$. Case 2 with $k=0$: $T(n) = \Theta(\log n)$.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Strassen's Matrix Multiplication</div>
+<div class="math-box example"><div class="math-box-label">Example - Strassen's Matrix Multiplication</div>
 <p>$T(n) = 7T(n/2) + O(n^2)$. Here $c^* = \log_2 7 \approx 2.807$ and $f(n) = O(n^2) = O(n^{c^* - \varepsilon})$. By Case 1:
 $$T(n) = \Theta(n^{\log_2 7}) \approx \Theta(n^{2.807}).$$
 This beats the naive $O(n^3)$ matrix multiplication.</p>
 </div>
 
-<div class="math-box remark"><div class="math-box-label">Remark — Akra-Bazzi Method</div>
+<div class="math-box remark"><div class="math-box-label">Remark - Akra-Bazzi Method</div>
 <p>For non-uniform subproblem sizes (e.g., $T(n) = T(n/3) + T(2n/3) + n$), the Akra-Bazzi method applies: find $p$ s.t. $\sum_i a_i b_i^{-p} = 1$, then:
 $$T(n) = \Theta\!\left(n^p\!\left(1 + \int_1^n \frac{f(u)}{u^{p+1}}\,du\right)\right).$$</p>
 </div>

@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -133,12 +133,12 @@
                 <h2 class="mt-4 mb-3">Doob's Upcrossing Inequality</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Upcrossings</div>
+                    <div class="math-box-label">Definition - Upcrossings</div>
                     <p class="mb-0">Given a sequence $(M_n)$ and $a < b$, an <em>upcrossing</em> of $[a,b]$ by time $N$ is a pair of times $s < t \le N$ with $M_s \le a$ and $M_t \ge b$. Let $U_N[a,b]$ denote the number of complete upcrossings of $[a,b]$ by time $N$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.3.1 — Doob's Upcrossing Inequality</div>
+                    <div class="math-box-label">Theorem 7.3.1 - Doob's Upcrossing Inequality</div>
                     <p>If $(M_n)$ is a supermartingale, then for all $a < b$ and $N \ge 1$:
                     $$(b-a)\,E[U_N[a,b]] \le E[(M_N - a)^-] \le E[|M_N|] + |a|.$$</p>
                     <p class="mb-0">This is the key lemma: it bounds the expected number of oscillations of the process across any interval $[a,b]$ in terms of $E[|M_N|]$.</p>
@@ -147,21 +147,21 @@
                 <h2 class="mt-5 mb-3">Almost Sure Convergence</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.3.2 — Martingale Convergence Theorem (a.s.)</div>
+                    <div class="math-box-label">Theorem 7.3.2 - Martingale Convergence Theorem (a.s.)</div>
                     <p>Let $(M_n)$ be a supermartingale with $\sup_n E[M_n^-] < \infty$ (equivalently, $\sup_n E[|M_n|] < \infty$ for $L^1$-bounded supermartingales). Then there exists an integrable random variable $M_\infty$ such that
                     $$M_n \xrightarrow{a.s.} M_\infty \quad \text{as } n \to \infty.$$</p>
                     <p class="mb-0">Proof sketch: By the upcrossing inequality, $E[U_\infty[a,b]] < \infty$ for every $a < b$. On the event $\{\liminf M_n < a < b < \limsup M_n\}$, the process upcrosses $[a,b]$ infinitely often, which has probability zero. Taking a countable union over rationals $a < b$ gives $P(\lim M_n \text{ does not exist}) = 0$. $\square$</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Without $L^1$ Convergence</div>
+                    <div class="math-box-label">Remark - Without $L^1$ Convergence</div>
                     <p class="mb-0">Almost sure convergence does not imply $L^1$ convergence. Example: the simple random walk martingale $S_n$ converges a.s. on the event $\{S_n \to -\infty\}$ (which has probability 1 if $S_n \to -\infty$), but $E[S_n] = 0$ while $S_n$ does not converge in $L^1$ to any finite limit. A non-negative martingale (like $M_n = e^{\theta S_n}/(\cosh\theta)^n$) converges a.s. but may converge to $0$ with probability 1.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">$L^p$ Convergence</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.3.3 — $L^p$ Martingale Convergence ($p > 1$)</div>
+                    <div class="math-box-label">Theorem 7.3.3 - $L^p$ Martingale Convergence ($p > 1$)</div>
                     <p>Let $(M_n)$ be a martingale with $\sup_n E[|M_n|^p] < \infty$ for some $p > 1$. Then $M_n \to M_\infty$ both a.s. and in $L^p$. Moreover, $E[|M_\infty|^p] < \infty$ and $M_n = E[M_\infty \mid \mathcal{F}_n]$.</p>
                     <p class="mb-0">Proof uses Doob's maximal inequality: $E[\sup_{n \le N}|M_n|^p] \le (p/(p-1))^p E[|M_N|^p]$, which gives uniform integrability of $(|M_n|^p)$.</p>
                 </div>
@@ -169,7 +169,7 @@
                 <h2 class="mt-5 mb-3">Uniform Integrability and $L^1$ Convergence</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.3.4 — UI Martingale Convergence</div>
+                    <div class="math-box-label">Theorem 7.3.4 - UI Martingale Convergence</div>
                     <p>For a martingale $(M_n)$, the following are equivalent:
                     <ol>
                         <li>$(M_n)$ is uniformly integrable;</li>
@@ -182,19 +182,19 @@
                 <h2 class="mt-5 mb-3">Backward Martingales and the SLLN</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.3.5 — Lévy's Downward Theorem</div>
+                    <div class="math-box-label">Theorem 7.3.5 - Lévy's Downward Theorem</div>
                     <p>Let $(\mathcal{F}_n)_{n \le 0}$ be a <em>decreasing</em> filtration (i.e. $\mathcal{F}_{-1} \supseteq \mathcal{F}_{-2} \supseteq \cdots$) and $X \in L^1$. Then
                     $$E[X \mid \mathcal{F}_{-n}] \xrightarrow{a.s. \text{ and } L^1} E[X \mid \mathcal{F}_{-\infty}], \quad \mathcal{F}_{-\infty} = \bigcap_n \mathcal{F}_{-n}.$$</p>
                     <p class="mb-0">Backward martingales are automatically uniformly integrable (since $E[|M_n|] \le E[|X|] < \infty$ for all $n$).</p>
                 </div>
 
                 <div class="math-box corollary">
-                    <div class="math-box-label">Corollary 7.3.6 — SLLN via Backward Martingales</div>
+                    <div class="math-box-label">Corollary 7.3.6 - SLLN via Backward Martingales</div>
                     <p>Let $X_1, X_2, \ldots$ be i.i.d. with $E[|X_1|] < \infty$. Set $\mathcal{G}_n = \sigma(X_n, X_{n+1}, \ldots)$ (the tail $\sigma$-algebra of the future). Define the backward martingale $M_n = E[X_1 \mid \mathcal{G}_n] = \frac{X_1 + \cdots + X_n}{n}$ (by exchangeability). By Lévy's downward theorem, $\bar{X}_n \to E[X_1 \mid \mathcal{G}_\infty]$ a.s. By the Hewitt-Savage 0-1 law, $\mathcal{G}_\infty$ is trivial, so $\bar{X}_n \to E[X_1] = \mu$ a.s. $\square$</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.3.7 — Lévy's Upward Theorem</div>
+                    <div class="math-box-label">Theorem 7.3.7 - Lévy's Upward Theorem</div>
                     <p class="mb-0">If $X \in L^1$ and $\mathcal{F}_n \nearrow \mathcal{F}_\infty$, then $E[X \mid \mathcal{F}_n] \to E[X \mid \mathcal{F}_\infty]$ both a.s. and in $L^1$. In particular, if $\mathcal{F}_\infty = \mathcal{F}$, then $E[X \mid \mathcal{F}_n] \to X$ a.s. and in $L^1$. This justifies the Doob martingale as a genuine approximation to $X$.</p>
                 </div>
 

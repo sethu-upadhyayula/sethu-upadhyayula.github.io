@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,34 +81,34 @@
             <article>
                 <h1 class="text-accent mb-4">4.2 Credit vs Rates Relative Value</h1>
 
-                <p>So far the relative value trades we've discussed have been expressed purely within the government (risk-free) yield curve. A second major category of relative value compares <em>credit</em> instruments — corporate bonds, credit default swaps (CDS) — against <em>rates</em> instruments (government bonds, interest rate swaps), exploiting small but persistent differences between economically similar exposures to credit and funding risk.</p>
+                <p>So far the relative value trades we've discussed have been expressed purely within the government (risk-free) yield curve. A second major category of relative value compares <em>credit</em> instruments - corporate bonds, credit default swaps (CDS) - against <em>rates</em> instruments (government bonds, interest rate swaps), exploiting small but persistent differences between economically similar exposures to credit and funding risk.</p>
 
                 <h2 class="mt-5 mb-3">Asset Swap Spread as a Relative Value Tool</h2>
                 <p>Recall from Section 1.3 that the asset swap spread (ASW) converts a fixed-rate bond's credit and liquidity premium into a floating spread over a reference rate (e.g. SOFR or its swap-curve equivalent), by packaging the bond with an interest rate swap that strips out the interest rate risk.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — ASW as a Cleaned-Up Credit Signal</div>
-                    <p class="mb-0">Because the asset swap package removes the bond's interest rate sensitivity, the ASW spread is a cleaner measure of pure credit and liquidity risk than the bond's yield or even its Z-spread, which still embed some curve-shape effects. This makes ASW spreads directly comparable <em>across bonds of different maturities and coupons</em> — a 2-year bond trading at ASW $+45$bp and a 10-year bond from the same issuer trading at ASW $+80$bp can be compared on a like-for-like basis to assess whether the issuer's credit curve is too steep or too flat relative to peers, in exactly the spirit of the curve trades from Section 4.1, but applied to a spread curve rather than an outright yield curve.</p>
+                    <div class="math-box-label">Remark - ASW as a Cleaned-Up Credit Signal</div>
+                    <p class="mb-0">Because the asset swap package removes the bond's interest rate sensitivity, the ASW spread is a cleaner measure of pure credit and liquidity risk than the bond's yield or even its Z-spread, which still embed some curve-shape effects. This makes ASW spreads directly comparable <em>across bonds of different maturities and coupons</em> - a 2-year bond trading at ASW $+45$bp and a 10-year bond from the same issuer trading at ASW $+80$bp can be compared on a like-for-like basis to assess whether the issuer's credit curve is too steep or too flat relative to peers, in exactly the spirit of the curve trades from Section 4.1, but applied to a spread curve rather than an outright yield curve.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The CDS-Bond Basis as a Cash-vs-Derivative Trade</h2>
                 <p>Section 1.3 introduced the CDS-bond basis, $\text{Basis} = s_{\text{CDS}} - s_Z$, as a measure of the gap between the credit derivative market (CDS) and the cash bond market for the same reference entity. This basis is one of the clearest examples of a <em>cash-versus-derivative</em> relative value trade.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Negative Basis Trade</div>
-                    <p>A <strong>negative basis trade</strong> exploits a negative CDS-bond basis ($s_{\text{CDS}} < s_Z$, i.e. the bond's spread is wider than the CDS spread for the same credit). The trade is: buy the cash bond (earning spread $s_Z$) and buy CDS protection on the same name (paying spread $s_{\text{CDS}}$). The net carry is approximately $s_Z - s_{\text{CDS}} > 0$, while the position is close to hedged against the issuer's default — if the issuer defaults, the bond's loss is offset by the CDS payout (subject to cheapest-to-deliver and basis risk in the recovery assumption).</p>
+                    <div class="math-box-label">Definition - Negative Basis Trade</div>
+                    <p>A <strong>negative basis trade</strong> exploits a negative CDS-bond basis ($s_{\text{CDS}} < s_Z$, i.e. the bond's spread is wider than the CDS spread for the same credit). The trade is: buy the cash bond (earning spread $s_Z$) and buy CDS protection on the same name (paying spread $s_{\text{CDS}}$). The net carry is approximately $s_Z - s_{\text{CDS}} > 0$, while the position is close to hedged against the issuer's default - if the issuer defaults, the bond's loss is offset by the CDS payout (subject to cheapest-to-deliver and basis risk in the recovery assumption).</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why the Basis Persists</div>
-                    <p class="mb-0">A persistently negative basis looks like "free money," but it is not, because the trade requires <em>funding the cash bond purchase</em> (via repo, Section 3.2) while the CDS leg requires no funding beyond posting collateral. If the bond's repo financing cost exceeds the basis itself, the trade is unprofitable on a funded basis even though it appears attractive on an unfunded spread comparison. This is precisely why Chapter 3's repo mechanics matter for Chapter 4's relative value: a trade that looks profitable purely on spread can be value-destructive once realistic financing costs — including the risk that the bond goes special and financing becomes cheaper, or general collateral rates rise and financing becomes more expensive — are included.</p>
+                    <div class="math-box-label">Remark - Why the Basis Persists</div>
+                    <p class="mb-0">A persistently negative basis looks like "free money," but it is not, because the trade requires <em>funding the cash bond purchase</em> (via repo, Section 3.2) while the CDS leg requires no funding beyond posting collateral. If the bond's repo financing cost exceeds the basis itself, the trade is unprofitable on a funded basis even though it appears attractive on an unfunded spread comparison. This is precisely why Chapter 3's repo mechanics matter for Chapter 4's relative value: a trade that looks profitable purely on spread can be value-destructive once realistic financing costs - including the risk that the bond goes special and financing becomes cheaper, or general collateral rates rise and financing becomes more expensive - are included.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Swap Spreads: Government Bonds vs Interest Rate Swaps</h2>
                 <p>A related rates-vs-rates (but cash-vs-derivative) relative value measure is the <em>swap spread</em>: the difference between the swap rate and the government bond yield of the same maturity.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Swap Spread</div>
+                    <div class="math-box-label">Definition - Swap Spread</div>
                     <p class="mb-0">$$\text{Swap Spread}(T) = y_{\text{swap}}(T) - y_{\text{govt}}(T)$$
                     Government bonds and interest rate swaps reference very similar interest rate risk, but differ in credit risk, balance-sheet treatment, supply and demand (government bond supply is driven by fiscal issuance, Section 3.1, while swap rates are driven by hedging demand from borrowers and investors), and collateralization. The swap spread captures the net effect of all these differences, and trades on it (paying or receiving the spread between a swap and an offsetting government bond position, duration-matched as in Section 4.1) are a staple of relative value desks that span both the cash government bond market and the derivatives market.</p>
                 </div>

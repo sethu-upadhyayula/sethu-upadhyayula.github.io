@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,10 +128,10 @@
             <article>
                 <h1 class="text-accent mb-4">5.2 Laurent Series</h1>
 
-                <p>When $f$ has an isolated singularity at $z_0$, it is analytic in a punctured disk $0 &lt; |z-z_0| &lt; R$ but not at $z_0$ itself. A Taylor series cannot capture this behavior; instead, we need a two-sided series — the Laurent series — which allows negative powers of $(z-z_0)$.</p>
+                <p>When $f$ has an isolated singularity at $z_0$, it is analytic in a punctured disk $0 &lt; |z-z_0| &lt; R$ but not at $z_0$ itself. A Taylor series cannot capture this behavior; instead, we need a two-sided series - the Laurent series - which allows negative powers of $(z-z_0)$.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.2.1 — Laurent's Theorem</div>
+                    <div class="math-box-label">Theorem 5.2.1 - Laurent's Theorem</div>
                     <p>Let $f$ be analytic in the annulus $A = \{z : r &lt; |z-z_0| &lt; R\}$ (where $0 \le r &lt; R \le \infty$). Then $f$ has a unique representation
                     $$f(z) = \sum_{n=-\infty}^\infty a_n (z-z_0)^n$$
                     convergent absolutely and uniformly on every compact sub-annulus $r &lt; \rho_1 \le |z-z_0| \le \rho_2 &lt; R$. The coefficients are
@@ -142,29 +142,29 @@
                 <h2 class="mt-5 mb-3">Principal Part and Analytic Part</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.2.2 — Principal Part</div>
+                    <div class="math-box-label">Definition 5.2.2 - Principal Part</div>
                     <p>Write the Laurent series as $f(z) = P(z) + A(z)$ where:
                     $$P(z) = \sum_{n=1}^\infty \frac{a_{-n}}{(z-z_0)^n} \quad\text{(principal part)}$$
                     $$A(z) = \sum_{n=0}^\infty a_n (z-z_0)^n \quad\text{(analytic part)}.$$</p>
-                    <p class="mb-0">The analytic part converges for $|z-z_0| &lt; R$ (it is a Taylor series); the principal part converges for $|z-z_0| &gt; r$. The nature of the principal part — zero, finitely many terms, or infinitely many terms — classifies the singularity at $z_0$.</p>
+                    <p class="mb-0">The analytic part converges for $|z-z_0| &lt; R$ (it is a Taylor series); the principal part converges for $|z-z_0| &gt; r$. The nature of the principal part - zero, finitely many terms, or infinitely many terms - classifies the singularity at $z_0$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Uniqueness</div>
+                    <div class="math-box-label">Remark - Uniqueness</div>
                     <p class="mb-0">The Laurent expansion on a given annulus is unique: if $f(z) = \sum b_n(z-z_0)^n$ also converges on $A$ and equals $f$, then $b_n = a_n$ for all $n$. This follows from the integral formula for the coefficients.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Examples</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 5.2.3 — $e^{1/z}$</div>
+                    <div class="math-box-label">Example 5.2.3 - $e^{1/z}$</div>
                     <p>Substitute $w = 1/z$ into the exponential series $e^w = \sum_{n=0}^\infty w^n/n!$:
                     $$e^{1/z} = \sum_{n=0}^\infty \frac{1}{n!\, z^n} = 1 + \frac{1}{z} + \frac{1}{2!\,z^2} + \frac{1}{3!\,z^3} + \cdots$$
                     valid for $0 &lt; |z| &lt; \infty$. The principal part has infinitely many nonzero terms, so $z=0$ is an essential singularity.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 5.2.4 — Partial Fractions in Two Annuli</div>
+                    <div class="math-box-label">Example 5.2.4 - Partial Fractions in Two Annuli</div>
                     <p>Consider $f(z) = \dfrac{1}{z(z-1)}$. Write via partial fractions: $f(z) = \dfrac{1}{z-1} - \dfrac{1}{z}$.</p>
                     <p><strong>Annulus $0 &lt; |z| &lt; 1$:</strong> Expand $\dfrac{1}{z-1} = -\dfrac{1}{1-z} = -\sum_{n=0}^\infty z^n$. So
                     $$f(z) = -\sum_{n=0}^\infty z^n - \frac{1}{z} = -\frac{1}{z} - 1 - z - z^2 - \cdots$$
@@ -175,14 +175,14 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 5.2.5 — Reading off Coefficients</div>
+                    <div class="math-box-label">Example 5.2.5 - Reading off Coefficients</div>
                     <p>For $f(z) = \dfrac{\sin z}{z^3}$, use $\sin z = z - z^3/6 + z^5/120 - \cdots$:
                     $$\frac{\sin z}{z^3} = \frac{1}{z^2} - \frac{1}{6} + \frac{z^2}{120} - \cdots$$</p>
                     <p class="mb-0">So $a_{-2} = 1$, $a_{-1} = 0$, $a_0 = -1/6$, etc. Since $a_{-1} = 0$, the residue at $z=0$ is zero.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Laurent vs Taylor</div>
+                    <div class="math-box-label">Remark - Laurent vs Taylor</div>
                     <p class="mb-0">When $f$ is analytic at $z_0$ (no singularity), the Laurent series on $0 &lt; |z-z_0| &lt; R$ automatically has $a_n = 0$ for all $n &lt; 0$, and coincides with the Taylor series on $|z-z_0| &lt; R$. Laurent series strictly generalize Taylor series by allowing the inner radius $r &gt; 0$.</p>
                 </div>
 

@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,7 +132,7 @@
                 <h2 class="mt-4 mb-3">Revised Simplex Method</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.3.1 — Revised Simplex</div>
+                    <div class="math-box-label">Definition 4.3.1 - Revised Simplex</div>
                     <p>The revised simplex method maintains the current basis $B$ and the basis inverse $A_B^{-1}$ explicitly. Each iteration proceeds:</p>
                     <ol>
                         <li>Compute dual variables: $y^\top = c_B^\top A_B^{-1}$.</li>
@@ -147,15 +147,15 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.3.2 — Sherman-Morrison Rank-1 Update</div>
+                    <div class="math-box-label">Theorem 4.3.2 - Sherman-Morrison Rank-1 Update</div>
                     <p>If $A_B^{-1}$ is known and we replace column $p$ of $A_B$ with $A_q$, giving a new basis matrix $\tilde{A}_B$, then
                     $$\tilde{A}_B^{-1} = A_B^{-1} - \frac{(A_B^{-1} A_q - e_p) e_p^\top A_B^{-1}}{e_p^\top A_B^{-1} A_q},$$
                     where $e_p$ is the $p$-th standard basis vector. This is the <strong>Sherman-Morrison formula</strong> for a rank-1 update.</p>
-                    <p class="mb-0">In the simplex context, $d = A_B^{-1} A_q$ is already computed in step 5, so the update requires $O(m^2)$ operations — much cheaper than re-inverting $A_B$ from scratch ($O(m^3)$).</p>
+                    <p class="mb-0">In the simplex context, $d = A_B^{-1} A_q$ is already computed in step 5, so the update requires $O(m^2)$ operations - much cheaper than re-inverting $A_B$ from scratch ($O(m^3)$).</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — LU Factorisation for Numerical Stability</div>
+                    <div class="math-box-label">Remark - LU Factorisation for Numerical Stability</div>
                     <p>In practice, $A_B^{-1}$ is never stored or updated explicitly. Instead, an LU factorisation $A_B = LU$ (with partial pivoting) is maintained. Solves $A_B^{-1} v$ are performed via forward and backward substitution in $O(m^2)$ time.</p>
                     <p class="mb-0">After many iterations, accumulated rounding errors degrade the factorisation. Production solvers (CPLEX, Gurobi, HiGHS) refactorise $A_B$ periodically and use sophisticated data structures to exploit sparsity, which is crucial for large-scale LPs where $A$ may have fewer than $1\%$ nonzeros.</p>
                 </div>
@@ -163,7 +163,7 @@
                 <h2 class="mt-5 mb-3">Big-M Method</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.3.3 — Big-M Method</div>
+                    <div class="math-box-label">Definition 4.3.3 - Big-M Method</div>
                     <p>The Big-M method augments the original LP with artificial variables $a_i \ge 0$ penalised by a large constant $M > 0$:
                     $$\min\; c^\top x + M \sum_{i=1}^m a_i \quad\text{s.t.}\quad Ax + a = b,\; x, a \ge 0.$$
                     The initial BFS uses $a$ as the basis. If the optimal value has $a^* = 0$, we have solved the original LP. If $a^* \ne 0$ at optimality (for any finite $M$), the original LP is infeasible.</p>
@@ -171,7 +171,7 @@
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 4.3.4 — Two-Phase vs Big-M</div>
+                    <div class="math-box-label">Proposition 4.3.4 - Two-Phase vs Big-M</div>
                     <p>Both methods achieve the same goal: finding an initial BFS. Their tradeoffs are:</p>
                     <ul>
                         <li><strong>Two-phase:</strong> Cleanly separates feasibility from optimisation. Numerically more stable since Phase I costs are $O(1)$, not $O(M)$. Preferred in practice.</li>
@@ -181,7 +181,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Big-M on a Simple Problem</div>
+                    <div class="math-box-label">Example - Big-M on a Simple Problem</div>
                     <p>Minimise $x_1 + 2x_2$ s.t. $x_1 + x_2 \ge 3$, $x_1, x_2 \ge 0$. Convert: $x_1 + x_2 - s + a = 3$ with $s, a \ge 0$ (surplus $s$, artificial $a$). Big-M problem: $\min\; x_1 + 2x_2 + Ma$.</p>
                     <p>Initial BFS: $a = 3$, $x_1 = x_2 = s = 0$, objective $= 3M$. Reduced costs: $\bar{c}_{x_1} = 1 - M < 0$ for large $M$. Enter $x_1$; ratio test gives $x_1 = 3$, $a$ leaves. New BFS: $x_1 = 3$, $a = 0$. Reduced costs $\bar{c}_{x_2} = 1 \ge 0$, $\bar{c}_s = M \ge 0$. Optimal: $x_1^* = 3$, $x_2^* = 0$, objective $= 3$.</p>
                     <p class="mb-0">The artificial variable is driven to zero, confirming feasibility.</p>

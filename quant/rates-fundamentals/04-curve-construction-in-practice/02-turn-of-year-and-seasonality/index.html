@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,19 +80,19 @@
             <article>
                 <h1 class="text-accent mb-4">4.2 Turn-of-Year Effects and Seasonality</h1>
 
-                <p>The smooth curves produced by bootstrapping and global calibration (Sections 2.1 and 4.1) implicitly assume that overnight and short-term rates evolve continuously. In reality, short-term funding markets exhibit sharp, predictable jumps around specific calendar dates — most notably the turn of the calendar year — that a naive interpolation scheme will smooth away, mispricing any instrument with cash flows or fixings spanning those dates.</p>
+                <p>The smooth curves produced by bootstrapping and global calibration (Sections 2.1 and 4.1) implicitly assume that overnight and short-term rates evolve continuously. In reality, short-term funding markets exhibit sharp, predictable jumps around specific calendar dates - most notably the turn of the calendar year - that a naive interpolation scheme will smooth away, mispricing any instrument with cash flows or fixings spanning those dates.</p>
 
                 <h2 class="mt-5 mb-3">The Turn-of-Year Effect</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Rates Spike at Year-End</div>
-                    <p class="mb-0">Around 31 December, demand for short-term cash collateral and balance-sheet space changes sharply: banks reduce balance-sheet usage to improve regulatory leverage ratio snapshots taken at quarter- and year-end, repo and unsecured funding markets become less liquid as dealers step back, and money market funds reposition. The net effect is typically a sharp, one- or two-day spike (or occasionally a dip) in overnight rates spanning the year-end date — the <strong>turn</strong>. The same effect, at smaller scale, occurs at calendar quarter-ends (the "quarter-turn").</p>
+                    <div class="math-box-label">Remark - Why Rates Spike at Year-End</div>
+                    <p class="mb-0">Around 31 December, demand for short-term cash collateral and balance-sheet space changes sharply: banks reduce balance-sheet usage to improve regulatory leverage ratio snapshots taken at quarter- and year-end, repo and unsecured funding markets become less liquid as dealers step back, and money market funds reposition. The net effect is typically a sharp, one- or two-day spike (or occasionally a dip) in overnight rates spanning the year-end date - the <strong>turn</strong>. The same effect, at smaller scale, occurs at calendar quarter-ends (the "quarter-turn").</p>
                 </div>
 
-                <p>An overnight-indexed swap (OIS) whose floating leg compounds a daily overnight rate over a period spanning 31 December will have its payoff directly affected by the realized turn — even if the swap's start and end dates are both far from year-end, as long as the accrual period crosses the turn date.</p>
+                <p>An overnight-indexed swap (OIS) whose floating leg compounds a daily overnight rate over a period spanning 31 December will have its payoff directly affected by the realized turn - even if the swap's start and end dates are both far from year-end, as long as the accrual period crosses the turn date.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Turn Adjustment</div>
+                    <div class="math-box-label">Definition - Turn Adjustment</div>
                     <p class="mb-0">A <em>turn</em> is modelled as an additive jump $\tau$ (in rate terms, e.g. basis points) applied to the overnight rate for the one or two business days spanning a turn date $T_{\text{turn}}$. For a discount factor between dates that straddle the turn, the turn contributes a multiplicative adjustment:
                     $$P^{\text{turn}}(0,T) = P^{\text{smooth}}(0,T) \times \exp\!\left(-\tau \cdot \Delta_{\text{turn}}\right) \quad \text{for } T > T_{\text{turn}}$$
                     where $\Delta_{\text{turn}}$ is the day-count fraction of the turn period (typically $1/360$ or $1/365$) and $P^{\text{smooth}}$ is the discount factor from the underlying smooth curve without the turn. The same multiplicative jump applies to every discount factor for dates beyond $T_{\text{turn}}$.</p>
@@ -100,19 +100,19 @@
 
                 <h2 class="mt-5 mb-3">Building Turns into the Curve</h2>
 
-                <p>Rather than letting the bootstrap or global calibration (Section 4.1) try to fit a single smooth curve through quotes that embed turn effects — which would distort the curve everywhere, not just near the turn — turns are modelled as a separate, additive layer on top of a smooth "base" curve.</p>
+                <p>Rather than letting the bootstrap or global calibration (Section 4.1) try to fit a single smooth curve through quotes that embed turn effects - which would distort the curve everywhere, not just near the turn - turns are modelled as a separate, additive layer on top of a smooth "base" curve.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Two-Layer Curve Construction</div>
-                    <p><strong>Step 1 — Strip the turns.</strong> Identify the known or estimated turn jumps $\tau_1, \tau_2, \ldots$ at each upcoming year-end and quarter-end (calibrated from instruments that explicitly trade the turn, such as year-end-specific FX forwards, central bank repo facility usage, or dedicated "turn swaps" where liquid).</p>
-                    <p><strong>Step 2 — Bootstrap the smooth curve.</strong> Adjust each calibrating instrument's quote to remove the contribution of any turns its accrual period spans, then bootstrap a smooth base curve (Section 2.1) from the turn-adjusted quotes.</p>
-                    <p class="mb-0"><strong>Step 3 — Recombine.</strong> The final discount curve is the smooth base curve multiplied by the cumulative turn adjustments for every turn date crossed, as in the definition above. Pricing any instrument then automatically reflects the correct turn jumps for whichever period its cash flows span.</p>
+                    <div class="math-box-label">Remark - Two-Layer Curve Construction</div>
+                    <p><strong>Step 1 - Strip the turns.</strong> Identify the known or estimated turn jumps $\tau_1, \tau_2, \ldots$ at each upcoming year-end and quarter-end (calibrated from instruments that explicitly trade the turn, such as year-end-specific FX forwards, central bank repo facility usage, or dedicated "turn swaps" where liquid).</p>
+                    <p><strong>Step 2 - Bootstrap the smooth curve.</strong> Adjust each calibrating instrument's quote to remove the contribution of any turns its accrual period spans, then bootstrap a smooth base curve (Section 2.1) from the turn-adjusted quotes.</p>
+                    <p class="mb-0"><strong>Step 3 - Recombine.</strong> The final discount curve is the smooth base curve multiplied by the cumulative turn adjustments for every turn date crossed, as in the definition above. Pricing any instrument then automatically reflects the correct turn jumps for whichever period its cash flows span.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Pricing Across a Year-End</div>
+                    <div class="math-box-label">Example - Pricing Across a Year-End</div>
                     <p>Suppose the smooth base curve gives $P^{\text{smooth}}(0, 6m) = 0.9810$ for a 6-month discount factor that happens to span 31 December, and the market-implied year-end turn adds $\tau = 15\text{bp}$ for one day ($\Delta_{\text{turn}} = 1/360$).</p>
-                    <p class="mb-0">The turn-adjusted discount factor is $P^{\text{turn}}(0,6m) = 0.9810 \times \exp(-0.0015 \times 1/360) \approx 0.9810 \times 0.99999583 \approx 0.98096$ — a small absolute change, but one that is concentrated entirely in the overnight rate for that single day, which can correspond to an annualised rate spike of several hundred basis points for that one fixing. An OIS whose floating leg fixes on that specific day will see its payment driven almost entirely by the turn.</p>
+                    <p class="mb-0">The turn-adjusted discount factor is $P^{\text{turn}}(0,6m) = 0.9810 \times \exp(-0.0015 \times 1/360) \approx 0.9810 \times 0.99999583 \approx 0.98096$ - a small absolute change, but one that is concentrated entirely in the overnight rate for that single day, which can correspond to an annualised rate spike of several hundred basis points for that one fixing. An OIS whose floating leg fixes on that specific day will see its payment driven almost entirely by the turn.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Seasonality in Inflation and Funding Curves</h2>
@@ -120,14 +120,14 @@
                 <p>Beyond the year-end turn, several rates and inflation markets exhibit recurring intra-year patterns that calibration must account for explicitly.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Other Seasonal Patterns</div>
-                    <p><strong>Central bank meeting dates.</strong> Short-term rate curves (e.g. the front end of a SOFR or ESTR curve) are not smooth between central bank policy meeting dates — the market prices a step-function expectation of the policy rate, with jumps concentrated at scheduled meeting dates. Curve construction for the front end therefore typically uses meeting-date-aware interpolation (flat-forward between meetings, with a jump permitted at each meeting date) rather than the smooth interpolants of Section 2.2.</p>
-                    <p class="mb-0"><strong>Inflation seasonality.</strong> Non-seasonally-adjusted price indices (e.g. CPI used for inflation-linked bond cash flows) exhibit a regular within-year pattern — for example, predictable jumps around January due to annual price resets. Inflation curve construction overlays a fitted seasonal adjustment factor for each calendar month on top of the smooth year-on-year inflation curve, analogous to the turn adjustment above but with twelve recurring monthly factors instead of one or two annual jumps.</p>
+                    <div class="math-box-label">Remark - Other Seasonal Patterns</div>
+                    <p><strong>Central bank meeting dates.</strong> Short-term rate curves (e.g. the front end of a SOFR or ESTR curve) are not smooth between central bank policy meeting dates - the market prices a step-function expectation of the policy rate, with jumps concentrated at scheduled meeting dates. Curve construction for the front end therefore typically uses meeting-date-aware interpolation (flat-forward between meetings, with a jump permitted at each meeting date) rather than the smooth interpolants of Section 2.2.</p>
+                    <p class="mb-0"><strong>Inflation seasonality.</strong> Non-seasonally-adjusted price indices (e.g. CPI used for inflation-linked bond cash flows) exhibit a regular within-year pattern - for example, predictable jumps around January due to annual price resets. Inflation curve construction overlays a fitted seasonal adjustment factor for each calendar month on top of the smooth year-on-year inflation curve, analogous to the turn adjustment above but with twelve recurring monthly factors instead of one or two annual jumps.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why This Matters in Practice</div>
-                    <p class="mb-0">Turn and seasonality effects are small relative to the overall level of rates, but they are concentrated in specific, predictable days — exactly the kind of effect that washes out under a smooth global fit but can dominate the valuation of short-dated instruments, FRAs, and OIS trades whose accrual periods happen to span those dates. A curve-building system that ignores them will reprice its calibrating instruments correctly on average while systematically mispricing every other instrument that crosses a turn or meeting date — a discrepancy that shows up directly as unexplained daily P&amp;L.</p>
+                    <div class="math-box-label">Remark - Why This Matters in Practice</div>
+                    <p class="mb-0">Turn and seasonality effects are small relative to the overall level of rates, but they are concentrated in specific, predictable days - exactly the kind of effect that washes out under a smooth global fit but can dominate the valuation of short-dated instruments, FRAs, and OIS trades whose accrual periods happen to span those dates. A curve-building system that ignores them will reprice its calibrating instruments correctly on average while systematically mispricing every other instrument that crosses a turn or meeting date - a discrepancy that shows up directly as unexplained daily P&amp;L.</p>
                 </div>
 
                 <hr class="my-5">

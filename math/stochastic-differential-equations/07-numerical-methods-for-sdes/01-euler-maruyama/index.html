@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -56,14 +56,14 @@
                 <h2 class="mt-5 mb-3">The Scheme</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.1 — Euler-Maruyama Scheme</div>
+                    <div class="math-box-label">Definition 7.1.1 - Euler-Maruyama Scheme</div>
                     <p>Partition $[0,T]$ into $N$ subintervals with grid points $t_n = n\Delta t$, $\Delta t = T/N$, $n = 0,\dots,N$. Let $\Delta W_n = W_{t_{n+1}} - W_{t_n} \sim N(0,\Delta t)$ be independent Gaussian increments. The Euler-Maruyama approximation $Y_n \approx X_{t_n}$ is defined recursively by</p>
                     $$Y_0 = x_0, \qquad Y_{n+1} = Y_n + \mu(Y_n,t_n)\,\Delta t + \sigma(Y_n,t_n)\,\Delta W_n.$$
                     <p class="mb-0">In simulation, $\Delta W_n = \sqrt{\Delta t}\,Z_n$ where $Z_n \sim N(0,1)$ are i.i.d. standard normals. The scheme is the direct stochastic analogue of the explicit Euler method for ODEs, obtained by freezing the coefficients $\mu, \sigma$ at the left endpoint $t_n$ of each subinterval.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 7.1.2 — Origin of the Scheme</div>
+                    <div class="math-box-label">Remark 7.1.2 - Origin of the Scheme</div>
                     <p class="mb-0">The scheme follows from the integral form of the SDE,</p>
                     $$X_{t_{n+1}} = X_{t_n} + \int_{t_n}^{t_{n+1}} \mu(X_s,s)\,ds + \int_{t_n}^{t_{n+1}} \sigma(X_s,s)\,dW_s,$$
                     <p class="mb-0">by approximating both integrands as constant and equal to their values at $t_n$: $\int_{t_n}^{t_{n+1}}\mu(X_s,s)\,ds \approx \mu(X_{t_n},t_n)\Delta t$ and $\int_{t_n}^{t_{n+1}}\sigma(X_s,s)\,dW_s \approx \sigma(X_{t_n},t_n)\Delta W_n$, exploiting the Itô isometry to control the error of the second approximation.</p>
@@ -72,14 +72,14 @@
                 <h2 class="mt-5 mb-3">Convergence</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.1.3 — Strong Convergence of Euler-Maruyama</div>
+                    <div class="math-box-label">Theorem 7.1.3 - Strong Convergence of Euler-Maruyama</div>
                     <p class="mb-0">Suppose $\mu,\sigma$ satisfy global Lipschitz and linear growth conditions. Then the Euler-Maruyama approximation converges <strong>strongly with order $\gamma = 0.5$</strong>:</p>
                     $$E\left[\max_{0\leq n\leq N}\left|X_{t_n} - Y_n\right|\right] \leq C(\Delta t)^{1/2},$$
                     <p class="mb-0">for a constant $C$ independent of $\Delta t$. Halving the step size reduces the pathwise error by a factor of only $\sqrt{2} \approx 1.41$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.1.4 — Weak Convergence of Euler-Maruyama</div>
+                    <div class="math-box-label">Theorem 7.1.4 - Weak Convergence of Euler-Maruyama</div>
                     <p class="mb-0">Under the same conditions, plus sufficient smoothness of $\mu,\sigma$ and of the test function $g$, the Euler-Maruyama approximation converges <strong>weakly with order $\beta = 1.0$</strong>:</p>
                     $$\left|E[g(X_T)] - E[g(Y_N)]\right| \leq C(\Delta t).$$
                     <p class="mb-0">The weak order exceeds the strong order because the dominant pathwise error term, arising from the difference between $\Delta W_n$ and the higher-order Itô-Taylor corrections, has mean zero and so does not contribute to the error in expectations at leading order.</p>
@@ -93,17 +93,17 @@
                 <h2 class="mt-5 mb-3">Worked Example: Geometric Brownian Motion</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.1.5 — Simulating $dS_t = \mu S_t\,dt + \sigma S_t\,dW_t$</div>
+                    <div class="math-box-label">Example 7.1.5 - Simulating $dS_t = \mu S_t\,dt + \sigma S_t\,dW_t$</div>
                     <p>For geometric Brownian motion, $\mu(S,t) = \mu S$ and $\sigma(S,t) = \sigma S$. The Euler-Maruyama recursion is</p>
                     $$S_{n+1} = S_n + \mu S_n \Delta t + \sigma S_n \Delta W_n = S_n\left(1 + \mu\Delta t + \sigma\Delta W_n\right).$$
                     <p>The exact solution is $S_T = S_0\exp\left((\mu - \sigma^2/2)T + \sigma W_T\right)$. Comparing the two: the exact solution involves $\exp(\sigma\Delta W_n - \frac{1}{2}\sigma^2\Delta t)$ over a step, which expands as $1 + \sigma\Delta W_n + \frac{1}{2}\sigma^2\left((\Delta W_n)^2 - \Delta t\right) + O((\Delta t)^{3/2})$.</p>
-                    <p class="mb-0">The Euler-Maruyama step $1 + \mu\Delta t + \sigma\Delta W_n$ is missing exactly the $\frac{1}{2}\sigma^2\left((\Delta W_n)^2 - \Delta t\right)$ term — an $O(\Delta t)$ quantity with zero mean. This is precisely the term that the Milstein scheme (Section 7.2) adds back in, improving the strong order from $0.5$ to $1.0$.</p>
+                    <p class="mb-0">The Euler-Maruyama step $1 + \mu\Delta t + \sigma\Delta W_n$ is missing exactly the $\frac{1}{2}\sigma^2\left((\Delta W_n)^2 - \Delta t\right)$ term - an $O(\Delta t)$ quantity with zero mean. This is precisely the term that the Milstein scheme (Section 7.2) adds back in, improving the strong order from $0.5$ to $1.0$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Stability Remarks</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 7.1.6 — Step Size and Stability</div>
+                    <div class="math-box-label">Remark 7.1.6 - Step Size and Stability</div>
                     <p class="mb-0">As with deterministic ODE solvers, the explicit Euler-Maruyama scheme can be numerically unstable for stiff SDEs (e.g., mean-reverting processes with large reversion speed) unless $\Delta t$ is chosen sufficiently small relative to the relevant time scale of the drift. Implicit variants (e.g., the drift-implicit or "backward" Euler-Maruyama scheme, $Y_{n+1} = Y_n + \mu(Y_{n+1},t_{n+1})\Delta t + \sigma(Y_n,t_n)\Delta W_n$) trade extra computational cost per step for improved stability, and are preferred for stiff systems. Additionally, for processes with non-negativity constraints (e.g., interest rate or volatility models such as CIR), the additive Gaussian noise in Euler-Maruyama can produce negative values; truncation or reflection schemes are commonly used to address this in practice.</p>
                 </div>
 

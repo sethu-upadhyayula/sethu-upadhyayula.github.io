@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,19 +81,19 @@
             <article>
                 <h1 class="text-accent mb-4">1.2 Delta and Hedging Conventions</h1>
 
-                <p>In equity markets, options are quoted by strike. In FX, options are overwhelmingly quoted by <em>delta</em>: a trader requests a price for "the 25-delta EUR call" rather than "the option struck at 1.1250." This convention exists because delta is a more stable, comparable measure across spot levels and tenors than an absolute strike, and because the delta directly tells the trader how much of the underlying to hold for a hedge. However, "delta" itself is not a single unambiguous quantity in FX — there are several conventions in use, and getting them wrong leads to mis-hedging and mis-marking of the volatility surface.</p>
+                <p>In equity markets, options are quoted by strike. In FX, options are overwhelmingly quoted by <em>delta</em>: a trader requests a price for "the 25-delta EUR call" rather than "the option struck at 1.1250." This convention exists because delta is a more stable, comparable measure across spot levels and tenors than an absolute strike, and because the delta directly tells the trader how much of the underlying to hold for a hedge. However, "delta" itself is not a single unambiguous quantity in FX - there are several conventions in use, and getting them wrong leads to mis-hedging and mis-marking of the volatility surface.</p>
 
                 <h2 class="mt-5 mb-3">Spot Delta and Forward Delta</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Spot Delta</div>
+                    <div class="math-box-label">Definition - Spot Delta</div>
                     <p class="mb-0">The spot delta of a Garman-Kohlhagen call is the sensitivity of the option price to a change in the spot rate, holding all else fixed:</p>
                     $$\Delta_{\text{spot}}^{\text{call}} = \frac{\partial c}{\partial S_0} = e^{-r_f T} N(d_1), \qquad \Delta_{\text{spot}}^{\text{put}} = -e^{-r_f T} N(-d_1)$$
                     <p class="mt-2 mb-0">This is the quantity of foreign currency (per unit of foreign notional) that a hedger should hold in the spot market against the option position.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Forward Delta</div>
+                    <div class="math-box-label">Definition - Forward Delta</div>
                     <p class="mb-0">The forward delta is the sensitivity of the option price to a change in the forward rate $F_0$, equivalent to the spot delta scaled by the cost-of-carry factor:</p>
                     $$\Delta_{\text{fwd}}^{\text{call}} = N(d_1) = e^{r_f T}\,\Delta_{\text{spot}}^{\text{call}}$$
                     <p class="mt-2 mb-0">Forward delta is the natural hedge ratio if the hedge is executed via an FX forward rather than spot, and it is the convention most commonly used for quoting longer-dated options, where the difference between spot and forward delta can be material.</p>
@@ -101,17 +101,17 @@
 
                 <h2 class="mt-5 mb-3">Premium-Adjusted Delta</h2>
 
-                <p>Both spot and forward delta above implicitly assume the option premium is paid in domestic currency (the currency in which the Garman-Kohlhagen value $c$ is expressed). In FX, however, the premium on an option is often paid in the <em>foreign</em> currency — for example, a EUR/USD option premium quoted "in EUR pips" is settled in EUR. When the premium currency is the foreign currency, holding the raw spot delta as a hedge over-hedges the position, because the premium received (or paid) is itself a foreign-currency amount whose USD value moves with spot.</p>
+                <p>Both spot and forward delta above implicitly assume the option premium is paid in domestic currency (the currency in which the Garman-Kohlhagen value $c$ is expressed). In FX, however, the premium on an option is often paid in the <em>foreign</em> currency - for example, a EUR/USD option premium quoted "in EUR pips" is settled in EUR. When the premium currency is the foreign currency, holding the raw spot delta as a hedge over-hedges the position, because the premium received (or paid) is itself a foreign-currency amount whose USD value moves with spot.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Premium-Adjusted Delta</div>
+                    <div class="math-box-label">Definition - Premium-Adjusted Delta</div>
                     <p>If the premium of a call is paid in the foreign currency, the premium-adjusted delta subtracts the sensitivity of the foreign-currency premium itself:</p>
                     $$\Delta_{\text{pa}}^{\text{call}} = e^{-r_f T} N(d_1) - \frac{c}{S_0} = \frac{K}{S_0}e^{-r_d T}N(d_2)$$
-                    <p class="mb-0">Intuitively: a hedger who has received the premium in foreign currency already holds some exposure to spot through that premium, so the hedge in the underlying must be reduced by exactly that amount. Premium adjustment matters most for ITM options and for currency pairs where the foreign currency is the natural settlement currency for premium (e.g., EUR/USD and GBP/USD premiums are conventionally paid in USD — but USD/JPY and USD/CHF premiums are conventionally paid in the base currency's quote, so premium adjustment is standard for those pairs).</p>
+                    <p class="mb-0">Intuitively: a hedger who has received the premium in foreign currency already holds some exposure to spot through that premium, so the hedge in the underlying must be reduced by exactly that amount. Premium adjustment matters most for ITM options and for currency pairs where the foreign currency is the natural settlement currency for premium (e.g., EUR/USD and GBP/USD premiums are conventionally paid in USD - but USD/JPY and USD/CHF premiums are conventionally paid in the base currency's quote, so premium adjustment is standard for those pairs).</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why It Matters</div>
+                    <div class="math-box-label">Remark - Why It Matters</div>
                     <p class="mb-0">Premium-adjusted delta is not a small correction for deep ITM options: it can shift the delta by several percentage points, which translates directly into the strike implied by a "25-delta" quote. Failing to premium-adjust where market convention requires it produces a strike that does not match what other market participants mean by "25-delta," causing the volatility surface to be mis-marked and hedges to be systematically off.</p>
                 </div>
 
@@ -129,10 +129,10 @@
 
                 <h2 class="mt-5 mb-3">ATM Conventions</h2>
 
-                <p>The "at-the-money" (ATM) volatility quote — the anchor point of the volatility surface — also has multiple conventions for what "at-the-money" means:</p>
+                <p>The "at-the-money" (ATM) volatility quote - the anchor point of the volatility surface - also has multiple conventions for what "at-the-money" means:</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — ATM Conventions</div>
+                    <div class="math-box-label">Definition - ATM Conventions</div>
                     <ul class="mb-0">
                         <li><strong>ATM-spot:</strong> $K = S_0$, the strike equals the current spot rate.</li>
                         <li><strong>ATM-forward:</strong> $K = F_0$, the strike equals the forward rate for the option's maturity. This is the most common convention for FX options beyond very short tenors.</li>
@@ -145,14 +145,14 @@
                 <h2 class="mt-5 mb-3">Worked Example: 25-Delta Quote to Strike</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Converting a 25-Delta Call to a Strike</div>
+                    <div class="math-box-label">Example - Converting a 25-Delta Call to a Strike</div>
                     <p>Suppose for a 3-month EUR/USD option the market quotes a 25-delta call at a volatility of $\sigma = 9.5\%$, with $S_0 = 1.0850$, $r_d = 5.00\%$ (USD), $r_f = 3.50\%$ (EUR), $T = 0.25$, and the convention is forward delta, not premium-adjusted (typical for EUR/USD, where premium is paid in USD).</p>
                     <p>The target is $\Delta^* = 0.25$, so:</p>
                     $$d_1 = N^{-1}(0.25) \approx -0.6745$$
                     <p>Now solve for $K$:</p>
                     $$K = 1.0850 \exp\left[(0.05 - 0.035 + \tfrac12(0.095)^2)(0.25) - (-0.6745)(0.095)\sqrt{0.25}\right]$$
                     $$K = 1.0850 \exp\left[0.00525 + 0.03204\right] = 1.0850 \exp(0.03729) \approx 1.0850 \times 1.0380 \approx 1.1262$$
-                    <p class="mb-0">So the "25-delta EUR call" trades at a strike of approximately 1.1262 — about 380 pips above the current spot of 1.0850. A 25-delta put, by symmetry, would be solved using $\Delta^* = -0.25$ and $d_1 = N^{-1}(-0.25 \cdot e^{r_fT}) $, producing a strike below spot. The pair of 25-delta strikes (call and put) together with the ATM strike define the three pillars of the standard FX vol surface, discussed next.</p>
+                    <p class="mb-0">So the "25-delta EUR call" trades at a strike of approximately 1.1262 - about 380 pips above the current spot of 1.0850. A 25-delta put, by symmetry, would be solved using $\Delta^* = -0.25$ and $d_1 = N^{-1}(-0.25 \cdot e^{r_fT}) $, producing a strike below spot. The pair of 25-delta strikes (call and put) together with the ATM strike define the three pillars of the standard FX vol surface, discussed next.</p>
                 </div>
 
                 <hr class="my-5">

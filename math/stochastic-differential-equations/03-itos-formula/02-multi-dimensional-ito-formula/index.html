@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -125,16 +125,16 @@
             <article>
                 <h1 class="text-accent mb-4">3.2 Multi-Dimensional Itô Formula</h1>
 
-                <p>Many applications — including multi-asset option pricing and the derivation of PDEs from SDEs — require a version of Itô's formula for vector-valued processes driven by multiple Brownian motions.</p>
+                <p>Many applications - including multi-asset option pricing and the derivation of PDEs from SDEs - require a version of Itô's formula for vector-valued processes driven by multiple Brownian motions.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Setup — Multi-Dimensional Itô Processes</div>
+                    <div class="math-box-label">Setup - Multi-Dimensional Itô Processes</div>
                     <p>Let $W = (W^1, \ldots, W^m)$ be an $m$-dimensional Brownian motion on $(\Omega, \mathcal{F}, P)$, meaning each $W^j$ is a standard Brownian motion and $[W^i, W^j]_t = \rho_{ij} t$ for a correlation matrix $(\rho_{ij})$ with $\rho_{ii} = 1$.</p>
                     <p class="mb-0">Let $X = (X^1, \ldots, X^n)$ be an $n$-dimensional Itô process: $dX^i_t = \mu^i_t\,dt + \sum_{j=1}^m \sigma^{ij}_t\,dW^j_t$ for $i = 1, \ldots, n$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.2.1 — Multi-Dimensional Itô Formula</div>
+                    <div class="math-box-label">Theorem 3.2.1 - Multi-Dimensional Itô Formula</div>
                     <p>Let $f(t, x) \in C^{1,2}([0,T] \times \mathbb{R}^n)$. Then:</p>
                     $$df(t, X_t) = \frac{\partial f}{\partial t}\,dt + \sum_{i=1}^n \frac{\partial f}{\partial x_i}\,dX^i_t + \frac{1}{2}\sum_{i,j=1}^n \frac{\partial^2 f}{\partial x_i \partial x_j}\,d[X^i, X^j]_t.$$
                     <p>The cross-quadratic-variation is:</p>
@@ -143,13 +143,13 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Itô Multiplication Table in $n$ Dimensions</div>
+                    <div class="math-box-label">Remark - The Itô Multiplication Table in $n$ Dimensions</div>
                     <p>The rules are: $dW^i \cdot dW^j = \rho_{ij}\,dt$, $dW^i \cdot dt = 0$, $dt \cdot dt = 0$. The correlation $\rho_{ij}$ between the $i$-th and $j$-th Brownian motions enters directly into the Itô correction term.</p>
                     <p class="mb-0">For independent Brownian motions ($\rho_{ij} = \delta_{ij}$), the off-diagonal cross-quadratic variations vanish: $d[W^i, W^j] = 0$ for $i \ne j$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 3.2.2 — Two Correlated Assets</div>
+                    <div class="math-box-label">Example 3.2.2 - Two Correlated Assets</div>
                     <p>Let $S^1_t$ and $S^2_t$ follow: $dS^k = \mu^k S^k\,dt + \sigma^k S^k\,dW^k$ where $d[W^1, W^2]_t = \rho\,dt$. Apply the formula to $f(S^1, S^2) = \ln(S^1 S^2) = \ln S^1 + \ln S^2$:</p>
                     $$d\ln(S^1 S^2) = d\ln S^1 + d\ln S^2 = \left(\mu^1 - \frac{(\sigma^1)^2}{2}\right)dt + \sigma^1\,dW^1 + \left(\mu^2 - \frac{(\sigma^2)^2}{2}\right)dt + \sigma^2\,dW^2.$$
                     <p class="mb-0">Now consider $f(S^1, S^2) = S^1 S^2$. By the product rule: $d(S^1 S^2) = S^2\,dS^1 + S^1\,dS^2 + d[S^1,S^2]$ where $d[S^1,S^2] = \sigma^1\sigma^2\rho S^1 S^2\,dt$, giving drift $(\mu^1 + \mu^2 + \rho\sigma^1\sigma^2)S^1S^2\,dt$.</p>

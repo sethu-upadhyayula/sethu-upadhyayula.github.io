@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,39 +80,39 @@
             <article>
                 <h1 class="text-accent mb-4">1.1 Indexation Mechanics and Real Yield Curves</h1>
 
-                <p>An inflation-linked bond's defining feature is that its principal — and therefore its coupon cash flows, which are paid as a fixed real coupon rate applied to that principal — grows (or shrinks) with a reference price index. This section works through exactly how that adjustment is computed, including the indexation lag that all major programmes use, and then turns to the real yield curve on which these bonds are quoted and discounted.</p>
+                <p>An inflation-linked bond's defining feature is that its principal - and therefore its coupon cash flows, which are paid as a fixed real coupon rate applied to that principal - grows (or shrinks) with a reference price index. This section works through exactly how that adjustment is computed, including the indexation lag that all major programmes use, and then turns to the real yield curve on which these bonds are quoted and discounted.</p>
 
                 <h2 class="mt-5 mb-3">The Reference Index and the Index Ratio</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Index Ratio</div>
+                    <div class="math-box-label">Definition - Index Ratio</div>
                     <p class="mb-0">The index ratio at time $t$ measures the cumulative change in the reference CPI since the bond's base date (typically its issue date):
                     $$\text{IR}(t) = \frac{\text{Ref CPI}(t)}{\text{Ref CPI}(0)}$$
                     The inflation-adjusted ("indexed") principal at time $t$ is $N(t) = F \times \text{IR}(t)$, where $F$ is the original face value. Each coupon payment is the fixed real coupon rate $c$ (set at issuance and never changed) applied to the indexed principal prevailing on the coupon date: $\text{Coupon}(t) = c \times F \times \text{IR}(t)$. At maturity the bond redeems at $N(T) = F \times \text{IR}(T)$.</p>
                 </div>
 
-                <p>Because the bond's nominal cash flows scale one-for-one with the price level, an investor who holds the bond to maturity and reinvests coupons at the rate of inflation locks in a constant <em>real</em> stream of cash flows — hence the name "real coupon" for $c$.</p>
+                <p>Because the bond's nominal cash flows scale one-for-one with the price level, an investor who holds the bond to maturity and reinvests coupons at the rate of inflation locks in a constant <em>real</em> stream of cash flows - hence the name "real coupon" for $c$.</p>
 
                 <h2 class="mt-5 mb-3">The Indexation Lag</h2>
 
-                <p>CPI data is published with a delay — typically around two to three weeks after the reference month ends — and is only available monthly. A bond cannot use "today's CPI" because it doesn't exist yet on a daily basis. Every major inflation-linked bond programme therefore uses a <em>reference index</em> that is lagged relative to the settlement date, and interpolates daily between the two most recently published monthly CPI levels that bracket the lagged date.</p>
+                <p>CPI data is published with a delay - typically around two to three weeks after the reference month ends - and is only available monthly. A bond cannot use "today's CPI" because it doesn't exist yet on a daily basis. Every major inflation-linked bond programme therefore uses a <em>reference index</em> that is lagged relative to the settlement date, and interpolates daily between the two most recently published monthly CPI levels that bracket the lagged date.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Reference CPI with a Three-Month Lag</div>
+                    <div class="math-box-label">Definition - Reference CPI with a Three-Month Lag</div>
                     <p class="mb-0">For a bond with a three-month indexation lag (the convention for U.S. TIPS and UK Index-Linked Gilts issued since 2005), the reference CPI for calendar date $t$ (with day-of-month $d$ in a month of length $D$ days) is constructed by linearly interpolating between the published CPI levels for the months three and two months prior:
                     $$\text{Ref CPI}(t) = \text{CPI}_{m-3} + \frac{d-1}{D}\left(\text{CPI}_{m-2} - \text{CPI}_{m-3}\right)$$
-                    where $m$ is the calendar month containing $t$, and $\text{CPI}_{m-3}$, $\text{CPI}_{m-2}$ are the published (non-seasonally-adjusted) index levels for months $m-3$ and $m-2$. This construction guarantees that the reference CPI for any settlement date is known in advance — typically by the start of the month it applies to — so that accrued interest and settlement amounts can always be computed without waiting on a future data release.</p>
+                    where $m$ is the calendar month containing $t$, and $\text{CPI}_{m-3}$, $\text{CPI}_{m-2}$ are the published (non-seasonally-adjusted) index levels for months $m-3$ and $m-2$. This construction guarantees that the reference CPI for any settlement date is known in advance - typically by the start of the month it applies to - so that accrued interest and settlement amounts can always be computed without waiting on a future data release.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why the Lag Matters for Hedging and Carry</div>
-                    <p class="mb-0">The three-month lag means an inflation-linked bond's cash flows today are driven by inflation realised three months ago, not current inflation. A position in linkers therefore has a "known" component of near-term carry — the next coupon and principal accrual are already determined by published CPI prints, even before today's inflation outcome is known — and an "unknown" component reflecting CPI prints not yet released. This decomposition is central to Section 3.2, where seasonality and lag effects on duration and carry are analysed in detail.</p>
+                    <div class="math-box-label">Remark - Why the Lag Matters for Hedging and Carry</div>
+                    <p class="mb-0">The three-month lag means an inflation-linked bond's cash flows today are driven by inflation realised three months ago, not current inflation. A position in linkers therefore has a "known" component of near-term carry - the next coupon and principal accrual are already determined by published CPI prints, even before today's inflation outcome is known - and an "unknown" component reflecting CPI prints not yet released. This decomposition is central to Section 3.2, where seasonality and lag effects on duration and carry are analysed in detail.</p>
                 </div>
 
-                <h2 class="mt-5 mb-3">Worked Example — Computing Indexed Cash Flows</h2>
+                <h2 class="mt-5 mb-3">Worked Example - Computing Indexed Cash Flows</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Index Ratio and Coupon Calculation</div>
+                    <div class="math-box-label">Example - Index Ratio and Coupon Calculation</div>
                     <p>Consider a TIPS with face value $F = \$1{,}000{,}000$, a real coupon rate $c = 1.0\%$ paid semi-annually (so $0.5\%$ of indexed principal per coupon), and a base-date reference CPI of $\text{Ref CPI}(0) = 230.000$.</p>
                     <p>Suppose that on the next coupon date, the reference CPI (computed via the three-month-lag interpolation above) has risen to $\text{Ref CPI}(t) = 241.500$. The index ratio is:
                     $$\text{IR}(t) = \frac{241.500}{230.000} = 1.05000$$</p>
@@ -123,25 +123,25 @@
 
                 <h2 class="mt-5 mb-3">The Real Yield Curve</h2>
 
-                <p>Because an inflation-linked bond's cash flows are themselves expressed in inflation-adjusted (real) terms — a fixed real coupon rate applied to an indexed principal — the natural discount rate for those cash flows is a <em>real</em> yield, the return earned over and above realised inflation.</p>
+                <p>Because an inflation-linked bond's cash flows are themselves expressed in inflation-adjusted (real) terms - a fixed real coupon rate applied to an indexed principal - the natural discount rate for those cash flows is a <em>real</em> yield, the return earned over and above realised inflation.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Real Discounting and Real Yield</div>
+                    <div class="math-box-label">Definition - Real Discounting and Real Yield</div>
                     <p class="mb-0">Let $y_r(T)$ denote the real zero-coupon yield to maturity $T$. The clean price of an inflation-linked bond, expressed per unit of indexed principal (i.e., before multiplying by the prevailing index ratio), is obtained by discounting its real coupon and redemption cash flows at the real yield curve:
                     $$P_{\text{real}} = \sum_{i=1}^{n} \frac{c/2}{(1+y_r(t_i)/2)^{2t_i}} + \frac{1}{(1+y_r(t_n)/2)^{2t_n}}$$
-                    The bond's actual market (dirty) price is then $P_{\text{real}} \times \text{IR}(\text{settlement})$ — the real price scaled up by the current index ratio to express it in nominal currency terms.</p>
+                    The bond's actual market (dirty) price is then $P_{\text{real}} \times \text{IR}(\text{settlement})$ - the real price scaled up by the current index ratio to express it in nominal currency terms.</p>
                 </div>
 
-                <p>In practice, real yield curves are constructed by bootstrapping from the quoted prices of a set of inflation-linked bonds across the maturity spectrum, in exactly the same conceptual way that a nominal yield curve is bootstrapped from nominal government bonds (Chapter 2 of <em>Rates Fundamentals</em>) — the only difference is that the cash flows being matched are the real (per-unit-of-index-ratio) cash flows defined above, and the resulting curve is a curve of real, not nominal, rates.</p>
+                <p>In practice, real yield curves are constructed by bootstrapping from the quoted prices of a set of inflation-linked bonds across the maturity spectrum, in exactly the same conceptual way that a nominal yield curve is bootstrapped from nominal government bonds (Chapter 2 of <em>Rates Fundamentals</em>) - the only difference is that the cash flows being matched are the real (per-unit-of-index-ratio) cash flows defined above, and the resulting curve is a curve of real, not nominal, rates.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Real Curves Are Typically Sparser</div>
+                    <div class="math-box-label">Remark - Real Curves Are Typically Sparser</div>
                     <p class="mb-0">Inflation-linked bond markets are considerably less liquid than nominal government bond markets, with fewer outstanding issues spread across maturities. Real yield curves are therefore often constructed with coarser interpolation, or supplemented with information from inflation swap markets (Chapter 2), which trade continuously across maturities and can be combined with the nominal curve to back out an implied real curve where bond-market data is sparse.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Real Yields and the Shape of the Curve</h2>
 
-                <p>Real yield curves tend to be lower and often flatter than nominal curves of the same currency, since the nominal curve embeds compensation for expected inflation that the real curve does not. The spread between the two curves at each maturity — examined formally in Section 1.2 — is the breakeven inflation curve, one of the most closely watched objects in fixed income markets.</p>
+                <p>Real yield curves tend to be lower and often flatter than nominal curves of the same currency, since the nominal curve embeds compensation for expected inflation that the real curve does not. The spread between the two curves at each maturity - examined formally in Section 1.2 - is the breakeven inflation curve, one of the most closely watched objects in fixed income markets.</p>
 
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

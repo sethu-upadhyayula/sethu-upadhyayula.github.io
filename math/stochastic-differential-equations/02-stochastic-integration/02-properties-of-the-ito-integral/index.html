@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,34 +128,34 @@
                 <p>The Itô integral inherits several key properties from its definition as an $L^2$ limit. We collect the most important ones here, and conclude with a comparison to the Stratonovich integral.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.2.1 — Linearity</div>
+                    <div class="math-box-label">Theorem 2.2.1 - Linearity</div>
                     <p>For $f, g \in \mathcal{L}^2([0,T])$ and constants $\alpha, \beta \in \mathbb{R}$:</p>
                     $$\int_0^T (\alpha f_t + \beta g_t)\,dW_t = \alpha \int_0^T f_t\,dW_t + \beta \int_0^T g_t\,dW_t \quad \text{a.s.}$$
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.2.2 — Zero Mean</div>
+                    <div class="math-box-label">Theorem 2.2.2 - Zero Mean</div>
                     <p>For $f \in \mathcal{L}^2([0,T])$:</p>
                     $$E\!\left[\int_0^T f_t\,dW_t\right] = 0.$$
                     <p class="mb-0">This follows from the martingale property: $E[M_T] = E[M_0] = 0$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.2.3 — Quadratic Variation of the Stochastic Integral</div>
+                    <div class="math-box-label">Theorem 2.2.3 - Quadratic Variation of the Stochastic Integral</div>
                     <p>If $M_t = \int_0^t f_s\,dW_s$, then the quadratic variation of $M$ is:</p>
                     $$[M]_t = \int_0^t f_s^2\,ds.$$
                     <p class="mb-0">Equivalently, $d[M]_t = f_t^2\,dt$, or in differential notation: $(f_t\,dW_t)^2 = f_t^2\,dt$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.2.4 — Continuity in $t$</div>
+                    <div class="math-box-label">Theorem 2.2.4 - Continuity in $t$</div>
                     <p class="mb-0">For $f \in \mathcal{L}^2([0,T])$, the process $M_t = \int_0^t f_s\,dW_s$ has a continuous modification. That is, there exists a process $\tilde{M}$ with $P(\tilde{M}_t = M_t) = 1$ for all $t$, and $t \mapsto \tilde{M}_t(\omega)$ is continuous for almost every $\omega$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Itô vs Stratonovich</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 2.2.5 — Stratonovich Integral</div>
+                    <div class="math-box-label">Definition 2.2.5 - Stratonovich Integral</div>
                     <p>The <strong>Stratonovich integral</strong> is defined using midpoint evaluation:</p>
                     $$\int_0^T f_t \circ dW_t = \lim_{|\Pi| \to 0} \sum_k \frac{f_{t_k} + f_{t_{k+1}}}{2}(W_{t_{k+1}} - W_{t_k}).$$
                     <p class="mb-0">When $f$ is itself a semimartingale, the two integrals are related by the <strong>Itô-Stratonovich correction</strong>:</p>
@@ -165,14 +165,14 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — When to Use Each Convention</div>
+                    <div class="math-box-label">Remark - When to Use Each Convention</div>
                     <p>The <strong>Itô integral</strong> is preferred in probability and mathematical finance: it is a martingale, the Itô isometry holds, and it is well-suited to conditioning arguments.</p>
                     <p>The <strong>Stratonovich integral</strong> is preferred in physics and differential geometry: it satisfies the classical chain rule (no correction term), making it natural when studying SDEs on manifolds or when the SDE arises from a physical limit of smooth noise.</p>
-                    <p class="mb-0">The two conventions are always equivalent — every Stratonovich SDE can be rewritten as an Itô SDE and vice versa — so the choice is one of convenience.</p>
+                    <p class="mb-0">The two conventions are always equivalent - every Stratonovich SDE can be rewritten as an Itô SDE and vice versa - so the choice is one of convenience.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 2.2.6 — The Correction Term</div>
+                    <div class="math-box-label">Example 2.2.6 - The Correction Term</div>
                     <p>For $g(x) = x$: $\int_0^T W_t \circ dW_t = \int_0^T W_t\,dW_t + \frac{1}{2}T = \frac{1}{2}W_T^2 - \frac{1}{2}T + \frac{1}{2}T = \frac{1}{2}W_T^2$.</p>
                     <p class="mb-0">The Stratonovich result matches the classical calculus formula $\int_0^T x\,dx = \frac{1}{2}x^2$, confirming that Stratonovich satisfies the classical chain rule.</p>
                 </div>

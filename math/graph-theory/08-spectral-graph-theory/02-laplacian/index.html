@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -139,19 +139,19 @@
                 <p>The Laplacian matrix is the natural discrete analogue of the Laplace operator $-\nabla^2$ on $\mathbb{R}^n$. It encodes connectivity information and underpins random walks, electrical networks, and the matrix-tree theorem.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 8.2.1 — Laplacian Matrix</div>
+                    <div class="math-box-label">Definition 8.2.1 - Laplacian Matrix</div>
                     <p class="mb-0">The <strong>Laplacian</strong> of $G$ is $L = D - A$, where $D = \mathrm{diag}(d_1, \ldots, d_n)$ is the degree matrix and $A$ is the adjacency matrix. Explicitly, $L_{ii} = d_i$ and $L_{ij} = -1$ if $\{i,j\} \in E$, else $0$. We have $\mathbf{x}^T L \mathbf{x} = \sum_{\{i,j\}\in E}(x_i - x_j)^2 \ge 0$, so $L$ is <strong>positive semidefinite</strong>. Also, $L\mathbf{1} = \mathbf{0}$, so $0$ is always an eigenvalue with eigenvector $\mathbf{1}$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 8.2.2 — Connectivity and the Fiedler Value</div>
+                    <div class="math-box-label">Theorem 8.2.2 - Connectivity and the Fiedler Value</div>
                     <p class="mb-0">Let $0 = \mu_1 \le \mu_2 \le \cdots \le \mu_n$ be the eigenvalues of $L$. Then $G$ is connected if and only if $\mu_2 > 0$. The second smallest eigenvalue $\mu_2$ is called the <strong>algebraic connectivity</strong> or <strong>Fiedler value</strong>, and the corresponding eigenvector is the <strong>Fiedler vector</strong>, used in spectral partitioning.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Matrix-Tree Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 8.2.3 — Kirchhoff's Matrix-Tree Theorem</div>
+                    <div class="math-box-label">Theorem 8.2.3 - Kirchhoff's Matrix-Tree Theorem</div>
                     <p class="mb-0">The number of spanning trees of $G$ is
                     $$\tau(G) = \frac{1}{n} \prod_{i=2}^{n} \mu_i,$$
                     where $\mu_2, \ldots, \mu_n$ are the nonzero eigenvalues of $L$. Equivalently, $\tau(G)$ equals any cofactor of $L$. For $K_n$: eigenvalues of $L(K_n)$ are $0$ (once) and $n$ ($n-1$ times), so $\tau(K_n) = n^{n-2}$ (Cayley's formula).</p>
@@ -160,12 +160,12 @@
                 <h2 class="mt-5 mb-3">Random Walks and the Normalised Laplacian</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 8.2.4 — Random Walk and Mixing Time</div>
+                    <div class="math-box-label">Definition 8.2.4 - Random Walk and Mixing Time</div>
                     <p class="mb-0">The <strong>random walk matrix</strong> is $W = D^{-1}A$; a lazy walk uses $(I + W)/2$. Starting at any vertex, the walk converges to the stationary distribution $\pi_v = d_v / (2|E|)$. The <strong>mixing time</strong> (time to get close to $\pi$) is $O(\log n / \mu_2)$ for the lazy walk, so larger $\mu_2$ means faster mixing.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 8.2.5 — Normalised Laplacian</div>
+                    <div class="math-box-label">Definition 8.2.5 - Normalised Laplacian</div>
                     <p class="mb-0">The <strong>normalised Laplacian</strong> is $\mathcal{L} = D^{-1/2} L D^{-1/2} = I - D^{-1/2} A D^{-1/2}$. Its eigenvalues $0 = \nu_1 \le \nu_2 \le \cdots \le \nu_n$ all lie in $[0, 2]$. For $d$-regular graphs, $\mathcal{L} = (1/d)L$, so the spectra are proportional.</p>
                 </div>
 

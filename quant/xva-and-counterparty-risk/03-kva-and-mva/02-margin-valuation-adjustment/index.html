@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,32 +81,32 @@
             <article>
                 <h1 class="text-accent mb-4">3.2 Margin Valuation Adjustment</h1>
 
-                <p>The Margin Valuation Adjustment (MVA) is the present value of the cost of funding the initial margin (IM) introduced in Section 2.2. Where FVA prices the funding cost of an uncollateralised exposure profile, MVA prices the funding cost of a segregated IM balance that must be posted — and funded — for as long as the trade remains live, regardless of its mark-to-market.</p>
+                <p>The Margin Valuation Adjustment (MVA) is the present value of the cost of funding the initial margin (IM) introduced in Section 2.2. Where FVA prices the funding cost of an uncollateralised exposure profile, MVA prices the funding cost of a segregated IM balance that must be posted - and funded - for as long as the trade remains live, regardless of its mark-to-market.</p>
 
                 <h2 class="mt-5 mb-3">The IM Funding Cost</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — MVA</div>
+                    <div class="math-box-label">Definition - MVA</div>
                     <p>Let $IM(t)$ denote the projected initial margin requirement at future time $t$ (e.g. from a SIMM projection), and let $f_B(t)$ be the bank's funding spread above the rate at which posted IM is remunerated (often OIS). The Margin Valuation Adjustment is:
                     $$\text{MVA} = \int_0^T f_B(t)\cdot IM(t)\cdot P(0,t)\cdot Q_B(t)\,dt \approx \sum_{k=1}^n f_B(t_k)\cdot IM(t_k)\cdot P(0,t_k)\cdot \Delta t_k$$
-                    Unlike FVA, which depends on the sign and magnitude of the mark-to-market exposure, $IM(t) \geq 0$ always — initial margin must be posted by both parties regardless of which way the trade's value has moved, so MVA is always a <em>cost</em> (there is no symmetric "MBA" benefit analogous to FBA, except in the rare case of IM received being usable to offset other funding needs).</p>
+                    Unlike FVA, which depends on the sign and magnitude of the mark-to-market exposure, $IM(t) \geq 0$ always - initial margin must be posted by both parties regardless of which way the trade's value has moved, so MVA is always a <em>cost</em> (there is no symmetric "MBA" benefit analogous to FBA, except in the rare case of IM received being usable to offset other funding needs).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Projecting the IM Profile</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — IM Profile Projection</div>
-                    <p class="mb-0">Computing $IM(t)$ for future dates requires projecting the SIMM sensitivities of the netting set forward under each simulated market scenario — a computationally intensive "dynamic SIMM" or proxy approach, since SIMM is a deterministic function of the trade's current Greeks, not of its mark-to-market value. In practice, many desks approximate the IM profile as proportional to a risk metric that decays with the trade's remaining notional or sensitivity — for a vanilla swap, IM roughly tracks the swap's remaining DV01, which amortises over its life in a manner similar to (but not identical to) the EE profile used for CVA.</p>
+                    <div class="math-box-label">Remark - IM Profile Projection</div>
+                    <p class="mb-0">Computing $IM(t)$ for future dates requires projecting the SIMM sensitivities of the netting set forward under each simulated market scenario - a computationally intensive "dynamic SIMM" or proxy approach, since SIMM is a deterministic function of the trade's current Greeks, not of its mark-to-market value. In practice, many desks approximate the IM profile as proportional to a risk metric that decays with the trade's remaining notional or sensitivity - for a vanilla swap, IM roughly tracks the swap's remaining DV01, which amortises over its life in a manner similar to (but not identical to) the EE profile used for CVA.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — MVA on a 10-Year Swap with SIMM IM</div>
+                    <div class="math-box-label">Example - MVA on a 10-Year Swap with SIMM IM</div>
                     <p>The same 10-year USD swap from Section 3.1 has an initial SIMM IM requirement of approximately \$3m at trade inception (roughly 1.5% of the \$200m notional), amortising roughly linearly to zero as the swap's DV01 declines. The average IM over the life is therefore approximately \$1.5m. The bank's funding spread for segregated collateral is 60 bps p.a., and the 10-year annuity factor is approximately 8.1:</p>
                     $$\text{MVA} \approx 0.0060 \times \$1.5\text{m} \times 8.1 \approx \$72{,}900$$
-                    <p class="mb-0">While smaller than the KVA computed for the same trade in Section 3.1, MVA adds directly to the all-in XVA cost of the trade and, like KVA, is a function of trade-level risk sensitivities rather than market scenarios — making it comparatively stable but structurally unavoidable for any non-cleared trade subject to the Uncleared Margin Rules.</p>
+                    <p class="mb-0">While smaller than the KVA computed for the same trade in Section 3.1, MVA adds directly to the all-in XVA cost of the trade and, like KVA, is a function of trade-level risk sensitivities rather than market scenarios - making it comparatively stable but structurally unavoidable for any non-cleared trade subject to the Uncleared Margin Rules.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">MVA, Clearing, and Optimisation</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — MVA as a Driver of Clearing and Compression</div>
+                    <div class="math-box-label">Remark - MVA as a Driver of Clearing and Compression</div>
                     <p class="mb-0">Because both KVA and MVA scale with the size and tenor of a netting set's risk profile rather than with its mark-to-market value, they have become central inputs to pre-trade decision-making: a new trade's marginal contribution to portfolio-level SIMM sensitivities (and hence MVA) and to SA-CCR exposure (and hence KVA) can sometimes exceed the trade's expected revenue. This has driven the widespread adoption of portfolio compression (tearing up offsetting trades to reduce gross notional and SIMM sensitivities) and the migration of standardised products to central clearing, where IM is computed by the CCP's own margin model (which is generally more capital- and margin-efficient for the dealer than bilateral SIMM, due to multilateral netting across the CCP's membership).</p>
                 </div>
 

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -86,16 +86,16 @@
                 <h2 class="mt-5 mb-3">The Volatility Risk Premium</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Volatility Risk Premium</div>
+                    <div class="math-box-label">Definition - Volatility Risk Premium</div>
                     <p class="mb-0">For an option (or variance swap) on an underlying with maturity $T$, the volatility risk premium (VRP) is the average gap between the implied volatility (or implied variance) priced into the instrument at inception, $\sigma_{\text{impl}}$, and the volatility subsequently realized by the underlying over $[0,T]$, $\sigma_{\text{real}}$:
                     $$\text{VRP} = \mathbb{E}[\sigma_{\text{impl}} - \sigma_{\text{real}}]$$
-                    Empirically, across most equity indices and many other asset classes, $\text{VRP} > 0$ on average — implied volatility tends to overstate subsequently realized volatility, most of the time.</p>
+                    Empirically, across most equity indices and many other asset classes, $\text{VRP} > 0$ on average - implied volatility tends to overstate subsequently realized volatility, most of the time.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why a Positive Premium Should Exist</div>
-                    <p>The standard explanation mirrors the discussion of contango in Section 3.1: there is a structural imbalance between buyers and sellers of volatility protection. Many market participants — pension funds, insurers, asset managers — have a natural and persistent demand to <em>buy</em> protection against large drawdowns, and are willing to overpay (relative to a statistically "fair" volatility estimate) for that insurance. Sellers of volatility (option writers, variance swap dealers, systematic vol-selling funds) require compensation for bearing the resulting tail risk, which manifests as implied volatility trading above the statistically expected realized volatility.</p>
-                    <p class="mb-0">This is directly analogous to an insurance premium: the expected payout on a policy is lower than the premium charged, with the difference compensating the insurer for underwriting risk and capital costs. A short volatility position is, in this sense, "selling insurance" against large moves — collecting a steady premium most of the time, with the risk of large claims (losses) during tail events.</p>
+                    <div class="math-box-label">Remark - Why a Positive Premium Should Exist</div>
+                    <p>The standard explanation mirrors the discussion of contango in Section 3.1: there is a structural imbalance between buyers and sellers of volatility protection. Many market participants - pension funds, insurers, asset managers - have a natural and persistent demand to <em>buy</em> protection against large drawdowns, and are willing to overpay (relative to a statistically "fair" volatility estimate) for that insurance. Sellers of volatility (option writers, variance swap dealers, systematic vol-selling funds) require compensation for bearing the resulting tail risk, which manifests as implied volatility trading above the statistically expected realized volatility.</p>
+                    <p class="mb-0">This is directly analogous to an insurance premium: the expected payout on a policy is lower than the premium charged, with the difference compensating the insurer for underwriting risk and capital costs. A short volatility position is, in this sense, "selling insurance" against large moves - collecting a steady premium most of the time, with the risk of large claims (losses) during tail events.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Strategies for Harvesting the Premium</h2>
@@ -103,28 +103,28 @@
                 <p>The most direct way to monetize a positive VRP is to systematically sell options (or variance) and delta-hedge (or not) the resulting exposure, collecting the premium as the position decays over time, net of any losses from the underlying's actual realized moves.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Short Straddle / Strangle Overlay</div>
-                    <p class="mb-0">A short straddle sells a call and a put with the same strike $K$ (typically near-the-money) and maturity $T$, receiving total premium $C(K,T) + P(K,T)$. A short strangle instead sells an out-of-the-money call (strike $K_2 > S_0$) and an out-of-the-money put (strike $K_1 < S_0$), receiving $C(K_2,T) + P(K_1,T)$ — a smaller premium but a wider range over which the position is profitable at expiry, since the payoff is flat (zero) for $S_T \in [K_1, K_2]$. Systematic implementations typically sell a constant-maturity ladder of such structures (e.g., rolling monthly), so that premium income is received continuously rather than in a single lump sum.</p>
+                    <div class="math-box-label">Definition - Short Straddle / Strangle Overlay</div>
+                    <p class="mb-0">A short straddle sells a call and a put with the same strike $K$ (typically near-the-money) and maturity $T$, receiving total premium $C(K,T) + P(K,T)$. A short strangle instead sells an out-of-the-money call (strike $K_2 > S_0$) and an out-of-the-money put (strike $K_1 < S_0$), receiving $C(K_2,T) + P(K_1,T)$ - a smaller premium but a wider range over which the position is profitable at expiry, since the payoff is flat (zero) for $S_T \in [K_1, K_2]$. Systematic implementations typically sell a constant-maturity ladder of such structures (e.g., rolling monthly), so that premium income is received continuously rather than in a single lump sum.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Systematic Put-Writing</div>
-                    <p class="mb-0">A put-writing strategy systematically sells out-of-the-money puts on a broad index (commonly cited benchmarks track selling one-month, roughly 2-5% out-of-the-money puts on a major equity index on a rolling basis), collecting the premium $P(K,T)$ each period. If $S_T \geq K$, the put expires worthless and the full premium is retained; if $S_T < K$, the strategy is assigned the underlying at $K$ (or cash-settles the equivalent loss), realizing a loss of $K - S_T - P(K,T)$ net of premium received. Over long histories, such strategies have delivered equity-like returns with somewhat lower volatility than holding the index outright — the premium collected compensates for, and on average more than offsets, the cost of the occasional large loss when $S_T \ll K$.</p>
+                    <div class="math-box-label">Definition - Systematic Put-Writing</div>
+                    <p class="mb-0">A put-writing strategy systematically sells out-of-the-money puts on a broad index (commonly cited benchmarks track selling one-month, roughly 2-5% out-of-the-money puts on a major equity index on a rolling basis), collecting the premium $P(K,T)$ each period. If $S_T \geq K$, the put expires worthless and the full premium is retained; if $S_T < K$, the strategy is assigned the underlying at $K$ (or cash-settles the equivalent loss), realizing a loss of $K - S_T - P(K,T)$ net of premium received. Over long histories, such strategies have delivered equity-like returns with somewhat lower volatility than holding the index outright - the premium collected compensates for, and on average more than offsets, the cost of the occasional large loss when $S_T \ll K$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — One-Month Put-Writing P&L</div>
-                    <p>Suppose an index trades at $S_0 = 100$, and a one-month put with strike $K=95$ (5% out-of-the-money) trades at $P(K,T) = 1.20$ (reflecting an implied volatility somewhat above the index's typical realized volatility — the VRP at work). A systematic put-writing strategy sells this put.</p>
+                    <div class="math-box-label">Example - One-Month Put-Writing P&L</div>
+                    <p>Suppose an index trades at $S_0 = 100$, and a one-month put with strike $K=95$ (5% out-of-the-money) trades at $P(K,T) = 1.20$ (reflecting an implied volatility somewhat above the index's typical realized volatility - the VRP at work). A systematic put-writing strategy sells this put.</p>
                     <p>If, at expiry, $S_T = 102$ (the index rose), the put expires worthless and the strategy keeps the full premium: P&L $= +1.20$, a return of $1.20\%$ on the $100$ notional.</p>
-                    <p class="mb-0">If instead $S_T = 88$ (a sharp 12% drawdown), the strategy is short a put that is now $7$ in-the-money, for a loss of $K - S_T = 7$, partially offset by the premium received: P&L $= 1.20 - 7 = -5.80$, a loss of $5.80\%$. Note that the put-writer's loss ($5.80\%$) is smaller in magnitude than the underlying's decline ($12\%$) — the premium provides a partial buffer — but the strategy still participates substantially in large downside moves, which is precisely the tail risk being compensated for.</p>
+                    <p class="mb-0">If instead $S_T = 88$ (a sharp 12% drawdown), the strategy is short a put that is now $7$ in-the-money, for a loss of $K - S_T = 7$, partially offset by the premium received: P&L $= 1.20 - 7 = -5.80$, a loss of $5.80\%$. Note that the put-writer's loss ($5.80\%$) is smaller in magnitude than the underlying's decline ($12\%$) - the premium provides a partial buffer - but the strategy still participates substantially in large downside moves, which is precisely the tail risk being compensated for.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Risk of Tail Events</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Premium Collection vs. Tail Exposure</div>
-                    <p>The defining feature of VRP-harvesting strategies is a payoff profile that is positive and relatively steady in most periods, punctuated by occasional sharp losses during tail events — a "negatively skewed" or "short gamma" return profile. This is the mirror image of a long-volatility position (Section 3.2's discussion of long VIX ETPs, or a long VIX call as in Section 3.2): most of the time it decays, but it pays off explosively during the same tail events that hurt the short-vol strategy most.</p>
-                    <p class="mb-0">Because the VRP is, on average, positive but realized in small increments while tail losses are large and infrequent, naive backtests over calm periods can substantially overstate the risk-adjusted attractiveness of these strategies — a sufficiently short or favorably-timed backtest may show no large losses at all, understating the true tail risk embedded in the strategy. Sizing a VRP-harvesting programme prudently, and pairing it with some form of tail protection, is the subject of the next section.</p>
+                    <div class="math-box-label">Remark - Premium Collection vs. Tail Exposure</div>
+                    <p>The defining feature of VRP-harvesting strategies is a payoff profile that is positive and relatively steady in most periods, punctuated by occasional sharp losses during tail events - a "negatively skewed" or "short gamma" return profile. This is the mirror image of a long-volatility position (Section 3.2's discussion of long VIX ETPs, or a long VIX call as in Section 3.2): most of the time it decays, but it pays off explosively during the same tail events that hurt the short-vol strategy most.</p>
+                    <p class="mb-0">Because the VRP is, on average, positive but realized in small increments while tail losses are large and infrequent, naive backtests over calm periods can substantially overstate the risk-adjusted attractiveness of these strategies - a sufficiently short or favorably-timed backtest may show no large losses at all, understating the true tail risk embedded in the strategy. Sizing a VRP-harvesting programme prudently, and pairing it with some form of tail protection, is the subject of the next section.</p>
                 </div>
 
                 <hr class="my-5">

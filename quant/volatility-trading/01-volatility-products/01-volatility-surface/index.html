@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -84,20 +84,20 @@
                 <p>The Black-Scholes model assumes a single constant volatility $\sigma$ for an underlying asset. In practice, however, options on the same underlying with different strikes $K$ and maturities $T$ trade at different implied volatilities. Plotting the implied volatility $\sigma_{\text{imp}}(K,T)$ that equates the Black-Scholes price to the observed market price, as a function of strike and maturity, produces the <em>implied volatility surface</em>.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Implied Volatility Surface</div>
+                    <div class="math-box-label">Definition - Implied Volatility Surface</div>
                     <p>The implied volatility surface is the function
                     $$\sigma(K,T) = \sigma_{\text{imp}} \text{ such that } C_{\text{BS}}(S_0, K, T, r, q, \sigma_{\text{imp}}) = C_{\text{market}}(K,T)$$
                     For a fixed maturity $T$, the cross-section $K \mapsto \sigma(K,T)$ is the <em>volatility smile</em> (or <em>skew</em>): for equity indices it is typically downward-sloping, with out-of-the-money puts trading at higher implied volatility than out-of-the-money calls. For a fixed strike (or moneyness), the cross-section $T \mapsto \sigma(K,T)$ is the <em>term structure</em> of implied volatility.</p>
                 </div>
 
-                <p>The existence of a non-flat surface reflects the market's view that returns are not lognormally distributed: the equity skew prices in the empirical observation that large downward moves are more likely (and more feared) than large upward moves of the same magnitude — a phenomenon often linked to the leverage effect and the demand for downside protection.</p>
+                <p>The existence of a non-flat surface reflects the market's view that returns are not lognormally distributed: the equity skew prices in the empirical observation that large downward moves are more likely (and more feared) than large upward moves of the same magnitude - a phenomenon often linked to the leverage effect and the demand for downside protection.</p>
 
                 <h2 class="mt-5 mb-3">Smile Dynamics: Stickiness Rules</h2>
 
-                <p>A central practical question for a derivatives desk is how the volatility surface is expected to move when the underlying moves. The answer determines the P&L of a delta-hedged option position and is captured by "stickiness rules" — empirical descriptions of how $\sigma(K,T)$ shifts as $S_0$ changes.</p>
+                <p>A central practical question for a derivatives desk is how the volatility surface is expected to move when the underlying moves. The answer determines the P&L of a delta-hedged option position and is captured by "stickiness rules" - empirical descriptions of how $\sigma(K,T)$ shifts as $S_0$ changes.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Sticky Strike, Sticky Delta, Sticky Moneyness</div>
+                    <div class="math-box-label">Definition - Sticky Strike, Sticky Delta, Sticky Moneyness</div>
                     <p><strong>Sticky strike:</strong> the implied volatility for a given absolute strike $K$ remains unchanged as the spot moves: $\sigma(K,T)$ is constant in $S_0$. The smile is "pinned" to fixed strike levels.</p>
                     <p><strong>Sticky delta (sticky moneyness in $K/S$):</strong> the implied volatility for a given moneyness $K/S_0$ (or equivalently, a given option delta) remains unchanged as spot moves. The entire smile shifts with the spot, so that $\sigma(K,T)$ becomes a function of $K/S_0$ rather than $K$ alone.</p>
                     <p class="mb-0"><strong>Sticky moneyness:</strong> often used interchangeably with sticky delta in equity markets; the smile is parametrized in terms of log-moneyness $\ln(K/S_0)$ and that parametrization is invariant to spot moves.</p>
@@ -106,10 +106,10 @@
                 <p>The choice of stickiness regime has a direct impact on the P&L of a delta-hedged book, because it determines how much of the change in option value, when spot moves, is attributable to a change in implied volatility (vega P&L) versus a change in the underlying alone (delta/gamma P&L).</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Hedging P&L Under Different Stickiness Regimes</div>
+                    <div class="math-box-label">Example - Hedging P&L Under Different Stickiness Regimes</div>
                     <p>Consider a trader who is long a delta-hedged out-of-the-money put with negative skew (typical for equity index options, where $\partial \sigma / \partial K < 0$). Suppose the spot price falls.</p>
                     <p><strong>Under sticky strike:</strong> $\sigma(K,T)$ for the put's strike is unchanged. The position's value changes only through the option's gamma (the position is long gamma, so a delta-hedged long-gamma position profits from the move, partially offset by theta decay).</p>
-                    <p class="mb-0"><strong>Under sticky delta:</strong> as spot falls, the put becomes more in-the-money in moneyness terms; sticky delta implies the implied volatility smile shifts so that the volatility at the put's now-higher relative moneyness reflects the (higher) volatility that used to apply further out-of-the-money. Because of the negative skew, this typically means the implied volatility <em>for that strike</em> rises as spot falls — generating an additional positive vega P&L on top of the gamma P&L. This is why, empirically, equity index implied volatility tends to rise when the index falls (a "sticky delta"-like dynamic combined with negative skew amplifies the relationship between spot moves and implied vol moves).</p>
+                    <p class="mb-0"><strong>Under sticky delta:</strong> as spot falls, the put becomes more in-the-money in moneyness terms; sticky delta implies the implied volatility smile shifts so that the volatility at the put's now-higher relative moneyness reflects the (higher) volatility that used to apply further out-of-the-money. Because of the negative skew, this typically means the implied volatility <em>for that strike</em> rises as spot falls - generating an additional positive vega P&L on top of the gamma P&L. This is why, empirically, equity index implied volatility tends to rise when the index falls (a "sticky delta"-like dynamic combined with negative skew amplifies the relationship between spot moves and implied vol moves).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Local Volatility Models</h2>
@@ -117,7 +117,7 @@
                 <p>A local volatility model is a one-factor diffusion model in which the volatility of the underlying is a deterministic function of the current spot level and time, $\sigma_{\text{loc}}(S,t)$, chosen so that the model exactly reproduces the entire observed implied volatility surface.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Dupire's Formula</div>
+                    <div class="math-box-label">Theorem - Dupire's Formula</div>
                     <p>Suppose European call prices $C(K,T)$ are known for all strikes $K > 0$ and maturities $T > 0$, and are arbitrage-free, twice differentiable in $K$ and once in $T$. Then there exists a unique local volatility function $\sigma_{\text{loc}}(K,T)$ such that the risk-neutral process
                     $$dS_t = (r-q)S_t\,dt + \sigma_{\text{loc}}(S_t,t)\,S_t\,dW_t$$
                     reproduces all call prices, given by Dupire's formula:
@@ -125,17 +125,17 @@
                     </p>
                 </div>
 
-                <p>Local volatility models have the appealing property of being complete (one-factor) models that fit the entire observed smile exactly by construction. However, their predicted dynamics for the smile are typically "sticky strike"-like and tend to flatten the forward smile too quickly relative to what is observed empirically — a known limitation when pricing forward-starting and barrier-type exotics.</p>
+                <p>Local volatility models have the appealing property of being complete (one-factor) models that fit the entire observed smile exactly by construction. However, their predicted dynamics for the smile are typically "sticky strike"-like and tend to flatten the forward smile too quickly relative to what is observed empirically - a known limitation when pricing forward-starting and barrier-type exotics.</p>
 
                 <h2 class="mt-5 mb-3">Stochastic Volatility Models</h2>
 
-                <p>Stochastic volatility models treat volatility itself as a second random factor, driven by its own Brownian motion (typically correlated with the underlying's Brownian motion). This allows the model to generate realistic smile dynamics — including a "sticky delta"-like behaviour and a more persistent forward smile — that local volatility models struggle to replicate.</p>
+                <p>Stochastic volatility models treat volatility itself as a second random factor, driven by its own Brownian motion (typically correlated with the underlying's Brownian motion). This allows the model to generate realistic smile dynamics - including a "sticky delta"-like behaviour and a more persistent forward smile - that local volatility models struggle to replicate.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Heston Model</div>
+                    <div class="math-box-label">Remark - The Heston Model</div>
                     <p>The most widely used stochastic volatility model is Heston's, in which the variance $v_t$ follows a mean-reverting square-root (CIR) process:
                     $$dS_t = (r-q)S_t\,dt + \sqrt{v_t}\,S_t\,dW_t^S, \qquad dv_t = \kappa(\theta - v_t)\,dt + \xi\sqrt{v_t}\,dW_t^v$$
-                    with $\text{Corr}(dW_t^S, dW_t^v) = \rho$. A negative correlation $\rho < 0$ — falling prices accompanied by rising volatility — generates a negative skew consistent with equity markets. The model admits a semi-closed-form (characteristic function) solution for European option prices via Fourier methods, making it computationally tractable while capturing smile dynamics that local volatility cannot.</p>
+                    with $\text{Corr}(dW_t^S, dW_t^v) = \rho$. A negative correlation $\rho < 0$ - falling prices accompanied by rising volatility - generates a negative skew consistent with equity markets. The model admits a semi-closed-form (characteristic function) solution for European option prices via Fourier methods, making it computationally tractable while capturing smile dynamics that local volatility cannot.</p>
                     <p class="mb-0">In practice, many trading desks use hybrid "local-stochastic volatility" (LSV) models that combine a local volatility component with a stochastic volatility factor, to match both the static smile (via the local component) and realistic dynamics (via the stochastic component).</p>
                 </div>
 
@@ -144,7 +144,7 @@
                 <p>Not every surface $\sigma(K,T)$ corresponds to a set of arbitrage-free option prices. Two key static no-arbitrage conditions constrain the shape of the surface.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Calendar Spread and Butterfly Arbitrage</div>
+                    <div class="math-box-label">Theorem - Calendar Spread and Butterfly Arbitrage</div>
                     <p><strong>Calendar spread arbitrage:</strong> for a fixed strike $K$, the total variance $w(K,T) = \sigma^2(K,T)\,T$ must be non-decreasing in $T$:
                     $$T_2 > T_1 \implies w(K,T_2) \geq w(K,T_1)$$
                     Violation implies that a calendar spread (long the longer-dated option, short the shorter-dated option, same strike) can be constructed for a guaranteed profit, since the longer-dated option must always be worth at least as much as the shorter-dated option of the same strike (its payoff dominates).</p>
@@ -152,8 +152,8 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Practical Surface Construction</div>
-                    <p class="mb-0">In practice, volatility surfaces are constructed by interpolating and extrapolating a finite set of liquidly-traded option quotes (typically a handful of strikes per maturity) using a parametric form — such as the SVI (stochastic volatility inspired) parametrization — chosen so that the resulting surface is, by construction, free of calendar spread and butterfly arbitrage across the full range of strikes and maturities used for pricing and risk management.</p>
+                    <div class="math-box-label">Remark - Practical Surface Construction</div>
+                    <p class="mb-0">In practice, volatility surfaces are constructed by interpolating and extrapolating a finite set of liquidly-traded option quotes (typically a handful of strikes per maturity) using a parametric form - such as the SVI (stochastic volatility inspired) parametrization - chosen so that the resulting surface is, by construction, free of calendar spread and butterfly arbitrage across the full range of strikes and maturities used for pricing and risk management.</p>
                 </div>
 
                 <hr class="my-5">

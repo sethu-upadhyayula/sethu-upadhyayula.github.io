@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. NoSQL and Modern Database Systems</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Database Systems</a>
+                <hr>
+                <a href="../01-the-relational-model/" class="text-decoration-none toc-chapter-link"><strong>1.</strong> The Relational Model</a>
+                <a href="../02-sql-querying-relational-data/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> SQL: Querying Relational Data</a>
+                <a href="../03-normalization-and-schema-design/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Normalization and Schema Design</a>
+                <a href="../04-transactions-and-acid/" class="text-decoration-none toc-chapter-link"><strong>4.</strong> Transactions and ACID</a>
+                <a href="../05-concurrency-control/" class="text-decoration-none toc-chapter-link"><strong>5.</strong> Concurrency Control</a>
+                <a href="../06-indexing-and-query-processing/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Indexing and Query Processing</a>
+                <a href="../07-query-optimization/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Query Optimization</a>
+                <a href="../08-nosql-and-modern-database-systems/" class="text-decoration-none toc-chapter-link toc-active"><strong>8.</strong> NoSQL and Modern Database Systems</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">Database Systems</a> ›
+                <span>8. NoSQL and Modern Database Systems</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">8. NoSQL and Modern Database Systems</h1>
+
+                <p>This closing chapter covers NoSQL databases - a family of systems that depart from the relational model (Chapter 1) and, often, from strict ACID guarantees (Chapter 4), in exchange for different tradeoffs around scalability, flexibility, and performance.</p>
+
+                <h2 class="mt-5 mb-3">Why NoSQL Emerged</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark - Motivations Behind NoSQL</div>
+                    <p class="mb-0">NoSQL systems emerged largely to address workloads where a rigid, normalized relational schema (Chapter 3) or strict ACID transactions (Chapter 4) were either a poor fit for the data's natural structure (deeply nested or highly variable documents, for instance) or an obstacle to horizontal scaling across many machines (Distributed Systems), rather than being a strictly superior replacement for relational databases in every context.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Major NoSQL Categories</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">The Major NoSQL Data Models</div>
+                    <ul class="mb-0">
+                        <li><strong>Key-value stores</strong> - the simplest model, mapping keys directly to opaque values; extremely fast and easy to scale, but offering minimal query capability beyond direct key lookup.</li>
+                        <li><strong>Document stores</strong> - store semi-structured documents (typically JSON-like), allowing flexible, nested schemas that can vary from document to document without an upfront rigid schema definition.</li>
+                        <li><strong>Column-family stores</strong> - organize data by column rather than by row on disk, well suited to analytical workloads reading a few columns across very many rows.</li>
+                        <li><strong>Graph databases</strong> - store data as nodes and edges, optimized for efficiently traversing relationships (e.g., "friends of friends") that would require many expensive joins (Chapter 2) in a relational model.</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">The CAP Theorem</h2>
+
+                <div class="math-box theorem">
+                    <div class="math-box-label">The CAP Theorem</div>
+                    <p class="mb-0">The <strong>CAP theorem</strong> states that a distributed data store can provide at most two of three properties simultaneously during a network partition: <strong>consistency</strong> (every read receives the most recent write), <strong>availability</strong> (every request receives a non-error response), and <strong>partition tolerance</strong> (the system continues operating despite network communication failures between nodes). Since partition tolerance is generally non-negotiable for any genuinely distributed system (Distributed Systems), the real practical choice most such systems face is between prioritizing consistency or availability when a partition actually occurs.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Eventual Consistency</h2>
+
+                <p>Many NoSQL systems favour availability over strict consistency, offering <strong>eventual consistency</strong> instead - guaranteeing that, absent further updates, all replicas will eventually converge to the same value, without guaranteeing that any single read reflects the most recent write immediately - a materially weaker guarantee than the isolation and consistency properties covered in Chapters 4–5, chosen deliberately for workloads where availability under partition matters more than always reading the absolute latest value.</p>
+
+                <h2 class="mt-5 mb-3">NewSQL and the Convergence of Models</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark - Blending Relational Guarantees with NoSQL-Style Scale</div>
+                    <p class="mb-0">More recently, <strong>NewSQL</strong> systems aim to provide the horizontal scalability associated with NoSQL systems while retaining full relational semantics and ACID transactions (Chapter 4) - reflecting a broader trend of relational and non-relational database design converging somewhat, rather than remaining two permanently separate, mutually exclusive categories of database technology.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../07-query-optimization/" class="btn btn-outline-custom">&larr; 7. Query Optimization</a>
+                    
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

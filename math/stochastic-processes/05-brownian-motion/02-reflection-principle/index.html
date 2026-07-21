@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,13 +132,13 @@
                 <h2 class="mt-4 mb-3">The Markov Property</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.2.1 — Markov Property</div>
+                    <div class="math-box-label">Theorem 5.2.1 - Markov Property</div>
                     <p>Let $(B_t)_{t \ge 0}$ be a standard BM and let $\mathcal{F}_s = \sigma(B_u : u \le s)$ be the natural filtration. For $s \ge 0$, the process $\tilde{B}_t = B_{s+t} - B_s$ ($t \ge 0$) is a standard BM that is <strong>independent</strong> of $\mathcal{F}_s$.</p>
                     <p class="mb-0">Equivalently, the conditional distribution of $(B_{s+t})_{t \ge 0}$ given $\mathcal{F}_s$ is that of $B_s + \tilde{B}_t$ where $\tilde{B}$ is an independent BM starting at 0. In other words, BM "restarts" from its current position at any fixed time $s$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.2.2 — Strong Markov Property</div>
+                    <div class="math-box-label">Theorem 5.2.2 - Strong Markov Property</div>
                     <p>Let $\tau$ be a <strong>stopping time</strong> with respect to $(\mathcal{F}_t)$ (i.e., $\{\tau \le t\} \in \mathcal{F}_t$ for all $t$) with $P(\tau < \infty) > 0$. On the event $\{\tau < \infty\}$, the process $\tilde{B}_t = B_{\tau+t} - B_\tau$ ($t \ge 0$) is a standard BM independent of $\mathcal{F}_\tau$.</p>
                     <p class="mb-0">This strengthens the ordinary Markov property by allowing the restart time to be a random stopping time rather than a fixed time. The strong Markov property is essential for the reflection principle because first-passage times are stopping times, not deterministic times.</p>
                 </div>
@@ -146,7 +146,7 @@
                 <h2 class="mt-5 mb-3">The Reflection Principle</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.2.3 — Reflection Principle</div>
+                    <div class="math-box-label">Theorem 5.2.3 - Reflection Principle</div>
                     <p>For $a > 0$ and $t > 0$, define the running maximum $M_t = \max_{0 \le s \le t} B_s$ and the first-passage time $T_a = \inf\{s \ge 0 : B_s = a\}$. Then:
                     $$P(M_t \ge a) = P(T_a \le t) = 2P(B_t \ge a) = 2\left(1 - \Phi\!\left(\frac{a}{\sqrt{t}}\right)\right),$$
                     where $\Phi$ is the standard normal CDF.</p>
@@ -156,7 +156,7 @@
                 </div>
 
                 <div class="math-box corollary">
-                    <div class="math-box-label">Corollary 5.2.4 — Distribution of Running Maximum</div>
+                    <div class="math-box-label">Corollary 5.2.4 - Distribution of Running Maximum</div>
                     <p>The running maximum $M_t = \max_{0 \le s \le t} B_s$ has the distribution:
                     $$P(M_t \le x) = 2\Phi\!\left(\frac{x}{\sqrt{t}}\right) - 1 = \operatorname{erf}\!\left(\frac{x}{\sqrt{2t}}\right), \quad x \ge 0,$$
                     with density $f_{M_t}(x) = \sqrt{\frac{2}{\pi t}} e^{-x^2/(2t)}$ for $x \ge 0$.</p>
@@ -166,14 +166,14 @@
                 <h2 class="mt-5 mb-3">First Passage Times</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.2.5 — First Passage Time</div>
+                    <div class="math-box-label">Definition 5.2.5 - First Passage Time</div>
                     <p>For $a \in \mathbb{R}$, the <strong>first passage time</strong> to level $a$ is
                     $$T_a = \inf\{t \ge 0 : B_t = a\}.$$</p>
                     <p class="mb-0">By convention $\inf \emptyset = +\infty$. For BM starting at 0 and $a \ne 0$, $T_a$ is a stopping time with respect to the natural filtration $(\mathcal{F}_t)$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.2.6 — Distribution of First Passage Time</div>
+                    <div class="math-box-label">Theorem 5.2.6 - Distribution of First Passage Time</div>
                     <p>For $a > 0$, the first passage time $T_a$ has the <strong>inverse Gaussian (Lévy) distribution</strong>:
                     $$P(T_a \le t) = 2\left(1 - \Phi\!\left(\frac{a}{\sqrt{t}}\right)\right), \quad t > 0,$$
                     with density
@@ -184,7 +184,7 @@
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 5.2.7 — Recurrence of Brownian Motion</div>
+                    <div class="math-box-label">Proposition 5.2.7 - Recurrence of Brownian Motion</div>
                     <p>One-dimensional standard Brownian motion is <strong>recurrent</strong>: for every $a \in \mathbb{R}$,
                     $$P(T_a < \infty) = 1.$$
                     Moreover, $B_t$ visits every level infinitely often a.s.; in particular, $\limsup_{t\to\infty} B_t = +\infty$ and $\liminf_{t\to\infty} B_t = -\infty$ a.s.</p>
@@ -192,7 +192,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Gambler's Ruin for Brownian Motion</div>
+                    <div class="math-box-label">Example - Gambler's Ruin for Brownian Motion</div>
                     <p>A Brownian motion starting at $x \in (0, b)$ exits the interval $(0, b)$ at time $\tau = T_0 \wedge T_b$. By the optional stopping theorem for the martingale $B_t$ (Section 6.2):
                     $$P(B_\tau = b) = \frac{x}{b}, \qquad P(B_\tau = 0) = \frac{b-x}{b}.$$</p>
                     <p class="mb-0">This is the continuous analogue of the gambler's ruin formula. The expected exit time $E[\tau] = x(b-x)$, obtained by the optional stopping theorem applied to $B_t^2 - t$.</p>

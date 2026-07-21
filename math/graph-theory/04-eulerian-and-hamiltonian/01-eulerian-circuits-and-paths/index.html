@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -141,45 +141,45 @@
                 <h2 class="mt-5 mb-3">Definitions</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.1.1 — Eulerian Circuit and Eulerian Path</div>
+                    <div class="math-box-label">Definition 4.1.1 - Eulerian Circuit and Eulerian Path</div>
                     <p>An <strong>Eulerian circuit</strong> (or Euler tour) of a graph $G$ is a closed walk that traverses every edge of $G$ exactly once (vertices may be repeated).</p>
                     <p>An <strong>Eulerian path</strong> (or Euler trail) is an open walk that traverses every edge exactly once but starts and ends at different vertices.</p>
                     <p class="mb-0">A graph is called <strong>Eulerian</strong> if it has an Eulerian circuit, and <strong>semi-Eulerian</strong> if it has an Eulerian path but not an Eulerian circuit.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.1.2 — The Seven Bridges of K&ouml;nigsberg</div>
-                    <p>The city of K&ouml;nigsberg had two islands in the river Pregel, connected to each other and to the two banks by seven bridges. Euler modeled the four landmasses as vertices $A,B,C,D$ and the bridges as (multi-)edges between them. The question — is there a walk crossing each bridge exactly once and returning to the start? — is exactly the question of an Eulerian circuit.</p>
+                    <div class="math-box-label">Example 4.1.2 - The Seven Bridges of K&ouml;nigsberg</div>
+                    <p>The city of K&ouml;nigsberg had two islands in the river Pregel, connected to each other and to the two banks by seven bridges. Euler modeled the four landmasses as vertices $A,B,C,D$ and the bridges as (multi-)edges between them. The question - is there a walk crossing each bridge exactly once and returning to the start? - is exactly the question of an Eulerian circuit.</p>
                     <p class="mb-0">In Euler's graph, every vertex has odd degree ($\deg A = \deg C = \deg D = 3$, $\deg B = 5$). Since more than two vertices have odd degree, by Theorem 4.1.4 (and even Theorem 4.1.6) <strong>no Eulerian circuit or path exists</strong>. This was Euler's negative resolution of the puzzle.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Euler's Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Lemma 4.1.3 — Even Degree Necessary</div>
+                    <div class="math-box-label">Lemma 4.1.3 - Even Degree Necessary</div>
                     <p class="mb-0">If $G$ has an Eulerian circuit, then every vertex of $G$ has even degree. If $G$ has an Eulerian path between distinct vertices $u$ and $v$, then $u$ and $v$ have odd degree and every other vertex has even degree.</p>
                 </div>
 
                 <div class="math-box proof">
                     <div class="math-box-label">Proof</div>
-                    <p class="mb-0">Each time the circuit (or path) passes through an internal vertex $w$, it uses one edge to enter and one to leave, contributing $2$ to $\deg(w)$. Over the whole traversal these contributions partition the edges incident to $w$ into pairs, so $\deg(w)$ is even — unless $w$ is an endpoint of an open trail, in which case one edge is left unpaired and $\deg(w)$ is odd. For a circuit, every vertex is "internal" (the start/end vertex is entered and left the same number of times), so all degrees are even. $\square$</p>
+                    <p class="mb-0">Each time the circuit (or path) passes through an internal vertex $w$, it uses one edge to enter and one to leave, contributing $2$ to $\deg(w)$. Over the whole traversal these contributions partition the edges incident to $w$ into pairs, so $\deg(w)$ is even - unless $w$ is an endpoint of an open trail, in which case one edge is left unpaired and $\deg(w)$ is odd. For a circuit, every vertex is "internal" (the start/end vertex is entered and left the same number of times), so all degrees are even. $\square$</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.1.4 — Euler's Theorem (Circuits)</div>
+                    <div class="math-box-label">Theorem 4.1.4 - Euler's Theorem (Circuits)</div>
                     <p class="mb-0">A connected graph $G$ (with at least one edge) has an Eulerian circuit if and only if every vertex of $G$ has even degree.</p>
                 </div>
 
                 <div class="math-box proof">
                     <div class="math-box-label">Proof</div>
                     <p>($\Rightarrow$) This is Lemma 4.1.3.</p>
-                    <p>($\Leftarrow$) Suppose $G$ is connected and every vertex has even degree. We argue by induction on $|E(G)|$. Since every degree is even and $\ge 2$ (connectivity with $\ge 1$ edge forces $\delta(G) \ge 2$ when even and positive), $G$ contains a cycle $C$ — start at any vertex and keep walking along unused edges; since every vertex has even degree, whenever we enter a vertex (other than possibly the start) we can always leave, so the walk must eventually return to its starting vertex, forming a closed walk $C$ with no repeated edges.</p>
+                    <p>($\Leftarrow$) Suppose $G$ is connected and every vertex has even degree. We argue by induction on $|E(G)|$. Since every degree is even and $\ge 2$ (connectivity with $\ge 1$ edge forces $\delta(G) \ge 2$ when even and positive), $G$ contains a cycle $C$ - start at any vertex and keep walking along unused edges; since every vertex has even degree, whenever we enter a vertex (other than possibly the start) we can always leave, so the walk must eventually return to its starting vertex, forming a closed walk $C$ with no repeated edges.</p>
                     <p>Remove the edges of $C$ from $G$ to get $G' = G - E(C)$. Every vertex still has even degree in $G'$ (we removed $0$ or $2$ edges at each vertex of $C$). Each connected component of $G'$ with at least one edge is connected with all-even degrees and fewer edges than $G$, so by the induction hypothesis each has an Eulerian circuit. Moreover, each such component shares at least one vertex with $C$ (since $G$ is connected).</p>
-                    <p class="mb-0">Splice these component circuits into $C$ at their shared vertices: walk along $C$, and whenever we reach a vertex shared with a component's circuit (not yet traversed), detour around that entire circuit before continuing along $C$. The result is a closed walk using every edge of $G$ exactly once — an Eulerian circuit. $\square$</p>
+                    <p class="mb-0">Splice these component circuits into $C$ at their shared vertices: walk along $C$, and whenever we reach a vertex shared with a component's circuit (not yet traversed), detour around that entire circuit before continuing along $C$. The result is a closed walk using every edge of $G$ exactly once - an Eulerian circuit. $\square$</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.1.5 — Euler's Theorem (Paths)</div>
+                    <div class="math-box-label">Theorem 4.1.5 - Euler's Theorem (Paths)</div>
                     <p class="mb-0">A connected graph $G$ (with at least one edge) has an Eulerian path (and is not Eulerian) if and only if exactly two vertices of $G$ have odd degree. In this case, every Eulerian path must start at one odd-degree vertex and end at the other.</p>
                 </div>
 
@@ -189,7 +189,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Theorem 4.1.6 — Summary Criterion</div>
+                    <div class="math-box-label">Theorem 4.1.6 - Summary Criterion</div>
                     <p class="mb-0">Let $G$ be connected. Then:</p>
                     <ul class="mb-0">
                         <li>$G$ has an Eulerian circuit $\iff$ the number of odd-degree vertices is $0$.</li>
@@ -201,13 +201,13 @@
                 <h2 class="mt-5 mb-3">Algorithms</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 4.1.7 — Fleury's Algorithm</div>
+                    <div class="math-box-label">Algorithm 4.1.7 - Fleury's Algorithm</div>
                     <p>Starting from a vertex of odd degree (or any vertex, if all degrees are even), repeatedly traverse an unused edge, choosing a <strong>bridge</strong> (cut edge) of the remaining unused-edge graph only if there is no alternative.</p>
                     <p class="mb-0">The "don't burn bridges unless forced to" rule ensures the remaining unused edges always stay connected to the current vertex, so the walk can always be extended until all edges are used. Fleury's algorithm is conceptually elegant but requires repeated bridge-detection, costing $O(E^2)$ in the naive implementation.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 4.1.8 — Hierholzer's Algorithm</div>
+                    <div class="math-box-label">Algorithm 4.1.8 - Hierholzer's Algorithm</div>
                     <p>A linear-time $O(E)$ alternative:</p>
                     <ol>
                         <li>Starting from any vertex (an odd-degree vertex if seeking an Eulerian path), follow unused edges until returning to a vertex already on the current walk, forming a closed sub-tour.</li>
@@ -220,14 +220,14 @@
                 <h2 class="mt-5 mb-3">Directed Graphs</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.1.9 — Eulerian Digraphs</div>
+                    <div class="math-box-label">Theorem 4.1.9 - Eulerian Digraphs</div>
                     <p class="mb-0">A connected digraph $D$ has a directed Eulerian circuit if and only if $\text{in-deg}(v) = \text{out-deg}(v)$ for every vertex $v$. It has a directed Eulerian path (start $\ne$ end) if and only if there is exactly one vertex $u$ with $\text{out-deg}(u) - \text{in-deg}(u) = 1$, exactly one vertex $v$ with $\text{in-deg}(v) - \text{out-deg}(v) = 1$, and all other vertices have equal in- and out-degree.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Applications</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Applications</div>
+                    <div class="math-box-label">Remark - Applications</div>
                     <p class="mb-0">Eulerian circuits underlie the <strong>Chinese Postman Problem</strong> (route inspection problem): finding a minimum-length closed walk traversing every edge at least once, solved in polynomial time by adding minimum-weight duplicate edges to make all degrees even and then finding an Eulerian circuit. De Bruijn sequences, used in genome assembly and combinatorial generation, correspond to Eulerian circuits in de Bruijn graphs. Eulerian path criteria are also used in circuit board drilling and network traffic analysis.</p>
                 </div>
 

@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -131,12 +131,12 @@
                 <p>The Optional Stopping Theorem (OST) says that the martingale property is preserved when we stop at a stopping time: you cannot beat a fair game by choosing a clever stopping rule. This powerful result has applications ranging from the gambler's ruin problem to sequential hypothesis testing.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.1 — Stopping Time</div>
+                    <div class="math-box-label">Definition 7.2.1 - Stopping Time</div>
                     <p class="mb-0">A random variable $\tau: \Omega \to \{0, 1, 2, \ldots\} \cup \{\infty\}$ is a <em>stopping time</em> with respect to $(\mathcal{F}_n)$ if $\{\tau \le n\} \in \mathcal{F}_n$ for all $n \ge 0$. Equivalently, the decision to stop at time $n$ depends only on the information $\mathcal{F}_n$ available at time $n$, not on the future.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.2 — Optional Stopping Theorem</div>
+                    <div class="math-box-label">Theorem 7.2.2 - Optional Stopping Theorem</div>
                     <p>Let $(M_n, \mathcal{F}_n)$ be a martingale and $\tau$ a stopping time. Then $E[M_\tau] = E[M_0]$ holds under any one of the following sufficient conditions:
                     <ol>
                         <li>$\tau \le N$ a.s. for some constant $N < \infty$ (bounded stopping time);</li>
@@ -149,7 +149,7 @@
                 <h2 class="mt-5 mb-3">Wald's Identity</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.3 — Wald's Identity</div>
+                    <div class="math-box-label">Theorem 7.2.3 - Wald's Identity</div>
                     <p>Let $X_1, X_2, \ldots$ be i.i.d. with $E[X_i] = \mu$ and $S_n = X_1 + \cdots + X_n$. Let $\tau$ be a stopping time with $E[\tau] < \infty$. Then
                     $$E[S_\tau] = \mu \cdot E[\tau].$$
                     Similarly, if $E[X_i^2] < \infty$ with variance $\sigma^2$, then $E[S_\tau^2] = \sigma^2 E[\tau] + \mu^2 (E[\tau])^2$.</p>
@@ -159,7 +159,7 @@
                 <h2 class="mt-5 mb-3">Gambler's Ruin</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.2.4 — Gambler's Ruin</div>
+                    <div class="math-box-label">Example 7.2.4 - Gambler's Ruin</div>
                     <p>A gambler starts with $\$k$ and plays a fair game ($p = 1/2$) until reaching $\$N$ (win) or $\$0$ (ruin). Let $S_n$ be the gambler's fortune (a simple random walk starting at $k$) and $\tau = \min\{n : S_n = 0 \text{ or } S_n = N\}$.</p>
                     <p>Since $\tau \le N^2$ a.s. (the walk must eventually reach a boundary), OST applied to the martingale $S_n$ gives
                     $$k = E[S_0] = E[S_\tau] = N \cdot P(\text{win}) + 0 \cdot P(\text{ruin}),$$
@@ -170,7 +170,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.2.5 — Expected Hitting Time via OST</div>
+                    <div class="math-box-label">Example 7.2.5 - Expected Hitting Time via OST</div>
                     <p>Let $S_n$ be simple symmetric random walk, $S_0 = 0$, and $\tau_a = \min\{n : S_n = a\}$ for $a > 0$. Apply OST to $M_n = S_n^2 - n$ on $[0, \tau_a \wedge N]$:
                     $$0 = E[S_{\tau_a \wedge N}^2] - E[\tau_a \wedge N].$$
                     Letting $N \to \infty$: by monotone convergence $E[\tau_a] = E[S_{\tau_a}^2] = a^2$. So the simple random walk reaches level $a$ in expected time $a^2$.</p>

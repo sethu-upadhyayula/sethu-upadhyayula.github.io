@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -125,32 +125,32 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">5.3 Model Diagnostics</h1>
-                <p>The validity of regression inference rests on model assumptions — linearity, constant variance, independence, and normality of errors. Model diagnostics are the tools by which we probe whether these assumptions hold and identify observations that exert undue influence on results.</p>
+                <p>The validity of regression inference rests on model assumptions - linearity, constant variance, independence, and normality of errors. Model diagnostics are the tools by which we probe whether these assumptions hold and identify observations that exert undue influence on results.</p>
 
                 <h2 class="mt-4">Residual Plots</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.1 — Residuals</div>
+                    <div class="math-box-label">Definition 5.3.1 - Residuals</div>
                     <p>The <strong>ordinary residuals</strong> are $\hat{\varepsilon}_i = Y_i - \hat{Y}_i$. The <strong>standardised residuals</strong> are $r_i = \hat{\varepsilon}_i / (\hat{\sigma}\sqrt{1 - h_{ii}})$ where $h_{ii} = [\mathbf{H}]_{ii}$ is the $i$-th diagonal of the hat matrix (the <strong>leverage</strong>).</p>
                     <p class="mb-0">A <strong>residuals vs.\ fitted plot</strong> should show no pattern (random scatter around zero) if the model is correctly specified. Curvature suggests a nonlinear relationship; a funnel shape suggests heteroskedasticity.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.2 — Q-Q Plot and Normality Tests</div>
+                    <div class="math-box-label">Definition 5.3.2 - Q-Q Plot and Normality Tests</div>
                     <p class="mb-0">A <strong>normal Q-Q plot</strong> of residuals plots the empirical quantiles of $\hat{\varepsilon}_i$ against the theoretical quantiles of $N(0,1)$. Deviations from the diagonal indicate departures from normality. The <strong>Shapiro-Wilk test</strong> provides a formal hypothesis test: $H_0:\varepsilon \sim N$, with high power for small to moderate $n$. The test statistic $W$ is the squared correlation between the ordered residuals and normal order statistics; small $W$ rejects normality.</p>
                 </div>
 
                 <h2 class="mt-5">Heteroskedasticity</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.3 — Breusch-Pagan Test</div>
+                    <div class="math-box-label">Definition 5.3.3 - Breusch-Pagan Test</div>
                     <p class="mb-0">The <strong>Breusch-Pagan test</strong> detects heteroskedasticity by regressing squared residuals $\hat{\varepsilon}_i^2$ on the predictors. Under $H_0$ (homoskedasticity), the test statistic $nR^2_{\hat{\varepsilon}^2} \stackrel{d}{\to} \chi^2_p$. If rejected, <strong>weighted least squares (WLS)</strong> with weights $w_i = 1/\hat{\sigma}_i^2$ (estimated from the auxiliary regression) restores efficiency.</p>
                 </div>
 
                 <h2 class="mt-5">Autocorrelation</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.4 — Durbin-Watson Test</div>
+                    <div class="math-box-label">Definition 5.3.4 - Durbin-Watson Test</div>
                     <p class="mb-0">For time-series data, the <strong>Durbin-Watson statistic</strong>
                     $$DW = \frac{\sum_{i=2}^n(\hat{\varepsilon}_i - \hat{\varepsilon}_{i-1})^2}{\sum_{i=1}^n \hat{\varepsilon}_i^2} \approx 2(1 - \hat{\rho}),$$
                     where $\hat{\rho}$ is the lag-1 autocorrelation of residuals. Values near 2 indicate no autocorrelation; values near 0 indicate positive autocorrelation (common in time series). Tabulated critical values $d_L, d_U$ determine significance.</p>
@@ -159,12 +159,12 @@
                 <h2 class="mt-5">Influential Observations</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.5 — Leverage</div>
+                    <div class="math-box-label">Definition 5.3.5 - Leverage</div>
                     <p class="mb-0">The <strong>leverage</strong> of observation $i$ is $h_{ii} = [\mathbf{X}(\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top]_{ii} \in [1/n, 1]$. High leverage observations have predictor values far from the centroid $\bar{\mathbf{x}}$ and can strongly influence $\hat{\boldsymbol{\beta}}$. A common threshold is $h_{ii} > 2(p+1)/n$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.6 — Cook's Distance</div>
+                    <div class="math-box-label">Definition 5.3.6 - Cook's Distance</div>
                     <p class="mb-0">Cook's distance measures the aggregate influence of observation $i$ on all fitted values:
                     $$D_i = \frac{(\hat{\boldsymbol{\beta}} - \hat{\boldsymbol{\beta}}_{(i)})^\top \mathbf{X}^\top\mathbf{X}(\hat{\boldsymbol{\beta}} - \hat{\boldsymbol{\beta}}_{(i)})}{(p+1)\hat{\sigma}^2} = \frac{r_i^2}{p+1}\cdot\frac{h_{ii}}{1-h_{ii}},$$
                     where $\hat{\boldsymbol{\beta}}_{(i)}$ is the OLS estimator with observation $i$ deleted. $D_i > 1$ is often taken as an indicator of strong influence. Observations with both large residuals and high leverage have the greatest potential to distort results.</p>
@@ -173,7 +173,7 @@
                 <h2 class="mt-5">Box-Cox Transformation</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.7 — Box-Cox Transformation</div>
+                    <div class="math-box-label">Definition 5.3.7 - Box-Cox Transformation</div>
                     <p class="mb-0">The <strong>Box-Cox power transformation</strong>
                     $$Y^{(\lambda)} = \begin{cases} (Y^\lambda - 1)/\lambda & \lambda \ne 0 \\ \log Y & \lambda = 0 \end{cases}$$
                     can simultaneously stabilise variance and achieve approximate normality of residuals. The optimal $\lambda$ is estimated by maximum likelihood. Special cases include $\lambda = 1$ (no transformation), $\lambda = 0$ (log transform), and $\lambda = -1$ (reciprocal transform). After transformation, inference is conducted on $Y^{(\lambda)}$ and results must be back-transformed with care.</p>

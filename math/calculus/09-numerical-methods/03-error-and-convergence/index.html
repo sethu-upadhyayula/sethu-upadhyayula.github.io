@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -66,12 +66,12 @@
             <article>
                 <h1 class="text-accent mb-4">9.3 Error and Convergence</h1>
 
-                <p>Understanding how quickly a root-finding method converges — and when it might fail — is essential for reliable numerical computation. This section formalises the concepts of error, order of convergence, and stopping criteria, and compares the main methods studied in this chapter.</p>
+                <p>Understanding how quickly a root-finding method converges - and when it might fail - is essential for reliable numerical computation. This section formalises the concepts of error, order of convergence, and stopping criteria, and compares the main methods studied in this chapter.</p>
 
                 <h2 class="mt-4 mb-3">Error and Order of Convergence</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Absolute Error and Order of Convergence</div>
+                    <div class="math-box-label">Definition - Absolute Error and Order of Convergence</div>
                     <p>Let $(x_n)$ be a sequence converging to $x^*$. The <strong>absolute error</strong> at step $n$ is:
                     $$e_n = |x_n - x^*|.$$
                     The sequence converges with <strong>order $p$</strong> if there exists a constant $C > 0$ such that:
@@ -80,11 +80,11 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Interpreting Orders</div>
+                    <div class="math-box-label">Remark - Interpreting Orders</div>
                     <ul class="mb-0">
                         <li><strong>$p = 1$ (linear):</strong> Each step reduces the error by a constant factor $C < 1$. Slow but robust. Example: bisection ($C = 1/2$), basic fixed point iteration.</li>
                         <li><strong>$p \approx 1.618$ (superlinear):</strong> Faster than linear. Example: the secant method, whose order is the golden ratio $\phi = (1+\sqrt{5})/2$.</li>
-                        <li><strong>$p = 2$ (quadratic):</strong> The error is squared each step — the number of correct digits doubles. Example: Newton's method at a simple root.</li>
+                        <li><strong>$p = 2$ (quadratic):</strong> The error is squared each step - the number of correct digits doubles. Example: Newton's method at a simple root.</li>
                     </ul>
                 </div>
 
@@ -93,7 +93,7 @@
                 <p>In practice we cannot compute $e_n = |x_n - x^*|$ directly since $x^*$ is unknown. Instead, we use one or more of the following stopping criteria:</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Stopping Criteria</div>
+                    <div class="math-box-label">Definition - Stopping Criteria</div>
                     <ol class="mb-0">
                         <li><strong>Absolute step size:</strong> Stop when $|x_{n+1} - x_n| < \text{tol}$. Measures how much the iterate changed.</li>
                         <li><strong>Relative step size:</strong> Stop when $\dfrac{|x_{n+1} - x_n|}{|x_{n+1}|} < \text{tol}$ (avoids issues with scale).</li>
@@ -102,14 +102,14 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Which Criterion to Use</div>
+                    <div class="math-box-label">Remark - Which Criterion to Use</div>
                     <p class="mb-0">No single criterion is universally best. If $f'(x^*)$ is very large, the residual can be small even though $x_n$ is far from $x^*$. If $f'(x^*)$ is very small (near a multiple root), $x_n$ can be close to $x^*$ while $|f(x_n)|$ is still appreciable. In practice, combining the absolute step size criterion with the residual criterion gives a robust stopping rule.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Bisection Method</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Bisection Convergence</div>
+                    <div class="math-box-label">Theorem - Bisection Convergence</div>
                     <p>Suppose $f$ is continuous on $[a,b]$ with $f(a)f(b) < 0$ (so a root $x^*$ exists by IVT). The bisection method bisects $[a,b]$ at each step, retaining the half containing a sign change. After $n$ steps:
                     $$e_n \le \frac{b-a}{2^n}.$$
                     This is linear convergence with $C = 1/2$. To achieve $n_0$ correct decimal digits one needs approximately $n_0 \log_2(10) \approx 3.32\,n_0$ steps.</p>
@@ -117,7 +117,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Bisection Rate</div>
+                    <div class="math-box-label">Example - Bisection Rate</div>
                     <p class="mb-0">Starting on an interval of length $1$, after 10 bisection steps the error is at most $1/2^{10} = 1/1024 \approx 9.77 \times 10^{-4}$, giving roughly 3 correct decimal digits. After 20 steps: $\approx 10^{-6}$ (6 digits). Newton's method starting from the same point might reach 12 digits in 4 steps.</p>
                 </div>
 

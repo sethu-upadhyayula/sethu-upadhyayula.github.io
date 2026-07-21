@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="light" data-section="chess"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Queen Endgames — Endgame Theory</title>
+<title>Queen Endgames - Endgame Theory</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,7 +21,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -52,29 +52,29 @@
   <p>Queen endgames are notoriously double-edged: the queen's enormous mobility means both kings are perpetually exposed to checks, and a single inaccuracy can flip the result. They also have a reputation for being drawish at the highest levels, in part because of the surprising drawing resources available to a side that is "merely" a queen for a pawn down. This chapter covers the most important practical cases: a lone pawn that can hold a draw against king and queen, queen vs queen endings decided by king safety and perpetual check, and the basic technique for converting an extra pawn in queen and pawn endings.</p>
 
   <div class="technique-card">
-    <h3>K+Q vs K+P — When the Pawn Can Draw</h3>
-    <p>A king and queen against a king and pawn is normally an overwhelming win for the side with the queen — the queen alone is worth roughly three pawns more than a rook, and mating a lone king is straightforward (Chapter 4). But there is a famous exception: if the pawn is a <strong>rook pawn (a- or h-pawn) on the seventh rank</strong>, supported by its own king standing directly in front of it on the promotion square, the position can be a <em>draw</em>, even though White has an entire queen for a pawn.</p>
-    <p>The mechanism is stalemate. The defending king is confined to the corner and the two squares next to it. If the queen simply captures the pawn, the lone king is left with no legal moves and is not in check — stalemate. To make progress, the attacking side must bring its own king up to help, but every attempt to approach allows the defender to shuffle between the corner and the adjacent square, and any careless queen move that takes away the king's last flight square (without itself giving check) is an immediate draw by stalemate.</p>
+    <h3>K+Q vs K+P - When the Pawn Can Draw</h3>
+    <p>A king and queen against a king and pawn is normally an overwhelming win for the side with the queen - the queen alone is worth roughly three pawns more than a rook, and mating a lone king is straightforward (Chapter 4). But there is a famous exception: if the pawn is a <strong>rook pawn (a- or h-pawn) on the seventh rank</strong>, supported by its own king standing directly in front of it on the promotion square, the position can be a <em>draw</em>, even though White has an entire queen for a pawn.</p>
+    <p>The mechanism is stalemate. The defending king is confined to the corner and the two squares next to it. If the queen simply captures the pawn, the lone king is left with no legal moves and is not in check - stalemate. To make progress, the attacking side must bring its own king up to help, but every attempt to approach allows the defender to shuffle between the corner and the adjacent square, and any careless queen move that takes away the king's last flight square (without itself giving check) is an immediate draw by stalemate.</p>
 
     <div class="chess-board" id="board-kqkp"></div>
     <script>renderChessBoard('board-kqkp', {h1:'bK',h2:'bP',c3:'wK',d4:'wQ'});</script>
-    <p class="text-center text-muted mt-2"><small>K+Q vs K+P, White to move: the Black king on h1 shelters behind its h-pawn on h2. Qxh2 would be stalemate (Black king on h1 has no legal move and is not in check), so White must instead bring the king closer — but every approach must be timed to avoid handing Black a stalemate escape.</small></p>
+    <p class="text-center text-muted mt-2"><small>K+Q vs K+P, White to move: the Black king on h1 shelters behind its h-pawn on h2. Qxh2 would be stalemate (Black king on h1 has no legal move and is not in check), so White must instead bring the king closer - but every approach must be timed to avoid handing Black a stalemate escape.</small></p>
 
-    <p>Centre and bishop pawns on the seventh rank do <em>not</em> have this drawing resource — the king and queen have enough space to coordinate, drive the defending king away from the pawn, and then mop up. The rook-pawn exception is purely a function of the corner having only two escape squares for the king, which the queen alone cannot cover without self-stalemating.</p>
+    <p>Centre and bishop pawns on the seventh rank do <em>not</em> have this drawing resource - the king and queen have enough space to coordinate, drive the defending king away from the pawn, and then mop up. The rook-pawn exception is purely a function of the corner having only two escape squares for the king, which the queen alone cannot cover without self-stalemating.</p>
   </div>
 
   <div class="technique-card">
     <h3>Queen vs Queen Endgames</h3>
-    <p>When both sides have a queen (plus pawns and kings), the overriding theme is <strong>king safety</strong>. A queen endgame is essentially one long sequence of potential checks, and the side whose king is more exposed is often unable to make progress — or even survive — regardless of the pawn count.</p>
+    <p>When both sides have a queen (plus pawns and kings), the overriding theme is <strong>king safety</strong>. A queen endgame is essentially one long sequence of potential checks, and the side whose king is more exposed is often unable to make progress - or even survive - regardless of the pawn count.</p>
     <ul>
       <li><strong>Perpetual check:</strong> If one side's king is dangerously exposed, the opponent's queen can sometimes give an unstoppable sequence of checks that repeats a position (or simply never ends), forcing a draw by the threefold-repetition or "no progress" rules even from a position that would otherwise be winning.</li>
-      <li><strong>King shelter first:</strong> Before trying to convert a material or positional advantage, tuck the king away from checks — behind a pawn shield, in a corner with no open diagonals or files leading to it. Only once the king is safe can the extra material be used to make real progress.</li>
-      <li><strong>Trading queens:</strong> If you are ahead in material, offering a queen trade that leads to a winning king-and-pawn endgame is often the simplest path — it removes the perpetual-check resource entirely. If you are behind, avoiding the trade (and keeping perpetual check ideas alive) is the priority.</li>
+      <li><strong>King shelter first:</strong> Before trying to convert a material or positional advantage, tuck the king away from checks - behind a pawn shield, in a corner with no open diagonals or files leading to it. Only once the king is safe can the extra material be used to make real progress.</li>
+      <li><strong>Trading queens:</strong> If you are ahead in material, offering a queen trade that leads to a winning king-and-pawn endgame is often the simplest path - it removes the perpetual-check resource entirely. If you are behind, avoiding the trade (and keeping perpetual check ideas alive) is the priority.</li>
     </ul>
 
     <div class="chess-board" id="board-qvq"></div>
     <script>renderChessBoard('board-qvq', {g1:'wK',d5:'wQ',g8:'bK',d8:'bQ'});</script>
-    <p class="text-center text-muted mt-2"><small>A symmetrical queen endgame: both kings sit on the back rank with no pawn shelter nearby. With queens still on the board, neither side can safely push for more without first improving king safety — a stray check along the back rank or the long diagonal could prove decisive in either direction.</small></p>
+    <p class="text-center text-muted mt-2"><small>A symmetrical queen endgame: both kings sit on the back rank with no pawn shelter nearby. With queens still on the board, neither side can safely push for more without first improving king safety - a stray check along the back rank or the long diagonal could prove decisive in either direction.</small></p>
   </div>
 
   <div class="technique-card">
@@ -82,7 +82,7 @@
     <p>Converting an extra pawn in a queen endgame is harder than it looks, because the defending queen can often generate enough checks to prevent the pawn from ever advancing safely. The general technique:</p>
     <ol>
       <li><strong>Centralise the queen:</strong> A centralised queen controls the most squares and limits the defender's checking resources.</li>
-      <li><strong>Shelter the king:</strong> Tuck your king away from potential check lines before pushing the pawn — an exposed king gives the defender perpetual-check chances even from a lost position.</li>
+      <li><strong>Shelter the king:</strong> Tuck your king away from potential check lines before pushing the pawn - an exposed king gives the defender perpetual-check chances even from a lost position.</li>
       <li><strong>Advance the pawn with queen support:</strong> Push the pawn only when your queen can either block checks or trade itself off for the defending queen at a favourable moment, transposing into a winning king-and-pawn endgame.</li>
       <li><strong>Watch for stalemate:</strong> As in K+Q vs K+P, a lone defending king can sometimes be stalemated if you are careless about which squares you take away.</li>
     </ol>
@@ -94,7 +94,7 @@
   </div>
 
   <div class="endgame-note mt-3">
-    <strong>Key takeaway:</strong> in queen endgames, material is only half the story — king safety and checking resources dominate the evaluation. The rook-pawn exceptions seen here echo a theme from earlier chapters (the a/h-pawn draws in K+P endings and K+P vs K), and will reappear in Chapter 6 when we look at fortresses more generally.
+    <strong>Key takeaway:</strong> in queen endgames, material is only half the story - king safety and checking resources dominate the evaluation. The rook-pawn exceptions seen here echo a theme from earlier chapters (the a/h-pawn draws in K+P endings and K+P vs K), and will reappear in Chapter 6 when we look at fortresses more generally.
   </div>
 
         <hr class="my-5">

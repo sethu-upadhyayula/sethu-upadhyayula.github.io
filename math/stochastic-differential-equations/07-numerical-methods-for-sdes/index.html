@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -49,35 +49,35 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">Chapter 7: Numerical Methods for SDEs</h1>
-                <p>Most stochastic differential equations encountered in practice — beyond a handful of solvable cases such as linear SDEs and geometric Brownian motion — admit no closed-form solution. To compute quantities like $E[f(X_T)]$ or to simulate sample paths of $X_t$, we must discretize the SDE in time and approximate the solution numerically. This chapter introduces the two foundational discretization schemes, Euler-Maruyama and Milstein, and the notions of strong and weak convergence used to assess their accuracy.</p>
+                <p>Most stochastic differential equations encountered in practice - beyond a handful of solvable cases such as linear SDEs and geometric Brownian motion - admit no closed-form solution. To compute quantities like $E[f(X_T)]$ or to simulate sample paths of $X_t$, we must discretize the SDE in time and approximate the solution numerically. This chapter introduces the two foundational discretization schemes, Euler-Maruyama and Milstein, and the notions of strong and weak convergence used to assess their accuracy.</p>
 
                 <h2 class="mt-5 mb-3">Strong vs. Weak Convergence</h2>
 
                 <p>Given an SDE $dX_t = \mu(X_t,t)\,dt + \sigma(X_t,t)\,dW_t$ on $[0,T]$, a numerical scheme produces an approximation $Y^{\Delta t}_n \approx X_{t_n}$ on a time grid $t_n = n\Delta t$. There are two natural ways to measure how good this approximation is.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Strong Convergence</div>
+                    <div class="math-box-label">Definition - Strong Convergence</div>
                     <p class="mb-0">A scheme converges <strong>strongly</strong> with order $\gamma$ if there is a constant $C$, independent of $\Delta t$, such that</p>
                     $$E\left[\left|X_T - Y^{\Delta t}_N\right|\right] \leq C(\Delta t)^\gamma$$
-                    <p class="mb-0">for sufficiently small $\Delta t$. Strong convergence measures pathwise accuracy — how close individual simulated trajectories are to the true solution driven by the same Brownian path. It matters for applications like hedging simulations and pathwise sensitivity analysis.</p>
+                    <p class="mb-0">for sufficiently small $\Delta t$. Strong convergence measures pathwise accuracy - how close individual simulated trajectories are to the true solution driven by the same Brownian path. It matters for applications like hedging simulations and pathwise sensitivity analysis.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Weak Convergence</div>
+                    <div class="math-box-label">Definition - Weak Convergence</div>
                     <p class="mb-0">A scheme converges <strong>weakly</strong> with order $\beta$ if for every sufficiently smooth function $g$ there is a constant $C$, independent of $\Delta t$, such that</p>
                     $$\left|E[g(X_T)] - E[g(Y^{\Delta t}_N)]\right| \leq C(\Delta t)^\beta.$$
-                    <p class="mb-0">Weak convergence measures accuracy of distributional quantities — expectations, moments, option prices — and does not require matching individual sample paths. It is typically achievable to higher order than strong convergence, since errors in the noise term can partially cancel in expectation.</p>
+                    <p class="mb-0">Weak convergence measures accuracy of distributional quantities - expectations, moments, option prices - and does not require matching individual sample paths. It is typically achievable to higher order than strong convergence, since errors in the noise term can partially cancel in expectation.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Chapter Overview</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">7.1 — Euler-Maruyama Method</div>
+                    <div class="math-box-label">7.1 - Euler-Maruyama Method</div>
                     <p class="mb-0">The simplest discretization, directly analogous to the Euler method for ODEs: $X_{n+1} = X_n + \mu(X_n,t_n)\Delta t + \sigma(X_n,t_n)\Delta W_n$. It achieves strong order $0.5$ and weak order $1.0$, and is the workhorse scheme for Monte Carlo simulation of SDEs due to its simplicity.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">7.2 — Milstein Scheme</div>
+                    <div class="math-box-label">7.2 - Milstein Scheme</div>
                     <p class="mb-0">By including the next term in the stochastic Taylor (Itô-Taylor) expansion, the Milstein scheme adds a correction term involving $\sigma\sigma'$ and $(\Delta W_n)^2 - \Delta t$, raising the strong order of convergence to $1.0$. This improves pathwise accuracy at the cost of requiring the derivative $\sigma'$ of the diffusion coefficient.</p>
                 </div>
 

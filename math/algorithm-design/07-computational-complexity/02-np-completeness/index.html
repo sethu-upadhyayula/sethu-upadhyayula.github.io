@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,40 +128,40 @@
             <article>
                 <h1 class="text-accent mb-4">7.2 NP-Completeness</h1>
 
-                <p>NP-completeness identifies the "hardest" problems within $NP$: a problem $X$ is NP-complete if it is in $NP$ and every other $NP$ problem can be transformed into $X$ efficiently. The Cook-Levin theorem (1971) showed that such problems exist by exhibiting one explicitly — Boolean satisfiability (SAT) — and a vast catalogue of natural problems has since been shown NP-complete via reductions from it.</p>
+                <p>NP-completeness identifies the "hardest" problems within $NP$: a problem $X$ is NP-complete if it is in $NP$ and every other $NP$ problem can be transformed into $X$ efficiently. The Cook-Levin theorem (1971) showed that such problems exist by exhibiting one explicitly - Boolean satisfiability (SAT) - and a vast catalogue of natural problems has since been shown NP-complete via reductions from it.</p>
 
                 <h2 class="mt-5 mb-3">Polynomial-Time Reductions</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.1 — Polynomial-Time (Karp) Reduction</div>
+                    <div class="math-box-label">Definition 7.2.1 - Polynomial-Time (Karp) Reduction</div>
                     <p>A language $A$ <strong>polynomial-time reduces</strong> to a language $B$, written $A \le_p B$, if there is a function $f$ computable in polynomial time such that</p>
                     <p class="mb-0">$$x \in A \iff f(x) \in B.$$</p>
                     <p class="mb-0">Intuitively: solving $B$ in polynomial time would let us solve $A$ in polynomial time (just transform the instance and call the $B$-solver). So $A \le_p B$ means "$A$ is no harder than $B$."</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Cook vs. Karp Reductions</div>
+                    <div class="math-box-label">Remark - Cook vs. Karp Reductions</div>
                     <p class="mb-0">A <strong>Karp reduction</strong> (above) is a single many-one mapping of instances. A <strong>Cook (Turing) reduction</strong> is more general: $A$ is solved using polynomially many calls to an oracle for $B$, possibly with post-processing. Karp reductions are the standard tool for proving NP-completeness because they preserve membership in $NP$ directly; Cook reductions are used more broadly (e.g., for NP-hardness of search/optimisation problems that may not themselves be in $NP$).</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.2 — Transitivity and Consequences</div>
+                    <div class="math-box-label">Theorem 7.2.2 - Transitivity and Consequences</div>
                     <p>If $A \le_p B$ and $B \le_p C$, then $A \le_p C$ (compose the polynomial-time reductions).</p>
                     <p>If $A \le_p B$ and $B \in P$, then $A \in P$.</p>
-                    <p class="mb-0">Contrapositive: if $A \le_p B$ and $A$ is NP-hard, then $B$ is NP-hard. This is the key tool for proving new problems NP-hard — reduce a <em>known</em> NP-hard problem <em>to</em> the new problem.</p>
+                    <p class="mb-0">Contrapositive: if $A \le_p B$ and $A$ is NP-hard, then $B$ is NP-hard. This is the key tool for proving new problems NP-hard - reduce a <em>known</em> NP-hard problem <em>to</em> the new problem.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Cook-Levin Theorem</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.3 — SAT and CNF</div>
+                    <div class="math-box-label">Definition 7.2.3 - SAT and CNF</div>
                     <p>A Boolean formula is in <strong>conjunctive normal form (CNF)</strong> if it is an AND of clauses, each clause an OR of literals (variables or their negations), e.g.</p>
                     <p class="mb-0">$$(x_1 \lor \lnot x_2 \lor x_3) \land (\lnot x_1 \lor x_2) \land (x_2 \lor x_3 \lor \lnot x_4).$$</p>
                     <p class="mb-0"><strong>SAT</strong>: given a CNF formula $\varphi$, does there exist an assignment of truth values to the variables making $\varphi$ true? <strong>$k$-SAT</strong> is SAT restricted to formulas where every clause has exactly $k$ literals.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.4 — Cook-Levin Theorem</div>
+                    <div class="math-box-label">Theorem 7.2.4 - Cook-Levin Theorem</div>
                     <p class="mb-0">SAT is NP-complete.</p>
                 </div>
 
@@ -170,26 +170,26 @@
                     <p><strong>SAT $\in NP$:</strong> a satisfying assignment is a certificate of polynomial size; checking that it satisfies $\varphi$ takes polynomial time.</p>
                     <p><strong>SAT is NP-hard:</strong> let $L$ be any language in $NP$, decided by a nondeterministic Turing machine $M$ in time $p(n)$ for a polynomial $p$. We construct, for each input $x$ of length $n$, a CNF formula $\varphi_x$ of size $\text{poly}(n)$ such that $\varphi_x$ is satisfiable iff $M$ accepts $x$.</p>
                     <p>The formula encodes the entire computation history of $M$ on $x$ as a $p(n) \times p(n)$ "tableau": cell $(i,t)$ holds the tape symbol/state/head-position information at time step $t$, position $i$. Boolean variables represent the contents of each cell, and clauses enforce:</p>
-                    <p>(1) <em>Cell consistency</em> — each cell holds exactly one symbol/state combination; (2) <em>Start configuration</em> — row $0$ encodes $x$ and $M$'s initial state; (3) <em>Transition validity</em> — each $2\times3$ window of consecutive cells is consistent with $M$'s transition function (this is where nondeterminism is captured — multiple transitions are allowed as alternatives within a clause); (4) <em>Acceptance</em> — some cell in the final row is in an accepting state.</p>
-                    <p class="mb-0">Each constraint translates into $O(1)$ clauses per tableau cell, giving $O(p(n)^2)$ clauses overall — polynomial in $n$. The construction itself runs in polynomial time. Hence $L \le_p \text{SAT}$ for every $L \in NP$, so SAT is NP-hard, and combined with SAT $\in NP$, SAT is NP-complete. $\blacksquare$</p>
+                    <p>(1) <em>Cell consistency</em> - each cell holds exactly one symbol/state combination; (2) <em>Start configuration</em> - row $0$ encodes $x$ and $M$'s initial state; (3) <em>Transition validity</em> - each $2\times3$ window of consecutive cells is consistent with $M$'s transition function (this is where nondeterminism is captured - multiple transitions are allowed as alternatives within a clause); (4) <em>Acceptance</em> - some cell in the final row is in an accepting state.</p>
+                    <p class="mb-0">Each constraint translates into $O(1)$ clauses per tableau cell, giving $O(p(n)^2)$ clauses overall - polynomial in $n$. The construction itself runs in polynomial time. Hence $L \le_p \text{SAT}$ for every $L \in NP$, so SAT is NP-hard, and combined with SAT $\in NP$, SAT is NP-complete. $\blacksquare$</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why This Matters</div>
+                    <div class="math-box-label">Remark - Why This Matters</div>
                     <p class="mb-0">Cook-Levin gives us <em>one</em> NP-complete problem "from scratch," via direct simulation of Turing machines. Every subsequent NP-completeness proof can avoid this machine-level argument: to show $X$ is NP-hard, it suffices to exhibit $Y \le_p X$ for some already-known NP-hard $Y$ (often SAT or 3-SAT), by Theorem 7.2.2.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">3-SAT and the First Reductions</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.5 — 3-SAT is NP-complete</div>
-                    <p class="mb-0">SAT $\le_p$ 3-SAT, so 3-SAT is NP-hard; and 3-SAT $\in NP$ (it is a special case of SAT), so 3-SAT is NP-complete. (Note: 2-SAT is in $P$, solvable via strongly connected components of the implication graph — so the jump from 2 to 3 literals per clause crosses the $P$/$NP$-complete boundary.)</p>
+                    <div class="math-box-label">Theorem 7.2.5 - 3-SAT is NP-complete</div>
+                    <p class="mb-0">SAT $\le_p$ 3-SAT, so 3-SAT is NP-hard; and 3-SAT $\in NP$ (it is a special case of SAT), so 3-SAT is NP-complete. (Note: 2-SAT is in $P$, solvable via strongly connected components of the implication graph - so the jump from 2 to 3 literals per clause crosses the $P$/$NP$-complete boundary.)</p>
                 </div>
 
                 <div class="math-box proof">
-                    <div class="math-box-label">Proof Idea — SAT $\le_p$ 3-SAT</div>
+                    <div class="math-box-label">Proof Idea - SAT $\le_p$ 3-SAT</div>
                     <p>Convert each clause of $\varphi$ to one or more clauses with exactly 3 literals:</p>
-                    <p>A clause with 1 literal $(\ell_1)$: introduce two fresh variables $p, q$ and replace by $(\ell_1 \lor p \lor q) \land (\ell_1 \lor \lnot p \lor q) \land (\ell_1 \lor p \lor \lnot q) \land (\ell_1 \lor \lnot p \lor \lnot q)$ — satisfiable in $\ell_1$ regardless of $p,q$ iff $\ell_1$ true.</p>
+                    <p>A clause with 1 literal $(\ell_1)$: introduce two fresh variables $p, q$ and replace by $(\ell_1 \lor p \lor q) \land (\ell_1 \lor \lnot p \lor q) \land (\ell_1 \lor p \lor \lnot q) \land (\ell_1 \lor \lnot p \lor \lnot q)$ - satisfiable in $\ell_1$ regardless of $p,q$ iff $\ell_1$ true.</p>
                     <p>A clause with 2 literals $(\ell_1 \lor \ell_2)$: add a fresh variable $p$, replace by $(\ell_1 \lor \ell_2 \lor p) \land (\ell_1 \lor \ell_2 \lor \lnot p)$.</p>
                     <p class="mb-0">A clause with $k > 3$ literals $(\ell_1 \lor \cdots \lor \ell_k)$: introduce fresh variables $z_1, \ldots, z_{k-3}$ and chain: $(\ell_1 \lor \ell_2 \lor z_1) \land (\lnot z_1 \lor \ell_3 \lor z_2) \land \cdots \land (\lnot z_{k-3} \lor \ell_{k-1} \lor \ell_k)$. Each transformation preserves satisfiability and increases formula size by only a constant factor, so the whole reduction is polynomial-time. $\blacksquare$</p>
                 </div>
@@ -197,37 +197,37 @@
                 <h2 class="mt-5 mb-3">A Gallery of NP-Complete Problems</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.2.6 — Vertex Cover (3-SAT $\le_p$ Vertex Cover)</div>
+                    <div class="math-box-label">Example 7.2.6 - Vertex Cover (3-SAT $\le_p$ Vertex Cover)</div>
                     <p><strong>Vertex Cover:</strong> given a graph $G = (V,E)$ and integer $k$, does $G$ have a set $S \subseteq V$ with $|S| \le k$ such that every edge has at least one endpoint in $S$?</p>
                     <p>Reduction from 3-SAT: for a formula with variables $x_1,\ldots,x_n$ and clauses $C_1,\ldots,C_m$ (each with 3 literals), build a graph with:</p>
-                    <p>(a) A <em>variable gadget</em> for each $x_i$: an edge between nodes labelled $x_i$ and $\lnot x_i$ — covering this edge forces choosing at least one of "$x_i$ true" or "$x_i$ false".</p>
-                    <p>(b) A <em>clause gadget</em> for each clause $C_j$: a triangle on three nodes representing its three literals — covering a triangle's 3 edges requires at least 2 of its 3 vertices.</p>
+                    <p>(a) A <em>variable gadget</em> for each $x_i$: an edge between nodes labelled $x_i$ and $\lnot x_i$ - covering this edge forces choosing at least one of "$x_i$ true" or "$x_i$ false".</p>
+                    <p>(b) A <em>clause gadget</em> for each clause $C_j$: a triangle on three nodes representing its three literals - covering a triangle's 3 edges requires at least 2 of its 3 vertices.</p>
                     <p>(c) Connect each clause-gadget literal vertex to the corresponding variable-gadget vertex with the same literal.</p>
                     <p class="mb-0">Set $k = n + 2m$. One can show $\varphi$ is satisfiable iff $G$ has a vertex cover of size $k$: the $n$ variable-edge picks encode the assignment, and the $2m$ triangle picks can always cover the "satisfied" literal's connecting edge for each clause iff the assignment satisfies $\varphi$. Since 3-SAT $\le_p$ Vertex Cover and Vertex Cover $\in NP$ (certificate: the cover $S$), Vertex Cover is NP-complete.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.2.7 — Clique and Independent Set</div>
+                    <div class="math-box-label">Example 7.2.7 - Clique and Independent Set</div>
                     <p><strong>Clique:</strong> does $G$ contain a complete subgraph on $k$ vertices? <strong>Independent Set:</strong> does $G$ contain $k$ pairwise non-adjacent vertices?</p>
                     <p class="mb-0">$S$ is a clique in $G$ iff $S$ is an independent set in the complement graph $\bar G$, and $S$ is a vertex cover of $G$ iff $V \setminus S$ is an independent set in $G$. These trivial transformations give Vertex Cover $\le_p$ Independent Set $\le_p$ Clique (and back), so all three are NP-complete (each is clearly in $NP$: the witness is the vertex set itself).</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.2.8 — Hamiltonian Cycle</div>
+                    <div class="math-box-label">Example 7.2.8 - Hamiltonian Cycle</div>
                     <p><strong>Hamiltonian Cycle:</strong> does $G$ have a cycle visiting every vertex exactly once?</p>
-                    <p class="mb-0">In $NP$: the cycle itself (a permutation of $V$) is a polynomial-size certificate, checkable in $O(|V|)$ time. NP-hardness is shown by a (more involved) reduction from 3-SAT or vertex cover, using "gadgets" — small subgraphs that force a Hamiltonian cycle to pass through them in a pattern that encodes a variable assignment or a clause-satisfaction choice. The decision version of the Travelling Salesman Problem ("is there a tour of total weight $\le k$?") is NP-complete via a direct reduction from Hamiltonian Cycle: set edge weights $1$ for graph edges and $2$ for non-edges, and ask for a tour of weight $\le |V|$.</p>
+                    <p class="mb-0">In $NP$: the cycle itself (a permutation of $V$) is a polynomial-size certificate, checkable in $O(|V|)$ time. NP-hardness is shown by a (more involved) reduction from 3-SAT or vertex cover, using "gadgets" - small subgraphs that force a Hamiltonian cycle to pass through them in a pattern that encodes a variable assignment or a clause-satisfaction choice. The decision version of the Travelling Salesman Problem ("is there a tour of total weight $\le k$?") is NP-complete via a direct reduction from Hamiltonian Cycle: set edge weights $1$ for graph edges and $2$ for non-edges, and ask for a tour of weight $\le |V|$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.2.9 — Subset Sum</div>
+                    <div class="math-box-label">Example 7.2.9 - Subset Sum</div>
                     <p><strong>Subset Sum:</strong> given positive integers $a_1, \ldots, a_n$ and target $T$, does some subset sum to exactly $T$?</p>
-                    <p class="mb-0">In $NP$: the subset itself is the certificate. NP-hardness via reduction from 3-SAT (or from the "Exact Cover" family): each variable and clause is encoded as a decimal digit position in a large number, with values chosen so that a subset summing to $T$ corresponds to a satisfying assignment. Subset Sum is solvable in <em>pseudo-polynomial</em> time $O(nT)$ via dynamic programming (Section 3.3) — this does not contradict NP-hardness because $T$ can be exponential in the input's bit-length $\log T$.</p>
+                    <p class="mb-0">In $NP$: the subset itself is the certificate. NP-hardness via reduction from 3-SAT (or from the "Exact Cover" family): each variable and clause is encoded as a decimal digit position in a large number, with values chosen so that a subset summing to $T$ corresponds to a satisfying assignment. Subset Sum is solvable in <em>pseudo-polynomial</em> time $O(nT)$ via dynamic programming (Section 3.3) - this does not contradict NP-hardness because $T$ can be exponential in the input's bit-length $\log T$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Proving a New Problem NP-Complete</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Recipe — The Standard Template</div>
+                    <div class="math-box-label">Recipe - The Standard Template</div>
                     <p>To show a decision problem $X$ is NP-complete:</p>
                     <p>1. <strong>$X \in NP$:</strong> exhibit a certificate format and a polynomial-time verifier.</p>
                     <p>2. <strong>$X$ is NP-hard:</strong> choose a known NP-complete problem $Y$ (often 3-SAT, Vertex Cover, or another problem structurally close to $X$), and construct a polynomial-time function $f$ mapping instances of $Y$ to instances of $X$ such that $y$ is a "yes" instance of $Y$ iff $f(y)$ is a "yes" instance of $X$.</p>
@@ -235,17 +235,17 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Worked Example 7.2.10 — Graph 3-Colouring is NP-Complete</div>
+                    <div class="math-box-label">Worked Example 7.2.10 - Graph 3-Colouring is NP-Complete</div>
                     <p><strong>Problem:</strong> given $G = (V,E)$, can each vertex be coloured with one of 3 colours so that adjacent vertices differ?</p>
                     <p><strong>Step 1 ($\in NP$):</strong> a colouring $c: V \to \{1,2,3\}$ is the certificate; checking $c(u) \ne c(v)$ for every edge $(u,v)$ takes $O(|E|)$ time.</p>
-                    <p><strong>Step 2 (reduction from 3-SAT):</strong> given a 3-SAT formula $\varphi$ with variables $x_1,\ldots,x_n$ and clauses $C_1,\ldots,C_m$, build $G$ as follows. Use 3 special "palette" vertices $T$ (true), $F$ (false), $B$ (base), forming a triangle (forcing them to receive 3 distinct colours, fixed as labels "true"/"false"/"base"). For each variable $x_i$, add vertices $x_i, \overline{x_i}$, each connected to $B$ and to each other — forcing $\{x_i, \overline{x_i}\}$ to take colours $\{T,F\}$ in some order, which encodes the truth assignment.</p>
+                    <p><strong>Step 2 (reduction from 3-SAT):</strong> given a 3-SAT formula $\varphi$ with variables $x_1,\ldots,x_n$ and clauses $C_1,\ldots,C_m$, build $G$ as follows. Use 3 special "palette" vertices $T$ (true), $F$ (false), $B$ (base), forming a triangle (forcing them to receive 3 distinct colours, fixed as labels "true"/"false"/"base"). For each variable $x_i$, add vertices $x_i, \overline{x_i}$, each connected to $B$ and to each other - forcing $\{x_i, \overline{x_i}\}$ to take colours $\{T,F\}$ in some order, which encodes the truth assignment.</p>
                     <p>For each clause $C_j = (\ell_a \lor \ell_b \lor \ell_c)$, add a small "OR gadget" of 5 auxiliary vertices connected to $B$, $T$, and the three literal vertices $\ell_a,\ell_b,\ell_c$, designed so that the gadget can be properly 3-coloured <em>iff</em> at least one of $\ell_a,\ell_b,\ell_c$ is coloured $T$ (i.e., at least one literal in $C_j$ is true).</p>
-                    <p class="mb-0"><strong>Step 3 (correctness):</strong> if $\varphi$ is satisfiable, colour $x_i$ by $T$ or $F$ according to the satisfying assignment (and $\overline{x_i}$ the opposite); each clause gadget can then be completed validly since some literal is true. Conversely, a proper 3-colouring of $G$ assigns each $x_i$ a colour in $\{T,F\}$ (forced by the $B$-triangle gadget), and the clause-gadget colourability constraint forces at least one literal per clause to be $T$ — giving a satisfying assignment. The graph has $O(n+m)$ vertices and edges, built in polynomial time. Hence 3-SAT $\le_p$ 3-Colouring, so 3-Colouring is NP-complete.</p>
+                    <p class="mb-0"><strong>Step 3 (correctness):</strong> if $\varphi$ is satisfiable, colour $x_i$ by $T$ or $F$ according to the satisfying assignment (and $\overline{x_i}$ the opposite); each clause gadget can then be completed validly since some literal is true. Conversely, a proper 3-colouring of $G$ assigns each $x_i$ a colour in $\{T,F\}$ (forced by the $B$-triangle gadget), and the clause-gadget colourability constraint forces at least one literal per clause to be $T$ - giving a satisfying assignment. The graph has $O(n+m)$ vertices and edges, built in polynomial time. Hence 3-SAT $\le_p$ 3-Colouring, so 3-Colouring is NP-complete.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Web of Reductions</div>
-                    <p class="mb-0">In practice one rarely reduces from SAT directly; instead one picks the "closest" known NP-complete problem to minimise the reduction's complexity. Common hub problems include 3-SAT, Vertex Cover/Independent Set/Clique, Hamiltonian Cycle/TSP, and 3-Colouring — together these cover most reductions encountered in scheduling, packing, partitioning, and graph-layout problems.</p>
+                    <div class="math-box-label">Remark - The Web of Reductions</div>
+                    <p class="mb-0">In practice one rarely reduces from SAT directly; instead one picks the "closest" known NP-complete problem to minimise the reduction's complexity. Common hub problems include 3-SAT, Vertex Cover/Independent Set/Clique, Hamiltonian Cycle/TSP, and 3-Colouring - together these cover most reductions encountered in scheduling, packing, partitioning, and graph-layout problems.</p>
                 </div>
 
                 <hr class="my-5">

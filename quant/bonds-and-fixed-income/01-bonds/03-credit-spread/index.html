@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -85,7 +85,7 @@
 
                 <h2 class="mt-5 mb-3">I-Spread (Interpolated Spread)</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — I-Spread</div>
+                    <div class="math-box-label">Definition - I-Spread</div>
                     <p>The I-spread is the difference between the bond's yield to maturity and the linearly interpolated swap rate (or government benchmark yield) at the same maturity:
                     $$s_I = y_{\text{bond}} - y_{\text{swap}}(T)$$
                     It is the simplest spread measure and widely quoted for investment grade corporates. Its limitation is that it uses a single benchmark rate and ignores the shape of the yield curve.</p>
@@ -95,14 +95,14 @@
                 <p>The Z-spread (zero-volatility spread) uses the full swap discount curve rather than a single benchmark rate, giving a more accurate measure of the credit premium.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Z-Spread</div>
+                    <div class="math-box-label">Definition - Z-Spread</div>
                     <p>The Z-spread $z$ is the constant spread added to each point of the risk-free discount curve such that the discounted cashflows equal the observed dirty price. Under continuous compounding:
                     $$P = \sum_{i=1}^{n} C_i\,e^{-(r(t_i)+z)\,t_i} + F\,e^{-(r(T)+z)\,T}$$
                     where $r(t)$ is the continuously compounded spot rate from the OIS/swap curve at time $t$. The Z-spread $z$ is found by numerical root-finding and is the standard credit spread measure for fixed-rate bonds.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Z-Spread vs I-Spread</div>
+                    <div class="math-box-label">Remark - Z-Spread vs I-Spread</div>
                     <p class="mb-0">The Z-spread properly accounts for the term structure of rates, making it more accurate than I-spread when the yield curve is steep. For bullet bonds with moderate maturities in a near-flat curve environment, the two are close. The Z-spread is always well-defined and preferred for risk-adjusted comparisons across maturities.</p>
                 </div>
 
@@ -110,7 +110,7 @@
                 <p>An asset swap packages a fixed-rate bond with an interest rate swap (IRS) that converts the fixed coupons into floating payments. The asset swap spread is the floating spread over benchmark that makes this package trade at par.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Asset Swap Spread</div>
+                    <div class="math-box-label">Definition - Asset Swap Spread</div>
                     <p>For a bond with dirty price $P_d$ and clean price $P_c$, the par asset swap spread $s_{\text{ASW}}$ satisfies:
                     $$(100 - P_d) + \text{PV(fixed bond cashflows discounted at swap curve)} = s_{\text{ASW}} \times \text{Annuity}$$
                     Approximately:
@@ -122,22 +122,22 @@
                 <p>For bonds with embedded options (callables, putables) or path-dependent cashflows (MBS prepayment), the Z-spread conflates credit risk with option value. The OAS strips out the embedded option.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Option-Adjusted Spread</div>
-                    <p>The OAS is the constant spread added to the short-rate model discount curve such that the model price — averaged over all simulated interest rate paths — equals the market price:
+                    <div class="math-box-label">Definition - Option-Adjusted Spread</div>
+                    <p>The OAS is the constant spread added to the short-rate model discount curve such that the model price - averaged over all simulated interest rate paths - equals the market price:
                     $$P = \mathbb{E}^Q\!\left[\sum_{i=1}^{n} C_i\,e^{-\int_0^{t_i}(r(s)+\text{OAS})\,ds} + F\,e^{-\int_0^T (r(s)+\text{OAS})\,ds}\right]$$
                     For a callable bond, OAS $<$ Z-spread because the embedded call option has positive value (benefits the issuer). For a putable bond, OAS $>$ Z-spread.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">CDS-Bond Basis</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — CDS-Bond Basis</div>
+                    <div class="math-box-label">Definition - CDS-Bond Basis</div>
                     <p>The CDS-bond basis is the difference between the CDS spread and the bond Z-spread (or ASW spread) for the same reference entity and tenor:
                     $$\text{Basis} = s_{\text{CDS}} - s_Z$$
                     In theory the basis should be zero by no-arbitrage. In practice it reflects: cheapest-to-deliver (CTD) optionality in CDS, repo specialness, funding and balance-sheet costs, liquidity differences between the bond and CDS markets, and counterparty risk. A persistently negative basis (bond spread $>$ CDS spread) typically indicates funding or supply-demand distortions.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Z-Spread Calculation</div>
+                    <div class="math-box-label">Example - Z-Spread Calculation</div>
                     <p>A 3-year semi-annual 5% corporate bond is priced at 98.50. The swap spot rates are: 0.5yr = 3.6%, 1yr = 3.8%, 1.5yr = 3.9%, 2yr = 4.0%, 2.5yr = 4.1%, 3yr = 4.2%.</p>
                     <p>The Z-spread $z$ solves:
                     $$98.50 = \sum_{i=1}^{6} \frac{2.5}{(1+(r(0.5i)+z)/2)^{i}} + \frac{100}{(1+(4.2\%+z)/2)^{6}}$$

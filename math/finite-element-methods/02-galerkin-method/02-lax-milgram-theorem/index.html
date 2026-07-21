@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -130,7 +130,7 @@
                 <h2 class="mt-4 mb-3">Assumptions</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Coercivity and Continuity</div>
+                    <div class="math-box-label">Definition - Coercivity and Continuity</div>
                     <p>Let $V$ be a real Hilbert space with norm $\|\cdot\|_V$ and inner product $(\cdot,\cdot)_V$. A bilinear form $a: V \times V \to \mathbb{R}$ is:</p>
                     <ul>
                         <li><strong>Continuous (bounded):</strong> there exists $M > 0$ such that $|a(u,v)| \leq M\|u\|_V \|v\|_V$ for all $u,v \in V$.</li>
@@ -142,7 +142,7 @@
                 <h2 class="mt-5 mb-3">The Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Lax-Milgram</div>
+                    <div class="math-box-label">Theorem - Lax-Milgram</div>
                     <p>Let $V$ be a real Hilbert space, $a: V \times V \to \mathbb{R}$ a continuous and coercive bilinear form with constants $M$ and $\alpha$, and $\ell \in V^*$ a bounded linear functional. Then there exists a unique $u \in V$ such that
                     $$a(u, v) = \ell(v) \quad \forall\, v \in V.$$
                     Moreover, the solution satisfies the stability estimate
@@ -154,7 +154,7 @@
                 <p>The proof proceeds in two steps: first reducing to a fixed-point problem via the Riesz representation theorem, then applying the Banach contraction mapping principle.</p>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Reduction to Fixed Point</div>
+                    <div class="math-box-label">Proposition - Reduction to Fixed Point</div>
                     <p>By the Riesz representation theorem, for each fixed $u \in V$ the map $v \mapsto a(u,v)$ defines an element $Au \in V^{**} \cong V$, and similarly $\ell$ corresponds to some $f \in V$ via $(f,v)_V = \ell(v)$. More precisely, define $A: V \to V$ by $(Au, v)_V = a(u, v)$ for all $v \in V$; this is well-defined by continuity. Then the variational problem becomes: find $u \in V$ such that $Au = f$ in $V$. One shows $A$ is bounded ($\|Au\|_V \leq M\|u\|_V$) and that the map
                     $$T_\rho u = u - \rho(Au - f)$$
                     is a contraction on $V$ for $\rho \in (0, 2\alpha/M^2)$:
@@ -165,7 +165,7 @@
                 <h2 class="mt-5 mb-3">Application: Poisson Equation on $H^1_0$</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Well-posedness of the Poisson Problem</div>
+                    <div class="math-box-label">Example - Well-posedness of the Poisson Problem</div>
                     <p>Let $\Omega \subset \mathbb{R}^d$ be a bounded Lipschitz domain, $V = H^1_0(\Omega)$, and $a(u,v) = \int_\Omega \nabla u \cdot \nabla v\,dx$. For $f \in L^2(\Omega)$, set $\ell(v) = \int_\Omega fv\,dx$.</p>
                     <ul>
                         <li><strong>Continuity:</strong> $|a(u,v)| \leq \|\nabla u\|_{L^2}\|\nabla v\|_{L^2} \leq \|u\|_{H^1}\|v\|_{H^1}$, so $M = 1$.</li>
@@ -178,7 +178,7 @@
                 <h2 class="mt-5 mb-3">Energy Minimisation Equivalence (Symmetric Case)</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Variational Principle</div>
+                    <div class="math-box-label">Theorem - Variational Principle</div>
                     <p class="mb-0">If additionally $a$ is <strong>symmetric</strong>, define the energy functional
                     $$J(v) = \frac{1}{2}a(v,v) - \ell(v).$$
                     Then the unique solution $u$ of the variational problem is also the unique minimiser of $J$ over $V$:
@@ -187,12 +187,12 @@
                 </div>
 
                 <div class="math-box corollary">
-                    <div class="math-box-label">Corollary — Well-posedness of the Discrete Problem</div>
+                    <div class="math-box-label">Corollary - Well-posedness of the Discrete Problem</div>
                     <p class="mb-0">Since $V_h \subset V$ is a finite-dimensional Hilbert space, and $a$ restricted to $V_h \times V_h$ is still continuous and coercive (with the same constants), the Lax-Milgram theorem applies to the Galerkin problem on $V_h$ without modification. This guarantees the stiffness matrix $K$ is invertible (indeed SPD when $a$ is symmetric).</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Non-symmetric Problems</div>
+                    <div class="math-box-label">Remark - Non-symmetric Problems</div>
                     <p class="mb-0">Lax-Milgram applies to non-symmetric $a$, e.g.\ advection-diffusion $a(u,v) = \int_\Omega (\nabla u \cdot \nabla v + \mathbf{b} \cdot \nabla u\, v)\,dx$ with $\mathbf{b}$ a velocity field. Coercivity still holds when diffusion dominates (or via a Gårding inequality), but the stiffness matrix is no longer symmetric. For convection-dominated problems, the standard Galerkin method may be unstable; stabilised methods (SUPG, DG) are then needed.</p>
                 </div>
 

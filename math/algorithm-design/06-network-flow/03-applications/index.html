@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -133,7 +133,7 @@
                 <h2 class="mt-4 mb-3">Bipartite Matching</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.3.1 — Bipartite Matching via Max-Flow</div>
+                    <div class="math-box-label">Theorem 6.3.1 - Bipartite Matching via Max-Flow</div>
                     <p>Given a bipartite graph $G=(A\cup B, E)$, construct a flow network: add source $s$ with edges $s\to a$ (capacity 1) for all $a\in A$; keep edges $a\to b$ (capacity 1) for $(a,b)\in E$; add sink $t$ with edges $b\to t$ (capacity 1) for all $b\in B$. The maximum integer flow equals the size of a maximum matching.</p>
                     <p class="mb-0"><strong>König's theorem:</strong> In a bipartite graph, the size of the maximum matching equals the size of the minimum vertex cover. This follows from max-flow min-cut applied to the above network.</p>
                 </div>
@@ -141,7 +141,7 @@
                 <h2 class="mt-5 mb-3">Disjoint Paths</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.3.2 — Edge-Disjoint and Vertex-Disjoint Paths</div>
+                    <div class="math-box-label">Definition 6.3.2 - Edge-Disjoint and Vertex-Disjoint Paths</div>
                     <p><strong>Edge-disjoint $s$-$t$ paths:</strong> Give each edge unit capacity. The maximum number of edge-disjoint $s$-$t$ paths equals the maximum $s$-$t$ flow (by integrality). By Menger's theorem: this equals the minimum number of edges whose removal disconnects $s$ from $t$.</p>
                     <p><strong>Vertex-disjoint $s$-$t$ paths:</strong> Split each vertex $v \ne s,t$ into $v^{\text{in}}$ and $v^{\text{out}}$ with edge $v^{\text{in}}\to v^{\text{out}}$ of capacity 1. Replace each edge $u\to v$ with $u^{\text{out}}\to v^{\text{in}}$ (capacity $\infty$ or 1 as needed). Maximum flow gives max vertex-disjoint paths.</p>
                 </div>
@@ -149,7 +149,7 @@
                 <h2 class="mt-5 mb-3">Project Selection</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 6.3.3 — Project Selection / Closure Problem</div>
+                    <div class="math-box-label">Example 6.3.3 - Project Selection / Closure Problem</div>
                     <p>Projects have revenues (positive) or costs (negative). A project may depend on other projects (must be selected together). Find the maximum-profit subset that respects dependencies.</p>
                     <p>Model: source $s$, sink $t$. For each project $p$ with revenue $r_p > 0$: edge $s\to p$ with capacity $r_p$. For each project $p$ with cost $c_p > 0$ (i.e., negative revenue): edge $p\to t$ with capacity $c_p$. For each dependency $(p,q)$: edge $p\to q$ with capacity $\infty$. Maximum profit $= \sum_{\text{positive}} r_p - \text{min-cut}$.</p>
                 </div>
@@ -157,7 +157,7 @@
                 <h2 class="mt-5 mb-3">Circulation with Lower Bounds</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.3.4 — Feasible Circulation</div>
+                    <div class="math-box-label">Definition 6.3.4 - Feasible Circulation</div>
                     <p>A <strong>circulation</strong> is a flow satisfying conservation at <em>every</em> vertex (including $s$ and $t$). With lower bounds $\ell(e) \le f(e) \le c(e)$: transform to a standard max-flow problem by shifting $f'(e) = f(e) - \ell(e)$, adjusting capacities and conservation deficits. A feasible circulation exists iff the max flow in the transformed network saturates all edges from the super-source.</p>
                     <p class="mb-0">Applications: scheduling with mandatory tasks, supply-demand networks, Eulerian extensions.</p>
                 </div>

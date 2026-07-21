@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -113,66 +113,66 @@
             <article>
                 <h1 class="text-accent mb-4">Chapter 7: Axiomatic Set Theory (ZFC)</h1>
 
-                <p>The Zermelo-Fraenkel axioms with the Axiom of Choice — ZFC — form the standard foundation for modern mathematics. They were developed to avoid the paradoxes of naive set theory while preserving all the mathematics one actually uses. Every standard mathematical object (number systems, functions, topological spaces, groups) can be constructed as a set within ZFC.</p>
+                <p>The Zermelo-Fraenkel axioms with the Axiom of Choice - ZFC - form the standard foundation for modern mathematics. They were developed to avoid the paradoxes of naive set theory while preserving all the mathematics one actually uses. Every standard mathematical object (number systems, functions, topological spaces, groups) can be constructed as a set within ZFC.</p>
 
                 <h2 class="mt-5 mb-3">The Ten Axioms of ZFC</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Axiom 1 — Extensionality</div>
+                    <div class="math-box-label">Axiom 1 - Extensionality</div>
                     <p class="mb-0">Two sets are equal iff they have the same elements:
                     $$\forall x\, \forall y\, [\forall z\, (z \in x \leftrightarrow z \in y) \Rightarrow x = y].$$</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Axiom 2 — Empty Set</div>
+                    <div class="math-box-label">Axiom 2 - Empty Set</div>
                     <p class="mb-0">There exists a set with no elements:
                     $$\exists x\, \forall y\, (y \notin x).$$
                     By extensionality this set is unique; it is $\emptyset$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Axiom 3 — Pairing</div>
+                    <div class="math-box-label">Axiom 3 - Pairing</div>
                     <p class="mb-0">For any two sets $x, y$, there exists the set $\{x, y\}$:
                     $$\forall x\, \forall y\, \exists z\, \forall w\, (w \in z \leftrightarrow w = x \vee w = y).$$</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Axiom 4 — Union</div>
+                    <div class="math-box-label">Axiom 4 - Union</div>
                     <p class="mb-0">For any set $\mathcal{F}$, there exists the set $\bigcup \mathcal{F}$ of all elements of elements of $\mathcal{F}$:
                     $$\forall \mathcal{F}\, \exists A\, \forall x\, (x \in A \leftrightarrow \exists B\, (B \in \mathcal{F} \wedge x \in B)).$$</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Axiom 5 — Power Set</div>
+                    <div class="math-box-label">Axiom 5 - Power Set</div>
                     <p class="mb-0">For any set $x$, there exists $\mathcal{P}(x)$, the set of all subsets of $x$:
                     $$\forall x\, \exists y\, \forall z\, (z \in y \leftrightarrow z \subseteq x).$$</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Axiom 6 — Infinity</div>
-                    <p class="mb-0">There exists an infinite set — specifically, a set containing $\emptyset$ and closed under the successor operation $x \mapsto x \cup \{x\}$:
+                    <div class="math-box-label">Axiom 6 - Infinity</div>
+                    <p class="mb-0">There exists an infinite set - specifically, a set containing $\emptyset$ and closed under the successor operation $x \mapsto x \cup \{x\}$:
                     $$\exists I\, (\emptyset \in I \wedge \forall x\, (x \in I \Rightarrow x \cup \{x\} \in I)).$$</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Axiom Schema 7 — Separation (Aussonderung)</div>
+                    <div class="math-box-label">Axiom Schema 7 - Separation (Aussonderung)</div>
                     <p class="mb-0">For any set $A$ and formula $\phi(x)$, there exists $\{x \in A : \phi(x)\}$. (A schema: one axiom for each formula $\phi$.) This replaces unrestricted comprehension and resolves Russell's paradox.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Axiom Schema 8 — Replacement</div>
+                    <div class="math-box-label">Axiom Schema 8 - Replacement</div>
                     <p class="mb-0">If $F(x,y)$ is a functional formula (for each $x$ there is at most one $y$ with $F(x,y)$), then for any set $A$, $\{y : \exists x \in A,\, F(x,y)\}$ is a set. This allows defining sets by applying class functions to existing sets.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Axiom 9 — Foundation (Regularity)</div>
+                    <div class="math-box-label">Axiom 9 - Foundation (Regularity)</div>
                     <p class="mb-0">Every nonempty set has an $\in$-minimal element:
                     $$\forall x\, (x \neq \emptyset \Rightarrow \exists y\, (y \in x \wedge y \cap x = \emptyset)).$$
                     This rules out sets like $x = \{x\}$ (a set containing itself) and guarantees the cumulative hierarchy $V = \bigcup_\alpha V_\alpha$ covers all sets.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Axiom 10 — Choice</div>
+                    <div class="math-box-label">Axiom 10 - Choice</div>
                     <p class="mb-0">For any family $\mathcal{F}$ of nonempty sets, there is a choice function $f$ with $f(A) \in A$ for all $A \in \mathcal{F}$. (See Chapter 6 for detailed discussion.)</p>
                 </div>
 
@@ -180,14 +180,14 @@
 
                 <div class="math-box remark">
                     <div class="math-box-label">How ZFC Avoids Russell's Paradox</div>
-                    <p>Russell's set $R = \{x : x \notin x\}$ cannot be formed in ZFC because there is no universal set from which to apply Separation. Applying Separation to any set $A$, we can form $R_A = \{x \in A : x \notin x\}$. The argument then shows $R_A \notin A$, which is perfectly consistent — $R_A$ is a legitimate set, just not a member of $A$.</p>
+                    <p>Russell's set $R = \{x : x \notin x\}$ cannot be formed in ZFC because there is no universal set from which to apply Separation. Applying Separation to any set $A$, we can form $R_A = \{x \in A : x \notin x\}$. The argument then shows $R_A \notin A$, which is perfectly consistent - $R_A$ is a legitimate set, just not a member of $A$.</p>
                     <p class="mb-0">The absence of a "set of all sets" in ZFC (shown by Separation + Cantor's paradox) is not a bug but a feature.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Von Neumann Universe</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Theorem 7.1 — Cumulative Hierarchy</div>
+                    <div class="math-box-label">Theorem 7.1 - Cumulative Hierarchy</div>
                     <p>The von Neumann universe $V = \bigcup_{\alpha \in \mathrm{Ord}} V_\alpha$ (where $V_0 = \emptyset$, $V_{\alpha+1} = \mathcal{P}(V_\alpha)$, $V_\lambda = \bigcup_{\beta<\lambda} V_\beta$) satisfies ZFC and contains every set. The Axiom of Foundation is equivalent to "$V$ is all there is."</p>
                     <p class="mb-0">$V_\omega$ contains all hereditarily finite sets, which already forms a model of ZFC minus Infinity. $V_{\omega+\omega}$ is a model of ZFC (assuming large cardinals exist).</p>
                 </div>

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,10 +81,10 @@
             <article>
                 <h1 class="text-accent mb-4">1.2 FX Swaps</h1>
 
-                <p>An FX swap is the simplest and, by traded notional, the largest instrument in the foreign exchange market — larger than spot itself. Despite the name, it has nothing to do with interest rate swaps in the conventional sense: an FX swap is a single package consisting of a spot transaction and an offsetting forward transaction in the opposite direction, between the same two counterparties, for the same pair of currencies.</p>
+                <p>An FX swap is the simplest and, by traded notional, the largest instrument in the foreign exchange market - larger than spot itself. Despite the name, it has nothing to do with interest rate swaps in the conventional sense: an FX swap is a single package consisting of a spot transaction and an offsetting forward transaction in the opposite direction, between the same two counterparties, for the same pair of currencies.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — FX Swap</div>
+                    <div class="math-box-label">Definition - FX Swap</div>
                     <p class="mb-0">An FX swap (or "FX swap contract") is the simultaneous purchase and sale of an amount of one currency for another, with one leg settling on a near date and the other on a far date. Conventionally:</p>
                     <ul class="mb-0 mt-2">
                         <li>The <em>near leg</em> is typically a spot transaction (T+2), though it can itself be a forward.</li>
@@ -95,20 +95,20 @@
                 <p>Economically, an FX swap is a form of collateralised borrowing and lending: one party effectively borrows one currency and lends the other for the period between the near and far dates, with the exchange rates on the two legs encoding the interest rate differential between the currencies.</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — A EUR/USD Swap</div>
+                    <div class="math-box-label">Example - A EUR/USD Swap</div>
                     <p>A bank needs USD funding for one month but holds EUR. It enters an FX swap with a counterparty:</p>
                     <ul class="mb-0">
                         <li><strong>Near leg (spot, T+2):</strong> the bank sells €100,000,000 and receives $108,500,000 at $S = 1.0850$.</li>
                         <li><strong>Far leg (1-month forward):</strong> the bank buys back €100,000,000 and pays $108,520,000 at $F = 1.0852$, reversing the initial exchange.</li>
                     </ul>
-                    <p class="mt-2 mb-0">The bank has effectively borrowed USD and lent EUR for one month. The 20-pip difference between $F$ and $S$ — the <em>swap points</em> — reflects the USD-EUR interest rate differential over that month.</p>
+                    <p class="mt-2 mb-0">The bank has effectively borrowed USD and lent EUR for one month. The 20-pip difference between $F$ and $S$ - the <em>swap points</em> - reflects the USD-EUR interest rate differential over that month.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Uses of FX Swaps</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why FX Swaps Matter</div>
-                    <p><strong>Funding and liquidity management:</strong> banks raise short-term funding in a currency they are short of by swapping out a currency they hold in surplus, without taking on outright FX risk — the spot exposure on the near leg is exactly offset by the far leg.</p>
+                    <div class="math-box-label">Remark - Why FX Swaps Matter</div>
+                    <p><strong>Funding and liquidity management:</strong> banks raise short-term funding in a currency they are short of by swapping out a currency they hold in surplus, without taking on outright FX risk - the spot exposure on the near leg is exactly offset by the far leg.</p>
                     <p><strong>Rolling hedges:</strong> a corporate or asset manager with an existing forward hedge that is approaching maturity, but whose underlying exposure has not yet materialised, can use an FX swap to "roll" the hedge forward to a new date without altering the net FX exposure.</p>
                     <p><strong>Covering settlement mismatches:</strong> if a firm's currency receipts and payments do not line up on the same value date, FX swaps bridge the gap cheaply.</p>
                     <p class="mb-0"><strong>Central bank and money market operations:</strong> central banks use FX swap lines with each other to provide foreign currency liquidity (most visibly the Federal Reserve's USD swap lines with other major central banks during periods of dollar funding stress, such as 2008 and March 2020).</p>
@@ -116,29 +116,29 @@
 
                 <h2 class="mt-5 mb-3">Swap Points and Pricing</h2>
 
-                <p>The far-leg rate of an FX swap is simply the outright forward rate for the far date, and the near-leg rate is simply the spot rate (or the forward rate for the near date, if the near leg is itself forward-starting). The difference between the two — the swap points — is therefore governed by the same covered interest rate parity relationship that prices outright forwards.</p>
+                <p>The far-leg rate of an FX swap is simply the outright forward rate for the far date, and the near-leg rate is simply the spot rate (or the forward rate for the near date, if the near leg is itself forward-starting). The difference between the two - the swap points - is therefore governed by the same covered interest rate parity relationship that prices outright forwards.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Swap Points from CIP</div>
+                    <div class="math-box-label">Theorem - Swap Points from CIP</div>
                     <p>Let $S$ be the spot rate and $F(T)$ the forward rate for tenor $T$, with domestic and foreign interest rates $r_d$ and $r_f$. Under covered interest rate parity,</p>
                     <p>$$F(T) = S\,e^{(r_d-r_f)T}$$</p>
                     <p class="mb-0">The swap points are $\text{Points}(T) = F(T) - S = S\left(e^{(r_d-r_f)T} - 1\right)$. When $r_d > r_f$, points are positive (the forward currency trades at a premium to spot in price-currency terms); when $r_d < r_f$, points are negative (a discount).</p>
                 </div>
 
-                <p>In practice, swap points are quoted directly by the market — often to a finer precision than spot itself — and it is the points, not the outright forward rate, that trade. A trader executing an FX swap agrees on the near-date rate (often simply the prevailing spot) and the swap points; the far-date rate is then $S + \text{Points}(T)$ (with appropriate sign conventions and scaling for the pip size of the currency pair).</p>
+                <p>In practice, swap points are quoted directly by the market - often to a finer precision than spot itself - and it is the points, not the outright forward rate, that trade. A trader executing an FX swap agrees on the near-date rate (often simply the prevailing spot) and the swap points; the far-date rate is then $S + \text{Points}(T)$ (with appropriate sign conventions and scaling for the pip size of the currency pair).</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Quoting Convention</div>
+                    <div class="math-box-label">Example - Quoting Convention</div>
                     <p class="mb-0">EUR/USD spot is 1.08500/1.08510. The 3-month swap points are quoted as 45.2/46.8 (in points, i.e. ten-thousandths). A market maker buying and selling the swap (buy EUR near, sell EUR far, or vice versa) will apply these points to whatever near-date rate is agreed, giving a far-date rate of approximately $1.08500 + 0.00452 = 1.08952$ on one side.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">FX Swaps vs. Cross-Currency Basis Swaps</h2>
 
-                <p>FX swaps are short-dated instruments — typically overnight to one year — with a single exchange of principal at the near date and a single re-exchange at the far date, and no interim cash flows. For longer tenors, this structure becomes impractical: locking in a single forward rate years into the future based purely on the interest rate differential ignores the fact that floating interest rates will reset many times over the life of the trade, and concentrates enormous notional risk into a single exchange date.</p>
+                <p>FX swaps are short-dated instruments - typically overnight to one year - with a single exchange of principal at the near date and a single re-exchange at the far date, and no interim cash flows. For longer tenors, this structure becomes impractical: locking in a single forward rate years into the future based purely on the interest rate differential ignores the fact that floating interest rates will reset many times over the life of the trade, and concentrates enormous notional risk into a single exchange date.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Looking Ahead</div>
-                    <p class="mb-0">The cross-currency basis swap extends the FX swap concept to longer maturities by replacing the single forward re-exchange with a series of periodic floating-rate interest payments in each currency (plus an exchange of notional at inception and maturity). In a world where covered interest rate parity held exactly, a cross-currency basis swap could be priced with a basis spread of zero. In practice, a persistent non-zero basis — the <em>cross-currency basis</em> — has existed since the 2008 financial crisis, reflecting funding constraints and the cost of balance sheet for banks providing cross-currency liquidity. This is the subject of the next section.</p>
+                    <div class="math-box-label">Remark - Looking Ahead</div>
+                    <p class="mb-0">The cross-currency basis swap extends the FX swap concept to longer maturities by replacing the single forward re-exchange with a series of periodic floating-rate interest payments in each currency (plus an exchange of notional at inception and maturity). In a world where covered interest rate parity held exactly, a cross-currency basis swap could be priced with a basis spread of zero. In practice, a persistent non-zero basis - the <em>cross-currency basis</em> - has existed since the 2008 financial crisis, reflecting funding constraints and the cost of balance sheet for banks providing cross-currency liquidity. This is the subject of the next section.</p>
                 </div>
 
                 <hr class="my-5">

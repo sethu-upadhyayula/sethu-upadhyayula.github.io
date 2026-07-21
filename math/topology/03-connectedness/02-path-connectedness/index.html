@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,19 +132,19 @@
                 <p>Path connectedness is a stronger, more geometric notion of connectedness: a space is path-connected if any two points can be joined by a continuous curve.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Path</div>
+                    <div class="math-box-label">Definition - Path</div>
                     <p>A <strong>path</strong> in $X$ from $x$ to $y$ is a continuous map $\gamma: [0,1] \to X$ with $\gamma(0) = x$ and $\gamma(1) = y$.</p>
                     <p class="mb-0">$X$ is <strong>path-connected</strong> if for every $x, y \in X$ there exists a path from $x$ to $y$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Path-Connected Implies Connected</div>
+                    <div class="math-box-label">Theorem - Path-Connected Implies Connected</div>
                     <p><em>Proof.</em> Suppose $X$ is path-connected. If $X = U \cup V$ is a separation, pick $x \in U$ and $y \in V$. Let $\gamma: [0,1] \to X$ be a path from $x$ to $y$. Then $[0,1] = \gamma^{-1}(U) \cup \gamma^{-1}(V)$ is a separation of the connected space $[0,1]$, a contradiction. $\square$</p>
                     <p class="mb-0">The converse is false: a connected space need not be path-connected.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Topologist's Sine Curve</div>
+                    <div class="math-box-label">Example - Topologist's Sine Curve</div>
                     <p>The <strong>topologist's sine curve</strong> is the subspace of $\mathbb{R}^2$:
                     $$S = \overline{\left\{\left(x, \sin\frac{1}{x}\right) : x > 0\right\}} = \left\{\left(x, \sin\frac{1}{x}\right) : x > 0\right\} \cup (\{0\} \times [-1,1]).$$
                     $S$ is connected (the closure of a connected set is connected). However, $S$ is <em>not</em> path-connected: any path $\gamma: [0,1] \to S$ ending at a point $(0, y_0)$ on the vertical segment must oscillate infinitely often in finite time near $t=0$, contradicting uniform continuity of $\gamma$ on $[0,1]$. Specifically, the $x$-coordinate $\gamma_1(t) \to 0$ forces the path to traverse arbitrarily many oscillations of $\sin(1/x)$, which is impossible for a continuous map.</p>
@@ -154,14 +154,14 @@
                 <h2 class="mt-5 mb-3">Path Components</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Path Component</div>
+                    <div class="math-box-label">Definition - Path Component</div>
                     <p class="mb-0">The <strong>path component</strong> of a point $x \in X$ is the set of all $y \in X$ for which there exists a path from $x$ to $y$. Path components partition $X$ into disjoint classes (since path-connectedness is an equivalence relation: reflexive via constant paths, symmetric via reversed paths $\bar{\gamma}(t) = \gamma(1-t)$, and transitive via concatenation).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">$\mathbb{R}^n \setminus \{0\}$</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Path-Connectedness of $\mathbb{R}^n \setminus \{0\}$</div>
+                    <div class="math-box-label">Proposition - Path-Connectedness of $\mathbb{R}^n \setminus \{0\}$</div>
                     <p><strong>For $n \geq 2$:</strong> $\mathbb{R}^n \setminus \{0\}$ is path-connected. Given $x, y \in \mathbb{R}^n \setminus \{0\}$, if the straight-line segment $[x,y]$ does not pass through $0$, use it directly. Otherwise, choose an intermediate point $z \notin \{0\}$ not collinear with $x, y, 0$ (possible since $n \geq 2$), and concatenate the segments $[x,z]$ and $[z,y]$.</p>
                     <p class="mb-0"><strong>For $n = 1$:</strong> $\mathbb{R} \setminus \{0\} = (-\infty, 0) \cup (0, \infty)$ is <em>not</em> path-connected (it is disconnected); its two path components are $(-\infty, 0)$ and $(0, \infty)$.</p>
                 </div>

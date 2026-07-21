@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -134,7 +134,7 @@
                 <h2 class="mt-5 mb-3">Statement</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.1 — Fubini's Theorem</div>
+                    <div class="math-box-label">Theorem 6.2.1 - Fubini's Theorem</div>
                     <p>Let $(X, \mathcal{A}, \mu)$ and $(Y, \mathcal{B}, \nu)$ be $\sigma$-finite measure spaces. Suppose $f \in L^1(X \times Y, \mu \otimes \nu)$, i.e., $\int_{X\times Y} |f| \, d(\mu\otimes\nu) < \infty$. Then:</p>
                     <ol>
                         <li>For $\mu$-a.e. $x \in X$: the function $y \mapsto f(x,y)$ is $\nu$-integrable.</li>
@@ -154,21 +154,21 @@
                 <h2 class="mt-5 mb-3">Examples</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 6.2.2 — Computing a Double Integral</div>
+                    <div class="math-box-label">Example 6.2.2 - Computing a Double Integral</div>
                     <p>Compute $\iint_{[0,1]^2} x e^{xy} \, dx\,dy$. By Fubini (the integrand is continuous and bounded on $[0,1]^2$, hence in $L^1$):
                     $$\int_0^1 \left(\int_0^1 x e^{xy} \, dx\right) dy.$$
                     For fixed $y > 0$, integrate by parts: $\int_0^1 x e^{xy}\,dx = \left[\frac{xe^{xy}}{y}\right]_0^1 - \int_0^1 \frac{e^{xy}}{y}\,dx = \frac{e^y}{y} - \frac{e^y - 1}{y^2}$. Integrating over $y$ gives the result. Alternatively, integrate $dy$ first: $\int_0^1 xe^{xy}\,dy = [e^{xy}]_0^1 = e^x - 1$, then $\int_0^1(e^x - 1)\,dx = e - 2$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 6.2.3 — Failure Without Integrability</div>
+                    <div class="math-box-label">Example 6.2.3 - Failure Without Integrability</div>
                     <p>Let $f(x,y) = \frac{x^2 - y^2}{(x^2+y^2)^2}$ on $[0,1]^2$. Then:
                     $$\int_0^1\!\!\int_0^1 f\,dx\,dy = \frac{\pi}{4} \neq -\frac{\pi}{4} = \int_0^1\!\!\int_0^1 f\,dy\,dx.$$
                     Fubini fails because $\int |f|\,d(\lambda\otimes\lambda) = +\infty$: $f$ is not in $L^1([0,1]^2)$. This example underscores that Fubini requires integrability of $|f|$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 6.2.4 — Practical Workflow</div>
+                    <div class="math-box-label">Remark 6.2.4 - Practical Workflow</div>
                     <p class="mb-0">In practice: to apply Fubini to a signed or complex function $f$, first use Tonelli's theorem (Section 6.3) on $|f|$ to check that $\iint |f|\,d(\mu\otimes\nu) < \infty$. If so, $f \in L^1$ and Fubini applies.</p>
                 </div>
 

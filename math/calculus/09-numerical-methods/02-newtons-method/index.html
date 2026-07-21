@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -66,19 +66,19 @@
             <article>
                 <h1 class="text-accent mb-4">9.2 Newton's Method</h1>
 
-                <p>Newton's method (also called the Newton-Raphson method) is the most widely used algorithm for finding roots of a differentiable function $f$. It exploits local linearisation — at each step it finds where the tangent line crosses the $x$-axis and uses that crossing as the next iterate.</p>
+                <p>Newton's method (also called the Newton-Raphson method) is the most widely used algorithm for finding roots of a differentiable function $f$. It exploits local linearisation - at each step it finds where the tangent line crosses the $x$-axis and uses that crossing as the next iterate.</p>
 
                 <h2 class="mt-4 mb-3">Geometric Derivation</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Newton's Method</div>
+                    <div class="math-box-label">Definition - Newton's Method</div>
                     <p>To find a root of $f(x) = 0$, start with an initial guess $x_0$ and iterate:
                     $$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}, \quad n = 0, 1, 2, \ldots$$
                     This requires $f'(x_n) \ne 0$ at each step.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Derivation — Tangent Line Intersection</div>
+                    <div class="math-box-label">Derivation - Tangent Line Intersection</div>
                     <p>The tangent to the graph of $f$ at the point $(x_n, f(x_n))$ has equation:
                     $$y = f(x_n) + f'(x_n)(x - x_n).$$
                     Setting $y = 0$ and solving for $x$:
@@ -90,7 +90,7 @@
                 <h2 class="mt-5 mb-3">Quadratic Convergence</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Quadratic Convergence of Newton's Method</div>
+                    <div class="math-box-label">Theorem - Quadratic Convergence of Newton's Method</div>
                     <p>Suppose $f$ has a simple root $x^*$ (i.e., $f(x^*) = 0$ and $f'(x^*) \ne 0$), and $f''$ is continuous near $x^*$. Let $e_n = x_n - x^*$ be the error at step $n$. Then for $x_0$ sufficiently close to $x^*$:</p>
                     <ol>
                         <li>Newton's method converges: $x_n \to x^*$.</li>
@@ -115,7 +115,7 @@
                 <h2 class="mt-5 mb-3">Example 1: Computing $\sqrt{2}$</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — $f(x) = x^2 - 2$</div>
+                    <div class="math-box-label">Example - $f(x) = x^2 - 2$</div>
                     <p>We seek $\sqrt{2}$, a root of $f(x) = x^2 - 2$. Then $f'(x) = 2x$, and the Newton iteration is:
                     $$x_{n+1} = x_n - \frac{x_n^2 - 2}{2x_n} = \frac{x_n^2 + 2}{2x_n} = \frac{1}{2}\!\left(x_n + \frac{2}{x_n}\right).$$
                     This is the classical Babylonian method for computing square roots. Starting from $x_0 = 1$:</p>
@@ -131,7 +131,7 @@
                 <h2 class="mt-5 mb-3">Example 2: Computing $\sqrt[3]{2}$</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — $f(x) = x^3 - 2$</div>
+                    <div class="math-box-label">Example - $f(x) = x^3 - 2$</div>
                     <p>We seek $\sqrt[3]{2}$, a root of $f(x) = x^3 - 2$. Then $f'(x) = 3x^2$, giving:
                     $$x_{n+1} = x_n - \frac{x_n^3 - 2}{3x_n^2} = \frac{2x_n^3 + 2}{3x_n^2} = \frac{2}{3}x_n + \frac{2}{3x_n^2}.$$
                     Starting from $x_0 = 1$:</p>
@@ -145,8 +145,8 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Newton as Fixed Point Iteration</div>
-                    <p class="mb-0">Setting $g(x) = x - f(x)/f'(x)$, we see $g'(x) = f(x)f''(x)/[f'(x)]^2$. At a simple root $x^*$, $g'(x^*) = 0$. This means Newton's method is a fixed point iteration with contraction constant approaching $0$ near the root — explaining why convergence is quadratic rather than merely linear.</p>
+                    <div class="math-box-label">Remark - Newton as Fixed Point Iteration</div>
+                    <p class="mb-0">Setting $g(x) = x - f(x)/f'(x)$, we see $g'(x) = f(x)f''(x)/[f'(x)]^2$. At a simple root $x^*$, $g'(x^*) = 0$. This means Newton's method is a fixed point iteration with contraction constant approaching $0$ near the root - explaining why convergence is quadratic rather than merely linear.</p>
                 </div>
 
                 <hr class="my-5">

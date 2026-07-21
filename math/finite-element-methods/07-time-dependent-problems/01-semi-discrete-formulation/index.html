@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -130,7 +130,7 @@
                 <h2 class="mt-4 mb-3">The Heat Equation</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Model Problem — Heat Equation</div>
+                    <div class="math-box-label">Model Problem - Heat Equation</div>
                     <p>Find $u: \Omega \times (0,T] \to \mathbb{R}$ satisfying
                     $$\frac{\partial u}{\partial t} - \Delta u = f(x,t) \quad \text{in } \Omega \times (0,T],$$
                     $$u = 0 \quad \text{on } \partial\Omega \times (0,T], \qquad u(\cdot,0) = u_0 \quad \text{in } \Omega.$$
@@ -161,16 +161,16 @@
                 <h2 class="mt-5 mb-3">Lumped Mass Matrix</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Lumped Mass Matrix</div>
+                    <div class="math-box-label">Definition - Lumped Mass Matrix</div>
                     <p class="mb-0">The <strong>lumped mass matrix</strong> $M_L$ is the diagonal matrix obtained by replacing each row of $M$ by a single diagonal entry equal to the row sum:
                     $$(M_L)_{ii} = \sum_j M_{ij} = \int_\Omega \varphi_i\,dx.$$
-                    Since $\sum_j \varphi_j = 1$ on the mesh, this gives $(M_L)_{ii} = \int_\Omega \varphi_i \cdot 1\,dx$. The advantage of $M_L$ is that it is trivially invertible ($M_L^{-1}$ is just a scaling), making explicit time-stepping schemes cheap — no linear system needs to be solved at each time step.</p>
+                    Since $\sum_j \varphi_j = 1$ on the mesh, this gives $(M_L)_{ii} = \int_\Omega \varphi_i \cdot 1\,dx$. The advantage of $M_L$ is that it is trivially invertible ($M_L^{-1}$ is just a scaling), making explicit time-stepping schemes cheap - no linear system needs to be solved at each time step.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Semi-Discrete Error Estimate</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Semi-Discrete Error Estimate</div>
+                    <div class="math-box-label">Theorem - Semi-Discrete Error Estimate</div>
                     <p class="mb-0">Let $u$ be the exact solution of the heat equation and $u_h(t)$ the semi-discrete Galerkin solution with $P_1$ elements. Assume $u \in L^2(0,T; H^2(\Omega))$ and $u_0 \in H^2(\Omega)$. Then
                     $$\|u(\cdot,t) - u_h(\cdot,t)\|_{L^2(\Omega)} \leq C h^2 \bigl(\|u_0\|_{H^2(\Omega)} + \|u\|_{L^2(0,t; H^2(\Omega))}\bigr).$$
                     The spatial convergence rate is the same $O(h^2)$ as for the stationary problem, valid uniformly in $t \in [0,T]$. For $P_k$ elements, the rate improves to $O(h^{k+1})$ in $L^2$ under sufficient regularity.</p>
@@ -179,7 +179,7 @@
                 <h2 class="mt-5 mb-3">Parabolic Regularity</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Parabolic Smoothing</div>
+                    <div class="math-box-label">Remark - Parabolic Smoothing</div>
                     <p class="mb-0">A remarkable property of parabolic equations is instantaneous regularisation: even if the initial data $u_0 \in L^2(\Omega)$ (not in $H^2$), the solution $u(\cdot,t) \in H^2(\Omega)$ for any $t > 0$, with the bound $\|u(t)\|_{H^2} \leq C t^{-1}\|u_0\|_{L^2}$ (parabolic regularity). This means initial singularities are smoothed out and the FEM error estimate remains valid for $t > 0$, though the constant may blow up as $t \to 0^+$.</p>
                 </div>
 

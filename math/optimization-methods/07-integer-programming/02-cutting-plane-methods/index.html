@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,7 +132,7 @@
                 <h2 class="mt-4 mb-3">Valid Inequalities</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.1 — Valid Inequality</div>
+                    <div class="math-box-label">Definition 7.2.1 - Valid Inequality</div>
                     <p>An inequality $\pi^\top x \le \pi_0$ is <strong>valid</strong> for the IP if it is satisfied by all integer feasible solutions $x \in \{x : Ax \le b,\, x \ge 0,\, x_j \in \mathbb{Z}\;\forall j \in \mathcal{I}\}$.</p>
                     <p class="mb-0">A valid inequality is a <strong>cut</strong> (or <strong>cutting plane</strong>) if the current LP optimal solution $x^*_{\mathrm{LP}}$ violates it: $\pi^\top x^*_{\mathrm{LP}} > \pi_0$. Adding the cut to the LP eliminates $x^*_{\mathrm{LP}}$ and forces a new (tighter) LP optimal. The goal is to approximate the <strong>integer hull</strong> $\mathrm{conv}(\{x \in \mathcal{F}_{\mathrm{IP}}\})$.</p>
                 </div>
@@ -140,7 +140,7 @@
                 <h2 class="mt-5 mb-3">Gomory Cuts</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.2 — Gomory Fractional Cut</div>
+                    <div class="math-box-label">Theorem 7.2.2 - Gomory Fractional Cut</div>
                     <p>Let $x^*$ be the LP optimal BFS with basis $B$. Consider a basic variable $x_i = (A_B^{-1}b)_i = \bar{b}_i \notin \mathbb{Z}$. The $i$-th row of the optimal tableau is:
                     $$x_i + \sum_{j \in N} \bar{a}_{ij} x_j = \bar{b}_i.$$
                     Write $\bar{b}_i = \lfloor\bar{b}_i\rfloor + f_i$ and $\bar{a}_{ij} = \lfloor\bar{a}_{ij}\rfloor + f_{ij}$ with fractional parts $f_i, f_{ij} \in [0,1)$. The <strong>Gomory cut</strong> is:
@@ -152,14 +152,14 @@
                 <h2 class="mt-5 mb-3">Lift-and-Project and Cover Inequalities</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.3 — Cover Inequalities</div>
+                    <div class="math-box-label">Definition 7.2.3 - Cover Inequalities</div>
                     <p>For a 0-1 knapsack constraint $\sum_{j=1}^n a_j x_j \le b$ with $x_j \in \{0,1\}$, a set $C \subseteq \{1,\ldots,n\}$ is a <strong>cover</strong> if $\sum_{j \in C} a_j > b$ (the items in $C$ cannot all fit). The <strong>cover inequality</strong> is:
                     $$\sum_{j \in C} x_j \le |C| - 1.$$</p>
                     <p class="mb-0">Cover inequalities are valid (at most $|C|-1$ items from $C$ can be selected) and often provide strong cuts for binary programmes. <strong>Lifted covers</strong> extend them to include variables not in $C$, yielding facet-defining inequalities.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.4 — Lift-and-Project</div>
+                    <div class="math-box-label">Definition 7.2.4 - Lift-and-Project</div>
                     <p>The <strong>lift-and-project</strong> procedure (Balas, Ceria, Cornuéjols) generates cuts for binary variables by working in a higher-dimensional space. For a variable $x_j \in \{0,1\}$, multiply constraints by $x_j$ and $(1-x_j)$, forming the lifted set. Projecting back to the original space yields a cut that can be stronger than Gomory cuts.</p>
                     <p class="mb-0">Lift-and-project is equivalent to rank-1 Chvátal-Gomory cuts and provides a systematic way to generate the convex hull of mixed-integer feasible solutions for structured problems.</p>
                 </div>
@@ -167,15 +167,15 @@
                 <h2 class="mt-5 mb-3">Branch-and-Cut</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.5 — Branch-and-Cut</div>
+                    <div class="math-box-label">Definition 7.2.5 - Branch-and-Cut</div>
                     <p><strong>Branch-and-cut</strong> combines branch-and-bound (Section 7.1) with cutting planes: at each B&amp;B node, after solving the LP relaxation, attempt to add cuts before branching. If violated cuts are found, add them and re-solve the LP (tightening the bound without branching). Branch only when no more useful cuts can be found at a node.</p>
                     <p class="mb-0">The MIP solving pipeline in modern solvers (CPLEX, Gurobi, HiGHS) typically proceeds: presolve (remove redundancies, fix variables), add cuts at the root node (clique, cover, Gomory, MIR cuts), then branch-and-cut with heuristics for primal feasible solutions. This pipeline can solve MIPs with millions of variables.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Mixed-Integer Rounding (MIR) Cuts</div>
+                    <div class="math-box-label">Remark - Mixed-Integer Rounding (MIR) Cuts</div>
                     <p>Mixed-integer rounding (MIR) cuts generalise Gomory cuts to mixed-integer problems. For a constraint $\sum_j a_j x_j \le b$ with some integer and some continuous variables, the MIR cut is derived by rounding down coefficients and applying a similar fractional analysis.</p>
-                    <p class="mb-0">MIR cuts, together with clique cuts (from the conflict graph of binary variables) and flow cover cuts (from network structure), are the most important classes in practice. The separation problem — finding the most violated cut of a given class — is itself an optimisation problem that must be solved efficiently within the B&amp;C framework.</p>
+                    <p class="mb-0">MIR cuts, together with clique cuts (from the conflict graph of binary variables) and flow cover cuts (from network structure), are the most important classes in practice. The separation problem - finding the most violated cut of a given class - is itself an optimisation problem that must be solved efficiently within the B&amp;C framework.</p>
                 </div>
 
                 <hr class="my-5">

@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -55,13 +55,13 @@
 
                 <h2 class="mt-5 mb-3">The SVD</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Singular Value Decomposition</div>
+                    <div class="math-box-label">Theorem - Singular Value Decomposition</div>
                     <p class="mb-0">Every $A \in \mathbb{R}^{m\times n}$ (with $m \ge n$) has a factorisation $A = U \Sigma V^T$ where $U \in \mathbb{R}^{m\times m}$ and $V \in \mathbb{R}^{n\times n}$ are orthogonal, and $\Sigma = \text{diag}(\sigma_1,\ldots,\sigma_n)$ with $\sigma_1 \ge \sigma_2 \ge \cdots \ge \sigma_n \ge 0$. The values $\sigma_i$ are the <strong>singular values</strong>; they satisfy $\sigma_i = \sqrt{\lambda_i(A^T A)}$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Golub-Reinsch Algorithm</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Golub-Reinsch Algorithm</div>
+                    <div class="math-box-label">Definition - Golub-Reinsch Algorithm</div>
                     <p><strong>Phase 1: Bidiagonalisation.</strong> Use Householder reflections alternately from the left and right to reduce $A$ to upper bidiagonal form:
                     $$U_1^T A V_1 = B = \begin{pmatrix} d_1 & e_1 & & \\ & d_2 & e_2 & \\ & & \ddots & e_{n-1} \\ & & & d_n \end{pmatrix}.$$
                     This requires $O(mn^2)$ flops.</p>
@@ -70,14 +70,14 @@
 
                 <h2 class="mt-5 mb-3">Thin SVD and Numerical Rank</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Thin SVD and Numerical Rank</div>
+                    <div class="math-box-label">Definition - Thin SVD and Numerical Rank</div>
                     <p>The <strong>thin (economy) SVD</strong> retains only the first $n$ columns of $U$: $A = U_n \Sigma V^T$ with $U_n \in \mathbb{R}^{m\times n}$.</p>
                     <p class="mb-0">The <strong>numerical rank</strong> of $A$ is $r = \#\{i : \sigma_i > \delta\}$ for a threshold $\delta$ typically taken as $n\varepsilon_{\text{mach}}\sigma_1$. Singular values below $\delta$ are numerically indistinguishable from zero given the precision of the data.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Best Low-Rank Approximation: Eckart-Young Theorem</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Eckart-Young-Mirsky</div>
+                    <div class="math-box-label">Theorem - Eckart-Young-Mirsky</div>
                     <p>Let $A_k = \sum_{i=1}^k \sigma_i u_i v_i^T$ (truncated SVD). Then
                     $$\min_{\text{rank}(B) \le k} \|A - B\|_2 = \sigma_{k+1} \quad \text{achieved at } B = A_k,$$
                     and similarly for the Frobenius norm: $\min_{\text{rank}(B)\le k}\|A-B\|_F = \sqrt{\sigma_{k+1}^2 + \cdots + \sigma_n^2}$, also achieved at $B = A_k$.</p>
@@ -86,17 +86,17 @@
 
                 <h2 class="mt-5 mb-3">Applications</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Pseudoinverse</div>
+                    <div class="math-box-label">Definition - Pseudoinverse</div>
                     <p class="mb-0">The <strong>Moore-Penrose pseudoinverse</strong> is $A^\dagger = V \Sigma^\dagger U^T$ where $\Sigma^\dagger = \text{diag}(\sigma_1^{-1},\ldots,\sigma_r^{-1},0,\ldots,0)$ (inverting only the nonzero singular values). For an overdetermined consistent system $Ax=b$, $x^* = A^\dagger b$ is the minimum-norm least-squares solution.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Condition Number</div>
+                    <div class="math-box-label">Definition - Condition Number</div>
                     <p class="mb-0">The <strong>condition number</strong> of $A$ in the 2-norm is $\kappa(A) = \sigma_1/\sigma_n$. The relative error in the least-squares solution due to perturbations $\delta b$ in the right-hand side satisfies $\|\delta x\|/\|x\| \le \kappa(A)\cdot \|\delta b\|/\|b\|$. Large $\kappa$ signals a nearly rank-deficient problem.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — PCA via SVD</div>
+                    <div class="math-box-label">Remark - PCA via SVD</div>
                     <p class="mb-0">In principal component analysis, form the centred data matrix $X \in \mathbb{R}^{n\times p}$ (rows = observations, columns = variables). The right singular vectors $V$ are the principal directions; the singular values relate to variance explained. Computing the thin SVD of $X$ directly is numerically preferable to forming and diagonalising the sample covariance $X^TX/n$, since squaring the condition number would double the floating-point errors.</p>
                 </div>
 

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Indexing and Query Processing</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Database Systems</a>
+                <hr>
+                <a href="../01-the-relational-model/" class="text-decoration-none toc-chapter-link"><strong>1.</strong> The Relational Model</a>
+                <a href="../02-sql-querying-relational-data/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> SQL: Querying Relational Data</a>
+                <a href="../03-normalization-and-schema-design/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Normalization and Schema Design</a>
+                <a href="../04-transactions-and-acid/" class="text-decoration-none toc-chapter-link"><strong>4.</strong> Transactions and ACID</a>
+                <a href="../05-concurrency-control/" class="text-decoration-none toc-chapter-link"><strong>5.</strong> Concurrency Control</a>
+                <a href="../06-indexing-and-query-processing/" class="text-decoration-none toc-chapter-link toc-active"><strong>6.</strong> Indexing and Query Processing</a>
+                <a href="../07-query-optimization/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Query Optimization</a>
+                <a href="../08-nosql-and-modern-database-systems/" class="text-decoration-none toc-chapter-link"><strong>8.</strong> NoSQL and Modern Database Systems</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">Database Systems</a> ›
+                <span>6. Indexing and Query Processing</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">6. Indexing and Query Processing</h1>
+
+                <p>Without additional structure, answering even a simple query would require scanning every row in a table - this chapter covers indexing, the mechanism that lets a database find matching rows dramatically faster.</p>
+
+                <h2 class="mt-5 mb-3">What an Index Is</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition - Index</div>
+                    <p class="mb-0">An <strong>index</strong> is an auxiliary data structure, built on one or more columns of a table, that allows the database to quickly locate rows matching a given value or range without scanning the entire table - at the cost of extra storage space and the overhead of maintaining the index whenever the underlying table is modified.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">B-Tree Indexes</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition - B-Tree</div>
+                    <p class="mb-0">The <strong>B-tree</strong> (and its common variant, the B+-tree) is the standard index structure in most relational databases - a balanced, wide-fanout tree structure that keeps lookup, insertion, and deletion operations efficient (logarithmic in the number of rows) even for enormous tables, and is specifically designed around the block-based nature of disk I/O (Chapter 8 of Operating Systems), minimizing the number of disk block reads needed per operation.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Hash Indexes</h2>
+
+                <p>A <strong>hash index</strong> supports very fast exact-match lookups by hashing the indexed value to a bucket location, but - unlike a B-tree - cannot efficiently support range queries (finding all rows with a value between two bounds), since a hash function deliberately scatters similar values across unrelated buckets rather than preserving their relative order.</p>
+
+                <h2 class="mt-5 mb-3">Clustered versus Non-Clustered Indexes</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition - Clustered Index</div>
+                    <p class="mb-0">A <strong>clustered index</strong> determines the actual physical storage order of a table's rows on disk (a table can have at most one), while a <strong>non-clustered (secondary) index</strong> is a separate structure pointing back to the row's location, allowing multiple non-clustered indexes on different columns of the same table.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Query Execution Plans</h2>
+
+                <p>Given a query, the database's <strong>query processor</strong> chooses a specific <strong>execution plan</strong> - which indexes to use (if any), which join algorithm to apply for each join (Chapter 2), and in what order to combine multiple tables - a choice covered in depth in Chapter 7, since a poorly chosen plan can be orders of magnitude slower than a well-chosen one for the exact same logical query.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../05-concurrency-control/" class="btn btn-outline-custom">&larr; 5. Concurrency Control</a>
+                    <a href="../07-query-optimization/" class="btn btn-custom">7. Query Optimization &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

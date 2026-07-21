@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. Time, Clocks, and Event Ordering</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Distributed Systems</a>
+                <hr>
+                <a href="../01-models-of-distributed-computation/" class="text-decoration-none toc-chapter-link"><strong>1.</strong> Models of Distributed Computation</a>
+                <a href="../02-time-clocks-and-event-ordering/" class="text-decoration-none toc-chapter-link toc-active"><strong>2.</strong> Time, Clocks, and Event Ordering</a>
+                <a href="../03-consensus-paxos-and-raft/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Consensus: Paxos and Raft</a>
+                <a href="../04-replication-and-consistency-models/" class="text-decoration-none toc-chapter-link"><strong>4.</strong> Replication and Consistency Models</a>
+                <a href="../05-distributed-transactions/" class="text-decoration-none toc-chapter-link"><strong>5.</strong> Distributed Transactions</a>
+                <a href="../06-failure-detection-and-fault-tolerance/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Failure Detection and Fault Tolerance</a>
+                <a href="../07-partitioning-and-consistent-hashing/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Partitioning and Consistent Hashing</a>
+                <a href="../08-distributed-systems-in-practice/" class="text-decoration-none toc-chapter-link"><strong>8.</strong> Distributed Systems in Practice</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">Distributed Systems</a> ›
+                <span>2. Time, Clocks, and Event Ordering</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">2. Time, Clocks, and Event Ordering</h1>
+
+                <p>Because separate machines' physical clocks are never perfectly synchronized, and network delays (Chapter 1) are variable and unpredictable, a distributed system cannot simply timestamp events with wall-clock time and expect a meaningful, consistent global ordering — this chapter covers the logical alternatives that have been developed instead.</p>
+
+                <h2 class="mt-5 mb-3">The Problem with Physical Clocks</h2>
+
+                <p>Even with protocols like NTP actively synchronizing clocks across machines, physical clock drift and network delay mean that two machines' clocks are never exactly aligned — comparing raw timestamps from two different machines to determine "which event happened first" can therefore give an incorrect answer, particularly for events that occurred close together in time.</p>
+
+                <h2 class="mt-5 mb-3">Lamport's Happens-Before Relation</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Happens-Before</div>
+                    <p class="mb-0">Leslie Lamport's <strong>happens-before</strong> relation ($\rightarrow$) defines a partial ordering of events based purely on causality rather than physical time: if event $a$ occurs before event $b$ on the same process, $a \rightarrow b$; if $a$ is the sending of a message and $b$ is its receipt, $a \rightarrow b$; and the relation is transitive. Two events neither related by happens-before are <strong>concurrent</strong> — there is no causal relationship between them, and no meaningful sense in which one "really" happened first.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Lamport Timestamps</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Lamport Timestamp</div>
+                    <p class="mb-0">A <strong>Lamport timestamp</strong> is a simple counter, incremented before each local event and updated to exceed any timestamp received in a message, such that $a \rightarrow b$ implies the Lamport timestamp of $a$ is less than that of $b$ — providing a cheap, practical way to derive a consistent total ordering of events compatible with the happens-before relation (though the converse doesn't hold: a smaller Lamport timestamp doesn't necessarily mean the event actually happened-before the other, only that no contradiction with happens-before is introduced by ordering them this way).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Vector Clocks</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Vector Clock</div>
+                    <p class="mb-0">A <strong>vector clock</strong> extends Lamport timestamps to fully capture the happens-before relation (not just an ordering consistent with it) — each process maintains a vector of counters, one per process in the system, allowing any two events' vector clocks to be compared and determine definitively whether one happened-before the other, or whether they are genuinely concurrent — at the cost of a vector whose size grows with the number of processes, compared to a Lamport timestamp's single integer.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Practical Applications</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Example — Detecting Conflicting Updates</div>
+                    <p class="mb-0">Systems favouring availability over strict consistency (Chapter 8 of Database Systems's discussion of the CAP theorem) often use vector clocks to detect when two replicas received genuinely concurrent, conflicting updates to the same data — allowing the system to flag the conflict for resolution (either automatically, via a merge rule, or by surfacing it to the application) rather than silently and arbitrarily picking one update to keep.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../01-models-of-distributed-computation/" class="btn btn-outline-custom">&larr; 1. Models of Distributed Computation</a>
+                    <a href="../03-consensus-paxos-and-raft/" class="btn btn-custom">3. Consensus: Paxos and Raft &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

@@ -1,19 +1,28 @@
-// Homepage pie geometry: outer boundary is elliptical (matches the viewport's
-// width/height), inner boundary (around the center "S") stays a true circle.
-// Recomputed on load and on resize since it depends on live viewport dimensions.
-// Wedge icons are plain HTML links positioned in pie-wrap's own pixel box
-// (not inside the SVG), so they render as crisp Font Awesome glyphs.
+// Homepage pie geometry: each of the 6 sections gets an angular slice extending all
+// the way to the viewport's rectangular edges (not an inscribed ellipse). Slice ANGLES
+// are chosen so every slice covers equal on-screen area, computed numerically since a
+// rectangle (unlike an ellipse) has no closed-form equal-area angle formula. Recomputed
+// on load and on resize since it depends on live viewport dimensions.
 
 (function () {
-    // Order determines wedge placement (each gets a consecutive 60deg PARAMETRIC slice
-    // starting at 0deg/3-o'clock, going clockwise). This specific order puts Math/Quant/
-    // Chess across the top half and Bio/Dev/Music across the bottom half, each reading
-    // left-to-right.
+    // Order/direction matches the previous design: consecutive slices starting at
+    // 0deg/3-o'clock, going clockwise (screen y grows downward, so increasing angle
+    // here reads clockwise on screen). Puts Math/Quant/Chess across the top half and
+    // Bio/Dev/Music across the bottom half, each reading left-to-right.
     const SECTIONS = ["music", "dev", "bio", "math", "quant", "chess"];
 
-    // Points per 60deg wedge along the outer curve. The outer boundary is drawn as a
-    // sampled polyline (not a single SVG elliptical-arc command) — see note below.
-    const ARC_SEGMENTS_PER_WEDGE = 24;
+    // Solid per-section slice color (the previous gradient's darker end), overlaid
+    // with a radial vignette below so it still reads as "dark toward the center".
+    const SECTION_COLORS = {
+        math: "#1a2b3f",
+        quant: "#3d2f0a",
+        chess: "#2e1810",
+        bio: "#132a1c",
+        dev: "#0a2a2d",
+        music: "#241a35",
+    };
+
+    const SAMPLES = 3600; // angular resolution for the numeric area integration
 
     function debounce(fn, wait) {
         let timer;
@@ -23,27 +32,112 @@
         };
     }
 
-    // Circle case (rx === ry): a point at parametric angle == its true angle from center.
-    function point(cx, cy, rx, ry, angleRad) {
-        return [cx + rx * Math.cos(angleRad), cy + ry * Math.sin(angleRad)];
+    // Distance from the center to the rectangle's own boundary along a ray at angle
+    // theta (0 = pointing right, increasing clockwise on screen). Every point on a
+    // rectangle centered at the origin is reachable this way (the rectangle is
+    // star-shaped w.r.t. its center), so this is well-defined for every theta.
+    function rectBoundaryRadius(halfW, halfH, theta) {
+        const c = Math.cos(theta);
+        const s = Math.sin(theta);
+        const rx = c !== 0 ? Math.abs(halfW / c) : Infinity;
+        const ry = s !== 0 ? Math.abs(halfH / s) : Infinity;
+        return Math.min(rx, ry);
     }
 
-    // The ellipse boundary point lying on the ray at a given TRUE angle from center (i.e.
-    // the angle you'd actually measure/hover at) — NOT the same as point() above, which
-    // takes a *parametric* angle. The two only coincide when rx === ry (a circle); for an
-    // elliptical outer boundary they diverge, so using point() with a true angle (as the
-    // icon-centering code used to) lands off the actual boundary in that direction.
-    function pointAtTrueAngle(cx, cy, rx, ry, trueAngleRad) {
-        const cosA = Math.cos(trueAngleRad);
-        const sinA = Math.sin(trueAngleRad);
-        const r = (rx * ry) / Math.sqrt((ry * cosA) ** 2 + (rx * sinA) ** 2);
-        return [cx + r * cosA, cy + r * sinA];
+    // Numerically finds the (numSectors + 1) boundary angles, starting at startAngle,
+    // such that each of the numSectors consecutive slices sweeps equal AREA against the
+    // rectangle boundary above (the standard polar sector-area integral (1/2)*r(theta)^2).
+    function equalAreaBoundaries(halfW, halfH, startAngle, numSectors) {
+        const dTheta = (2 * Math.PI) / SAMPLES;
+        const cumulative = new Array(SAMPLES + 1);
+        const angles = new Array(SAMPLES + 1);
+        cumulative[0] = 0;
+        angles[0] = startAngle;
+        let prevR = rectBoundaryRadius(halfW, halfH, startAngle);
+        for (let i = 1; i <= SAMPLES; i++) {
+            const theta = startAngle + i * dTheta;
+            const r = rectBoundaryRadius(halfW, halfH, theta);
+            // Trapezoidal approximation of the (1/2) r^2 dTheta sector-area integral.
+            cumulative[i] = cumulative[i - 1] + 0.5 * (0.5 * prevR * prevR + 0.5 * r * r) * dTheta;
+            angles[i] = theta;
+            prevR = r;
+        }
+        const total = cumulative[SAMPLES];
+
+        const boundaries = [];
+        for (let k = 0; k <= numSectors; k++) {
+            const target = (k / numSectors) * total;
+            let lo = 0, hi = SAMPLES;
+            while (lo < hi) {
+                const mid = (lo + hi) >> 1;
+                if (cumulative[mid] < target) lo = mid + 1; else hi = mid;
+            }
+            if (lo === 0) {
+                boundaries.push(angles[0]);
+            } else {
+                const a0 = cumulative[lo - 1], a1 = cumulative[lo];
+                const t0 = angles[lo - 1], t1 = angles[lo];
+                const frac = a1 > a0 ? (target - a0) / (a1 - a0) : 0;
+                boundaries.push(t0 + frac * (t1 - t0));
+            }
+        }
+        return boundaries; // length numSectors + 1; boundaries[numSectors] === startAngle + 2*PI
+    }
+
+    // The polygon tracing a sector's own slice of the rectangle: the center, the point
+    // where the b0 ray meets the rectangle edge, any rectangle CORNERS the sector spans
+    // (needed so the polygon follows the rectangle's actual perimeter instead of cutting
+    // straight across it), and the point where the b1 ray meets the edge.
+    function sectorPolygonPoints(cx, cy, halfW, halfH, b0, b1) {
+        const pointAt = (theta) => {
+            const r = rectBoundaryRadius(halfW, halfH, theta);
+            return [cx + r * Math.cos(theta), cy + r * Math.sin(theta)];
+        };
+        const c1 = Math.atan2(halfH, halfW); // bottom-right corner's angle (0 < c1 < PI/2)
+        const cornerAngles = [c1, Math.PI - c1, Math.PI + c1, 2 * Math.PI - c1];
+
+        const pts = [[cx, cy], pointAt(b0)];
+        for (const ca of cornerAngles) {
+            if (ca > b0 && ca < b1) pts.push(pointAt(ca));
+        }
+        pts.push(pointAt(b1));
+        return pts;
+    }
+
+    function updateImageLayers(cx, cy, halfW, halfH, boundaries) {
+        SECTIONS.forEach((section, i) => {
+            const img = document.querySelector(`.pie-image[data-section="${section}"]`);
+            if (!img) return;
+            const pts = sectorPolygonPoints(cx, cy, halfW, halfH, boundaries[i], boundaries[i + 1]);
+
+            // Size/position the element to just this sector's own bounding box (the max
+            // spread of its polygon's x's and y's), not the full viewport - otherwise
+            // "background-size: cover" scales the image to cover the whole screen even
+            // though only this small clipped sliver of it is ever visible, zooming in far
+            // more than necessary.
+            const xs = pts.map((p) => p[0]);
+            const ys = pts.map((p) => p[1]);
+            const minX = Math.min(...xs), maxX = Math.max(...xs);
+            const minY = Math.min(...ys), maxY = Math.max(...ys);
+
+            img.style.left = `${minX}px`;
+            img.style.top = `${minY}px`;
+            img.style.width = `${maxX - minX}px`;
+            img.style.height = `${maxY - minY}px`;
+
+            // clip-path is relative to the element's OWN box, so translate each point
+            // from full-viewport coordinates into this smaller box's local coordinates.
+            const poly = pts
+                .map(([x, y]) => `${(x - minX).toFixed(1)}px ${(y - minY).toFixed(1)}px`)
+                .join(", ");
+            img.style.clipPath = `polygon(${poly})`;
+        });
     }
 
     function updatePie() {
         const wrap = document.querySelector(".pie-wrap");
-        const svg = document.querySelector(".pie-chart");
-        if (!wrap || !svg) return;
+        const sectors = document.querySelector(".pie-sectors");
+        if (!wrap || !sectors) return;
 
         const w = wrap.clientWidth;
         const h = wrap.clientHeight;
@@ -51,116 +145,45 @@
 
         const cx = w / 2;
         const cy = h / 2;
-        const Rx = (w / 2) * 0.98;
-        const Ry = (h / 2) * 0.98;
-        const rInner = Math.min(w, h) * 0.075;
-        const iconPx = Math.min(Rx, Ry) * 0.34;
+        const halfW = w / 2;
+        const halfH = h / 2;
+        const startAngle = 0; // 3-o'clock, matches the previous design's starting point
 
-        svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+        const boundaries = equalAreaBoundaries(halfW, halfH, startAngle, SECTIONS.length);
+        updateImageLayers(cx, cy, halfW, halfH, boundaries);
 
-        // For an ellipse, equal-AREA sectors come from equal steps of the *parametric*
-        // angle t in (Rx*cos(t), Ry*sin(t)) — the classical "eccentric anomaly" property:
-        // the area swept from t=0 to t=T is exactly (1/2)*Rx*Ry*T regardless of Rx/Ry, so
-        // uniform 60deg steps in t give exactly equal-area outer sectors.
-        //
-        // The outer boundary between two such points is drawn as a SAMPLED POLYLINE, not
-        // a single SVG "A" (elliptical-arc) command. That's deliberate: given just two
-        // endpoints + radii, an "A" command is geometrically ambiguous — two different
-        // ellipses (with the same radii) can pass through the same two points, bulging in
-        // opposite directions, and for some wedges here the browser picked the wrong one
-        // (bulging inward instead of outward), silently shrinking that wedge by several
-        // percent. Sampling points directly off our own parametric formula removes that
-        // ambiguity entirely.
-        //
-        // A point's *parametric* angle t is generally NOT its *true* angle (the angle of
-        // the ray from center to that point) unless Rx===Ry. The wedge's straight edge
-        // needs its inner and outer endpoints on the SAME true-angle ray through the
-        // center (otherwise scaling the wedge from the center for the hover-grow effect
-        // shifts that edge sideways into the neighbor) — so the inner point is placed at
-        // the outer point's true angle, not at the same parametric angle.
-        function trueAngleOf(p) {
-            return Math.atan2(p[1] - cy, p[0] - cx);
-        }
+        // conic-gradient's 0deg points up (12-o'clock) and increases clockwise, while our
+        // startAngle=0 points right (3-o'clock); "from 90deg" rotates the gradient's own
+        // 0% point to line up with our angle-zero, so the plain 0..100% stops below map
+        // directly onto our own angle system without any per-stop conversion.
+        const stops = SECTIONS.map((section, i) => {
+            const f0 = (boundaries[i] - startAngle) / (2 * Math.PI);
+            const f1 = (boundaries[i + 1] - startAngle) / (2 * Math.PI);
+            const color = SECTION_COLORS[section];
+            return `${color} ${(f0 * 100).toFixed(3)}% ${(f1 * 100).toFixed(3)}%`;
+        });
 
-        const totalSegments = SECTIONS.length * ARC_SEGMENTS_PER_WEDGE;
-        const outerPts = [];
-        for (let k = 0; k <= totalSegments; k++) {
-            const t = (k / totalSegments) * 2 * Math.PI;
-            outerPts.push(point(cx, cy, Rx, Ry, t));
-        }
+        sectors.style.background =
+            `radial-gradient(circle at center, rgba(6,6,12,0.92) 0%, rgba(6,6,12,0) 42%), ` +
+            `conic-gradient(from 90deg at center, ${stops.join(", ")})`;
 
         SECTIONS.forEach((section, i) => {
-            const startIdx = i * ARC_SEGMENTS_PER_WEDGE;
-            const endIdx = startIdx + ARC_SEGMENTS_PER_WEDGE;
-            const wedgeOuterPts = outerPts.slice(startIdx, endIdx + 1);
+            const b0 = boundaries[i];
+            const b1 = boundaries[i + 1];
+            const midAngle = (b0 + b1) / 2;
+            const maxR = rectBoundaryRadius(halfW, halfH, midAngle);
+            const t = 0.55;
+            const x = cx + t * maxR * Math.cos(midAngle);
+            const y = cy + t * maxR * Math.sin(midAngle);
 
-            const b0outer = wedgeOuterPts[0];
-            const b1outer = wedgeOuterPts[wedgeOuterPts.length - 1];
-            const b0trueAngle = trueAngleOf(b0outer);
-            const b1trueAngle = trueAngleOf(b1outer);
-            const b0inner = point(cx, cy, rInner, rInner, b0trueAngle);
-            const b1inner = point(cx, cy, rInner, rInner, b1trueAngle);
-
-            const outerLine = wedgeOuterPts
-                .slice(1)
-                .map(([x, y]) => `L${x},${y}`)
-                .join(" ");
-
-            const d =
-                `M${b0outer[0]},${b0outer[1]} ${outerLine} ` +
-                `L${b1inner[0]},${b1inner[1]} A${rInner},${rInner} 0 0 0 ${b0inner[0]},${b0inner[1]} Z`;
-
-            const wedge = document.querySelector(`.pie-wedge[data-section="${section}"]`);
-            if (wedge) wedge.setAttribute("d", d);
-
-            // Icon centered in the wedge's "meat", along the true-angle bisector of its
-            // two boundary rays so it stays visually centered regardless of sector width.
-            // atan2 wraps at +/-180deg, so the wedge that straddles that boundary needs
-            // its end angle unwrapped before averaging (otherwise the naive average lands
-            // on the opposite side of the pie).
-            let b1trueAngleUnwrapped = b1trueAngle;
-            if (b1trueAngleUnwrapped < b0trueAngle) b1trueAngleUnwrapped += 2 * Math.PI;
-            const midAngle = (b0trueAngle + b1trueAngleUnwrapped) / 2;
-            const t = 0.62;
-            const [outerX, outerY] = pointAtTrueAngle(cx, cy, Rx, Ry, midAngle);
-            const [innerX, innerY] = point(cx, cy, rInner, rInner, midAngle);
-            const ipx = innerX + t * (outerX - innerX);
-            const ipy = innerY + t * (outerY - innerY);
-
-            const iconLink = document.querySelector(`.wedge-icon-link[data-section="${section}"]`);
-            if (iconLink) {
-                iconLink.style.left = `${ipx}px`;
-                iconLink.style.top = `${ipy}px`;
-                iconLink.style.fontSize = `${iconPx}px`;
+            const label = document.querySelector(`.pie-label[data-section="${section}"]`);
+            if (label) {
+                label.style.left = `${x}px`;
+                label.style.top = `${y}px`;
             }
         });
     }
 
-    // The wedge's SVG path and its Font Awesome icon are separate elements (the icon is
-    // a plain HTML link positioned over the SVG, not nested inside the wedge's own <a>),
-    // so plain CSS :hover can't make them react together. Sync a shared "wedge-hovered"
-    // class between the two instead, wired once (element identities don't change on
-    // resize, only their geometry/position does).
-    function wireWedgeIconHoverSync() {
-        SECTIONS.forEach((section) => {
-            const wedge = document.querySelector(`.pie-wedge[data-section="${section}"]`);
-            const wedgeLink = wedge ? wedge.closest("a") : null;
-            const iconLink = document.querySelector(`.wedge-icon-link[data-section="${section}"]`);
-            if (!wedge || !wedgeLink || !iconLink) return;
-
-            const setHovered = (on) => {
-                wedge.classList.toggle("wedge-hovered", on);
-                iconLink.classList.toggle("wedge-hovered", on);
-            };
-
-            wedgeLink.addEventListener("mouseenter", () => setHovered(true));
-            wedgeLink.addEventListener("mouseleave", () => setHovered(false));
-            iconLink.addEventListener("mouseenter", () => setHovered(true));
-            iconLink.addEventListener("mouseleave", () => setHovered(false));
-        });
-    }
-
     updatePie();
-    wireWedgeIconHoverSync();
     window.addEventListener("resize", debounce(updatePie, 120));
 })();

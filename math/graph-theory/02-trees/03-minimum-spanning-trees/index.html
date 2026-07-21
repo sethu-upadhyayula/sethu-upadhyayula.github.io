@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -141,29 +141,29 @@
                 <h2 class="mt-5 mb-3">Setup and Optimality Conditions</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 2.3.1 — Weighted Graph and MST</div>
+                    <div class="math-box-label">Definition 2.3.1 - Weighted Graph and MST</div>
                     <p class="mb-0">A <strong>weighted graph</strong> is a graph $G = (V, E)$ with a weight function $w : E \to \mathbb{R}$. The <strong>weight of a spanning tree</strong> $T$ is $w(T) = \sum_{e \in E(T)} w(e)$. A <strong>minimum spanning tree</strong> is a spanning tree $T^*$ minimising $w(T^*)$ over all spanning trees of $G$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.3.2 — Cut Property</div>
+                    <div class="math-box-label">Theorem 2.3.2 - Cut Property</div>
                     <p class="mb-0">Let $(S, V \setminus S)$ be any cut of $G$ (partition of $V$ into two non-empty sets). If $e$ is a minimum-weight edge crossing the cut (with one endpoint in $S$ and one in $V \setminus S$), then $e$ belongs to some MST of $G$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.3.3 — Cycle Property</div>
+                    <div class="math-box-label">Theorem 2.3.3 - Cycle Property</div>
                     <p class="mb-0">If $e$ is a maximum-weight edge in some cycle $C$ of $G$ (and the maximum is unique), then $e$ does not belong to any MST of $G$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.3.4 — Uniqueness</div>
+                    <div class="math-box-label">Theorem 2.3.4 - Uniqueness</div>
                     <p class="mb-0">If all edge weights of $G$ are distinct, then $G$ has a unique MST.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Kruskal's Algorithm</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 2.3.5 — Kruskal (1956)</div>
+                    <div class="math-box-label">Algorithm 2.3.5 - Kruskal (1956)</div>
                     <p>Sort all edges by non-decreasing weight. Initialise $T = \emptyset$. Process edges in order: add edge $e$ to $T$ if and only if $e$ does not create a cycle in $T$ (equivalently, its endpoints lie in different components of $T$).</p>
                     <p class="mb-0"><strong>Correctness</strong> follows from the cut property: each added edge is the minimum crossing some cut. <strong>Complexity:</strong> $O(E \log E)$ for sorting; union-find gives near-linear component queries, giving overall $O(E \log E) = O(E \log V)$.</p>
                 </div>
@@ -171,7 +171,7 @@
                 <h2 class="mt-5 mb-3">Prim's Algorithm</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 2.3.6 — Prim (1957)</div>
+                    <div class="math-box-label">Algorithm 2.3.6 - Prim (1957)</div>
                     <p>Start with any vertex $r$; let $S = \{r\}$ and $T = \emptyset$. Repeatedly find the minimum-weight edge $\{u, v\}$ with $u \in S$ and $v \notin S$; add $v$ to $S$ and $\{u,v\}$ to $T$. Repeat until $S = V$.</p>
                     <p class="mb-0"><strong>Correctness</strong> follows from the cut property applied to the cut $(S, V \setminus S)$. <strong>Complexity:</strong> $O(E \log V)$ with a binary heap; $O(E + V \log V)$ with a Fibonacci heap.</p>
                 </div>
@@ -179,13 +179,13 @@
                 <h2 class="mt-5 mb-3">Borůvka's Algorithm</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 2.3.7 — Borůvka (1926)</div>
+                    <div class="math-box-label">Algorithm 2.3.7 - Borůvka (1926)</div>
                     <p>Initially each vertex is its own component. In each phase, each component selects its cheapest outgoing edge; add all selected edges (merging components). Repeat until only one component remains.</p>
                     <p class="mb-0">After each phase the number of components halves, so there are $O(\log V)$ phases, each taking $O(E)$ time. Total: $O(E \log V)$. Borůvka's algorithm naturally parallelises and is used in external-memory and randomised MST algorithms.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Linear-Time MST</div>
+                    <div class="math-box-label">Remark - Linear-Time MST</div>
                     <p class="mb-0">Combining Borůvka's algorithm with random edge contraction, Karger, Klein, and Tarjan (1995) gave a randomised linear-time MST algorithm. A deterministic linear-time algorithm (on a RAM) was given by Pettie and Ramachandran (2002), though it is not practical.</p>
                 </div>
 

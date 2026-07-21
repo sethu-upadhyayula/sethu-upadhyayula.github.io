@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -136,23 +136,23 @@
             <article>
                 <h1 class="text-accent mb-4">4.2 Hamiltonian Cycles</h1>
 
-                <p>While Eulerian circuits visit every <em>edge</em> exactly once, Hamiltonian cycles visit every <em>vertex</em> exactly once. Despite the superficial similarity, the two problems could not be more different in difficulty: Eulerian circuits are characterized by a simple degree condition checkable in linear time, while no such characterization is known for Hamiltonian cycles — the decision problem is NP-complete.</p>
+                <p>While Eulerian circuits visit every <em>edge</em> exactly once, Hamiltonian cycles visit every <em>vertex</em> exactly once. Despite the superficial similarity, the two problems could not be more different in difficulty: Eulerian circuits are characterized by a simple degree condition checkable in linear time, while no such characterization is known for Hamiltonian cycles - the decision problem is NP-complete.</p>
 
                 <h2 class="mt-5 mb-3">Definitions</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.1 — Hamiltonian Path and Cycle</div>
+                    <div class="math-box-label">Definition 4.2.1 - Hamiltonian Path and Cycle</div>
                     <p>A <strong>Hamiltonian path</strong> in a graph $G$ is a path that visits every vertex of $G$ exactly once.</p>
                     <p>A <strong>Hamiltonian cycle</strong> is a cycle that visits every vertex of $G$ exactly once (and returns to its starting vertex).</p>
                     <p class="mb-0">A graph that contains a Hamiltonian cycle is called <strong>Hamiltonian</strong>.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.2.2 — Examples and Non-Examples</div>
+                    <div class="math-box-label">Example 4.2.2 - Examples and Non-Examples</div>
                     <p>The complete graph $K_n$ ($n \ge 3$) is Hamiltonian: any ordering of its vertices forms a Hamiltonian cycle, since all vertices are pairwise adjacent.</p>
                     <p>The cycle $C_n$ is trivially Hamiltonian (it <em>is</em> a Hamiltonian cycle on itself).</p>
                     <p>The complete bipartite graph $K_{m,n}$ is Hamiltonian if and only if $m = n$ (a Hamiltonian cycle must alternate between the two parts, forcing equal sizes).</p>
-                    <p class="mb-0">The Petersen graph is famously <strong>non-Hamiltonian</strong> — it has a Hamiltonian path but no Hamiltonian cycle, despite being $3$-regular, $3$-connected, and vertex-transitive. This makes it a key counterexample to many plausible-looking sufficient conditions.</p>
+                    <p class="mb-0">The Petersen graph is famously <strong>non-Hamiltonian</strong> - it has a Hamiltonian path but no Hamiltonian cycle, despite being $3$-regular, $3$-connected, and vertex-transitive. This makes it a key counterexample to many plausible-looking sufficient conditions.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Sufficient Conditions</h2>
@@ -160,7 +160,7 @@
                 <p>Unlike the Eulerian case, no known condition is both necessary and sufficient for Hamiltonicity (short of an exhaustive search). However, several elegant sufficient conditions guarantee Hamiltonicity for "dense enough" graphs.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.3 — Dirac's Theorem (1952)</div>
+                    <div class="math-box-label">Theorem 4.2.3 - Dirac's Theorem (1952)</div>
                     <p class="mb-0">Let $G$ be a simple graph on $n \ge 3$ vertices. If every vertex has degree at least $n/2$, i.e.
                     $$\delta(G) \ge \frac{n}{2},$$
                     then $G$ is Hamiltonian.</p>
@@ -174,43 +174,43 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.4 — Ore's Theorem (1960)</div>
+                    <div class="math-box-label">Theorem 4.2.4 - Ore's Theorem (1960)</div>
                     <p class="mb-0">Let $G$ be a simple graph on $n \ge 3$ vertices. If for every pair of non-adjacent vertices $u, v$,
                     $$\deg(u) + \deg(v) \ge n,$$
                     then $G$ is Hamiltonian.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Ore Generalizes Dirac</div>
+                    <div class="math-box-label">Remark - Ore Generalizes Dirac</div>
                     <p class="mb-0">Dirac's theorem follows from Ore's: if $\delta(G) \ge n/2$, then for any non-adjacent pair $u,v$ we have $\deg(u) + \deg(v) \ge n/2 + n/2 = n$. The proof of Ore's theorem uses essentially the same longest-path argument as Dirac's, applied to a non-adjacent pair $v_1, v_k$ at the ends of a longest path.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Bondy&ndash;Chv&aacute;tal Closure</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.5 — Closure of a Graph</div>
+                    <div class="math-box-label">Definition 4.2.5 - Closure of a Graph</div>
                     <p class="mb-0">The <strong>closure</strong> $\text{cl}(G)$ of a graph $G$ on $n$ vertices is obtained by repeatedly adding an edge between any two non-adjacent vertices $u,v$ satisfying $\deg(u) + \deg(v) \ge n$, until no such pair remains. (The result is independent of the order in which edges are added.)</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.6 — Bondy&ndash;Chv&aacute;tal Theorem (1976)</div>
+                    <div class="math-box-label">Theorem 4.2.6 - Bondy&ndash;Chv&aacute;tal Theorem (1976)</div>
                     <p class="mb-0">A graph $G$ on $n \ge 3$ vertices is Hamiltonian if and only if its closure $\text{cl}(G)$ is Hamiltonian. In particular, $G$ is Hamiltonian if $\text{cl}(G) = K_n$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Strength of the Closure</div>
+                    <div class="math-box-label">Remark - Strength of the Closure</div>
                     <p class="mb-0">The Bondy&ndash;Chv&aacute;tal theorem strictly generalizes both Dirac's and Ore's theorems: if $\delta(G) \ge n/2$ (Dirac) or $G$ satisfies Ore's degree-sum condition for all non-adjacent pairs, then $\text{cl}(G) = K_n$ immediately, recovering Hamiltonicity. But there exist graphs whose closure is $K_n$ even though they satisfy neither Dirac's nor Ore's condition directly &mdash; the closure operation can "discover" Hamiltonicity that single-step degree conditions miss.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Computational Complexity</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.7 — NP-Completeness</div>
+                    <div class="math-box-label">Theorem 4.2.7 - NP-Completeness</div>
                     <p class="mb-0">The decision problem "Does graph $G$ contain a Hamiltonian cycle?" is <strong>NP-complete</strong> (Karp, 1972). Consequently, no polynomial-time algorithm is known (and none is expected to exist unless $\mathrm{P} = \mathrm{NP}$) that decides Hamiltonicity for arbitrary graphs.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Eulerian vs. Hamiltonian</div>
+                    <div class="math-box-label">Remark - Eulerian vs. Hamiltonian</div>
                     <p class="mb-0">This is the central contrast of the chapter: Eulerian circuits (Section 4.1) admit a clean, efficiently checkable degree-based characterization (Theorem 4.1.4), and Hierholzer's algorithm finds one in linear time when it exists. Hamiltonian cycles have no known analogous characterization; the sufficient conditions of Dirac, Ore, and Bondy&ndash;Chv&aacute;tal apply only to sufficiently dense graphs, and verifying Hamiltonicity in general remains computationally intractable. The Traveling Salesman Problem &mdash; finding a minimum-weight Hamiltonian cycle &mdash; is the most famous application and is itself NP-hard.</p>
                 </div>
 

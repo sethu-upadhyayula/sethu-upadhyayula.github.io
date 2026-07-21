@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,13 +128,13 @@
                 <p>The Bayesian paradigm treats $\theta$ as a random variable. Before observing data, beliefs about $\theta$ are encoded in the <em>prior</em> distribution $p(\theta)$. After observing data $x$, beliefs are updated to the <em>posterior</em> $p(\theta \mid x)$ via Bayes' theorem.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.1.1 — Bayes' Theorem</div>
+                    <div class="math-box-label">Theorem 6.1.1 - Bayes' Theorem</div>
                     <p>$$p(\theta \mid x) = \frac{p(x \mid \theta)\,p(\theta)}{p(x)} \propto p(x \mid \theta)\,p(\theta),$$</p>
                     <p class="mb-0">where $p(x \mid \theta)$ is the <strong>likelihood</strong>, $p(\theta)$ is the <strong>prior</strong>, $p(x) = \int p(x\mid\theta)\,p(\theta)\,d\theta$ is the <strong>marginal likelihood</strong> (normalising constant), and $p(\theta\mid x)$ is the <strong>posterior</strong>. The posterior is proportional to likelihood times prior.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.1.2 — Posterior Mean and MAP</div>
+                    <div class="math-box-label">Definition 6.1.2 - Posterior Mean and MAP</div>
                     <p>The <strong>posterior mean</strong> (Bayes estimator under squared error loss) is
                     $$\hat{\theta}_{\mathrm{Bayes}} = E[\theta \mid x] = \int \theta\, p(\theta \mid x)\,d\theta.$$
                     The <strong>maximum a posteriori (MAP) estimator</strong> is
@@ -145,7 +145,7 @@
                 <h2 class="mt-5">Credible Intervals</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.1.3 — Credible Interval</div>
+                    <div class="math-box-label">Definition 6.1.3 - Credible Interval</div>
                     <p class="mb-0">A <strong>$100(1-\alpha)\%$ credible interval</strong> (or posterior interval) $[a, b]$ satisfies
                     $$P(a \le \theta \le b \mid x) = 1 - \alpha.$$
                     Unlike a frequentist CI, this has a direct probability interpretation: given the observed data and prior, the probability that $\theta$ lies in $[a,b]$ is $1-\alpha$. The <strong>highest posterior density (HPD)</strong> interval is the shortest such interval.</p>
@@ -154,7 +154,7 @@
                 <h2 class="mt-5">Posterior Predictive Distribution</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.1.4 — Posterior Predictive</div>
+                    <div class="math-box-label">Definition 6.1.4 - Posterior Predictive</div>
                     <p class="mb-0">The <strong>posterior predictive distribution</strong> for a new observation $\tilde{x}$ integrates out parameter uncertainty:
                     $$p(\tilde{x} \mid x) = \int p(\tilde{x} \mid \theta)\,p(\theta \mid x)\,d\theta.$$
                     This automatically propagates all uncertainty about $\theta$ into predictions, in contrast to the plug-in approach of substituting $\hat{\theta}$ directly.</p>
@@ -163,12 +163,12 @@
                 <h2 class="mt-5">Bayesian vs.\ Frequentist Inference</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 6.1.5 — Philosophical Contrast</div>
+                    <div class="math-box-label">Remark 6.1.5 - Philosophical Contrast</div>
                     <p>The key differences:</p>
                     <ul class="mb-0">
-                        <li><strong>Parameter status:</strong> Frequentist — $\theta$ is a fixed unknown constant; Bayesian — $\theta$ is a random variable with a distribution.</li>
-                        <li><strong>Probability:</strong> Frequentist — long-run frequency; Bayesian — degree of belief.</li>
-                        <li><strong>Interval:</strong> Frequentist CI — 95% of such intervals contain $\theta$; Bayesian credible interval — $P(\theta \in [a,b] \mid x) = 0.95$.</li>
+                        <li><strong>Parameter status:</strong> Frequentist - $\theta$ is a fixed unknown constant; Bayesian - $\theta$ is a random variable with a distribution.</li>
+                        <li><strong>Probability:</strong> Frequentist - long-run frequency; Bayesian - degree of belief.</li>
+                        <li><strong>Interval:</strong> Frequentist CI - 95% of such intervals contain $\theta$; Bayesian credible interval - $P(\theta \in [a,b] \mid x) = 0.95$.</li>
                         <li><strong>Prior:</strong> Bayesian inference requires a prior; the choice can be subjective. Frequentist methods are prior-free.</li>
                         <li><strong>Asymptotics:</strong> Under regularity conditions, the Bayesian posterior concentrates around the MLE as $n \to \infty$ (Bernstein-von Mises theorem), so both approaches agree in large samples.</li>
                     </ul>

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,12 +81,12 @@
             <article>
                 <h1 class="text-accent mb-4">2.3 Implied Volatility</h1>
 
-                <p>The Black-Scholes formula expresses an option's price as a function of five inputs: spot price, strike, time to maturity, the risk-free rate, and volatility. Of these, only volatility is unobservable directly — it must be estimated. The market convention is to invert the relationship: given an observed market price, find the volatility that the formula would require to reproduce that price. This is the <em>implied volatility</em>, and it has become the standard unit in which option prices are quoted.</p>
+                <p>The Black-Scholes formula expresses an option's price as a function of five inputs: spot price, strike, time to maturity, the risk-free rate, and volatility. Of these, only volatility is unobservable directly - it must be estimated. The market convention is to invert the relationship: given an observed market price, find the volatility that the formula would require to reproduce that price. This is the <em>implied volatility</em>, and it has become the standard unit in which option prices are quoted.</p>
 
                 <h2 class="mt-5 mb-3">Definition</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Implied Volatility</div>
+                    <div class="math-box-label">Definition - Implied Volatility</div>
                     <p class="mb-0">Given a market price $C_{\text{mkt}}$ for a European call (or put) with strike $K$ and maturity $T$, the implied volatility $\sigma_{\text{imp}}$ is the value of $\sigma$ that solves:
                     $$C_{\text{BS}}(S_0, K, T, r, q, \sigma_{\text{imp}}) = C_{\text{mkt}}$$
                     Because the Black-Scholes call price is a strictly increasing, continuous function of $\sigma$ (since vega $> 0$ for all $\sigma > 0$), and ranges from the intrinsic/discounted value (as $\sigma \to 0$) to the spot price (as $\sigma \to \infty$), a unique solution exists for any arbitrage-free market price within these bounds.</p>
@@ -97,7 +97,7 @@
                 <p>The Black-Scholes formula cannot be inverted analytically for $\sigma$, so implied volatility is computed numerically. Because vega (the derivative of price with respect to $\sigma$) is available in closed form and is always positive, Newton-Raphson iteration converges quickly and reliably for most practical inputs.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Algorithm — Newton-Raphson for Implied Volatility</div>
+                    <div class="math-box-label">Algorithm - Newton-Raphson for Implied Volatility</div>
                     <p>Starting from an initial guess $\sigma_0$ (a common choice is $\sigma_0 = 0.20$, or the Brenner-Subrahmanyam approximation $\sigma_0 \approx \sqrt{2\pi/T}\,(C_{\text{mkt}}/S_0)$), iterate:
                     $$\sigma_{n+1} = \sigma_n - \frac{C_{\text{BS}}(\sigma_n) - C_{\text{mkt}}}{\mathcal{V}(\sigma_n)}$$
                     where $\mathcal{V}(\sigma_n) = S_0 e^{-qT}\phi(d_1)\sqrt{T}$ is the Black-Scholes vega evaluated at $\sigma_n$. Convergence is typically achieved in 3-6 iterations to machine precision for at-the-money options.</p>
@@ -105,7 +105,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — One Newton Step</div>
+                    <div class="math-box-label">Example - One Newton Step</div>
                     <p>Suppose $S_0=100$, $K=100$, $T=1$, $r=q=0$, and the market price of an ATM call is $C_{\text{mkt}}=8.00$. Starting from $\sigma_0=0.20$: at $\sigma_0=0.20$, $d_1 = 0.10$, $d_2=-0.10$, giving $C_{\text{BS}}(0.20) \approx 7.97$ and $\mathcal{V}(0.20) = 100\,\phi(0.10)\sqrt{1} \approx 39.7$. The Newton update is:
                     $$\sigma_1 = 0.20 - \frac{7.97 - 8.00}{39.7} \approx 0.20 + 0.00076 \approx 0.2008$$
                     A single step already brings the price within a few cents of the target; one or two further iterations achieve full precision.</p>
@@ -113,16 +113,16 @@
 
                 <h2 class="mt-5 mb-3">The Volatility Smile and Skew</h2>
 
-                <p>If the Black-Scholes model were literally true, every option on the same underlying with the same maturity would imply the same volatility, regardless of strike — volatility is, after all, assumed constant. In practice, this is dramatically false: implied volatility varies systematically with strike, a pattern known as the <em>volatility smile</em> or <em>skew</em>.</p>
+                <p>If the Black-Scholes model were literally true, every option on the same underlying with the same maturity would imply the same volatility, regardless of strike - volatility is, after all, assumed constant. In practice, this is dramatically false: implied volatility varies systematically with strike, a pattern known as the <em>volatility smile</em> or <em>skew</em>.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Smile and Skew</div>
-                    <p><strong>Smile:</strong> implied volatility as a function of strike (or moneyness) is U-shaped — out-of-the-money puts and calls both trade at higher implied volatility than at-the-money options. Common in FX options markets.</p>
+                    <div class="math-box-label">Definition - Smile and Skew</div>
+                    <p><strong>Smile:</strong> implied volatility as a function of strike (or moneyness) is U-shaped - out-of-the-money puts and calls both trade at higher implied volatility than at-the-money options. Common in FX options markets.</p>
                     <p class="mb-0"><strong>Skew (smirk):</strong> in equity index markets (e.g. S&P 500), the pattern is typically downward-sloping and asymmetric: out-of-the-money puts trade at substantially higher implied volatility than out-of-the-money calls. This is sometimes called the "volatility skew" or "smirk."</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Skew Exists</div>
+                    <div class="math-box-label">Remark - Why Skew Exists</div>
                     <p><strong>Leverage effect:</strong> as a stock price falls, the firm's leverage (debt-to-equity ratio) rises, increasing the volatility of the equity. This negative correlation between price and volatility is directly priced into the skew.</p>
                     <p><strong>Crash risk / demand for protection:</strong> equity markets exhibit occasional sharp downward jumps (crashes) but rarely symmetric upward jumps. Investors demand downside protection (buying puts), and dealers who sell that protection charge a premium, reflected in elevated put implied volatilities. This is sometimes summarized as "the market prices in fat left tails."</p>
                     <p class="mb-0"><strong>Supply and demand:</strong> structured product issuers (see Chapter 5) are frequently net sellers of OTM puts (e.g., via autocallables and reverse convertibles) and buyers of OTM calls, which can also influence the shape of the skew at the margin.</p>
@@ -130,13 +130,13 @@
 
                 <h2 class="mt-5 mb-3">Term Structure of Implied Volatility</h2>
 
-                <p>Implied volatility also varies with maturity for a fixed moneyness — the <em>term structure</em> of implied volatility. Together, the smile/skew across strikes and the term structure across maturities define the full <em>implied volatility surface</em> $\sigma_{\text{imp}}(K,T)$, which is the subject of the next chapter.</p>
+                <p>Implied volatility also varies with maturity for a fixed moneyness - the <em>term structure</em> of implied volatility. Together, the smile/skew across strikes and the term structure across maturities define the full <em>implied volatility surface</em> $\sigma_{\text{imp}}(K,T)$, which is the subject of the next chapter.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Term Structure Patterns</div>
-                    <p><strong>Upward-sloping (contango):</strong> typical in calm markets — short-dated implied volatility is low (reflecting low near-term realized volatility) and rises toward a longer-run average level.</p>
-                    <p><strong>Inverted (backwardation):</strong> common during market stress — short-dated implied volatility spikes above longer-dated levels, reflecting acute near-term uncertainty (e.g., around earnings announcements, macro events, or market crashes) that is expected to subside.</p>
-                    <p class="mb-0"><strong>Mean reversion:</strong> volatility term structure tends to mean-revert — very high or very low short-dated implied volatility tends to be a transient deviation from a longer-run level, which is itself relatively stable over time (though it does drift across volatility regimes).</p>
+                    <div class="math-box-label">Remark - Term Structure Patterns</div>
+                    <p><strong>Upward-sloping (contango):</strong> typical in calm markets - short-dated implied volatility is low (reflecting low near-term realized volatility) and rises toward a longer-run average level.</p>
+                    <p><strong>Inverted (backwardation):</strong> common during market stress - short-dated implied volatility spikes above longer-dated levels, reflecting acute near-term uncertainty (e.g., around earnings announcements, macro events, or market crashes) that is expected to subside.</p>
+                    <p class="mb-0"><strong>Mean reversion:</strong> volatility term structure tends to mean-revert - very high or very low short-dated implied volatility tends to be a transient deviation from a longer-run level, which is itself relatively stable over time (though it does drift across volatility regimes).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Why the Black-Scholes Assumptions Fail</h2>
@@ -144,10 +144,10 @@
                 <p>The existence of a non-flat, time-varying implied volatility surface is direct empirical evidence that the Black-Scholes assumption of constant volatility does not hold. Several of the model's other assumptions are also routinely violated in practice.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Empirical Failures of Black-Scholes</div>
+                    <div class="math-box-label">Remark - Empirical Failures of Black-Scholes</div>
                     <p><strong>Volatility is stochastic, not constant:</strong> realized volatility varies through time and exhibits clustering (volatile periods are followed by more volatile periods) and mean reversion. Stochastic volatility models (e.g. Heston) and local volatility models (Dupire) are used to better capture the smile.</p>
-                    <p><strong>Returns are not lognormal:</strong> empirical return distributions exhibit fat tails (excess kurtosis) and negative skewness, especially over short horizons — large moves (in either direction, but especially down) occur far more often than a normal distribution predicts. Jump-diffusion models add discontinuous jumps to the GBM process to capture this.</p>
-                    <p><strong>Markets are not frictionless:</strong> transaction costs, bid-ask spreads, discrete trading, and finite liquidity mean that continuous, costless delta hedging — the foundation of the replication argument — is an idealization. Real hedging incurs costs and tracking error.</p>
+                    <p><strong>Returns are not lognormal:</strong> empirical return distributions exhibit fat tails (excess kurtosis) and negative skewness, especially over short horizons - large moves (in either direction, but especially down) occur far more often than a normal distribution predicts. Jump-diffusion models add discontinuous jumps to the GBM process to capture this.</p>
+                    <p><strong>Markets are not frictionless:</strong> transaction costs, bid-ask spreads, discrete trading, and finite liquidity mean that continuous, costless delta hedging - the foundation of the replication argument - is an idealization. Real hedging incurs costs and tracking error.</p>
                     <p class="mb-0"><strong>Despite this, the model remains indispensable</strong> as a quoting convention and a benchmark: implied volatility is a standardized way to compare option prices across strikes, maturities, and underlyings, even though no single volatility number is "correct" in the Black-Scholes sense. Practitioners use Black-Scholes as the common language while relying on more sophisticated models for actual risk management and pricing of exotic payoffs.</p>
                 </div>
 

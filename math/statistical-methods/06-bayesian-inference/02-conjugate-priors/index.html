@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,14 +128,14 @@
                 <p>A <strong>conjugate prior</strong> is one for which the posterior belongs to the same parametric family as the prior. Conjugacy yields closed-form posteriors and often admits intuitive interpretations of the hyperparameters as "pseudo-observations."</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.2.1 — Conjugate Family</div>
+                    <div class="math-box-label">Definition 6.2.1 - Conjugate Family</div>
                     <p class="mb-0">A family of priors $\mathcal{P}$ is <strong>conjugate</strong> to a likelihood family $\{p(x\mid\theta)\}$ if for every prior $p(\theta) \in \mathcal{P}$ and every observed $x$, the posterior $p(\theta \mid x) \in \mathcal{P}$.</p>
                 </div>
 
                 <h2 class="mt-5">Beta-Binomial Model</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.2 — Beta-Binomial Conjugacy</div>
+                    <div class="math-box-label">Theorem 6.2.2 - Beta-Binomial Conjugacy</div>
                     <p>Let $X \mid \theta \sim \mathrm{Bin}(n,\theta)$ and $\theta \sim \mathrm{Beta}(\alpha,\beta)$. Then
                     $$\theta \mid X = x \sim \mathrm{Beta}(\alpha + x,\; \beta + n - x).$$</p>
                     <p class="mb-0">The prior hyperparameters $\alpha$ and $\beta$ act as pseudo-successes and pseudo-failures. The posterior mean is $(\alpha+x)/(\alpha+\beta+n)$, a weighted average of the prior mean $\alpha/(\alpha+\beta)$ and the MLE $x/n$. As $n\to\infty$, the posterior mean converges to the MLE.</p>
@@ -144,7 +144,7 @@
                 <h2 class="mt-5">Normal-Normal Model (Known $\sigma^2$)</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.3 — Normal-Normal Conjugacy</div>
+                    <div class="math-box-label">Theorem 6.2.3 - Normal-Normal Conjugacy</div>
                     <p>Let $X_1,\ldots,X_n \mid \mu \stackrel{\text{iid}}{\sim} N(\mu, \sigma^2)$ with $\sigma^2$ known, and $\mu \sim N(\mu_0, \tau_0^2)$. Then
                     $$\mu \mid \mathbf{x} \sim N(\mu_n, \tau_n^2), \quad \text{where}$$
                     $$\frac{1}{\tau_n^2} = \frac{1}{\tau_0^2} + \frac{n}{\sigma^2}, \qquad \mu_n = \tau_n^2\!\left(\frac{\mu_0}{\tau_0^2} + \frac{n\bar{x}}{\sigma^2}\right).$$</p>
@@ -154,7 +154,7 @@
                 <h2 class="mt-5">Gamma-Poisson Model</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.4 — Gamma-Poisson Conjugacy</div>
+                    <div class="math-box-label">Theorem 6.2.4 - Gamma-Poisson Conjugacy</div>
                     <p class="mb-0">Let $X_1,\ldots,X_n \mid \lambda \stackrel{\text{iid}}{\sim} \mathrm{Poisson}(\lambda)$ and $\lambda \sim \mathrm{Gamma}(a, b)$ (shape $a$, rate $b$). Then
                     $$\lambda \mid \mathbf{x} \sim \mathrm{Gamma}\!\left(a + \sum_{i=1}^n x_i,\; b + n\right).$$
                     The posterior mean is $(a + \sum x_i)/(b+n)$. The prior acts as $b$ pseudo-observations with total count $a$.</p>
@@ -163,7 +163,7 @@
                 <h2 class="mt-5">Dirichlet-Multinomial Model</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.5 — Dirichlet-Multinomial Conjugacy</div>
+                    <div class="math-box-label">Theorem 6.2.5 - Dirichlet-Multinomial Conjugacy</div>
                     <p class="mb-0">Let $\mathbf{X} \mid \boldsymbol{\pi} \sim \mathrm{Multinomial}(n, \boldsymbol{\pi})$ over $k$ categories and $\boldsymbol{\pi} \sim \mathrm{Dirichlet}(\boldsymbol{\alpha})$. Then
                     $$\boldsymbol{\pi} \mid \mathbf{x} \sim \mathrm{Dirichlet}(\alpha_1+x_1, \ldots, \alpha_k+x_k).$$
                     The Dirichlet is the multivariate generalisation of the Beta; setting all $\alpha_j = 1$ gives a uniform prior over the simplex.</p>
@@ -172,10 +172,10 @@
                 <h2 class="mt-5">Exponential Family and Conjugacy</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 6.2.6 — Conjugate Priors for the Exponential Family</div>
+                    <div class="math-box-label">Proposition 6.2.6 - Conjugate Priors for the Exponential Family</div>
                     <p>Every member of the exponential family $p(x\mid\boldsymbol{\eta}) = h(x)\exp(\boldsymbol{\eta}^\top T(x) - A(\boldsymbol{\eta}))$ has a natural conjugate prior
                     $$p(\boldsymbol{\eta} \mid \boldsymbol{\chi}, \nu) \propto \exp(\boldsymbol{\eta}^\top\boldsymbol{\chi} - \nu A(\boldsymbol{\eta})),$$</p>
-                    <p class="mb-0">where $\nu > 0$ and $\boldsymbol{\chi}$ are hyperparameters. After observing $n$ i.i.d.\ observations with sufficient statistic $\sum T(x_i)$, the posterior hyperparameters update to $\boldsymbol{\chi}' = \boldsymbol{\chi} + \sum T(x_i)$ and $\nu' = \nu + n$ — a simple additive update regardless of the specific family.</p>
+                    <p class="mb-0">where $\nu > 0$ and $\boldsymbol{\chi}$ are hyperparameters. After observing $n$ i.i.d.\ observations with sufficient statistic $\sum T(x_i)$, the posterior hyperparameters update to $\boldsymbol{\chi}' = \boldsymbol{\chi} + \sum T(x_i)$ and $\nu' = \nu + n$ - a simple additive update regardless of the specific family.</p>
                 </div>
 
                 <hr class="my-5">

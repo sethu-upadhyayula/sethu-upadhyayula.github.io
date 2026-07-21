@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -55,33 +55,33 @@
 
                 <h2 class="mt-5 mb-3">Basic QR Iteration</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Basic QR Iteration</div>
+                    <div class="math-box-label">Definition - Basic QR Iteration</div>
                     <p>Set $A_0 = A$. At each step, compute the QR factorisation $A_k = Q_k R_k$ and form the reversed product:
                     $$A_{k+1} = R_k Q_k = Q_k^T A_k Q_k.$$</p>
-                    <p class="mb-0">Since $A_{k+1}$ is orthogonally similar to $A_k$, all iterates share the same eigenvalues. The sequence $A_k$ converges (under mild conditions) to the real Schur form — an upper quasi-triangular matrix with 1×1 and 2×2 diagonal blocks whose eigenvalues are the eigenvalues of $A$.</p>
+                    <p class="mb-0">Since $A_{k+1}$ is orthogonally similar to $A_k$, all iterates share the same eigenvalues. The sequence $A_k$ converges (under mild conditions) to the real Schur form - an upper quasi-triangular matrix with 1×1 and 2×2 diagonal blocks whose eigenvalues are the eigenvalues of $A$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Convergence of Basic QR</div>
+                    <div class="math-box-label">Theorem - Convergence of Basic QR</div>
                     <p class="mb-0">If $A$ is diagonalisable with $|\lambda_1| > |\lambda_2| > \cdots > |\lambda_n|$, then the subdiagonal entries satisfy $(A_k)_{ij} \to 0$ for $i > j$ as $k\to\infty$, and the convergence rate of $(A_k)_{j+1,j}$ is $|\lambda_{j+1}/\lambda_j|^k$. Thus well-separated eigenvalues give fast convergence.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Hessenberg Reduction</h2>
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Reduction to Hessenberg Form</div>
+                    <div class="math-box-label">Proposition - Reduction to Hessenberg Form</div>
                     <p class="mb-0">Before running QR iteration, reduce $A$ to upper Hessenberg form $H = Q^T A Q$ (zeros below the first subdiagonal) using $n-2$ Householder reflections. This costs $O(n^3)$ once and is exact (up to rounding). The QR factorisation of a Hessenberg matrix costs only $O(n^2)$ per step (instead of $O(n^3)$), so the full algorithm runs in $O(n^3)$ total for $O(n)$ QR steps. Hessenberg form is preserved by QR iteration.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Shifts and the Francis Double-Shift</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Shifted QR and Francis Double Shift</div>
+                    <div class="math-box-label">Definition - Shifted QR and Francis Double Shift</div>
                     <p>A <strong>shift</strong> $\sigma$ accelerates convergence: perform QR on $A_k - \sigma I$ and add back: $A_{k+1} = R_k Q_k + \sigma I$. The bottom-right eigenvalue converges fastest when $\sigma \approx \lambda_n$.</p>
                     <p class="mb-0">The <strong>Francis double-shift</strong> (implicit QR) works with the complex conjugate pair of shifts $\sigma, \bar{\sigma}$ simultaneously without leaving the reals. It applies a bulge-chasing algorithm entirely in real arithmetic, making one implicit double-step equivalent to two shifted QR steps. This is the algorithm implemented in LAPACK's <tt>DHSEQR</tt>.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Convergence and Complexity</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Complexity of Practical QR</div>
+                    <div class="math-box-label">Theorem - Complexity of Practical QR</div>
                     <p class="mb-0">The practical QR algorithm (Hessenberg reduction + implicit double-shift QR) computes all eigenvalues of an $n\times n$ real matrix in $O(n^3)$ flops. Computing the full Schur decomposition (eigenvectors) costs approximately $10n^3$ flops. The algorithm is backward stable: the computed Schur form is the exact Schur form of $A + E$ where $\|E\|_2 \lesssim n\varepsilon_{\text{mach}}\|A\|_2$.</p>
                 </div>
 

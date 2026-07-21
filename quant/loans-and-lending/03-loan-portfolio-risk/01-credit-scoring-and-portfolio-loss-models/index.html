@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -85,30 +85,30 @@
 
                 <h2 class="mt-5 mb-3">Credit Scoring</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Logistic Scorecard</div>
-                    <p class="mb-0">A credit scorecard maps a vector of borrower characteristics $x = (x_1,\dots,x_k)$ — income, debt-to-income ratio, credit history length, utilisation, employment status — to a probability of default via a logistic regression:
+                    <div class="math-box-label">Definition - Logistic Scorecard</div>
+                    <p class="mb-0">A credit scorecard maps a vector of borrower characteristics $x = (x_1,\dots,x_k)$ - income, debt-to-income ratio, credit history length, utilisation, employment status - to a probability of default via a logistic regression:
                     $$PD(x) = \frac{1}{1+e^{-(\beta_0 + \beta_1 x_1 + \cdots + \beta_k x_k)}}$$
                     The linear combination $z = \beta_0 + \sum_i \beta_i x_i$ is the <em>credit score</em> (often rescaled to a points-based scale, e.g. FICO's 300-850 range, via a linear transformation of $z$). Scorecards are calibrated on historical data by maximum likelihood, and validated using discriminatory power metrics such as the Gini coefficient or KS statistic, which measure how well the score separates defaulters from non-defaulters.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Through-the-Cycle vs Point-in-Time PD</div>
-                    <p class="mb-0">A <em>point-in-time</em> (PIT) PD reflects current economic conditions and moves with the cycle — rising in recessions. A <em>through-the-cycle</em> (TTC) PD is a long-run average that is relatively stable across the cycle. Regulatory capital under Basel often uses TTC PDs (to avoid procyclical capital requirements), while IFRS 9 expected credit loss provisioning requires PIT, forward-looking PDs that incorporate macroeconomic scenarios.</p>
+                    <div class="math-box-label">Remark - Through-the-Cycle vs Point-in-Time PD</div>
+                    <p class="mb-0">A <em>point-in-time</em> (PIT) PD reflects current economic conditions and moves with the cycle - rising in recessions. A <em>through-the-cycle</em> (TTC) PD is a long-run average that is relatively stable across the cycle. Regulatory capital under Basel often uses TTC PDs (to avoid procyclical capital requirements), while IFRS 9 expected credit loss provisioning requires PIT, forward-looking PDs that incorporate macroeconomic scenarios.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Portfolio Expected Loss</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Portfolio Expected Loss</div>
+                    <div class="math-box-label">Definition - Portfolio Expected Loss</div>
                     <p class="mb-0">For a portfolio of $N$ loans with exposures $EAD_i$, default probabilities $PD_i$, and loss-given-default $LGD_i$, the portfolio expected loss is simply the sum of individual expected losses (expectation is linear, so correlation does not matter for the mean):
                     $$EL_{\text{portfolio}} = \sum_{i=1}^{N} PD_i \times LGD_i \times EAD_i$$
                     This is the loss a lender should expect to incur "on average" and is typically covered by loan pricing (the credit spread) and loss provisions, not by capital.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Portfolio Loss Distribution and the Vasicek Model</h2>
-                <p>Unexpected loss — the amount by which actual losses might exceed the expectation in a bad year — depends critically on default correlation. The single-factor Gaussian copula (Vasicek) model, introduced briefly in Section 1.3 for regulatory capital, provides a tractable closed-form for the portfolio loss distribution in the limit of a large, granular portfolio.</p>
+                <p>Unexpected loss - the amount by which actual losses might exceed the expectation in a bad year - depends critically on default correlation. The single-factor Gaussian copula (Vasicek) model, introduced briefly in Section 1.3 for regulatory capital, provides a tractable closed-form for the portfolio loss distribution in the limit of a large, granular portfolio.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Vasicek Large Portfolio Loss Distribution</div>
+                    <div class="math-box-label">Theorem - Vasicek Large Portfolio Loss Distribution</div>
                     <p>Assume a large homogeneous portfolio where each obligor's asset return is $A_i = \sqrt{\rho}\,M + \sqrt{1-\rho}\,\epsilon_i$, with $M,\epsilon_i \sim N(0,1)$ i.i.d., $\rho$ the asset correlation, and obligor $i$ defaults if $A_i < \Phi^{-1}(PD)$. Conditional on the systematic factor $M$, defaults are independent, and as $N \to \infty$ the portfolio default rate converges to:
                     $$L(M) = \Phi\!\left(\frac{\Phi^{-1}(PD) - \sqrt{\rho}\,M}{\sqrt{1-\rho}}\right)$$
                     The cumulative distribution function of the portfolio loss rate $L$ is:
@@ -117,16 +117,16 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — 99.9% Loss Quantile</div>
+                    <div class="math-box-label">Example - 99.9% Loss Quantile</div>
                     <p>Take $PD = 1.5\%$ and asset correlation $\rho = 0.15$ (a typical value for retail mortgage exposures under Basel). Then $\Phi^{-1}(PD) = \Phi^{-1}(0.015) \approx -2.17$ and $\Phi^{-1}(0.999) \approx 3.09$.</p>
                     <p>$$\ell_{99.9\%} = \Phi\!\left(\frac{-2.17 + \sqrt{0.15}\times 3.09}{\sqrt{0.85}}\right) = \Phi\!\left(\frac{-2.17+1.197}{0.922}\right) = \Phi(-1.055) \approx 14.6\%$$</p>
-                    <p class="mb-0">So in a 1-in-1000 bad year, roughly 14.6% of the portfolio is expected to default — nearly ten times the average PD of 1.5%. The gap between $\ell_{99.9\%}$ and $PD$, scaled by LGD and EAD, is the unexpected loss that risk capital must cover.</p>
+                    <p class="mb-0">So in a 1-in-1000 bad year, roughly 14.6% of the portfolio is expected to default - nearly ten times the average PD of 1.5%. The gap between $\ell_{99.9\%}$ and $PD$, scaled by LGD and EAD, is the unexpected loss that risk capital must cover.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Concentration Risk</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Name and Sector Concentration</div>
-                    <p class="mb-0">The Vasicek formula assumes a granular portfolio of many small, independent-conditional exposures. Real portfolios deviate from this in two ways. <strong>Name concentration</strong> arises when a few large exposures dominate the portfolio — a single large default can move the loss distribution materially, an effect captured by granularity adjustments to the IRB formula. <strong>Sector/geographic concentration</strong> arises when the single systematic factor $M$ is too coarse — a multi-factor model is needed when borrowers' fortunes are tied to different industries or regions with imperfect correlation to each other. Both forms of concentration increase the tail of the loss distribution beyond what the single-factor model predicts, and are managed via concentration limits, sector caps, and multi-factor economic capital models.</p>
+                    <div class="math-box-label">Remark - Name and Sector Concentration</div>
+                    <p class="mb-0">The Vasicek formula assumes a granular portfolio of many small, independent-conditional exposures. Real portfolios deviate from this in two ways. <strong>Name concentration</strong> arises when a few large exposures dominate the portfolio - a single large default can move the loss distribution materially, an effect captured by granularity adjustments to the IRB formula. <strong>Sector/geographic concentration</strong> arises when the single systematic factor $M$ is too coarse - a multi-factor model is needed when borrowers' fortunes are tied to different industries or regions with imperfect correlation to each other. Both forms of concentration increase the tail of the loss distribution beyond what the single-factor model predicts, and are managed via concentration limits, sector caps, and multi-factor economic capital models.</p>
                 </div>
 
                 <hr class="my-5">

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,11 +81,11 @@
             <article>
                 <h1 class="text-accent mb-4">1.3 Default Modelling</h1>
 
-                <p>Credit risk has three fundamental components: the Probability of Default (PD), the Loss Given Default (LGD), and the Exposure at Default (EAD). These combine to give Expected Loss — the central quantity in credit portfolio management, loan loss provisioning, and regulatory capital under Basel III/IV.</p>
+                <p>Credit risk has three fundamental components: the Probability of Default (PD), the Loss Given Default (LGD), and the Exposure at Default (EAD). These combine to give Expected Loss - the central quantity in credit portfolio management, loan loss provisioning, and regulatory capital under Basel III/IV.</p>
 
                 <h2 class="mt-5 mb-3">Expected Loss Framework</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Expected Loss</div>
+                    <div class="math-box-label">Definition - Expected Loss</div>
                     <p>$$EL = PD \times LGD \times EAD$$
                     where:
                     <ul class="mb-0">
@@ -99,7 +99,7 @@
                 <p>Merton (1974) treats the firm's equity as a call option on its assets. Default occurs when the asset value falls below the face value of debt at maturity, establishing a rigorous link between capital structure and credit risk.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Merton Model (1974)</div>
+                    <div class="math-box-label">Theorem - Merton Model (1974)</div>
                     <p>Let firm asset value $V_t$ follow geometric Brownian motion under the risk-neutral measure:
                     $$dV_t = r V_t\,dt + \sigma_V V_t\,dW_t$$
                     Debt has face value $F$ due at time $T$. By put-call parity on the assets, equity value is:
@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Distance to Default</div>
+                    <div class="math-box-label">Remark - Distance to Default</div>
                     <p class="mb-0">The quantity $d_2$ is called the <em>distance to default</em>: it measures how many standard deviations of asset returns separate the current asset level from the default barrier. Moody's KMV extended this concept to a commercial PD model by mapping $d_2$ to empirical default frequencies using a large historical database of firm defaults.</p>
                 </div>
 
@@ -119,7 +119,7 @@
                 <p>Structural models require asset value observation, which is not directly available for private borrowers. Reduced-form models instead specify a stochastic default intensity (hazard rate) directly in terms of observable quantities.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Hazard Rate and Survival Probability</div>
+                    <div class="math-box-label">Definition - Hazard Rate and Survival Probability</div>
                     <p>Let $\tau$ be the default time. The hazard rate $\lambda(t)$ is the instantaneous conditional default intensity:
                     $$P(\tau \in [t, t+dt]\,|\,\tau > t) = \lambda(t)\,dt$$
                     The survival probability (probability of no default up to time $T$) is:
@@ -128,7 +128,7 @@
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Risky Bond Pricing and Spread-Hazard Relationship</div>
+                    <div class="math-box-label">Definition - Risky Bond Pricing and Spread-Hazard Relationship</div>
                     <p>A defaultable zero-coupon bond paying 1 at maturity (with zero recovery) has risk-neutral price:
                     $$P_{\text{risky}}(0,T) = e^{-(r+\lambda)T}$$
                     The hazard rate $\lambda$ acts as an additional discount rate for credit risk. With fractional recovery $R$ of face value at default:
@@ -138,7 +138,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Bootstrapping a Hazard Rate</div>
+                    <div class="math-box-label">Example - Bootstrapping a Hazard Rate</div>
                     <p>A 1-year corporate bond yields 5.5% against a 1-year OIS rate of 3.5%. Assumed recovery $R = 40\%$.
                     $$s = 5.5\% - 3.5\% = 2.0\%$$
                     $$\lambda = \frac{s}{1-R} = \frac{0.02}{0.60} = 3.33\% \text{ per year}$$
@@ -147,7 +147,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Basel IRB Capital Formula</div>
+                    <div class="math-box-label">Remark - Basel IRB Capital Formula</div>
                     <p class="mb-0">Under the Basel Internal Ratings-Based (IRB) approach, regulatory capital is based on the Vasicek single-factor model. Asset returns are $A_i = \sqrt{\rho}\,M + \sqrt{1-\rho}\,\epsilon_i$ where $M$ is a systematic factor and $\epsilon_i$ is idiosyncratic. At the 99.9% confidence level the conditional default rate is $\Phi\!\left(\frac{\Phi^{-1}(PD)-\sqrt{\rho}\,\Phi^{-1}(0.999)}{\sqrt{1-\rho}}\right)$, and capital $= LGD \times (CDR_{99.9\%} - PD) \times EAD$, capturing unexpected loss above expected loss.</p>
                 </div>
 

@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -131,7 +131,7 @@
                 <p>When studying multiple random variables simultaneously, we need the joint distribution. The key concepts are joint PDF/PMF, marginalisation, independence, and conditional distributions.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.3.1 — Joint PDF and PMF</div>
+                    <div class="math-box-label">Definition 4.3.1 - Joint PDF and PMF</div>
                     <p>For a pair $(X, Y)$:</p>
                     <ul>
                         <li><strong>Discrete:</strong> joint PMF $p(x,y) = P(X=x, Y=y)$; satisfies $\sum_x \sum_y p(x,y) = 1$.</li>
@@ -141,21 +141,21 @@
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.3.2 — Marginal Distributions</div>
+                    <div class="math-box-label">Definition 4.3.2 - Marginal Distributions</div>
                     <p class="mb-0">The <strong>marginal</strong> distributions of $X$ and $Y$ are obtained by integrating (or summing) out the other variable:
                     $$f_X(x) = \int_{-\infty}^\infty f(x,y)\,dy, \qquad f_Y(y) = \int_{-\infty}^\infty f(x,y)\,dx.$$
                     The marginals give the individual distributions of $X$ and $Y$, but do not fully describe their joint behaviour.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.3.3 — Independence</div>
+                    <div class="math-box-label">Definition 4.3.3 - Independence</div>
                     <p class="mb-0">$X$ and $Y$ are <strong>independent</strong> if and only if their joint density (or PMF) factorises:
                     $$f(x,y) = f_X(x)\, f_Y(y) \quad \text{for all } x, y.$$
                     Equivalently, $P(X \in A, Y \in B) = P(X \in A)\, P(Y \in B)$ for all Borel sets $A, B$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.3.4 — Conditional Distribution</div>
+                    <div class="math-box-label">Definition 4.3.4 - Conditional Distribution</div>
                     <p class="mb-0">The <strong>conditional PDF</strong> of $Y$ given $X = x$ is
                     $$f_{Y|X}(y \mid x) = \frac{f(x,y)}{f_X(x)}, \quad f_X(x) > 0.$$
                     If $X$ and $Y$ are independent, $f_{Y|X}(y|x) = f_Y(y)$: knowing $X$ gives no information about $Y$.</p>
@@ -164,14 +164,14 @@
                 <h2 class="mt-5 mb-3">Multivariate Normal Distribution</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.3.5 — Multivariate Normal</div>
+                    <div class="math-box-label">Definition 4.3.5 - Multivariate Normal</div>
                     <p>A random vector $\mathbf{X} = (X_1, \ldots, X_d)^T$ follows the <strong>multivariate normal</strong> distribution $N(\boldsymbol{\mu}, \Sigma)$ with mean vector $\boldsymbol{\mu} \in \mathbb{R}^d$ and positive definite covariance matrix $\Sigma$ if its density is
                     $$f(\mathbf{x}) = \frac{1}{(2\pi)^{d/2}|\Sigma|^{1/2}} \exp\!\left(-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^T \Sigma^{-1}(\mathbf{x}-\boldsymbol{\mu})\right).$$</p>
                     <p class="mb-0">$\Sigma_{ij} = \text{Cov}(X_i, X_j)$. The bivariate normal with correlation $\rho$ has $\Sigma = \begin{pmatrix}\sigma_1^2 & \rho\sigma_1\sigma_2 \\ \rho\sigma_1\sigma_2 & \sigma_2^2\end{pmatrix}$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.3.6 — Properties of the Multivariate Normal</div>
+                    <div class="math-box-label">Theorem 4.3.6 - Properties of the Multivariate Normal</div>
                     <ul>
                         <li><strong>Marginals:</strong> Any sub-vector of a multivariate normal is multivariate normal. In particular, each $X_i \sim N(\mu_i, \Sigma_{ii})$.</li>
                         <li><strong>Linear combinations:</strong> $\mathbf{a}^T\mathbf{X} \sim N(\mathbf{a}^T\boldsymbol{\mu},\, \mathbf{a}^T\Sigma\mathbf{a})$ for any $\mathbf{a} \in \mathbb{R}^d$.</li>

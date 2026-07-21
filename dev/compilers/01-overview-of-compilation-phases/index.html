@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. Overview of Compilation Phases</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Compilers</a>
+                <hr>
+                <a href="../01-overview-of-compilation-phases/" class="text-decoration-none toc-chapter-link toc-active"><strong>1.</strong> Overview of Compilation Phases</a>
+                <a href="../02-lexical-analysis/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> Lexical Analysis</a>
+                <a href="../03-parsing/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Parsing</a>
+                <a href="../04-semantic-analysis-and-type-checking/" class="text-decoration-none toc-chapter-link"><strong>4.</strong> Semantic Analysis and Type Checking</a>
+                <a href="../05-intermediate-representations/" class="text-decoration-none toc-chapter-link"><strong>5.</strong> Intermediate Representations</a>
+                <a href="../06-code-optimization/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Code Optimization</a>
+                <a href="../07-code-generation/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Code Generation</a>
+                <a href="../08-interpreters-jit-compilation-and-runtime-systems/" class="text-decoration-none toc-chapter-link"><strong>8.</strong> Interpreters, JIT Compilation, and Runtime Systems</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">Compilers</a> ›
+                <span>1. Overview of Compilation Phases</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">1. Overview of Compilation Phases</h1>
+
+                <p>Translating source code into executable machine instructions is too large a task to perform in a single step — this chapter introduces the standard sequence of phases a compiler breaks that translation into, each covered in depth in a later chapter of this subject.</p>
+
+                <h2 class="mt-5 mb-3">The Front End, Middle End, and Back End</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">The Three Broad Stages</div>
+                    <ul class="mb-0">
+                        <li><strong>Front end</strong> — lexical analysis (Chapter 2), parsing (Chapter 3), and semantic analysis (Chapter 4); understands the source language and checks the program's validity.</li>
+                        <li><strong>Middle end</strong> — operates on an intermediate representation (Chapter 5), performing target-independent optimizations (Chapter 6).</li>
+                        <li><strong>Back end</strong> — code generation (Chapter 7), translating the (optimized) intermediate representation into instructions for a specific target architecture (Computer Architecture).</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Why Separate Front End from Back End</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — The Value of This Separation</div>
+                    <p class="mb-0">Structuring a compiler around a shared intermediate representation (Chapter 5) that decouples the front end from the back end means a single front end (for one source language) can target multiple back ends (different processor architectures), and a single back end can serve multiple front ends (different source languages) — avoiding the need to write a completely separate compiler for every combination of source language and target architecture.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Compilation versus Interpretation</h2>
+
+                <p>A <strong>compiler</strong> translates source code into a different, typically lower-level form (machine code, or an intermediate bytecode) before execution, while an <strong>interpreter</strong> directly executes source code (or a simple intermediate form) statement by statement, without a separate full translation step — a distinction covered further, along with hybrid approaches, in Chapter 8.</p>
+
+                <h2 class="mt-5 mb-3">The Symbol Table</h2>
+
+                <p>A <strong>symbol table</strong> is a data structure maintained throughout much of the compilation pipeline, recording every identifier (variable, function, type) declared in a program along with its scope, type, and other attributes — consulted and updated across parsing (Chapter 3), semantic analysis (Chapter 4), and code generation (Chapter 7), serving as shared, persistent bookkeeping across otherwise fairly independent compilation phases.</p>
+
+                <h2 class="mt-5 mb-3">Error Handling Across Phases</h2>
+
+                <p>Each compilation phase can, in principle, detect errors specific to its own concern — a lexical error (Chapter 2, an invalid character sequence), a syntax error (Chapter 3, tokens not forming a valid program structure), or a semantic error (Chapter 4, a type mismatch) — with a well-engineered compiler aiming to report as many genuine errors as possible in a single pass rather than stopping at the very first one encountered, to make the edit-compile-fix cycle covered in Chapter 7 of Software Engineering & Systems Design more efficient for the programmer.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; Back to Compilers</a>
+                    <a href="../02-lexical-analysis/" class="btn btn-custom">2. Lexical Analysis &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

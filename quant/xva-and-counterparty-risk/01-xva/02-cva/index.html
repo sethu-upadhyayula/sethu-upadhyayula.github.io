@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -85,7 +85,7 @@
 
                 <h2 class="mt-5 mb-3">Unilateral CVA Formula</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Unilateral CVA</div>
+                    <div class="math-box-label">Theorem - Unilateral CVA</div>
                     <p>Under the independence assumption (default time $\tau_C$ of the counterparty is independent of the trade's underlying risk factors), and assuming zero recovery $R_C = 0$, the unilateral CVA is:
                     $$\text{CVA} = -\mathbb{E}^Q\!\left[D(0,\tau_C)\,V^+(\tau_C)\,\mathbf{1}_{\{\tau_C \leq T\}}\right]$$
                     where $D(0,t) = e^{-\int_0^t r(s)\,ds}$ is the stochastic discount factor and $V^+(t) = \max(V(t),0)$ is the positive part of the portfolio value. Discretising over time steps:
@@ -95,7 +95,7 @@
 
                 <h2 class="mt-5 mb-3">CVA as Integral over EE Profile</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Continuous-Time CVA</div>
+                    <div class="math-box-label">Definition - Continuous-Time CVA</div>
                     <p>In continuous time, using the hazard rate $\lambda_C(t)$ of the counterparty:
                     $$\text{CVA} = (1-R_C)\int_0^T EE(t)\cdot P(0,t)\cdot \lambda_C(t)\cdot Q_C(t)\,dt$$
                     For a flat hazard rate ($\lambda_C(t) = \lambda_C$) and assuming $EE(t) \approx EPE$ (constant):
@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — CVA on an Interest Rate Swap</div>
+                    <div class="math-box-label">Example - CVA on an Interest Rate Swap</div>
                     <p>A bank has a 5-year receiver IRS with a corporate counterparty. The swap has EPE $\approx \$2.5\text{m}$ (approximately 2.5% of \$100m notional). The counterparty CDS spread is 150 bps, recovery 40%.</p>
                     <p>$\lambda_C = s_C / LGD = 0.015/0.6 = 2.5\%$ p.a. CDS Annuity $\approx 4.55$ years (5Y at 150 bps).</p>
                     $$\text{CVA} \approx (1-0.4) \times \$2.5\text{m} \times 0.015 \times 4.55 \approx \$102,375$$
@@ -113,16 +113,16 @@
 
                 <h2 class="mt-5 mb-3">Bilateral CVA</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Bilateral CVA (BCVA)</div>
+                    <div class="math-box-label">Definition - Bilateral CVA (BCVA)</div>
                     <p>Bilateral CVA recognises that both parties face default risk. Assuming independent default times $\tau_C$ (counterparty) and $\tau_B$ (bank):
                     $$\text{BCVA} = \text{CVA} - \text{DVA}$$
                     where:
                     $$\text{DVA} = (1-R_B)\sum_{k=1}^{n} ENE(t_k)\cdot P(0,t_k)\cdot [Q_B(t_{k-1}) - Q_B(t_k)]$$
-                    and $ENE(t_k) = \mathbb{E}[|\min(V(t_k),0)|]$ is the expected negative exposure. DVA is a gain to the bank from its own default (controversial — see next section). The BCVA is the net valuation adjustment that accounts for both parties' default risks.</p>
+                    and $ENE(t_k) = \mathbb{E}[|\min(V(t_k),0)|]$ is the expected negative exposure. DVA is a gain to the bank from its own default (controversial - see next section). The BCVA is the net valuation adjustment that accounts for both parties' default risks.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — CVA Hedging and the CVA Desk</div>
+                    <div class="math-box-label">Remark - CVA Hedging and the CVA Desk</div>
                     <p class="mb-0">Most major banks operate a dedicated CVA desk that centrally manages counterparty credit risk. The desk buys CDS protection on counterparties to hedge CVA sensitivity. The P&amp;L of the CVA desk is the difference between the CVA charged to the trading desk at inception and the actual hedging cost over the life of the trade. CVA is also a significant source of market risk: the "CVA VaR" or "CVA SVaR" capital charge under Basel III was one of the most contentious regulatory developments post-2008.</p>
                 </div>
 

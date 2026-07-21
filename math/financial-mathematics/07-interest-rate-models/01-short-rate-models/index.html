@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -51,7 +51,7 @@
 
                 <h2 class="mt-5 mb-3">Bond Pricing via Short Rate</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Bond Price</div>
+                    <div class="math-box-label">Definition - Bond Price</div>
                     <p class="mb-0">Under the risk-neutral measure $Q$:
                     $$P(t,T) = E^Q\!\left[\exp\!\left(-\int_t^T r_s\,ds\right)\bigg|\mathcal{F}_t\right].$$
                     The short rate $r_t$ evolves according to a specified SDE. For <strong>affine models</strong>, the bond price takes the form $P(t,T) = e^{A(t,T) - B(t,T)r_t}$ with deterministic functions $A$, $B$ satisfying Riccati ODEs.</p>
@@ -59,30 +59,30 @@
 
                 <h2 class="mt-5 mb-3">Vasicek Model</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Vasicek Model</div>
+                    <div class="math-box-label">Definition - Vasicek Model</div>
                     <p>$$dr_t = \kappa(\theta - r_t)\,dt + \sigma\,dW_t.$$
                     Mean-reverting Ornstein-Uhlenbeck process; long-run level $\theta$, speed of mean reversion $\kappa$, vol $\sigma$.</p>
-                    <p>Explicit solution: $r_t = r_0\,e^{-\kappa t} + \theta(1-e^{-\kappa t}) + \sigma\int_0^t e^{-\kappa(t-s)}\,dW_s$. The rate is normally distributed (can go negative — a limitation).</p>
+                    <p>Explicit solution: $r_t = r_0\,e^{-\kappa t} + \theta(1-e^{-\kappa t}) + \sigma\int_0^t e^{-\kappa(t-s)}\,dW_s$. The rate is normally distributed (can go negative - a limitation).</p>
                     <p class="mb-0">Affine bond price: $P(t,T) = e^{A(\tau) - B(\tau)r_t}$ where $\tau = T-t$,
                     $$B(\tau) = \frac{1-e^{-\kappa\tau}}{\kappa}, \quad A(\tau) = \left(\theta - \frac{\sigma^2}{2\kappa^2}\right)(B(\tau)-\tau) - \frac{\sigma^2 B(\tau)^2}{4\kappa}.$$</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">CIR Model</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Cox-Ingersoll-Ross (CIR) Model</div>
+                    <div class="math-box-label">Definition - Cox-Ingersoll-Ross (CIR) Model</div>
                     <p class="mb-0">$$dr_t = \kappa(\theta - r_t)\,dt + \sigma\sqrt{r_t}\,dW_t.$$
                     The $\sqrt{r_t}$ diffusion ensures $r_t \ge 0$ provided $2\kappa\theta \ge \sigma^2$ (Feller condition). The distribution of $r_t$ is non-central chi-squared. Affine bond price with similar $A(\tau), B(\tau)$ to Vasicek but involving exponential and hyperbolic functions. Closed-form cap/floor formulas exist.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Hull-White Extended Vasicek</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Hull-White Model</div>
+                    <div class="math-box-label">Definition - Hull-White Model</div>
                     <p class="mb-0">$$dr_t = (\theta(t) - \kappa r_t)\,dt + \sigma\,dW_t.$$
                     The time-dependent $\theta(t)$ is calibrated to fit the observed initial yield curve exactly. Since $\theta(t)$ can be computed analytically from the market discount curve, Hull-White is a no-arbitrage model that prices plain-vanilla bonds correctly by construction. European bond options and caps/floors have closed-form prices.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Comparison</div>
+                    <div class="math-box-label">Remark - Comparison</div>
                     <table class="table table-bordered table-sm small mt-2">
                         <thead><tr><th>Model</th><th>Negative rates?</th><th>Calibrate to curve?</th><th>Bond option formula</th></tr></thead>
                         <tbody>
@@ -91,7 +91,7 @@
                             <tr><td>Hull-White</td><td>Yes</td><td>Yes</td><td>Yes (normal)</td></tr>
                         </tbody>
                     </table>
-                    <p class="mb-0">All three are single-factor models: the entire term structure is driven by one Brownian motion, so yield changes at all maturities are perfectly correlated — unrealistic for practice.</p>
+                    <p class="mb-0">All three are single-factor models: the entire term structure is driven by one Brownian motion, so yield changes at all maturities are perfectly correlated - unrealistic for practice.</p>
                 </div>
 
                 <hr class="my-5">

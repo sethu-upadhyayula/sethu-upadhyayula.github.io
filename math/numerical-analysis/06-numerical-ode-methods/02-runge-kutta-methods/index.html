@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -55,7 +55,7 @@
 
                 <h2 class="mt-5 mb-3">RK2: Heun's Method</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Heun's Method (Explicit Trapezoid)</div>
+                    <div class="math-box-label">Definition - Heun's Method (Explicit Trapezoid)</div>
                     <p class="mb-0">$$k_1 = h\,f(t_n, y_n), \qquad k_2 = h\,f(t_n+h,\; y_n+k_1),$$
                     $$y_{n+1} = y_n + \tfrac{1}{2}(k_1+k_2).$$
                     This is the <strong>explicit trapezoidal rule</strong>. It has LTE $O(h^2)$ and global error $O(h^2)$, hence is <strong>second order</strong>.</p>
@@ -63,7 +63,7 @@
 
                 <h2 class="mt-5 mb-3">The Classical RK4 Method</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Classical Fourth-Order Runge-Kutta</div>
+                    <div class="math-box-label">Definition - Classical Fourth-Order Runge-Kutta</div>
                     <p>$$k_1 = h\,f(t_n,\,y_n),$$
                     $$k_2 = h\,f\!\left(t_n+\tfrac{h}{2},\;y_n+\tfrac{k_1}{2}\right),$$
                     $$k_3 = h\,f\!\left(t_n+\tfrac{h}{2},\;y_n+\tfrac{k_2}{2}\right),$$
@@ -74,7 +74,7 @@
 
                 <h2 class="mt-5 mb-3">Butcher Tableau Notation</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Butcher Tableau</div>
+                    <div class="math-box-label">Definition - Butcher Tableau</div>
                     <p>An $s$-stage explicit RK method is defined by the tableau
                     $$\begin{array}{c|c} \mathbf{c} & A \\ \hline & \mathbf{b}^T \end{array}$$
                     where $A = (a_{ij})$ is strictly lower triangular (explicit), $\mathbf{c}$ are the stage abscissae, and $\mathbf{b}$ are the output weights. The stage values are:
@@ -84,13 +84,13 @@
 
                 <h2 class="mt-5 mb-3">Order Conditions</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Butcher's Order Conditions</div>
+                    <div class="math-box-label">Theorem - Butcher's Order Conditions</div>
                     <p class="mb-0">A RK method has order $p$ iff it satisfies a system of algebraic equations indexed by rooted trees of order $\le p$. There are 1, 1, 2, 4, 9, 20, 51, \ldots conditions at orders 1, 2, 3, 4, 5, 6, 7, \ldots. For $p \ge 5$, more stages are required than $p$ (the minimum number of stages for order 5 is 6). RK4 satisfies all $1+1+2+4 = 8$ conditions at orders 1-4 using exactly 4 stages.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Embedded Methods and Adaptive Step Control</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Embedded Runge-Kutta Pair</div>
+                    <div class="math-box-label">Definition - Embedded Runge-Kutta Pair</div>
                     <p>An <strong>embedded pair</strong> provides two solutions of order $p$ and $\hat{p} = p+1$ (or $p-1$) using the same stage values. The difference $e_{n+1} = \hat{y}_{n+1} - y_{n+1}$ estimates the local error.</p>
                     <p class="mb-0">The <strong>Dormand-Prince RK45</strong> pair (the basis of MATLAB's <tt>ode45</tt>) has 6 stages, order 5 primary and order 4 embedded. The step is controlled by:
                     $$h_{\text{new}} = h \cdot \left(\frac{\text{tol}}{\|e_{n+1}\|}\right)^{1/5}$$
@@ -98,7 +98,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Dormand-Prince Butcher Tableau (abridged)</div>
+                    <div class="math-box-label">Example - Dormand-Prince Butcher Tableau (abridged)</div>
                     <p class="mb-0">The 7-stage (FSAL) tableau has $c = (0, 1/5, 3/10, 4/5, 8/9, 1, 1)^T$. The 5th-order weights $b$ and 4th-order weights $\hat{b}$ share all stage evaluations; the last stage of one step is the first of the next (FSAL: first-same-as-last), reducing the effective cost to 5 evaluations per step after the first.</p>
                 </div>
 

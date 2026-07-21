@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,14 +81,14 @@
             <article>
                 <h1 class="text-accent mb-4">3.1 Black-76 Model</h1>
 
-                <p>Most exchange-traded commodity options are written not on the spot commodity itself, but on a futures contract. A crude oil call option, for example, gives the holder the right to enter a long futures position at the strike price, not to buy a barrel of oil for physical delivery. This single feature — the underlying being a futures price rather than a spot price — is what makes the <strong>Black-76 model</strong> (also called the Black model) the standard pricing framework across commodity options markets.</p>
+                <p>Most exchange-traded commodity options are written not on the spot commodity itself, but on a futures contract. A crude oil call option, for example, gives the holder the right to enter a long futures position at the strike price, not to buy a barrel of oil for physical delivery. This single feature - the underlying being a futures price rather than a spot price - is what makes the <strong>Black-76 model</strong> (also called the Black model) the standard pricing framework across commodity options markets.</p>
 
                 <h2 class="mt-5 mb-3">The Futures Price as the Underlying</h2>
 
-                <p>Recall that the futures price $F(t,T)$ for delivery at $T$ already incorporates the cost-of-carry relationship to the spot price $S_t$: financing costs, storage costs, and convenience yield are all embedded in $F(t,T)$. An option on the futures contract therefore does not need to separately model these carry terms — they are already priced into the underlying.</p>
+                <p>Recall that the futures price $F(t,T)$ for delivery at $T$ already incorporates the cost-of-carry relationship to the spot price $S_t$: financing costs, storage costs, and convenience yield are all embedded in $F(t,T)$. An option on the futures contract therefore does not need to separately model these carry terms - they are already priced into the underlying.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Futures Price Dynamics under the Forward Measure</div>
+                    <div class="math-box-label">Definition - Futures Price Dynamics under the Forward Measure</div>
                     <p class="mb-0">Under the $T$-forward (or futures) measure $\mathbb{Q}^T$, the futures price $F(t,T)$ for a contract maturing at $T$ is a martingale: $\mathbb{E}^{\mathbb{Q}^T}[F(t_2,T) \mid \mathcal{F}_{t_1}] = F(t_1,T)$ for $t_1 < t_2 \le T$. Assuming $F(t,T)$ follows geometric Brownian motion with zero drift and constant volatility $\sigma$, $$dF(t,T) = \sigma F(t,T)\, dW_t^{\mathbb{Q}^T}.$$</p>
                 </div>
 
@@ -97,7 +97,7 @@
                 <h2 class="mt-5 mb-3">The Black-76 Formula</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Black-76 Pricing Formula</div>
+                    <div class="math-box-label">Theorem - Black-76 Pricing Formula</div>
                     <p>Consider a European call option with strike $K$ and maturity $T$ on a futures contract with current price $F = F(t,T)$, where the futures price has volatility $\sigma$ and $r$ is the continuously-compounded risk-free rate to maturity $T$. The price of the call is</p>
                     <p>$$c = e^{-rT}\left[F\,N(d_1) - K\,N(d_2)\right]$$</p>
                     <p>and the corresponding European put is</p>
@@ -111,7 +111,7 @@
                 <p>The derivation mirrors the Black-Scholes argument but is carried out under the $T$-forward measure, in which the discount bond $P(t,T)$ is the numéraire. Because $F(t,T)$ is a martingale under $\mathbb{Q}^T$ with zero drift, the call payoff $\max(F(T,T)-K,0) = \max(F_T - K, 0)$ has expected value (under $\mathbb{Q}^T$) given exactly by the Black-Scholes formula applied to a "stock" with current price $F$, zero dividend yield, and zero risk-free rate (since the drift is zero under this measure):</p>
 
                 <div class="math-box proof">
-                    <div class="math-box-label">Proof — Sketch via Change of Measure</div>
+                    <div class="math-box-label">Proof - Sketch via Change of Measure</div>
                     <p>The price of the call today is $c = P(t,T)\,\mathbb{E}^{\mathbb{Q}^T}\left[\max(F_T - K, 0)\right]$. Since $F_T = F\exp\left(-\frac{1}{2}\sigma^2 T + \sigma\sqrt{T}Z\right)$ for $Z \sim N(0,1)$ under $\mathbb{Q}^T$, the expectation $\mathbb{E}^{\mathbb{Q}^T}[\max(F_T-K,0)]$ is computed exactly as in the Black-Scholes derivation, yielding $F\,N(d_1) - K\,N(d_2)$ with $d_{1,2}$ as above.</p>
                     <p class="mb-0">Multiplying by the discount factor $P(t,T) = e^{-rT}$ (assuming a flat continuously-compounded rate) gives $c = e^{-rT}[F\,N(d_1) - K\,N(d_2)]$, as claimed. $\blacksquare$</p>
                 </div>
@@ -119,14 +119,14 @@
                 <h2 class="mt-5 mb-3">Put-Call Parity for Futures Options</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Put-Call Parity (Black-76)</div>
-                    <p class="mb-0">For European call and put options on the same futures contract with identical strike $K$ and maturity $T$: $$c - p = e^{-rT}(F - K).$$ This follows because a long call and short put with the same strike replicate a long forward position on the futures contract struck at $K$, whose value is $e^{-rT}(F-K)$ — the discounted difference between the current futures price and the strike, since entering a futures position itself requires no upfront payment.</p>
+                    <div class="math-box-label">Theorem - Put-Call Parity (Black-76)</div>
+                    <p class="mb-0">For European call and put options on the same futures contract with identical strike $K$ and maturity $T$: $$c - p = e^{-rT}(F - K).$$ This follows because a long call and short put with the same strike replicate a long forward position on the futures contract struck at $K$, whose value is $e^{-rT}(F-K)$ - the discounted difference between the current futures price and the strike, since entering a futures position itself requires no upfront payment.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Comparison with Black-Scholes</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Black-76 vs. Black-Scholes</div>
+                    <div class="math-box-label">Remark - Black-76 vs. Black-Scholes</div>
                     <p>The Black-Scholes formula for a European call on a non-dividend-paying stock is $c = S_0 N(d_1) - Ke^{-rT}N(d_2)$ with $d_{1,2} = \frac{\ln(S_0/K) + (r \pm \frac{1}{2}\sigma^2)T}{\sigma\sqrt{T}}$. Black-76 can be obtained from Black-Scholes by the substitution $S_0 \to F e^{-rT}$ (i.e., treating the futures price as if it were a forward price on a stock paying a continuous dividend yield equal to $r$, so that the prepaid forward price is $Fe^{-rT}$).</p>
                     <p class="mb-0">Practically, the advantage of Black-76 is that it requires only the observable futures price $F$, not the spot price $S_0$ together with carry assumptions ($r$, storage costs, convenience yield). Since futures prices trade liquidly and transparently while spot prices for many commodities are illiquid or non-existent as tradeable instruments, Black-76 sidesteps the need to model the spot-futures relationship explicitly when pricing options.</p>
                 </div>
@@ -134,7 +134,7 @@
                 <h2 class="mt-5 mb-3">Worked Example: Crude Oil Call Option</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Pricing a WTI Crude Oil Call</div>
+                    <div class="math-box-label">Example - Pricing a WTI Crude Oil Call</div>
                     <p>Consider a European call option on the WTI crude oil futures contract with the following parameters:</p>
                     <p>$F = \$80.00$ per barrel (current futures price), $K = \$85.00$ (strike), $T = 0.25$ years (3 months to expiry), $\sigma = 35\%$ (annualised implied volatility), $r = 5\%$ (continuously-compounded risk-free rate).</p>
                     <p>First compute $d_1$ and $d_2$:</p>
@@ -146,7 +146,7 @@
                     <p class="mb-0">$$c \approx 0.9876 \times 3.595 \approx \$3.55 \text{ per barrel}.$$</p>
                 </div>
 
-                <p>This call is out-of-the-money ($F < K$), so its value reflects purely time value driven by volatility — there is meaningful probability that the futures price will rise above $85 by expiry given a 35% annualised volatility over three months. Note that the discount factor $e^{-rT}$ plays a relatively minor role compared to the spread between $N(d_1)$ and $N(d_2)$, which captures the option's moneyness and the volatility-driven probability of exercise.</p>
+                <p>This call is out-of-the-money ($F < K$), so its value reflects purely time value driven by volatility - there is meaningful probability that the futures price will rise above $85 by expiry given a 35% annualised volatility over three months. Note that the discount factor $e^{-rT}$ plays a relatively minor role compared to the spread between $N(d_1)$ and $N(d_2)$, which captures the option's moneyness and the volatility-driven probability of exercise.</p>
 
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

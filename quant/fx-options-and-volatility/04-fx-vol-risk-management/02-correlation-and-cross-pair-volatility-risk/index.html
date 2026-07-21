@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,51 +81,51 @@
             <article>
                 <h1 class="text-accent mb-4">4.2 Correlation and Cross-Pair Volatility Risk</h1>
 
-                <p>Every FX rate is a relative price between two currencies, and any third currency provides a "cross" relationship: the EUR/USD rate, the USD/JPY rate, and the EUR/JPY rate are not independent quantities — EUR/JPY is, by construction, the product of EUR/USD and USD/JPY. This triangular structure means that the volatility surfaces of these three pairs are linked by a no-arbitrage relationship involving the <em>implied correlation</em> between EUR/USD and USD/JPY, making cross-pair consistency a distinct and important risk dimension for any desk trading more than one currency pair.</p>
+                <p>Every FX rate is a relative price between two currencies, and any third currency provides a "cross" relationship: the EUR/USD rate, the USD/JPY rate, and the EUR/JPY rate are not independent quantities - EUR/JPY is, by construction, the product of EUR/USD and USD/JPY. This triangular structure means that the volatility surfaces of these three pairs are linked by a no-arbitrage relationship involving the <em>implied correlation</em> between EUR/USD and USD/JPY, making cross-pair consistency a distinct and important risk dimension for any desk trading more than one currency pair.</p>
 
                 <h2 class="mt-5 mb-3">Triangular Relationships</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Triangular Rate Identity</div>
+                    <div class="math-box-label">Definition - Triangular Rate Identity</div>
                     <p class="mb-0">For three currencies A, B, C, the cross rate satisfies (with rates quoted as units of the second currency per unit of the first, i.e. A/B means "B per A"):</p>
                     $$S_{\text{A/C}} = S_{\text{A/B}} \times S_{\text{B/C}}$$
-                    <p class="mt-2 mb-0">For example, $S_{\text{EUR/JPY}} = S_{\text{EUR/USD}} \times S_{\text{USD/JPY}}$ — the EUR/JPY rate (JPY per EUR) equals the EUR/USD rate (USD per EUR) times the USD/JPY rate (JPY per USD). This identity must hold at every instant to preclude triangular arbitrage in spot.</p>
+                    <p class="mt-2 mb-0">For example, $S_{\text{EUR/JPY}} = S_{\text{EUR/USD}} \times S_{\text{USD/JPY}}$ - the EUR/JPY rate (JPY per EUR) equals the EUR/USD rate (USD per EUR) times the USD/JPY rate (JPY per USD). This identity must hold at every instant to preclude triangular arbitrage in spot.</p>
                 </div>
 
-                <p>Because EUR/JPY is the product of two other exchange rates, its variance is determined by the variances of EUR/USD and USD/JPY <em>and</em> their correlation — exactly as the variance of a product of two correlated random variables depends on the correlation between them.</p>
+                <p>Because EUR/JPY is the product of two other exchange rates, its variance is determined by the variances of EUR/USD and USD/JPY <em>and</em> their correlation - exactly as the variance of a product of two correlated random variables depends on the correlation between them.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Result — Cross-Rate Volatility and Implied Correlation</div>
+                    <div class="math-box-label">Result - Cross-Rate Volatility and Implied Correlation</div>
                     <p class="mb-0">To first order (for log-returns over a short horizon), if $x = \ln S_{\text{EUR/USD}}$ and $y = \ln S_{\text{USD/JPY}}$, then $\ln S_{\text{EUR/JPY}} = x + y$, and:</p>
                     $$\sigma_{\text{EUR/JPY}}^2 = \sigma_{\text{EUR/USD}}^2 + \sigma_{\text{USD/JPY}}^2 + 2\rho\,\sigma_{\text{EUR/USD}}\,\sigma_{\text{USD/JPY}}$$
-                    <p class="mt-2 mb-0">where $\rho$ is the correlation between log-returns of EUR/USD and USD/JPY. Given market-observable implied volatilities for all three pairs (EUR/USD, USD/JPY, EUR/JPY), this equation can be inverted to solve for an <em>implied correlation</em> $\rho$ — the correlation consistent with the three quoted volatility surfaces:</p>
+                    <p class="mt-2 mb-0">where $\rho$ is the correlation between log-returns of EUR/USD and USD/JPY. Given market-observable implied volatilities for all three pairs (EUR/USD, USD/JPY, EUR/JPY), this equation can be inverted to solve for an <em>implied correlation</em> $\rho$ - the correlation consistent with the three quoted volatility surfaces:</p>
                     $$\rho_{\text{implied}} = \frac{\sigma_{\text{EUR/JPY}}^2 - \sigma_{\text{EUR/USD}}^2 - \sigma_{\text{USD/JPY}}^2}{2\,\sigma_{\text{EUR/USD}}\,\sigma_{\text{USD/JPY}}}$$
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Sign Conventions and Inverted Pairs</div>
+                    <div class="math-box-label">Remark - Sign Conventions and Inverted Pairs</div>
                     <p class="mb-0">Care is needed with quoting conventions: if a pair is quoted in inverted form (e.g., JPY/USD instead of USD/JPY), the corresponding log-return changes sign, which flips the sign of the correlation term. The formula above is correct for the "chain" convention where the base currency of the second pair matches the quote currency of the first (EUR/USD then USD/JPY, chaining to EUR/JPY); if instead the natural market quote is USD/JPY but the chain requires JPY/USD, the implied correlation computed must account for this sign flip, or equivalently the relevant correlation is between EUR/USD and the <em>negative</em> of USD/JPY log-returns.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Cross-Pair Volatility Arbitrage and Consistency Conditions</h2>
 
-                <p>Each of the three pairs in a triangle (e.g., EUR/USD, USD/JPY, EUR/JPY) trades its own liquid vanilla options market with its own ATM, risk reversal, and butterfly quotes. The implied correlation $\rho_{\text{implied}}$ extracted from the three ATM volatilities is therefore an <em>output</em> of three independently-quoted markets, not an input — and there is no guarantee it stays within $[-1,1]$, or that it remains stable, or that it is consistent with historically realized correlation.</p>
+                <p>Each of the three pairs in a triangle (e.g., EUR/USD, USD/JPY, EUR/JPY) trades its own liquid vanilla options market with its own ATM, risk reversal, and butterfly quotes. The implied correlation $\rho_{\text{implied}}$ extracted from the three ATM volatilities is therefore an <em>output</em> of three independently-quoted markets, not an input - and there is no guarantee it stays within $[-1,1]$, or that it remains stable, or that it is consistent with historically realized correlation.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Implied Correlation Out of Bounds</div>
-                    <p class="mb-0">If the three quoted ATM volatilities are such that the formula above produces $|\rho_{\text{implied}}| > 1$, this signals an internal inconsistency among the three markets — at least one of the three implied volatilities is "out of line" relative to the other two, given any valid correlation. In practice this is rare for the most liquid triangles (EUR/USD, USD/JPY, EUR/JPY for the "EUR-USD-JPY" triangle) precisely because cross-pair arbitrage trading keeps the three markets mutually consistent, but it can occur transiently during periods of stress when one leg of the triangle is significantly less liquid or when a market dislocation affects one pair before the others reprice.</p>
+                    <div class="math-box-label">Remark - Implied Correlation Out of Bounds</div>
+                    <p class="mb-0">If the three quoted ATM volatilities are such that the formula above produces $|\rho_{\text{implied}}| > 1$, this signals an internal inconsistency among the three markets - at least one of the three implied volatilities is "out of line" relative to the other two, given any valid correlation. In practice this is rare for the most liquid triangles (EUR/USD, USD/JPY, EUR/JPY for the "EUR-USD-JPY" triangle) precisely because cross-pair arbitrage trading keeps the three markets mutually consistent, but it can occur transiently during periods of stress when one leg of the triangle is significantly less liquid or when a market dislocation affects one pair before the others reprice.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Detecting a Cross-Pair Dislocation</div>
+                    <div class="math-box-label">Example - Detecting a Cross-Pair Dislocation</div>
                     <p>Suppose the 1-month ATM volatilities are quoted as $\sigma_{\text{EUR/USD}} = 7.0\%$, $\sigma_{\text{USD/JPY}} = 9.0\%$, and $\sigma_{\text{EUR/JPY}} = 9.5\%$. Applying the formula:</p>
                     $$\rho_{\text{implied}} = \frac{9.5^2 - 7.0^2 - 9.0^2}{2 \times 7.0 \times 9.0} = \frac{90.25 - 49 - 81}{126} = \frac{-39.75}{126} \approx -0.32$$
                     <p>An implied correlation of $-0.32$ between EUR/USD and USD/JPY is economically plausible (historically these pairs have often shown mildly negative correlation, reflecting JPY's safe-haven behaviour against both USD and risk sentiment that also affects EUR). No dislocation is signalled.</p>
-                    <p class="mb-0">Now suppose EUR/JPY implied volatility spikes to $\sigma_{\text{EUR/JPY}} = 13.0\%$ while EUR/USD and USD/JPY volatilities remain unchanged (perhaps due to a EUR/JPY-specific flow imbalance). Recomputing: $\rho_{\text{implied}} = (169 - 49 - 81)/126 = 39/126 \approx +0.31$ — a swing from $-0.32$ to $+0.31$ implied correlation purely from one leg of the triangle repricing. If a trader believes the "true" correlation has not changed this dramatically, this is a signal that EUR/JPY volatility is rich relative to EUR/USD and USD/JPY — a cross-pair volatility arbitrage opportunity: sell EUR/JPY vol (e.g., via a straddle) and buy a correlation-replicating basket of EUR/USD and USD/JPY vol, position-sized so that the combined vega and correlation exposure is approximately neutral to small further moves in any single leg, profiting if the triangle's implied correlation reverts toward its more typical level.</p>
+                    <p class="mb-0">Now suppose EUR/JPY implied volatility spikes to $\sigma_{\text{EUR/JPY}} = 13.0\%$ while EUR/USD and USD/JPY volatilities remain unchanged (perhaps due to a EUR/JPY-specific flow imbalance). Recomputing: $\rho_{\text{implied}} = (169 - 49 - 81)/126 = 39/126 \approx +0.31$ - a swing from $-0.32$ to $+0.31$ implied correlation purely from one leg of the triangle repricing. If a trader believes the "true" correlation has not changed this dramatically, this is a signal that EUR/JPY volatility is rich relative to EUR/USD and USD/JPY - a cross-pair volatility arbitrage opportunity: sell EUR/JPY vol (e.g., via a straddle) and buy a correlation-replicating basket of EUR/USD and USD/JPY vol, position-sized so that the combined vega and correlation exposure is approximately neutral to small further moves in any single leg, profiting if the triangle's implied correlation reverts toward its more typical level.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why This Matters for Book Risk Management</div>
+                    <div class="math-box-label">Remark - Why This Matters for Book Risk Management</div>
                     <p class="mb-0">A desk that runs books in multiple currency pairs cannot treat each pair's vol risk in isolation: a position that is vega-, vanna-, and volga-flat on each individual pair can still carry significant risk to the <em>joint</em> distribution of the pairs, which is exactly what cross-pair correlation captures. Risk systems for multi-currency options books therefore compute and monitor implied correlations across all relevant triangles, flagging both out-of-bounds values (signalling a likely pricing error or stale quote) and large deviations from recent historical or longer-run average levels (signalling a potential cross-pair trading opportunity or an unhedged correlation exposure in the existing book). This completes the picture begun in Chapter 1: from the pricing of a single vanilla option, through surface construction and trading strategies, to the full risk management of a multi-pair FX volatility book.</p>
                 </div>
 

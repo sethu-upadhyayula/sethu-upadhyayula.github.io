@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -125,19 +125,19 @@
             <article>
                 <h1 class="text-accent mb-4">4.3 Solvers for Linear Systems</h1>
 
-                <p>After assembly and boundary condition enforcement, we must solve $K\mathbf{u} = \mathbf{f}$ where $K \in \mathbb{R}^{N\times N}$ is sparse and symmetric positive definite. The choice of solver — direct or iterative — depends critically on the problem size $N$, the spatial dimension $d$, and the available computational resources.</p>
+                <p>After assembly and boundary condition enforcement, we must solve $K\mathbf{u} = \mathbf{f}$ where $K \in \mathbb{R}^{N\times N}$ is sparse and symmetric positive definite. The choice of solver - direct or iterative - depends critically on the problem size $N$, the spatial dimension $d$, and the available computational resources.</p>
 
                 <h2 class="mt-4 mb-3">Direct Methods: Cholesky Factorisation</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Cholesky Factorisation</div>
+                    <div class="math-box-label">Definition - Cholesky Factorisation</div>
                     <p>Since $K$ is SPD, it admits a unique factorisation $K = LL^\top$ where $L$ is lower triangular with positive diagonal entries. The system is then solved in two triangular sweeps:
                     $$L\mathbf{y} = \mathbf{f} \;\text{(forward substitution)}, \qquad L^\top\mathbf{u} = \mathbf{y} \;\text{(back substitution)}.$$
                     Each sweep costs $O(N \cdot \text{bw})$ where $\text{bw}$ is the bandwidth of $K$.</p>
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Complexity of Direct Methods</div>
+                    <div class="math-box-label">Proposition - Complexity of Direct Methods</div>
                     <p class="mb-0">For a quasi-uniform mesh in $\mathbb{R}^d$ with $N$ DOFs, a bandwidth-optimal ordering (e.g.\ Cuthill-McKee) gives:
                     <ul class="mb-0">
                         <li><strong>$d = 1$:</strong> bandwidth $O(1)$; Cholesky costs $O(N)$ flops and $O(N)$ storage.</li>
@@ -150,32 +150,32 @@
                 <h2 class="mt-5 mb-3">Iterative Methods: Conjugate Gradient</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Conjugate Gradient Method</div>
+                    <div class="math-box-label">Definition - Conjugate Gradient Method</div>
                     <p>The <strong>Conjugate Gradient (CG)</strong> method is the optimal Krylov subspace method for SPD systems. Starting from initial guess $\mathbf{u}^0$, it generates iterates $\mathbf{u}^k$ minimising the energy error $\|\mathbf{u} - \mathbf{u}^k\|_K^2 = (\mathbf{u}-\mathbf{u}^k)^\top K(\mathbf{u}-\mathbf{u}^k)$ over the Krylov subspace $\mathcal{K}_k(K, \mathbf{r}^0) = \operatorname{span}\{\mathbf{r}^0, K\mathbf{r}^0, \ldots, K^{k-1}\mathbf{r}^0\}$, where $\mathbf{r}^0 = \mathbf{f} - K\mathbf{u}^0$.
                     Each iteration requires one matrix-vector product $K\mathbf{p}$ (cost $O(N)$ for sparse $K$) and a few vector operations.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — CG Convergence</div>
+                    <div class="math-box-label">Theorem - CG Convergence</div>
                     <p class="mb-0">Let $\kappa = \lambda_{\max}(K)/\lambda_{\min}(K)$ be the spectral condition number of $K$. After $k$ CG iterations:
                     $$\frac{\|\mathbf{u} - \mathbf{u}^k\|_K}{\|\mathbf{u} - \mathbf{u}^0\|_K} \leq 2\left(\frac{\sqrt\kappa - 1}{\sqrt\kappa + 1}\right)^k.$$
-                    To reduce the error by a factor $\varepsilon$, one needs $k = O(\sqrt\kappa \log(1/\varepsilon))$ iterations. For the Poisson equation on a quasi-uniform mesh, $\kappa(K) = O(h^{-2})$, so CG without preconditioning requires $O(h^{-1})$ iterations — giving $O(N^{3/2})$ total operations in 2D, comparable to direct methods.</p>
+                    To reduce the error by a factor $\varepsilon$, one needs $k = O(\sqrt\kappa \log(1/\varepsilon))$ iterations. For the Poisson equation on a quasi-uniform mesh, $\kappa(K) = O(h^{-2})$, so CG without preconditioning requires $O(h^{-1})$ iterations - giving $O(N^{3/2})$ total operations in 2D, comparable to direct methods.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Preconditioning</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Preconditioned CG (PCG)</div>
+                    <div class="math-box-label">Definition - Preconditioned CG (PCG)</div>
                     <p>A <strong>preconditioner</strong> $P \approx K$ is an SPD matrix such that $P^{-1}K$ has a much smaller condition number than $K$. Preconditioned CG solves the equivalent system $P^{-1}K\mathbf{u} = P^{-1}\mathbf{f}$ without forming $P^{-1}$ explicitly; each iteration applies $P^{-1}$ once (the <em>preconditioning step</em>) and multiplies by $K$ once. Common choices:</p>
                     <ul>
                         <li><strong>Diagonal (Jacobi):</strong> $P = \operatorname{diag}(K)$; cheap ($O(N)$) but reduces $\kappa$ by at most a constant for FEM matrices.</li>
                         <li><strong>Incomplete Cholesky (IC/ICCG):</strong> $K \approx \tilde L\tilde L^\top$ with fill-in restricted to the sparsity pattern of $K$; reduces $\kappa$ to $O(h^{-1})$, giving $O(N^{5/4})$ total operations in 2D.</li>
-                        <li><strong>Algebraic Multigrid (AMG):</strong> constructs a hierarchy of coarser problems automatically from $K$; achieves $\kappa(P^{-1}K) = O(1)$ and $O(N)$ total operations — optimal complexity.</li>
+                        <li><strong>Algebraic Multigrid (AMG):</strong> constructs a hierarchy of coarser problems automatically from $K$; achieves $\kappa(P^{-1}K) = O(1)$ and $O(N)$ total operations - optimal complexity.</li>
                     </ul>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Geometric Multigrid</div>
+                    <div class="math-box-label">Definition - Geometric Multigrid</div>
                     <p class="mb-0"><strong>Geometric multigrid</strong> exploits the mesh hierarchy explicitly: a sequence of nested meshes $\mathcal{T}_{h_0} \supset \mathcal{T}_{h_1} \supset \cdots \supset \mathcal{T}_{h_L}$ yields coarser spaces $V_{h_0} \subset V_{h_1} \subset \cdots$. The multigrid V-cycle alternates between smoothing (e.g.\ Gauss-Seidel) on fine grids and exact (or recursive) coarse-grid correction. Each V-cycle costs $O(N)$, and convergence is $\kappa(P^{-1}K) = O(1)$, independent of $h$.</p>
                 </div>
 

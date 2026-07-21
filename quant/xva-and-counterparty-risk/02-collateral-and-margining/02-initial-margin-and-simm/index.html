@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,19 +81,19 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Initial Margin and SIMM</h1>
 
-                <p>Variation margin (Section 2.1) collateralises the <em>current</em> mark-to-market of a netting set, but leaves both parties exposed to the potential further deterioration in value during the margin period of risk (MPOR) — the gap risk identified above. Initial Margin (IM) is additional collateral, posted at trade inception and rebalanced as the portfolio evolves, designed specifically to cover this potential future exposure over the MPOR.</p>
+                <p>Variation margin (Section 2.1) collateralises the <em>current</em> mark-to-market of a netting set, but leaves both parties exposed to the potential further deterioration in value during the margin period of risk (MPOR) - the gap risk identified above. Initial Margin (IM) is additional collateral, posted at trade inception and rebalanced as the portfolio evolves, designed specifically to cover this potential future exposure over the MPOR.</p>
 
                 <h2 class="mt-5 mb-3">Initial Margin Concept</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Initial Margin</div>
+                    <div class="math-box-label">Definition - Initial Margin</div>
                     <p>Initial margin is a buffer sized to cover, with high confidence, the change in the value of a netting set over the close-out period $\Delta$ (the MPOR) in the event of the counterparty's default:
                     $$IM \approx \text{VaR}_{\alpha}\big(\Delta V_{\Delta}\big)$$
-                    where $\Delta V_{\Delta} = V(t+\Delta) - V(t)$ is the change in portfolio value over the MPOR and $\alpha$ is a high confidence level (99% for centrally cleared trades under EMIR/Dodd-Frank, 99% one-tailed, 10-day horizon for non-cleared SIMM). Unlike variation margin, IM is typically <em>segregated</em> — held by a third-party custodian and not rehypothecable — so that it is available to the surviving party on default without commingling risk.</p>
+                    where $\Delta V_{\Delta} = V(t+\Delta) - V(t)$ is the change in portfolio value over the MPOR and $\alpha$ is a high confidence level (99% for centrally cleared trades under EMIR/Dodd-Frank, 99% one-tailed, 10-day horizon for non-cleared SIMM). Unlike variation margin, IM is typically <em>segregated</em> - held by a third-party custodian and not rehypothecable - so that it is available to the surviving party on default without commingling risk.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">ISDA SIMM</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — ISDA Standard Initial Margin Model (SIMM)</div>
+                    <div class="math-box-label">Definition - ISDA Standard Initial Margin Model (SIMM)</div>
                     <p>For non-centrally-cleared derivatives, the Uncleared Margin Rules (UMR) phased in mandatory bilateral IM exchange between large dealers and buy-side counterparties. Rather than each firm running a bespoke 10-day 99% VaR model (which would be impossible to replicate and dispute bilaterally), ISDA developed the <strong>Standard Initial Margin Model (SIMM)</strong>: a standardised, sensitivity-based methodology that both parties can compute independently and agree on.</p>
                     <p class="mb-0">SIMM computes IM as a weighted aggregation of risk sensitivities (delta, vega, curvature) to a prescribed set of risk factors, organised into asset classes (interest rate, credit, equity, commodity, FX) and risk buckets within each class. Conceptually:
                     $$IM_{\text{SIMM}} = \sqrt{\sum_{b,c} \rho_{bc}\, K_b\, K_c}, \qquad K_b = \sqrt{\sum_{i,j \in b} \rho_{ij}\, WS_i\, WS_j}$$
@@ -101,15 +101,15 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — SIMM IM for an Interest Rate Swap Book</div>
+                    <div class="math-box-label">Example - SIMM IM for an Interest Rate Swap Book</div>
                     <p>A buy-side fund has a portfolio of USD interest rate swaps with an aggregate DV01 (delta sensitivity) profile across the curve. SIMM maps each swap's delta ladder to ISDA's prescribed tenor buckets, applies the published risk weight per bucket (in USD per bp of sensitivity), and aggregates within the interest rate asset class using prescribed tenor correlations.</p>
-                    <p class="mb-0">For a portfolio with net delta concentrated around the 10Y point and a notional-equivalent DV01 of \$50,000 per bp, a typical SIMM IM requirement might be on the order of 1-2% of gross notional — for a \$500m notional swap book, an IM requirement in the range of \$5m-\$10m, posted by both counterparties and rebalanced as the portfolio's sensitivities change (often daily, given a back-testing threshold that triggers a call once the change exceeds a tolerance).</p>
+                    <p class="mb-0">For a portfolio with net delta concentrated around the 10Y point and a notional-equivalent DV01 of \$50,000 per bp, a typical SIMM IM requirement might be on the order of 1-2% of gross notional - for a \$500m notional swap book, an IM requirement in the range of \$5m-\$10m, posted by both counterparties and rebalanced as the portfolio's sensitivities change (often daily, given a back-testing threshold that triggers a call once the change exceeds a tolerance).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">IM and Funding Costs</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Funding Cost of Posting Initial Margin (MVA Preview)</div>
-                    <p class="mb-0">Because segregated initial margin cannot be reused, rehypothecated, or netted against other funding needs, the party posting IM must fund it from its own balance sheet — typically by borrowing cash or repo-ing securities at its own funding spread — for as long as the IM requirement persists, which can be the entire life of a long-dated trade. This funding cost is the <strong>Margin Valuation Adjustment (MVA)</strong>, the dollar-for-dollar analogue of FVA but applied to initial margin rather than variation margin. Because SIMM-driven IM requirements on long-dated swap and option books can run into tens of millions of dollars per counterparty, MVA has become a first-order pricing consideration for any non-cleared trade with a maturity beyond a few years — and is developed fully as a present-value calculation in Chapter 3.</p>
+                    <div class="math-box-label">Remark - The Funding Cost of Posting Initial Margin (MVA Preview)</div>
+                    <p class="mb-0">Because segregated initial margin cannot be reused, rehypothecated, or netted against other funding needs, the party posting IM must fund it from its own balance sheet - typically by borrowing cash or repo-ing securities at its own funding spread - for as long as the IM requirement persists, which can be the entire life of a long-dated trade. This funding cost is the <strong>Margin Valuation Adjustment (MVA)</strong>, the dollar-for-dollar analogue of FVA but applied to initial margin rather than variation margin. Because SIMM-driven IM requirements on long-dated swap and option books can run into tens of millions of dollars per counterparty, MVA has become a first-order pricing consideration for any non-cleared trade with a maturity beyond a few years - and is developed fully as a present-value calculation in Chapter 3.</p>
                 </div>
 
                 <hr class="my-5">

@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -133,26 +133,26 @@
                 <h2 class="mt-4 mb-3">Merge Sort</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 2.1.1 — Merge Sort</div>
+                    <div class="math-box-label">Algorithm 2.1.1 - Merge Sort</div>
                     <p>To sort array $A[1..n]$: (1) if $n \le 1$, return; (2) split into $A[1..n/2]$ and $A[n/2+1..n]$; (3) sort each half recursively; (4) merge the two sorted halves in $O(n)$ time.</p>
                     <p class="mb-0">Recurrence: $T(n) = 2T(n/2) + \Theta(n) = \Theta(n \log n)$ by the Master Theorem (Case 2). Merge sort is <strong>stable</strong> (equal elements preserve relative order).</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.1.2 — Comparison Sort Lower Bound</div>
+                    <div class="math-box-label">Theorem 2.1.2 - Comparison Sort Lower Bound</div>
                     <p class="mb-0">Any comparison-based sorting algorithm requires $\Omega(n \log n)$ comparisons in the worst case. Proof: the decision tree for $n$ elements has $n!$ leaves; the tree has height $\ge \log_2(n!) = \Omega(n \log n)$ by Stirling's approximation. Hence merge sort is asymptotically optimal.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Binary Search</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 2.1.3 — Binary Search</div>
+                    <div class="math-box-label">Algorithm 2.1.3 - Binary Search</div>
                     <p>To find target $x$ in sorted array $A[1..n]$: compare $x$ with $A[\lfloor n/2 \rfloor]$; if equal, return; if $x < A[\lfloor n/2 \rfloor]$, recurse on left half; else recurse on right half.</p>
                     <p class="mb-0">Recurrence: $T(n) = T(n/2) + O(1) = O(\log n)$. Returns in $\lfloor \log_2 n \rfloor + 1$ comparisons.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 2.1.4 — Binary Search Variants</div>
+                    <div class="math-box-label">Example 2.1.4 - Binary Search Variants</div>
                     <p><strong>First occurrence:</strong> when target found, do not stop; continue in the left half to find the leftmost occurrence.</p>
                     <p><strong>Search in rotated sorted array:</strong> determine which half is sorted; recurse on the appropriate half.</p>
                     <p class="mb-0"><strong>Exponential search:</strong> find range $[2^k, 2^{k+1}]$ containing target in $O(\log i)$ where $i$ is the position; then binary search within range.</p>
@@ -161,7 +161,7 @@
                 <h2 class="mt-5 mb-3">Practical Variants</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — TimSort</div>
+                    <div class="math-box-label">Remark - TimSort</div>
                     <p class="mb-0">Python's <code>sort()</code> and Java's <code>Arrays.sort()</code> use <strong>TimSort</strong>: a hybrid of merge sort and insertion sort. It exploits existing sorted <em>runs</em> in the data (natural merge sort) and uses insertion sort for small subarrays (typically $n < 64$). Worst-case $O(n \log n)$; best-case $O(n)$ for nearly-sorted input.</p>
                 </div>
 

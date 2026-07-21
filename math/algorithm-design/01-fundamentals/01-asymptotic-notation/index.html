@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -131,12 +131,12 @@
                 <p>Asymptotic notation provides a precise, machine-independent language for comparing algorithm running times. We discard constants and lower-order terms, focusing on how running time scales with input size $n$.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.1.1 — Big-$O$ Notation</div>
+                    <div class="math-box-label">Definition 1.1.1 - Big-$O$ Notation</div>
                     <p class="mb-0">$f(n) = O(g(n))$ if there exist constants $c > 0$ and $n_0 \ge 1$ such that $f(n) \le c \cdot g(n)$ for all $n \ge n_0$. Informally, $f$ grows no faster than $g$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.1.2 — $\Omega$, $\Theta$, $o$, $\omega$</div>
+                    <div class="math-box-label">Definition 1.1.2 - $\Omega$, $\Theta$, $o$, $\omega$</div>
                     <p>$f = \Omega(g)$: $f(n) \ge c \cdot g(n)$ eventually (lower bound). $f = \Theta(g)$: both $f = O(g)$ and $f = \Omega(g)$ (tight bound).</p>
                     <p>$f = o(g)$: $f(n)/g(n) \to 0$ as $n \to \infty$ (strictly slower). $f = \omega(g)$: $f(n)/g(n) \to \infty$ (strictly faster).</p>
                     <p class="mb-0">Relationship: $f = \Theta(g) \iff f = O(g) \text{ and } f = \Omega(g) \iff g = \Theta(f)$.</p>
@@ -145,14 +145,14 @@
                 <h2 class="mt-5 mb-3">Standard Complexity Hierarchy</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.1.3 — Growth Rate Hierarchy</div>
+                    <div class="math-box-label">Theorem 1.1.3 - Growth Rate Hierarchy</div>
                     <p class="mb-0">The following functions are listed in strictly increasing order of asymptotic growth:
                     $$1 \ll \log \log n \ll \log n \ll \sqrt{n} \ll n \ll n \log n \ll n^2 \ll n^3 \ll 2^n \ll n! \ll n^n.$$
                     That is, each function is $o$ of the next.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 1.1.4 — Common Algorithm Complexities</div>
+                    <div class="math-box-label">Example 1.1.4 - Common Algorithm Complexities</div>
                     <p>$O(1)$: array access, hash table lookup. $O(\log n)$: binary search, balanced BST. $O(n)$: linear scan, BFS/DFS. $O(n \log n)$: merge sort, heap sort, FFT.</p>
                     <p class="mb-0">$O(n^2)$: bubble/insertion sort, brute-force matrix multiply. $O(n^3)$: Floyd-Warshall, naive matrix multiply. $O(2^n)$: subset enumeration. $O(n!)$: brute-force TSP.</p>
                 </div>
@@ -160,7 +160,7 @@
                 <h2 class="mt-5 mb-3">Arithmetic Rules</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.1.5 — Rules for Asymptotic Notation</div>
+                    <div class="math-box-label">Theorem 1.1.5 - Rules for Asymptotic Notation</div>
                     <p>$O(f) + O(g) = O(\max(f, g))$ (dominated by the larger term).</p>
                     <p>$O(f) \cdot O(g) = O(f \cdot g)$ (multiply running times in nested loops).</p>
                     <p>$O(c \cdot f) = O(f)$ for any constant $c > 0$ (constants don't matter).</p>
@@ -169,7 +169,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Limits and Asymptotic Comparison</div>
+                    <div class="math-box-label">Remark - Limits and Asymptotic Comparison</div>
                     <p class="mb-0">If $\lim_{n\to\infty} f(n)/g(n) = L$ with $0 < L < \infty$, then $f = \Theta(g)$. If $L = 0$ then $f = o(g)$; if $L = \infty$ then $f = \omega(g)$. L'Hôpital's rule and Stirling's approximation ($n! \sim \sqrt{2\pi n}(n/e)^n$) are often useful here.</p>
                 </div>
 

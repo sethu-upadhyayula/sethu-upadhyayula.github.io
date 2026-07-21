@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,7 +132,7 @@
                 <p>A <strong>conservation law</strong> expresses that the total amount of some quantity $u$ (mass, momentum, charge) changes only due to flux through the boundary. In one spatial dimension, the scalar conservation law takes the form:</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 2.3.1 — Scalar Conservation Law</div>
+                    <div class="math-box-label">Definition 2.3.1 - Scalar Conservation Law</div>
                     <p>$$u_t + f(u)_x = 0$$</p>
                     <p class="mb-0">where $u = u(x,t)$ is the conserved density and $f(u)$ is the <strong>flux function</strong>. Integrating over $[a,b]$: $\frac{d}{dt}\int_a^b u\,dx = f(u(a,t)) - f(u(b,t))$, confirming conservation.</p>
                 </div>
@@ -151,7 +151,7 @@
                 <p>When a shock forms, classical solutions break down. We seek <strong>weak solutions</strong> satisfying the integral form. Across a shock at position $x = s(t)$, the shock speed must satisfy:</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.3.1 — Rankine-Hugoniot Jump Condition</div>
+                    <div class="math-box-label">Theorem 2.3.1 - Rankine-Hugoniot Jump Condition</div>
                     <p>If $u$ has a jump discontinuity across the shock curve $x = s(t)$, with left state $u_L = \lim_{x \to s^-} u$ and right state $u_R = \lim_{x \to s^+} u$, then the shock speed satisfies:</p>
                     <p>$$s'(t) = \frac{f(u_R) - f(u_L)}{u_R - u_L}$$</p>
                     <p class="mb-0">This is derived by integrating the conservation law across the shock and applying the divergence theorem. For Burgers: $s' = (u_L + u_R)/2$.</p>
@@ -159,10 +159,10 @@
 
                 <h2 class="mt-5 mb-3">Entropy Condition</h2>
 
-                <p>The Rankine-Hugoniot condition alone does not uniquely determine the solution — there may be multiple weak solutions. The physically correct one is selected by an <strong>entropy condition</strong>:</p>
+                <p>The Rankine-Hugoniot condition alone does not uniquely determine the solution - there may be multiple weak solutions. The physically correct one is selected by an <strong>entropy condition</strong>:</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 2.3.2 — Lax Entropy Condition</div>
+                    <div class="math-box-label">Definition 2.3.2 - Lax Entropy Condition</div>
                     <p>A shock at speed $s$ is <strong>admissible</strong> (entropy-satisfying) if:</p>
                     <p>$$f'(u_L) > s > f'(u_R)$$</p>
                     <p class="mb-0">Equivalently, characteristics must run <em>into</em> the shock from both sides (characteristics on the left have speed $f'(u_L)$ greater than $s$; on the right, $f'(u_R)$ less than $s$). This ensures the shock is compressive, not expansive.</p>
@@ -171,7 +171,7 @@
                 <h2 class="mt-5 mb-3">Rarefaction Waves</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 2.3.3 — Rarefaction Wave</div>
+                    <div class="math-box-label">Definition 2.3.3 - Rarefaction Wave</div>
                     <p>When $u_L < u_R$ and $f''(u) > 0$ (convex flux), characteristics diverge. The entropy solution in the expanding region is a continuous <strong>rarefaction wave</strong>:</p>
                     <p>$$u(x,t) = (f')^{-1}(x/t) \quad \text{for } f'(u_L) < x/t < f'(u_R)$$</p>
                     <p class="mb-0">For Burgers ($f' = u$): $u(x,t) = x/t$ in the fan $u_L < x/t < u_R$. Rarefaction waves are smooth and do not violate the entropy condition.</p>
@@ -179,7 +179,7 @@
 
                 <div class="math-box remark">
                     <div class="math-box-label">Riemann Problem</div>
-                    <p class="mb-0">The <strong>Riemann problem</strong> — initial data that is piecewise constant with a single jump — has an explicit solution consisting of at most one shock or rarefaction fan. It is the building block for numerical methods (Godunov's method, Roe's method) and the theory of systems of conservation laws.</p>
+                    <p class="mb-0">The <strong>Riemann problem</strong> - initial data that is piecewise constant with a single jump - has an explicit solution consisting of at most one shock or rarefaction fan. It is the building block for numerical methods (Godunov's method, Roe's method) and the theory of systems of conservation laws.</p>
                 </div>
 
                 <hr class="my-5">

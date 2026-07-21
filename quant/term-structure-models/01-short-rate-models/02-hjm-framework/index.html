@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,22 +81,22 @@
             <article>
                 <h1 class="text-accent mb-4">1.2 HJM Framework</h1>
 
-                <p>Short-rate models like Vasicek and Hull-White specify the dynamics of a single state variable, $r(t)$, and derive the entire forward curve as a function of it. The Heath-Jarrow-Morton (HJM, 1992) framework inverts this approach: it directly specifies the dynamics of the entire instantaneous forward rate curve $\{f(t,T)\}_{T\geq t}$ as an infinite-dimensional stochastic process, and derives the short rate as a special case ($r(t) = f(t,t)$). This generality comes at the cost of a strong consistency requirement — the HJM drift condition — that any no-arbitrage forward-rate model must satisfy.</p>
+                <p>Short-rate models like Vasicek and Hull-White specify the dynamics of a single state variable, $r(t)$, and derive the entire forward curve as a function of it. The Heath-Jarrow-Morton (HJM, 1992) framework inverts this approach: it directly specifies the dynamics of the entire instantaneous forward rate curve $\{f(t,T)\}_{T\geq t}$ as an infinite-dimensional stochastic process, and derives the short rate as a special case ($r(t) = f(t,t)$). This generality comes at the cost of a strong consistency requirement - the HJM drift condition - that any no-arbitrage forward-rate model must satisfy.</p>
 
                 <h2 class="mt-5 mb-3">Modelling the Forward Curve</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Instantaneous Forward Rate</div>
+                    <div class="math-box-label">Definition - Instantaneous Forward Rate</div>
                     <p class="mb-0">The instantaneous forward rate $f(t,T)$, for $T \geq t$, is defined by:
                     $$f(t,T) = -\frac{\partial}{\partial T}\ln P(t,T)$$
                     so that $P(t,T) = \exp\left(-\int_t^T f(t,u)\,du\right)$. The short rate is the "front end" of the curve: $r(t) = f(t,t)$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — HJM Forward Rate Dynamics</div>
+                    <div class="math-box-label">Definition - HJM Forward Rate Dynamics</div>
                     <p class="mb-0">The HJM framework posits that, for each fixed maturity $T$, the forward rate $f(t,T)$ evolves under the risk-neutral measure $\mathbb{Q}$ as:
                     $$df(t,T) = \alpha(t,T)\,dt + \sigma(t,T)\,dW_t$$
-                    where $\alpha(t,T)$ is the drift and $\sigma(t,T)$ is the volatility of the $T$-maturity forward rate, both possibly depending on the entire current forward curve (and possibly vector-valued, driven by a multi-dimensional $W_t$). Crucially, $\sigma(t,T)$ can be specified essentially freely — it is the primary modelling input — but $\alpha(t,T)$ is then **not free**: no-arbitrage forces it to be determined by $\sigma(t,\cdot)$.</p>
+                    where $\alpha(t,T)$ is the drift and $\sigma(t,T)$ is the volatility of the $T$-maturity forward rate, both possibly depending on the entire current forward curve (and possibly vector-valued, driven by a multi-dimensional $W_t$). Crucially, $\sigma(t,T)$ can be specified essentially freely - it is the primary modelling input - but $\alpha(t,T)$ is then **not free**: no-arbitrage forces it to be determined by $\sigma(t,\cdot)$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The HJM Drift Condition</h2>
@@ -104,11 +104,11 @@
                 <p>The central result of the HJM framework is that absence of arbitrage links the drift of every forward rate to the volatilities of all forward rates between today and that maturity.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — HJM Drift Condition (No-Arbitrage Constraint)</div>
+                    <div class="math-box-label">Theorem - HJM Drift Condition (No-Arbitrage Constraint)</div>
                     <p>Under the risk-neutral measure $\mathbb{Q}$ (with money-market account numeraire), the drift of the forward rate dynamics must satisfy:
                     $$\alpha(t,T) = \sigma(t,T)\int_t^T \sigma(t,u)\,du$$
-                    (for a single-factor model; for multi-factor models, $\alpha(t,T) = \sum_{k} \sigma_k(t,T)\int_t^T \sigma_k(t,u)\,du$, summing over factors $k$). Consequently, an HJM model is <em>fully specified by its volatility structure</em> $\sigma(t,T)$ alone — the drift is then determined, and the model is automatically arbitrage-free.</p>
-                    <p class="mb-0">Intuitively, the drift condition arises because all bond prices $P(t,T)$ must, after discounting by the money-market account, be martingales under $\mathbb{Q}$. Since $P(t,T)$ is an integral (exponential) of the forward curve, Itô's lemma applied to $\ln P(t,T) = -\int_t^T f(t,u)\,du$ produces a drift term in $d\ln P(t,T)$ that must exactly cancel $r(t)\,dt$ from discounting — this cancellation is precisely the drift condition.</p>
+                    (for a single-factor model; for multi-factor models, $\alpha(t,T) = \sum_{k} \sigma_k(t,T)\int_t^T \sigma_k(t,u)\,du$, summing over factors $k$). Consequently, an HJM model is <em>fully specified by its volatility structure</em> $\sigma(t,T)$ alone - the drift is then determined, and the model is automatically arbitrage-free.</p>
+                    <p class="mb-0">Intuitively, the drift condition arises because all bond prices $P(t,T)$ must, after discounting by the money-market account, be martingales under $\mathbb{Q}$. Since $P(t,T)$ is an integral (exponential) of the forward curve, Itô's lemma applied to $\ln P(t,T) = -\int_t^T f(t,u)\,du$ produces a drift term in $d\ln P(t,T)$ that must exactly cancel $r(t)\,dt$ from discounting - this cancellation is precisely the drift condition.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Short-Rate Models as Special Cases</h2>
@@ -116,15 +116,15 @@
                 <p>Short-rate models correspond to particular choices of the HJM volatility function $\sigma(t,T)$ that happen to make the resulting forward-rate dynamics reducible to a low-dimensional Markov process.</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Hull-White as an HJM Model</div>
+                    <div class="math-box-label">Example - Hull-White as an HJM Model</div>
                     <p class="mb-0">The Hull-White model corresponds to the HJM volatility specification:
                     $$\sigma(t,T) = \sigma\, e^{-a(T-t)}$$
-                    a deterministic, exponentially decaying function of time-to-maturity $T-t$. Substituting into the drift condition and integrating recovers exactly the Hull-White short-rate dynamics $dr(t) = (\theta(t)-ar(t))dt + \sigma\,dW_t$ from Section 5.1. The exponential form of $\sigma(t,T)$ is precisely what allows the infinite-dimensional forward curve dynamics to collapse onto the single state variable $r(t)$ — more general $\sigma(t,T)$ functions do not admit such a low-dimensional Markovian representation, and the resulting model is "non-Markovian" in $r(t)$ alone (though may still be Markovian in a larger, finite-dimensional state vector for separable volatility specifications).</p>
+                    a deterministic, exponentially decaying function of time-to-maturity $T-t$. Substituting into the drift condition and integrating recovers exactly the Hull-White short-rate dynamics $dr(t) = (\theta(t)-ar(t))dt + \sigma\,dW_t$ from Section 5.1. The exponential form of $\sigma(t,T)$ is precisely what allows the infinite-dimensional forward curve dynamics to collapse onto the single state variable $r(t)$ - more general $\sigma(t,T)$ functions do not admit such a low-dimensional Markovian representation, and the resulting model is "non-Markovian" in $r(t)$ alone (though may still be Markovian in a larger, finite-dimensional state vector for separable volatility specifications).</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Generality of HJM</div>
-                    <p class="mb-0">The HJM framework subsumes essentially all single- and multi-factor short-rate models (Vasicek, Hull-White, CIR-type extensions, etc.) as special cases corresponding to particular volatility specifications. Its value is conceptual and unifying: it clarifies that the only economically meaningful modelling choice in a no-arbitrage interest rate model is the volatility structure of forward rates — everything else (drift, bond prices, the short rate process) is determined by no-arbitrage given that choice and the initial curve.</p>
+                    <div class="math-box-label">Remark - Generality of HJM</div>
+                    <p class="mb-0">The HJM framework subsumes essentially all single- and multi-factor short-rate models (Vasicek, Hull-White, CIR-type extensions, etc.) as special cases corresponding to particular volatility specifications. Its value is conceptual and unifying: it clarifies that the only economically meaningful modelling choice in a no-arbitrage interest rate model is the volatility structure of forward rates - everything else (drift, bond prices, the short rate process) is determined by no-arbitrage given that choice and the initial curve.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Multi-Factor HJM Models</h2>
@@ -132,14 +132,14 @@
                 <p>A single Brownian driver (as in one-factor Hull-White) forces all forward rates to be perfectly correlated, with relative volatilities determined entirely by the shape of $\sigma(t,T)$. Multi-factor HJM models use several independent Brownian motions to capture richer curve dynamics.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — $N$-Factor HJM Model</div>
+                    <div class="math-box-label">Definition - $N$-Factor HJM Model</div>
                     <p class="mb-0">An $N$-factor HJM model specifies:
                     $$df(t,T) = \alpha(t,T)\,dt + \sum_{k=1}^N \sigma_k(t,T)\,dW_t^{(k)}$$
                     with $W^{(1)},\ldots,W^{(N)}$ independent Brownian motions and $\alpha(t,T) = \sum_{k=1}^N \sigma_k(t,T)\int_t^T \sigma_k(t,u)\,du$. A common and intuitive parameterisation decomposes the factors by their qualitative effect on the curve:</p>
                     <ul class="mb-0">
-                        <li><strong>Factor 1 (level):</strong> $\sigma_1(t,T)$ roughly constant across $T$ — a parallel shift of the curve.</li>
-                        <li><strong>Factor 2 (slope):</strong> $\sigma_2(t,T)$ changes sign across maturities — a steepening/flattening of the curve.</li>
-                        <li><strong>Factor 3 (curvature):</strong> $\sigma_3(t,T)$ has a hump shape — a "butterfly" twist of the curve.</li>
+                        <li><strong>Factor 1 (level):</strong> $\sigma_1(t,T)$ roughly constant across $T$ - a parallel shift of the curve.</li>
+                        <li><strong>Factor 2 (slope):</strong> $\sigma_2(t,T)$ changes sign across maturities - a steepening/flattening of the curve.</li>
+                        <li><strong>Factor 3 (curvature):</strong> $\sigma_3(t,T)$ has a hump shape - a "butterfly" twist of the curve.</li>
                     </ul>
                     <p class="mb-0 mt-2">Two or three factors typically explain the vast majority of historical variance in yield curve movements (as confirmed by principal component analysis of historical rate changes), making 2- or 3-factor HJM/Hull-White models a common practical compromise between realism and tractability.</p>
                 </div>
@@ -147,9 +147,9 @@
                 <h2 class="mt-5 mb-3">Calibration Challenges</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — High Dimensionality and Practical Calibration</div>
-                    <p>The full generality of HJM is also its main practical drawback. A general (non-Markovian) HJM model requires the entire history of the forward curve to be carried in the state, making Monte Carlo simulation the only feasible numerical method (no PDE/lattice methods, since the state space is infinite-dimensional) — and even simulation requires discretising the forward curve into a large number of tenor points, each with its own volatility function $\sigma_k(t,T)$ to calibrate.</p>
-                    <p class="mb-0">In practice, calibration proceeds by: (1) choosing a parametric, low-dimensional form for $\sigma_k(t,T)$ (e.g., separable functions of $t$ and $T-t$, or a small number of factors as above); (2) fitting these parameters to match market-observed correlations between forward rate changes (from historical data or PCA) and to match cap/swaption implied volatilities (for the level of $\sigma_k$); and (3) verifying the resulting model reproduces a sensible volatility term structure for the instruments being hedged. Even with these simplifications, multi-factor HJM models remain computationally heavier than low-dimensional short-rate models, and for products that depend primarily on a strip of discrete forward rates (rather than the full continuous curve), the LIBOR Market Model — a discretised, market-quote-consistent special case of HJM — is usually preferred in practice, as we discuss next.</p>
+                    <div class="math-box-label">Remark - High Dimensionality and Practical Calibration</div>
+                    <p>The full generality of HJM is also its main practical drawback. A general (non-Markovian) HJM model requires the entire history of the forward curve to be carried in the state, making Monte Carlo simulation the only feasible numerical method (no PDE/lattice methods, since the state space is infinite-dimensional) - and even simulation requires discretising the forward curve into a large number of tenor points, each with its own volatility function $\sigma_k(t,T)$ to calibrate.</p>
+                    <p class="mb-0">In practice, calibration proceeds by: (1) choosing a parametric, low-dimensional form for $\sigma_k(t,T)$ (e.g., separable functions of $t$ and $T-t$, or a small number of factors as above); (2) fitting these parameters to match market-observed correlations between forward rate changes (from historical data or PCA) and to match cap/swaption implied volatilities (for the level of $\sigma_k$); and (3) verifying the resulting model reproduces a sensible volatility term structure for the instruments being hedged. Even with these simplifications, multi-factor HJM models remain computationally heavier than low-dimensional short-rate models, and for products that depend primarily on a strip of discrete forward rates (rather than the full continuous curve), the LIBOR Market Model - a discretised, market-quote-consistent special case of HJM - is usually preferred in practice, as we discuss next.</p>
                 </div>
 
                 <hr class="my-5">

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -84,20 +84,20 @@
 
                 <h2 class="mt-5 mb-3">The LIBOR Transition to SOFR</h2>
 
-                <p>For decades, LIBOR (the London Interbank Offered Rate) was the dominant floating reference rate for swaps, loans, and bonds across major currencies. LIBOR was a panel-based, forward-looking term rate — banks submitted estimates of their unsecured borrowing costs for tenors such as 1, 3, and 6 months.</p>
+                <p>For decades, LIBOR (the London Interbank Offered Rate) was the dominant floating reference rate for swaps, loans, and bonds across major currencies. LIBOR was a panel-based, forward-looking term rate - banks submitted estimates of their unsecured borrowing costs for tenors such as 1, 3, and 6 months.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — From LIBOR to SOFR</div>
-                    <p><strong>Why LIBOR was replaced.</strong> LIBOR submissions were based on a thin and, at times, nearly nonexistent market for unsecured interbank term lending — particularly after 2008. This made LIBOR susceptible to manipulation (the LIBOR-rigging scandals of the early 2010s) and meant it no longer reflected an actual, robust transaction-based rate. Regulators mandated a transition to alternative reference rates anchored in active, observable markets.</p>
-                    <p class="mb-0"><strong>SOFR (Secured Overnight Financing Rate).</strong> In the US, the chosen replacement is SOFR — the rate at which institutions borrow cash overnight, collateralized by US Treasury securities (i.e. the overnight Treasury repo rate). SOFR is based on hundreds of billions of dollars of actual daily transactions, making it robust and difficult to manipulate. By mid-2023, USD LIBOR ceased to be published for new contracts, and SOFR-based instruments became the standard for new USD swaps. Other currencies adopted analogous overnight rates: SONIA (GBP), €STR (EUR), TONA (JPY), SARON (CHF).</p>
+                    <div class="math-box-label">Remark - From LIBOR to SOFR</div>
+                    <p><strong>Why LIBOR was replaced.</strong> LIBOR submissions were based on a thin and, at times, nearly nonexistent market for unsecured interbank term lending - particularly after 2008. This made LIBOR susceptible to manipulation (the LIBOR-rigging scandals of the early 2010s) and meant it no longer reflected an actual, robust transaction-based rate. Regulators mandated a transition to alternative reference rates anchored in active, observable markets.</p>
+                    <p class="mb-0"><strong>SOFR (Secured Overnight Financing Rate).</strong> In the US, the chosen replacement is SOFR - the rate at which institutions borrow cash overnight, collateralized by US Treasury securities (i.e. the overnight Treasury repo rate). SOFR is based on hundreds of billions of dollars of actual daily transactions, making it robust and difficult to manipulate. By mid-2023, USD LIBOR ceased to be published for new contracts, and SOFR-based instruments became the standard for new USD swaps. Other currencies adopted analogous overnight rates: SONIA (GBP), €STR (EUR), TONA (JPY), SARON (CHF).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Overnight Indexed Swaps (OIS)</h2>
 
-                <p>An overnight indexed swap exchanges a fixed rate for the geometric average (compounded) of a daily overnight rate over the swap's term — distinguishing it from a vanilla swap referencing a term rate fixed once per accrual period.</p>
+                <p>An overnight indexed swap exchanges a fixed rate for the geometric average (compounded) of a daily overnight rate over the swap's term - distinguishing it from a vanilla swap referencing a term rate fixed once per accrual period.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Overnight Indexed Swap (OIS)</div>
+                    <div class="math-box-label">Definition - Overnight Indexed Swap (OIS)</div>
                     <p>An OIS exchanges, over a period $[T_{i-1},T_i]$ with business days $T_{i-1}=s_0 < s_1 < \cdots < s_m=T_i$, a fixed rate $c$ against the <em>compounded overnight rate</em>:
                     $$R_{comp} = \left(\prod_{j=1}^m \big(1 + r_{s_{j-1}}\,\tau_j\big)\right)^{\frac{1}{\sum_j \tau_j}} - 1$$
                     where $r_{s_{j-1}}$ is the overnight rate (e.g. SOFR) fixed on day $s_{j-1}$ for the period $[s_{j-1},s_j]$ of length $\tau_j$ (typically 1 day, or 3 days over weekends), and the exponent annualizes the compounded return. Equivalently, the floating leg pays an amount based on $\prod_j(1+r_{s_{j-1}}\tau_j) - 1$ applied to the notional.</p>
@@ -105,20 +105,20 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Daily Compounding over a Short Period</div>
+                    <div class="math-box-label">Example - Daily Compounding over a Short Period</div>
                     <p class="mb-0">Suppose SOFR fixes at 5.30% (Act/360) for three consecutive days (Mon-Tue-Wed, $\tau=1/360$ each day). The compounded factor is:
                     $$\prod_{j=1}^3 \left(1 + 0.0530 \times \frac{1}{360}\right) = (1.0001472)^3 \approx 1.0004417$$
-                    so the realized 3-day return is $\approx 0.04417\%$, equivalent to an annualized compounded rate of approximately $0.0004417 \times \frac{360}{3} \approx 5.30\%$ — recovering (to first order) the average daily rate, with a small positive convexity contribution from compounding.</p>
+                    so the realized 3-day return is $\approx 0.04417\%$, equivalent to an annualized compounded rate of approximately $0.0004417 \times \frac{360}{3} \approx 5.30\%$ - recovering (to first order) the average daily rate, with a small positive convexity contribution from compounding.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Why OIS Discounting Became Market Standard</h2>
 
-                <p>Before 2008, LIBOR and the overnight rate (Fed Funds in USD) were nearly identical — typically within a few basis points — so the choice of discount curve was immaterial. The crisis changed that permanently.</p>
+                <p>Before 2008, LIBOR and the overnight rate (Fed Funds in USD) were nearly identical - typically within a few basis points - so the choice of discount curve was immaterial. The crisis changed that permanently.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Collateralized Discounting</div>
+                    <div class="math-box-label">Remark - Collateralized Discounting</div>
                     <p><strong>The LIBOR-OIS spread widened dramatically.</strong> During the 2008 crisis, the spread between 3-month LIBOR and OIS rates spiked to over 300bp, reflecting a sharp repricing of interbank credit and liquidity risk. LIBOR was no longer a good proxy for a risk-free or near-risk-free rate.</p>
-                    <p><strong>Collateral changes the relevant funding rate.</strong> Most interdealer and cleared swaps are subject to daily variation margin under a Credit Support Annex (CSA): the party that is "in the money" receives cash collateral, on which it typically pays interest at the overnight rate (Fed Funds / SOFR). The economically correct discount rate for a collateralized cash flow is therefore the rate earned/paid on that collateral — the OIS/SOFR rate — not LIBOR, which reflects unsecured bank credit risk irrelevant to a fully collateralized position.</p>
+                    <p><strong>Collateral changes the relevant funding rate.</strong> Most interdealer and cleared swaps are subject to daily variation margin under a Credit Support Annex (CSA): the party that is "in the money" receives cash collateral, on which it typically pays interest at the overnight rate (Fed Funds / SOFR). The economically correct discount rate for a collateralized cash flow is therefore the rate earned/paid on that collateral - the OIS/SOFR rate - not LIBOR, which reflects unsecured bank credit risk irrelevant to a fully collateralized position.</p>
                     <p class="mb-0"><strong>Industry-wide adoption.</strong> Following analyses by practitioners (notably around 2010, as the implications became widely understood), CCPs (LCH, CME) and major dealers switched to discounting cleared and collateralized USD swaps using the OIS curve (initially Fed Funds-based, later SOFR-based). This single change required rebuilding curve construction and risk systems across the industry, and gave rise to the multi-curve framework.</p>
                 </div>
 
@@ -127,13 +127,13 @@
                 <p>Once discounting and floating-rate projection are recognized as conceptually distinct roles, valuation requires (at least) two curves working together, as introduced in Section 2.1.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Discounting and Projection Curves</div>
+                    <div class="math-box-label">Definition - Discounting and Projection Curves</div>
                     <p class="mb-0">In the SOFR-era multi-curve framework:</p>
                     <ul class="mb-0">
-                        <li><strong>SOFR discount curve</strong> $P_{OIS}(0,T)$, bootstrapped from SOFR OIS swap rates, used to discount the cash flows of any collateralized trade — fixed leg, floating leg, and the cash flows of any other product (caps, swaptions, etc.).</li>
-                        <li><strong>Forward/projection curve(s)</strong> $P_{fwd}(0,T)$ for whichever index a floating leg references — for SOFR swaps this is typically the same SOFR curve used for discounting (a relative simplification compared to the LIBOR era, where Libor projection curves were distinct from the OIS discount curve and had to be bootstrapped separately for each tenor — 1m, 3m, 6m Libor each had its own curve, with tenor basis spreads between them).</li>
+                        <li><strong>SOFR discount curve</strong> $P_{OIS}(0,T)$, bootstrapped from SOFR OIS swap rates, used to discount the cash flows of any collateralized trade - fixed leg, floating leg, and the cash flows of any other product (caps, swaptions, etc.).</li>
+                        <li><strong>Forward/projection curve(s)</strong> $P_{fwd}(0,T)$ for whichever index a floating leg references - for SOFR swaps this is typically the same SOFR curve used for discounting (a relative simplification compared to the LIBOR era, where Libor projection curves were distinct from the OIS discount curve and had to be bootstrapped separately for each tenor - 1m, 3m, 6m Libor each had its own curve, with tenor basis spreads between them).</li>
                     </ul>
-                    <p class="mt-2 mb-0">A useful simplification of the SOFR transition: because both the discounting rate (collateral remuneration) and the floating reference rate (SOFR) are now the <em>same overnight rate</em>, single-curve "telescoping" valuation (Section 3.1) is restored for vanilla SOFR swaps — though multiple curves are still needed where a swap references a credit-sensitive rate (e.g. Term SOFR with a credit spread adjustment for legacy LIBOR fallbacks, or cross-currency basis).</p>
+                    <p class="mt-2 mb-0">A useful simplification of the SOFR transition: because both the discounting rate (collateral remuneration) and the floating reference rate (SOFR) are now the <em>same overnight rate</em>, single-curve "telescoping" valuation (Section 3.1) is restored for vanilla SOFR swaps - though multiple curves are still needed where a swap references a credit-sensitive rate (e.g. Term SOFR with a credit spread adjustment for legacy LIBOR fallbacks, or cross-currency basis).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Backward-Looking vs. Forward-Looking Term Rates</h2>
@@ -141,10 +141,10 @@
                 <p>A key practical and economic distinction between LIBOR and SOFR is <em>when</em> the rate for an accrual period becomes known.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — In-Advance vs. In-Arrears</div>
-                    <p><strong>LIBOR (forward-looking, set in advance).</strong> 3-month LIBOR for the period $[t_{i-1},t_i]$ is fixed at $t_{i-1}$, the start of the period — the floating cash flow is fully known at the beginning of the accrual period. This is operationally convenient (cash flows are known in advance) but requires LIBOR to embed a term premium for the lending period.</p>
-                    <p><strong>SOFR (backward-looking, compounded in arrears).</strong> Because SOFR is an overnight rate, a "3-month SOFR" floating leg is constructed by daily-compounding overnight SOFR fixings <em>over</em> the accrual period $[t_{i-1},t_i]$ itself (Definition above), so the cash flow amount is only fully known at (or just before) $t_i$, the end of the period. This better matches the economic reality of overnight funding but is operationally harder — payment amounts are not known until shortly before payment, requiring lookback, lockout, or payment-delay conventions to allow settlement processing time.</p>
-                    <p class="mb-0"><strong>Term SOFR.</strong> To preserve the operational convenience of a rate known in advance, "Term SOFR" rates (1m, 3m, 6m) are published, derived from SOFR futures and OIS markets, and are forward-looking like LIBOR. However, regulators have restricted Term SOFR's use mainly to cash products (loans) and limited derivative use cases, to avoid recreating the thin-market fragility that undermined LIBOR — most SOFR swaps and derivatives use compounded-in-arrears SOFR rather than Term SOFR.</p>
+                    <div class="math-box-label">Remark - In-Advance vs. In-Arrears</div>
+                    <p><strong>LIBOR (forward-looking, set in advance).</strong> 3-month LIBOR for the period $[t_{i-1},t_i]$ is fixed at $t_{i-1}$, the start of the period - the floating cash flow is fully known at the beginning of the accrual period. This is operationally convenient (cash flows are known in advance) but requires LIBOR to embed a term premium for the lending period.</p>
+                    <p><strong>SOFR (backward-looking, compounded in arrears).</strong> Because SOFR is an overnight rate, a "3-month SOFR" floating leg is constructed by daily-compounding overnight SOFR fixings <em>over</em> the accrual period $[t_{i-1},t_i]$ itself (Definition above), so the cash flow amount is only fully known at (or just before) $t_i$, the end of the period. This better matches the economic reality of overnight funding but is operationally harder - payment amounts are not known until shortly before payment, requiring lookback, lockout, or payment-delay conventions to allow settlement processing time.</p>
+                    <p class="mb-0"><strong>Term SOFR.</strong> To preserve the operational convenience of a rate known in advance, "Term SOFR" rates (1m, 3m, 6m) are published, derived from SOFR futures and OIS markets, and are forward-looking like LIBOR. However, regulators have restricted Term SOFR's use mainly to cash products (loans) and limited derivative use cases, to avoid recreating the thin-market fragility that undermined LIBOR - most SOFR swaps and derivatives use compounded-in-arrears SOFR rather than Term SOFR.</p>
                 </div>
 
                 <hr class="my-5">

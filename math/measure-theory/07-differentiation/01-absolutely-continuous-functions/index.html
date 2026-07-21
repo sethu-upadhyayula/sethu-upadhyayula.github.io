@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -134,14 +134,14 @@
                 <h2 class="mt-5 mb-3">Definition</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.1 — Absolute Continuity</div>
+                    <div class="math-box-label">Definition 7.1.1 - Absolute Continuity</div>
                     <p>A function $f : [a,b] \to \mathbb{R}$ is <strong>absolutely continuous</strong> if for every $\varepsilon > 0$ there exists $\delta > 0$ such that for every finite collection of pairwise disjoint subintervals $(a_1, b_1), \ldots, (a_n, b_n) \subset [a,b]$:
                     $$\sum_{i=1}^n (b_i - a_i) < \delta \implies \sum_{i=1}^n |f(b_i) - f(a_i)| < \varepsilon.$$</p>
                     <p class="mb-0">We write $f \in AC([a,b])$. Clearly, absolute continuity implies uniform continuity (take $n = 1$).</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.1.2 — The Cantor Function is Not AC</div>
+                    <div class="math-box-label">Example 7.1.2 - The Cantor Function is Not AC</div>
                     <p>The Cantor function $\varphi : [0,1] \to [0,1]$ is continuous and non-decreasing, with $\varphi' = 0$ a.e. (its derivative vanishes on the complement of the Cantor set, which has measure 1). Yet $\varphi(0) = 0$ and $\varphi(1) = 1$. If $\varphi$ were absolutely continuous, the FTC would give $\varphi(1) - \varphi(0) = \int_0^1 \varphi' = 0$, a contradiction. So the Cantor function is not absolutely continuous, despite being uniformly continuous.</p>
                     <p class="mb-0">This shows that uniform continuity does not imply absolute continuity.</p>
                 </div>
@@ -149,14 +149,14 @@
                 <h2 class="mt-5 mb-3">Characterisation and the FTC</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.1.3 — Characterisation of Absolutely Continuous Functions</div>
+                    <div class="math-box-label">Theorem 7.1.3 - Characterisation of Absolutely Continuous Functions</div>
                     <p>A function $f : [a,b] \to \mathbb{R}$ is absolutely continuous if and only if there exists $g \in L^1([a,b], \lambda)$ such that:
                     $$f(x) = f(a) + \int_a^x g(t) \, dt \quad \text{for all } x \in [a,b].$$</p>
                     <p class="mb-0">In this case, $f$ is differentiable $\lambda$-a.e. and $f'(x) = g(x)$ a.e.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.1.4 — Fundamental Theorem of Calculus for Lebesgue Integrals</div>
+                    <div class="math-box-label">Theorem 7.1.4 - Fundamental Theorem of Calculus for Lebesgue Integrals</div>
                     <p>Let $g \in L^1([a,b])$ and define $F(x) = \int_a^x g(t)\,dt$. Then:</p>
                     <ol>
                         <li>$F$ is absolutely continuous on $[a,b]$.</li>
@@ -167,13 +167,13 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 7.1.5 — Bounded Variation</div>
+                    <div class="math-box-label">Remark 7.1.5 - Bounded Variation</div>
                     <p>Recall that $f$ has <strong>bounded variation</strong> on $[a,b]$ if $\sup_P \sum |f(x_i) - f(x_{i-1})| < \infty$ over all partitions $P$. Every absolutely continuous function has bounded variation: $\text{TV}(f) \leq \int_a^b |f'|\,dt < \infty$. The Cantor function has bounded variation (it is non-decreasing and bounded) but is not absolutely continuous. The hierarchy is:
                     $$\text{Lipschitz} \subset AC \subset BV \cap C \subset BV.$$</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.1.6 — Integral of $L^1$ Function</div>
+                    <div class="math-box-label">Example 7.1.6 - Integral of $L^1$ Function</div>
                     <p class="mb-0">Let $g(x) = x^{-1/2}$ on $(0,1]$, extended by $g(0) = 0$. Then $g \in L^1([0,1])$ (since $\int_0^1 x^{-1/2}\,dx = 2$). Define $F(x) = \int_0^x g = 2\sqrt{x}$. Then $F \in AC([0,1])$ and $F'(x) = x^{-1/2} = g(x)$ for all $x > 0$. Note that $F'$ is unbounded, yet the FTC holds because $F$ is absolutely continuous.</p>
                 </div>
 

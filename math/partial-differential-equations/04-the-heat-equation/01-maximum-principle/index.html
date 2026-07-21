@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -49,17 +49,17 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">4.1 Maximum Principle</h1>
-                <p>The maximum principle is one of the most powerful tools in PDE theory. For the heat equation, it states that temperature maxima occur either initially or on the boundary — not in the interior at a later time. This encodes the physical intuition that heat cannot spontaneously concentrate.</p>
+                <p>The maximum principle is one of the most powerful tools in PDE theory. For the heat equation, it states that temperature maxima occur either initially or on the boundary - not in the interior at a later time. This encodes the physical intuition that heat cannot spontaneously concentrate.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.1.1 — Parabolic Cylinder and Boundary</div>
+                    <div class="math-box-label">Definition 4.1.1 - Parabolic Cylinder and Boundary</div>
                     <p>Let $\Omega \subset \mathbb{R}^n$ be bounded and $T > 0$. The <strong>parabolic cylinder</strong> is $Q_T = \Omega \times (0,T]$. The <strong>parabolic boundary</strong> is:</p>
                     <p>$$\Gamma_T = \overline{Q}_T \setminus Q_T = (\Omega \times \{0\}) \cup (\partial\Omega \times [0,T])$$</p>
                     <p class="mb-0">The parabolic boundary consists of the bottom ($t=0$) and the lateral sides ($\partial\Omega$ for all $t$), but <em>not</em> the top ($t=T$).</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.1.1 — Weak Maximum Principle</div>
+                    <div class="math-box-label">Theorem 4.1.1 - Weak Maximum Principle</div>
                     <p>Let $u \in C^{2,1}(Q_T) \cap C(\overline{Q}_T)$ satisfy $u_t \leq k u_{xx}$ (a sub-solution). Then:</p>
                     <p>$$\max_{\overline{Q}_T} u = \max_{\Gamma_T} u$$</p>
                     <p><strong>Proof sketch:</strong> Suppose the maximum is attained at an interior point $(x_0, t_0)$ with $t_0 > 0$. Then $u_t(x_0, t_0) \geq 0$ (otherwise $u$ was larger just before) and $u_{xx}(x_0, t_0) \leq 0$ (concave in $x$ at maximum). So $u_t - ku_{xx} \geq 0$, but we assumed $u_t - ku_{xx} \leq 0$. A careful argument handles the maximum at $t = T$. $\square$</p>
@@ -67,18 +67,18 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.1.2 — Uniqueness</div>
+                    <div class="math-box-label">Theorem 4.1.2 - Uniqueness</div>
                     <p>The IBVP $u_t = ku_{xx}$ on $(0,L)\times(0,T)$ with $u(x,0) = \phi(x)$ and $u(0,t) = u(L,t) = g(t)$ has at most one solution.</p>
                     <p class="mb-0"><strong>Proof:</strong> If $u,v$ are two solutions, $w = u-v$ satisfies the heat equation with zero data. By the maximum principle, $\max w = \max_{\Gamma_T} w = 0$ and $\min w = 0$. So $w \equiv 0$. $\square$</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.1.3 — Strong Maximum Principle</div>
+                    <div class="math-box-label">Theorem 4.1.3 - Strong Maximum Principle</div>
                     <p class="mb-0">If $u$ satisfies $u_t = ku_{xx}$ and attains its maximum at any interior point $(x_0, t_0) \in Q_T$, then $u$ is constant in the entire region $\{(x,t) : t \leq t_0\}$. In other words, a non-constant solution can never attain an interior maximum. This is much stronger than the weak maximum principle.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Application — Comparison Principle</div>
+                    <div class="math-box-label">Application - Comparison Principle</div>
                     <p>If $u_t = ku_{xx}$ and $v_t = kv_{xx}$ with $u \leq v$ on $\Gamma_T$, then $u \leq v$ throughout $\overline{Q}_T$.</p>
                     <p class="mb-0"><strong>Proof:</strong> Apply the maximum principle to $w = u - v$. Since $w \leq 0$ on $\Gamma_T$, we get $\max w \leq 0$, so $w \leq 0$ everywhere. This comparison principle is used to bound solutions and establish stability.</p>
                 </div>

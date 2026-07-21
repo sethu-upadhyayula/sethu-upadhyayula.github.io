@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -125,7 +125,7 @@
             <article>
                 <h1 class="text-accent mb-4">6.1 Poisson's Equation</h1>
 
-                <p>We work through the complete finite element solution of Poisson's equation on the unit square — from the variational formulation to the assembled linear system to numerical convergence verification. This is the canonical benchmark for FEM implementations.</p>
+                <p>We work through the complete finite element solution of Poisson's equation on the unit square - from the variational formulation to the assembled linear system to numerical convergence verification. This is the canonical benchmark for FEM implementations.</p>
 
                 <h2 class="mt-4 mb-3">Problem Statement</h2>
 
@@ -143,7 +143,7 @@
                 <p>Divide $(0,1)^2$ into a uniform $N \times N$ grid of squares, each split into two triangles by a diagonal. For mesh size $h = 1/N$, the resulting triangulation $\mathcal{T}_h$ has $2N^2$ triangles and $(N+1)^2$ nodes. After imposing homogeneous Dirichlet conditions, the number of <strong>interior (free) degrees of freedom</strong> is $(N-1)^2$.</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — $h = 1/4$ ($N=4$)</div>
+                    <div class="math-box-label">Example - $h = 1/4$ ($N=4$)</div>
                     <p class="mb-0">With $h = 1/4$: the mesh has $2 \cdot 16 = 32$ triangles and $25$ nodes. After removing the $16$ boundary nodes, there are $(4-1)^2 = 9$ interior nodes, yielding a $9 \times 9$ linear system $K\mathbf{u} = \mathbf{f}$. The stiffness matrix $K$ is symmetric positive definite and sparse (at most 7 nonzeros per row for interior nodes).</p>
                 </div>
 
@@ -164,7 +164,7 @@
                 approximated by numerical quadrature on each element. The convergence rate between consecutive meshes is estimated as $r = \log_2(e_h / e_{h/2})$.</p>
 
                 <div class="math-box">
-                    <div class="math-box-label">Table — Convergence of $P_1$ FEM for $-\Delta u = 1$ on $(0,1)^2$</div>
+                    <div class="math-box-label">Table - Convergence of $P_1$ FEM for $-\Delta u = 1$ on $(0,1)^2$</div>
                     <table class="table table-sm table-bordered mb-0" style="font-size:0.92em;">
                         <thead>
                             <tr>
@@ -181,9 +181,9 @@
                                 <td>$1/2$</td>
                                 <td>1</td>
                                 <td>$4.63 \times 10^{-2}$</td>
-                                <td>—</td>
+                                <td>-</td>
                                 <td>$6.11 \times 10^{-3}$</td>
-                                <td>—</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>$1/4$</td>
@@ -216,7 +216,7 @@
                 <p class="mt-3">The observed rates confirm the theoretical predictions: $\|u - u_h\|_{H^1} = O(h)$ and $\|u - u_h\|_{L^2} = O(h^2)$ for $P_1$ elements, as established in Section 5.3. The $H^1$ rate is exactly 1.00 and the $L^2$ rate converges to 2.00, validating both Céa's lemma and the Aubin-Nitsche argument.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Pre-asymptotic Regime</div>
+                    <div class="math-box-label">Remark - Pre-asymptotic Regime</div>
                     <p class="mb-0">For very coarse meshes (e.g., $h = 1/2$, which gives only 1 interior DOF), the solution is in the pre-asymptotic regime where the mesh is too coarse to resolve the solution. Convergence rates are only reliable once $h$ is small enough that $u$ is well-resolved. The table shows the asymptotic regime is reached by $h = 1/4$.</p>
                 </div>
 

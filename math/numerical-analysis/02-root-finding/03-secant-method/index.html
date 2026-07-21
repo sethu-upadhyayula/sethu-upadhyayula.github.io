@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,33 +128,33 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">2.3 Secant Method</h1>
-                <p>The secant method replaces Newton-Raphson's derivative with a finite-difference approximation using the two most recent iterates. This avoids the need to compute $f'$ analytically while retaining superlinear convergence — an order of $(1+\sqrt{5})/2 \approx 1.618$, the golden ratio.</p>
+                <p>The secant method replaces Newton-Raphson's derivative with a finite-difference approximation using the two most recent iterates. This avoids the need to compute $f'$ analytically while retaining superlinear convergence - an order of $(1+\sqrt{5})/2 \approx 1.618$, the golden ratio.</p>
 
                 <h2 class="mt-4 mb-3">The Iteration</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Secant Method</div>
+                    <div class="math-box-label">Definition - Secant Method</div>
                     <p>Given two initial approximations $x_0$ and $x_1$, the <strong>secant method</strong> iterates:</p>
                     $$x_{n+1} = x_n - f(x_n) \cdot \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}, \qquad n = 1, 2, 3, \ldots$$
                     <p class="mb-0">Geometrically, $x_{n+1}$ is the $x$-intercept of the secant line through $(x_{n-1}, f(x_{n-1}))$ and $(x_n, f(x_n))$. Each iteration requires one new function evaluation (reusing $f(x_n)$ from the previous step).</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Connection to Divided Differences</div>
+                    <div class="math-box-label">Remark - Connection to Divided Differences</div>
                     <p class="mb-0">The denominator $[f(x_n) - f(x_{n-1})]/(x_n - x_{n-1})$ is the first-order divided difference $f[x_{n-1}, x_n]$, which approximates $f'(\xi)$ for some $\xi$ between $x_{n-1}$ and $x_n$. This makes the secant method a quasi-Newton method: it uses an approximate Jacobian (the secant slope) rather than the exact derivative.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Convergence Order</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Superlinear Convergence</div>
+                    <div class="math-box-label">Theorem - Superlinear Convergence</div>
                     <p>Let $r$ be a simple root of $f \in C^2$ near $r$. If $x_0$ and $x_1$ are sufficiently close to $r$, the secant iterates converge with order:</p>
                     $$p = \frac{1 + \sqrt{5}}{2} \approx 1.618,$$
                     <p>meaning $|e_{n+1}| \le C|e_n|^p$ for some constant $C$. This order arises because the Fibonacci-like recurrence $p = 1 + 1/p$ characterises the propagation of errors when the derivative is approximated by the secant slope.</p>
-                    <p class="mb-0">In terms of function evaluations, the secant method is more efficient than Newton-Raphson: Newton needs 2 evaluations per step ($f$ and $f'$) for order 2, while secant needs 1 evaluation per step for order 1.618. Per evaluation, the effective order is $2^{1/2} \approx 1.414$ for Newton and $1.618^1 = 1.618$ for secant — secant wins.</p>
+                    <p class="mb-0">In terms of function evaluations, the secant method is more efficient than Newton-Raphson: Newton needs 2 evaluations per step ($f$ and $f'$) for order 2, while secant needs 1 evaluation per step for order 1.618. Per evaluation, the effective order is $2^{1/2} \approx 1.414$ for Newton and $1.618^1 = 1.618$ for secant - secant wins.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Method Comparison</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Comparison Table — Root-Finding Methods</div>
+                    <div class="math-box-label">Comparison Table - Root-Finding Methods</div>
                     <table class="table table-sm table-bordered text-center">
                         <thead>
                             <tr>
@@ -177,17 +177,17 @@
 
                 <h2 class="mt-5 mb-3">Brent's Method</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Brent's Method</div>
+                    <div class="math-box-label">Definition - Brent's Method</div>
                     <p class="mb-0"><strong>Brent's method</strong> (1973) combines bisection, secant, and inverse quadratic interpolation to achieve guaranteed convergence (like bisection) while typically converging as fast as the higher-order methods. At each step it uses inverse quadratic interpolation through three points when possible; if the resulting step is outside the bracket, it falls back to bisection. This makes Brent's method the recommended default scalar root-finder in practice and is the basis of many standard library implementations (e.g., <code>scipy.optimize.brentq</code>).</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Illinois Method</div>
+                    <div class="math-box-label">Definition - Illinois Method</div>
                     <p class="mb-0">The <strong>Illinois method</strong> is a regula falsi variant that avoids the stagnation problem of the false-position method by scaling the function value at the retained endpoint by $1/2$ whenever the same endpoint is retained twice in succession. This restores superlinear convergence while preserving the bracket guarantee.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Practical Recommendations</div>
+                    <div class="math-box-label">Remark - Practical Recommendations</div>
                     <p class="mb-0">For production numerical software: use <strong>Brent's method</strong> whenever a bracket is available (robust and fast). Use <strong>Newton-Raphson</strong> when derivatives are cheap and a good starting point is available. Use the <strong>secant method</strong> as a derivative-free alternative to Newton when no bracket is available. Reserve <strong>bisection</strong> for initial bracketing or as a fallback when more sophisticated methods diverge.</p>
                 </div>
 

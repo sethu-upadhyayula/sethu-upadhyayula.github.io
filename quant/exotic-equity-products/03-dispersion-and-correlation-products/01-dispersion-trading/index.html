@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -85,50 +85,50 @@
                 <h2 class="mt-5 mb-3">The Variance Decomposition</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Result — Index Variance as a Function of Constituent Variances and Correlation</div>
+                    <div class="math-box-label">Result - Index Variance as a Function of Constituent Variances and Correlation</div>
                     <p class="mb-0">For an index $I$ composed of $k$ constituents with weights $w_j$ (such that $I_t \approx \sum_j w_j S_t^{(j)}$ in return terms), the instantaneous variance of the index return relates to the constituent variances and pairwise correlations by:
                     $$\sigma_I^2 = \sum_{i=1}^{k}\sum_{j=1}^{k} w_i w_j \sigma_i \sigma_j \rho_{ij} = \sum_{j=1}^{k} w_j^2 \sigma_j^2 + \sum_{i \neq j} w_i w_j \sigma_i \sigma_j \rho_{ij}$$
                     If all pairwise correlations are equal to a single value $\bar{\rho}$ (the simplifying assumption used to define a single "implied correlation" number), this becomes:
                     $$\sigma_I^2 = \sum_{j=1}^{k} w_j^2\sigma_j^2 + \bar{\rho}\sum_{i\neq j} w_iw_j\sigma_i\sigma_j$$
-                    Solving for $\bar{\rho}$ given an observed index volatility $\sigma_I$ and the constituent volatilities $\sigma_j$ defines the <em>implied correlation</em> — the single correlation value that reconciles index-level implied volatility with the weighted-average single-stock implied volatilities.</p>
+                    Solving for $\bar{\rho}$ given an observed index volatility $\sigma_I$ and the constituent volatilities $\sigma_j$ defines the <em>implied correlation</em> - the single correlation value that reconciles index-level implied volatility with the weighted-average single-stock implied volatilities.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Constructing a Dispersion Trade</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Classic Dispersion Trade</div>
+                    <div class="math-box-label">Definition - Classic Dispersion Trade</div>
                     <p>A dispersion trade consists of:</p>
                     <p><strong>Short index variance:</strong> sell a variance swap (or a delta-hedged straddle/strangle position) on the index, taking in the index's implied variance.</p>
-                    <p class="mb-0"><strong>Long single-stock variance:</strong> buy variance swaps (or delta-hedged straddles) on each of the index constituents, sized by $w_j^2$ (or, in practice, by vega-weighting so the position is vega-neutral at inception) — i.e., the position is long the weighted sum $\sum_j w_j^2 \sigma_{j,\text{realized}}^2$ of single-stock realized variances and short $\sigma_{I,\text{realized}}^2$ of index realized variance.</p>
+                    <p class="mb-0"><strong>Long single-stock variance:</strong> buy variance swaps (or delta-hedged straddles) on each of the index constituents, sized by $w_j^2$ (or, in practice, by vega-weighting so the position is vega-neutral at inception) - i.e., the position is long the weighted sum $\sum_j w_j^2 \sigma_{j,\text{realized}}^2$ of single-stock realized variances and short $\sigma_{I,\text{realized}}^2$ of index realized variance.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Relationship to Implied Correlation</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Dispersion is a Short-Correlation Trade</div>
+                    <div class="math-box-label">Remark - Dispersion is a Short-Correlation Trade</div>
                     <p>Rearranging the variance decomposition, the cross-term involving correlation can be written as:
                     $$\sum_{i\neq j} w_iw_j\sigma_i\sigma_j\rho_{ij} = \sigma_I^2 - \sum_{j} w_j^2\sigma_j^2$$
-                    A short-index/long-single-stock dispersion position has a payoff that is, to leading order, proportional to $-\left(\sigma_{I,\text{realized}}^2 - \sum_j w_j^2 \sigma_{j,\text{realized}}^2\right)$, i.e., it profits when this cross-correlation term is <em>smaller</em> than what was priced in at inception — that is, when <strong>realized correlation comes in lower than implied correlation</strong>. The trade is therefore fundamentally a short position in implied correlation, expressed via the variance/volatility surface rather than via a direct correlation product.</p>
-                    <p class="mb-0"><strong>Why dispersion is structurally attractive to sell-side desks:</strong> implied correlation has historically tended to trade above subsequently realized correlation on average (an analogue of the well-documented variance risk premium for single-asset implied vs. realized volatility), making the short-correlation dispersion trade a persistent (though not riskless) source of premium — compensation for the tail risk that correlation spikes sharply higher in a market-wide selloff, exactly when the short-index-variance leg of the trade is also losing money.</p>
+                    A short-index/long-single-stock dispersion position has a payoff that is, to leading order, proportional to $-\left(\sigma_{I,\text{realized}}^2 - \sum_j w_j^2 \sigma_{j,\text{realized}}^2\right)$, i.e., it profits when this cross-correlation term is <em>smaller</em> than what was priced in at inception - that is, when <strong>realized correlation comes in lower than implied correlation</strong>. The trade is therefore fundamentally a short position in implied correlation, expressed via the variance/volatility surface rather than via a direct correlation product.</p>
+                    <p class="mb-0"><strong>Why dispersion is structurally attractive to sell-side desks:</strong> implied correlation has historically tended to trade above subsequently realized correlation on average (an analogue of the well-documented variance risk premium for single-asset implied vs. realized volatility), making the short-correlation dispersion trade a persistent (though not riskless) source of premium - compensation for the tail risk that correlation spikes sharply higher in a market-wide selloff, exactly when the short-index-variance leg of the trade is also losing money.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Risks of Dispersion Trades</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Correlation Spikes and Crowding</div>
-                    <p><strong>Correlation regime risk:</strong> in market-wide stress events, correlations across single names tend to rise sharply toward $1$ (the "all correlations go to one" phenomenon in a crash) — precisely when a short-correlation dispersion position loses the most, since realized correlation jumps far above the implied level the trade was put on at. This makes dispersion trades behave like a short-volatility, short-tail-risk position overall, despite being vega-neutral at the index level.</p>
+                    <div class="math-box-label">Remark - Correlation Spikes and Crowding</div>
+                    <p><strong>Correlation regime risk:</strong> in market-wide stress events, correlations across single names tend to rise sharply toward $1$ (the "all correlations go to one" phenomenon in a crash) - precisely when a short-correlation dispersion position loses the most, since realized correlation jumps far above the implied level the trade was put on at. This makes dispersion trades behave like a short-volatility, short-tail-risk position overall, despite being vega-neutral at the index level.</p>
                     <p class="mb-0"><strong>Rebalancing and basis risk:</strong> maintaining vega-neutrality (or variance-notional neutrality) requires the relative weights between the index leg and the $k$ single-stock legs to be rebalanced as implied vols and correlations drift, and as the index composition itself changes (constituent additions, deletions, and weight changes). Dividend effects, single-stock corporate actions (M&amp;A, spin-offs), and liquidity differences between index options (very liquid) and single-stock options (often much less liquid, especially for smaller index members) all introduce basis risk that a simplified "decomposition" framework ignores.</p>
                 </div>
 
-                <h2 class="mt-5 mb-3">Worked Example — Dispersion Trade P&amp;L</h2>
+                <h2 class="mt-5 mb-3">Worked Example - Dispersion Trade P&amp;L</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Realized Correlation Below Implied</div>
+                    <div class="math-box-label">Example - Realized Correlation Below Implied</div>
                     <p>Consider a simplified index of $k=4$ equally-weighted stocks ($w_j = 0.25$), each with implied volatility $\sigma_j = 30\%$ at inception, and an index implied volatility of $\sigma_I = 22\%$. Using the equal-correlation formula with $w_j=0.25$ for all $j$:
                     $$\sigma_I^2 = \sum_j w_j^2\sigma_j^2 + \bar\rho\sum_{i\neq j}w_iw_j\sigma_i\sigma_j$$
                     Here $\sum_j w_j^2\sigma_j^2 = 4\times(0.25)^2\times(0.30)^2 = 0.0225$, and $\sum_{i\neq j}w_iw_j\sigma_i\sigma_j = 12\times(0.25)^2\times(0.30)^2 = 0.0675$. Solving $0.22^2 = 0.0484 = 0.0225 + \bar\rho \times 0.0675$ gives $\bar\rho_{\text{implied}} \approx 0.384$, roughly $38\%$ implied correlation.</p>
-                    <p>Now suppose over the life of the trade, each stock realizes its implied volatility of $30\%$ exactly, but the realized pairwise correlation comes in at $\bar\rho_{\text{realized}} = 0.20$ rather than $38\%$. The realized index variance would then be $\sigma_{I,\text{realized}}^2 = 0.0225 + 0.20\times 0.0675 = 0.0360$, i.e., $\sigma_{I,\text{realized}} \approx 19.0\%$ — well below the $22\%$ implied level the index variance was sold at.</p>
-                    <p class="mb-0">The short-index-variance leg therefore pays out less than it took in (a gain to the dispersion trader of roughly $\sigma_I^2 - \sigma_{I,\text{realized}}^2 = 0.0484 - 0.0360 = 0.0124$ in variance terms, scaled by the variance notional), while the long-single-stock legs realize exactly their implied levels (roughly breakeven on those legs in isolation). The net effect is a profit driven almost entirely by the gap between implied correlation ($38\%$) and realized correlation ($20\%$) — illustrating why dispersion is, in practice, best understood as a correlation trade wrapped in a volatility-instrument structure.</p>
+                    <p>Now suppose over the life of the trade, each stock realizes its implied volatility of $30\%$ exactly, but the realized pairwise correlation comes in at $\bar\rho_{\text{realized}} = 0.20$ rather than $38\%$. The realized index variance would then be $\sigma_{I,\text{realized}}^2 = 0.0225 + 0.20\times 0.0675 = 0.0360$, i.e., $\sigma_{I,\text{realized}} \approx 19.0\%$ - well below the $22\%$ implied level the index variance was sold at.</p>
+                    <p class="mb-0">The short-index-variance leg therefore pays out less than it took in (a gain to the dispersion trader of roughly $\sigma_I^2 - \sigma_{I,\text{realized}}^2 = 0.0484 - 0.0360 = 0.0124$ in variance terms, scaled by the variance notional), while the long-single-stock legs realize exactly their implied levels (roughly breakeven on those legs in isolation). The net effect is a profit driven almost entirely by the gap between implied correlation ($38\%$) and realized correlation ($20\%$) - illustrating why dispersion is, in practice, best understood as a correlation trade wrapped in a volatility-instrument structure.</p>
                 </div>
 
                 <hr class="my-5">

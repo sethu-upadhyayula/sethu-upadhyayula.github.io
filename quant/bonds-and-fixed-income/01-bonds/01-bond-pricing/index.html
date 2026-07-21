@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -84,7 +84,7 @@
                 <p>A bond is a debt instrument in which the issuer promises to pay the holder a series of fixed cashflows. The standard fixed-rate bond pays periodic coupons $C$ and returns the face value (principal) $F$ at maturity $T$. Pricing a bond means computing the present value of all these cashflows.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Bond Price (Discrete Compounding)</div>
+                    <div class="math-box-label">Definition - Bond Price (Discrete Compounding)</div>
                     <p>For a bond with $n$ coupon periods, coupon $C$ per period, face value $F$, yield to maturity $y$, and coupon frequency $m$ (periods per year), the (dirty) price is:
                     $$P = \sum_{i=1}^{n} \frac{C}{(1+y/m)^{i}} + \frac{F}{(1+y/m)^{n}}$$
                     The yield $y$ is the single discount rate that equates this sum to the observed market price.</p>
@@ -94,7 +94,7 @@
                 $$P = \frac{C}{y/m}\left[1 - \frac{1}{(1+y/m)^n}\right] + \frac{F}{(1+y/m)^n}$$
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Bond Price (Continuous Compounding)</div>
+                    <div class="math-box-label">Definition - Bond Price (Continuous Compounding)</div>
                     <p>Under continuous compounding with flat yield $y$, the bond price is:
                     $$P = \sum_{i=1}^{n} C\,e^{-y\,t_i} + F\,e^{-y\,T}$$
                     where $t_i$ are the coupon dates. For a zero-coupon bond ($C=0$):
@@ -104,7 +104,7 @@
                 <h2 class="mt-5 mb-3">Day Count Conventions</h2>
                 <p>The fraction of a year between two dates depends on the <em>day count convention</em>, which affects accrued interest and coupon amounts.</p>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Common Day Count Conventions</div>
+                    <div class="math-box-label">Remark - Common Day Count Conventions</div>
                     <p><strong>Act/365 (Actual/365 Fixed):</strong> divide the actual number of calendar days by 365. Common for GBP bonds and money markets.</p>
                     <p><strong>Act/360:</strong> divide actual days by 360. Used for USD SOFR and many money market instruments.</p>
                     <p><strong>30/360:</strong> assumes each month has 30 days and each year 360 days. Standard for US corporate and agency bonds.</p>
@@ -115,7 +115,7 @@
                 <p>In practice bonds are quoted as <em>clean prices</em> (flat prices) which exclude accrued interest. The <em>dirty price</em> (full price) is what the buyer actually pays.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Accrued Interest</div>
+                    <div class="math-box-label">Definition - Accrued Interest</div>
                     <p>Let $t_{prev}$ be the last coupon date, $t$ the settlement date, and $t_{next}$ the next coupon date. Then:
                     $$AI = C \cdot \frac{t - t_{prev}}{t_{next} - t_{prev}}$$
                     and $\text{Dirty Price} = \text{Clean Price} + AI$.</p>
@@ -134,7 +134,7 @@
                 <p>where $r(T)$ is the continuously compounded spot rate for maturity $T$. Discount factors $P(0,T)$ are the fundamental building blocks for pricing all fixed income instruments.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Bond Price Relationships</div>
+                    <div class="math-box-label">Remark - Bond Price Relationships</div>
                     <p class="mb-0">When $y = $ coupon rate, $P = F$ (priced at par). When $y &gt;$ coupon rate, $P &lt; F$ (discount bond). When $y &lt;$ coupon rate, $P &gt; F$ (premium bond). As $T \to 0$, $P \to F$ regardless of yield (pull-to-par).</p>
                 </div>
 

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,17 +81,17 @@
             <article>
                 <h1 class="text-accent mb-4">4.2 Tail Risk Hedging</h1>
 
-                <p>The previous section ended by noting that volatility risk premium harvesting strategies are structurally exposed to tail events — and that pairing such a strategy with explicit tail protection is essential to running it responsibly. This section examines the instruments and trade-offs involved in tail risk hedging, both as a standalone discipline for protecting a broader portfolio and as a complement to short-volatility carry strategies.</p>
+                <p>The previous section ended by noting that volatility risk premium harvesting strategies are structurally exposed to tail events - and that pairing such a strategy with explicit tail protection is essential to running it responsibly. This section examines the instruments and trade-offs involved in tail risk hedging, both as a standalone discipline for protecting a broader portfolio and as a complement to short-volatility carry strategies.</p>
 
                 <h2 class="mt-5 mb-3">Tail Hedging Instruments</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Long OTM Put Hedge</div>
+                    <div class="math-box-label">Definition - Long OTM Put Hedge</div>
                     <p class="mb-0">The most direct tail hedge for an equity portfolio is a long position in out-of-the-money puts on a broad index, with strike $K$ set well below the current spot $S_0$ (commonly 10-30% out-of-the-money) and maturity $T$ chosen to span the horizon over which protection is desired. The payoff $\max(K - S_T, 0)$ is zero unless the index falls below $K$, at which point it grows linearly, offsetting losses on the underlying portfolio one-for-one (or in whatever ratio the notional is sized) below that strike.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Long VIX Call Hedge</div>
+                    <div class="math-box-label">Definition - Long VIX Call Hedge</div>
                     <p class="mb-0">As discussed in Section 3.2, VIX calls offer convex exposure to a volatility spike, which tends to accompany sharp equity sell-offs. A long position in out-of-the-money VIX calls (struck above the typical range of spot VIX) pays off $\max(\text{VIX}_T^{\text{SOQ}} - K, 0)$, providing protection that is correlated with, but distinct from, an equity put hedge: VIX calls respond to the magnitude of the volatility spike itself, which has historically exhibited even larger percentage moves than the corresponding equity decline, making them a capital-efficient (if more idiosyncratic and basis-exposed) complement to direct equity puts.</p>
                 </div>
 
@@ -100,24 +100,24 @@
                 <p>Both instruments above share a common feature: because they derive their value from implied volatility, and implied volatility carries a positive risk premium on average (Section 4.1), a continuously-held long-options tail hedge has negative expected carry. The hedge is, in effect, an insurance policy, and insurance has a premium.</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Annual Cost of a Rolling Put Hedge</div>
+                    <div class="math-box-label">Example - Annual Cost of a Rolling Put Hedge</div>
                     <p>Suppose a portfolio manager rolls a one-month, 10%-out-of-the-money put on a broad index every month, each costing approximately $0.5\%$ of the notional hedged (a representative order of magnitude for far-OTM short-dated puts in calm markets). If the index does not experience a sufficiently large decline in any given month for the put to pay out, the full premium is lost each time it expires worthless.</p>
-                    <p class="mb-0">Over a year of 12 such rolls, if none of them pay out, the cumulative cost is approximately $12 \times 0.5\% = 6\%$ of notional — a substantial annual drag, comparable in magnitude to a typical equity risk premium. This illustrates why naive, permanently-on tail hedging programmes are difficult to sustain: the cost of the hedge, paid every period, can consume most or all of the return the underlying portfolio is expected to generate, unless the hedge pays off often enough (or large enough on the occasions it does pay off) to offset this drag.</p>
+                    <p class="mb-0">Over a year of 12 such rolls, if none of them pay out, the cumulative cost is approximately $12 \times 0.5\% = 6\%$ of notional - a substantial annual drag, comparable in magnitude to a typical equity risk premium. This illustrates why naive, permanently-on tail hedging programmes are difficult to sustain: the cost of the hedge, paid every period, can consume most or all of the return the underlying portfolio is expected to generate, unless the hedge pays off often enough (or large enough on the occasions it does pay off) to offset this drag.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Reducing the Cost of Carry</div>
-                    <p>Several techniques are used in practice to reduce the drag of a tail hedging programme. Spread structures (e.g., put spreads, which cap the payoff at a lower strike $K_2 < K_1$ in exchange for a lower net premium) reduce cost at the expense of capping protection in the most extreme scenarios. "Tail hedges of tail hedges" — using far-OTM VIX calls rather than equity puts — can be cheaper in premium terms per unit of crisis-protection, since VIX calls are smaller-notional instruments whose payoffs are highly convex specifically in the regime where protection matters most.</p>
-                    <p class="mb-0">A more structural approach is to fund the tail hedge from the proceeds of a vol risk premium harvesting programme (Section 4.1) — using the steady premium income from short-volatility positions to pay for the tail protection, effectively converting an unhedged short-vol carry strategy into one with a bounded downside. This pairing is the basis of many "defensive" or "hedged equity" systematic volatility programmes.</p>
+                    <div class="math-box-label">Remark - Reducing the Cost of Carry</div>
+                    <p>Several techniques are used in practice to reduce the drag of a tail hedging programme. Spread structures (e.g., put spreads, which cap the payoff at a lower strike $K_2 < K_1$ in exchange for a lower net premium) reduce cost at the expense of capping protection in the most extreme scenarios. "Tail hedges of tail hedges" - using far-OTM VIX calls rather than equity puts - can be cheaper in premium terms per unit of crisis-protection, since VIX calls are smaller-notional instruments whose payoffs are highly convex specifically in the regime where protection matters most.</p>
+                    <p class="mb-0">A more structural approach is to fund the tail hedge from the proceeds of a vol risk premium harvesting programme (Section 4.1) - using the steady premium income from short-volatility positions to pay for the tail protection, effectively converting an unhedged short-vol carry strategy into one with a bounded downside. This pairing is the basis of many "defensive" or "hedged equity" systematic volatility programmes.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Balancing Premium Harvesting and Tail Protection</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — A Combined Framework</div>
-                    <p>Putting together the two halves of this chapter: a portfolio that systematically sells volatility (Section 4.1) earns a positive expected return from the volatility risk premium, but with a negatively-skewed payoff exposed to rare, large losses. A portfolio that systematically buys tail protection (this section) has the opposite profile — a small, steady negative carry, with a large positive payoff in the same tail scenarios.</p>
-                    <p>Combining the two in appropriate proportions produces a strategy whose net premium income from the short-vol book partially or fully funds the tail hedge, while the tail hedge's payoff during a crisis offsets some or all of the short-vol book's losses in that same scenario. The result is a return profile with reduced skew relative to either component in isolation — smoother carry income in normal times, and a partially-protected drawdown during tail events — though typically at the cost of some of the unhedged short-vol strategy's average return, since part of the harvested premium is spent on protection rather than retained as P&L.</p>
-                    <p class="mb-0">Calibrating this balance — how much premium to harvest, how much protection to buy, and at what strikes and maturities — is ultimately a risk-management decision rather than a purely quantitative one, depending on the investor's tolerance for drawdowns, the cost of available hedges at any given time (which itself varies with the level of implied volatility, often becoming most expensive exactly when it is most needed), and the broader portfolio context the volatility strategy sits within. This trade-off between carry and protection is the central tension running through systematic volatility trading, and ties together the term structure dynamics of Chapter 3, the risk premia of this chapter, and the underlying products and replication arguments of Chapters 1 and 2.</p>
+                    <div class="math-box-label">Remark - A Combined Framework</div>
+                    <p>Putting together the two halves of this chapter: a portfolio that systematically sells volatility (Section 4.1) earns a positive expected return from the volatility risk premium, but with a negatively-skewed payoff exposed to rare, large losses. A portfolio that systematically buys tail protection (this section) has the opposite profile - a small, steady negative carry, with a large positive payoff in the same tail scenarios.</p>
+                    <p>Combining the two in appropriate proportions produces a strategy whose net premium income from the short-vol book partially or fully funds the tail hedge, while the tail hedge's payoff during a crisis offsets some or all of the short-vol book's losses in that same scenario. The result is a return profile with reduced skew relative to either component in isolation - smoother carry income in normal times, and a partially-protected drawdown during tail events - though typically at the cost of some of the unhedged short-vol strategy's average return, since part of the harvested premium is spent on protection rather than retained as P&L.</p>
+                    <p class="mb-0">Calibrating this balance - how much premium to harvest, how much protection to buy, and at what strikes and maturities - is ultimately a risk-management decision rather than a purely quantitative one, depending on the investor's tolerance for drawdowns, the cost of available hedges at any given time (which itself varies with the level of implied volatility, often becoming most expensive exactly when it is most needed), and the broader portfolio context the volatility strategy sits within. This trade-off between carry and protection is the central tension running through systematic volatility trading, and ties together the term structure dynamics of Chapter 3, the risk premia of this chapter, and the underlying products and replication arguments of Chapters 1 and 2.</p>
                 </div>
 
                 <hr class="my-5">

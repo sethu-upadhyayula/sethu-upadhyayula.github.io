@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,21 +81,21 @@
             <article>
                 <h1 class="text-accent mb-4">4.2 Cross-Commodity Hedging and Correlation</h1>
 
-                <p>The hedging discussion in Chapter 2 implicitly assumed that a liquid futures contract exists on exactly the commodity being hedged, so that basis risk arises only from grade, location, and timing mismatches between the futures and the underlying exposure. Many real-world exposures, however, have <em>no directly-traded futures contract at all</em> — a regional jet fuel consumer, a specialty chemical producer, or a livestock feeder facing input costs tied to a blend of grains. In these cases, the hedger must construct a <strong>cross-hedge</strong>: a position in a related, liquid futures contract whose price moves are correlated with — but not identical to — the exposure being hedged.</p>
+                <p>The hedging discussion in Chapter 2 implicitly assumed that a liquid futures contract exists on exactly the commodity being hedged, so that basis risk arises only from grade, location, and timing mismatches between the futures and the underlying exposure. Many real-world exposures, however, have <em>no directly-traded futures contract at all</em> - a regional jet fuel consumer, a specialty chemical producer, or a livestock feeder facing input costs tied to a blend of grains. In these cases, the hedger must construct a <strong>cross-hedge</strong>: a position in a related, liquid futures contract whose price moves are correlated with - but not identical to - the exposure being hedged.</p>
 
                 <h2 class="mt-5 mb-3">When Cross-Hedging Is Necessary</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Cross-Hedge</div>
+                    <div class="math-box-label">Definition - Cross-Hedge</div>
                     <p class="mb-0">A cross-hedge is a hedge constructed using a futures (or other derivative) contract on a commodity $Y$ that is different from, but economically related to, the commodity $X$ to which the hedger has exposure. Common examples include hedging jet fuel exposure with heating oil futures, hedging a basket of base metals exposure with copper futures, or hedging a regional natural gas price with a benchmark hub futures contract (e.g., hedging a European gas price with Henry Hub, where the relationship is driven by global LNG arbitrage rather than direct substitution).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Minimum-Variance Hedge Ratio</h2>
 
-                <p>The central question in any hedge — direct or cross — is <em>how many units</em> of the hedging instrument to hold per unit of the underlying exposure. The classical answer is the minimum-variance hedge ratio, obtained by regressing changes in the spot price of the exposure on changes in the futures price of the hedging instrument.</p>
+                <p>The central question in any hedge - direct or cross - is <em>how many units</em> of the hedging instrument to hold per unit of the underlying exposure. The classical answer is the minimum-variance hedge ratio, obtained by regressing changes in the spot price of the exposure on changes in the futures price of the hedging instrument.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Minimum-Variance Hedge Ratio</div>
+                    <div class="math-box-label">Theorem - Minimum-Variance Hedge Ratio</div>
                     <p>Let $\Delta S$ denote the change in the value of the exposure to be hedged and $\Delta F$ the change in the price of the hedging futures contract over the same period. Consider a hedged position $\Delta S - h\,\Delta F$ for hedge ratio $h$. The variance of the hedged position is</p>
                     <p>$$\text{Var}(\Delta S - h\,\Delta F) = \sigma_S^2 - 2h\,\sigma_{S,F} + h^2 \sigma_F^2.$$</p>
                     <p>Minimising over $h$ gives the minimum-variance hedge ratio</p>
@@ -106,41 +106,41 @@
                 <p>The number of futures contracts to trade follows directly from $h^*$ and the relative contract sizes of the exposure and the futures contract:</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Number of Contracts</div>
+                    <div class="math-box-label">Definition - Number of Contracts</div>
                     <p class="mb-0">If the exposure has notional size $Q_S$ (in the same physical units as the futures contract) and each futures contract covers $Q_F$ units, the number of futures contracts to trade is $$N^* = h^* \times \frac{Q_S}{Q_F}.$$</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Hedge Effectiveness</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — $R^2$ as Hedge Effectiveness</div>
-                    <p class="mb-0">The $R^2$ of the regression used to estimate $h^*$ has a direct interpretation: it is the proportion of the variance of $\Delta S$ that is eliminated by the optimal hedge, i.e., the proportional reduction in variance achieved by the minimum-variance hedge is exactly $R^2 = \rho_{S,F}^2$. A cross-hedge with $\rho_{S,F} = 0.85$ eliminates roughly $72\%$ of the variance of the unhedged exposure — useful, but leaving substantial residual basis risk relative to a direct hedge where $\rho$ might exceed $0.97$.</p>
+                    <div class="math-box-label">Remark - $R^2$ as Hedge Effectiveness</div>
+                    <p class="mb-0">The $R^2$ of the regression used to estimate $h^*$ has a direct interpretation: it is the proportion of the variance of $\Delta S$ that is eliminated by the optimal hedge, i.e., the proportional reduction in variance achieved by the minimum-variance hedge is exactly $R^2 = \rho_{S,F}^2$. A cross-hedge with $\rho_{S,F} = 0.85$ eliminates roughly $72\%$ of the variance of the unhedged exposure - useful, but leaving substantial residual basis risk relative to a direct hedge where $\rho$ might exceed $0.97$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Basis Risk in Cross-Hedges</h2>
 
-                <p>Even with the optimal hedge ratio applied, a cross-hedge leaves residual <strong>basis risk</strong> — but of a different character from the basis risk discussed in Chapter 2. There, basis risk arose from grade, location, and timing mismatches <em>within the same commodity</em>. In a cross-hedge, the residual risk also includes the risk that the fundamental relationship between the two commodities itself shifts.</p>
+                <p>Even with the optimal hedge ratio applied, a cross-hedge leaves residual <strong>basis risk</strong> - but of a different character from the basis risk discussed in Chapter 2. There, basis risk arose from grade, location, and timing mismatches <em>within the same commodity</em>. In a cross-hedge, the residual risk also includes the risk that the fundamental relationship between the two commodities itself shifts.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Correlation Instability</div>
-                    <p>Cross-hedge relationships are typically less stable than direct-hedge basis relationships, because they depend on economic linkages — substitutability, shared input costs, or arbitrage channels — that can weaken or break under stress. Heating oil and jet fuel, for example, are both middle distillates refined from similar crude streams and historically move closely together; but refinery output mix shifts, regional supply disruptions, or a structural change in jet fuel demand (as seen during periods of reduced air travel) can cause the historical correlation to deteriorate precisely when the hedge is needed most.</p>
+                    <div class="math-box-label">Remark - Correlation Instability</div>
+                    <p>Cross-hedge relationships are typically less stable than direct-hedge basis relationships, because they depend on economic linkages - substitutability, shared input costs, or arbitrage channels - that can weaken or break under stress. Heating oil and jet fuel, for example, are both middle distillates refined from similar crude streams and historically move closely together; but refinery output mix shifts, regional supply disruptions, or a structural change in jet fuel demand (as seen during periods of reduced air travel) can cause the historical correlation to deteriorate precisely when the hedge is needed most.</p>
                     <p class="mb-0">A practical consequence is that hedge ratios estimated from historical regressions should be treated as time-varying rather than fixed: re-estimating $h^*$ periodically (e.g., using a rolling window) and stress-testing the hedge under scenarios where $\rho_{S,F}$ falls toward zero or even reverses sign are standard risk management practices for cross-hedged books.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example: Hedging Jet Fuel with Heating Oil Futures</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Airline Fuel Hedge Using Heating Oil Futures</div>
+                    <div class="math-box-label">Example - Airline Fuel Hedge Using Heating Oil Futures</div>
                     <p>An airline needs to hedge its exposure to 420,000 gallons of jet fuel purchases over the next quarter. There is no actively-traded jet fuel futures contract suitable for this maturity, so the airline hedges using NYMEX heating oil futures, where each contract covers 42,000 gallons.</p>
                     <p>Using two years of weekly price changes, the airline's risk team regresses changes in the jet fuel spot price ($\Delta S$, in dollars per gallon) on changes in the heating oil futures price ($\Delta F$, in dollars per gallon), obtaining:</p>
                     <p>$$\hat\beta = h^* = 0.92, \qquad R^2 = 0.89, \qquad \sigma_S = 0.045, \qquad \sigma_F = 0.041.$$</p>
-                    <p>Check: $h^* = \rho_{S,F}\,\sigma_S/\sigma_F$. With $R^2 = 0.89$, $\rho_{S,F} = \sqrt{0.89} \approx 0.943$, so $h^* \approx 0.943 \times (0.045/0.041) \approx 1.035$ — close enough to the directly-estimated $0.92$ given rounding and sample-period differences; we proceed with the regression estimate $h^* = 0.92$.</p>
-                    <p>The number of heating oil contracts to sell short (the airline is long fuel-price risk and wants to hedge against price increases, so it goes long futures — but let's frame the hedge from the perspective of locking in a purchase price, i.e., going <em>long</em> heating oil futures):</p>
+                    <p>Check: $h^* = \rho_{S,F}\,\sigma_S/\sigma_F$. With $R^2 = 0.89$, $\rho_{S,F} = \sqrt{0.89} \approx 0.943$, so $h^* \approx 0.943 \times (0.045/0.041) \approx 1.035$ - close enough to the directly-estimated $0.92$ given rounding and sample-period differences; we proceed with the regression estimate $h^* = 0.92$.</p>
+                    <p>The number of heating oil contracts to sell short (the airline is long fuel-price risk and wants to hedge against price increases, so it goes long futures - but let's frame the hedge from the perspective of locking in a purchase price, i.e., going <em>long</em> heating oil futures):</p>
                     <p>$$N^* = h^* \times \frac{Q_S}{Q_F} = 0.92 \times \frac{420{,}000}{42{,}000} = 0.92 \times 10 = 9.2 \approx 9 \text{ contracts}.$$</p>
-                    <p class="mb-0">The airline goes long approximately 9 heating oil futures contracts. With $R^2 = 0.89$, this hedge is expected to eliminate roughly $89\%$ of the variance in the airline's jet fuel cost arising from common price movements — leaving an $11\%$ residual variance attributable to the jet fuel/heating oil basis, which the airline's risk management framework must separately monitor and, where the exposure is large enough, potentially supplement with jet fuel swaps from physical suppliers or refiners who can take the other side of the basis risk.</p>
+                    <p class="mb-0">The airline goes long approximately 9 heating oil futures contracts. With $R^2 = 0.89$, this hedge is expected to eliminate roughly $89\%$ of the variance in the airline's jet fuel cost arising from common price movements - leaving an $11\%$ residual variance attributable to the jet fuel/heating oil basis, which the airline's risk management framework must separately monitor and, where the exposure is large enough, potentially supplement with jet fuel swaps from physical suppliers or refiners who can take the other side of the basis risk.</p>
                 </div>
 
-                <p>This example highlights the general trade-off in cross-hedging: the hedge substantially reduces — but does not eliminate — price risk, and the residual basis risk is itself a risk that must be sized, monitored, and where possible, diversified or laid off through other means. Cross-commodity hedging is therefore as much a statistical and risk-monitoring discipline as it is a derivatives-trading one.</p>
+                <p>This example highlights the general trade-off in cross-hedging: the hedge substantially reduces - but does not eliminate - price risk, and the residual basis risk is itself a risk that must be sized, monitored, and where possible, diversified or laid off through other means. Cross-commodity hedging is therefore as much a statistical and risk-monitoring discipline as it is a derivatives-trading one.</p>
 
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

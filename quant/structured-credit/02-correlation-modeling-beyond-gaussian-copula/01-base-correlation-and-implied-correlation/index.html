@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,21 +81,21 @@
             <article>
                 <h1 class="text-accent mb-4">2.1 Base Correlation and Implied Correlation</h1>
 
-                <p>Section 1.2 introduced the one-factor Gaussian copula and noted that a single correlation parameter $\rho$ cannot reproduce the market spreads of every tranche on an index simultaneously. This section develops the base correlation framework in detail — the industry-standard mechanism for quoting, interpolating, and trading off a self-consistent correlation surface — and examines the "correlation smile" that motivates the move beyond the simplest copula models.</p>
+                <p>Section 1.2 introduced the one-factor Gaussian copula and noted that a single correlation parameter $\rho$ cannot reproduce the market spreads of every tranche on an index simultaneously. This section develops the base correlation framework in detail - the industry-standard mechanism for quoting, interpolating, and trading off a self-consistent correlation surface - and examines the "correlation smile" that motivates the move beyond the simplest copula models.</p>
 
                 <h2 class="mt-5 mb-3">Compound Correlation and Its Failure</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Compound (Tranche) Correlation</div>
+                    <div class="math-box-label">Definition - Compound (Tranche) Correlation</div>
                     <p>For a mezzanine tranche $[A,D]$, the <em>compound correlation</em> $\rho_{[A,D]}$ is the value of $\rho$ in the one-factor Gaussian copula such that the model fair spread equals the observed market spread:
                     $$\text{Spread}^{\text{model}}_{[A,D]}(\rho_{[A,D]}) = \text{Spread}^{\text{market}}_{[A,D]}$$
-                    Because the tranche spread is generally non-monotonic in $\rho$ for mezzanine tranches, this equation can have zero, one, or two solutions. When multiple solutions exist there is no principled way to choose between them, and compound correlations computed for adjacent tranches need not be consistent with one another — they can imply <em>negative</em> correlation for the difference between two overlapping base tranches.</p>
+                    Because the tranche spread is generally non-monotonic in $\rho$ for mezzanine tranches, this equation can have zero, one, or two solutions. When multiple solutions exist there is no principled way to choose between them, and compound correlations computed for adjacent tranches need not be consistent with one another - they can imply <em>negative</em> correlation for the difference between two overlapping base tranches.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Base Correlation Construction</h2>
-                <p>Base correlation sidesteps the non-uniqueness problem by working exclusively with <em>base tranches</em> $[0,D]$ — equity-style tranches that always have a monotonically increasing, single-valued relationship between spread and correlation.</p>
+                <p>Base correlation sidesteps the non-uniqueness problem by working exclusively with <em>base tranches</em> $[0,D]$ - equity-style tranches that always have a monotonically increasing, single-valued relationship between spread and correlation.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Base Correlation</div>
+                    <div class="math-box-label">Definition - Base Correlation</div>
                     <p>For each detachment point $D_k$ on the standard grid (e.g. $D \in \{3\%, 6\%, 9\%, 12\%, 22\%\}$ for iTraxx Europe), the base correlation $\rho_{\text{base}}(D_k)$ is the unique correlation such that the model expected loss of the base tranche $[0,D_k]$ matches the value implied by market quotes:
                     $$\text{EL}_{[0,D_k]}\big(\rho_{\text{base}}(D_k)\big) = \text{EL}_{[0,D_k]}^{\text{market}}$$
                     Any market tranche $[A,D]$ with $A>0$ is then priced as the difference of two base tranches, bootstrapped sequentially from the equity tranche outward:
@@ -105,24 +105,24 @@
 
                 <h2 class="mt-5 mb-3">The Correlation Smile</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Shape of the Base Correlation Curve</div>
-                    <p class="mb-0">Plotting $\rho_{\text{base}}(D)$ against detachment $D$ produces a curve that is typically upward-sloping — the <em>correlation skew</em> or <em>correlation smile</em>. Senior base tranches require a higher correlation parameter to match their market spread than junior base tranches. Intuitively, the market prices senior tranches as though large, correlated "tail" loss events are more likely than a single fixed $\rho$ calibrated to the equity tranche would suggest — investors demand compensation for systemic risk that the equity tranche, by construction, is largely insensitive to once it has already absorbed the first losses.</p>
+                    <div class="math-box-label">Remark - Shape of the Base Correlation Curve</div>
+                    <p class="mb-0">Plotting $\rho_{\text{base}}(D)$ against detachment $D$ produces a curve that is typically upward-sloping - the <em>correlation skew</em> or <em>correlation smile</em>. Senior base tranches require a higher correlation parameter to match their market spread than junior base tranches. Intuitively, the market prices senior tranches as though large, correlated "tail" loss events are more likely than a single fixed $\rho$ calibrated to the equity tranche would suggest - investors demand compensation for systemic risk that the equity tranche, by construction, is largely insensitive to once it has already absorbed the first losses.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Interpolation Across Strikes</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Interpolating the Base Correlation Curve</div>
-                    <p>To price a bespoke tranche $[A,D]$ that does not sit on the standard detachment grid, $\rho_{\text{base}}(A)$ and $\rho_{\text{base}}(D)$ are obtained by interpolating the bootstrapped curve $\{(D_k, \rho_{\text{base}}(D_k))\}$ — typically with a piecewise linear or spline interpolant in $(D, \rho_{\text{base}})$ space. Care is required: naive interpolation can produce non-monotonic expected loss curves $e(K) = \mathbb{E}[\min(L,K)]$, which is not arbitrage-free since $e(K)$ must be increasing and concave in $K$. Practitioners often interpolate directly in expected-loss space, or use arbitrage-free parametric forms, and then back out the implied base correlation for reporting.</p>
+                    <div class="math-box-label">Definition - Interpolating the Base Correlation Curve</div>
+                    <p>To price a bespoke tranche $[A,D]$ that does not sit on the standard detachment grid, $\rho_{\text{base}}(A)$ and $\rho_{\text{base}}(D)$ are obtained by interpolating the bootstrapped curve $\{(D_k, \rho_{\text{base}}(D_k))\}$ - typically with a piecewise linear or spline interpolant in $(D, \rho_{\text{base}})$ space. Care is required: naive interpolation can produce non-monotonic expected loss curves $e(K) = \mathbb{E}[\min(L,K)]$, which is not arbitrage-free since $e(K)$ must be increasing and concave in $K$. Practitioners often interpolate directly in expected-loss space, or use arbitrage-free parametric forms, and then back out the implied base correlation for reporting.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Implied Correlation vs. Base Correlation</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Two Notions of "Implied Correlation"</div>
+                    <div class="math-box-label">Remark - Two Notions of "Implied Correlation"</div>
                     <p class="mb-0"><em>Implied correlation</em> is sometimes used loosely to mean either compound correlation (the $\rho$ that matches a single mezzanine tranche's spread) or base correlation (the $\rho$ that matches a base tranche's expected loss). The two notions agree only for the equity tranche $[0\%, D_1]$, where the compound and base correlations coincide by construction. For all other tranches, compound correlation is a derived, often non-unique, diagnostic, while base correlation is the quantity that is actually bootstrapped, interpolated, and used for pricing bespoke and off-the-run tranches. When desks quote "the correlation" of a tranche book for risk purposes, they almost always mean base correlation read off the calibrated curve.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — A Typical Base Correlation Curve</div>
+                    <div class="math-box-label">Example - A Typical Base Correlation Curve</div>
                     <p>For iTraxx Europe Main, a representative (illustrative) base correlation term structure might be:</p>
                     <p class="mb-0">$\rho_{\text{base}}(3\%) = 18\%$, $\rho_{\text{base}}(6\%) = 28\%$, $\rho_{\text{base}}(9\%) = 38\%$, $\rho_{\text{base}}(12\%) = 50\%$, $\rho_{\text{base}}(22\%) = 65\%$. The monotone increase reflects the skew described above. To price the $[3\%,6\%]$ mezzanine tranche, a desk computes $\text{EL}_{[0,6\%]}(28\%) - \text{EL}_{[0,3\%]}(18\%)$ and converts the resulting expected loss into a fair spread via the standard CDS-style premium/protection leg present value formulas.</p>
                 </div>

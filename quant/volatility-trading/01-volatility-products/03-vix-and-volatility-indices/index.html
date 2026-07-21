@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -88,63 +88,63 @@
                 <p>The VIX methodology is built on the model-free replication of variance swaps introduced in the previous section: the fair variance swap rate can be computed directly from a continuum of out-of-the-money option prices, without assuming any particular model for the underlying's dynamics (in particular, without assuming Black-Scholes).</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Model-Free Implied Variance</div>
+                    <div class="math-box-label">Theorem - Model-Free Implied Variance</div>
                     <p class="mb-0">For a fixed maturity $T$, the risk-neutral expected variance of log-returns can be expressed in terms of out-of-the-money option prices:
                     $$\sigma^2 T = \frac{2}{T}\sum_i \frac{\Delta K_i}{K_i^2}e^{rT}Q(K_i) - \frac{1}{T}\left[\frac{F}{K_0}-1\right]^2$$
                     where $F$ is the forward index level, $K_0$ is the first strike below $F$, $Q(K_i)$ is the midpoint of the bid-ask for the out-of-the-money option (puts for $K_i<K_0$, calls for $K_i>K_0$, and the average of the put and call at $K_0$), and $\Delta K_i$ is the interval between strikes. This formula is the discrete implementation of the continuous replication identity $\sigma^2T = \frac{2}{T}\int_0^\infty \frac{1}{K^2}e^{rT}P(K)\,dK$ derived from the log-contract.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — VIX Calculation</div>
+                    <div class="math-box-label">Definition - VIX Calculation</div>
                     <p>The VIX itself is computed by combining two such variance estimates from a "near-term" and a "next-term" set of S&P 500 options (chosen to straddle a constant 30-day horizon, with at least 23 days to expiry for the near-term series), and interpolating to a constant 30-calendar-day maturity:
                     $$\text{VIX} = 100 \times \sqrt{\left[T_1\sigma_1^2\frac{N_{T_2}-N_{30}}{N_{T_2}-N_{T_1}} + T_2\sigma_2^2\frac{N_{30}-N_{T_1}}{N_{T_2}-N_{T_1}}\right]\times \frac{N_{365}}{N_{30}}}$$
                     where $\sigma_1^2, \sigma_2^2$ are the model-free variances for the near- and next-term expiries (times $T_1, T_2$), and $N_{30}$, $N_{T_1}$, $N_{T_2}$, $N_{365}$ denote the relevant numbers of minutes to interpolate to a constant 30-day, annualized figure. The result is quoted as an annualized volatility in percentage points (e.g. "VIX = 18" means an annualized implied volatility of 18%).</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Interpreting VIX Levels</div>
+                    <div class="math-box-label">Example - Interpreting VIX Levels</div>
                     <p>If VIX = 16, the options market is pricing a 1-standard-deviation move in the S&P 500 over the next 30 days of approximately $16\% \times \sqrt{30/365} \approx 4.6\%$. Historically, VIX has averaged in the high-teens; readings below 12-13 are considered "low vol" regimes, while spikes above 30-40 (as in March 2020 or October 2008, when VIX exceeded 80) signal acute market stress.</p>
-                    <p class="mb-0">Because the VIX is constructed from put and call prices across the skew, it embeds the entire shape of the implied volatility surface near 30-day maturity — not just at-the-money volatility — which is one reason it tends to run higher than at-the-money implied volatility (the skew contributes additional variance via OTM put prices).</p>
+                    <p class="mb-0">Because the VIX is constructed from put and call prices across the skew, it embeds the entire shape of the implied volatility surface near 30-day maturity - not just at-the-money volatility - which is one reason it tends to run higher than at-the-money implied volatility (the skew contributes additional variance via OTM put prices).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">VIX Futures and Term Structure</h2>
 
-                <p>VIX futures, traded on CFE (Cboe Futures Exchange), are cash-settled contracts on the future value of the VIX index. Critically, a VIX future is <em>not</em> a claim on the current VIX level — it is the market's expectation of where the 30-day VIX calculation will be on the future expiry date. This distinction drives much of the behavior of the VIX futures curve.</p>
+                <p>VIX futures, traded on CFE (Cboe Futures Exchange), are cash-settled contracts on the future value of the VIX index. Critically, a VIX future is <em>not</em> a claim on the current VIX level - it is the market's expectation of where the 30-day VIX calculation will be on the future expiry date. This distinction drives much of the behavior of the VIX futures curve.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Contango and Backwardation</div>
-                    <p><strong>Contango (upward-sloping curve):</strong> the typical state. Longer-dated VIX futures trade above the spot VIX, reflecting (a) the expectation that volatility will mean-revert upward from unusually low spot levels, and (b) a structural volatility risk premium — investors who are long volatility (e.g., via VIX futures) are effectively paying for insurance, and the futures price embeds this premium relative to expected future spot VIX.</p>
-                    <p class="mb-0"><strong>Backwardation (downward-sloping curve):</strong> occurs during market stress, when spot VIX spikes above the futures curve — the market expects elevated near-term volatility to subside. Backwardation is rare and short-lived relative to contango, which is the "normal" state roughly 80% of the time historically.</p>
+                    <div class="math-box-label">Remark - Contango and Backwardation</div>
+                    <p><strong>Contango (upward-sloping curve):</strong> the typical state. Longer-dated VIX futures trade above the spot VIX, reflecting (a) the expectation that volatility will mean-revert upward from unusually low spot levels, and (b) a structural volatility risk premium - investors who are long volatility (e.g., via VIX futures) are effectively paying for insurance, and the futures price embeds this premium relative to expected future spot VIX.</p>
+                    <p class="mb-0"><strong>Backwardation (downward-sloping curve):</strong> occurs during market stress, when spot VIX spikes above the futures curve - the market expects elevated near-term volatility to subside. Backwardation is rare and short-lived relative to contango, which is the "normal" state roughly 80% of the time historically.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Volatility Risk Premium</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Volatility Risk Premium</div>
+                    <div class="math-box-label">Definition - Volatility Risk Premium</div>
                     <p class="mb-0">The volatility risk premium (VRP) is the systematic difference between implied volatility (priced into options) and subsequently realized volatility:
                     $$\text{VRP} = \sigma_{\text{implied}} - \mathbb{E}[\sigma_{\text{realized}}]$$
-                    Empirically, implied volatility on equity indices exceeds subsequently realized volatility on average — sellers of index options and variance swaps have historically earned a positive premium for bearing volatility (and especially crash) risk. This premium is the compensation demanded by option sellers for providing insurance against tail events, analogous to an insurance premium exceeding expected claims.</p>
+                    Empirically, implied volatility on equity indices exceeds subsequently realized volatility on average - sellers of index options and variance swaps have historically earned a positive premium for bearing volatility (and especially crash) risk. This premium is the compensation demanded by option sellers for providing insurance against tail events, analogous to an insurance premium exceeding expected claims.</p>
                 </div>
 
-                <p>The VRP is the economic rationale behind strategies that are systematically short volatility — selling options, variance swaps, or VIX futures in contango — which tend to generate steady small profits punctuated by occasional large losses during volatility spikes ("picking up nickels in front of a steamroller"). The contango in the VIX futures curve is, in large part, a term-structure manifestation of this same premium.</p>
+                <p>The VRP is the economic rationale behind strategies that are systematically short volatility - selling options, variance swaps, or VIX futures in contango - which tend to generate steady small profits punctuated by occasional large losses during volatility spikes ("picking up nickels in front of a steamroller"). The contango in the VIX futures curve is, in large part, a term-structure manifestation of this same premium.</p>
 
                 <h2 class="mt-5 mb-3">VIX-Related Exchange-Traded Products</h2>
 
                 <p>A range of exchange-traded products (ETPs) attempt to give retail and institutional investors exposure to VIX futures, typically by holding a rolling portfolio of front-month and second-month VIX futures.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — VXX, UVXY, and the Cost of Roll</div>
-                    <p><strong>VXX (iPath S&P 500 VIX Short-Term Futures ETN):</strong> tracks a continuously rolling position in the first- and second-month VIX futures, maintaining a constant ~30-day weighted average maturity. Because the VIX futures curve is in contango most of the time, this rolling strategy systematically sells the cheaper near-month future and buys the more expensive next-month future — a "negative roll yield" that causes VXX to decay over time even when spot VIX is flat. Long-term holding of VXX has historically resulted in substantial value erosion.</p>
-                    <p class="mb-0"><strong>UVXY:</strong> a leveraged (e.g., 1.5x) version of the same short-term VIX futures strategy, suffering the same contango decay amplified by leverage and daily rebalancing (which introduces additional path-dependent decay from volatility drag, analogous to other leveraged ETFs). These products are designed for short-term tactical hedges, not buy-and-hold exposure — a fact starkly illustrated by products like XIV (short volatility), which lost essentially all its value in a single day during the February 2018 "Volmageddon" spike.</p>
+                    <div class="math-box-label">Remark - VXX, UVXY, and the Cost of Roll</div>
+                    <p><strong>VXX (iPath S&P 500 VIX Short-Term Futures ETN):</strong> tracks a continuously rolling position in the first- and second-month VIX futures, maintaining a constant ~30-day weighted average maturity. Because the VIX futures curve is in contango most of the time, this rolling strategy systematically sells the cheaper near-month future and buys the more expensive next-month future - a "negative roll yield" that causes VXX to decay over time even when spot VIX is flat. Long-term holding of VXX has historically resulted in substantial value erosion.</p>
+                    <p class="mb-0"><strong>UVXY:</strong> a leveraged (e.g., 1.5x) version of the same short-term VIX futures strategy, suffering the same contango decay amplified by leverage and daily rebalancing (which introduces additional path-dependent decay from volatility drag, analogous to other leveraged ETFs). These products are designed for short-term tactical hedges, not buy-and-hold exposure - a fact starkly illustrated by products like XIV (short volatility), which lost essentially all its value in a single day during the February 2018 "Volmageddon" spike.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Volatility of Volatility</h2>
 
-                <p>Just as the underlying stock has a volatility, the VIX itself has a volatility — sometimes traded via VVIX, the CBOE's index of the implied volatility of VIX options.</p>
+                <p>Just as the underlying stock has a volatility, the VIX itself has a volatility - sometimes traded via VVIX, the CBOE's index of the implied volatility of VIX options.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — VVIX and Vol-of-Vol</div>
-                    <p>VVIX measures the expected volatility of the VIX index over the next 30 days, computed via the same model-free methodology applied to options on VIX futures rather than S&P 500 options. High vol-of-vol indicates that large, rapid moves in the VIX itself are anticipated — relevant for pricing VIX options and for understanding the risk of strategies (like short-volatility ETPs) whose payoffs are convex in the VIX.</p>
+                    <div class="math-box-label">Remark - VVIX and Vol-of-Vol</div>
+                    <p>VVIX measures the expected volatility of the VIX index over the next 30 days, computed via the same model-free methodology applied to options on VIX futures rather than S&P 500 options. High vol-of-vol indicates that large, rapid moves in the VIX itself are anticipated - relevant for pricing VIX options and for understanding the risk of strategies (like short-volatility ETPs) whose payoffs are convex in the VIX.</p>
                     <p class="mb-0">Vol-of-vol is a key parameter in stochastic volatility models (e.g., the Heston model's $\xi$ parameter, or the "vol-of-vol" in SABR), governing the curvature (convexity) of the implied volatility smile: higher vol-of-vol produces a more pronounced smile, since it increases the probability of extreme realized variance outcomes that are most valuable to deep out-of-the-money options.</p>
                 </div>
 

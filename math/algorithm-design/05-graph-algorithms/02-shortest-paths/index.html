@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -133,34 +133,34 @@
                 <h2 class="mt-4 mb-3">Dijkstra's Algorithm</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.2.1 — Dijkstra's Algorithm</div>
+                    <div class="math-box-label">Definition 5.2.1 - Dijkstra's Algorithm</div>
                     <p>For a directed graph with non-negative edge weights $w:E\to\mathbb{R}_{\ge 0}$ and source $s$. Maintain a min-heap (priority queue) keyed by tentative distance $d[v]$; initially $d[s]=0$, $d[v]=\infty$ for $v\ne s$. Repeatedly extract the vertex $u$ with minimum $d[u]$, then <strong>relax</strong> each outgoing edge $(u,v)$: if $d[u]+w(u,v) < d[v]$, update $d[v]$ and reinsert $(v, d[v])$ into the heap.</p>
                     <p class="mb-0">Time with binary heap: $O((V+E)\log V)$. With Fibonacci heap: $O(V\log V + E)$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.2.2 — Correctness via Greedy Cut Property</div>
+                    <div class="math-box-label">Theorem 5.2.2 - Correctness via Greedy Cut Property</div>
                     <p class="mb-0">When vertex $u$ is extracted from the priority queue, $d[u]$ is the true shortest-path distance from $s$ to $u$. Proof: inductively, every previously extracted vertex has its true distance; non-negative weights ensure no path through an unextracted vertex can be shorter than the direct tentative distance.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Bellman-Ford Algorithm</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.2.3 — Bellman-Ford</div>
+                    <div class="math-box-label">Definition 5.2.3 - Bellman-Ford</div>
                     <p>Handles graphs with negative edge weights (but no negative cycles reachable from $s$). Initialise $d[s]=0$, $d[v]=\infty$. Perform $V-1$ rounds: in each round, relax every edge $(u,v)$. After $V-1$ rounds, $d[v]$ equals the shortest-path distance.</p>
                     <p><strong>Negative cycle detection:</strong> Perform one additional round; if any distance improves, a negative cycle reachable from $s$ exists.</p>
                     <p class="mb-0">Time: $O(VE)$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 5.2.4 — Why $V-1$ Rounds Suffice</div>
+                    <div class="math-box-label">Remark 5.2.4 - Why $V-1$ Rounds Suffice</div>
                     <p class="mb-0">Any shortest path in a graph with no negative cycles has at most $V-1$ edges (otherwise a vertex repeats, and the cycle can be removed to get a shorter or equal path). After $k$ rounds, $d[v]$ is the length of the shortest path using at most $k$ edges.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Floyd-Warshall: All-Pairs Shortest Paths</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.2.5 — Floyd-Warshall</div>
+                    <div class="math-box-label">Definition 5.2.5 - Floyd-Warshall</div>
                     <p>Computes shortest paths between all pairs of vertices. Let $\text{dist}[i][j][k]$ = length of shortest path from $i$ to $j$ using only vertices $\{1,\ldots,k\}$ as intermediates. Recurrence:
                     $$\text{dist}[i][j][k] = \min\!\bigl(\text{dist}[i][j][k-1],\; \text{dist}[i][k][k-1] + \text{dist}[k][j][k-1]\bigr)$$
                     Base case: $\text{dist}[i][j][0] = w(i,j)$ if $(i,j)\in E$, else $\infty$ (0 if $i=j$).</p>
@@ -170,13 +170,13 @@
                 <h2 class="mt-5 mb-3">Johnson's Algorithm</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.2.6 — Johnson's Algorithm</div>
+                    <div class="math-box-label">Definition 5.2.6 - Johnson's Algorithm</div>
                     <p><strong>Reweighting:</strong> Add auxiliary vertex $s$ with zero-weight edges to all vertices. Run Bellman-Ford from $s$ to compute $h[v]$ (shortest-path distances). Reweight: $\hat{w}(u,v) = w(u,v) + h[u] - h[v] \ge 0$. Run Dijkstra from each vertex using $\hat{w}$; recover original distances as $d(u,v) = \hat{d}(u,v) - h[u] + h[v]$.</p>
-                    <p class="mb-0">Time: $O(V^2\log V + VE)$ — better than Floyd-Warshall for sparse graphs ($E \ll V^2$).</p>
+                    <p class="mb-0">Time: $O(V^2\log V + VE)$ - better than Floyd-Warshall for sparse graphs ($E \ll V^2$).</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 5.2.7 — Algorithm Selection</div>
+                    <div class="math-box-label">Example 5.2.7 - Algorithm Selection</div>
                     <p class="mb-0">Non-negative weights, single source: Dijkstra $O((V+E)\log V)$. Negative weights, single source: Bellman-Ford $O(VE)$. All pairs, dense: Floyd-Warshall $O(V^3)$. All pairs, sparse with negative weights: Johnson $O(V^2\log V+VE)$. Unweighted, single source: BFS $O(V+E)$.</p>
                 </div>
 

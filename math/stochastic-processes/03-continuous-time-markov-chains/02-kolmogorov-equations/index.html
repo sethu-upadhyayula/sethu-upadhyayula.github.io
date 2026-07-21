@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -130,21 +130,21 @@
                 <p>The Kolmogorov equations are ODEs for the transition probability matrix $P(t) = (p_{ij}(t))$ of a CTMC, where $p_{ij}(t) = P(X(t) = j \mid X(0) = i)$. They are the continuous-time analogue of the Chapman-Kolmogorov equations.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.2.1 — Matrix Exponential Solution</div>
+                    <div class="math-box-label">Theorem 3.2.1 - Matrix Exponential Solution</div>
                     <p class="mb-0">For a CTMC with generator $Q$, the transition semigroup is
                     $$P(t) = e^{Qt} = \sum_{n=0}^{\infty} \frac{(Qt)^n}{n!}, \quad t \ge 0.$$
                     This satisfies $P(0) = I$, $P(s+t) = P(s)P(t)$ (semigroup property), and $P'(0) = Q$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.2.2 — Kolmogorov Forward Equation</div>
+                    <div class="math-box-label">Theorem 3.2.2 - Kolmogorov Forward Equation</div>
                     <p class="mb-0">The transition semigroup satisfies the <strong>forward (Fokker-Planck) equation</strong>:
                     $$\frac{d}{dt} P(t) = P(t) Q, \quad P(0) = I.$$
                     Entry-wise: $p'_{ij}(t) = \sum_k p_{ik}(t) q_{kj}$. The forward equation describes how probability flows into state $j$ from all states $k$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.2.3 — Kolmogorov Backward Equation</div>
+                    <div class="math-box-label">Theorem 3.2.3 - Kolmogorov Backward Equation</div>
                     <p class="mb-0">Equivalently, the transition semigroup satisfies the <strong>backward equation</strong>:
                     $$\frac{d}{dt} P(t) = Q P(t), \quad P(0) = I.$$
                     Entry-wise: $p'_{ij}(t) = \sum_k q_{ik} p_{kj}(t)$. The backward equation describes evolution from the initial state $i$.</p>
@@ -153,22 +153,22 @@
                 <h2 class="mt-5 mb-3">Computing via Eigendecomposition</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.2.4 — Spectral Computation</div>
+                    <div class="math-box-label">Theorem 3.2.4 - Spectral Computation</div>
                     <p class="mb-0">If $Q$ is diagonalisable with eigenvalues $\lambda_1, \ldots, \lambda_n$ and $Q = V \Lambda V^{-1}$, then
                     $$e^{Qt} = V e^{\Lambda t} V^{-1}, \quad e^{\Lambda t} = \text{diag}(e^{\lambda_1 t}, \ldots, e^{\lambda_n t}).$$
                     Since $Q$ has non-positive eigenvalues with $\lambda_1 = 0$, each $p_{ij}(t)$ is a sum of decaying exponentials converging to $\pi_j$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Two-State CTMC</div>
+                    <div class="math-box-label">Example - Two-State CTMC</div>
                     <p>For the two-state generator $Q = \begin{pmatrix} -\alpha & \alpha \\ \beta & -\beta \end{pmatrix}$, the eigenvalues are $0$ and $-(\alpha+\beta)$. The transition probabilities are:
                     $$p_{00}(t) = \frac{\beta}{\alpha+\beta} + \frac{\alpha}{\alpha+\beta} e^{-(\alpha+\beta)t}, \quad p_{01}(t) = \frac{\alpha}{\alpha+\beta}\left(1 - e^{-(\alpha+\beta)t}\right).$$</p>
                     <p class="mb-0">As $t \to \infty$, these converge to the stationary probabilities $\pi_0 = \beta/(\alpha+\beta)$ and $\pi_1 = \alpha/(\alpha+\beta)$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Uniformisation</div>
-                    <p class="mb-0">A useful computational technique is <em>uniformisation</em>: set $\Lambda = \max_i \nu_i$ and write $Q = \Lambda(\tilde{P} - I)$ where $\tilde{P} = I + Q/\Lambda$ is a stochastic matrix. Then $e^{Qt} = e^{-\Lambda t} \sum_{n=0}^\infty \frac{(\Lambda t)^n}{n!} \tilde{P}^n$, a Poisson mixture of discrete-time chains — useful for numerical computation.</p>
+                    <div class="math-box-label">Remark - Uniformisation</div>
+                    <p class="mb-0">A useful computational technique is <em>uniformisation</em>: set $\Lambda = \max_i \nu_i$ and write $Q = \Lambda(\tilde{P} - I)$ where $\tilde{P} = I + Q/\Lambda$ is a stochastic matrix. Then $e^{Qt} = e^{-\Lambda t} \sum_{n=0}^\infty \frac{(\Lambda t)^n}{n!} \tilde{P}^n$, a Poisson mixture of discrete-time chains - useful for numerical computation.</p>
                 </div>
 
                 <hr class="my-5">

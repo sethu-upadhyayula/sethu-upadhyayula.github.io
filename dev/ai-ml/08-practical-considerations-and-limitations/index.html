@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Practical Considerations and Limitations</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">AI/ML</a>
+                <hr>
+                <a href="../01-what-machine-learning-is/" class="text-decoration-none toc-chapter-link"><strong>1.</strong> What Machine Learning Is</a>
+                <a href="../02-supervised-learning/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> Supervised Learning</a>
+                <a href="../03-unsupervised-learning/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Unsupervised Learning</a>
+                <a href="../04-model-training-and-generalization/" class="text-decoration-none toc-chapter-link"><strong>4.</strong> Model Training and Generalization</a>
+                <a href="../05-neural-networks-and-deep-learning/" class="text-decoration-none toc-chapter-link"><strong>5.</strong> Neural Networks and Deep Learning</a>
+                <a href="../06-attention-and-large-language-models/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Attention and Large Language Models</a>
+                <a href="../07-reinforcement-learning/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Reinforcement Learning</a>
+                <a href="../08-practical-considerations-and-limitations/" class="text-decoration-none toc-chapter-link toc-active"><strong>8.</strong> Practical Considerations and Limitations</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">AI/ML</a> ›
+                <span>8. Practical Considerations and Limitations</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">8. Practical Considerations and Limitations</h1>
+
+                <p>This closing chapter surveys some practical concerns that matter as much as the modeling techniques covered in Chapters 2 through 7 — data quality, evaluation pitfalls, and honest limitations of the field.</p>
+
+                <h2 class="mt-5 mb-3">Data Quality and Quantity</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — "Garbage In, Garbage Out"</div>
+                    <p class="mb-0">A model can only be as good as the data it's trained on — insufficient data, mislabeled examples, or data that doesn't actually represent the conditions the model will be used under, all place a hard ceiling on achievable performance regardless of how sophisticated the modeling technique (Chapters 2, 3, and 5) applied to it is. In practice, improving data quality or quantity is often a more effective use of effort than switching to a more sophisticated model.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Bias in Data and Models</h2>
+
+                <p>Because models learn patterns present in their training data, they can also learn and perpetuate undesirable biases present in that data — for instance, a hiring model trained on historical hiring decisions that were themselves biased will tend to reproduce that same bias in its own predictions, an active concern distinct from the purely statistical overfitting problem covered in Chapter 4, since the model may generalize perfectly well while still reproducing an unwanted pattern.</p>
+
+                <h2 class="mt-5 mb-3">Interpretability</h2>
+
+                <p>Simpler models (linear regression, decision trees, Chapter 2) are generally easy for a person to inspect and understand the reasoning behind a specific prediction; deep neural networks (Chapter 5) with millions of parameters are considerably harder to interpret this way — a genuine tradeoff in many applied settings, particularly ones (medical diagnosis, credit decisions) where being able to explain a specific prediction can matter as much as the prediction's raw accuracy.</p>
+
+                <h2 class="mt-5 mb-3">Distribution Shift</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Distribution Shift</div>
+                    <p class="mb-0">A model evaluated (Chapter 4) as generalizing well still implicitly assumes future data resembles its training data's distribution. <strong>Distribution shift</strong> occurs when that assumption breaks down — the real-world conditions a deployed model encounters change over time, or simply differ from the conditions its training data was collected under — and is a common, often underappreciated reason a model that performed well in testing degrades once actually deployed.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Knowing When Not to Use Machine Learning</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Machine Learning Is Not Always the Right Tool</div>
+                    <p class="mb-0">Not every problem benefits from a learned model — a problem with a small number of well-understood cases might be better served by simple, explicit rules (easier to write, verify, and debug, per Software Engineering &amp; Systems Design) than by a trained model whose behaviour on edge cases is harder to guarantee. Recognizing when a simpler, non-learned solution is genuinely the better engineering choice is as much a part of applied machine learning as knowing the techniques themselves.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../07-reinforcement-learning/" class="btn btn-outline-custom">&larr; 7. Reinforcement Learning</a>
+                    
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

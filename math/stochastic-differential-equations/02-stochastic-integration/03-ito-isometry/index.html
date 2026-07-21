@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,13 +128,13 @@
                 <p>The Itô isometry is the fundamental norm-preservation property of the stochastic integral. It says that the map $f \mapsto \int f\,dW$ is an isometry from $\mathcal{L}^2([0,T])$ (with the norm $\|f\|^2 = E[\int f^2\,dt]$) into $L^2(\Omega)$ (with the norm $\|X\|^2 = E[X^2]$). This is what allows the integral to be extended from simple to general processes.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.3.1 — Itô Isometry</div>
+                    <div class="math-box-label">Theorem 2.3.1 - Itô Isometry</div>
                     <p>For $f \in \mathcal{L}^2([0,T])$:</p>
                     $$E\!\left[\left(\int_0^T f_t\,dW_t\right)^2\right] = E\!\left[\int_0^T f_t^2\,dt\right].$$
                 </div>
 
                 <div class="math-box proof">
-                    <div class="math-box-label">Proof — Simple Processes</div>
+                    <div class="math-box-label">Proof - Simple Processes</div>
                     <p>Let $f$ be simple with $f_t = f_{t_k}$ on $[t_k, t_{k+1})$. Write $\Delta W_k = W_{t_{k+1}} - W_{t_k}$ and $I = \int_0^T f_t\,dW_t = \sum_k f_{t_k}\Delta W_k$. Then:</p>
                     $$E[I^2] = \sum_k E[f_{t_k}^2 (\Delta W_k)^2] + 2\sum_{j < k} E[f_{t_j}\Delta W_j \cdot f_{t_k}\Delta W_k].$$
                     <p>For the cross terms with $j < k$: since $f_{t_j}, \Delta W_j, f_{t_k}$ are all $\mathcal{F}_{t_k}$-measurable while $\Delta W_k$ is independent of $\mathcal{F}_{t_k}$ with $E[\Delta W_k] = 0$:</p>
@@ -147,20 +147,20 @@
                 <h2 class="mt-5 mb-3">Generalisation: Cross-Product Formula</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.3.2 — Polarisation Identity</div>
+                    <div class="math-box-label">Theorem 2.3.2 - Polarisation Identity</div>
                     <p>For $f, g \in \mathcal{L}^2([0,T])$:</p>
                     $$E\!\left[\int_0^T f_t\,dW_t \cdot \int_0^T g_t\,dW_t\right] = E\!\left[\int_0^T f_t g_t\,dt\right].$$
                     <p class="mb-0">This follows immediately by polarisation: $4\langle u, v\rangle = \|u+v\|^2 - \|u-v\|^2$, applying the isometry to $f+g$ and $f-g$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Isometry and Hilbert Space Structure</div>
+                    <div class="math-box-label">Remark - Isometry and Hilbert Space Structure</div>
                     <p>The Itô isometry says the map $f \mapsto \int_0^T f_t\,dW_t$ is an inner-product-preserving map from $\mathcal{L}^2([0,T])$ to $L^2(\Omega)$. In particular, it is an <em>isometric embedding</em>: it preserves all distances and angles. This is what allows the extension from simple processes (a dense subspace) to all of $\mathcal{L}^2$.</p>
                     <p class="mb-0">Concretely: if $f^{(n)} \to f$ in $\mathcal{L}^2([0,T])$, then by isometry $\int f^{(n)}\,dW \to \int f\,dW$ in $L^2(\Omega)$. The limit is well-defined and independent of the approximating sequence.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 2.3.3 — Computing Second Moments</div>
+                    <div class="math-box-label">Example 2.3.3 - Computing Second Moments</div>
                     <p>Let $M_t = \int_0^t e^{-s}\,dW_s$. By the isometry:</p>
                     $$E[M_t^2] = E\!\left[\int_0^t e^{-2s}\,ds\right] = \int_0^t e^{-2s}\,ds = \frac{1 - e^{-2t}}{2}.$$
                     <p>As $t \to \infty$, $E[M_\infty^2] = 1/2$, so $M_\infty$ is a well-defined $L^2$ random variable.</p>

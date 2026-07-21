@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,28 +80,28 @@
             <article>
                 <h1 class="text-accent mb-4">2.1 Accumulator Structures</h1>
 
-                <p>An accumulator (sometimes called a forward accumulator, or — pejoratively, after losses suffered by clients in 2008 — "I-kill-you-later") is a structured product consisting of a strip of daily (or weekly) forward-like fixings over a fixed tenor, in which the client accumulates a foreign currency position at a pre-agreed rate that is more favourable than the spot or forward rate, subject to a leveraged "double-up" feature on adverse fixings and a knock-out barrier that can terminate the structure early. A decumulator is the mirror-image structure used to sell down a position rather than build one up.</p>
+                <p>An accumulator (sometimes called a forward accumulator, or - pejoratively, after losses suffered by clients in 2008 - "I-kill-you-later") is a structured product consisting of a strip of daily (or weekly) forward-like fixings over a fixed tenor, in which the client accumulates a foreign currency position at a pre-agreed rate that is more favourable than the spot or forward rate, subject to a leveraged "double-up" feature on adverse fixings and a knock-out barrier that can terminate the structure early. A decumulator is the mirror-image structure used to sell down a position rather than build one up.</p>
 
                 <h2 class="mt-5 mb-3">Payoff Mechanics</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Accumulator</div>
+                    <div class="math-box-label">Definition - Accumulator</div>
                     <p class="mb-0">An accumulator on a currency pair specifies a strike rate $K$ (typically inside the prevailing spot-forward range, favourable to the client), a knock-out barrier $H$, a series of fixing dates $t_1 < t_2 < \dots < t_n$ (e.g., one per business day over six months), a base notional $N$ per fixing, and a leverage factor $L > 1$. At each fixing date $t_i$, with prevailing spot $S_{t_i}$:</p>
                     <ul class="mb-0 mt-2">
                         <li>If $S_{t_i}$ has not yet touched the knockout barrier $H$ on this or any prior fixing date, the fixing is "live".</li>
-                        <li>On a live fixing, if $S_{t_i} \geq K$ (favourable to a client accumulating the base currency), the client buys notional $N$ at the strike $K$ — accumulating $N$ units at the favourable rate.</li>
-                        <li>On a live fixing, if $S_{t_i} < K$ (unfavourable), the client must buy the leveraged notional $L \cdot N$ at the strike $K$ — accumulating $L \cdot N$ units, still at rate $K$, but on a larger amount than if it had simply transacted at the worse market rate.</li>
-                        <li>If $S_{t_i}$ touches or crosses $H$ on fixing date $t_i$ (a knock-out event), that fixing and all subsequent fixings are cancelled — the structure terminates and no further accumulation occurs.</li>
+                        <li>On a live fixing, if $S_{t_i} \geq K$ (favourable to a client accumulating the base currency), the client buys notional $N$ at the strike $K$ - accumulating $N$ units at the favourable rate.</li>
+                        <li>On a live fixing, if $S_{t_i} < K$ (unfavourable), the client must buy the leveraged notional $L \cdot N$ at the strike $K$ - accumulating $L \cdot N$ units, still at rate $K$, but on a larger amount than if it had simply transacted at the worse market rate.</li>
+                        <li>If $S_{t_i}$ touches or crosses $H$ on fixing date $t_i$ (a knock-out event), that fixing and all subsequent fixings are cancelled - the structure terminates and no further accumulation occurs.</li>
                     </ul>
                 </div>
 
-                <p>The economics are easiest to see from the perspective of a corporate that needs to buy a foreign currency over time — say, a USD-based importer with regular EUR payables who wants to accumulate EUR over the next six months. The accumulator lets the importer buy EUR at a rate $K$ better than the current forward on every "good" fixing (spot above $K$), at the cost of having to buy a leveraged amount on "bad" fixings (spot below $K$) — and the entire benefit disappears if EUR/USD rallies hard enough, early enough, to hit the knockout $H$.</p>
+                <p>The economics are easiest to see from the perspective of a corporate that needs to buy a foreign currency over time - say, a USD-based importer with regular EUR payables who wants to accumulate EUR over the next six months. The accumulator lets the importer buy EUR at a rate $K$ better than the current forward on every "good" fixing (spot above $K$), at the cost of having to buy a leveraged amount on "bad" fixings (spot below $K$) - and the entire benefit disappears if EUR/USD rallies hard enough, early enough, to hit the knockout $H$.</p>
 
                 <h2 class="mt-5 mb-3">Knockout Features and Variants</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why the Knockout Matters</div>
-                    <p class="mb-0">The knockout barrier $H$ is what allows the dealer to offer a strike $K$ more favourable than the forward: the client is effectively short a strip of knock-out digital/binary exposures to the dealer, and the improved strike is the premium for selling that optionality. If the market moves strongly in the direction that would have been most beneficial to the client (spot rallying well above $K$ for an accumulator), the structure knocks out early and the client stops accumulating at the good rate — capping the client's benefit in exactly the scenario where it would have been largest. Some variants soften this with a "European knockout" (the barrier is only checked once, at maturity, against the cumulative position) or a "knock-in" instead of "knock-out" (the leveraged feature only activates after a trigger), but the basic asymmetric trade-off — better-than-forward rate on good fixings, leveraged exposure on bad fixings, capped upside via the barrier — is common to the whole family.</p>
+                    <div class="math-box-label">Remark - Why the Knockout Matters</div>
+                    <p class="mb-0">The knockout barrier $H$ is what allows the dealer to offer a strike $K$ more favourable than the forward: the client is effectively short a strip of knock-out digital/binary exposures to the dealer, and the improved strike is the premium for selling that optionality. If the market moves strongly in the direction that would have been most beneficial to the client (spot rallying well above $K$ for an accumulator), the structure knocks out early and the client stops accumulating at the good rate - capping the client's benefit in exactly the scenario where it would have been largest. Some variants soften this with a "European knockout" (the barrier is only checked once, at maturity, against the cumulative position) or a "knock-in" instead of "knock-out" (the leveraged feature only activates after a trigger), but the basic asymmetric trade-off - better-than-forward rate on good fixings, leveraged exposure on bad fixings, capped upside via the barrier - is common to the whole family.</p>
                 </div>
 
                 <p>Decumulators apply the identical mechanics in reverse for a client looking to sell down a long position in the foreign currency: the client sells at the favourable strike $K$ on good fixings and is forced to sell a leveraged amount on bad fixings, with a knockout barrier capping the benefit if spot moves strongly in the client's favoured direction.</p>
@@ -109,17 +109,17 @@
                 <h2 class="mt-5 mb-3">Why Corporates Use Accumulators</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Corporate Rationale</div>
-                    <p class="mb-0">A corporate with regular, recurring FX flows — e.g., a manufacturer paying a foreign supplier monthly, or an exporter receiving foreign currency revenue continuously — faces the practical problem that hedging each flow individually with a forward requires constant attention and generates many small trades. An accumulator packages this recurring exposure into a single structure with one strike, automating the hedge across the whole period at a rate better than any single forward the corporate could otherwise lock in for the full period. The leveraged downside and knockout are the price of this convenience and the improved rate, but were in many documented cases poorly understood relative to the simplicity of "I get a better rate than the forward" that was emphasised in the sale.</p>
+                    <div class="math-box-label">Remark - The Corporate Rationale</div>
+                    <p class="mb-0">A corporate with regular, recurring FX flows - e.g., a manufacturer paying a foreign supplier monthly, or an exporter receiving foreign currency revenue continuously - faces the practical problem that hedging each flow individually with a forward requires constant attention and generates many small trades. An accumulator packages this recurring exposure into a single structure with one strike, automating the hedge across the whole period at a rate better than any single forward the corporate could otherwise lock in for the full period. The leveraged downside and knockout are the price of this convenience and the improved rate, but were in many documented cases poorly understood relative to the simplicity of "I get a better rate than the forward" that was emphasised in the sale.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — A Six-Month EUR Accumulator</div>
+                    <div class="math-box-label">Example - A Six-Month EUR Accumulator</div>
                     <p>A USD-based importer with monthly EUR payables enters a six-month accumulator with daily fixings (roughly 130 business days), strike $K = 1.0800$ (versus a current EUR/USD spot of $1.0750$ and forward curve around $1.0780$), knockout barrier $H = 1.1200$, base daily notional $N = \text{EUR } 50{,}000$, and leverage $L = 2$.</p>
-                    <p>Suppose over the first 60 fixing days, EUR/USD trades in a range of $1.0650$-$1.0950$, never reaching $1.1200$. On the roughly 35 days where spot closes at or above $1.0800$, the importer buys EUR 50,000 at $1.0800$ — better than the prevailing spot or forward on those days. On the roughly 25 days where spot closes below $1.0800$, the importer must buy EUR $50{,}000 \times 2 = 100{,}000$ at $1.0800$ — a larger purchase than intended, though still at the contractual rate.</p>
-                    <p class="mb-0">If, on day 61, EUR/USD spikes to $1.1210$ — above the knockout barrier $1.1200$ — that day's fixing and all remaining fixings (days 61-130) are cancelled. The importer has accumulated EUR at rate $1.0800$ for 60 days (with leverage on roughly 25 of them), but must now source the remaining ~70 days of EUR payables in the spot or forward market at whatever rate then prevails — likely a worse rate than $1.0800$ given that EUR/USD has rallied, precisely the scenario in which the importer would have most wanted the accumulator to continue.</p>
+                    <p>Suppose over the first 60 fixing days, EUR/USD trades in a range of $1.0650$-$1.0950$, never reaching $1.1200$. On the roughly 35 days where spot closes at or above $1.0800$, the importer buys EUR 50,000 at $1.0800$ - better than the prevailing spot or forward on those days. On the roughly 25 days where spot closes below $1.0800$, the importer must buy EUR $50{,}000 \times 2 = 100{,}000$ at $1.0800$ - a larger purchase than intended, though still at the contractual rate.</p>
+                    <p class="mb-0">If, on day 61, EUR/USD spikes to $1.1210$ - above the knockout barrier $1.1200$ - that day's fixing and all remaining fixings (days 61-130) are cancelled. The importer has accumulated EUR at rate $1.0800$ for 60 days (with leverage on roughly 25 of them), but must now source the remaining ~70 days of EUR payables in the spot or forward market at whatever rate then prevails - likely a worse rate than $1.0800$ given that EUR/USD has rallied, precisely the scenario in which the importer would have most wanted the accumulator to continue.</p>
                 </div>
 
                 <hr class="my-5">

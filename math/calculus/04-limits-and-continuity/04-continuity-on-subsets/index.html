@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -66,43 +66,43 @@
             <article>
                 <h1 class="text-accent mb-4">4.4 Continuity on Subsets</h1>
 
-                <p>Pointwise continuity on a set $E$ means continuity at each individual point — and the required $\delta$ may depend on both $\varepsilon$ and the point $c$. Uniform continuity demands a single $\delta$ that works simultaneously for all points. This global strengthening is what enables the Riemann integral to be well-defined and is the key property guaranteed by Chapter 5.</p>
+                <p>Pointwise continuity on a set $E$ means continuity at each individual point - and the required $\delta$ may depend on both $\varepsilon$ and the point $c$. Uniform continuity demands a single $\delta$ that works simultaneously for all points. This global strengthening is what enables the Riemann integral to be well-defined and is the key property guaranteed by Chapter 5.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1 — Continuity on a Set</div>
+                    <div class="math-box-label">Definition 1 - Continuity on a Set</div>
                     <p class="mb-0">$f:E\to\mathbb{R}$ is <strong>continuous on $E$</strong> if $f$ is continuous at every point $c\in E$. Equivalently: for each $c\in E$ and $\varepsilon>0$, there exists $\delta=\delta(\varepsilon,c)>0$ such that $x\in E,\,|x-c|<\delta\Rightarrow|f(x)-f(c)|<\varepsilon$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 2 — Uniform Continuity</div>
+                    <div class="math-box-label">Definition 2 - Uniform Continuity</div>
                     <p>$f:E\to\mathbb{R}$ is <strong>uniformly continuous on $E$</strong> if:
                     $$\forall\,\varepsilon>0,\;\exists\,\delta>0:\;\forall\,x,y\in E,\;|x-y|<\delta\;\Rightarrow\;|f(x)-f(y)|<\varepsilon.$$</p>
                     <p class="mb-0"><strong>Distinction:</strong> in pointwise continuity, $\delta$ may shrink as we approach difficult points; in uniform continuity, a single $\delta$ covers the whole domain simultaneously.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — $f(x)=1/x$ on $(0,1)$ is continuous but NOT uniformly continuous</div>
+                    <div class="math-box-label">Example - $f(x)=1/x$ on $(0,1)$ is continuous but NOT uniformly continuous</div>
                     <p>$f$ is continuous at every $c\in(0,1)$. However, for $\varepsilon=1$, no single $\delta>0$ works for all $x,y\in(0,1)$: choose $x=\delta/2$ and $y=\delta$; then $|x-y|=\delta/2<\delta$ but $|f(x)-f(y)|=|2/\delta-1/\delta|=1/\delta$, which can be made larger than 1 by taking $\delta$ small.</p>
                     <p>Formally, take $x_n=1/n$ and $y_n=1/(n+1)$; both tend to $0$ and $|x_n-y_n|=1/(n(n+1))\to 0$, yet $|f(x_n)-f(y_n)|=n+1-n=1\not\to 0$. This witnesses the failure of uniform continuity.</p>
                     <p class="mb-0">The issue: as $x\to 0^+$, the function blows up and $\delta$ must be taken smaller and smaller.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 3 — Lipschitz Condition</div>
+                    <div class="math-box-label">Definition 3 - Lipschitz Condition</div>
                     <p>$f:E\to\mathbb{R}$ satisfies a <strong>Lipschitz condition</strong> with constant $L>0$ if:
                     $$|f(x)-f(y)|\le L\,|x-y|\quad\forall\,x,y\in E.$$</p>
                     <p class="mb-0">A Lipschitz function is automatically uniformly continuous: given $\varepsilon>0$, take $\delta=\varepsilon/L$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — $f(x)=x^2$ on bounded vs. unbounded domains</div>
+                    <div class="math-box-label">Example - $f(x)=x^2$ on bounded vs. unbounded domains</div>
                     <p><strong>On $[0,1]$:</strong> $|x^2-y^2|=|x+y||x-y|\le 2|x-y|$ (since $x,y\in[0,1]$). So $f$ is Lipschitz with $L=2$, hence uniformly continuous on $[0,1]$.</p>
                     <p><strong>On $\mathbb{R}$:</strong> $|f(x)-f(y)|=|x+y||x-y|$. The factor $|x+y|$ is unbounded, so no fixed $L$ works. Indeed, take $x_n=n+1/n$ and $y_n=n$; then $|x_n-y_n|=1/n\to 0$ but $|f(x_n)-f(y_n)|=|x_n+y_n|\cdot(1/n)\approx 2n/n=2\not\to 0$. So $f(x)=x^2$ is <em>not</em> uniformly continuous on $\mathbb{R}$.</p>
                     <p class="mb-0">The key insight: boundedness of the domain keeps the Lipschitz constant bounded.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Cantor's Theorem (Preview)</div>
+                    <div class="math-box-label">Remark - Cantor's Theorem (Preview)</div>
                     <p class="mb-0">We will see in Chapter 5 that every function continuous on a closed bounded interval $[a,b]$ is automatically uniformly continuous there. This is one of the deepest consequences of compactness of $[a,b]$.</p>
                 </div>
 

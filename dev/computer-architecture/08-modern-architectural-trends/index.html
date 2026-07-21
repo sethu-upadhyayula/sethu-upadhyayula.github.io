@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Modern Architectural Trends</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Computer Architecture</a>
+                <hr>
+                <a href="../01-instruction-set-architecture/" class="text-decoration-none toc-chapter-link"><strong>1.</strong> Instruction Set Architecture</a>
+                <a href="../02-datapath-and-control/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> Datapath and Control: How a CPU Executes an Instruction</a>
+                <a href="../03-pipelining/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Pipelining</a>
+                <a href="../04-memory-hierarchy-and-caching/" class="text-decoration-none toc-chapter-link"><strong>4.</strong> Memory Hierarchy and Caching</a>
+                <a href="../05-cache-coherence-in-multicore-systems/" class="text-decoration-none toc-chapter-link"><strong>5.</strong> Cache Coherence in Multicore Systems</a>
+                <a href="../06-instruction-level-parallelism-and-branch-prediction/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Instruction-Level Parallelism and Branch Prediction</a>
+                <a href="../07-multicore-and-simd/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Parallelism Beyond a Single Core: Multicore and SIMD</a>
+                <a href="../08-modern-architectural-trends/" class="text-decoration-none toc-chapter-link toc-active"><strong>8.</strong> Modern Architectural Trends</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">Computer Architecture</a> ›
+                <span>8. Modern Architectural Trends</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">8. Modern Architectural Trends</h1>
+
+                <p>This closing chapter surveys several current directions in computer architecture, building on the constraints and tradeoffs covered throughout this subject — particularly the end of easy single-core scaling (Chapter 7) that has driven much of this recent innovation.</p>
+
+                <h2 class="mt-5 mb-3">Specialized Accelerators</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Domain-Specific Accelerator</div>
+                    <p class="mb-0">A <strong>domain-specific accelerator</strong> is hardware purpose-built for one particular class of computation — GPUs (Chapter 7) for data-parallel workloads, and more recently dedicated <strong>AI accelerators</strong> (such as tensor processing units) specifically optimized for the matrix-multiplication-heavy computations underlying neural network training and inference (AI/ML) — trading general-purpose flexibility for substantially higher efficiency on their specific target workload than a general-purpose CPU could achieve.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Heterogeneous Computing</h2>
+
+                <p>Modern systems increasingly combine multiple different types of processing units — general-purpose CPU cores, a GPU, and specialized accelerators — on a single system or even a single chip, with software explicitly directing different parts of a computation to whichever unit handles it most efficiently, a design philosophy called <strong>heterogeneous computing</strong>.</p>
+
+                <h2 class="mt-5 mb-3">Chiplets and Advanced Packaging</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Beyond a Single Monolithic Chip</div>
+                    <p class="mb-0">Rather than manufacturing an entire processor as one large, monolithic piece of silicon, modern high-end designs increasingly use <strong>chiplets</strong> — smaller, separately manufactured silicon dies combined within a single processor package — improving manufacturing yield (a defect in a small chiplet wastes far less silicon than the same defect in one enormous monolithic die) and allowing different chiplets to even be manufactured using different, independently optimized process technologies.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Power Efficiency as a First-Class Design Goal</h2>
+
+                <p>Particularly since the shift toward multicore designs (Chapter 7), power efficiency (performance achieved per watt consumed) has become as central a design consideration as raw performance itself — driven by mobile devices' battery constraints and, at the opposite extreme, the enormous aggregate electricity costs of large data centers running thousands of processors continuously.</p>
+
+                <h2 class="mt-5 mb-3">Architecture's Continuing Relevance</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Why Architecture Still Matters</div>
+                    <p class="mb-0">Even as software increasingly runs atop layers of virtualization and abstraction (Distributed Systems, Operating Systems), the underlying hardware architecture covered throughout this subject still fundamentally shapes what is efficiently possible — a well-written compiler (Compilers) and a well-designed operating system (Operating Systems) both ultimately succeed or fail at extracting performance based on how well they work with, rather than against, the processor architecture actually running the code.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../07-multicore-and-simd/" class="btn btn-outline-custom">&larr; 7. Parallelism Beyond a Single Core: Multicore and SIMD</a>
+                    
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

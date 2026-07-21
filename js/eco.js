@@ -1,4 +1,4 @@
-﻿/* ECO Opening code lookup — A00-E99 */
+﻿/* ECO Opening code lookup - A00-E99 */
 var ECO_MAP = {
   'A00': 'Polish Opening',
   'A01': 'Nimzovich-Larsen Attack',

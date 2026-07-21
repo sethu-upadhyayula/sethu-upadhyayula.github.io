@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -86,17 +86,17 @@
                 <h2 class="mt-5 mb-3">The Premium Leg</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Risky PV01 (RPV01)</div>
+                    <div class="math-box-label">Definition - Risky PV01 (RPV01)</div>
                     <p class="mb-0">The present value of the premium leg, per unit of spread, is the "risky PV01" or "risky annuity":</p>
                     <p class="mb-0">$$\text{RPV01} = \sum_{i=1}^{n} \Delta_i \, D(t_i) \, Q(t_i) + \text{accrued-on-default adjustment}$$</p>
-                    <p class="mb-0">where $D(t_i) = e^{-r t_i}$ is the risk-free discount factor, $Q(t_i)$ is the survival probability to payment date $t_i$, and $\Delta_i$ is the accrual fraction for period $i$. The "accrued-on-default" term accounts for the fact that if default occurs between two premium dates, the buyer must still pay the accrued premium since the last payment date — typically approximated by adding $\frac{1}{2}\sum_i \Delta_i D(t_i)(Q(t_{i-1}) - Q(t_i))$.</p>
+                    <p class="mb-0">where $D(t_i) = e^{-r t_i}$ is the risk-free discount factor, $Q(t_i)$ is the survival probability to payment date $t_i$, and $\Delta_i$ is the accrual fraction for period $i$. The "accrued-on-default" term accounts for the fact that if default occurs between two premium dates, the buyer must still pay the accrued premium since the last payment date - typically approximated by adding $\frac{1}{2}\sum_i \Delta_i D(t_i)(Q(t_{i-1}) - Q(t_i))$.</p>
                     <p class="mb-0">The value of the premium leg is then $s \cdot N \cdot \text{RPV01}$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Protection Leg</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Protection Leg Value</div>
+                    <div class="math-box-label">Definition - Protection Leg Value</div>
                     <p class="mb-0">The present value of the protection leg is the expected discounted payoff $N(1-R)$ at the (random) default time $\tau$, conditional on default occurring before maturity $T$:</p>
                     <p class="mb-0">$$\text{PV}_{\text{protection}} = N(1-R) \int_0^T D(u) \left(-\frac{dQ(u)}{du}\right) du$$</p>
                     <p class="mb-0">In practice this integral is approximated by discretising $[0,T]$ into small intervals and summing $N(1-R) D(u_k) \left(Q(u_{k-1}) - Q(u_k)\right)$ over the intervals, where $Q(u_{k-1}) - Q(u_k)$ is the probability of default within interval $k$.</p>
@@ -105,7 +105,7 @@
                 <h2 class="mt-5 mb-3">The Fair Spread</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Fair CDS Spread</div>
+                    <div class="math-box-label">Theorem - Fair CDS Spread</div>
                     <p class="mb-0">Setting the present value of the premium leg equal to the present value of the protection leg (zero net value at inception, no upfront), the fair spread is:</p>
                     <p class="mb-0">$$s = \frac{(1-R)\displaystyle\int_0^T D(u)\left(-\frac{dQ(u)}{du}\right)du}{\text{RPV01}}$$</p>
                     <p class="mb-0">Given a discount curve $D(\cdot)$ (from the risk-free or OIS curve) and an assumed recovery rate $R$ (conventionally 40% for senior unsecured corporate debt, 25% for subordinated, 25% for sovereigns), this equation is inverted during bootstrapping (see <a href="../02-hazard-rate-model/">Hazard Rate Model</a>) to solve for the survival curve $Q(\cdot)$ that reproduces observed market spreads at each maturity.</p>
@@ -116,9 +116,9 @@
                 <p>Once a CDS has been entered into at a contractual spread $\bar{s}$ (the standardised running coupon), its mark-to-market value to the protection buyer at a later date, given the current fair spread $s_{\text{now}}$ for the remaining maturity, is:</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Mark-to-Market</div>
+                    <div class="math-box-label">Example - Mark-to-Market</div>
                     <p class="mb-0">$$\text{MTM}_{\text{buyer}} = N \cdot (s_{\text{now}} - \bar{s}) \cdot \text{RPV01}_{\text{now}}$$</p>
-                    <p class="mb-0">If credit spreads have widened since inception ($s_{\text{now}} > \bar{s}$), the protection buyer's position has gained value — they locked in cheaper protection than the market now requires, and could sell the position (or an offsetting CDS) for a positive upfront payment. This is the basis for marking CDS books to market and for computing P&L on credit views expressed via CDS.</p>
+                    <p class="mb-0">If credit spreads have widened since inception ($s_{\text{now}} > \bar{s}$), the protection buyer's position has gained value - they locked in cheaper protection than the market now requires, and could sell the position (or an offsetting CDS) for a positive upfront payment. This is the basis for marking CDS books to market and for computing P&L on credit views expressed via CDS.</p>
                 </div>
 
                 <hr class="my-5">

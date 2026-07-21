@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -126,17 +126,17 @@
             <article>
                 <h1 class="text-accent mb-4">Chapter 6: Interior Point Methods</h1>
 
-                <p>Interior point methods (IPMs) traverse the interior of the feasible region rather than its boundary, as simplex does. By incorporating a logarithmic barrier that penalises proximity to the constraint boundary, IPMs follow a smooth central path to the optimum. They achieve polynomial-time complexity — the first polynomial algorithm for LP — and are extremely competitive in practice for large-scale problems.</p>
+                <p>Interior point methods (IPMs) traverse the interior of the feasible region rather than its boundary, as simplex does. By incorporating a logarithmic barrier that penalises proximity to the constraint boundary, IPMs follow a smooth central path to the optimum. They achieve polynomial-time complexity - the first polynomial algorithm for LP - and are extremely competitive in practice for large-scale problems.</p>
 
                 <h2 class="mt-5 mb-3">Chapter Overview</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">6.1 — Barrier Functions</div>
+                    <div class="math-box-label">6.1 - Barrier Functions</div>
                     <p class="mb-0">The log-barrier approximation $B(x,t)=tf(x)-\sum_{i=1}^m\log(-g_i(x))$ has a unique minimiser $x^*(t)$ for each $t>0$, forming the central path. As $t\to\infty$, $x^*(t)\to x^*$, the true optimum. The duality gap along the central path is exactly $m/t$. The analytic centre of the feasible region corresponds to $t=0$ (equivalently, $f\equiv0$).</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">6.2 — Primal-Dual Methods</div>
+                    <div class="math-box-label">6.2 - Primal-Dual Methods</div>
                     <p class="mb-0">Rather than explicitly following the central path, primal-dual IPMs apply Newton's method to the perturbed KKT system where $\mu_ig_i=0$ is replaced by $\mu_ig_i=-\varepsilon$. Predictor-corrector strategies (Mehrotra) dramatically reduce iteration counts. The iteration complexity is $O(\sqrt{m}\log(1/\varepsilon))$, giving polynomial time. In practice, IPMs solve LP in 20-50 iterations independent of problem size.</p>
                 </div>
 

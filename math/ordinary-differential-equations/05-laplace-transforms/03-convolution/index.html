@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -129,12 +129,12 @@
             <article>
                 <h1 class="text-accent mb-4">5.3 Convolution</h1>
 
-                <p>Convolution is the operation that corresponds, under the Laplace transform, to multiplication of transforms. It provides a unified framework for writing the particular solution of any linear constant-coefficient ODE as an integral against the forcing function — the integral kernel being the <em>impulse response</em> of the system.</p>
+                <p>Convolution is the operation that corresponds, under the Laplace transform, to multiplication of transforms. It provides a unified framework for writing the particular solution of any linear constant-coefficient ODE as an integral against the forcing function - the integral kernel being the <em>impulse response</em> of the system.</p>
 
                 <h2 class="mt-5 mb-3">Convolution Integral</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.1 — Convolution</div>
+                    <div class="math-box-label">Definition 5.3.1 - Convolution</div>
                     <p class="mb-0">For functions $f, g: [0,\infty) \to \mathbb{R}$, the <strong>convolution</strong> $f * g$ is defined by
                     $$(f * g)(t) = \int_0^t f(\tau)\,g(t - \tau)\,d\tau.$$
                     Convolution is commutative: $f*g = g*f$ (substitute $u = t-\tau$). It is also associative and distributes over addition, making the space of piecewise-continuous functions of exponential order a commutative algebra under convolution.</p>
@@ -143,7 +143,7 @@
                 <h2 class="mt-5 mb-3">Convolution Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.3.2 — Convolution Theorem</div>
+                    <div class="math-box-label">Theorem 5.3.2 - Convolution Theorem</div>
                     <p>If $\mathcal{L}\{f\} = F$ and $\mathcal{L}\{g\} = G$ (both of exponential order $\alpha$), then for $\text{Re}(s) > \alpha$:
                     $$\mathcal{L}\{f * g\}(s) = F(s)\,G(s).$$
                     Equivalently, $\mathcal{L}^{-1}\{F(s)G(s)\} = (f*g)(t)$.</p>
@@ -159,7 +159,7 @@
                 <h2 class="mt-5 mb-3">Impulse Response and Transfer Function</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.3 — Transfer Function and Impulse Response</div>
+                    <div class="math-box-label">Definition 5.3.3 - Transfer Function and Impulse Response</div>
                     <p>Consider a linear constant-coefficient ODE (with zero initial conditions)
                     $$a_n y^{(n)} + \cdots + a_1 y' + a_0 y = f(t).$$
                     Taking the Laplace transform gives $P(s)Y(s) = F(s)$ where $P(s) = a_n s^n + \cdots + a_0$. The <strong>transfer function</strong> is
@@ -172,7 +172,7 @@
                 <h2 class="mt-5 mb-3">Volterra Integral Equations</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.4 — Volterra Integral Equation of the Second Kind</div>
+                    <div class="math-box-label">Definition 5.3.4 - Volterra Integral Equation of the Second Kind</div>
                     <p class="mb-0">A <strong>Volterra integral equation of the second kind</strong> has the form
                     $$y(t) = f(t) + \int_0^t K(t-\tau)\,y(\tau)\,d\tau,$$
                     i.e., $y = f + K*y$. Taking the Laplace transform: $Y = F + KY$ (where $K = \mathcal{L}\{K\}$), so
@@ -183,7 +183,7 @@
                 <h2 class="mt-5 mb-3">Worked Example</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 5.3.5 — Using Convolution to Invert $1/(s(s^2+1))$</div>
+                    <div class="math-box-label">Example 5.3.5 - Using Convolution to Invert $1/(s(s^2+1))$</div>
                     <p>Find $\mathcal{L}^{-1}\!\left\{\dfrac{1}{s(s^2+1)}\right\}$ via the convolution theorem.</p>
                     <p>Write $\dfrac{1}{s(s^2+1)} = \dfrac{1}{s}\cdot\dfrac{1}{s^2+1}$. We have $f_1(t) = \mathcal{L}^{-1}\{1/s\} = 1$ and $f_2(t) = \mathcal{L}^{-1}\{1/(s^2+1)\} = \sin t$. Hence
                     $$\mathcal{L}^{-1}\!\left\{\frac{1}{s(s^2+1)}\right\} = (1 * \sin)(t) = \int_0^t \sin\tau\,d\tau = [-\cos\tau]_0^t = 1 - \cos t.$$</p>
@@ -191,7 +191,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 5.3.6 — Volterra Integral Equation</div>
+                    <div class="math-box-label">Example 5.3.6 - Volterra Integral Equation</div>
                     <p>Solve $y(t) = 1 + \int_0^t \sin(t-\tau)\,y(\tau)\,d\tau$.</p>
                     <p>This is $y = 1 + \sin * y$. Taking transforms: $Y = 1/s + Y/(s^2+1)$, so
                     $$Y\!\left(1 - \frac{1}{s^2+1}\right) = \frac{1}{s}, \quad Y\cdot\frac{s^2}{s^2+1} = \frac{1}{s},$$

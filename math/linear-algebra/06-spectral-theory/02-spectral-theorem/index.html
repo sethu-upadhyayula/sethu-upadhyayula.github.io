@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -112,14 +112,14 @@
 <h1 class="text-accent mb-4">6.2 Spectral Theorem</h1>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Real Spectral Theorem</div>
+<div class="math-box-label">Theorem - Real Spectral Theorem</div>
 <p>Every real symmetric matrix $A=A^T\in M_n(\mathbb{R})$ is <strong>orthogonally diagonalisable</strong>: there exists an orthogonal matrix $Q$ (i.e., $Q^TQ=QQ^T=I$) and a diagonal matrix $\Lambda=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$ with real entries such that:</p>
 $$A = Q\Lambda Q^T.$$
 <p class="mb-0">The columns of $Q$ are orthonormal eigenvectors of $A$, and $\lambda_1,\ldots,\lambda_n$ are the corresponding real eigenvalues. This is the most powerful structure theorem for symmetric matrices.</p>
 </div>
 
 <div class="math-box proof">
-<div class="math-box-label">Proof Sketch — Induction on $n$</div>
+<div class="math-box-label">Proof Sketch - Induction on $n$</div>
 <p>By the fundamental theorem of algebra (and the fact that eigenvalues are real for symmetric matrices), $A$ has at least one real eigenvalue $\lambda_1$ with a unit eigenvector $q_1$. Extend $q_1$ to an orthonormal basis of $\mathbb{R}^n$; in this basis $A$ becomes:
 $$Q_1^TAQ_1=\begin{pmatrix}\lambda_1&\mathbf{0}^T\\\mathbf{0}&A'\end{pmatrix}$$
 where $A'$ is $(n-1)\times(n-1)$ and symmetric (this follows from $A=A^T$ and orthogonality). Apply the induction hypothesis to $A'$.</p>
@@ -127,14 +127,14 @@ where $A'$ is $(n-1)\times(n-1)$ and symmetric (this follows from $A=A^T$ and or
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Spectral Decomposition</div>
+<div class="math-box-label">Theorem - Spectral Decomposition</div>
 <p>From $A=Q\Lambda Q^T$ with columns $q_i$ and eigenvalues $\lambda_i$, we get the <strong>spectral decomposition</strong>:</p>
 $$A = \sum_{i=1}^n \lambda_i\, q_i q_i^T.$$
 <p class="mb-0">Each term $q_iq_i^T$ is a rank-1 orthogonal projection onto $\operatorname{span}\{q_i\}$. This writes $A$ as a weighted sum of orthogonal rank-1 projections. For a matrix function $f(A)$ (e.g., $e^A$, $\sqrt{A}$): $f(A)=\sum_i f(\lambda_i)q_iq_i^T$.</p>
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Quadratic Forms and the Spectral Theorem</div>
+<div class="math-box-label">Theorem - Quadratic Forms and the Spectral Theorem</div>
 <p>A <strong>quadratic form</strong> associated with $A=A^T$ is $Q(x)=x^TAx=\sum_{i,j}a_{ij}x_ix_j$. Under the change of variables $x=Qy$ (where $Q$ diagonalises $A$):</p>
 $$x^TAx = y^T\Lambda y = \sum_{i=1}^n\lambda_i y_i^2.$$
 <p>This eliminates all cross-terms. Consequently:</p>
@@ -146,7 +146,7 @@ $$x^TAx = y^T\Lambda y = \sum_{i=1}^n\lambda_i y_i^2.$$
 </div>
 
 <div class="math-box example">
-<div class="math-box-label">Example — Diagonalising a $2\times2$ Symmetric Matrix</div>
+<div class="math-box-label">Example - Diagonalising a $2\times2$ Symmetric Matrix</div>
 <p>Let $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$. Characteristic polynomial: $p(\lambda)=(\lambda-3)^2-1=(\lambda-4)(\lambda-2)$. Eigenvalues: $\lambda_1=4$, $\lambda_2=2$.</p>
 <p>Eigenvectors: $\lambda_1=4$: $(A-4I)v=\begin{pmatrix}-1&1\\1&-1\end{pmatrix}v=0$, so $q_1=\frac{1}{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix}$.</p>
 <p>$\lambda_2=2$: $q_2=\frac{1}{\sqrt2}\begin{pmatrix}-1\\1\end{pmatrix}$.</p>

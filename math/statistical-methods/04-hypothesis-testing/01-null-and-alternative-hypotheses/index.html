@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,13 +128,13 @@
                 <p>The Neyman-Pearson framework casts every statistical test as a decision problem: on the basis of observed data, we choose between a <em>null hypothesis</em> $H_0$ and an <em>alternative hypothesis</em> $H_1$. The framework specifies how to build optimal decision rules that control error probabilities.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.1.1 — Hypotheses</div>
+                    <div class="math-box-label">Definition 4.1.1 - Hypotheses</div>
                     <p>A <strong>statistical hypothesis</strong> is a claim about the distribution of the data, typically stated as a restriction on the parameter $\theta \in \Theta$. The <strong>null hypothesis</strong> $H_0: \theta \in \Theta_0$ is the default or baseline claim. The <strong>alternative hypothesis</strong> $H_1: \theta \in \Theta_1$ is the claim we seek evidence for, where $\Theta_0 \cap \Theta_1 = \emptyset$.</p>
                     <p class="mb-0">A hypothesis is <strong>simple</strong> if it specifies the distribution completely (e.g.\ $H_0:\theta = \theta_0$) and <strong>composite</strong> otherwise (e.g.\ $H_1:\theta > \theta_0$). Alternatives may be one-sided ($\theta > \theta_0$ or $\theta < \theta_0$) or two-sided ($\theta \ne \theta_0$).</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.1.2 — Test Statistic and Rejection Region</div>
+                    <div class="math-box-label">Definition 4.1.2 - Test Statistic and Rejection Region</div>
                     <p>A <strong>test statistic</strong> $T = T(X_1,\ldots,X_n)$ is a function of the data chosen to be sensitive to departures from $H_0$. The <strong>rejection region</strong> (critical region) $\mathcal{R}$ is the set of values of $T$ for which $H_0$ is rejected:
                     $$\text{Reject } H_0 \iff T \in \mathcal{R}.$$</p>
                     <p class="mb-0">The <strong>critical value} $c$ is determined by the level $\alpha$ constraint: $P_{H_0}(T \in \mathcal{R}) \le \alpha$. For a two-sided $Z$-test, $\mathcal{R} = \{|Z| > z_{\alpha/2}\}$.</p>
@@ -143,7 +143,7 @@
                 <h2 class="mt-5">$p$-values</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.1.3 — $p$-value</div>
+                    <div class="math-box-label">Definition 4.1.3 - $p$-value</div>
                     <p>The <strong>$p$-value</strong> is the probability, computed under $H_0$, of observing a test statistic at least as extreme as the one obtained:
                     $$p = P_{H_0}(T \ge t_\mathrm{obs}) \quad \text{(one-sided, right)}.$$</p>
                     <p class="mb-0">We reject $H_0$ at level $\alpha$ if and only if $p \le \alpha$. The $p$-value is not the probability that $H_0$ is true; it is the probability of data at least as extreme as observed, assuming $H_0$ is true.</p>
@@ -152,7 +152,7 @@
                 <h2 class="mt-5">Level and Power</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.1.4 — Level $\alpha$ Test</div>
+                    <div class="math-box-label">Definition 4.1.4 - Level $\alpha$ Test</div>
                     <p class="mb-0">A test has <strong>level $\alpha$</strong> (or size at most $\alpha$) if
                     $$\sup_{\theta \in \Theta_0} P_\theta(T \in \mathcal{R}) \le \alpha.$$
                     The <strong>power function</strong> is $\beta(\theta) = P_\theta(T \in \mathcal{R})$ for all $\theta \in \Theta$. A good test has $\beta(\theta) \approx \alpha$ for $\theta \in \Theta_0$ and $\beta(\theta) \to 1$ for $\theta$ far from $\Theta_0$.</p>
@@ -162,7 +162,7 @@
                 <p>For testing a simple $H_0:\theta = \theta_0$ vs.\ simple $H_1:\theta = \theta_1$, the Neyman-Pearson lemma identifies the uniformly most powerful (UMP) test.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.1.5 — Neyman-Pearson Lemma</div>
+                    <div class="math-box-label">Theorem 4.1.5 - Neyman-Pearson Lemma</div>
                     <p>Let $f_0, f_1$ be the densities (or pmfs) of the data under $H_0$ and $H_1$ respectively. The <strong>likelihood ratio test</strong> that rejects $H_0$ when
                     $$\Lambda(\mathbf{x}) = \frac{f_1(\mathbf{x})}{f_0(\mathbf{x})} > k$$
                     for some $k \ge 0$ chosen so that $P_{H_0}(\Lambda > k) = \alpha$ is the <strong>most powerful level-$\alpha$ test</strong> of $H_0$ vs.\ $H_1$.</p>
@@ -170,7 +170,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.1.6 — One-Sample $Z$-Test</div>
+                    <div class="math-box-label">Example 4.1.6 - One-Sample $Z$-Test</div>
                     <p>Suppose $X_1,\ldots,X_n \stackrel{\text{iid}}{\sim} N(\mu,\sigma^2)$ with $\sigma^2$ known. Test $H_0:\mu = \mu_0$ vs.\ $H_1:\mu \ne \mu_0$ at level $\alpha$.</p>
                     <p>Test statistic: $Z = (\bar{X} - \mu_0)/(\sigma/\sqrt{n}) \sim N(0,1)$ under $H_0$.</p>
                     <p>Rejection region: $|Z| > z_{\alpha/2}$.</p>

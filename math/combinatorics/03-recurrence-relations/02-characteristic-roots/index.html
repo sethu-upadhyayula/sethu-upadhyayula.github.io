@@ -16,7 +16,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -103,25 +103,25 @@
 
 <p>The <strong>characteristic root method</strong> solves homogeneous linear recurrences by converting them to polynomial equations. The roots of the characteristic polynomial determine the form of the general solution.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Characteristic Polynomial</div>
+<div class="math-box definition"><div class="math-box-label">Definition - Characteristic Polynomial</div>
 <p>For the recurrence $a_n = c_1 a_{n-1} + \cdots + c_k a_{n-k}$, the <strong>characteristic polynomial</strong> is:
 $$p(r) = r^k - c_1 r^{k-1} - c_2 r^{k-2} - \cdots - c_k.$$
 Its roots $r_1, \ldots, r_k$ (counting multiplicity) are the <strong>characteristic roots</strong>.</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — General Solution (Distinct Roots)</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - General Solution (Distinct Roots)</div>
 <p>If the characteristic polynomial has $k$ distinct roots $r_1, \ldots, r_k$, then the general solution of the recurrence is:
 $$a_n = \alpha_1 r_1^n + \alpha_2 r_2^n + \cdots + \alpha_k r_k^n,$$
 where $\alpha_1, \ldots, \alpha_k$ are determined by the $k$ initial conditions.</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — General Solution (Repeated Roots)</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - General Solution (Repeated Roots)</div>
 <p>If $r$ is a root of multiplicity $m$, it contributes terms:
 $$(A_0 + A_1 n + A_2 n^2 + \cdots + A_{m-1} n^{m-1})\, r^n$$
 to the general solution, with $m$ free constants.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Fibonacci (Binet's Formula)</div>
+<div class="math-box example"><div class="math-box-label">Example - Fibonacci (Binet's Formula)</div>
 <p>The recurrence $F_n = F_{n-1} + F_{n-2}$ has characteristic polynomial $r^2 - r - 1 = 0$ with roots:
 $$\phi = \frac{1+\sqrt{5}}{2}, \quad \hat\phi = \frac{1-\sqrt{5}}{2}.$$
 General solution: $F_n = \alpha\phi^n + \beta\hat\phi^n$. Using $F_0=0$, $F_1=1$:
@@ -130,11 +130,11 @@ $$\alpha + \beta = 0, \quad \alpha\phi + \beta\hat\phi = 1 \implies \alpha = \fr
 $$F_n = \frac{\phi^n - \hat\phi^n}{\sqrt{5}}.$$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Repeated Root</div>
+<div class="math-box example"><div class="math-box-label">Example - Repeated Root</div>
 <p>The recurrence $a_n = 2a_{n-1} - a_{n-2}$ has characteristic polynomial $(r-1)^2 = 0$ with double root $r=1$. General solution: $a_n = (A + Bn) \cdot 1^n = A + Bn$. With $a_0=1, a_1=3$: $A=1, B=2$, so $a_n = 1+2n$.</p>
 </div>
 
-<div class="math-box remark"><div class="math-box-label">Remark — Complex Roots</div>
+<div class="math-box remark"><div class="math-box-label">Remark - Complex Roots</div>
 <p>If the characteristic polynomial has complex roots $r = \rho e^{i\theta}$ and $\bar{r} = \rho e^{-i\theta}$ (conjugate pair), they contribute terms $\rho^n(A\cos(n\theta) + B\sin(n\theta))$, producing oscillating solutions. The magnitude grows like $\rho^n$.</p>
 </div>
 

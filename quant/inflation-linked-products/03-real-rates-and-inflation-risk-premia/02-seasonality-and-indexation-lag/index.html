@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,53 +80,53 @@
             <article>
                 <h1 class="text-accent mb-4">3.2 Seasonality and Indexation Lag Effects</h1>
 
-                <p>Section 1.1 introduced the three-month indexation lag used to compute the reference CPI for inflation-linked bonds and swaps. This lag interacts with a second feature of price index data — predictable within-year (seasonal) patterns — to produce systematic effects on the carry and effective duration of inflation-linked positions. This section develops both effects and shows how they are quantified in practice.</p>
+                <p>Section 1.1 introduced the three-month indexation lag used to compute the reference CPI for inflation-linked bonds and swaps. This lag interacts with a second feature of price index data - predictable within-year (seasonal) patterns - to produce systematic effects on the carry and effective duration of inflation-linked positions. This section develops both effects and shows how they are quantified in practice.</p>
 
                 <h2 class="mt-5 mb-3">Seasonality in Non-Seasonally-Adjusted CPI</h2>
 
-                <p>The CPI series used as the reference index for inflation-linked bonds and swaps is the <em>non-seasonally-adjusted</em> (NSA) index — the raw, unadjusted price level. Unlike the seasonally-adjusted series often quoted in economic commentary, the NSA index exhibits a regular, repeating within-year pattern driven by factors such as January price resets (insurance premiums, rents, and various administered prices often reset at the start of the calendar year), seasonal goods (clothing, travel, certain food categories), and similar recurring effects.</p>
+                <p>The CPI series used as the reference index for inflation-linked bonds and swaps is the <em>non-seasonally-adjusted</em> (NSA) index - the raw, unadjusted price level. Unlike the seasonally-adjusted series often quoted in economic commentary, the NSA index exhibits a regular, repeating within-year pattern driven by factors such as January price resets (insurance premiums, rents, and various administered prices often reset at the start of the calendar year), seasonal goods (clothing, travel, certain food categories), and similar recurring effects.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Seasonal Adjustment Factor</div>
+                    <div class="math-box-label">Definition - Seasonal Adjustment Factor</div>
                     <p class="mb-0">For each calendar month $m \in \{1,\ldots,12\}$, define a seasonal factor $s_m$ such that the seasonally-adjusted month-on-month change equals the NSA change divided by the seasonal factor:
                     $$\frac{\text{CPI}_{\text{NSA}}(m)}{\text{CPI}_{\text{NSA}}(m-1)} = s_m \times \frac{\text{CPI}_{\text{SA}}(m)}{\text{CPI}_{\text{SA}}(m-1)}$$
-                    The factors $s_m$ are estimated from historical NSA data (typically via an X-12-ARIMA-style decomposition) and satisfy $\prod_{m=1}^{12} s_m \approx 1$ — the seasonal effects average out to zero over a full calendar year, but individual months can deviate substantially, with $s_m > 1$ for months where prices typically rise faster than the seasonally-adjusted trend (e.g. January, due to administered price resets) and $s_m < 1$ for months where they typically rise more slowly or fall.</p>
+                    The factors $s_m$ are estimated from historical NSA data (typically via an X-12-ARIMA-style decomposition) and satisfy $\prod_{m=1}^{12} s_m \approx 1$ - the seasonal effects average out to zero over a full calendar year, but individual months can deviate substantially, with $s_m > 1$ for months where prices typically rise faster than the seasonally-adjusted trend (e.g. January, due to administered price resets) and $s_m < 1$ for months where they typically rise more slowly or fall.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">How the Indexation Lag Interacts with Seasonality</h2>
 
-                <p>Because the reference CPI for any settlement date is the NSA index lagged by three months (Section 1.1), the seasonal pattern in NSA CPI translates directly into a seasonal pattern in the index ratio's <em>month-on-month</em> growth — and hence in the accrued daily indexation of a linker's principal — even though the seasonally-adjusted trend in inflation may be smooth and constant.</p>
+                <p>Because the reference CPI for any settlement date is the NSA index lagged by three months (Section 1.1), the seasonal pattern in NSA CPI translates directly into a seasonal pattern in the index ratio's <em>month-on-month</em> growth - and hence in the accrued daily indexation of a linker's principal - even though the seasonally-adjusted trend in inflation may be smooth and constant.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — "Seasonal Carry" on Inflation-Linked Positions</div>
-                    <p class="mb-0">A linker accruing index-ratio growth through a calendar month $m$ will see daily accrual driven by the (lagged) reference CPI's growth from month $m-3$ to month $m-2$. If month $m-2$ is a seasonally "high" month (large $s_{m-2}$), the linker's principal accrues faster during month $m$ than the long-run trend would suggest — generating positive "seasonal carry" — and conversely for seasonally "low" months. Because the seasonal pattern $s_1,\ldots,s_{12}$ repeats every year and is reasonably stable, this seasonal carry is largely <em>predictable</em> months in advance, and is a routine input to the carry-and-roll analysis of any linker or inflation swap position (Section 4.2).</p>
+                    <div class="math-box-label">Remark - "Seasonal Carry" on Inflation-Linked Positions</div>
+                    <p class="mb-0">A linker accruing index-ratio growth through a calendar month $m$ will see daily accrual driven by the (lagged) reference CPI's growth from month $m-3$ to month $m-2$. If month $m-2$ is a seasonally "high" month (large $s_{m-2}$), the linker's principal accrues faster during month $m$ than the long-run trend would suggest - generating positive "seasonal carry" - and conversely for seasonally "low" months. Because the seasonal pattern $s_1,\ldots,s_{12}$ repeats every year and is reasonably stable, this seasonal carry is largely <em>predictable</em> months in advance, and is a routine input to the carry-and-roll analysis of any linker or inflation swap position (Section 4.2).</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Seasonally-Adjusted Index Ratio Forecast</div>
+                    <div class="math-box-label">Definition - Seasonally-Adjusted Index Ratio Forecast</div>
                     <p class="mb-0">To forecast the index ratio (and hence the indexed principal and coupon) for a future date $t$, practitioners typically combine a smooth, seasonally-adjusted projection of CPI growth $\widehat{g}$ (e.g. derived from the YoY inflation swap curve) with the historically-estimated monthly seasonal factors:
                     $$\widehat{\text{CPI}}_{\text{NSA}}(m) = \widehat{\text{CPI}}_{\text{NSA}}(m-1) \times (1+\widehat{g})^{1/12} \times s_m$$
-                    applied recursively from the last known NSA print. The resulting projected reference CPI series — and hence the projected index ratio path — exhibits the same within-year "wiggle" as historical NSA data, superimposed on the smooth trend $\widehat{g}$ implied by the swap curve.</p>
+                    applied recursively from the last known NSA print. The resulting projected reference CPI series - and hence the projected index ratio path - exhibits the same within-year "wiggle" as historical NSA data, superimposed on the smooth trend $\widehat{g}$ implied by the swap curve.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Effect on Duration</h2>
 
-                <p>The indexation lag also has a subtle effect on a linker's effective duration. Because the cash flows actually paid on any given date are determined by a reference CPI fixed three months earlier, a linker's economic exposure to <em>future</em> (not-yet-realised) inflation is effectively reduced relative to a hypothetical bond with zero indexation lag — the most recent three months of inflation in the reference CPI are already "locked in" and do not respond to changes in inflation expectations going forward.</p>
+                <p>The indexation lag also has a subtle effect on a linker's effective duration. Because the cash flows actually paid on any given date are determined by a reference CPI fixed three months earlier, a linker's economic exposure to <em>future</em> (not-yet-realised) inflation is effectively reduced relative to a hypothetical bond with zero indexation lag - the most recent three months of inflation in the reference CPI are already "locked in" and do not respond to changes in inflation expectations going forward.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Lag-Adjusted Real Duration</div>
-                    <p class="mb-0">For most practical purposes (bonds with maturities of several years or more), the three-month lag has a negligible effect on modified duration computed in the conventional way from the real yield curve. However, for very short-dated linkers (inside the lag period itself, i.e. less than three months to maturity), the lag means the bond's final redemption value is already fully determined by published CPI data — the bond has effectively zero remaining inflation-linkage exposure even though it has not yet matured, despite still carrying real-rate (discounting) duration. This "dead linkage" effect is most relevant for linker repo and financing desks managing very short-dated positions near maturity.</p>
+                    <div class="math-box-label">Remark - Lag-Adjusted Real Duration</div>
+                    <p class="mb-0">For most practical purposes (bonds with maturities of several years or more), the three-month lag has a negligible effect on modified duration computed in the conventional way from the real yield curve. However, for very short-dated linkers (inside the lag period itself, i.e. less than three months to maturity), the lag means the bond's final redemption value is already fully determined by published CPI data - the bond has effectively zero remaining inflation-linkage exposure even though it has not yet matured, despite still carrying real-rate (discounting) duration. This "dead linkage" effect is most relevant for linker repo and financing desks managing very short-dated positions near maturity.</p>
                 </div>
 
-                <h2 class="mt-5 mb-3">Worked Example — Seasonal Adjustment of a Quarterly Accrual</h2>
+                <h2 class="mt-5 mb-3">Worked Example - Seasonal Adjustment of a Quarterly Accrual</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Projecting Index Ratio Growth Across a Seasonal Quarter</div>
-                    <p>Suppose the smooth, seasonally-adjusted annual inflation projection from the swap curve is $\widehat{g} = 2.40\%$, so the implied smooth monthly growth rate is $(1.024)^{1/12} - 1 \approx 0.1979\%$. Suppose the estimated seasonal factors for the relevant three months (the reference months for accrual during the next quarter, given the three-month lag) are $s_{m-2} = 1.30$, $s_{m-1} = 0.95$, and $s_m = 0.85$ — a pattern typical of a winter quarter with a large January reset.</p>
+                    <div class="math-box-label">Example - Projecting Index Ratio Growth Across a Seasonal Quarter</div>
+                    <p>Suppose the smooth, seasonally-adjusted annual inflation projection from the swap curve is $\widehat{g} = 2.40\%$, so the implied smooth monthly growth rate is $(1.024)^{1/12} - 1 \approx 0.1979\%$. Suppose the estimated seasonal factors for the relevant three months (the reference months for accrual during the next quarter, given the three-month lag) are $s_{m-2} = 1.30$, $s_{m-1} = 0.95$, and $s_m = 0.85$ - a pattern typical of a winter quarter with a large January reset.</p>
                     <p>The projected month-on-month NSA CPI growth rates, combining trend and seasonal, are approximately:
                     $$0.1979\% \times 1.30 \approx 0.257\%, \qquad 0.1979\% \times 0.95 \approx 0.188\%, \qquad 0.1979\% \times 0.85 \approx 0.168\%$$</p>
-                    <p>The cumulative projected reference CPI growth over the three months is approximately $0.257\% + 0.188\% + 0.168\% = 0.613\%$, compared with a "no seasonality" projection of $3 \times 0.198\% = 0.594\%$ — a difference of about $2$bp in cumulative accrual over the quarter, concentrated almost entirely in the first month due to the large $s_{m-2}=1.30$ factor.</p>
-                    <p class="mb-0">While $2$bp may seem small, the <em>timing</em> within the quarter matters for any position that is closed out or rolled before quarter-end: an investor holding the linker only through the first of the three months would capture the $0.257\%$ accrual (above the $0.198\%$ smooth-trend rate), an extra $\sim$$6$bp of seasonal carry concentrated in that single month — a routinely-traded effect in linker financing and short-dated relative value.</p>
+                    <p>The cumulative projected reference CPI growth over the three months is approximately $0.257\% + 0.188\% + 0.168\% = 0.613\%$, compared with a "no seasonality" projection of $3 \times 0.198\% = 0.594\%$ - a difference of about $2$bp in cumulative accrual over the quarter, concentrated almost entirely in the first month due to the large $s_{m-2}=1.30$ factor.</p>
+                    <p class="mb-0">While $2$bp may seem small, the <em>timing</em> within the quarter matters for any position that is closed out or rolled before quarter-end: an investor holding the linker only through the first of the three months would capture the $0.257\%$ accrual (above the $0.198\%$ smooth-trend rate), an extra $\sim$$6$bp of seasonal carry concentrated in that single month - a routinely-traded effect in linker financing and short-dated relative value.</p>
                 </div>
 
                 <hr class="my-5">

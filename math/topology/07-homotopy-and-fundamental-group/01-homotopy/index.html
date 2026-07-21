@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,13 +132,13 @@
                 <p>Homotopy formalises the idea of continuously deforming one map into another. It provides an equivalence relation on maps that is coarser than equality but finer than mere continuity, capturing the topological "shape" of a mapping.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Homotopy</div>
+                    <div class="math-box-label">Definition - Homotopy</div>
                     <p>Let $f, g: X \to Y$ be continuous maps. A <strong>homotopy</strong> from $f$ to $g$ is a continuous map $H: X \times [0,1] \to Y$ such that $H(x, 0) = f(x)$ and $H(x, 1) = g(x)$ for all $x \in X$.</p>
                     <p class="mb-0">If such an $H$ exists, $f$ and $g$ are said to be <strong>homotopic</strong>, written $f \simeq g$. Homotopy is an equivalence relation on the set of continuous maps $X \to Y$; the equivalence class of $f$ is its <em>homotopy class</em> $[f]$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Homotopy Equivalence</div>
+                    <div class="math-box-label">Definition - Homotopy Equivalence</div>
                     <p>A continuous map $f: X \to Y$ is a <strong>homotopy equivalence</strong> if there exists a continuous $g: Y \to X$ such that $g \circ f \simeq \mathrm{id}_X$ and $f \circ g \simeq \mathrm{id}_Y$. In this case $X$ and $Y$ are said to be <strong>homotopy equivalent</strong> (or have the same <em>homotopy type</em>), written $X \simeq Y$.</p>
                     <p class="mb-0">Homotopy equivalence is a coarser equivalence than homeomorphism: homeomorphic spaces are homotopy equivalent, but not conversely. For example, $\mathbb{R}^n \simeq \{*\}$ (a point) for all $n$, even though they are not homeomorphic for $n \geq 1$.</p>
                 </div>
@@ -146,30 +146,30 @@
                 <h2 class="mt-5 mb-3">Deformation Retracts</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Deformation Retract</div>
+                    <div class="math-box-label">Definition - Deformation Retract</div>
                     <p>A subspace $A \subseteq X$ is a <strong>deformation retract</strong> of $X$ if there exists a continuous map $r: X \to A$ (a <em>retraction</em>) such that $r|_A = \mathrm{id}_A$ and the inclusion $\iota: A \hookrightarrow X$ satisfies $\iota \circ r \simeq \mathrm{id}_X$ via a homotopy that fixes $A$ pointwise throughout. Explicitly, there is a homotopy $H: X \times [0,1] \to X$ with $H(x,0) = x$, $H(x,1) \in A$ for all $x$, and $H(a,t) = a$ for all $a \in A$ and $t \in [0,1]$.</p>
                     <p class="mb-0">If $A$ is a deformation retract of $X$, then $A \simeq X$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — $S^1$ is a Deformation Retract of $\mathbb{R}^2 \setminus \{0\}$</div>
-                    <p class="mb-0">Define $H: (\mathbb{R}^2 \setminus \{0\}) \times [0,1] \to \mathbb{R}^2 \setminus \{0\}$ by $H(x,t) = \frac{x}{(1-t)\|x\| + t}$. At $t=0$, $H(x,0) = x/\|x\| \cdot \|x\| = x$; wait — more precisely, $H(x,t) = (1-t)x + t \cdot x/\|x\|$. At $t=0$, $H(x,0) = x$. At $t=1$, $H(x,1) = x/\|x\| \in S^1$. For $x \in S^1$, $H(x,t) = x$ for all $t$. Thus $S^1$ is a deformation retract of $\mathbb{R}^2 \setminus \{0\}$, and the two spaces are homotopy equivalent.</p>
+                    <div class="math-box-label">Example - $S^1$ is a Deformation Retract of $\mathbb{R}^2 \setminus \{0\}$</div>
+                    <p class="mb-0">Define $H: (\mathbb{R}^2 \setminus \{0\}) \times [0,1] \to \mathbb{R}^2 \setminus \{0\}$ by $H(x,t) = \frac{x}{(1-t)\|x\| + t}$. At $t=0$, $H(x,0) = x/\|x\| \cdot \|x\| = x$; wait - more precisely, $H(x,t) = (1-t)x + t \cdot x/\|x\|$. At $t=0$, $H(x,0) = x$. At $t=1$, $H(x,1) = x/\|x\| \in S^1$. For $x \in S^1$, $H(x,t) = x$ for all $t$. Thus $S^1$ is a deformation retract of $\mathbb{R}^2 \setminus \{0\}$, and the two spaces are homotopy equivalent.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Contractible Spaces</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Contractible Space</div>
+                    <div class="math-box-label">Definition - Contractible Space</div>
                     <p class="mb-0">A space $X$ is <strong>contractible</strong> if it is homotopy equivalent to a single point, i.e., the identity map $\mathrm{id}_X$ is homotopic to a constant map $x \mapsto x_0$. Contractible spaces have trivial fundamental group (and trivial all higher homotopy groups).</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — $\mathbb{R}^n$ is Contractible</div>
+                    <div class="math-box-label">Example - $\mathbb{R}^n$ is Contractible</div>
                     <p class="mb-0">Define $H: \mathbb{R}^n \times [0,1] \to \mathbb{R}^n$ by $H(x, t) = (1-t)x$. Then $H(x,0) = x = \mathrm{id}(x)$ and $H(x,1) = 0$, the constant map to the origin. Thus $\mathrm{id}_{\mathbb{R}^n} \simeq c_0$, so $\mathbb{R}^n$ is contractible. More generally, any convex subset of $\mathbb{R}^n$ is contractible (by the straight-line homotopy to any fixed point in the set).</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — $S^1$ is Not Contractible</div>
+                    <div class="math-box-label">Example - $S^1$ is Not Contractible</div>
                     <p class="mb-0">$S^1$ is not contractible because its fundamental group $\pi_1(S^1) \cong \mathbb{Z}$ is non-trivial (computed in §7.2). A contractible space has trivial fundamental group, so $S^1$ cannot be contractible. Informally, a loop that winds once around the circle cannot be continuously shrunk to a point while staying in $S^1$.</p>
                 </div>
 

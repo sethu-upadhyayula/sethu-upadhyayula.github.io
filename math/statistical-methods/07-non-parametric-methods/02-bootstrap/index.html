@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -125,19 +125,19 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">7.2 Bootstrap</h1>
-                <p>The bootstrap (Efron, 1979) is a general-purpose resampling procedure for estimating the sampling distribution of any statistic. It replaces analytical derivations — which may be intractable for complex statistics — with simulation from the empirical distribution of the observed data.</p>
+                <p>The bootstrap (Efron, 1979) is a general-purpose resampling procedure for estimating the sampling distribution of any statistic. It replaces analytical derivations - which may be intractable for complex statistics - with simulation from the empirical distribution of the observed data.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.1 — Empirical Distribution Function</div>
+                    <div class="math-box-label">Definition 7.2.1 - Empirical Distribution Function</div>
                     <p class="mb-0">Given observations $x_1,\ldots,x_n$, the <strong>empirical distribution function (EDF)</strong> is
                     $$\hat{F}_n(t) = \frac{1}{n}\sum_{i=1}^n \mathbf{1}[x_i \le t].$$
-                    By the Glivenko-Cantelli theorem, $\sup_t|\hat{F}_n(t) - F(t)| \to 0$ almost surely. The EDF is the nonparametric MLE of $F$. A <strong>bootstrap sample</strong> $X_1^*,\ldots,X_n^*$ is drawn i.i.d.\ from $\hat{F}_n$ — equivalently, sampled with replacement from $\{x_1,\ldots,x_n\}$.</p>
+                    By the Glivenko-Cantelli theorem, $\sup_t|\hat{F}_n(t) - F(t)| \to 0$ almost surely. The EDF is the nonparametric MLE of $F$. A <strong>bootstrap sample</strong> $X_1^*,\ldots,X_n^*$ is drawn i.i.d.\ from $\hat{F}_n$ - equivalently, sampled with replacement from $\{x_1,\ldots,x_n\}$.</p>
                 </div>
 
                 <h2 class="mt-5">Bootstrap Standard Error</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.2 — Bootstrap Standard Error</div>
+                    <div class="math-box-label">Definition 7.2.2 - Bootstrap Standard Error</div>
                     <p>For a statistic $\hat{\theta} = T(X_1,\ldots,X_n)$, the <strong>bootstrap standard error</strong> is estimated by:
                     <ol>
                         <li>Draw $B$ bootstrap samples: $\mathbf{X}^{*(b)} = (X_1^{*(b)},\ldots,X_n^{*(b)})$ for $b = 1,\ldots,B$.</li>
@@ -150,12 +150,12 @@
                 <h2 class="mt-5">Bootstrap Confidence Intervals</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.3 — Percentile Interval</div>
+                    <div class="math-box-label">Definition 7.2.3 - Percentile Interval</div>
                     <p class="mb-0">The <strong>percentile bootstrap CI</strong> uses the empirical quantiles of the bootstrap distribution: let $\hat\theta^*_{(\alpha/2)}$ and $\hat\theta^*_{(1-\alpha/2)}$ be the $\alpha/2$ and $1-\alpha/2$ sample quantiles of $\hat\theta^{*(1)},\ldots,\hat\theta^{*(B)}$. The CI is $[\hat\theta^*_{(\alpha/2)},\, \hat\theta^*_{(1-\alpha/2)}]$. It is simple but can have poor coverage when the bootstrap distribution is skewed or biased.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.4 — BCa Interval</div>
+                    <div class="math-box-label">Definition 7.2.4 - BCa Interval</div>
                     <p class="mb-0">The <strong>bias-corrected and accelerated (BCa)</strong> interval corrects for bias and skewness in the bootstrap distribution. It uses two constants: the bias-correction $\hat{z}_0 = \Phi^{-1}(\#\{\hat\theta^{*(b)} < \hat\theta\}/B)$ and the acceleration $\hat{a}$ (estimated via jackknife). Adjusted quantile levels are
                     $$\alpha_1 = \Phi\!\left(\hat{z}_0 + \frac{\hat{z}_0 + z_{\alpha/2}}{1 - \hat{a}(\hat{z}_0 + z_{\alpha/2})}\right), \quad \alpha_2 = \Phi\!\left(\hat{z}_0 + \frac{\hat{z}_0 + z_{1-\alpha/2}}{1 - \hat{a}(\hat{z}_0 + z_{1-\alpha/2})}\right).$$
                     BCa intervals have correct coverage to second order and are transformation-respecting, making them the most reliable basic bootstrap CI.</p>
@@ -164,12 +164,12 @@
                 <h2 class="mt-5">Parametric Bootstrap</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.5 — Parametric Bootstrap</div>
+                    <div class="math-box-label">Definition 7.2.5 - Parametric Bootstrap</div>
                     <p class="mb-0">The <strong>parametric bootstrap</strong> samples from a fitted parametric model $F(\cdot;\hat\theta)$ rather than $\hat{F}_n$. For example, if data are modelled as $N(\hat\mu, \hat\sigma^2)$, bootstrap samples are drawn from this normal. It can be more efficient than the non-parametric bootstrap when the model is correctly specified, and is useful for generating null distributions in goodness-of-fit tests (e.g.\ bootstrap $p$-values).</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 7.2.6 — Applications</div>
+                    <div class="math-box-label">Remark 7.2.6 - Applications</div>
                     <p class="mb-0">The bootstrap excels for statistics with no known closed-form sampling distribution: sample quantiles, correlation ratios, the maximum of a multivariate distribution, ridge regression coefficients, or the AUC from an ROC curve. It also handles small samples, where the CLT approximation is poor, by using the empirical distribution as a surrogate for the true distribution without imposing parametric assumptions.</p>
                 </div>
 

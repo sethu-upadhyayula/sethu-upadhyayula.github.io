@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -52,14 +52,14 @@
                 <p>Weak derivatives extend classical differentiation to functions that are not differentiable in the pointwise sense, requiring only that the integration-by-parts identity hold. This notion is the basis for Sobolev spaces, which are the natural function spaces for the variational formulation of PDEs.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.1 — Weak Partial Derivative</div>
+                    <div class="math-box-label">Definition 7.2.1 - Weak Partial Derivative</div>
                     <p>Let $u \in L^1_\mathrm{loc}(\Omega)$ and $\alpha$ be a multi-index. A function $g \in L^1_\mathrm{loc}(\Omega)$ is the <strong>$\alpha$-th weak partial derivative</strong> of $u$, written $D^\alpha u = g$, if</p>
                     $$\int_\Omega g(x)\,\phi(x)\,dx = (-1)^{|\alpha|}\int_\Omega u(x)\,D^\alpha\phi(x)\,dx \quad \text{for all } \phi \in \mathcal{D}(\Omega).$$
                     <p class="mb-0">If such a $g$ exists, it is unique (up to a set of measure zero). This definition coincides with the classical derivative whenever $u \in C^{|\alpha|}(\Omega)$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.2.2 — Weak Derivative of $|x|$</div>
+                    <div class="math-box-label">Example 7.2.2 - Weak Derivative of $|x|$</div>
                     <p>Let $u(x) = |x|$ on $\Omega = (-1,1) \subset \mathbb{R}$. Then $u$ is not differentiable at $x = 0$ in the classical sense. We claim $u' = \mathrm{sgn}(x)$ weakly, i.e., $g(x) = \mathrm{sgn}(x) = \mathbf{1}_{x>0} - \mathbf{1}_{x<0}$. Indeed, for $\phi \in \mathcal{D}(-1,1)$:</p>
                     $$-\int_{-1}^1 |x|\phi'(x)\,dx = -\int_{-1}^0 (-x)\phi'\,dx - \int_0^1 x\phi'\,dx.$$
                     <p>Integrating by parts each piece: $= -[{-x\phi}]_{-1}^0 - \int_{-1}^0 (-\phi)\,dx - [x\phi]_0^1 + \int_0^1 \phi\,dx = \int_{-1}^0(-1)\phi\,dx + \int_0^1(+1)\phi\,dx = \int_{-1}^1 \mathrm{sgn}(x)\phi\,dx.$</p>
@@ -69,7 +69,7 @@
                 <h2 class="mt-5 mb-3">Sobolev Spaces</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.3 — Sobolev Space $W^{k,p}(\Omega)$</div>
+                    <div class="math-box-label">Definition 7.2.3 - Sobolev Space $W^{k,p}(\Omega)$</div>
                     <p>For $k \in \mathbb{N}_0$ and $1 \leq p \leq \infty$, the <strong>Sobolev space</strong> is</p>
                     $$W^{k,p}(\Omega) = \left\{u \in L^p(\Omega) : D^\alpha u \in L^p(\Omega) \text{ for all } |\alpha| \leq k\right\},$$
                     <p>equipped with the norm</p>
@@ -79,20 +79,20 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.4 — Completeness of Sobolev Spaces</div>
+                    <div class="math-box-label">Theorem 7.2.4 - Completeness of Sobolev Spaces</div>
                     <p class="mb-0">For $1 \leq p \leq \infty$ and $k \in \mathbb{N}_0$, $W^{k,p}(\Omega)$ is a Banach space. When $p = 2$, $H^k(\Omega)$ is a Hilbert space. The completeness follows from a standard argument: if $u_j$ is Cauchy in $W^{k,p}$, then $u_j \to u$ and $D^\alpha u_j \to v_\alpha$ in $L^p$ for each $|\alpha| \leq k$, and one verifies that $D^\alpha u = v_\alpha$ weakly.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.5 — Space $H^1_0(\Omega)$</div>
+                    <div class="math-box-label">Definition 7.2.5 - Space $H^1_0(\Omega)$</div>
                     <p>The space $H^1_0(\Omega)$ is defined as the closure of $\mathcal{D}(\Omega) = C_0^\infty(\Omega)$ in $H^1(\Omega)$:</p>
                     $$H^1_0(\Omega) = \overline{C_0^\infty(\Omega)}^{\|\cdot\|_{H^1}}.$$
                     <p class="mb-0">Informally, $H^1_0(\Omega)$ consists of $H^1(\Omega)$ functions that vanish on $\partial\Omega$ in the sense of the trace operator. It is the correct function space for the Dirichlet problem with homogeneous boundary data.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 7.2.6 — Motivation from PDEs</div>
-                    <p class="mb-0">Classical solutions of $-\Delta u = f$ require $f \in C(\Omega)$ and $u \in C^2(\Omega) \cap C(\overline\Omega)$. For $f \in L^2(\Omega)$ or for domains with non-smooth boundaries, no classical solution may exist. The weak formulation — find $u \in H^1_0(\Omega)$ such that $\int_\Omega \nabla u \cdot \nabla v\,dx = \int_\Omega fv\,dx$ for all $v \in H^1_0(\Omega)$ — admits a unique solution by Lax-Milgram, as we shall see in the next section.</p>
+                    <div class="math-box-label">Remark 7.2.6 - Motivation from PDEs</div>
+                    <p class="mb-0">Classical solutions of $-\Delta u = f$ require $f \in C(\Omega)$ and $u \in C^2(\Omega) \cap C(\overline\Omega)$. For $f \in L^2(\Omega)$ or for domains with non-smooth boundaries, no classical solution may exist. The weak formulation - find $u \in H^1_0(\Omega)$ such that $\int_\Omega \nabla u \cdot \nabla v\,dx = \int_\Omega fv\,dx$ for all $v \in H^1_0(\Omega)$ - admits a unique solution by Lax-Milgram, as we shall see in the next section.</p>
                 </div>
 
                 <hr class="my-5">

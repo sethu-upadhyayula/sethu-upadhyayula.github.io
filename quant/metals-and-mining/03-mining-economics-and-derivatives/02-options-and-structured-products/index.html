@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -84,20 +84,20 @@
 
                 <h2 class="mt-5 mb-3">Vanilla Options on Metals Futures</h2>
 
-                <p>Most exchange-traded metals options (on COMEX gold and silver, COMEX/LME copper, LME base metals) are options on the underlying futures or forward contract rather than on the physical spot commodity. The standard pricing model for a European option on a futures price is the Black-76 model, a direct analogue of Black-Scholes in which the futures price itself — rather than a discounted spot price — plays the role of the underlying, since a futures price is already a martingale under the appropriate risk-neutral measure.</p>
+                <p>Most exchange-traded metals options (on COMEX gold and silver, COMEX/LME copper, LME base metals) are options on the underlying futures or forward contract rather than on the physical spot commodity. The standard pricing model for a European option on a futures price is the Black-76 model, a direct analogue of Black-Scholes in which the futures price itself - rather than a discounted spot price - plays the role of the underlying, since a futures price is already a martingale under the appropriate risk-neutral measure.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Black-76 Formula for Options on Futures</div>
+                    <div class="math-box-label">Definition - Black-76 Formula for Options on Futures</div>
                     <p class="mb-0">For a European call option with strike $K$ and maturity $T$ on a futures contract with current price $F$, given a risk-free rate $r$ and futures-price volatility $\sigma$, the Black-76 price is:
                     $$C = e^{-rT}\left[F\,\Phi(d_1) - K\,\Phi(d_2)\right], \qquad d_{1,2} = \frac{\ln(F/K) \pm \tfrac{1}{2}\sigma^2 T}{\sigma\sqrt{T}}$$
-                    where $\Phi$ is the standard normal CDF. The corresponding put price follows from put-call parity: $P = C - e^{-rT}(F-K)$. Because $F$ already embeds the market's cost-of-carry, lease rate, and convenience yield assumptions (Sections 1.1, 1.2, and 2.2), the Black-76 formula requires no separate dividend or carry adjustment — all of that information is already contained in $F$.</p>
+                    where $\Phi$ is the standard normal CDF. The corresponding put price follows from put-call parity: $P = C - e^{-rT}(F-K)$. Because $F$ already embeds the market's cost-of-carry, lease rate, and convenience yield assumptions (Sections 1.1, 1.2, and 2.2), the Black-76 formula requires no separate dividend or carry adjustment - all of that information is already contained in $F$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Volatility Characteristics of Metals Markets</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Skew and Smile in Metals Options</div>
-                    <p class="mb-0">Metals volatility surfaces often display distinctive skew patterns linked to the squeeze and lease-rate dynamics discussed in earlier sections. In base metals such as copper, out-of-the-money <em>calls</em> can trade at elevated implied volatility relative to puts — a "call skew" — reflecting the market's pricing of squeeze risk: the possibility of a sharp price spike if deliverable inventories tighten sharply (Section 1.2, Section 2.1). This is the opposite of the well-known equity index skew, where out-of-the-money puts trade rich due to crash risk. In gold, by contrast, the skew is often closer to symmetric or modestly put-skewed, reflecting gold's role as a safe-haven asset whose volatility tends to rise during broad risk-off episodes that also depress its price relative to other assets (though gold can also rally sharply in crises, muting the skew). Precious metals volatility also tends to be more strongly linked to real interest rate volatility and currency (especially USD) volatility than base metals volatility, which is more closely tied to industrial demand shocks and inventory data surprises.</p>
+                    <div class="math-box-label">Remark - Skew and Smile in Metals Options</div>
+                    <p class="mb-0">Metals volatility surfaces often display distinctive skew patterns linked to the squeeze and lease-rate dynamics discussed in earlier sections. In base metals such as copper, out-of-the-money <em>calls</em> can trade at elevated implied volatility relative to puts - a "call skew" - reflecting the market's pricing of squeeze risk: the possibility of a sharp price spike if deliverable inventories tighten sharply (Section 1.2, Section 2.1). This is the opposite of the well-known equity index skew, where out-of-the-money puts trade rich due to crash risk. In gold, by contrast, the skew is often closer to symmetric or modestly put-skewed, reflecting gold's role as a safe-haven asset whose volatility tends to rise during broad risk-off episodes that also depress its price relative to other assets (though gold can also rally sharply in crises, muting the skew). Precious metals volatility also tends to be more strongly linked to real interest rate volatility and currency (especially USD) volatility than base metals volatility, which is more closely tied to industrial demand shocks and inventory data surprises.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Structured Products</h2>
@@ -105,16 +105,16 @@
                 <p>Beyond the simple collar of Section 3.1, banks structure a range of products for metals producers and consumers, generally by combining vanilla options with barrier features, leverage, or path-dependency to adjust the cost/protection trade-off.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Common Metals Structured Products</div>
-                    <p class="mb-0"><strong>Knock-out collar.</strong> A standard collar (Section 3.1) where the put leg is "knocked out" (ceases to exist) if the price touches a specified barrier level, typically below the put strike. This reduces the cost of the put (allowing a tighter collar for the same net premium) in exchange for the producer losing downside protection in the most extreme down-move scenarios — precisely the scenarios in which protection would have been most valuable, so knock-out collars carry meaningful tail risk.</p>
-                    <p><strong>Accumulator.</strong> A structure (popular with both producers seeking to sell and consumers seeking to buy at a discount to spot) under which the client commits to transact a fixed quantity of metal each day (or week) at a pre-agreed discounted/premium price, as long as the market price remains within a specified range; if the price breaches a "knock-out" barrier, the entire structure terminates. Accumulators embed a strip of digital/barrier options and can result in the client being obligated to transact at an off-market price for an extended remaining tenor if the market moves sharply against them before a knock-out is triggered — a risk that became prominent in commentary on FX and equity accumulators sold to corporates and retail investors, and the same structural risks apply to metals accumulators.</p>
-                    <p class="mb-0"><strong>Participating forward.</strong> A structure that guarantees a minimum (floor) price like a forward sale, but allows the producer to participate in some percentage of any price increase above the floor — effectively a forward sale combined with a partially-retained call option, financed by accepting a floor below the outright forward price.</p>
+                    <div class="math-box-label">Definition - Common Metals Structured Products</div>
+                    <p class="mb-0"><strong>Knock-out collar.</strong> A standard collar (Section 3.1) where the put leg is "knocked out" (ceases to exist) if the price touches a specified barrier level, typically below the put strike. This reduces the cost of the put (allowing a tighter collar for the same net premium) in exchange for the producer losing downside protection in the most extreme down-move scenarios - precisely the scenarios in which protection would have been most valuable, so knock-out collars carry meaningful tail risk.</p>
+                    <p><strong>Accumulator.</strong> A structure (popular with both producers seeking to sell and consumers seeking to buy at a discount to spot) under which the client commits to transact a fixed quantity of metal each day (or week) at a pre-agreed discounted/premium price, as long as the market price remains within a specified range; if the price breaches a "knock-out" barrier, the entire structure terminates. Accumulators embed a strip of digital/barrier options and can result in the client being obligated to transact at an off-market price for an extended remaining tenor if the market moves sharply against them before a knock-out is triggered - a risk that became prominent in commentary on FX and equity accumulators sold to corporates and retail investors, and the same structural risks apply to metals accumulators.</p>
+                    <p class="mb-0"><strong>Participating forward.</strong> A structure that guarantees a minimum (floor) price like a forward sale, but allows the producer to participate in some percentage of any price increase above the floor - effectively a forward sale combined with a partially-retained call option, financed by accepting a floor below the outright forward price.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example: Pricing a Copper Put Option</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Black-76 Put on a Copper Futures Contract</div>
+                    <div class="math-box-label">Example - Black-76 Put on a Copper Futures Contract</div>
                     <p>A copper producer wants to price the put leg of a collar (as in Section 3.1's example). The relevant 3-month copper futures price is $F = \$9{,}000$/tonne, the put strike is $K = \$7{,}800$/tonne, time to maturity is $T = 0.25$ years, the annualized futures-price volatility is $\sigma = 22\%$, and the risk-free rate is $r = 5\%$.</p>
                     <p>First compute $d_1$ and $d_2$:
                     $$d_1 = \frac{\ln(9000/7800) + \tfrac{1}{2}(0.22)^2(0.25)}{0.22\sqrt{0.25}} = \frac{\ln(1.1538) + 0.00605}{0.11} = \frac{0.1431+0.00605}{0.11} = \frac{0.1492}{0.11} \approx 1.356$$
@@ -132,7 +132,7 @@
                             <tr><td>Put premium $P$</td><td>≈ $41.9/t</td></tr>
                         </tbody>
                     </table>
-                    <p class="mb-0">For the 40,000 hedged tonnes from Section 3.1's example, the total put premium is approximately $40{,}000 \times \$41.9 \approx \$1{,}676{,}000$. In a zero-cost collar, the trading desk would solve for a call strike $K_{\text{call}}$ such that a Black-76 call with that strike, at the same $F$, $T$, $\sigma$ (adjusted for any skew at that strike), and $r$, has a premium equal to $\$41.9$/tonne — that call strike becomes the cap of the zero-cost collar.</p>
+                    <p class="mb-0">For the 40,000 hedged tonnes from Section 3.1's example, the total put premium is approximately $40{,}000 \times \$41.9 \approx \$1{,}676{,}000$. In a zero-cost collar, the trading desk would solve for a call strike $K_{\text{call}}$ such that a Black-76 call with that strike, at the same $F$, $T$, $\sigma$ (adjusted for any skew at that strike), and $r$, has a premium equal to $\$41.9$/tonne - that call strike becomes the cap of the zero-cost collar.</p>
                 </div>
 
                 <hr class="my-5">

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -85,7 +85,7 @@
 
                 <h2 class="mt-5 mb-3">CLO Structure Overview</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — CLO Liability Stack</div>
+                    <div class="math-box-label">Definition - CLO Liability Stack</div>
                     <p>A typical CLO issues the following tranches (in descending seniority):
                     <ul>
                         <li><strong>AAA notes (Class A):</strong> 60-65% of capital structure; pays SOFR + ~130-160 bps; benefits from full subordination below.</li>
@@ -99,7 +99,7 @@
 
                 <h2 class="mt-5 mb-3">Reinvestment Period and Portfolio Dynamics</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Reinvestment Period</div>
+                    <div class="math-box-label">Definition - Reinvestment Period</div>
                     <p>A CLO has two phases:</p>
                     <p><strong>Reinvestment period</strong> (typically 4-5 years from closing): the CLO manager actively manages the portfolio. Principal proceeds from loan repayments, sales, and defaults (after recovery) are reinvested in new loans subject to eligibility criteria (minimum rating, diversification, industry concentration limits). The portfolio target par amount is maintained.</p>
                     <p class="mb-0"><strong>Amortisation period</strong> (post-reinvestment): principal proceeds are sequentially paid to noteholders in priority order (Class A first, then B, C, D, E, equity). No new purchases are made. The average life of the notes depends on the speed of loan amortisation and prepayment.</p>
@@ -107,7 +107,7 @@
 
                 <h2 class="mt-5 mb-3">Cash Flow Waterfall</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Interest Waterfall</div>
+                    <div class="math-box-label">Definition - Interest Waterfall</div>
                     <p>Each payment period, interest proceeds are distributed in the following priority (simplified):
                     <ol class="mb-0">
                         <li>Senior expenses (trustee, admin, rating agency fees).</li>
@@ -123,7 +123,7 @@
 
                 <h2 class="mt-5 mb-3">OC and IC Coverage Tests</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Overcollateralisation and Interest Coverage Tests</div>
+                    <div class="math-box-label">Definition - Overcollateralisation and Interest Coverage Tests</div>
                     <p>The <em>Overcollateralisation (OC) ratio</em> for tranche $k$ is:
                     $$\text{OC}_k = \frac{\text{Collateral Par (adjusted for defaulted assets)}}{\text{Notional of Class } k \text{ and above}}$$
                     If $\text{OC}_k < \text{OC trigger}_k$, the waterfall diverts interest to pay down the most senior tranche until the test is cured or the notes are paid off.</p>
@@ -134,14 +134,14 @@
 
                 <h2 class="mt-5 mb-3">CLO Equity IRR Analysis</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Static CLO Equity IRR</div>
+                    <div class="math-box-label">Definition - Static CLO Equity IRR</div>
                     <p>In a static (no-reinvestment) CLO model, the equity IRR is the rate $r_E$ that equates the equity investment $E_0$ to the present value of equity cash flows:
                     $$E_0 = \sum_{t=1}^{T} \frac{CF^{eq}_t}{(1+r_E)^t}$$
                     where $CF^{eq}_t$ = (total interest income - senior costs - note interest - manager fees) during the reinvestment period, plus residual principal at maturity after all notes are repaid. The equity IRR is sensitive to: default rate assumptions, recovery rates, prepayment speed (WAL), and the SOFR curve (since liabilities are floating).</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Dynamic CLO Modelling</div>
+                    <div class="math-box-label">Remark - Dynamic CLO Modelling</div>
                     <p class="mb-0">A full dynamic CLO model simulates the portfolio and waterfall over time: loan defaults are drawn from a correlated default model (often a one-factor model similar to the Gaussian copula), prepayments from an assumed CPR, and the manager's trading activity from reinvestment rules. Monte Carlo simulation across thousands of scenarios generates distributions of tranche losses, OC test failures, and equity IRRs, enabling proper credit analysis of CLO notes. Rating agencies (Moody's, S&P, Fitch) each use proprietary versions of such simulation models.</p>
                 </div>
 

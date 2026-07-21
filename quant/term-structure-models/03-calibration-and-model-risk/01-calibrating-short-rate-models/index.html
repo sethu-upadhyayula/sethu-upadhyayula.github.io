@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,45 +81,45 @@
             <article>
                 <h1 class="text-accent mb-4">3.1 Calibrating Short-Rate Models</h1>
 
-                <p>A short-rate model is "calibrated" when its parameters are chosen so that the model's prices for a chosen set of liquid instruments match observed market prices. For models such as Hull-White, calibration naturally splits into two distinct stages: first fitting the deterministic, time-dependent piece of the model exactly to the discount curve, and second fitting the remaining free parameters — mean reversion and volatility — to the prices of interest rate options. This section walks through both stages and gives a worked intuition example.</p>
+                <p>A short-rate model is "calibrated" when its parameters are chosen so that the model's prices for a chosen set of liquid instruments match observed market prices. For models such as Hull-White, calibration naturally splits into two distinct stages: first fitting the deterministic, time-dependent piece of the model exactly to the discount curve, and second fitting the remaining free parameters - mean reversion and volatility - to the prices of interest rate options. This section walks through both stages and gives a worked intuition example.</p>
 
                 <h2 class="mt-5 mb-3">Stage 1: Fitting the Initial Yield Curve</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Curve Fitting Is Exact, Not Optimised</div>
+                    <div class="math-box-label">Remark - Curve Fitting Is Exact, Not Optimised</div>
                     <p class="mb-0">As shown in Section 1.1, the Hull-White time-dependent drift $\theta(t)$ can be chosen so that the model reproduces today's discount curve $\{P(0,T)\}_{T\geq0}$ <em>exactly</em>, for any choice of the constants $(a,\sigma)$:
                     $$\theta(t) = \frac{\partial f(0,t)}{\partial t} + a f(0,t) + \frac{\sigma^2}{2a}\left(1-e^{-2at}\right)$$
-                    This is not a numerical optimisation in the usual sense — it is a direct formula, given the observed forward curve $f(0,t)$ bootstrapped from market discount factors (as in the rates-fundamentals material on curve construction). In practice, $\theta(t)$ is represented on a fine grid of dates, interpolated between the curve's pillar points. This stage guarantees the model reprices every zero-coupon bond — and hence every vanilla swap built from the curve — with zero error, regardless of the values chosen for $(a,\sigma)$.</p>
+                    This is not a numerical optimisation in the usual sense - it is a direct formula, given the observed forward curve $f(0,t)$ bootstrapped from market discount factors (as in the rates-fundamentals material on curve construction). In practice, $\theta(t)$ is represented on a fine grid of dates, interpolated between the curve's pillar points. This stage guarantees the model reprices every zero-coupon bond - and hence every vanilla swap built from the curve - with zero error, regardless of the values chosen for $(a,\sigma)$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Stage 2: Fitting to Caps and Swaptions</h2>
 
-                <p>With $\theta(t)$ pinned down, the remaining parameters — the mean-reversion speed $a$ and volatility $\sigma$ (or, in richer specifications, a piecewise-constant term structure $\sigma(t)$) — control the model's <em>implied volatility</em> of future rates, and must be chosen to match the market prices of caps, floors, and swaptions.</p>
+                <p>With $\theta(t)$ pinned down, the remaining parameters - the mean-reversion speed $a$ and volatility $\sigma$ (or, in richer specifications, a piecewise-constant term structure $\sigma(t)$) - control the model's <em>implied volatility</em> of future rates, and must be chosen to match the market prices of caps, floors, and swaptions.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Calibration as Least-Squares Minimisation</div>
+                    <div class="math-box-label">Definition - Calibration as Least-Squares Minimisation</div>
                     <p class="mb-0">Given a set of $N$ liquid market instruments (e.g. ATM caplets or co-terminal swaptions across a grid of expiries and tenors) with market prices $V_i^{\text{mkt}}$ and corresponding model prices $V_i^{\text{model}}(a,\sigma)$ (computed via the closed-form Hull-White formulas of Section 1.1), calibration chooses parameters to minimise the weighted sum of squared pricing errors:
                     $$(\hat{a},\hat{\sigma}) = \arg\min_{a,\sigma} \sum_{i=1}^N w_i \left(V_i^{\text{model}}(a,\sigma) - V_i^{\text{mkt}}\right)^2$$
                     where the weights $w_i$ reflect the liquidity or relative importance of instrument $i$ (e.g. instruments closer to the maturities and strikes of the exotic being priced are typically weighted more heavily). When $\sigma(t)$ is allowed to be piecewise constant across $K$ buckets, the minimisation is over $a$ and the $K$ values $\sigma_1,\ldots,\sigma_K$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Calibration Intuition: One Parameter, One Instrument</div>
-                    <p class="mb-0">Consider the simplified case of calibrating a single global $\sigma$ (with $a$ fixed by historical estimation or trader judgement) to a single co-terminal swaption — say the 5y x 5y swaption whose underlying matches the maturity profile of a Bermudan swaption the desk needs to price. Because the Hull-White swaption price is monotonically increasing in $\sigma$ (higher volatility means a more valuable option, all else equal), there is a unique $\hat{\sigma}$ for which the model price equals the market price — found by a simple one-dimensional root search (e.g. bisection or Newton's method) on $\sigma \mapsto V^{\text{model}}(\sigma) - V^{\text{mkt}}$. This is the simplest possible calibration: one parameter, one instrument, a monotone relationship, and an exact match. The complexity in practice comes from wanting <em>many</em> instruments (a full swaption matrix) matched by relatively <em>few</em> free parameters — which is generally impossible to do exactly, motivating the least-squares formulation above.</p>
+                    <div class="math-box-label">Example - Calibration Intuition: One Parameter, One Instrument</div>
+                    <p class="mb-0">Consider the simplified case of calibrating a single global $\sigma$ (with $a$ fixed by historical estimation or trader judgement) to a single co-terminal swaption - say the 5y x 5y swaption whose underlying matches the maturity profile of a Bermudan swaption the desk needs to price. Because the Hull-White swaption price is monotonically increasing in $\sigma$ (higher volatility means a more valuable option, all else equal), there is a unique $\hat{\sigma}$ for which the model price equals the market price - found by a simple one-dimensional root search (e.g. bisection or Newton's method) on $\sigma \mapsto V^{\text{model}}(\sigma) - V^{\text{mkt}}$. This is the simplest possible calibration: one parameter, one instrument, a monotone relationship, and an exact match. The complexity in practice comes from wanting <em>many</em> instruments (a full swaption matrix) matched by relatively <em>few</em> free parameters - which is generally impossible to do exactly, motivating the least-squares formulation above.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Choosing the Calibration Instruments</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Calibrate to What You Price</div>
-                    <p class="mb-0">A central principle of calibration is that the instruments used to fit the model should be as close as possible, in risk profile, to the exotic being priced. A Bermudan swaption with annual exercise dates out to 10 years and an underlying 10-year swap at each exercise date is most naturally calibrated to the diagonal of co-terminal European swaptions (1y x 9y, 2y x 8y, ..., 9y x 1y, all maturing at year 10) — these are the "building blocks" whose early-exercise combination the Bermudan resembles. Calibrating instead to a strip of short-dated caplets, or to swaptions with unrelated tenors, would fit the model well on instruments that say little about the Bermudan's actual exposure, while potentially leaving the relevant co-terminal swaptions poorly matched.</p>
+                    <div class="math-box-label">Remark - Calibrate to What You Price</div>
+                    <p class="mb-0">A central principle of calibration is that the instruments used to fit the model should be as close as possible, in risk profile, to the exotic being priced. A Bermudan swaption with annual exercise dates out to 10 years and an underlying 10-year swap at each exercise date is most naturally calibrated to the diagonal of co-terminal European swaptions (1y x 9y, 2y x 8y, ..., 9y x 1y, all maturing at year 10) - these are the "building blocks" whose early-exercise combination the Bermudan resembles. Calibrating instead to a strip of short-dated caplets, or to swaptions with unrelated tenors, would fit the model well on instruments that say little about the Bermudan's actual exposure, while potentially leaving the relevant co-terminal swaptions poorly matched.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Time-Dependent Volatility in Practice</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Piecewise-Constant $\sigma(t)$ and Term-Structure Fitting</div>
-                    <p class="mb-0">Allowing $\sigma(t)$ to vary (piecewise-constant across calibration buckets, typically aligned with option expiries) gives the model enough degrees of freedom to fit an entire term structure of swaption volatilities — e.g. matching the 1y, 2y, 5y, and 10y co-terminal swaptions simultaneously, each with its own $\sigma_i$. This is sometimes called a "term structure fit" or "bootstrap" calibration: $\sigma_1$ is chosen first to match the shortest-expiry instrument (with $\theta(t)$ already fixed from Stage 1), then $\sigma_2$ is chosen to match the next instrument given $\sigma_1$, and so on. The mean reversion $a$ is often held fixed across this process — either estimated from historical rate data or chosen so that the resulting $\sigma(t)$ term structure is smooth — since $a$ and the $\sigma(t)$ term structure are not separately identifiable from swaption prices alone without additional information (e.g. the term structure of forward volatilities implied by caplets of different tenors).</p>
+                    <div class="math-box-label">Remark - Piecewise-Constant $\sigma(t)$ and Term-Structure Fitting</div>
+                    <p class="mb-0">Allowing $\sigma(t)$ to vary (piecewise-constant across calibration buckets, typically aligned with option expiries) gives the model enough degrees of freedom to fit an entire term structure of swaption volatilities - e.g. matching the 1y, 2y, 5y, and 10y co-terminal swaptions simultaneously, each with its own $\sigma_i$. This is sometimes called a "term structure fit" or "bootstrap" calibration: $\sigma_1$ is chosen first to match the shortest-expiry instrument (with $\theta(t)$ already fixed from Stage 1), then $\sigma_2$ is chosen to match the next instrument given $\sigma_1$, and so on. The mean reversion $a$ is often held fixed across this process - either estimated from historical rate data or chosen so that the resulting $\sigma(t)$ term structure is smooth - since $a$ and the $\sigma(t)$ term structure are not separately identifiable from swaption prices alone without additional information (e.g. the term structure of forward volatilities implied by caplets of different tenors).</p>
                 </div>
 
                 <hr class="my-5">

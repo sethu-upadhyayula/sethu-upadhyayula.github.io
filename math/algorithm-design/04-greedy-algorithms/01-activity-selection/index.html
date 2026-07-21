@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -131,12 +131,12 @@
                 <p>The activity selection problem is a scheduling problem that illustrates the greedy paradigm perfectly. A single resource can handle at most one activity at a time; we want to schedule the most activities possible.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.1.1 — Activity Selection Problem</div>
+                    <div class="math-box-label">Definition 4.1.1 - Activity Selection Problem</div>
                     <p class="mb-0">Given $n$ activities each with start time $s_i$ and finish time $f_i$ (with $s_i < f_i$), two activities $i$ and $j$ are <strong>compatible</strong> if their intervals $[s_i, f_i)$ and $[s_j, f_j)$ do not overlap (i.e., $f_i \le s_j$ or $f_j \le s_i$). Find a maximum-cardinality set of mutually compatible activities.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.1.2 — Greedy Activity Selection</div>
+                    <div class="math-box-label">Theorem 4.1.2 - Greedy Activity Selection</div>
                     <p>Algorithm: Sort activities by finish time $f_1 \le f_2 \le \cdots \le f_n$. Initialise $A = \{1\}$ and $k = 1$ (last selected). For $i = 2, \ldots, n$: if $s_i \ge f_k$, add $i$ to $A$ and set $k = i$.</p>
                     <p class="mb-0">This runs in $O(n \log n)$ (dominated by sorting). The greedy choice of "earliest finish time" is optimal.</p>
                 </div>
@@ -150,12 +150,12 @@
                 <h2 class="mt-5 mb-3">Variants and Limitations</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.1.3 — Weighted Job Scheduling</div>
+                    <div class="math-box-label">Example 4.1.3 - Weighted Job Scheduling</div>
                     <p class="mb-0">If activities have weights (profits) and we want to maximise total weight, the greedy approach fails. Dynamic programming is needed: $\mathrm{dp}[i]$ = max profit using activities from $\{1,\ldots,i\}$ (sorted by finish time); $\mathrm{dp}[i] = \max(\mathrm{dp}[i-1],\, w_i + \mathrm{dp}[p(i)])$ where $p(i)$ is the last compatible activity before $i$. Time: $O(n \log n)$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.1.4 — Interval Partitioning</div>
+                    <div class="math-box-label">Example 4.1.4 - Interval Partitioning</div>
                     <p class="mb-0">Given $n$ lectures with time intervals, schedule all lectures using the minimum number of classrooms (no two in the same room at the same time). Greedy: sort by start time, assign each lecture to any available room; if none, open a new one. The minimum number of classrooms equals the maximum number of simultaneous lectures (depth). Implementable with a priority queue in $O(n \log n)$.</p>
                 </div>
 

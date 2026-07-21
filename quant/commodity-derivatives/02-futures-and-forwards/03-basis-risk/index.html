@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,22 +81,22 @@
             <article>
                 <h1 class="text-accent mb-4">2.3 Basis Risk</h1>
 
-                <p>Hedging with futures rarely produces a perfect offset. The price of the futures contract used to hedge and the price of the physical exposure being hedged do not always move in lockstep, and the gap between them — the basis — can itself fluctuate unpredictably. This residual risk, known as basis risk, is one of the most important practical considerations in commodity hedging.</p>
+                <p>Hedging with futures rarely produces a perfect offset. The price of the futures contract used to hedge and the price of the physical exposure being hedged do not always move in lockstep, and the gap between them - the basis - can itself fluctuate unpredictably. This residual risk, known as basis risk, is one of the most important practical considerations in commodity hedging.</p>
 
                 <h2 class="mt-5 mb-3">Defining the Basis</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Basis</div>
+                    <div class="math-box-label">Definition - Basis</div>
                     <p class="mb-0">The basis $b_t$ at time $t$ is defined as
                     $$b_t = S_t - F(t,T)$$
                     where $S_t$ is the spot price of the commodity being hedged and $F(t,T)$ is the price of the futures contract used as the hedging instrument, for delivery at $T$. The basis reflects local supply and demand conditions, transportation costs, quality differences, and the cost of carry between the spot location/grade and the futures delivery specification.</p>
                 </div>
 
-                <p>By the cost-of-carry relationship, the basis for a futures contract on the <em>same</em> commodity, grade, and location as the spot price converges to zero as $t \to T$ — at expiry, the futures price must equal the spot price (otherwise a riskless arbitrage would exist by simultaneously trading spot and futures). This phenomenon is known as <strong>basis convergence</strong>.</p>
+                <p>By the cost-of-carry relationship, the basis for a futures contract on the <em>same</em> commodity, grade, and location as the spot price converges to zero as $t \to T$ - at expiry, the futures price must equal the spot price (otherwise a riskless arbitrage would exist by simultaneously trading spot and futures). This phenomenon is known as <strong>basis convergence</strong>.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Convergence at Expiry</div>
-                    <p class="mb-0">As the futures contract approaches expiry, $F(t,T) \to S_T$ and so $b_t \to 0$. The basis therefore typically narrows over the life of a hedge. A hedger who initiates a position with a non-zero basis and holds it to expiry will experience the basis "fill in" to zero, but the path it takes — and any divergence at the moment the hedge is lifted before expiry — is a source of risk.</p>
+                    <div class="math-box-label">Remark - Convergence at Expiry</div>
+                    <p class="mb-0">As the futures contract approaches expiry, $F(t,T) \to S_T$ and so $b_t \to 0$. The basis therefore typically narrows over the life of a hedge. A hedger who initiates a position with a non-zero basis and holds it to expiry will experience the basis "fill in" to zero, but the path it takes - and any divergence at the moment the hedge is lifted before expiry - is a source of risk.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Sources of Basis Risk</h2>
@@ -104,21 +104,21 @@
                 <p>Basis risk arises whenever the hedge is imperfect along one or more of the following dimensions:</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Dimensions of Basis Mismatch</div>
+                    <div class="math-box-label">Remark - Dimensions of Basis Mismatch</div>
                     <p><strong>Location basis:</strong> the futures contract delivers at a different point than where the hedger's physical exposure is located. A refiner in California hedging with WTI futures (delivered at Cushing, Oklahoma) bears the risk that the WTI-local price spread changes due to pipeline constraints, regional demand shocks, or transportation cost shifts.</p>
                     <p><strong>Quality (grade) basis:</strong> the futures contract specifies a particular grade or quality that differs from the commodity actually being hedged. A refiner processing a heavy, sour crude hedging with light, sweet WTI futures is exposed to changes in the light-heavy and sweet-sour differentials.</p>
                     <p><strong>Calendar (timing) basis:</strong> the hedger's exposure date does not coincide with the futures expiry date, so the hedge must be lifted before convergence is complete, leaving residual basis risk.</p>
-                    <p class="mb-0"><strong>Product basis:</strong> the underlying exposure and the hedging instrument are different commodities entirely (cross-hedging) — for example, hedging jet fuel exposure with heating oil futures because no liquid jet fuel futures market exists.</p>
+                    <p class="mb-0"><strong>Product basis:</strong> the underlying exposure and the hedging instrument are different commodities entirely (cross-hedging) - for example, hedging jet fuel exposure with heating oil futures because no liquid jet fuel futures market exists.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Cross-Hedging and the Minimum-Variance Hedge Ratio</h2>
 
                 <p>When no futures contract exists on the exact commodity being hedged, market participants use a <strong>cross-hedge</strong>: a futures contract on a related commodity whose price is correlated with the exposure. Airlines hedging jet fuel costs with WTI crude or heating oil futures, and food manufacturers hedging vegetable oil costs with soybean oil futures, are common examples.</p>
 
-                <p>The key question in any hedge — whether a direct hedge or a cross-hedge — is how many futures contracts to hold per unit of physical exposure. This is the <strong>hedge ratio</strong> $h$. Choosing $h$ to minimise the variance of the hedged portfolio's value gives the minimum-variance hedge ratio.</p>
+                <p>The key question in any hedge - whether a direct hedge or a cross-hedge - is how many futures contracts to hold per unit of physical exposure. This is the <strong>hedge ratio</strong> $h$. Choosing $h$ to minimise the variance of the hedged portfolio's value gives the minimum-variance hedge ratio.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Minimum-Variance Hedge Ratio</div>
+                    <div class="math-box-label">Theorem - Minimum-Variance Hedge Ratio</div>
                     <p>Let $\Delta S$ denote the change in the spot price of the exposure and $\Delta F$ the change in the futures price of the hedging instrument over the hedging horizon. Consider a hedged portfolio consisting of a long spot position and a short position of $h$ futures contracts per unit of spot exposure, with value change
                     $$\Delta V = \Delta S - h \, \Delta F.$$
                     The hedge ratio $h^*$ that minimises $\operatorname{Var}(\Delta V)$ is
@@ -127,30 +127,30 @@
                     <p class="mb-0">In practice, $h^*$ is estimated by regressing historical changes in the spot price on changes in the futures price: $\Delta S = \alpha + h^* \Delta F + \varepsilon$, where $h^*$ is the slope coefficient (OLS beta).</p>
                 </div>
 
-                <p>The number of futures contracts to trade is then $N^* = h^* \times \dfrac{Q_A}{Q_F}$, where $Q_A$ is the size of the exposure to be hedged and $Q_F$ is the size of one futures contract. The quality of the hedge can be assessed via the $R^2$ of the regression — the fraction of the variance of $\Delta S$ explained by $\Delta F$ — sometimes called the hedge effectiveness.</p>
+                <p>The number of futures contracts to trade is then $N^* = h^* \times \dfrac{Q_A}{Q_F}$, where $Q_A$ is the size of the exposure to be hedged and $Q_F$ is the size of one futures contract. The quality of the hedge can be assessed via the $R^2$ of the regression - the fraction of the variance of $\Delta S$ explained by $\Delta F$ - sometimes called the hedge effectiveness.</p>
 
                 <h2 class="mt-5 mb-3">Worked Examples</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Crude Oil Refiner Hedging Local Supply</div>
+                    <div class="math-box-label">Example - Crude Oil Refiner Hedging Local Supply</div>
                     <p>A Gulf Coast refiner has agreed to purchase 500,000 barrels of Mars Blend crude in three months at the prevailing spot price and wants to hedge against a rise in crude prices using WTI futures (1,000 barrels per contract). Historically, changes in the Mars spot price and changes in the nearby WTI futures price have a correlation of $\rho = 0.92$, with $\sigma_S = \$1.85$ and $\sigma_F = \$2.05$ per barrel over the relevant horizon.</p>
                     <p>The minimum-variance hedge ratio is
                     $$h^* = 0.92 \times \frac{1.85}{2.05} \approx 0.83.$$
-                    The refiner should buy $N^* = 0.83 \times \dfrac{500{,}000}{1{,}000} \approx 415$ WTI futures contracts. The remaining risk — roughly $1 - \rho^2 \approx 15\%$ of the variance — is the Mars-WTI quality and location basis risk that the hedge cannot eliminate.</p>
+                    The refiner should buy $N^* = 0.83 \times \dfrac{500{,}000}{1{,}000} \approx 415$ WTI futures contracts. The remaining risk - roughly $1 - \rho^2 \approx 15\%$ of the variance - is the Mars-WTI quality and location basis risk that the hedge cannot eliminate.</p>
                     <p class="mb-0">If the Mars-WTI differential widens unexpectedly (e.g., due to a pipeline outage that strands Gulf Coast medium-sour crude relative to WTI), the refiner's hedge will under- or over-perform relative to its actual cost increase, even though the WTI hedge moved as expected.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Agricultural Hedge with Calendar Basis</div>
-                    <p>A grain elevator operator holds 50,000 bushels of corn in storage and sells December corn futures (5,000 bushels per contract) to lock in a forward price, intending to sell the physical corn in early November — six weeks before futures expiry.</p>
-                    <p>At the time the hedge is placed, the local cash corn price is $\$0.30$ below the December futures price (the basis is $-\$0.30$, a common pattern reflecting local storage and transportation costs relative to the futures delivery points). By early November, if the basis has narrowed to $-\$0.15$ as the contract approaches expiry, the elevator's effective realised price improves by $\$0.15$ per bushel relative to the basis at initiation — the hedger benefits from <strong>basis strengthening</strong>.</p>
-                    <p class="mb-0">Conversely, if local demand weakens relative to the futures market (e.g., a nearby ethanol plant reduces purchases) and the basis widens to $-\$0.45$, the hedger suffers a loss from <strong>basis weakening</strong> even though the futures leg of the hedge performed exactly as expected. This illustrates that a futures hedge converts outright price risk into basis risk — typically a much smaller, but non-zero, exposure.</p>
+                    <div class="math-box-label">Example - Agricultural Hedge with Calendar Basis</div>
+                    <p>A grain elevator operator holds 50,000 bushels of corn in storage and sells December corn futures (5,000 bushels per contract) to lock in a forward price, intending to sell the physical corn in early November - six weeks before futures expiry.</p>
+                    <p>At the time the hedge is placed, the local cash corn price is $\$0.30$ below the December futures price (the basis is $-\$0.30$, a common pattern reflecting local storage and transportation costs relative to the futures delivery points). By early November, if the basis has narrowed to $-\$0.15$ as the contract approaches expiry, the elevator's effective realised price improves by $\$0.15$ per bushel relative to the basis at initiation - the hedger benefits from <strong>basis strengthening</strong>.</p>
+                    <p class="mb-0">Conversely, if local demand weakens relative to the futures market (e.g., a nearby ethanol plant reduces purchases) and the basis widens to $-\$0.45$, the hedger suffers a loss from <strong>basis weakening</strong> even though the futures leg of the hedge performed exactly as expected. This illustrates that a futures hedge converts outright price risk into basis risk - typically a much smaller, but non-zero, exposure.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Managing Basis Risk</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Practical Mitigants</div>
+                    <div class="math-box-label">Remark - Practical Mitigants</div>
                     <p><strong>Basis trading and exchange-for-physical (EFP):</strong> participants can trade the basis directly as a separate instrument, locking in the spread between a local cash price and the futures price independently of the outright price level.</p>
                     <p><strong>Choosing the most correlated contract and matching delivery months:</strong> selecting the futures contract whose location, grade, and expiry most closely match the underlying exposure minimises $1-\rho^2$.</p>
                     <p><strong>Dynamic re-hedging:</strong> re-estimating $h^*$ periodically as correlations and volatilities evolve, particularly important when the relationship between spot and futures markets is not stable (e.g., during supply disruptions).</p>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. File Systems</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Operating Systems</a>
+                <hr>
+                <a href="../01-processes-and-threads/" class="text-decoration-none toc-chapter-link"><strong>1.</strong> Processes and Threads</a>
+                <a href="../02-cpu-scheduling/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> CPU Scheduling</a>
+                <a href="../03-process-synchronization/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Process Synchronization</a>
+                <a href="../04-deadlocks/" class="text-decoration-none toc-chapter-link"><strong>4.</strong> Deadlocks</a>
+                <a href="../05-memory-management/" class="text-decoration-none toc-chapter-link"><strong>5.</strong> Memory Management</a>
+                <a href="../06-virtual-memory/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Virtual Memory</a>
+                <a href="../07-file-systems/" class="text-decoration-none toc-chapter-link toc-active"><strong>7.</strong> File Systems</a>
+                <a href="../08-io-systems-and-storage/" class="text-decoration-none toc-chapter-link"><strong>8.</strong> I/O Systems and Storage</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">Operating Systems</a> ›
+                <span>7. File Systems</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">7. File Systems</h1>
+
+                <p>While Chapters 5–6 covered how the OS manages volatile memory, this chapter covers how it organizes persistent storage - presenting the raw blocks of a disk as the familiar abstraction of files and directories.</p>
+
+                <h2 class="mt-5 mb-3">Files and Directories</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition - File and Directory</div>
+                    <p class="mb-0">A <strong>file</strong> is a named, persistent sequence of bytes, along with metadata (size, permissions, timestamps) the OS tracks about it. A <strong>directory</strong> is itself a special kind of file containing a mapping from names to other files or directories, allowing the hierarchical file system structure most operating systems present to users.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">File Allocation Methods</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">How a File's Blocks Are Tracked on Disk</div>
+                    <ul class="mb-0">
+                        <li><strong>Contiguous allocation</strong> - a file occupies a single run of consecutive disk blocks; fast to read sequentially, but suffers external fragmentation and requires knowing a file's final size in advance.</li>
+                        <li><strong>Linked allocation</strong> - each block stores a pointer to the next block of the same file; eliminates fragmentation, but performs poorly for random access since reaching a given block requires following the chain from the start.</li>
+                        <li><strong>Indexed allocation</strong> - a dedicated index block stores pointers to all of a file's data blocks, supporting efficient random access without contiguous allocation's fragmentation problem; the basis for most modern file systems' block-mapping structures.</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Inodes</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition - Inode</div>
+                    <p class="mb-0">In Unix-family file systems, an <strong>inode</strong> is the per-file metadata and block-index structure described above, identified by a number rather than directly by its file name - a directory entry simply maps a human-readable name to an inode number, which is why a file can have multiple names (hard links) pointing to the exact same underlying inode and data.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Free Space Management</h2>
+
+                <p>The file system must also track which disk blocks are currently free versus allocated - commonly via a bitmap (one bit per block) or a free list (a linked list of free blocks) - consulted whenever a file needs to grow or a new file is created and blocks must be allocated to it.</p>
+
+                <h2 class="mt-5 mb-3">Journaling and Crash Consistency</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark - Surviving a Crash Mid-Write</div>
+                    <p class="mb-0">A system crash or power loss partway through a multi-step file system update (e.g., updating both a file's data and its metadata) can leave the file system in an inconsistent state. <strong>Journaling</strong> file systems address this by first writing a description of an intended update to a separate log (journal) before applying it to the main file system structures - after a crash, the journal can be replayed to complete or safely roll back any update that was interrupted, restoring consistency without requiring a full, slow scan of the entire disk.</p>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../06-virtual-memory/" class="btn btn-outline-custom">&larr; 6. Virtual Memory</a>
+                    <a href="../08-io-systems-and-storage/" class="btn btn-custom">8. I/O Systems and Storage &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

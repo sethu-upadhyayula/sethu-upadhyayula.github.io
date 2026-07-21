@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -85,7 +85,7 @@
 
                 <h2 class="mt-5 mb-3">Attachment and Detachment Points</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Tranche, Attachment, and Detachment</div>
+                    <div class="math-box-label">Definition - Tranche, Attachment, and Detachment</div>
                     <p>A tranche is characterised by its <em>attachment point</em> $A$ and <em>detachment point</em> $D$ (with $0 \leq A < D \leq 1$), expressed as fractions of the total portfolio notional $N$. The tranche absorbs losses $L(t)$ from the portfolio as follows:
                     $$\text{Tranche Loss}(t) = \min(L(t), D \cdot N) - \min(L(t), A \cdot N) = [\min(L(t), D) - \min(L(t), A)] \cdot N$$
                     The tranche notional is $(D - A) \cdot N$. The tranche is written down as portfolio losses exceed $A$ and is completely wiped out once losses reach $D$.</p>
@@ -93,7 +93,7 @@
 
                 <h2 class="mt-5 mb-3">Tranche Hierarchy</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Standard iTraxx / CDX Tranche Structure</div>
+                    <div class="math-box-label">Definition - Standard iTraxx / CDX Tranche Structure</div>
                     <p>For the iTraxx Europe index (125 names, recovery 40%), the standard synthetic CDO tranches are:
                     <ul class="mb-0">
                         <li><strong>Equity (0-3%):</strong> first-loss piece; highly leveraged, absorbs the first 3% of portfolio losses. Typically retained by the structurer or sold to hedge funds.</li>
@@ -105,7 +105,7 @@
 
                 <h2 class="mt-5 mb-3">Expected Tranche Loss</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Expected Tranche Loss</div>
+                    <div class="math-box-label">Definition - Expected Tranche Loss</div>
                     <p>The expected loss of a tranche $[A, D]$ over horizon $T$ is:
                     $$EL_{[A,D]}(T) = \mathbb{E}[\text{Tranche Loss}(T)] = \mathbb{E}[\min(L(T),D)] - \mathbb{E}[\min(L(T),A)]$$
                     where $L(T)$ is the portfolio fractional loss at time $T$. Defining the <em>expected shortfall function</em>:
@@ -115,14 +115,14 @@
 
                 <h2 class="mt-5 mb-3">Tranche Delta and CS01</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Tranche Delta</div>
+                    <div class="math-box-label">Definition - Tranche Delta</div>
                     <p>The <em>tranche delta</em> $\Delta_{[A,D]}$ measures the sensitivity of the tranche spread to a 1 bp parallel shift in all constituent CDS spreads:
                     $$\Delta_{[A,D]} = \frac{\partial \text{Tranche Spread}}{\partial s_{\text{index}}}$$
                     Equivalently, in terms of notionals, delta is the index notional hedge required to delta-hedge one unit of tranche notional. The equity tranche has a very high delta (close to 1); the super-senior tranche has near-zero delta in normal market conditions but can spike dramatically during stress.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Tranche Loss Payoff</div>
+                    <div class="math-box-label">Example - Tranche Loss Payoff</div>
                     <p>A \$100m CDO portfolio (100 names, \$1m each, recovery 40%, so LGD = \$600k each). The equity tranche covers $[0\%, 3\%]$, notional \$3m.</p>
                     <p>If 3 names default (total loss = $3 \times \$600k = \$1.8m$): equity tranche absorbs \$1.8m fully; mezzanine unaffected.</p>
                     <p>If 6 names default (total loss = \$3.6m): equity tranche wiped out (\$3m loss), mezzanine absorbs \$0.6m.</p>
@@ -130,8 +130,8 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Correlation Sensitivity</div>
-                    <p class="mb-0">Tranche values are extremely sensitive to default correlation. High correlation concentrates losses — making equity tranches safer (fewer names default together) but senior tranches more dangerous (if defaults are correlated, they can breach the senior attachment point). The equity tranche spread decreases with correlation; senior tranches widen with correlation. This is the central insight driving the base correlation framework and the correlation trading market.</p>
+                    <div class="math-box-label">Remark - Correlation Sensitivity</div>
+                    <p class="mb-0">Tranche values are extremely sensitive to default correlation. High correlation concentrates losses - making equity tranches safer (fewer names default together) but senior tranches more dangerous (if defaults are correlated, they can breach the senior attachment point). The equity tranche spread decreases with correlation; senior tranches widen with correlation. This is the central insight driving the base correlation framework and the correlation trading market.</p>
                 </div>
 
                 <hr class="my-5">

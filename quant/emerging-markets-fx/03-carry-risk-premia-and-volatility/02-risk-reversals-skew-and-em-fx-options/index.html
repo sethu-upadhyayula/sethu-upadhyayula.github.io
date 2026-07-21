@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,27 +80,27 @@
             <article>
                 <h1 class="text-accent mb-4">3.2 Risk Reversals, Skew, and EM FX Options</h1>
 
-                <p>The EM FX options market expresses the crash-risk premium described in the previous section directly through the shape of the implied volatility surface. Where a G10 currency pair's volatility smile is often relatively symmetric, EM FX smiles are typically steeply skewed — out-of-the-money options that pay off on a sharp depreciation of the EM currency trade at materially higher implied volatility than equivalent options that pay off on appreciation. The standard instruments for quoting and trading this skew are the risk reversal and the butterfly.</p>
+                <p>The EM FX options market expresses the crash-risk premium described in the previous section directly through the shape of the implied volatility surface. Where a G10 currency pair's volatility smile is often relatively symmetric, EM FX smiles are typically steeply skewed - out-of-the-money options that pay off on a sharp depreciation of the EM currency trade at materially higher implied volatility than equivalent options that pay off on appreciation. The standard instruments for quoting and trading this skew are the risk reversal and the butterfly.</p>
 
                 <h2 class="mt-5 mb-3">Quoting Conventions: Delta and Volatility</h2>
 
-                <p>FX options are quoted not by strike but by <em>delta</em> — the option's sensitivity to the underlying spot rate — because delta is a stable, strike-independent way to compare options across different spot levels and tenors. A "25-delta call" is the call option whose Black-Scholes delta is 0.25; a "25-delta put" has delta $-0.25$ (or is sometimes quoted as the corresponding 25-delta put by absolute value).</p>
+                <p>FX options are quoted not by strike but by <em>delta</em> - the option's sensitivity to the underlying spot rate - because delta is a stable, strike-independent way to compare options across different spot levels and tenors. A "25-delta call" is the call option whose Black-Scholes delta is 0.25; a "25-delta put" has delta $-0.25$ (or is sometimes quoted as the corresponding 25-delta put by absolute value).</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Risk Reversal and Butterfly</div>
+                    <div class="math-box-label">Definition - Risk Reversal and Butterfly</div>
                     <p class="mb-0">For a given tenor $T$ and delta level (commonly 25-delta or 10-delta), let $\sigma_{\Delta P}$ and $\sigma_{\Delta C}$ denote the Black-Scholes implied volatilities of the corresponding out-of-the-money put and call. Define:</p>
                     <p class="mb-0">$$\text{Risk Reversal (RR)} = \sigma_{\Delta C} - \sigma_{\Delta P}$$
                     $$\text{Butterfly (BF)} = \frac{\sigma_{\Delta C}+\sigma_{\Delta P}}{2} - \sigma_{\text{ATM}}$$
-                    The risk reversal measures the <em>skew</em> — the asymmetry between calls and puts at equal delta — while the butterfly measures the <em>convexity</em> of the smile (how much the wings exceed the at-the-money volatility, symmetrized). Both are quoted directly as tradeable volatility spreads in the interbank market, alongside the at-the-money volatility $\sigma_{\text{ATM}}$ itself; together the three numbers (ATM, RR, BF) at each delta level and tenor parametrize the volatility smile.</p>
+                    The risk reversal measures the <em>skew</em> - the asymmetry between calls and puts at equal delta - while the butterfly measures the <em>convexity</em> of the smile (how much the wings exceed the at-the-money volatility, symmetrized). Both are quoted directly as tradeable volatility spreads in the interbank market, alongside the at-the-money volatility $\sigma_{\text{ATM}}$ itself; together the three numbers (ATM, RR, BF) at each delta level and tenor parametrize the volatility smile.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Sign and Magnitude of EM Skew</h2>
 
-                <p>Quoting conventions for risk reversals specify which currency is the base and which is the quote currency, so the sign convention requires care; the economically meaningful statement is in terms of which side of the smile — calls or puts on the EM currency — trades at higher implied volatility.</p>
+                <p>Quoting conventions for risk reversals specify which currency is the base and which is the quote currency, so the sign convention requires care; the economically meaningful statement is in terms of which side of the smile - calls or puts on the EM currency - trades at higher implied volatility.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — EM FX Skew Reflects Crash Risk</div>
-                    <p class="mb-0">For most EM currencies against USD, options that pay off on EM currency <em>depreciation</em> (puts on the EM currency / calls on USD in EM-currency-per-USD terms) trade at materially higher implied volatility than equivalent-delta options that pay off on EM currency appreciation. This is the options-market expression of the same asymmetric risk discussed in Section 3.1: the market prices in a meaningfully higher probability (or severity) of a sharp depreciation than of a comparable appreciation. The risk reversal — typically quoted at a level corresponding to several volatility points in favor of EM-currency puts — is therefore a direct, continuously tradeable measure of the market's perceived crash risk, and tends to widen sharply (more negative for the EM currency, i.e. EM puts become even more expensive relative to calls) during episodes of stress, exactly when the carry trades of Section 3.1 are under pressure.</p>
+                    <div class="math-box-label">Remark - EM FX Skew Reflects Crash Risk</div>
+                    <p class="mb-0">For most EM currencies against USD, options that pay off on EM currency <em>depreciation</em> (puts on the EM currency / calls on USD in EM-currency-per-USD terms) trade at materially higher implied volatility than equivalent-delta options that pay off on EM currency appreciation. This is the options-market expression of the same asymmetric risk discussed in Section 3.1: the market prices in a meaningfully higher probability (or severity) of a sharp depreciation than of a comparable appreciation. The risk reversal - typically quoted at a level corresponding to several volatility points in favor of EM-currency puts - is therefore a direct, continuously tradeable measure of the market's perceived crash risk, and tends to widen sharply (more negative for the EM currency, i.e. EM puts become even more expensive relative to calls) during episodes of stress, exactly when the carry trades of Section 3.1 are under pressure.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Pricing Tail Risk: The Smile as a Risk-Neutral Density</h2>
@@ -108,16 +108,16 @@
                 <p>The implied volatility smile encodes the market's risk-neutral probability density for the terminal spot rate $S_T$, via the Breeden-Litzenberger relationship between option prices and the second derivative of the price with respect to strike. A steep put skew corresponds to a risk-neutral density with a fatter left tail (higher probability mass assigned to large depreciations) than a lognormal distribution with the same at-the-money volatility would imply.</p>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Skew and the Implied Density</div>
+                    <div class="math-box-label">Proposition - Skew and the Implied Density</div>
                     <p class="mb-0">Let $c(K,T)$ be the price of a call with strike $K$ and maturity $T$. The risk-neutral density of $S_T$ is:
                     $$q(K) = e^{r_f T}\frac{\partial^2 c}{\partial K^2}\bigg|_{K}$$
-                    A volatility smile that is steeply downward-sloping in $K$ for low strikes (i.e. put skew, in the sense that low-strike implied volatilities are higher) increases $\partial^2 c/\partial K^2$ at low $K$ relative to the flat-smile (lognormal) case, raising $q(K)$ for low $K$ — i.e. assigning more probability to a sharply depreciated currency. The risk reversal is therefore not merely a quoting convention but a direct, model-free statement about the relative likelihood the market assigns to large currency moves in each direction.</p>
+                    A volatility smile that is steeply downward-sloping in $K$ for low strikes (i.e. put skew, in the sense that low-strike implied volatilities are higher) increases $\partial^2 c/\partial K^2$ at low $K$ relative to the flat-smile (lognormal) case, raising $q(K)$ for low $K$ - i.e. assigning more probability to a sharply depreciated currency. The risk reversal is therefore not merely a quoting convention but a direct, model-free statement about the relative likelihood the market assigns to large currency moves in each direction.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example: Pricing a Risk Reversal Position</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Constructing a 25-Delta Risk Reversal</div>
+                    <div class="math-box-label">Example - Constructing a 25-Delta Risk Reversal</div>
                     <p>Consider 3-month USD/local-currency (LC) options with spot $S_0 = 5.00$ (LC per USD) and the following market quotes:</p>
                     <table class="table table-sm table-bordered" style="max-width:480px;">
                         <thead><tr><th>Quantity</th><th>Value</th></tr></thead>
@@ -131,7 +131,7 @@
                     $$\sigma_{\Delta C}+\sigma_{\Delta P} = 2(\sigma_{\text{ATM}}+\text{BF}) = 2(14.0+0.6)=29.2$$
                     $$\sigma_{\Delta C}-\sigma_{\Delta P}=3.5$$
                     Solving: $\sigma_{\Delta C} = (29.2+3.5)/2 = 16.35\%$, $\sigma_{\Delta P}=(29.2-3.5)/2=12.85\%$.</p>
-                    <p class="mb-0">A trader who buys the risk reversal — long the 25-delta USD call/LC put, short the 25-delta USD put/LC call — pays a net premium (since the option they buy, at 16.35% vol, is more expensive than the one they sell, at 12.85% vol) for a position that profits from LC depreciation beyond the strikes, partially financed by giving up the upside if LC appreciates beyond the other strike. This is the standard way an investor with a long-LC carry position (Section 3.1) hedges the crash-risk tail: paying away part of the carry to buy protection against exactly the depreciation scenario that would otherwise generate the large losses illustrated in the carry trade example.</p>
+                    <p class="mb-0">A trader who buys the risk reversal - long the 25-delta USD call/LC put, short the 25-delta USD put/LC call - pays a net premium (since the option they buy, at 16.35% vol, is more expensive than the one they sell, at 12.85% vol) for a position that profits from LC depreciation beyond the strikes, partially financed by giving up the upside if LC appreciates beyond the other strike. This is the standard way an investor with a long-LC carry position (Section 3.1) hedges the crash-risk tail: paying away part of the carry to buy protection against exactly the depreciation scenario that would otherwise generate the large losses illustrated in the carry trade example.</p>
                 </div>
 
                 <hr class="my-5">

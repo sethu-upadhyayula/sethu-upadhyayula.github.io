@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" data-theme="light" data-section="chess"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solving Helpmates — Helpmates</title>
+<title>Solving Helpmates - Helpmates</title>
 <link rel="icon" type="image/png" href="../../../../assets/icons/favicon.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -48,7 +48,7 @@
 
         <h1 class="text-accent mb-4">4. Solving Helpmates</h1>
 
-  <p>Helpmates reward a different mental approach from over-the-board play. Instead of calculating threats and counter-threats, the solver works <em>backward from the mating position</em> — imagining the finished picture first, then asking how both sides could cooperatively arrive there.</p>
+  <p>Helpmates reward a different mental approach from over-the-board play. Instead of calculating threats and counter-threats, the solver works <em>backward from the mating position</em> - imagining the finished picture first, then asking how both sides could cooperatively arrive there.</p>
 
   <h3>The Backward-Analysis Method</h3>
   <ol>
@@ -56,7 +56,7 @@
     <li><strong>Ask: how does the Black king get there?</strong> In an h#2, Black's first move very often places the Black king on the square where it will be mated, or moves a Black piece so that it blocks a flight square on the final move. Sometimes the king is already on the mating square in the diagram, and Black's first move instead prepares the block.</li>
     <li><strong>Work out White's role.</strong> White must manoeuvre a piece into the mating position. In an h#2, White's first move typically repositions a White piece (or clears a line, or unpins a piece) so that it can deliver checkmate on White's second move.</li>
     <li><strong>Check legality of every intermediate position.</strong> After Black's first move, the resulting position must be legal: White must not already be in check (unless that check is the very thing White's first move addresses), no piece can occupy an impossible square, and the move itself must be legal for the piece making it (a pinned piece cannot move off the pin-line unless the pin has just been resolved, etc.).</li>
-    <li><strong>Verify uniqueness.</strong> A well-composed helpmate has exactly one solution. If, while checking, you discover a second sequence that also produces checkmate on the required move, re-examine your assumptions — either you have made an error, or (rarely) the published problem has a flaw.</li>
+    <li><strong>Verify uniqueness.</strong> A well-composed helpmate has exactly one solution. If, while checking, you discover a second sequence that also produces checkmate on the required move, re-examine your assumptions - either you have made an error, or (rarely) the published problem has a flaw.</li>
   </ol>
 
   <h3>Working Forward vs. Working Backward</h3>
@@ -64,7 +64,7 @@
   <ul>
     <li><strong>Forward calculation</strong> from the diagram: "What are Black's most natural-looking first moves? For each, what would White's best cooperative reply be?" This narrows the search by pruning moves that clearly lead nowhere.</li>
     <li><strong>Backward analysis</strong> from candidate mating pictures: "Given the material on the board, what mating configurations are even possible? Work back from those to see which is reachable."</li>
-    <li>The two directions are used to "meet in the middle" — forward analysis identifies plausible first moves, backward analysis identifies plausible final positions, and the solver looks for a path connecting the two.</li>
+    <li>The two directions are used to "meet in the middle" - forward analysis identifies plausible first moves, backward analysis identifies plausible final positions, and the solver looks for a path connecting the two.</li>
   </ul>
 
   <h3>Spotting Candidate Mating Squares</h3>
@@ -72,17 +72,17 @@
 
   <h3>Common Pitfalls for Solvers</h3>
   <ul>
-    <li><strong>Forgetting that Black moves first.</strong> New solvers frequently start by looking for White's "best move," as in a normal puzzle. In a helpmate, the very first move belongs to Black, and it is usually the least intuitive move in the whole solution — often a move that looks like it weakens Black's own position, because the king "walks into" the mating net.</li>
+    <li><strong>Forgetting that Black moves first.</strong> New solvers frequently start by looking for White's "best move," as in a normal puzzle. In a helpmate, the very first move belongs to Black, and it is usually the least intuitive move in the whole solution - often a move that looks like it weakens Black's own position, because the king "walks into" the mating net.</li>
     <li><strong>Assuming check must be given immediately.</strong> Many of the intermediate moves in a helpmate solution are quiet developing or repositioning moves with no check at all. Only the final move (White's n-th) must be checkmate.</li>
-    <li><strong>Ignoring legality of Black's "self-weakening" moves.</strong> Because Black is cooperating, it can be tempting to assume any move that helps White is allowed. But Black's moves must still be legal — a pinned Black piece, for instance, still cannot move off the pin-line if doing so would expose its own king to check (remember: it would still be illegal even in a helpmate, because the rules of chess are not suspended).</li>
-    <li><strong>Overlooking promotions and en passant.</strong> Pawns near the back rank are a frequent source of helpmate themes — a pawn might need to promote to a specific piece to deliver or enable the mate, and the choice of promotion piece is often part of the puzzle.</li>
+    <li><strong>Ignoring legality of Black's "self-weakening" moves.</strong> Because Black is cooperating, it can be tempting to assume any move that helps White is allowed. But Black's moves must still be legal - a pinned Black piece, for instance, still cannot move off the pin-line if doing so would expose its own king to check (remember: it would still be illegal even in a helpmate, because the rules of chess are not suspended).</li>
+    <li><strong>Overlooking promotions and en passant.</strong> Pawns near the back rank are a frequent source of helpmate themes - a pawn might need to promote to a specific piece to deliver or enable the mate, and the choice of promotion piece is often part of the puzzle.</li>
     <li><strong>Missing castling rights.</strong> If castling is still legally available to either side in the diagram, it may be a hidden resource for the solution (or, conversely, a try that must be ruled out).</li>
   </ul>
 
   <h3>A Worked Mini-Example: Reasoning Through an h#1</h3>
-  <p>Even the shortest helpmates — h#1, where Black makes one move and White immediately mates — illustrate the method clearly. Suppose the diagram shows the White king on h1, a White rook on a1, and the Black king on h3 with a Black pawn on g2. At first glance White already threatens nothing along the back rank because the rook on a1 is not yet aligned with anything relevant. The solver asks: <em>what single Black move could open a mating line for the rook or another piece, while leaving the Black king without escape?</em> If, for example, advancing the g-pawn to g1 (with promotion, if applicable) would block the king's escape square while simultaneously vacating g2 for a White piece to deliver mate along the h-file or third rank, that move becomes the candidate solution. The solver then checks: is g1 legal for Black (no pin, no check issue), and does White then have a single mating move using the newly available line? If both check out — and no other Black first move also works — the h#1 is solved.</p>
+  <p>Even the shortest helpmates - h#1, where Black makes one move and White immediately mates - illustrate the method clearly. Suppose the diagram shows the White king on h1, a White rook on a1, and the Black king on h3 with a Black pawn on g2. At first glance White already threatens nothing along the back rank because the rook on a1 is not yet aligned with anything relevant. The solver asks: <em>what single Black move could open a mating line for the rook or another piece, while leaving the Black king without escape?</em> If, for example, advancing the g-pawn to g1 (with promotion, if applicable) would block the king's escape square while simultaneously vacating g2 for a White piece to deliver mate along the h-file or third rank, that move becomes the candidate solution. The solver then checks: is g1 legal for Black (no pin, no check issue), and does White then have a single mating move using the newly available line? If both check out - and no other Black first move also works - the h#1 is solved.</p>
 
-  <p>This kind of reasoning — "what one change to the position would create exactly the mating picture I need, and is that change available to the side that must make it?" — is the essence of helpmate solving at every length. Chapter 5 applies the method in full to a complete h#2, with a diagram and an annotated solution.</p>
+  <p>This kind of reasoning - "what one change to the position would create exactly the mating picture I need, and is that change available to the side that must make it?" - is the essence of helpmate solving at every length. Chapter 5 applies the method in full to a complete h#2, with a diagram and an annotated solution.</p>
 
         <hr class="my-5">
         <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

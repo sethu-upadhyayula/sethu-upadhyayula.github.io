@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -51,37 +51,37 @@
                 <p>The Möbius function $\mu$ is the Dirichlet inverse of the constant function $\mathbf{1}$. The Möbius inversion formula allows one to recover $f$ from $g = f * \mathbf{1}$ (i.e., from the values $g(n) = \sum_{d|n} f(d)$), and is a powerful tool throughout analytic number theory.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 3.3.1 — Möbius Function</div>
+                    <div class="math-box-label">Definition 3.3.1 - Möbius Function</div>
                     <p class="mb-0">$$\mu(n) = \begin{cases} 1 & n = 1 \\ (-1)^k & n = p_1 p_2 \cdots p_k \text{ (squarefree, $k$ distinct primes)} \\ 0 & p^2 \mid n \text{ for some prime } p. \end{cases}$$
                     So $\mu$ is $0$ on non-squarefree integers, and $\pm 1$ on squarefree integers according to parity of the number of prime factors.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.3.2 — Key Identity</div>
+                    <div class="math-box-label">Theorem 3.3.2 - Key Identity</div>
                     <p class="mb-0">$$\sum_{d \mid n} \mu(d) = \varepsilon(n) = \begin{cases} 1 & n=1 \\ 0 & n > 1. \end{cases}$$
                     Equivalently, $\mu * \mathbf{1} = \varepsilon$ in the Dirichlet ring. This follows from the multiplicativity of $\mu$ and the computation for prime powers: $\sum_{d \mid p^a} \mu(d) = \mu(1) + \mu(p) = 1 - 1 = 0$ for $a \geq 1$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.3.3 — Möbius Inversion Formula</div>
+                    <div class="math-box-label">Theorem 3.3.3 - Möbius Inversion Formula</div>
                     <p>Let $f, g$ be arithmetic functions. Then $g(n) = \sum_{d \mid n} f(d)$ if and only if
                     $$f(n) = \sum_{d \mid n} \mu(n/d)\,g(d) = \sum_{d \mid n} \mu(d)\,g(n/d).$$</p>
                     <p class="mb-0">In Dirichlet notation: $g = f * \mathbf{1} \iff f = g * \mu$, since $\mu = \mathbf{1}^{-1}$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 3.3.4 — Recovering $\phi$</div>
+                    <div class="math-box-label">Example 3.3.4 - Recovering $\phi$</div>
                     <p class="mb-0">We know $\sum_{d|n} \phi(d) = n$, i.e., $\mathbf{1} \cdot \text{id} = \phi * \mathbf{1}$ read as $n = \sum_{d|n}\phi(d)$. By Möbius inversion: $\phi(n) = \sum_{d|n} \mu(d) \cdot (n/d) = n \sum_{d|n} \mu(d)/d = n \prod_{p|n}(1 - 1/p)$. This recovers Euler's product formula.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 3.3.5 — Counting Squarefree Integers</div>
+                    <div class="math-box-label">Example 3.3.5 - Counting Squarefree Integers</div>
                     <p class="mb-0">The number of squarefree integers up to $x$ is $\sum_{n \leq x} |\mu(n)| \sim \frac{6}{\pi^2} x$ as $x \to \infty$. This uses $\sum_{d=1}^\infty \mu(d)^2/d^2 = \zeta(2)/\zeta(4) = (\pi^2/6)/(\pi^4/90) = 15/\pi^2$... more precisely, $\frac{6}{\pi^2} = 1/\zeta(2)^{-1}\cdot \zeta(2)/\zeta(4)$ simplifies to $6/\pi^2$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Connection to the Riemann Zeta Function</div>
-                    <p class="mb-0">The Dirichlet series of $\mu$ is $\sum_{n=1}^\infty \mu(n)/n^s = 1/\zeta(s)$ for $\text{Re}(s) > 1$. The Riemann hypothesis is equivalent to the statement that $\sum_{n \leq x} \mu(n) = O(x^{1/2+\varepsilon})$ for all $\varepsilon > 0$ — showing the profound connection between $\mu$ and the distribution of primes.</p>
+                    <div class="math-box-label">Remark - Connection to the Riemann Zeta Function</div>
+                    <p class="mb-0">The Dirichlet series of $\mu$ is $\sum_{n=1}^\infty \mu(n)/n^s = 1/\zeta(s)$ for $\text{Re}(s) > 1$. The Riemann hypothesis is equivalent to the statement that $\sum_{n \leq x} \mu(n) = O(x^{1/2+\varepsilon})$ for all $\varepsilon > 0$ - showing the profound connection between $\mu$ and the distribution of primes.</p>
                 </div>
 
                 <hr class="my-5">

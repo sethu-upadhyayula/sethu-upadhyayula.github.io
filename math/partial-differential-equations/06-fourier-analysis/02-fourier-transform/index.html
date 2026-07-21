@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -49,10 +49,10 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">6.2 Fourier Transform</h1>
-                <p>The Fourier transform extends Fourier series from periodic functions to functions on all of $\mathbb{R}^n$. It diagonalises constant-coefficient differential operators — replacing differentiation by multiplication — and provides the natural framework for analysing PDEs on unbounded domains.</p>
+                <p>The Fourier transform extends Fourier series from periodic functions to functions on all of $\mathbb{R}^n$. It diagonalises constant-coefficient differential operators - replacing differentiation by multiplication - and provides the natural framework for analysing PDEs on unbounded domains.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.2.1 — Fourier Transform on $L^1(\mathbb{R})$</div>
+                    <div class="math-box-label">Definition 6.2.1 - Fourier Transform on $L^1(\mathbb{R})$</div>
                     <p>For $f \in L^1(\mathbb{R})$, the <strong>Fourier transform</strong> of $f$ is</p>
                     $$\hat{f}(\xi) = \mathcal{F}\{f\}(\xi) = \int_{-\infty}^{\infty} f(x)\, e^{-2\pi i \xi x}\,dx, \quad \xi \in \mathbb{R}.$$
                     <p>The <strong>inverse Fourier transform</strong> is</p>
@@ -63,7 +63,7 @@
                 <h2 class="mt-5 mb-3">Basic Properties</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 6.2.2 — Differentiation and Translation</div>
+                    <div class="math-box-label">Proposition 6.2.2 - Differentiation and Translation</div>
                     <p>For $f \in \mathcal{S}(\mathbb{R})$ (Schwartz class) or whenever the expressions are defined:</p>
                     <p><strong>(Derivative rule):</strong> $\widehat{f'}(\xi) = 2\pi i \xi \,\hat{f}(\xi)$, and more generally $\widehat{D^k f}(\xi) = (2\pi i\xi)^k \hat{f}(\xi)$.</p>
                     <p><strong>(Frequency shift):</strong> $\widehat{e^{2\pi i x_0 \xi_0} f(x)}(\xi) = \hat{f}(\xi - \xi_0)$.</p>
@@ -75,7 +75,7 @@
                 <h2 class="mt-5 mb-3">Schwartz Space and Tempered Distributions</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.2.3 — Schwartz Space $\mathcal{S}(\mathbb{R}^n)$</div>
+                    <div class="math-box-label">Definition 6.2.3 - Schwartz Space $\mathcal{S}(\mathbb{R}^n)$</div>
                     <p>The <strong>Schwartz space</strong> consists of all rapidly decreasing smooth functions:</p>
                     $$\mathcal{S}(\mathbb{R}^n) = \left\{ f \in C^\infty(\mathbb{R}^n) : \sup_{x \in \mathbb{R}^n} |x^\alpha D^\beta f(x)| < \infty \text{ for all multi-indices } \alpha, \beta \right\}.$$
                     <p>Equivalently, $f \in \mathcal{S}$ if $f$ and all its derivatives decay faster than any polynomial. The Fourier transform is a topological isomorphism $\mathcal{F}: \mathcal{S}(\mathbb{R}^n) \to \mathcal{S}(\mathbb{R}^n)$.</p>
@@ -85,14 +85,14 @@
                 <h2 class="mt-5 mb-3">Plancherel's Theorem and Convolution</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.4 — Plancherel's Theorem</div>
+                    <div class="math-box-label">Theorem 6.2.4 - Plancherel's Theorem</div>
                     <p>The Fourier transform extends uniquely to a unitary isomorphism $\mathcal{F}: L^2(\mathbb{R}^n) \to L^2(\mathbb{R}^n)$, satisfying</p>
                     $$\|\hat{f}\|_{L^2} = \|f\|_{L^2}, \quad \text{i.e.} \quad \int_{\mathbb{R}^n} |\hat{f}(\xi)|^2\,d\xi = \int_{\mathbb{R}^n} |f(x)|^2\,dx.$$
                     <p class="mb-0">More generally (Parseval's formula): $\langle \hat{f}, \hat{g}\rangle_{L^2} = \langle f, g\rangle_{L^2}$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.5 — Convolution Theorem</div>
+                    <div class="math-box-label">Theorem 6.2.5 - Convolution Theorem</div>
                     <p>For $f, g \in L^1(\mathbb{R}^n)$, define the convolution $(f * g)(x) = \int_{\mathbb{R}^n} f(x-y)g(y)\,dy$. Then $f * g \in L^1(\mathbb{R}^n)$ and</p>
                     $$\widehat{f * g}(\xi) = \hat{f}(\xi)\cdot\hat{g}(\xi).$$
                     <p class="mb-0">Dually, $\widehat{fg}(\xi) = (\hat{f} * \hat{g})(\xi)$. This transforms convolution equations into pointwise algebraic equations in frequency space.</p>
@@ -101,14 +101,14 @@
                 <h2 class="mt-5 mb-3">Key Examples</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 6.2.6 — Gaussian Self-Duality</div>
+                    <div class="math-box-label">Example 6.2.6 - Gaussian Self-Duality</div>
                     <p>The Gaussian $f(x) = e^{-\pi x^2}$ is its own Fourier transform: $\hat{f}(\xi) = e^{-\pi\xi^2}$.</p>
                     <p><strong>Proof:</strong> Let $I(\xi) = \int_{-\infty}^\infty e^{-\pi x^2} e^{-2\pi i \xi x}\,dx$. Differentiate under the integral: $I'(\xi) = -2\pi i \int x e^{-\pi x^2}e^{-2\pi i\xi x}\,dx$. Integration by parts gives $I'(\xi) = -2\pi\xi I(\xi)$. Thus $I(\xi) = I(0)e^{-\pi\xi^2}$. Since $I(0) = \int e^{-\pi x^2}\,dx = 1$, we have $\hat{f}(\xi) = e^{-\pi\xi^2}$. $\square$</p>
                     <p class="mb-0">More generally, $\mathcal{F}\{e^{-ax^2}\}(\xi) = \sqrt{\pi/a}\,e^{-\pi^2\xi^2/a}$ for $\text{Re}(a) > 0$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 6.2.7 — Rectangular Pulse and Sinc Function</div>
+                    <div class="math-box-label">Example 6.2.7 - Rectangular Pulse and Sinc Function</div>
                     <p>The rectangular pulse $\text{rect}(x) = \mathbf{1}_{[-1/2,1/2]}(x)$ has Fourier transform</p>
                     $$\widehat{\text{rect}}(\xi) = \int_{-1/2}^{1/2} e^{-2\pi i\xi x}\,dx = \frac{\sin(\pi\xi)}{\pi\xi} = \text{sinc}(\xi).$$
                     <p class="mb-0">By the inversion theorem, $\widehat{\text{sinc}}(\xi) = \text{rect}(\xi)$. Note that $\text{sinc} \in L^2(\mathbb{R})$ but not $L^1(\mathbb{R})$, illustrating that the Fourier inversion must be interpreted in the $L^2$ sense.</p>

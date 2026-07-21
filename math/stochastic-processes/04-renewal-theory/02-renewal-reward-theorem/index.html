@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,7 +132,7 @@
                 <h2 class="mt-4 mb-3">Reward Processes</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.1 — Renewal Reward Process</div>
+                    <div class="math-box-label">Definition 4.2.1 - Renewal Reward Process</div>
                     <p>Let $\{T_n\}_{n \ge 1}$ be i.i.d. inter-renewal times with distribution $F$, mean $\mu = E[T_1] \in (0, \infty)$, and renewal counting process $N(t)$. Associate to the $n$-th renewal cycle a <strong>reward</strong> $R_n$, where $(R_n, T_n)$ are i.i.d. across cycles with $E[|R_1|] < \infty$.</p>
                     <p>The <strong>cumulative reward</strong> up to time $t$ is
                     $$W(t) = \sum_{n=1}^{N(t)} R_n.$$</p>
@@ -142,7 +142,7 @@
                 <h2 class="mt-5 mb-3">The Renewal Reward Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.2 — Renewal Reward Theorem</div>
+                    <div class="math-box-label">Theorem 4.2.2 - Renewal Reward Theorem</div>
                     <p>If $E[|R_1|] < \infty$ and $\mu = E[T_1] \in (0, \infty)$, then
                     $$\frac{W(t)}{t} \xrightarrow{t \to \infty} \frac{E[R_1]}{E[T_1]} = \frac{E[R_1]}{\mu} \quad \text{almost surely.}$$</p>
                     <p><em>Proof.</em> Write $W(t) = \sum_{n=1}^{N(t)} R_n$. Since $N(t) \to \infty$ a.s., the strong law of large numbers (SLLN) gives
@@ -157,7 +157,7 @@
                 <h2 class="mt-5 mb-3">Elementary Renewal Theorem Revisited</h2>
 
                 <div class="math-box corollary">
-                    <div class="math-box-label">Corollary 4.2.3 — Elementary Renewal Theorem</div>
+                    <div class="math-box-label">Corollary 4.2.3 - Elementary Renewal Theorem</div>
                     <p>Setting $R_n = 1$ for all $n$ (unit reward per renewal), $W(t) = N(t)$, and the renewal reward theorem gives
                     $$\frac{N(t)}{t} \to \frac{1}{\mu} \quad \text{a.s.}$$</p>
                     <p class="mb-0">This is the elementary renewal theorem. The renewal function $m(t) = E[N(t)]$ satisfies $m(t)/t \to 1/\mu$ by the expectation version. The renewal equation $m(t) = F(t) + \int_0^t m(t-s)\,dF(s)$ (Definition 4.1.2) provides an exact formula solved via Laplace transforms.</p>
@@ -166,7 +166,7 @@
                 <h2 class="mt-5 mb-3">Blackwell's Theorem and the Renewal Equation</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.4 — Key Renewal Theorem</div>
+                    <div class="math-box-label">Theorem 4.2.4 - Key Renewal Theorem</div>
                     <p>Let $z(t)$ satisfy the renewal equation $z(t) = g(t) + \int_0^t z(t-s)\,dF(s)$ where $g$ is directly Riemann integrable. If $F$ is non-arithmetic (non-lattice), then
                     $$z(t) \xrightarrow{t \to \infty} \frac{1}{\mu}\int_0^\infty g(s)\,ds.$$</p>
                     <p class="mb-0">This is the <strong>Key Renewal Theorem</strong> (also called the renewal theorem or Smith's theorem). It gives the long-run limit of solutions to renewal equations. Blackwell's theorem ($m(t+h) - m(t) \to h/\mu$) is an equivalent formulation. Together they enable computation of long-run limits for quantities like the age $A(t) = t - S_{N(t)}$ and excess life $E(t) = S_{N(t)+1} - t$.</p>
@@ -175,21 +175,21 @@
                 <h2 class="mt-5 mb-3">Applications</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Alternating Renewal Process: Availability</div>
+                    <div class="math-box-label">Example - Alternating Renewal Process: Availability</div>
                     <p>A machine alternates between working (up) and repair (down) periods. Cycle $n$ has up time $U_n$ with mean $\mu_U$ and down time $D_n$ with mean $\mu_D$; the cycle length is $T_n = U_n + D_n$ with mean $\mu = \mu_U + \mu_D$. Define $R_n = U_n$ (time machine is up in cycle $n$). The <strong>long-run availability</strong> is
                     $$A = \lim_{t\to\infty} \frac{\text{time up in }[0,t]}{t} = \frac{E[R_1]}{E[T_1]} = \frac{\mu_U}{\mu_U + \mu_D}.$$</p>
                     <p class="mb-0">This result is completely distribution-free: only the means $\mu_U$ and $\mu_D$ matter, regardless of the shapes of the up- and down-time distributions.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Age of a Component</div>
-                    <p>Define the <strong>age</strong> (backward recurrence time) at time $t$ as $A(t) = t - S_{N(t)}$ — the time since the last renewal. Define $R_n = \int_0^{T_n} s\,ds = T_n^2/2$ (integrated age over cycle $n$). Then $\int_0^t A(s)\,ds = \sum_{n=1}^{N(t)} T_n^2/2 + \text{partial term}$, and by the renewal reward theorem with $R_n = T_n^2/2$:
+                    <div class="math-box-label">Example - Age of a Component</div>
+                    <p>Define the <strong>age</strong> (backward recurrence time) at time $t$ as $A(t) = t - S_{N(t)}$ - the time since the last renewal. Define $R_n = \int_0^{T_n} s\,ds = T_n^2/2$ (integrated age over cycle $n$). Then $\int_0^t A(s)\,ds = \sum_{n=1}^{N(t)} T_n^2/2 + \text{partial term}$, and by the renewal reward theorem with $R_n = T_n^2/2$:
                     $$\frac{1}{t}\int_0^t A(s)\,ds \to \frac{E[T_1^2]/2}{\mu} = \frac{E[T_1^2]}{2\mu}.$$</p>
                     <p class="mb-0">By the Key Renewal Theorem, the limiting distribution of $A(t)$ as $t \to \infty$ has CDF $F_A(x) = \frac{1}{\mu}\int_0^x [1 - F(s)]\,ds$, the <strong>size-biased distribution</strong>. This is the inspection paradox: a randomly observed interval is stochastically larger than a typical interval.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Inspection Paradox</div>
+                    <div class="math-box-label">Remark - Inspection Paradox</div>
                     <p>The inspection paradox states that the inter-renewal interval containing a fixed time $t$ (large) is stochastically larger than a typical inter-renewal interval $T_1 \sim F$. More precisely, the length $A(t) + E(t)$ of the current interval has the size-biased distribution with mean $E[T_1^2]/E[T_1] \ge E[T_1]$ (by Jensen's inequality, with equality iff $T_1$ is degenerate).</p>
                     <p class="mb-0">This phenomenon explains why, for example, the bus you are waiting for always seems to take longer than average: you are more likely to arrive during a longer inter-bus interval. The renewal reward theorem quantifies this precisely through the long-run time-average of $A(t) + E(t)$.</p>
                 </div>

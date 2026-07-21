@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -98,7 +98,7 @@
                 <h1 class="text-accent mb-4">3.2 Completeness</h1>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Gödel's Completeness Theorem (1930)</div>
+                    <div class="math-box-label">Theorem - Gödel's Completeness Theorem (1930)</div>
                     <p class="mb-0">For any set of sentences $\Gamma$ and sentence $\phi$:
                     $$\text{If } \Gamma \models \phi \text{ then } \Gamma \vdash \phi.$$
                     Equivalently: if $\Gamma$ is consistent, then $\Gamma$ has a model.</p>
@@ -107,11 +107,11 @@
                 <h2 class="mt-4 mb-3">Henkin's Proof</h2>
 
                 <div class="math-box proof">
-                    <div class="math-box-label">Proof Sketch — Henkin's Method</div>
+                    <div class="math-box-label">Proof Sketch - Henkin's Method</div>
                     <p>It suffices to show: every consistent theory $\Gamma$ has a model. We construct one in three steps.</p>
-                    <p><strong>Step 1 — Extend to a maximal consistent set.</strong> Enumerate all sentences $\phi_0, \phi_1, \phi_2, \ldots$ of the language. Define $\Gamma_0 = \Gamma$ and inductively set $\Gamma_{i+1} = \Gamma_i \cup \{\phi_i\}$ if this is consistent, otherwise $\Gamma_{i+1} = \Gamma_i$. Let $\Gamma^* = \bigcup_i \Gamma_i$. Then $\Gamma^*$ is a <em>maximal consistent set</em>: consistent, and for every sentence $\phi$, either $\phi \in \Gamma^*$ or $\neg\phi \in \Gamma^*$.</p>
-                    <p><strong>Step 2 — Add Henkin witnesses.</strong> For every existential sentence $\exists x\,\phi(x) \in \Gamma^*$, introduce a fresh constant $c_{\phi}$ (a Henkin constant) and add $\phi(c_{\phi})$ to the language and theory. After repeating $\omega$ times, obtain a <em>Henkin theory</em> $\Gamma^+$ with witnesses for all existential statements.</p>
-                    <p><strong>Step 3 — Canonical model.</strong> Define the canonical structure $\mathcal{M}^*$: its domain is the set of all closed terms (constants) of the extended language, with equality interpreted as provable identity. Then verify by induction on formula complexity that
+                    <p><strong>Step 1 - Extend to a maximal consistent set.</strong> Enumerate all sentences $\phi_0, \phi_1, \phi_2, \ldots$ of the language. Define $\Gamma_0 = \Gamma$ and inductively set $\Gamma_{i+1} = \Gamma_i \cup \{\phi_i\}$ if this is consistent, otherwise $\Gamma_{i+1} = \Gamma_i$. Let $\Gamma^* = \bigcup_i \Gamma_i$. Then $\Gamma^*$ is a <em>maximal consistent set</em>: consistent, and for every sentence $\phi$, either $\phi \in \Gamma^*$ or $\neg\phi \in \Gamma^*$.</p>
+                    <p><strong>Step 2 - Add Henkin witnesses.</strong> For every existential sentence $\exists x\,\phi(x) \in \Gamma^*$, introduce a fresh constant $c_{\phi}$ (a Henkin constant) and add $\phi(c_{\phi})$ to the language and theory. After repeating $\omega$ times, obtain a <em>Henkin theory</em> $\Gamma^+$ with witnesses for all existential statements.</p>
+                    <p><strong>Step 3 - Canonical model.</strong> Define the canonical structure $\mathcal{M}^*$: its domain is the set of all closed terms (constants) of the extended language, with equality interpreted as provable identity. Then verify by induction on formula complexity that
                     $$\mathcal{M}^* \models \phi \iff \phi \in \Gamma^+.$$
                     In particular $\mathcal{M}^* \models \Gamma^*$, so $\mathcal{M}^* \models \Gamma$. $\square$</p>
                     <p class="mb-0"><em>Note:</em> The existence of the maximal consistent extension uses Zorn's Lemma (or equivalently, the Axiom of Choice) for uncountable languages.</p>
@@ -120,17 +120,17 @@
                 <h2 class="mt-4 mb-3">Important Corollaries</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Corollary — Compactness Theorem</div>
+                    <div class="math-box-label">Corollary - Compactness Theorem</div>
                     <p class="mb-0">A set of sentences $\Gamma$ is satisfiable if and only if every finite subset of $\Gamma$ is satisfiable. This is immediate from completeness: $\Gamma \models \bot$ iff $\Gamma \vdash \bot$, and any proof uses only finitely many hypotheses.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Corollary — Löwenheim-Skolem Theorem</div>
+                    <div class="math-box-label">Corollary - Löwenheim-Skolem Theorem</div>
                     <p class="mb-0">Any satisfiable first-order theory has a <em>countable</em> model. (The Henkin construction always produces a model whose domain is a countable set of constant terms.)</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Completeness vs Incompleteness</div>
+                    <div class="math-box-label">Remark - Completeness vs Incompleteness</div>
                     <p class="mb-0">Gödel's Completeness Theorem (Chapter 3) and his Incompleteness Theorems (Chapter 5) are complementary, not contradictory. Completeness says: every <em>logically valid</em> sentence is provable. Incompleteness says: no consistent, sufficiently expressive formal system can prove all <em>arithmetical truths</em>. The difference is between logical validity (true in all models) and truth in a specific intended model (e.g., $\mathbb{N}$).</p>
                 </div>
 

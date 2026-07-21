@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,7 +132,7 @@
 
                 <h2 class="mt-4 mb-3">Divided Differences</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Divided Differences</div>
+                    <div class="math-box-label">Definition - Divided Differences</div>
                     <p>The <strong>divided differences</strong> of $f$ at nodes $x_i, \ldots, x_{i+k}$ are defined recursively:</p>
                     $$f[x_i] = f(x_i),$$
                     $$f[x_i, x_{i+1}] = \frac{f[x_{i+1}] - f[x_i]}{x_{i+1} - x_i},$$
@@ -142,7 +142,7 @@
 
                 <h2 class="mt-5 mb-3">Newton's Interpolating Polynomial</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Newton's Divided-Difference Form</div>
+                    <div class="math-box-label">Theorem - Newton's Divided-Difference Form</div>
                     <p>The unique interpolating polynomial of degree $\le n$ through $(x_0, f(x_0)), \ldots, (x_n, f(x_n))$ is:</p>
                     $$p_n(x) = f[x_0] + f[x_0, x_1](x-x_0) + f[x_0,x_1,x_2](x-x_0)(x-x_1) + \cdots$$
                     $$= \sum_{k=0}^n f[x_0, \ldots, x_k]\prod_{j=0}^{k-1}(x - x_j),$$
@@ -151,7 +151,7 @@
 
                 <h2 class="mt-5 mb-3">Divided Difference Table</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Divided Difference Table</div>
+                    <div class="math-box-label">Example - Divided Difference Table</div>
                     <p>Given the data $(0,1), (1,2), (3,2), (4,0)$:</p>
                     <table class="table table-sm table-bordered text-center" style="max-width:500px;font-size:0.9rem;">
                         <thead><tr><th>$x_i$</th><th>$f[x_i]$</th><th>1st order</th><th>2nd order</th><th>3rd order</th></tr></thead>
@@ -170,7 +170,7 @@
 
                 <h2 class="mt-5 mb-3">Connection to Derivatives</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Divided Differences and Derivatives</div>
+                    <div class="math-box-label">Theorem - Divided Differences and Derivatives</div>
                     <p class="mb-0">If $f \in C^n$, then for any $n+1$ distinct points $x_0, \ldots, x_n$ there exists $\xi$ in their convex hull such that:
                     $$f[x_0, x_1, \ldots, x_n] = \frac{f^{(n)}(\xi)}{n!}.$$
                     In the limit as all nodes collapse to a single point $x$, $f[x,x,\ldots,x] = f^{(n)}(x)/n!$, which is used to define divided differences for repeated nodes (Hermite interpolation).</p>
@@ -178,7 +178,7 @@
 
                 <h2 class="mt-5 mb-3">Horner Evaluation and Incremental Updates</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm — Horner's Method for Newton Form</div>
+                    <div class="math-box-label">Algorithm - Horner's Method for Newton Form</div>
                     <p>Evaluate $p_n(x) = \sum_{k=0}^n c_k \prod_{j=0}^{k-1}(x-x_j)$ where $c_k = f[x_0,\ldots,x_k]$ via nested multiplication:</p>
                     <pre style="background:var(--code-bg,#1e1e2e);padding:1rem;border-radius:6px;font-size:0.85rem;overflow-x:auto;">
 b = c_n

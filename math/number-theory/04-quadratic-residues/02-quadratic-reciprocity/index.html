@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -118,12 +118,12 @@
             <article>
                 <h1 class="text-accent mb-4">4.2 Quadratic Reciprocity</h1>
 
-                <p>The Law of Quadratic Reciprocity is one of the most celebrated results in number theory. Euler observed it empirically and Legendre stated it, but it was Gauss (age 19, in 1796) who gave the first rigorous proof. Gauss called it his <em>theorema aureum</em> — the golden theorem — and went on to give eight distinct proofs of it over his lifetime. Over 200 proofs are now known.</p>
+                <p>The Law of Quadratic Reciprocity is one of the most celebrated results in number theory. Euler observed it empirically and Legendre stated it, but it was Gauss (age 19, in 1796) who gave the first rigorous proof. Gauss called it his <em>theorema aureum</em> - the golden theorem - and went on to give eight distinct proofs of it over his lifetime. Over 200 proofs are now known.</p>
 
                 <h2 class="mt-5 mb-3">The Law of Quadratic Reciprocity</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.1 — Law of Quadratic Reciprocity (Gauss, 1796)</div>
+                    <div class="math-box-label">Theorem 4.2.1 - Law of Quadratic Reciprocity (Gauss, 1796)</div>
                     <p>For distinct odd primes $p$ and $q$:
                     $$\left(\frac{p}{q}\right)\left(\frac{q}{p}\right) = (-1)^{\frac{p-1}{2}\cdot\frac{q-1}{2}}.$$</p>
                     <p class="mb-0">Equivalently, $\left(\frac{p}{q}\right) = \left(\frac{q}{p}\right)$ unless both $p \equiv 3 \pmod{4}$ and $q \equiv 3 \pmod{4}$, in which case $\left(\frac{p}{q}\right) = -\left(\frac{q}{p}\right)$.</p>
@@ -143,7 +143,7 @@
                 <p>Quadratic reciprocity, together with the two supplements and multiplicativity, gives a Euclidean-style algorithm for computing any Legendre symbol $\left(\frac{a}{p}\right)$:</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 4.2.2 — Evaluation of Legendre Symbols</div>
+                    <div class="math-box-label">Algorithm 4.2.2 - Evaluation of Legendre Symbols</div>
                     <ol>
                         <li>Reduce $a \bmod p$ to lie in $\{0, 1, \ldots, p-1\}$.</li>
                         <li>Factor out $-1$ and $2$ using the supplements (Theorems 4.1.6, 4.1.7) and multiplicativity.</li>
@@ -156,7 +156,7 @@
                 <h2 class="mt-5 mb-3">Worked Example</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Is 7 a Quadratic Residue mod 101?</div>
+                    <div class="math-box-label">Example - Is 7 a Quadratic Residue mod 101?</div>
                     <p>We compute $\left(\frac{7}{101}\right)$.</p>
 
                     <p><strong>Step 1.</strong> Apply reciprocity. Both 7 and 101 are odd primes. We have $\frac{7-1}{2} = 3$ and $\frac{101-1}{2} = 50$. The exponent $3 \cdot 50 = 150$ is even, so:
@@ -177,7 +177,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Is 5 a QR mod 13?</div>
+                    <div class="math-box-label">Example - Is 5 a QR mod 13?</div>
                     <p>$\left(\frac{5}{13}\right)$: $\frac{5-1}{2} = 2$, $\frac{13-1}{2} = 6$. Exponent $2 \cdot 6 = 12$ is even, so $\left(\frac{5}{13}\right) = \left(\frac{13}{5}\right)$. Reduce: $13 \equiv 3 \pmod 5$, so $\left(\frac{13}{5}\right) = \left(\frac{3}{5}\right)$. Now $\frac{3-1}{2} \cdot \frac{5-1}{2} = 1 \cdot 2 = 2$ (even), so $\left(\frac{3}{5}\right) = \left(\frac{5}{3}\right) = \left(\frac{2}{3}\right)$. Since $3 \equiv 3 \pmod 8$, $\left(\frac{2}{3}\right) = -1$. Hence $\left(\frac{5}{13}\right) = -1$: 5 is a QNR mod 13.</p>
                     <p class="mb-0">Verify directly: squares mod 13 are $1^2=1$, $2^2=4$, $3^2=9$, $4^2=3$, $5^2=12$, $6^2=10$. The QRs are $\{1,3,4,9,10,12\}$ and 5 is not among them. ✓</p>
                 </div>

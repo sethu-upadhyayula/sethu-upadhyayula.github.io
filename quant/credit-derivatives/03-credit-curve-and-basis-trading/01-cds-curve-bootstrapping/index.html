@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,15 +81,15 @@
             <article>
                 <h1 class="text-accent mb-4">3.1 CDS Curve Bootstrapping</h1>
 
-                <p>Section 1.3 expressed the fair CDS spread as a function of the survival probability curve $Q(\cdot)$. In practice, the market quotes CDS spreads at a small number of standard tenors (1Y, 3Y, 5Y, 7Y, 10Y) for a given reference entity, and $Q(\cdot)$ must be inferred — "bootstrapped" — from these quotes, one tenor at a time, exactly as a discount curve is bootstrapped from a strip of money-market and swap rates (see <a href="../../../rates-fundamentals/02-yield-curve-construction/01-bootstrapping/">Bootstrapping the Yield Curve</a>).</p>
+                <p>Section 1.3 expressed the fair CDS spread as a function of the survival probability curve $Q(\cdot)$. In practice, the market quotes CDS spreads at a small number of standard tenors (1Y, 3Y, 5Y, 7Y, 10Y) for a given reference entity, and $Q(\cdot)$ must be inferred - "bootstrapped" - from these quotes, one tenor at a time, exactly as a discount curve is bootstrapped from a strip of money-market and swap rates (see <a href="../../../rates-fundamentals/02-yield-curve-construction/01-bootstrapping/">Bootstrapping the Yield Curve</a>).</p>
 
                 <h2 class="mt-5 mb-3">The Piecewise-Constant Hazard Rate Assumption</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Piecewise-Constant Hazard Rate</div>
+                    <div class="math-box-label">Definition - Piecewise-Constant Hazard Rate</div>
                     <p class="mb-0">The survival probability is written in terms of a hazard rate (default intensity) function $\lambda(t)$ as $Q(t) = \exp\left(-\int_0^t \lambda(u)\,du\right)$. The standard bootstrapping assumption is that $\lambda(u)$ is <em>piecewise constant</em> between the quoted CDS maturities $T_0 = 0 < T_1 < T_2 < \cdots < T_n$, taking a constant value $\lambda_k$ on each interval $(T_{k-1}, T_k]$. This gives:</p>
                     <p class="mb-0">$$Q(T_k) = Q(T_{k-1}) \cdot \exp\left(-\lambda_k (T_k - T_{k-1})\right)$$</p>
-                    <p class="mb-0">with $Q(T_0) = Q(0) = 1$. The curve is fully determined by the $n$ values $\lambda_1, \ldots, \lambda_n$, one per quoted tenor — exactly matching the number of market quotes available to calibrate against.</p>
+                    <p class="mb-0">with $Q(T_0) = Q(0) = 1$. The curve is fully determined by the $n$ values $\lambda_1, \ldots, \lambda_n$, one per quoted tenor - exactly matching the number of market quotes available to calibrate against.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Bootstrap Procedure</h2>
@@ -97,7 +97,7 @@
                 <p>The bootstrap proceeds tenor by tenor, from the shortest maturity to the longest. At each step, all hazard rates for earlier intervals have already been determined, and a single new hazard rate $\lambda_k$ is solved for so that the CDS maturing at $T_k$, priced using the survival curve built so far plus the unknown $\lambda_k$, reproduces its quoted market spread $s_k$ exactly.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Sequential Calibration</div>
+                    <div class="math-box-label">Theorem - Sequential Calibration</div>
                     <p class="mb-0">At step $k$, $\lambda_k$ is the unique value solving</p>
                     <p class="mb-0">$$s_k \cdot \text{RPV01}_k(\lambda_1,\ldots,\lambda_{k-1},\lambda_k) = (1-R)\cdot\text{PV}_{\text{protection},k}(\lambda_1,\ldots,\lambda_{k-1},\lambda_k)$$</p>
                     <p class="mb-0">where both $\text{RPV01}_k$ and $\text{PV}_{\text{protection},k}$ are computed over $[0,T_k]$, using the already-calibrated $\lambda_1,\ldots,\lambda_{k-1}$ on $(T_0,T_{k-1}]$ and the unknown $\lambda_k$ on $(T_{k-1},T_k]$. Because both legs are monotonic in $\lambda_k$ over the relevant range, this is a well-behaved one-dimensional root-find (e.g. bisection or Newton's method) at each step, rather than a single high-dimensional joint solve.</p>
@@ -106,15 +106,15 @@
                 <h2 class="mt-5 mb-3">Worked Example</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Two-Tenor Bootstrap</div>
+                    <div class="math-box-label">Example - Two-Tenor Bootstrap</div>
                     <p>Suppose a reference entity has quoted CDS spreads of $s_1 = 80\text{bp}$ at 1Y and $s_2 = 120\text{bp}$ at 3Y, a flat risk-free curve, recovery $R = 40\%$, and quarterly premium payments.</p>
-                    <p><strong>Step 1 — Solve for $\lambda_1$ on $(0, 1Y]$.</strong> With $Q(0)=1$, the 1Y CDS equation $s_1 \cdot \text{RPV01}_1(\lambda_1) = (1-R)\cdot \text{PV}_{\text{protection},1}(\lambda_1)$ is solved numerically, giving $\lambda_1 \approx 80\text{bp} / (1-0.40) \approx 1.33\%$ as a first-order approximation (the exact value requires iterating with the discrete payment schedule, but this approximation — fair spread $\approx (1-R)\lambda$ for short maturities — is a useful sanity check).</p>
-                    <p class="mb-0"><strong>Step 2 — Solve for $\lambda_2$ on $(1Y, 3Y]$.</strong> With $\lambda_1$ fixed and $Q(1Y) = e^{-\lambda_1 \cdot 1}$ known, the 3Y CDS equation is solved for $\lambda_2$ alone. Because the 3Y spread (120bp) exceeds the 1Y spread (80bp), the curve is upward-sloping and $\lambda_2 > \lambda_1$ — the market is pricing a higher annualised default intensity over years 2-3 than over year 1, consistent with a "stressed near-term, deteriorating further out" credit view. The resulting two-segment hazard rate curve $(\lambda_1, \lambda_2)$ can then be used to price any CDS, tranche, or other credit derivative on this name out to 3Y maturity, and the procedure extends identically to 5Y, 7Y and 10Y once those quotes are added as further bootstrap steps.</p>
+                    <p><strong>Step 1 - Solve for $\lambda_1$ on $(0, 1Y]$.</strong> With $Q(0)=1$, the 1Y CDS equation $s_1 \cdot \text{RPV01}_1(\lambda_1) = (1-R)\cdot \text{PV}_{\text{protection},1}(\lambda_1)$ is solved numerically, giving $\lambda_1 \approx 80\text{bp} / (1-0.40) \approx 1.33\%$ as a first-order approximation (the exact value requires iterating with the discrete payment schedule, but this approximation - fair spread $\approx (1-R)\lambda$ for short maturities - is a useful sanity check).</p>
+                    <p class="mb-0"><strong>Step 2 - Solve for $\lambda_2$ on $(1Y, 3Y]$.</strong> With $\lambda_1$ fixed and $Q(1Y) = e^{-\lambda_1 \cdot 1}$ known, the 3Y CDS equation is solved for $\lambda_2$ alone. Because the 3Y spread (120bp) exceeds the 1Y spread (80bp), the curve is upward-sloping and $\lambda_2 > \lambda_1$ - the market is pricing a higher annualised default intensity over years 2-3 than over year 1, consistent with a "stressed near-term, deteriorating further out" credit view. The resulting two-segment hazard rate curve $(\lambda_1, \lambda_2)$ can then be used to price any CDS, tranche, or other credit derivative on this name out to 3Y maturity, and the procedure extends identically to 5Y, 7Y and 10Y once those quotes are added as further bootstrap steps.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Interpolation Between Pillars</div>
-                    <p class="mb-0">For maturities between the quoted "pillar" tenors (e.g. pricing a 4Y CDS off a curve calibrated to 1Y, 3Y, 5Y), the piecewise-constant hazard rate is typically held flat from the nearest earlier pillar — i.e. $\lambda(t) = \lambda_k$ for $t \in (T_{k-1}, T_k]$ is used directly, with no further interpolation needed since the hazard rate is already constant on each interval. This is analogous to "flat forward" interpolation of a discount curve (see <a href="../../../rates-fundamentals/02-yield-curve-construction/02-interpolation-methods/">Interpolation Methods</a>), and is the standard convention used by the ISDA CDS Standard Model.</p>
+                    <div class="math-box-label">Remark - Interpolation Between Pillars</div>
+                    <p class="mb-0">For maturities between the quoted "pillar" tenors (e.g. pricing a 4Y CDS off a curve calibrated to 1Y, 3Y, 5Y), the piecewise-constant hazard rate is typically held flat from the nearest earlier pillar - i.e. $\lambda(t) = \lambda_k$ for $t \in (T_{k-1}, T_k]$ is used directly, with no further interpolation needed since the hazard rate is already constant on each interval. This is analogous to "flat forward" interpolation of a discount curve (see <a href="../../../rates-fundamentals/02-yield-curve-construction/02-interpolation-methods/">Interpolation Methods</a>), and is the standard convention used by the ISDA CDS Standard Model.</p>
                 </div>
 
                 <hr class="my-5">

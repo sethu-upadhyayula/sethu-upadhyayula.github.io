@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,10 +80,10 @@
             <article>
                 <h1 class="text-accent mb-4">4.1 Calibration Algorithms</h1>
 
-                <p>The sequential bootstrap of Section 2.1 solves for one new discount factor per instrument, working strictly from short to long maturities. This works cleanly when each instrument's cash flows depend only on previously-solved discount factors. In practice this assumption breaks down — instruments overlap in maturity, projection curves depend on the discount curve (and sometimes vice versa), and interpolation between pillars means that bumping one quote can change the priced value of <em>every</em> instrument, not just longer-dated ones. Production systems therefore treat curve construction as a <strong>global calibration problem</strong>.</p>
+                <p>The sequential bootstrap of Section 2.1 solves for one new discount factor per instrument, working strictly from short to long maturities. This works cleanly when each instrument's cash flows depend only on previously-solved discount factors. In practice this assumption breaks down - instruments overlap in maturity, projection curves depend on the discount curve (and sometimes vice versa), and interpolation between pillars means that bumping one quote can change the priced value of <em>every</em> instrument, not just longer-dated ones. Production systems therefore treat curve construction as a <strong>global calibration problem</strong>.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Curve Calibration as Root-Finding</div>
+                    <div class="math-box-label">Definition - Curve Calibration as Root-Finding</div>
                     <p class="mb-0">Let $\mathbf{x} = (x_1,\ldots,x_n)$ be the vector of curve pillar values (e.g. zero rates or log-discount factors at each pillar), and let $\mathbf{q}=(q_1,\ldots,q_n)$ be the vector of market quotes (par rates) for the calibrating instruments. Define the pricing function $F_i(\mathbf{x})$ as the model price (par rate, or value relative to par) of instrument $i$ given curve $\mathbf{x}$. Calibration solves the system:
                     $$F_i(\mathbf{x}) = q_i, \qquad i=1,\ldots,n$$
                     i.e. find the curve $\mathbf{x}^*$ such that every instrument is priced exactly at its market quote, simultaneously.</p>
@@ -94,15 +94,15 @@
                 <p>When $n$ is large (a typical curve has 20-40 pillars), the system $F(\mathbf{x})=\mathbf{q}$ is solved by Newton-Raphson iteration, exploiting the fact that the sequential bootstrap provides an excellent starting guess.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Newton Iteration for Curve Calibration</div>
+                    <div class="math-box-label">Definition - Newton Iteration for Curve Calibration</div>
                     <p class="mb-0">Starting from an initial guess $\mathbf{x}^{(0)}$ (e.g. the result of a sequential bootstrap), Newton's method iterates:
                     $$\mathbf{x}^{(k+1)} = \mathbf{x}^{(k)} - J(\mathbf{x}^{(k)})^{-1}\big(F(\mathbf{x}^{(k)}) - \mathbf{q}\big)$$
                     where $J_{ij} = \partial F_i/\partial x_j$ is the Jacobian matrix of instrument prices with respect to curve pillars. Iteration continues until $\|F(\mathbf{x}^{(k)}) - \mathbf{q}\|$ is below a tight tolerance (sub-basis-point repricing error).</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why the Jacobian is (Nearly) Triangular</div>
-                    <p class="mb-0">If instruments are ordered by maturity and interpolation is local (e.g. log-linear or monotone convex), $J$ is close to lower-triangular: instrument $i$'s price depends mainly on pillars $1,\ldots,i$, with small off-diagonal terms from interpolation effects near pillar $i$. This near-triangular structure is why the sequential bootstrap is such a good starting point — it solves the "diagonal" part of the system exactly — and why Newton's method typically converges in only one or two iterations from a bootstrapped initial guess.</p>
+                    <div class="math-box-label">Remark - Why the Jacobian is (Nearly) Triangular</div>
+                    <p class="mb-0">If instruments are ordered by maturity and interpolation is local (e.g. log-linear or monotone convex), $J$ is close to lower-triangular: instrument $i$'s price depends mainly on pillars $1,\ldots,i$, with small off-diagonal terms from interpolation effects near pillar $i$. This near-triangular structure is why the sequential bootstrap is such a good starting point - it solves the "diagonal" part of the system exactly - and why Newton's method typically converges in only one or two iterations from a bootstrapped initial guess.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Joint Calibration of Multiple Curves</h2>
@@ -110,20 +110,20 @@
                 <p>The multi-curve framework (Section 2.1) requires calibrating a discount curve and one or more projection curves simultaneously, since instruments used to build a projection curve are themselves discounted on the OIS curve.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Layered vs. Simultaneous Calibration</div>
+                    <div class="math-box-label">Remark - Layered vs. Simultaneous Calibration</div>
                     <p><strong>Layered (sequential) calibration.</strong> Build the OIS discount curve first (from OIS swaps, discounted on themselves), then build each projection curve using the now-fixed OIS curve for discounting. This is simpler and works well when the discount curve does not depend on the projection curves.</p>
                     <p class="mb-0"><strong>Simultaneous calibration.</strong> When cross-currency basis, single-currency basis swaps, or other instruments create genuine interdependencies (e.g. a basis swap whose value depends on both the SOFR curve and a Term SOFR projection curve, both discounted at OIS), all curves must be solved jointly as one large system $F(\mathbf{x})=\mathbf{q}$ with $\mathbf{x}$ the concatenation of all curves' pillars. The Jacobian is then block-structured, with off-diagonal blocks capturing the cross-curve dependencies.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Sensitivities via the Jacobian: The "Curve Risk Matrix"</h2>
 
-                <p>A useful by-product of global calibration is that the Jacobian $J$ — already computed for Newton's method — directly gives the sensitivity of every curve pillar to every input quote, and hence (via the chain rule) the sensitivity of any priced instrument to every market quote.</p>
+                <p>A useful by-product of global calibration is that the Jacobian $J$ - already computed for Newton's method - directly gives the sensitivity of every curve pillar to every input quote, and hence (via the chain rule) the sensitivity of any priced instrument to every market quote.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Quote Sensitivities from the Calibration Jacobian</div>
+                    <div class="math-box-label">Theorem - Quote Sensitivities from the Calibration Jacobian</div>
                     <p class="mb-0">Let $V(\mathbf{x})$ be the value of a portfolio as a function of the calibrated curve $\mathbf{x}^*(\mathbf{q})$, which itself depends on the input quotes $\mathbf{q}$ via $F(\mathbf{x}^*(\mathbf{q}))=\mathbf{q}$. Differentiating implicitly, $J\,\partial \mathbf{x}^*/\partial \mathbf{q} = I$, so $\partial \mathbf{x}^*/\partial \mathbf{q} = J^{-1}$. The sensitivity of the portfolio to quote $q_j$ is then:
                     $$\frac{\partial V}{\partial q_j} = \sum_i \frac{\partial V}{\partial x_i}\frac{\partial x_i}{\partial q_j} = \left(\nabla_{\mathbf{x}} V \cdot J^{-1}\right)_j$$
-                    These quote sensitivities are exactly the key rate '01s of Section 3.1, expressed with respect to the actual hedging instruments (par swap rates) rather than abstract curve pillars — directly usable for hedging and risk reporting.</p>
+                    These quote sensitivities are exactly the key rate '01s of Section 3.1, expressed with respect to the actual hedging instruments (par swap rates) rather than abstract curve pillars - directly usable for hedging and risk reporting.</p>
                 </div>
 
                 <hr class="my-5">

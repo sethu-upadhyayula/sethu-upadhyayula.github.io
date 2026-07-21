@@ -16,7 +16,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -103,41 +103,41 @@
 
 <p>Permutations count <em>ordered</em> selections; combinations count <em>unordered</em> selections. These are the two basic ways to choose $k$ items from $n$ distinct items, and they appear throughout combinatorics and probability.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Permutations</div>
+<div class="math-box definition"><div class="math-box-label">Definition - Permutations</div>
 <p>A <strong>$k$-permutation</strong> of an $n$-element set $[n] = \{1,\ldots,n\}$ is an ordered selection of $k$ distinct elements. The number of $k$-permutations is:
 $$P(n,k) = n(n-1)(n-2)\cdots(n-k+1) = \frac{n!}{(n-k)!}.$$
 In particular, $P(n,n) = n!$ counts all orderings (permutations) of $n$ elements.</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Combinations (Binomial Coefficient)</div>
-<p>A <strong>$k$-combination</strong> of $[n]$ is an unordered selection of $k$ distinct elements — equivalently, a $k$-element subset. The number of $k$-combinations is:
+<div class="math-box definition"><div class="math-box-label">Definition - Combinations (Binomial Coefficient)</div>
+<p>A <strong>$k$-combination</strong> of $[n]$ is an unordered selection of $k$ distinct elements - equivalently, a $k$-element subset. The number of $k$-combinations is:
 $$\binom{n}{k} = \frac{n!}{k!\,(n-k)!} = \frac{P(n,k)}{k!}.$$
 We define $\binom{n}{k} = 0$ for $k < 0$ or $k > n$.</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Basic Properties of $\binom{n}{k}$</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - Basic Properties of $\binom{n}{k}$</div>
 <p><strong>Symmetry:</strong> $\binom{n}{k} = \binom{n}{n-k}$. (Choosing $k$ to include is the same as choosing $n-k$ to exclude.)</p>
 <p><strong>Pascal's Identity:</strong> $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$.</p>
 </div>
 
-<div class="math-box proof"><div class="math-box-label">Proof — Pascal's Identity</div>
+<div class="math-box proof"><div class="math-box-label">Proof - Pascal's Identity</div>
 <p>Consider element $n \in [n]$. A $k$-subset of $[n]$ either contains $n$ (choose the remaining $k-1$ from $[n-1]$: $\binom{n-1}{k-1}$ ways) or does not contain $n$ (choose all $k$ from $[n-1]$: $\binom{n-1}{k}$ ways). By the addition principle, $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$. $\square$</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Permutations with Repetition</div>
+<div class="math-box definition"><div class="math-box-label">Definition - Permutations with Repetition</div>
 <p>The number of ordered selections of $k$ items from $n$ types <em>with repetition allowed</em> is $n^k$ (each of $k$ positions independently has $n$ choices).</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Combinations with Repetition (Stars and Bars)</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - Combinations with Repetition (Stars and Bars)</div>
 <p>The number of ways to choose $k$ items from $n$ types with repetition (order does not matter) equals the number of non-negative integer solutions to $x_1 + x_2 + \cdots + x_n = k$:
 $$\binom{n+k-1}{k} = \binom{n+k-1}{n-1}.$$</p>
 </div>
 
-<div class="math-box proof"><div class="math-box-label">Proof — Stars and Bars</div>
+<div class="math-box proof"><div class="math-box-label">Proof - Stars and Bars</div>
 <p>Represent a solution as a sequence of $k$ stars ($\star$) and $n-1$ bars ($|$) separating the $n$ types. Any arrangement of $k$ stars and $n-1$ bars in $n+k-1$ positions gives a unique solution. Hence there are $\binom{n+k-1}{k}$ solutions. $\square$</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Multinomial Coefficient</div>
+<div class="math-box definition"><div class="math-box-label">Definition - Multinomial Coefficient</div>
 <p>The number of ways to arrange $n$ objects where $k_1$ are of type 1, $k_2$ of type 2, …, $k_r$ of type $r$ (with $k_1 + \cdots + k_r = n$) is the <strong>multinomial coefficient</strong>:
 $$\binom{n}{k_1, k_2, \ldots, k_r} = \frac{n!}{k_1!\, k_2!\, \cdots\, k_r!}.$$</p>
 </div>

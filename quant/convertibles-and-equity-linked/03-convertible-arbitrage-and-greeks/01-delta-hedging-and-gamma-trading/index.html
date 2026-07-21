@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,15 +80,15 @@
             <article>
                 <h1 class="text-accent mb-4">3.1 Delta Hedging and Gamma Trading</h1>
 
-                <p>The convertible's value $V(S,t)$ from the lattice or PDE of Chapter 2 is a function of the stock price $S$, among other variables. Its first and second derivatives with respect to $S$ — delta and gamma — describe how the convertible's price responds to small and large moves in the stock, and are the foundation of the classic convertible arbitrage trade.</p>
+                <p>The convertible's value $V(S,t)$ from the lattice or PDE of Chapter 2 is a function of the stock price $S$, among other variables. Its first and second derivatives with respect to $S$ - delta and gamma - describe how the convertible's price responds to small and large moves in the stock, and are the foundation of the classic convertible arbitrage trade.</p>
 
                 <h2 class="mt-5 mb-3">Delta of a Convertible</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Delta</div>
+                    <div class="math-box-label">Definition - Delta</div>
                     <p class="mb-0">The delta of a convertible bond is its sensitivity to the underlying stock price:
                     $$\Delta = \frac{\partial V}{\partial S}$$
-                    In lattice terms, $\Delta \approx \frac{V_{1,1} - V_{1,0}}{S_{1,1} - S_{1,0}}$ — the change in convertible value between the up- and down-nodes one step from the root, divided by the corresponding change in stock price. Delta is bounded: $0 \leq \Delta \leq C_r$, since the convertible's payoff is bounded below by the bond floor (insensitive to $S$, so $\Delta \to 0$) and above by $C_r$ shares (so $\Delta \to C_r$ as $S \to \infty$). The three regimes of Section 1.2 correspond to three ranges of delta: bond-like convertibles have $\Delta$ near $0$, hybrids have $\Delta$ roughly between $0.3\,C_r$ and $0.7\,C_r$, and equity-like convertibles have $\Delta$ near $C_r$.</p>
+                    In lattice terms, $\Delta \approx \frac{V_{1,1} - V_{1,0}}{S_{1,1} - S_{1,0}}$ - the change in convertible value between the up- and down-nodes one step from the root, divided by the corresponding change in stock price. Delta is bounded: $0 \leq \Delta \leq C_r$, since the convertible's payoff is bounded below by the bond floor (insensitive to $S$, so $\Delta \to 0$) and above by $C_r$ shares (so $\Delta \to C_r$ as $S \to \infty$). The three regimes of Section 1.2 correspond to three ranges of delta: bond-like convertibles have $\Delta$ near $0$, hybrids have $\Delta$ roughly between $0.3\,C_r$ and $0.7\,C_r$, and equity-like convertibles have $\Delta$ near $C_r$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Constructing the Delta-Hedged Position</h2>
@@ -96,36 +96,36 @@
                 <p>A convertible arbitrage position is built by going long the convertible and shorting stock in proportion to its delta, so that the combined position's value is, to first order, insensitive to small moves in the stock price.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Delta-Hedged Convertible Arbitrage Position</div>
-                    <p class="mb-0">For one convertible bond with delta $\Delta$ (expressed in units of shares — i.e. $\Delta$ already incorporates the conversion ratio, so $0 \le \Delta \le C_r$), the delta-hedged position is:
+                    <div class="math-box-label">Definition - Delta-Hedged Convertible Arbitrage Position</div>
+                    <p class="mb-0">For one convertible bond with delta $\Delta$ (expressed in units of shares - i.e. $\Delta$ already incorporates the conversion ratio, so $0 \le \Delta \le C_r$), the delta-hedged position is:
                     $$\Pi = V(S,t) - \Delta \times S$$
-                    By construction, $\frac{\partial \Pi}{\partial S} = \frac{\partial V}{\partial S} - \Delta = 0$ at the moment the hedge is put on. The position $\Pi$ is "delta-neutral": a small move in $S$ produces (to first order) no change in $\Pi$'s value. The arbitrageur is now exposed primarily to the convertible's other risk factors — gamma (the curvature of $V$ in $S$), credit spread changes, interest rates, and volatility (Section 3.2) — rather than to the direction of the stock.</p>
+                    By construction, $\frac{\partial \Pi}{\partial S} = \frac{\partial V}{\partial S} - \Delta = 0$ at the moment the hedge is put on. The position $\Pi$ is "delta-neutral": a small move in $S$ produces (to first order) no change in $\Pi$'s value. The arbitrageur is now exposed primarily to the convertible's other risk factors - gamma (the curvature of $V$ in $S$), credit spread changes, interest rates, and volatility (Section 3.2) - rather than to the direction of the stock.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Gamma and Gamma Trading</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Gamma</div>
+                    <div class="math-box-label">Definition - Gamma</div>
                     <p class="mb-0">Gamma is the convexity of the convertible's value with respect to the stock price:
                     $$\Gamma = \frac{\partial^2 V}{\partial S^2} = \frac{\partial \Delta}{\partial S}$$
-                    Because $\Delta$ ranges from $0$ to $C_r$ as $S$ increases through the three regimes, $\Gamma > 0$ for a long convertible position — $V$ is a convex function of $S$, just as a call option is. The convertible's $\Gamma$ is largest in the hybrid regime (where $\Delta$ changes most rapidly with $S$) and smallest in the deeply bond-like or equity-like regimes (where $\Delta$ is roughly constant).</p>
+                    Because $\Delta$ ranges from $0$ to $C_r$ as $S$ increases through the three regimes, $\Gamma > 0$ for a long convertible position - $V$ is a convex function of $S$, just as a call option is. The convertible's $\Gamma$ is largest in the hybrid regime (where $\Delta$ changes most rapidly with $S$) and smallest in the deeply bond-like or equity-like regimes (where $\Delta$ is roughly constant).</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Gamma Trading P&amp;L from Re-Hedging</div>
-                    <p class="mb-0">Because $\Gamma > 0$, as the stock price moves the convertible's delta changes, and the delta-hedged position $\Pi = V - \Delta S$ acquires a small directional exposure that must be re-hedged to remain delta-neutral. Each re-hedge — buying more stock to short after the stock rises (since $\Delta$ has increased), or buying back some of the short after the stock falls — locks in a small profit, because the long-gamma position means $V$ moved by <em>more</em> than $\Delta S$ in either direction. Summed over many re-hedges, this "gamma scalping" P&amp;L over a small time interval $dt$ is approximately:
+                    <div class="math-box-label">Remark - Gamma Trading P&amp;L from Re-Hedging</div>
+                    <p class="mb-0">Because $\Gamma > 0$, as the stock price moves the convertible's delta changes, and the delta-hedged position $\Pi = V - \Delta S$ acquires a small directional exposure that must be re-hedged to remain delta-neutral. Each re-hedge - buying more stock to short after the stock rises (since $\Delta$ has increased), or buying back some of the short after the stock falls - locks in a small profit, because the long-gamma position means $V$ moved by <em>more</em> than $\Delta S$ in either direction. Summed over many re-hedges, this "gamma scalping" P&amp;L over a small time interval $dt$ is approximately:
                     $$d\Pi_{\text{gamma}} \approx \frac{1}{2}\Gamma\,(dS)^2 - \theta\,dt$$
-                    where $(dS)^2$ reflects the realised variance of the stock over $dt$ and $\theta = -\partial V/\partial t$ is the convertible's time decay (the cost of holding the long-gamma position, analogous to theta on a long option). The position is profitable on average if the stock's <em>realised</em> volatility exceeds the volatility <em>implied</em> by the convertible's market price — i.e. if $\frac{1}{2}\Gamma \,\sigma^2_{\text{realised}} > \theta$ (with $\theta$ itself increasing in $\sigma_{\text{implied}}$), which is the core thesis of convertible arbitrage: that convertibles' embedded optionality is priced cheap relative to the stock's subsequent realised volatility.</p>
+                    where $(dS)^2$ reflects the realised variance of the stock over $dt$ and $\theta = -\partial V/\partial t$ is the convertible's time decay (the cost of holding the long-gamma position, analogous to theta on a long option). The position is profitable on average if the stock's <em>realised</em> volatility exceeds the volatility <em>implied</em> by the convertible's market price - i.e. if $\frac{1}{2}\Gamma \,\sigma^2_{\text{realised}} > \theta$ (with $\theta$ itself increasing in $\sigma_{\text{implied}}$), which is the core thesis of convertible arbitrage: that convertibles' embedded optionality is priced cheap relative to the stock's subsequent realised volatility.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example: Gamma Scalping</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — One Day of Gamma Trading</div>
+                    <div class="math-box-label">Example - One Day of Gamma Trading</div>
                     <p>Suppose a convertible has $C_r = 20$, and at the start of the day the stock is at $S_0 = \$50$ with the convertible's delta $\Delta_0 = 10$ shares (i.e. $\Delta_0/C_r = 0.5$, a hybrid convertible). The arbitrageur holds one convertible and is short $10$ shares, so $\Pi_0 = V_0 - 10\times 50 = V_0 - 500$.</p>
                     <p>During the day, the stock rises to $S_1 = \$52$. The convertible's delta increases (since $\Gamma>0$) to $\Delta_1 = 10.8$ shares. To restore delta-neutrality, the arbitrageur sells an additional $0.8$ shares short at $\$52$, receiving $0.8 \times 52 = \$41.60$.</p>
                     <p>Later the stock falls back to $S_2 = \$49$ (a 1-point net move below the original $\$50$, but with intraday volatility of $\pm 2$ realised). The delta falls back toward $\Delta_2 \approx 9.6$ shares; the arbitrageur buys back $1.2$ shares (from $10.8$ to $9.6$) at $\$49$, paying $1.2\times 49 = \$58.80$.</p>
-                    <p class="mb-0">Net cash from the two re-hedges: $+\$41.60 - \$58.80 = -\$17.20$ — at first glance a loss on the hedging trades alone. However, the convertible's <em>value</em> $V$ moved by more than $\Delta \times \Delta S$ would suggest over this round trip, precisely because of its positive convexity: the gain on $V$ from the round trip in $S$ (which ends close to where it started, at $\$49$ vs $\$50$) exceeds the $\$17.20$ hedging cost whenever the realised intraday volatility (the $\$50 \to \$52 \to \$49$ swing) is large relative to what the convertible's price implies. This is the gamma-scalping mechanism: frequent re-hedging against a long-gamma position converts realised volatility into P&amp;L, net of the convertible's time decay $\theta\,dt$.</p>
+                    <p class="mb-0">Net cash from the two re-hedges: $+\$41.60 - \$58.80 = -\$17.20$ - at first glance a loss on the hedging trades alone. However, the convertible's <em>value</em> $V$ moved by more than $\Delta \times \Delta S$ would suggest over this round trip, precisely because of its positive convexity: the gain on $V$ from the round trip in $S$ (which ends close to where it started, at $\$49$ vs $\$50$) exceeds the $\$17.20$ hedging cost whenever the realised intraday volatility (the $\$50 \to \$52 \to \$49$ swing) is large relative to what the convertible's price implies. This is the gamma-scalping mechanism: frequent re-hedging against a long-gamma position converts realised volatility into P&amp;L, net of the convertible's time decay $\theta\,dt$.</p>
                 </div>
 
                 <hr class="my-5">

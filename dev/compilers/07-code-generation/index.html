@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Code Generation</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Compilers</a>
+                <hr>
+                <a href="../01-overview-of-compilation-phases/" class="text-decoration-none toc-chapter-link"><strong>1.</strong> Overview of Compilation Phases</a>
+                <a href="../02-lexical-analysis/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> Lexical Analysis</a>
+                <a href="../03-parsing/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Parsing</a>
+                <a href="../04-semantic-analysis-and-type-checking/" class="text-decoration-none toc-chapter-link"><strong>4.</strong> Semantic Analysis and Type Checking</a>
+                <a href="../05-intermediate-representations/" class="text-decoration-none toc-chapter-link"><strong>5.</strong> Intermediate Representations</a>
+                <a href="../06-code-optimization/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Code Optimization</a>
+                <a href="../07-code-generation/" class="text-decoration-none toc-chapter-link toc-active"><strong>7.</strong> Code Generation</a>
+                <a href="../08-interpreters-jit-compilation-and-runtime-systems/" class="text-decoration-none toc-chapter-link"><strong>8.</strong> Interpreters, JIT Compilation, and Runtime Systems</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">Compilers</a> ›
+                <span>7. Code Generation</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">7. Code Generation</h1>
+
+                <p>After optimization (Chapter 6), the compiler's back end translates the intermediate representation into actual instructions for a specific target processor (Computer Architecture) — this chapter covers the major tasks involved in that final translation.</p>
+
+                <h2 class="mt-5 mb-3">Instruction Selection</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Instruction Selection</div>
+                    <p class="mb-0"><strong>Instruction selection</strong> chooses which target-architecture instructions (Chapter 1 of Computer Architecture) implement each IR operation — a task considerably more involved on CISC architectures with many possible, differently-priced ways to express the same computation (Chapter 1 of Computer Architecture), often approached by matching IR patterns against a library of known instruction sequences and selecting the lowest-cost matching option.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Register Allocation</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Register Allocation</div>
+                    <p class="mb-0"><strong>Register allocation</strong> assigns the (typically far more numerous) temporary values used in the IR to the processor's small, fixed number of physical registers (Chapter 1 of Computer Architecture) — a classic approach models this as a <strong>graph coloring</strong> problem, where temporaries needed simultaneously ("interfering" with each other) must be assigned different registers, with <strong>spilling</strong> (temporarily storing a value in main memory instead) required whenever there aren't enough physical registers to go around.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Instruction Scheduling</h2>
+
+                <p><strong>Instruction scheduling</strong> reorders generated instructions (while preserving the program's correctness and data dependencies) to better exploit the target processor's pipeline (Chapter 3 of Computer Architecture) — for instance, separating a load instruction from the instruction that immediately uses its result, giving the memory access more time to complete before that result is actually needed, reducing pipeline stalls.</p>
+
+                <h2 class="mt-5 mb-3">Calling Conventions</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Calling Convention</div>
+                    <p class="mb-0">A <strong>calling convention</strong> specifies precisely how function calls are implemented at the machine level — which registers hold arguments and return values, how the stack is used for a function's local variables and any spilled register values (above), and whose responsibility it is to preserve which registers across a call — a convention that must be followed consistently by every piece of code (from every source language and even every compiler) that needs to correctly call into, or be called from, other compiled code.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Assembly and Object Code</h2>
+
+                <p>Code generation typically produces either human-readable assembly (further processed by a separate assembler into machine code) or object code directly — machine instructions along with the symbol and relocation information a <strong>linker</strong> needs to combine multiple separately compiled files (and any required libraries) into a single final executable, resolving cross-file function and variable references in the process.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../06-code-optimization/" class="btn btn-outline-custom">&larr; 6. Code Optimization</a>
+                    <a href="../08-interpreters-jit-compilation-and-runtime-systems/" class="btn btn-custom">8. Interpreters, JIT Compilation, and Runtime Systems &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

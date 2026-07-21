@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -83,7 +83,7 @@
                 <p>A share of common stock represents a fractional ownership claim on a corporation. Shareholders are residual claimants: after the company meets all obligations to creditors and preferred shareholders, whatever remains belongs to common equity holders. This subordinated position implies higher risk than debt, compensated by participation in upside through capital appreciation and dividends.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Total Return</div>
+                    <div class="math-box-label">Definition - Total Return</div>
                     <p>The total return on a stock over a holding period $[t, t+\Delta t]$ comprises capital appreciation and dividend income:
                     $$R = \frac{S_{t+\Delta t} - S_t + D_{t, t+\Delta t}}{S_t}$$
                     where $S_t$ is the stock price at time $t$ and $D_{t,t+\Delta t}$ is the sum of dividends paid in the interval. The <em>price return</em> omits dividends; the <em>total return</em> includes them.</p>
@@ -94,7 +94,7 @@
                 <p>Dividends are cash distributions from a company to its shareholders, typically paid quarterly (US) or semi-annually (Europe, Asia). On the ex-dividend date, the stock price drops by approximately the dividend amount, all else equal. This drop is a mechanical consequence of the company transferring value to shareholders and is not a loss of wealth for the holder of a total return instrument.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Dividend Dates</div>
+                    <div class="math-box-label">Definition - Dividend Dates</div>
                     <p><strong>Declaration date:</strong> the board announces the dividend amount and relevant dates.</p>
                     <p><strong>Ex-dividend date:</strong> the first date on which a buyer of the stock does not receive the declared dividend. A holder must own the stock before this date to receive the dividend.</p>
                     <p><strong>Record date:</strong> the date on which the company's share register is checked to determine who receives the dividend. Typically one business day after ex-date.</p>
@@ -104,7 +104,7 @@
                 <p>For derivatives pricing, the treatment of dividends is crucial. A discrete dividend of amount $D$ paid at time $t_D$ causes a drop in the stock price from $S_{t_D^-}$ (just before ex-date) to $S_{t_D^+} \approx S_{t_D^-} - D$ (just after). Models must account for this when pricing options that span dividend dates, especially for short-dated options on high-dividend stocks.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Dividend Models</div>
+                    <div class="math-box-label">Remark - Dividend Models</div>
                     <p><strong>Continuous dividend yield:</strong> the stock pays dividends continuously at rate $q$. The stock price process becomes $dS = (r - q)S\,dt + \sigma S\,dW$ under the risk-neutral measure. This is convenient but unrealistic for individual stocks; it is a reasonable approximation for diversified indices.</p>
                     <p><strong>Discrete cash dividends:</strong> the stock pays known cash dividends $D_i$ at times $t_i$. The forward price is $F(0,T) = \left(S_0 - \sum_{t_i < T} D_i e^{-rt_i}\right)e^{rT}$. This is the standard model for single-stock derivatives.</p>
                     <p class="mb-0"><strong>Proportional dividends:</strong> dividends are a fixed proportion $\delta$ of the stock price at ex-date. The stock price drops by $\delta S_{t_i^-}$ at each ex-date. Under this model the lognormal dynamics are preserved, which is mathematically convenient.</p>
@@ -115,13 +115,13 @@
                 <p>Corporate actions are events that materially change a company's share structure. They require careful adjustment in derivatives pricing and risk management.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Stock Split and Reverse Split</div>
+                    <div class="math-box-label">Definition - Stock Split and Reverse Split</div>
                     <p>In an $n$-for-1 stock split, each existing share is replaced by $n$ new shares. The share price adjusts to $S/n$ and the number of shares outstanding multiplies by $n$, leaving total market capitalisation unchanged. Exchange-listed derivatives are adjusted by dividing the strike by $n$ and multiplying the contract multiplier by $n$.</p>
                     <p class="mb-0">A reverse split ($1$-for-$n$) is the opposite: $n$ shares are consolidated into one, the price multiplies by $n$, and the share count divides by $n$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Rights Issue</div>
+                    <div class="math-box-label">Definition - Rights Issue</div>
                     <p class="mb-0">A rights issue is an offering of new shares to existing shareholders at a discount to the market price. The theoretical ex-rights price (TERP) is:
                     $$\text{TERP} = \frac{N \cdot S_0 + M \cdot P_{\text{issue}}}{N + M}$$
                     where $N$ is the number of existing shares, $M$ is the number of new shares offered, and $P_{\text{issue}}$ is the issue price. The value of each right is $S_0 - \text{TERP}$. Derivatives must be adjusted to account for the dilution effect.</p>
@@ -132,10 +132,10 @@
                 <p>Understanding how prices are formed in the equity market is important for assessing execution costs, interpreting price dynamics, and building realistic models.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Order Types and Price Formation</div>
+                    <div class="math-box-label">Remark - Order Types and Price Formation</div>
                     <p><strong>Limit order book:</strong> most equity exchanges operate a continuous limit order book, where buy limit orders (bids) and sell limit orders (offers/asks) are queued by price and time priority. The best bid and best offer form the <em>inside spread</em>, and a trade executes whenever a marketable order crosses the spread.</p>
                     <p><strong>Market impact:</strong> large orders move the price against the trader. A large buy order exhausts liquidity at the best offer and must walk up the book, resulting in average execution price above the mid. Market impact is the central concern of algorithmic execution and transaction cost analysis (TCA).</p>
-                    <p class="mb-0"><strong>Bid-ask spread decomposition:</strong> the spread compensates the market maker for: (1) inventory risk — the cost of holding an unwanted position; (2) adverse selection — the risk of trading against an informed counterparty; and (3) order processing costs. In liquid large-cap markets, spreads for major index constituents are typically 1-2 basis points of the stock price.</p>
+                    <p class="mb-0"><strong>Bid-ask spread decomposition:</strong> the spread compensates the market maker for: (1) inventory risk - the cost of holding an unwanted position; (2) adverse selection - the risk of trading against an informed counterparty; and (3) order processing costs. In liquid large-cap markets, spreads for major index constituents are typically 1-2 basis points of the stock price.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Return Dynamics and the Lognormal Model</h2>
@@ -143,7 +143,7 @@
                 <p>The standard quantitative model for stock price dynamics is geometric Brownian motion (GBM), which implies that log-returns are normally distributed and stock prices are lognormally distributed.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Geometric Brownian Motion</div>
+                    <div class="math-box-label">Definition - Geometric Brownian Motion</div>
                     <p>Under the physical (real-world) measure $\mathbb{P}$, the stock price $S_t$ follows:
                     $$dS_t = \mu S_t\,dt + \sigma S_t\,dW_t$$
                     where $\mu$ is the drift (expected return), $\sigma > 0$ is the volatility, and $W_t$ is a standard Brownian motion. By Itô's lemma, the log-price satisfies:
@@ -151,10 +151,10 @@
                     so that $\ln(S_T/S_0) \sim \mathcal{N}\!\left((\mu - \sigma^2/2)T,\, \sigma^2 T\right)$.</p>
                 </div>
 
-                <p>The $-\sigma^2/2$ Itô correction is sometimes called the variance drain or volatility drag: it represents the gap between the arithmetic mean return $\mu$ and the geometric mean return $\mu - \sigma^2/2$. For a portfolio with 20% annual volatility, the drag amounts to 2% per year — a significant compounding effect over long horizons.</p>
+                <p>The $-\sigma^2/2$ Itô correction is sometimes called the variance drain or volatility drag: it represents the gap between the arithmetic mean return $\mu$ and the geometric mean return $\mu - \sigma^2/2$. For a portfolio with 20% annual volatility, the drag amounts to 2% per year - a significant compounding effect over long horizons.</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Volatility Drag</div>
+                    <div class="math-box-label">Example - Volatility Drag</div>
                     <p>A stock with $\mu = 10\%$ and $\sigma = 20\%$ per year has a geometric mean return of $10\% - \frac{(0.20)^2}{2} = 8\%$ per year. Over 10 years, the expected stock price is $S_0 e^{0.10 \times 10} = 2.718 S_0$, while the median stock price (which grows at the geometric mean) is $S_0 e^{0.08 \times 10} = 2.226 S_0$.</p>
                     <p class="mb-0">The difference arises because the distribution of $S_T$ is positively skewed: extreme upside outcomes pull the mean above the median.</p>
                 </div>

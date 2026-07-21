@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -131,38 +131,38 @@
                 <p>Complexity classes formalise the intuitive notion of "easy" vs "hard" problems. The classes $P$ and $NP$ are defined in terms of a computational model (Turing machines); the definitions are robust to reasonable model changes.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.1 — The Class P</div>
+                    <div class="math-box-label">Definition 7.1.1 - The Class P</div>
                     <p class="mb-0">$P$ (polynomial time) is the class of <strong>decision problems</strong> (yes/no answer) that can be solved by a deterministic Turing machine in $O(n^k)$ time for some constant $k$, where $n$ is the input size. Examples: sorting (is array sorted?), graph connectivity, primality (AKS algorithm, 2002), 2-SAT, bipartite matching.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.2 — The Class NP</div>
+                    <div class="math-box-label">Definition 7.1.2 - The Class NP</div>
                     <p>$NP$ (nondeterministic polynomial time) is the class of decision problems for which a "yes" instance has a <strong>certificate</strong> (witness) that can be <strong>verified</strong> in polynomial time.</p>
                     <p>Equivalently: solvable by a nondeterministic Turing machine in polynomial time.</p>
                     <p class="mb-0">Examples: 3-SAT (certificate: a satisfying assignment), Hamiltonian cycle (certificate: the cycle), subset sum (certificate: the subset), graph $k$-colouring for $k \ge 3$ (certificate: the colouring).</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.1.3 — $P \subseteq NP$</div>
+                    <div class="math-box-label">Theorem 7.1.3 - $P \subseteq NP$</div>
                     <p class="mb-0">Every problem in $P$ is also in $NP$: given a "yes" instance, the algorithm itself serves as verifier (no certificate needed). Whether $P = NP$ is the Millennium Prize Problem (Clay Mathematics Institute, $1 million prize). The overwhelming consensus is $P \ne NP$, but no proof exists.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">co-NP and the Complexity Hierarchy</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.4 — co-NP</div>
+                    <div class="math-box-label">Definition 7.1.4 - co-NP</div>
                     <p>$\text{co-NP}$ is the class of problems whose <em>complement</em> is in $NP$: "no" instances have polynomial-size certificates. Example: TAUTOLOGY (is every assignment satisfying?), graph non-Hamiltonicity.</p>
                     <p class="mb-0">PRIMES (is $n$ prime?) is in $P \cap \text{NP} \cap \text{co-NP}$ (AKS gave the P membership in 2002; it was in co-NP classically via Pratt certificates, and in NP via compositeness witnesses). It is believed $NP \ne \text{co-NP}$, which would imply $P \ne NP$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.5 — NP-Hard and NP-Complete</div>
+                    <div class="math-box-label">Definition 7.1.5 - NP-Hard and NP-Complete</div>
                     <p>A problem $X$ is <strong>NP-hard</strong> if every problem in $NP$ can be reduced to $X$ in polynomial time (i.e., $X$ is at least as hard as the hardest NP problem). $X$ may not be a decision problem, and need not be in $NP$.</p>
                     <p class="mb-0">$X$ is <strong>NP-complete</strong> if $X \in NP$ and $X$ is NP-hard. NP-complete problems are the hardest problems in NP. If any NP-complete problem is in $P$, then $P = NP$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.1.6 — NP Problems Landscape</div>
+                    <div class="math-box-label">Example 7.1.6 - NP Problems Landscape</div>
                     <p class="mb-0">Known to be in $P$: shortest paths, MST, network flow, 2-SAT, linear programming. Known NP-complete: 3-SAT, independent set, vertex cover, clique, graph 3-colouring, Hamiltonian cycle, TSP (decision), subset sum, knapsack (decision). Believed to be in $NP \cap \text{co-NP}$ but not known to be in $P$: factoring integers (the basis of RSA security).</p>
                 </div>
 

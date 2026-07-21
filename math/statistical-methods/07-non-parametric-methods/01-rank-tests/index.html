@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,45 +128,45 @@
                 <p>Rank-based tests replace the original observations with their ranks, thereby eliminating dependence on the underlying distribution. They are valid for any continuous distribution and are robust to outliers.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 7.1.1 — Why Non-Parametric?</div>
-                    <p class="mb-0">Parametric tests (e.g.\ the $t$-test) assume a specific distributional form. When this assumption fails — small samples from skewed distributions, ordinal data, or contaminated data — rank tests provide valid inference without inflating Type I error. The cost is lower power when the parametric assumption holds: rank tests are generally somewhat less efficient than their parametric counterparts under normality.</p>
+                    <div class="math-box-label">Remark 7.1.1 - Why Non-Parametric?</div>
+                    <p class="mb-0">Parametric tests (e.g.\ the $t$-test) assume a specific distributional form. When this assumption fails - small samples from skewed distributions, ordinal data, or contaminated data - rank tests provide valid inference without inflating Type I error. The cost is lower power when the parametric assumption holds: rank tests are generally somewhat less efficient than their parametric counterparts under normality.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.2 — Sign Test</div>
+                    <div class="math-box-label">Definition 7.1.2 - Sign Test</div>
                     <p class="mb-0">For a one-sample test of $H_0: \mathrm{median} = m_0$, let $S^+ = \#\{i : X_i > m_0\}$. Under $H_0$, $S^+ \sim \mathrm{Bin}(n, 1/2)$ (ties discarded). The <strong>sign test</strong> rejects for extreme values of $S^+$. It uses only the sign of $X_i - m_0$, discarding magnitude information, and is the most distribution-free but least powerful location test.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.3 — Wilcoxon Signed-Rank Test</div>
+                    <div class="math-box-label">Definition 7.1.3 - Wilcoxon Signed-Rank Test</div>
                     <p>For paired data or one-sample location, rank the absolute differences $|D_i| = |X_i - m_0|$ and let $W^+ = \sum_{D_i > 0} R_i$ where $R_i$ is the rank of $|D_i|$. Under $H_0$ (symmetric distribution about $m_0$) with no ties:
                     $$E[W^+] = \frac{n(n+1)}{4}, \qquad \mathrm{Var}(W^+) = \frac{n(n+1)(2n+1)}{24}.$$</p>
                     <p class="mb-0">For large $n$, $W^+$ is approximately normal. The signed-rank test uses both sign and magnitude and is more powerful than the sign test for symmetric distributions.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.4 — Mann-Whitney U Test (Two-Sample)</div>
+                    <div class="math-box-label">Definition 7.1.4 - Mann-Whitney U Test (Two-Sample)</div>
                     <p>For independent samples $X_1,\ldots,X_m$ and $Y_1,\ldots,Y_n$, let $U = \sum_{i,j}\mathbf{1}[X_i > Y_j]$ (number of pairs where $X$ exceeds $Y$). Under $H_0: F_X = F_Y$:
                     $$E[U] = \frac{mn}{2}, \qquad \mathrm{Var}(U) = \frac{mn(m+n+1)}{12}.$$</p>
                     <p class="mb-0">The test is equivalent to the Wilcoxon rank-sum test. Under $H_1$, $U/mn$ estimates $P(X > Y)$, a natural measure of stochastic dominance. Large-sample normal approximation applies for $m, n \ge 10$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.1.5 — Kruskal-Wallis Test ($k$ Samples)</div>
+                    <div class="math-box-label">Theorem 7.1.5 - Kruskal-Wallis Test ($k$ Samples)</div>
                     <p>The non-parametric analogue of one-way ANOVA. Rank all $N = \sum n_i$ observations jointly. Let $\bar{R}_i$ be the mean rank in group $i$. Under $H_0$ (all $k$ populations identical):
                     $$H = \frac{12}{N(N+1)}\sum_{i=1}^k n_i\!\left(\bar{R}_i - \frac{N+1}{2}\right)^2 \xrightarrow{d} \chi^2_{k-1}.$$</p>
                     <p class="mb-0">Post-hoc pairwise Wilcoxon tests with Bonferroni correction identify which groups differ.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.6 — Spearman Rank Correlation</div>
+                    <div class="math-box-label">Definition 7.1.6 - Spearman Rank Correlation</div>
                     <p>The <strong>Spearman rank correlation</strong> between $X$ and $Y$ is the Pearson correlation of their ranks $R_i = \mathrm{rank}(X_i)$ and $Q_i = \mathrm{rank}(Y_i)$:
                     $$\rho_s = 1 - \frac{6\sum_{i=1}^n d_i^2}{n(n^2-1)}, \quad d_i = R_i - Q_i.$$</p>
                     <p class="mb-0">$\rho_s$ measures monotone association rather than linear association. Under $H_0:\rho_s = 0$, $T = \rho_s\sqrt{(n-2)/(1-\rho_s^2)} \approx t_{n-2}$ for $n \ge 10$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 7.1.7 — Asymptotic Relative Efficiency</div>
+                    <div class="math-box-label">Remark 7.1.7 - Asymptotic Relative Efficiency</div>
                     <p class="mb-0">The <strong>asymptotic relative efficiency (ARE)</strong> of a non-parametric test $T_1$ relative to a parametric test $T_2$ is the limiting ratio of sample sizes needed to achieve the same power. For the Wilcoxon signed-rank test vs.\ the $t$-test under normality, $\mathrm{ARE} = 3/\pi \approx 0.955$: remarkably, almost no efficiency is lost by using ranks when the data are normal. For heavy-tailed or skewed distributions, the ARE can exceed 1, meaning the rank test is actually more powerful.</p>
                 </div>
 

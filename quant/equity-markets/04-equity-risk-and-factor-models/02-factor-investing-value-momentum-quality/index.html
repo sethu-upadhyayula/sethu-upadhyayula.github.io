@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,20 +80,20 @@
             <article>
                 <h1 class="text-accent mb-4">4.2 Factor Investing: Value, Momentum, and Quality</h1>
 
-                <p>The single-factor CAPM of Section 4.1 predicts that market beta alone should explain differences in expected returns across stocks. Decades of empirical research, however, have documented systematic patterns in average returns that are not explained by beta — patterns associated with characteristics such as valuation ratios, recent price momentum, and profitability. These patterns motivated the development of multi-factor models, which remain the dominant analytical framework in quantitative equity investing today.</p>
+                <p>The single-factor CAPM of Section 4.1 predicts that market beta alone should explain differences in expected returns across stocks. Decades of empirical research, however, have documented systematic patterns in average returns that are not explained by beta - patterns associated with characteristics such as valuation ratios, recent price momentum, and profitability. These patterns motivated the development of multi-factor models, which remain the dominant analytical framework in quantitative equity investing today.</p>
 
                 <h2 class="mt-5 mb-3">The Fama-French Factor Model</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Fama-French Three-Factor Model</div>
+                    <div class="math-box-label">Theorem - Fama-French Three-Factor Model</div>
                     <p>Fama and French extended CAPM by adding two additional factors that capture return patterns associated with firm size and valuation:
                     $$R_i - r_f = \alpha_i + \beta_{i,M}(R_m - r_f) + \beta_{i,SMB} \cdot SMB + \beta_{i,HML} \cdot HML + \epsilon_i$$
                     where $SMB$ ("Small Minus Big") is the return on a portfolio long small-capitalisation stocks and short large-capitalisation stocks, and $HML$ ("High Minus Low") is the return on a portfolio long stocks with high book-to-market ratios (value stocks) and short stocks with low book-to-market ratios (growth stocks).</p>
-                    <p class="mb-0">A stock's exposure to these factors ($\beta_{i,SMB}$, $\beta_{i,HML}$) helps explain cross-sectional differences in average returns that the market factor $\beta_{i,M}$ alone leaves unexplained — small-cap and value stocks have historically earned higher average returns than the single-factor CAPM predicts, and this model attributes that difference to compensated risk exposures rather than mispricing.</p>
+                    <p class="mb-0">A stock's exposure to these factors ($\beta_{i,SMB}$, $\beta_{i,HML}$) helps explain cross-sectional differences in average returns that the market factor $\beta_{i,M}$ alone leaves unexplained - small-cap and value stocks have historically earned higher average returns than the single-factor CAPM predicts, and this model attributes that difference to compensated risk exposures rather than mispricing.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Constructing a Factor Portfolio</div>
+                    <div class="math-box-label">Remark - Constructing a Factor Portfolio</div>
                     <p class="mb-0">A factor such as $HML$ is typically constructed by sorting all stocks in an investable universe by a characteristic (e.g. book-to-market ratio), forming a portfolio that goes long the top decile (or tercile) and short the bottom decile, often within size or sector buckets to isolate the factor of interest from correlated characteristics. The resulting long-short portfolio is approximately market-neutral (zero net market exposure if both legs have similar beta) and its return series is the factor return used in the regression above.</p>
                 </div>
 
@@ -102,8 +102,8 @@
                 <p>Subsequent research extended the Fama-French framework with a fourth factor capturing one of the most robust empirical anomalies in equity markets: momentum.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Momentum Factor (UMD / WML)</div>
-                    <p class="mb-0">The momentum factor, often denoted $UMD$ ("Up Minus Down") or $WML$ ("Winners Minus Losers"), is constructed by ranking stocks on their cumulative return over a lookback period (commonly the past 12 months, excluding the most recent month to avoid short-term reversal effects) and going long the top-performing stocks while shorting the worst-performing stocks. Stocks that have recently outperformed tend, on average, to continue outperforming over the subsequent few months — a pattern directly at odds with the simplest forms of market efficiency, which is part of why momentum has attracted so much academic and practitioner attention.</p>
+                    <div class="math-box-label">Definition - Momentum Factor (UMD / WML)</div>
+                    <p class="mb-0">The momentum factor, often denoted $UMD$ ("Up Minus Down") or $WML$ ("Winners Minus Losers"), is constructed by ranking stocks on their cumulative return over a lookback period (commonly the past 12 months, excluding the most recent month to avoid short-term reversal effects) and going long the top-performing stocks while shorting the worst-performing stocks. Stocks that have recently outperformed tend, on average, to continue outperforming over the subsequent few months - a pattern directly at odds with the simplest forms of market efficiency, which is part of why momentum has attracted so much academic and practitioner attention.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Quality and Low Volatility</h2>
@@ -111,17 +111,17 @@
                 <p>Two further factors that have become standard in commercial factor products are quality and low volatility (or "betting against beta").</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Quality and Low-Volatility Factors</div>
+                    <div class="math-box-label">Definition - Quality and Low-Volatility Factors</div>
                     <p><strong>Quality:</strong> a composite factor typically combining measures of profitability (e.g. return on equity, gross margins), earnings stability, low leverage, and low accruals (a proxy for earnings manipulation). A long-short quality portfolio is long companies with strong, stable fundamentals and short companies with weak or deteriorating fundamentals.</p>
-                    <p class="mb-0"><strong>Low volatility / Betting Against Beta (BAB):</strong> portfolios constructed to be long low-beta (or low-volatility) stocks and short high-beta stocks, often leveraged so that the low-beta leg matches the market exposure of the high-beta leg. Empirically, low-beta stocks have delivered higher risk-adjusted returns than CAPM predicts — a direct challenge to the security market line of Section 4.1, sometimes attributed to leverage-constrained investors bidding up high-beta stocks to obtain leveraged-like exposure without borrowing.</p>
+                    <p class="mb-0"><strong>Low volatility / Betting Against Beta (BAB):</strong> portfolios constructed to be long low-beta (or low-volatility) stocks and short high-beta stocks, often leveraged so that the low-beta leg matches the market exposure of the high-beta leg. Empirically, low-beta stocks have delivered higher risk-adjusted returns than CAPM predicts - a direct challenge to the security market line of Section 4.1, sometimes attributed to leverage-constrained investors bidding up high-beta stocks to obtain leveraged-like exposure without borrowing.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Factor Portfolio Construction</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — From Academic Factors to Investable Products</div>
-                    <p><strong>Long-short vs long-only:</strong> academic factor definitions (like $HML$ and $UMD$) are long-short, dollar- and often beta-neutral portfolios designed to isolate a pure factor return. Most investable factor products, by contrast, are long-only "tilts" — for example, a value ETF that overweights cheap stocks and underweights expensive ones relative to a cap-weighted benchmark, while remaining fully invested.</p>
-                    <p class="mb-0"><strong>Multi-factor combination:</strong> rather than holding separate single-factor portfolios, many strategies combine factor scores (e.g. a composite of value, momentum, and quality z-scores) into a single ranking, aiming to capture the diversification benefit of factors that are imperfectly correlated — value and momentum, in particular, have historically exhibited negative correlation, since momentum tends to do well precisely when value is underperforming and vice versa.</p>
+                    <div class="math-box-label">Remark - From Academic Factors to Investable Products</div>
+                    <p><strong>Long-short vs long-only:</strong> academic factor definitions (like $HML$ and $UMD$) are long-short, dollar- and often beta-neutral portfolios designed to isolate a pure factor return. Most investable factor products, by contrast, are long-only "tilts" - for example, a value ETF that overweights cheap stocks and underweights expensive ones relative to a cap-weighted benchmark, while remaining fully invested.</p>
+                    <p class="mb-0"><strong>Multi-factor combination:</strong> rather than holding separate single-factor portfolios, many strategies combine factor scores (e.g. a composite of value, momentum, and quality z-scores) into a single ranking, aiming to capture the diversification benefit of factors that are imperfectly correlated - value and momentum, in particular, have historically exhibited negative correlation, since momentum tends to do well precisely when value is underperforming and vice versa.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Factor Crowding Risk</h2>
@@ -129,8 +129,8 @@
                 <p>As factor investing has grown from an academic curiosity into a multi-trillion-dollar segment of the asset management industry, a new risk has emerged: the possibility that the very popularity of a factor strategy degrades its future performance and creates correlated drawdowns across seemingly unrelated funds.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Mechanics of Crowding</div>
-                    <p class="mb-0">If a large number of funds independently implement similar factor tilts (e.g. many funds simultaneously long "cheap, high-quality, positive-momentum" stocks), their portfolios become highly correlated even though the funds may have no formal relationship. If a shock causes many of these funds to need to reduce exposure simultaneously — for example, due to a margin call, a redemption wave, or a risk-model-driven deleveraging — the resulting coordinated unwinding can cause the factor itself to experience a sharp, temporary reversal, as happened during the "quant quake" of August 2007, when many quantitative equity strategies experienced unusually large, correlated losses over just a few days despite no obvious change in the underlying fundamentals of the stocks involved. Crowding risk is difficult to observe directly — it is a property of aggregate positioning across many market participants — but can be partially inferred from the recent volatility and correlation behaviour of factor returns themselves.</p>
+                    <div class="math-box-label">Remark - The Mechanics of Crowding</div>
+                    <p class="mb-0">If a large number of funds independently implement similar factor tilts (e.g. many funds simultaneously long "cheap, high-quality, positive-momentum" stocks), their portfolios become highly correlated even though the funds may have no formal relationship. If a shock causes many of these funds to need to reduce exposure simultaneously - for example, due to a margin call, a redemption wave, or a risk-model-driven deleveraging - the resulting coordinated unwinding can cause the factor itself to experience a sharp, temporary reversal, as happened during the "quant quake" of August 2007, when many quantitative equity strategies experienced unusually large, correlated losses over just a few days despite no obvious change in the underlying fundamentals of the stocks involved. Crowding risk is difficult to observe directly - it is a property of aggregate positioning across many market participants - but can be partially inferred from the recent volatility and correlation behaviour of factor returns themselves.</p>
                 </div>
 
                 <hr class="my-5">

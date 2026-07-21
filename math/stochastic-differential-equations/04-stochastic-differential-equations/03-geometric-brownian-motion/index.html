@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,14 +128,14 @@
                 <p>Geometric Brownian motion (GBM) is the simplest SDE in which the diffusion coefficient is proportional to the current value of the process. It ensures positivity and gives log-normally distributed increments, making it the foundation of the Black-Scholes model.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.3.1 — Geometric Brownian Motion</div>
+                    <div class="math-box-label">Definition 4.3.1 - Geometric Brownian Motion</div>
                     <p class="mb-0">A process $S_t$ is a <strong>geometric Brownian motion</strong> with drift $\mu \in \mathbb{R}$ and volatility $\sigma > 0$ if it satisfies</p>
                     $$dS_t = \mu S_t\,dt + \sigma S_t\,dW_t, \quad S_0 = S_0 > 0.$$
                     This is the homogeneous linear SDE with $a = \mu$, $c = \sigma$, $b = d = 0$.
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.3.2 — Explicit Solution of GBM</div>
+                    <div class="math-box-label">Theorem 4.3.2 - Explicit Solution of GBM</div>
                     <p>The unique strong solution is</p>
                     $$S_t = S_0 \exp\!\left(\left(\mu - \frac{\sigma^2}{2}\right)t + \sigma W_t\right).$$
                     <p class="mb-0">In particular, $S_t > 0$ for all $t \geq 0$ almost surely.</p>
@@ -152,7 +152,7 @@
                 <h2 class="mt-5 mb-3">Log-Normal Distribution</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 4.3.3 — Distribution of $S_t$</div>
+                    <div class="math-box-label">Proposition 4.3.3 - Distribution of $S_t$</div>
                     <p>Since $W_t \sim \mathcal{N}(0,t)$, we have $\log(S_t/S_0) \sim \mathcal{N}((\mu-\sigma^2/2)t,\, \sigma^2 t)$. Therefore $S_t$ has a <strong>log-normal distribution</strong>:</p>
                     $$S_t \sim \mathrm{LogNormal}\!\left(\log S_0 + \left(\mu - \tfrac{\sigma^2}{2}\right)t,\; \sigma^2 t\right).$$
                     The moments are:
@@ -166,14 +166,14 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 4.3.4 — Itô Drift vs. Geometric Growth</div>
+                    <div class="math-box-label">Remark 4.3.4 - Itô Drift vs. Geometric Growth</div>
                     <p class="mb-0">The parameter $\mu$ in the SDE is the <em>instantaneous expected return</em>: $\mathbb{E}[dS]/S = \mu\,dt$. However, the <em>median</em> and <em>most probable growth rate</em> are $(\mu - \sigma^2/2)t$, which is less. The gap $\sigma^2/2$ is the Itô correction. In the Black-Scholes model, the stock price $S_t$ under the physical measure satisfies GBM, and under the risk-neutral measure, $\mu$ is replaced by the risk-free rate $r$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Relevance to Black-Scholes</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.3.5 — Black-Scholes Pricing</div>
+                    <div class="math-box-label">Example 4.3.5 - Black-Scholes Pricing</div>
                     <p>Under the risk-neutral measure $\mathbb{Q}$, the stock price satisfies $dS = rS\,dt + \sigma S\,d\tilde{W}_t$ where $\tilde{W}_t$ is a $\mathbb{Q}$-Brownian motion. The price of a European call option with strike $K$ and maturity $T$ is</p>
                     $$C(t, S) = e^{-r(T-t)}\mathbb{E}^{\mathbb{Q}}\!\left[(S_T - K)^+\,\big|\,S_t = S\right].$$
                     Substituting $S_T = S e^{(r-\sigma^2/2)(T-t)+\sigma\tilde{W}_{T-t}}$ and computing the expectation yields the Black-Scholes formula:
@@ -182,7 +182,7 @@
                 </div>
 
                 <div class="math-box corollary">
-                    <div class="math-box-label">Corollary 4.3.6 — Itô SDE for the Log-Price</div>
+                    <div class="math-box-label">Corollary 4.3.6 - Itô SDE for the Log-Price</div>
                     <p class="mb-0">Let $Y_t = \log S_t$. Then $Y_t$ satisfies the linear (additive-noise) SDE</p>
                     $$dY_t = \left(\mu - \frac{\sigma^2}{2}\right)dt + \sigma\,dW_t,$$
                     which is arithmetic Brownian motion with constant drift and volatility. Simulation and estimation of GBM is therefore equivalent to working with the log-price process.

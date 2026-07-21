@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -55,12 +55,12 @@
 
                 <h2 class="mt-5 mb-3">Stability Regions</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Stability Region</div>
+                    <div class="math-box-label">Definition - Stability Region</div>
                     <p class="mb-0">The <strong>stability region</strong> $\mathcal{S}$ of a one-step method is the set of $z = h\lambda \in \mathbb{C}$ for which the method, applied to $y' = \lambda y$, produces $|y_{n+1}/y_n| = |R(z)| \le 1$. For the test equation the exact solution satisfies $|y(t_n)| = e^{(\text{Re}\,\lambda)t_n} \to 0$ iff $\text{Re}\,\lambda < 0$.</p>
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Stability Functions</div>
+                    <div class="math-box-label">Proposition - Stability Functions</div>
                     <p>The stability functions of the key explicit methods are Taylor polynomials of $e^z$:</p>
                     <ul class="mb-0">
                         <li>Forward Euler: $R(z) = 1+z$. Stability region: disk $|1+z|\le 1$ (radius 1, centred at $-1$). On the negative real axis: $z \in [-2,0]$, so $h \le 2/|\lambda|$.</li>
@@ -71,31 +71,31 @@
 
                 <h2 class="mt-5 mb-3">A-Stability</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — A-Stability</div>
+                    <div class="math-box-label">Definition - A-Stability</div>
                     <p class="mb-0">A method is <strong>A-stable</strong> if its stability region contains the entire open left half-plane $\mathbb{C}^- = \{z : \text{Re}\,z < 0\}$. An A-stable method can take any step size $h>0$ and still produce bounded numerical solutions whenever $\text{Re}\,\lambda < 0$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Dahlquist Barrier</div>
+                    <div class="math-box-label">Theorem - Dahlquist Barrier</div>
                     <p class="mb-0">No explicit linear multistep method is A-stable. Among implicit linear multistep methods, A-stable methods have order at most 2. The most accurate A-stable linear multistep method is the trapezoidal rule (Crank-Nicolson), which is second-order and A-stable.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Stiff Equations</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Stiffness</div>
+                    <div class="math-box-label">Definition - Stiffness</div>
                     <p>A system $\mathbf{y}' = J\mathbf{y}$ (or its linearisation) is <strong>stiff</strong> if its Jacobian $J$ has eigenvalues $\lambda_1, \ldots, \lambda_m$ with widely separated magnitudes: $\max_i |\text{Re}\,\lambda_i| \gg \min_i |\text{Re}\,\lambda_i|$ (all with $\text{Re}\,\lambda_i < 0$).</p>
                     <p class="mb-0">The <strong>stiffness ratio</strong> $S = \max|\text{Re}\,\lambda_i|/\min|\text{Re}\,\lambda_i|$ measures severity. For an explicit method with stability boundary at $|z_{\max}|$, stability requires $h \le |z_{\max}|/\max|\lambda_i|$, forcing tiny steps even when accuracy would permit large $h$ (governed by $\min|\lambda_i|$).</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Chemical Kinetics</div>
+                    <div class="math-box-label">Example - Chemical Kinetics</div>
                     <p>Robertson's equations ($y_1' = -0.04y_1 + 10^4 y_2 y_3$, etc.) have eigenvalues ranging from $\sim -0.04$ to $\sim -10^{10}$, a stiffness ratio of $\sim 10^{11}$. An explicit method would require $h \lesssim 10^{-10}$ throughout, while the solution evolves on a time scale of $10^{10}$: $\sim 10^{20}$ steps. Implicit methods reduce this to a few thousand steps.</p>
                     <p class="mb-0">Other stiff problems: electrical circuits with fast and slow RC time constants, atmospheric chemistry, structural mechanics with high-frequency vibrations.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Implicit Methods for Stiff Problems</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Crank-Nicolson and DIRK Methods</div>
+                    <div class="math-box-label">Definition - Crank-Nicolson and DIRK Methods</div>
                     <p><strong>Crank-Nicolson</strong> (trapezoidal rule):
                     $$y_{n+1} = y_n + \frac{h}{2}\bigl(f(t_n,y_n)+f(t_{n+1},y_{n+1})\bigr).$$
                     Second-order accurate and A-stable.</p>
@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — BDF Methods</div>
+                    <div class="math-box-label">Definition - BDF Methods</div>
                     <p>The <strong>Backward Differentiation Formulae (BDF)</strong> of order $k$ use a $k$-step interpolating polynomial to approximate $y'$:
                     $$\sum_{j=0}^k \alpha_j y_{n+j} = h\,\beta_0 f(t_{n+k},y_{n+k}).$$
                     Only the new value $y_{n+k}$ appears on the right, making these implicit one-derivative methods.</p>

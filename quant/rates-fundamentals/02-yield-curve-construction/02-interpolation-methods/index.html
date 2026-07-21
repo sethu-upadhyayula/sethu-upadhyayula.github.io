@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,11 +80,11 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Interpolation Methods</h1>
 
-                <p>Bootstrapping (Section 2.1) determines discount factors only at a discrete set of <em>pillar</em> dates — the maturities of the input instruments. To price a cash flow on any other date, and to compute forward rates between pillars, the curve must be interpolated. The choice of interpolation scheme is far from a cosmetic detail: it determines the shape of the forward rate curve, which directly affects the pricing of any instrument with cash flows between pillars.</p>
+                <p>Bootstrapping (Section 2.1) determines discount factors only at a discrete set of <em>pillar</em> dates - the maturities of the input instruments. To price a cash flow on any other date, and to compute forward rates between pillars, the curve must be interpolated. The choice of interpolation scheme is far from a cosmetic detail: it determines the shape of the forward rate curve, which directly affects the pricing of any instrument with cash flows between pillars.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Interpolation on a Curve</div>
-                    <p class="mb-0">Given pillar dates $T_0 < T_1 < \cdots < T_n$ with known discount factors $P(0,T_i)$, an <em>interpolation scheme</em> defines a continuous (and ideally differentiable) curve $T \mapsto P(0,T)$ for $T \in (T_{i-1}, T_i)$. Equivalently, since $P$, the spot rate $r(0,T) = -\ln P(0,T)/T$, and instantaneous forward rates $f(0,T) = -\partial_T \ln P(0,T)$ are related bijectively, interpolation may be applied to any of these representations — and the choice of <em>which</em> quantity is interpolated linearly materially changes the result.</p>
+                    <div class="math-box-label">Definition - Interpolation on a Curve</div>
+                    <p class="mb-0">Given pillar dates $T_0 < T_1 < \cdots < T_n$ with known discount factors $P(0,T_i)$, an <em>interpolation scheme</em> defines a continuous (and ideally differentiable) curve $T \mapsto P(0,T)$ for $T \in (T_{i-1}, T_i)$. Equivalently, since $P$, the spot rate $r(0,T) = -\ln P(0,T)/T$, and instantaneous forward rates $f(0,T) = -\partial_T \ln P(0,T)$ are related bijectively, interpolation may be applied to any of these representations - and the choice of <em>which</em> quantity is interpolated linearly materially changes the result.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Linear Interpolation: Rates vs. Log-Discount Factors vs. Forward Rates</h2>
@@ -92,22 +92,22 @@
                 <p>The simplest schemes are piecewise linear, but "linear" must specify <em>linear in what</em>. Three common choices give materially different curves between pillars.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Three Linear Schemes</div>
+                    <div class="math-box-label">Remark - Three Linear Schemes</div>
                     <p><strong>Linear in zero rates.</strong> Interpolate $r(0,T)$ linearly between $r(0,T_{i-1})$ and $r(0,T_i)$:
                     $$r(0,T) = r(0,T_{i-1}) + \frac{T - T_{i-1}}{T_i - T_{i-1}}\left(r(0,T_i) - r(0,T_{i-1})\right)$$
                     then recover $P(0,T) = e^{-r(0,T)T}$. Simple and intuitive, but produces discontinuous (jumpy) instantaneous forward rates at pillar dates.</p>
                     <p><strong>Linear in log-discount factors (log-linear).</strong> Interpolate $\ln P(0,T)$ linearly:
                     $$\ln P(0,T) = \ln P(0,T_{i-1}) + \frac{T-T_{i-1}}{T_i-T_{i-1}}\left(\ln P(0,T_i) - \ln P(0,T_{i-1})\right)$$
-                    This is equivalent to assuming a <em>constant instantaneous forward rate</em> within each pillar interval — the forward curve becomes a step function. Widely used because it guarantees $P(0,T) > 0$ and is simple, but produces a discontinuous (piecewise constant) forward curve.</p>
+                    This is equivalent to assuming a <em>constant instantaneous forward rate</em> within each pillar interval - the forward curve becomes a step function. Widely used because it guarantees $P(0,T) > 0$ and is simple, but produces a discontinuous (piecewise constant) forward curve.</p>
                     <p class="mb-0"><strong>Linear in (instantaneous or simple) forward rates.</strong> Interpolate the forward rate $f(0,T)$ directly and linearly between pillars, then integrate to obtain $\ln P(0,T) = -\int_0^T f(0,s)\,ds$. This produces a continuous forward curve (piecewise linear), at the cost of a slightly more involved discount factor formula (piecewise quadratic in $\ln P$).</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Log-Linear Implies Flat Forwards</div>
+                    <div class="math-box-label">Example - Log-Linear Implies Flat Forwards</div>
                     <p>Suppose $P(0,1) = 0.96$ and $P(0,2) = 0.91$. Under log-linear interpolation, for $T \in (1,2)$:
                     $$\ln P(0,T) = \ln(0.96) + (T-1)\big[\ln(0.91)-\ln(0.96)\big]$$
-                    The instantaneous forward rate $f(0,T) = -\partial_T \ln P(0,T) = \ln(0.96) - \ln(0.91) = \ln(0.96/0.91) \approx 5.35\%$ is <em>constant</em> over $(1,2)$ — a step in the forward curve at $T=1$ and $T=2$. </p>
-                    <p class="mb-0">By contrast, linear-in-zero-rates interpolation would give a forward rate that varies continuously but jumps in <em>slope</em> at each pillar — neither scheme produces a smooth forward curve.</p>
+                    The instantaneous forward rate $f(0,T) = -\partial_T \ln P(0,T) = \ln(0.96) - \ln(0.91) = \ln(0.96/0.91) \approx 5.35\%$ is <em>constant</em> over $(1,2)$ - a step in the forward curve at $T=1$ and $T=2$. </p>
+                    <p class="mb-0">By contrast, linear-in-zero-rates interpolation would give a forward rate that varies continuously but jumps in <em>slope</em> at each pillar - neither scheme produces a smooth forward curve.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Cubic Spline Methods</h2>
@@ -115,27 +115,27 @@
                 <p>To obtain a smooth (continuously differentiable, or even twice-differentiable) curve, cubic splines fit a piecewise cubic polynomial through the pillar points, with continuity conditions imposed on the function value, first derivative, and second derivative at each pillar.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Natural Cubic Spline</div>
+                    <div class="math-box-label">Definition - Natural Cubic Spline</div>
                     <p class="mb-0">A <em>cubic spline</em> on $\{T_0,\ldots,T_n\}$ is a function $g(T)$ that is a cubic polynomial $g_i(T)$ on each interval $[T_{i-1},T_i]$, satisfies $g_i(T_i) = g_{i+1}(T_i)$ (continuity), $g_i'(T_i) = g_{i+1}'(T_i)$ (smooth first derivative), and $g_i''(T_i)=g_{i+1}''(T_i)$ (smooth second derivative) at every interior pillar. The <em>natural</em> spline additionally imposes $g''(T_0) = g''(T_n) = 0$ at the endpoints. Applied to $\ln P(0,T)$ or to zero rates, the spline produces a smooth, twice-differentiable curve and hence a continuous (though not necessarily monotone or well-behaved) forward curve.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Problem with Splines for Rates</div>
-                    <p class="mb-0">Cubic splines are <em>global</em>: a change in one input quote can perturb the curve — and therefore forward rates — far away from that pillar, which is undesirable for hedging (a trader hedging the 5-year point should not see their 30-year forward rate exposure change). Splines can also produce <em>oscillations</em> ("wiggles") between widely-spaced pillars, and worse, can imply <em>negative</em> forward rates even when all input par rates are positive and increasing — an arbitrage-free curve should not exhibit this.</p>
+                    <div class="math-box-label">Remark - The Problem with Splines for Rates</div>
+                    <p class="mb-0">Cubic splines are <em>global</em>: a change in one input quote can perturb the curve - and therefore forward rates - far away from that pillar, which is undesirable for hedging (a trader hedging the 5-year point should not see their 30-year forward rate exposure change). Splines can also produce <em>oscillations</em> ("wiggles") between widely-spaced pillars, and worse, can imply <em>negative</em> forward rates even when all input par rates are positive and increasing - an arbitrage-free curve should not exhibit this.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Monotone Convex Interpolation (Hagan-West)</h2>
 
-                <p>The Hagan-West <em>monotone convex</em> method, introduced specifically for interest rate curves, was designed to address the shortcomings above: it produces a continuous forward curve, is local (a change at one pillar affects only neighbouring segments), and — crucially — guarantees that the forward curve does not introduce spurious negative rates or oscillations beyond what the input data implies.</p>
+                <p>The Hagan-West <em>monotone convex</em> method, introduced specifically for interest rate curves, was designed to address the shortcomings above: it produces a continuous forward curve, is local (a change at one pillar affects only neighbouring segments), and - crucially - guarantees that the forward curve does not introduce spurious negative rates or oscillations beyond what the input data implies.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Monotone Convex Interpolation (Hagan-West)</div>
-                    <p class="mb-0">The Hagan-West method interpolates the <em>instantaneous forward rate</em> $f(0,T)$ as a piecewise quadratic function of $T$ within each pillar interval, with the quadratic coefficients on interval $(T_{i-1},T_i)$ chosen so that: (i) the average forward rate over the interval equals the discrete forward rate implied by $P(0,T_{i-1})$ and $P(0,T_i)$ (consistency with bootstrapped discount factors); (ii) the forward curve is continuous at pillar boundaries; and (iii) within each interval, the quadratic is constrained — via a case-by-case adjustment of its coefficients — to be either monotone or to have a single extremum of controlled sign, preventing the wide oscillations that an unconstrained quadratic or cubic spline can produce.</p>
+                    <div class="math-box-label">Definition - Monotone Convex Interpolation (Hagan-West)</div>
+                    <p class="mb-0">The Hagan-West method interpolates the <em>instantaneous forward rate</em> $f(0,T)$ as a piecewise quadratic function of $T$ within each pillar interval, with the quadratic coefficients on interval $(T_{i-1},T_i)$ chosen so that: (i) the average forward rate over the interval equals the discrete forward rate implied by $P(0,T_{i-1})$ and $P(0,T_i)$ (consistency with bootstrapped discount factors); (ii) the forward curve is continuous at pillar boundaries; and (iii) within each interval, the quadratic is constrained - via a case-by-case adjustment of its coefficients - to be either monotone or to have a single extremum of controlled sign, preventing the wide oscillations that an unconstrained quadratic or cubic spline can produce.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Monotone Convex Became Standard</div>
-                    <p class="mb-0">Monotone convex interpolation is now the de facto standard for building rates curves at major dealers and in open-source quant libraries (e.g. QuantLib). It achieves a forward curve that is continuous and visually smooth like a spline, while remaining <em>local</em> (good hedging properties) and <em>shape-preserving</em> — if the discrete forward rates implied by the pillars are positive and increasing, the interpolated continuous forward curve will not dip negative or overshoot between pillars. This combination — smoothness, locality, positivity, and exact repricing of inputs — is difficult to achieve with classical spline or polynomial methods.</p>
+                    <div class="math-box-label">Remark - Why Monotone Convex Became Standard</div>
+                    <p class="mb-0">Monotone convex interpolation is now the de facto standard for building rates curves at major dealers and in open-source quant libraries (e.g. QuantLib). It achieves a forward curve that is continuous and visually smooth like a spline, while remaining <em>local</em> (good hedging properties) and <em>shape-preserving</em> - if the discrete forward rates implied by the pillars are positive and increasing, the interpolated continuous forward curve will not dip negative or overshoot between pillars. This combination - smoothness, locality, positivity, and exact repricing of inputs - is difficult to achieve with classical spline or polynomial methods.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Trade-offs: Smoothness, Locality, and Forward Rate Stability</h2>
@@ -143,7 +143,7 @@
                 <p>Choosing an interpolation method is an exercise in balancing competing, and partially incompatible, desiderata.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Comparing the Methods</div>
+                    <div class="math-box-label">Remark - Comparing the Methods</div>
                     <table class="table table-sm table-bordered">
                         <thead><tr><th>Method</th><th>Forward curve</th><th>Local?</th><th>Arbitrage-free forwards?</th></tr></thead>
                         <tbody>
@@ -153,7 +153,7 @@
                             <tr><td>Monotone convex (Hagan-West)</td><td>Continuous, smooth, shape-preserving</td><td>Yes</td><td>Yes</td></tr>
                         </tbody>
                     </table>
-                    <p class="mb-0">Log-linear interpolation remains popular for its simplicity and arbitrage-free property despite its unrealistic step-function forward curve — many short-dated instruments are insensitive to this. Where the shape of the forward curve matters directly — e.g. pricing instruments with cash flows densely spaced between pillars, or risk-managing forward-starting structures — monotone convex (or another shape-preserving local method) is preferred. The choice of interpolation scheme is itself a modelling assumption that should be disclosed and consistently applied across the discounting and projection curves of the multi-curve framework.</p>
+                    <p class="mb-0">Log-linear interpolation remains popular for its simplicity and arbitrage-free property despite its unrealistic step-function forward curve - many short-dated instruments are insensitive to this. Where the shape of the forward curve matters directly - e.g. pricing instruments with cash flows densely spaced between pillars, or risk-managing forward-starting structures - monotone convex (or another shape-preserving local method) is preferred. The choice of interpolation scheme is itself a modelling assumption that should be disclosed and consistently applied across the discounting and projection curves of the multi-curve framework.</p>
                 </div>
 
                 <hr class="my-5">

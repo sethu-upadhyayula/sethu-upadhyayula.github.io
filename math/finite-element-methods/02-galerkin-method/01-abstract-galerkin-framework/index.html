@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -125,12 +125,12 @@
             <article>
                 <h1 class="text-accent mb-4">2.1 Abstract Galerkin Framework</h1>
 
-                <p>Given the weak formulation — find $u \in V$ such that $a(u,v) = \ell(v)$ for all $v \in V$ — the Galerkin method replaces the infinite-dimensional space $V$ by a finite-dimensional subspace $V_h \subset V$. The resulting finite-dimensional problem is equivalent to a linear system of equations, which can be assembled and solved on a computer.</p>
+                <p>Given the weak formulation - find $u \in V$ such that $a(u,v) = \ell(v)$ for all $v \in V$ - the Galerkin method replaces the infinite-dimensional space $V$ by a finite-dimensional subspace $V_h \subset V$. The resulting finite-dimensional problem is equivalent to a linear system of equations, which can be assembled and solved on a computer.</p>
 
                 <h2 class="mt-4 mb-3">The Galerkin Problem</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Galerkin Approximation</div>
+                    <div class="math-box-label">Definition - Galerkin Approximation</div>
                     <p>Let $V$ be a Hilbert space and $V_h \subset V$ a finite-dimensional subspace with $\dim V_h = N$. The <strong>Galerkin problem</strong> is: find $u_h \in V_h$ such that
                     $$a(u_h, v_h) = \ell(v_h) \quad \forall\, v_h \in V_h.$$
                     Here $a: V \times V \to \mathbb{R}$ is a bilinear form and $\ell: V \to \mathbb{R}$ is a bounded linear functional. The subscript $h$ refers to a discretisation parameter (e.g.\ the mesh size) that governs how well $V_h$ approximates $V$.</p>
@@ -144,7 +144,7 @@
                 $$a\!\left(\sum_{j=1}^N u_j \varphi_j,\, \varphi_i\right) = \ell(\varphi_i) \implies \sum_{j=1}^N u_j\, a(\varphi_j, \varphi_i) = \ell(\varphi_i).$$
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Stiffness Matrix and Load Vector</div>
+                    <div class="math-box-label">Definition - Stiffness Matrix and Load Vector</div>
                     <p>The <strong>stiffness matrix</strong> $K \in \mathbb{R}^{N \times N}$ and <strong>load vector</strong> $\mathbf{f} \in \mathbb{R}^N$ are defined by
                     $$K_{ij} = a(\varphi_j, \varphi_i), \qquad f_i = \ell(\varphi_i), \quad i,j = 1,\ldots,N.$$
                     The Galerkin problem is then equivalent to the linear system
@@ -153,7 +153,7 @@
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Symmetry and Positive Definiteness</div>
+                    <div class="math-box-label">Proposition - Symmetry and Positive Definiteness</div>
                     <p class="mb-0">If the bilinear form $a$ is <strong>symmetric</strong> (i.e.\ $a(u,v) = a(v,u)$ for all $u,v$) and <strong>coercive</strong> (i.e.\ $a(v,v) \geq \alpha \|v\|_V^2$ for some $\alpha > 0$), then $K$ is symmetric positive definite (SPD). In particular, $K$ is invertible and the Galerkin problem has a unique solution.</p>
                 </div>
 
@@ -162,7 +162,7 @@
                 <p>One of the most fundamental properties of the Galerkin method is that the error $e_h = u - u_h$ is orthogonal to $V_h$ with respect to the bilinear form $a$.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Galerkin Orthogonality</div>
+                    <div class="math-box-label">Theorem - Galerkin Orthogonality</div>
                     <p>Let $u \in V$ satisfy the continuous problem $a(u, v) = \ell(v)$ for all $v \in V$, and let $u_h \in V_h$ satisfy the Galerkin problem $a(u_h, v_h) = \ell(v_h)$ for all $v_h \in V_h$. Then
                     $$a(u - u_h,\, v_h) = 0 \quad \forall\, v_h \in V_h.$$</p>
                     <p><em>Proof.</em> Subtracting the Galerkin equation from the continuous equation (using $V_h \subset V$):
@@ -170,7 +170,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Geometric Interpretation</div>
+                    <div class="math-box-label">Remark - Geometric Interpretation</div>
                     <p class="mb-0">Galerkin orthogonality says that $u_h$ is the <strong>orthogonal projection</strong> of $u$ onto $V_h$ in the inner product induced by $a$ (when $a$ is symmetric positive definite). That is, $u_h = P_{V_h} u$ where $P_{V_h}$ is the $a$-orthogonal projector.</p>
                 </div>
 
@@ -179,7 +179,7 @@
                 <p>When $a$ is symmetric and coercive, it defines the <strong>energy norm</strong> $\|v\|_a = \sqrt{a(v,v)}$, which is equivalent to $\|\cdot\|_V$. A powerful consequence of Galerkin orthogonality is that the Galerkin solution is the best possible approximation to $u$ in this norm.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Best Approximation Property</div>
+                    <div class="math-box-label">Theorem - Best Approximation Property</div>
                     <p>If $a$ is symmetric and coercive, then
                     $$\|u - u_h\|_a = \min_{v_h \in V_h} \|u - v_h\|_a.$$
                     That is, the Galerkin solution $u_h$ is the best approximation to $u$ from $V_h$ in the energy norm.</p>
@@ -189,12 +189,12 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Céa's Lemma Preview</div>
+                    <div class="math-box-label">Remark - Céa's Lemma Preview</div>
                     <p class="mb-0">When $a$ is not symmetric, we cannot directly apply the best approximation argument. Instead, Céa's Lemma (Chapter 5) uses Galerkin orthogonality together with coercivity and continuity to obtain a quasi-best-approximation estimate: $\|u - u_h\|_V \leq (M/\alpha)\min_{v_h \in V_h}\|u - v_h\|_V$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Poisson Equation</div>
+                    <div class="math-box-label">Example - Poisson Equation</div>
                     <p>For the Poisson problem $-\Delta u = f$ on $H^1_0(\Omega)$, we have $a(u,v) = \int_\Omega \nabla u \cdot \nabla v\,dx$ and $\ell(v) = \int_\Omega fv\,dx$. The energy norm is $\|v\|_a = \|\nabla v\|_{L^2(\Omega)}$ (equivalent to the $H^1_0$ norm by Poincaré). The Galerkin problem on the finite element space $V_h \subset H^1_0(\Omega)$ is: find $u_h \in V_h$ such that
                     $$\int_\Omega \nabla u_h \cdot \nabla v_h\,dx = \int_\Omega f v_h\,dx \quad \forall\, v_h \in V_h.$$
                     The stiffness matrix is $K_{ij} = \int_\Omega \nabla\varphi_j \cdot \nabla\varphi_i\,dx$, which is SPD, and the Galerkin solution minimises $\|\nabla(u - u_h)\|_{L^2}$ over all $v_h \in V_h$.</p>

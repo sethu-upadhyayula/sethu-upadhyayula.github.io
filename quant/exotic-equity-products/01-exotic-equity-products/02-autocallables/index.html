@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,12 +80,12 @@
             <article>
                 <h1 class="text-accent mb-4">1.2 Autocallables</h1>
 
-                <p>Autocallable notes are among the most widely distributed structured products in retail and private banking markets, particularly in Europe and Asia. They package together a coupon-paying note, an early-redemption (autocall) feature, and a downside risk position written by the investor — typically a put option struck at a barrier well below the initial level. The structure offers enhanced yield relative to a plain bond in exchange for the investor bearing equity downside risk, conditional on the underlying not having fallen too far.</p>
+                <p>Autocallable notes are among the most widely distributed structured products in retail and private banking markets, particularly in Europe and Asia. They package together a coupon-paying note, an early-redemption (autocall) feature, and a downside risk position written by the investor - typically a put option struck at a barrier well below the initial level. The structure offers enhanced yield relative to a plain bond in exchange for the investor bearing equity downside risk, conditional on the underlying not having fallen too far.</p>
 
                 <h2 class="mt-5 mb-3">Structure and Mechanics</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Autocallable Note</div>
+                    <div class="math-box-label">Definition - Autocallable Note</div>
                     <p>An autocallable note references one or more underlyings (a single stock, an index, or a basket) and specifies a series of observation dates $t_1 < t_2 < \dots < t_n = T$. On each observation date $t_i$, if the underlying level $S_{t_i}$ is at or above an <em>autocall trigger</em> $B_i$ (often $100\%$ of the initial level $S_0$, sometimes stepping down over time), the note <strong>redeems early</strong>: the investor receives back the notional plus any accrued coupon(s), and the note terminates.</p>
                     <p class="mb-0">If the note survives to maturity $T$ without autocalling, the final redemption depends on $S_T$ relative to the <em>capital protection barrier</em> (or "knock-in" barrier) $B_{KI}$, typically set at $60$-$70\%$ of $S_0$.</p>
                 </div>
@@ -93,7 +93,7 @@
                 <h2 class="mt-5 mb-3">Coupon Barriers</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Coupon Barrier</div>
+                    <div class="math-box-label">Definition - Coupon Barrier</div>
                     <p class="mb-0">Many autocallables pay a coupon on each observation date (whether or not the note autocalls) conditional on the underlying being above a separate, often lower, <em>coupon barrier</em> $B_C \leq B_i$. This decouples the coupon payment from the autocall event:</p>
                     <p class="mb-0">- If $S_{t_i} \geq B_i$: note autocalls, coupon paid, notional returned.</p>
                     <p class="mb-0">- If $B_C \leq S_{t_i} < B_i$: note continues, coupon paid (a "memory" feature may also pay any previously missed coupons if the level recovers).</p>
@@ -103,33 +103,33 @@
                 <h2 class="mt-5 mb-3">Capital at Risk vs. Capital Protected</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Final Redemption at Maturity</div>
-                    <p><strong>Capital-at-risk autocallable (the most common form):</strong> if the note has not autocalled and $S_T \geq B_{KI}$, the investor receives $100\%$ of notional (plus possibly the final coupon). If $S_T < B_{KI}$, the investor receives the notional reduced in proportion to the underlying's decline — typically $\text{Notional} \times \min(1, S_T/S_0)$ — i.e., the investor has effectively sold a put struck at $S_0$ (or at the knock-in barrier, depending on structure), conditional on the knock-in having occurred.</p>
-                    <p class="mb-0"><strong>Capital-protected autocallable:</strong> the notional is returned in full at maturity regardless of $S_T$, but the embedded optionality is correspondingly reduced — typically the investor receives a smaller (or contingent, or zero) coupon, since the cost of the principal guarantee (a zero-coupon bond plus the protective put the issuer must buy) consumes most of the premium that would otherwise fund the coupon.</p>
+                    <div class="math-box-label">Remark - Final Redemption at Maturity</div>
+                    <p><strong>Capital-at-risk autocallable (the most common form):</strong> if the note has not autocalled and $S_T \geq B_{KI}$, the investor receives $100\%$ of notional (plus possibly the final coupon). If $S_T < B_{KI}$, the investor receives the notional reduced in proportion to the underlying's decline - typically $\text{Notional} \times \min(1, S_T/S_0)$ - i.e., the investor has effectively sold a put struck at $S_0$ (or at the knock-in barrier, depending on structure), conditional on the knock-in having occurred.</p>
+                    <p class="mb-0"><strong>Capital-protected autocallable:</strong> the notional is returned in full at maturity regardless of $S_T$, but the embedded optionality is correspondingly reduced - typically the investor receives a smaller (or contingent, or zero) coupon, since the cost of the principal guarantee (a zero-coupon bond plus the protective put the issuer must buy) consumes most of the premium that would otherwise fund the coupon.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — A Typical 1-Year Autocallable on a Single Stock</div>
+                    <div class="math-box-label">Example - A Typical 1-Year Autocallable on a Single Stock</div>
                     <p>Consider a 1-year note on a stock currently at $S_0=100$, with quarterly observation dates, an autocall trigger of $100\%$ at every date, a coupon of $2\%$ per quarter (paid only if autocalled or if $S_{t_i}\geq B_C=70$), and a knock-in barrier at maturity of $B_{KI}=60$.</p>
-                    <p><strong>Scenario A:</strong> the stock is at $105$ after 3 months. The note autocalls: investor receives notional $+$ $2\%$ coupon, total $102\%$, after just one quarter — an annualized return of roughly $8\%$.</p>
-                    <p><strong>Scenario B:</strong> the stock drifts sideways around $90$-$95$ for three quarters (no autocall, since below $100$, but coupons paid since above $70$), then finishes at $T$ at $98$. Investor receives notional plus the final coupon, total $102\%$, after a full year — annualized return roughly $2\%$, much lower than Scenario A despite a similar payout, because the capital was at risk for longer with no compensation for that risk beyond the fixed coupon.</p>
-                    <p class="mb-0"><strong>Scenario C:</strong> the stock falls to $50$ at maturity, having never autocalled and having breached $B_{KI}=60$ at maturity. The investor receives $\text{Notional}\times(50/100) = 50\%$ of notional — a $50\%$ capital loss, partially offset by whatever coupons were collected along the way (those quarters where $S_{t_i}\geq 70$).</p>
+                    <p><strong>Scenario A:</strong> the stock is at $105$ after 3 months. The note autocalls: investor receives notional $+$ $2\%$ coupon, total $102\%$, after just one quarter - an annualized return of roughly $8\%$.</p>
+                    <p><strong>Scenario B:</strong> the stock drifts sideways around $90$-$95$ for three quarters (no autocall, since below $100$, but coupons paid since above $70$), then finishes at $T$ at $98$. Investor receives notional plus the final coupon, total $102\%$, after a full year - annualized return roughly $2\%$, much lower than Scenario A despite a similar payout, because the capital was at risk for longer with no compensation for that risk beyond the fixed coupon.</p>
+                    <p class="mb-0"><strong>Scenario C:</strong> the stock falls to $50$ at maturity, having never autocalled and having breached $B_{KI}=60$ at maturity. The investor receives $\text{Notional}\times(50/100) = 50\%$ of notional - a $50\%$ capital loss, partially offset by whatever coupons were collected along the way (those quarters where $S_{t_i}\geq 70$).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worst-Of Structures</h2>
 
-                <p>To enhance the coupon offered (compensating the issuer's hedging desk for additional risk), many autocallables reference a basket of two or more underlyings — typically uncorrelated or imperfectly correlated large-cap stocks or indices — with the autocall, coupon, and knock-in conditions all evaluated on the <em>worst-performing</em> underlying.</p>
+                <p>To enhance the coupon offered (compensating the issuer's hedging desk for additional risk), many autocallables reference a basket of two or more underlyings - typically uncorrelated or imperfectly correlated large-cap stocks or indices - with the autocall, coupon, and knock-in conditions all evaluated on the <em>worst-performing</em> underlying.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Worst-Of Payoff Condition</div>
+                    <div class="math-box-label">Definition - Worst-Of Payoff Condition</div>
                     <p class="mb-0">For underlyings $S^{(1)}, \dots, S^{(k)}$ with respective initial levels $S_0^{(1)},\dots,S_0^{(k)}$, define the worst-performer ratio at time $t$:
                     $$W_t = \min_{j=1,\dots,k}\frac{S_t^{(j)}}{S_0^{(j)}}$$
-                    All barrier conditions (autocall, coupon, knock-in) are then expressed in terms of $W_{t_i}$ rather than a single underlying's level. Because $W_t \leq S_t^{(j)}/S_0^{(j)}$ for every $j$, the worst-of level is — by construction — always at or below the performance of any individual constituent, making the barriers more likely to be breached than for a single-underlying note.</p>
+                    All barrier conditions (autocall, coupon, knock-in) are then expressed in terms of $W_{t_i}$ rather than a single underlying's level. Because $W_t \leq S_t^{(j)}/S_0^{(j)}$ for every $j$, the worst-of level is - by construction - always at or below the performance of any individual constituent, making the barriers more likely to be breached than for a single-underlying note.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Worst-Of Increases the Coupon</div>
-                    <p class="mb-0">The probability that the minimum of several (imperfectly correlated) asset returns falls below a barrier is higher than the probability that any single asset does — diversification works against the investor here, because the note is hurt by the worst outcome among many "shots" rather than helped by averaging. This means the embedded short-put position the investor holds is more valuable (more likely to be exercised against them) for a worst-of basket than for a single name, all else equal. The issuer can therefore pay a higher coupon for the same capital-at-risk threshold, which is why worst-of autocallables on baskets of low-correlation stocks (e.g., across different sectors or geographies) typically offer the highest headline coupons — precisely because the embedded risk is greatest.</p>
+                    <div class="math-box-label">Remark - Why Worst-Of Increases the Coupon</div>
+                    <p class="mb-0">The probability that the minimum of several (imperfectly correlated) asset returns falls below a barrier is higher than the probability that any single asset does - diversification works against the investor here, because the note is hurt by the worst outcome among many "shots" rather than helped by averaging. This means the embedded short-put position the investor holds is more valuable (more likely to be exercised against them) for a worst-of basket than for a single name, all else equal. The issuer can therefore pay a higher coupon for the same capital-at-risk threshold, which is why worst-of autocallables on baskets of low-correlation stocks (e.g., across different sectors or geographies) typically offer the highest headline coupons - precisely because the embedded risk is greatest.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Monte Carlo Pricing</h2>
@@ -137,7 +137,7 @@
                 <p>Autocallables have no closed-form price: the payoff depends on the joint path of (potentially several, correlated) underlyings observed at multiple discrete dates, with path-dependent early termination. Pricing and risk management are therefore performed by Monte Carlo simulation.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Algorithm — Monte Carlo Pricing of an Autocallable</div>
+                    <div class="math-box-label">Algorithm - Monte Carlo Pricing of an Autocallable</div>
                     <p class="mb-0">1. <strong>Simulate paths:</strong> generate $N$ independent risk-neutral paths of $(S_{t_1}^{(1)},\dots,S_{t_1}^{(k)}), \dots, (S_{t_n}^{(1)},\dots,S_{t_n}^{(k)})$ for each underlying, typically via correlated geometric Brownian motion (or a more sophisticated local/stochastic volatility model calibrated to each underlying's skew), using a correlation matrix estimated from historical or implied correlations between the underlyings.</p>
                     <p class="mb-0">2. <strong>Apply the structure's logic along each path:</strong> for each simulated path, walk through the observation dates in order; check the autocall condition at each date and, if triggered, record the early-redemption cash flow (notional + coupon) at that date and stop processing the path. If the path never autocalls, apply the final maturity redemption logic (capital-at-risk or protected, knock-in check) at $T$.</p>
                     <p class="mb-0">3. <strong>Discount and average:</strong> discount each path's cash flow(s) back to time $0$ at the risk-free rate, and average across all $N$ paths to obtain the Monte Carlo price estimate. The standard error of the estimate scales as $O(1/\sqrt{N})$, so variance reduction techniques (antithetic variates, control variates using the price of a related vanilla or simpler structure) are commonly used to improve convergence.</p>
@@ -145,10 +145,10 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Risk Characteristics of Autocallable Books</div>
-                    <p><strong>Short skew / short downside vol:</strong> the embedded knock-in put means the issuer (who sells the autocallable to the investor) is effectively long a down-and-in put — i.e., the issuer's hedge book is short this option, making the desk's position sensitive to the steepness of the downside skew. A steepening of the put skew increases the value of the embedded put and hurts the issuer's position.</p>
-                    <p><strong>Correlation exposure ("cega"):</strong> for worst-of structures, the issuer is typically short correlation — an increase in the correlation between the underlyings reduces the probability that any one of them is the "worst" by a large margin, which (counterintuitively) tends to reduce the value of the embedded worst-of put from the issuer's perspective in many regimes, though the sign and magnitude of correlation sensitivity depends on the specific strikes and barriers and must be assessed via the Monte Carlo Greeks.</p>
-                    <p class="mb-0"><strong>Autocall "cliff risk":</strong> as the observation date approaches with the underlying near the autocall trigger, the note's value (and its Greeks) can change discontinuously depending on whether the trigger is met, creating gamma-like risk concentrated around trigger dates — analogous to the barrier risk discussed for single barrier options, but recurring at each observation date over the life of the note.</p>
+                    <div class="math-box-label">Remark - Risk Characteristics of Autocallable Books</div>
+                    <p><strong>Short skew / short downside vol:</strong> the embedded knock-in put means the issuer (who sells the autocallable to the investor) is effectively long a down-and-in put - i.e., the issuer's hedge book is short this option, making the desk's position sensitive to the steepness of the downside skew. A steepening of the put skew increases the value of the embedded put and hurts the issuer's position.</p>
+                    <p><strong>Correlation exposure ("cega"):</strong> for worst-of structures, the issuer is typically short correlation - an increase in the correlation between the underlyings reduces the probability that any one of them is the "worst" by a large margin, which (counterintuitively) tends to reduce the value of the embedded worst-of put from the issuer's perspective in many regimes, though the sign and magnitude of correlation sensitivity depends on the specific strikes and barriers and must be assessed via the Monte Carlo Greeks.</p>
+                    <p class="mb-0"><strong>Autocall "cliff risk":</strong> as the observation date approaches with the underlying near the autocall trigger, the note's value (and its Greeks) can change discontinuously depending on whether the trigger is met, creating gamma-like risk concentrated around trigger dates - analogous to the barrier risk discussed for single barrier options, but recurring at each observation date over the life of the note.</p>
                 </div>
 
                 <hr class="my-5">

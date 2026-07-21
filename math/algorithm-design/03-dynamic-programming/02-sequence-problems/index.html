@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -133,7 +133,7 @@
                 <h2 class="mt-4 mb-3">Longest Common Subsequence</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 3.2.1 — LCS</div>
+                    <div class="math-box-label">Algorithm 3.2.1 - LCS</div>
                     <p>Given sequences $A[1..m]$ and $B[1..n]$, define $\mathrm{dp}[i][j]$ = length of LCS of $A[1..i]$ and $B[1..j]$.</p>
                     <p>Recurrence: $\mathrm{dp}[i][j] = \mathrm{dp}[i-1][j-1] + 1$ if $A[i] = B[j]$, else $\max(\mathrm{dp}[i-1][j], \mathrm{dp}[i][j-1])$.</p>
                     <p class="mb-0">Base cases: $\mathrm{dp}[0][j] = \mathrm{dp}[i][0] = 0$. Time: $O(mn)$; Space: $O(mn)$ (reducible to $O(\min(m,n))$ with rolling rows).</p>
@@ -142,7 +142,7 @@
                 <h2 class="mt-5 mb-3">Edit Distance</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 3.2.2 — Edit Distance (Levenshtein)</div>
+                    <div class="math-box-label">Algorithm 3.2.2 - Edit Distance (Levenshtein)</div>
                     <p>$\mathrm{dp}[i][j]$ = minimum number of single-character edits (insert, delete, substitute) to transform $A[1..i]$ into $B[1..j]$.</p>
                     <p>Recurrence: if $A[i] = B[j]$: $\mathrm{dp}[i][j] = \mathrm{dp}[i-1][j-1]$; else $\mathrm{dp}[i][j] = 1 + \min(\mathrm{dp}[i-1][j],\, \mathrm{dp}[i][j-1],\, \mathrm{dp}[i-1][j-1])$ (delete, insert, substitute).</p>
                     <p class="mb-0">Time: $O(mn)$. Application: spell checking, DNA sequence alignment (Smith-Waterman).</p>
@@ -151,7 +151,7 @@
                 <h2 class="mt-5 mb-3">Longest Increasing Subsequence</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 3.2.3 — LIS</div>
+                    <div class="math-box-label">Algorithm 3.2.3 - LIS</div>
                     <p><strong>$O(n^2)$ DP:</strong> $\mathrm{dp}[i]$ = length of LIS ending at index $i$. $\mathrm{dp}[i] = 1 + \max_{j < i,\, A[j] < A[i]} \mathrm{dp}[j]$. Answer: $\max_i \mathrm{dp}[i]$.</p>
                     <p class="mb-0"><strong>$O(n \log n)$ patience sorting:</strong> maintain a list of "piles" (smallest tail of IS of each length). For each $A[i]$, binary search for the leftmost pile with top $\ge A[i]$, place $A[i]$ there (or start a new pile). The number of piles at the end is the LIS length.</p>
                 </div>
@@ -159,7 +159,7 @@
                 <h2 class="mt-5 mb-3">Matrix Chain Multiplication</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Algorithm 3.2.4 — Matrix Chain Multiplication</div>
+                    <div class="math-box-label">Algorithm 3.2.4 - Matrix Chain Multiplication</div>
                     <p>Given matrices $M_1, M_2, \ldots, M_n$ with dimensions $p_0 \times p_1, p_1 \times p_2, \ldots, p_{n-1} \times p_n$, find the parenthesisation minimising total scalar multiplications.</p>
                     <p>$\mathrm{dp}[i][j]$ = minimum cost to multiply $M_i \cdots M_j$.</p>
                     <p class="mb-0">$\mathrm{dp}[i][j] = \min_{k=i}^{j-1} \bigl(\mathrm{dp}[i][k] + \mathrm{dp}[k+1][j] + p_{i-1} p_k p_j\bigr)$. Fill by increasing chain length $\ell = j - i$. Time: $O(n^3)$; Space: $O(n^2)$.</p>

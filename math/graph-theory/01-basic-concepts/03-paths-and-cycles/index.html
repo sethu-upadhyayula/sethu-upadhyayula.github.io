@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -141,21 +141,21 @@
                 <h2 class="mt-5 mb-3">Walks, Trails, and Paths</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.3.1 — Walk, Trail, Path</div>
+                    <div class="math-box-label">Definition 1.3.1 - Walk, Trail, Path</div>
                     <p>A <strong>walk</strong> in $G$ is a sequence $v_0, v_1, \ldots, v_k$ of vertices such that $\{v_{i-1}, v_i\} \in E$ for each $i = 1, \ldots, k$. Its <strong>length</strong> is $k$ (the number of edges traversed).</p>
                     <p>A <strong>trail</strong> is a walk in which no edge is repeated.</p>
                     <p class="mb-0">A <strong>path</strong> $P$ is a walk $v_0, v_1, \ldots, v_k$ in which all vertices are distinct. We call it a $v_0$-$v_k$ path and write $P = v_0 v_1 \cdots v_k$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.3.2 — Cycle</div>
+                    <div class="math-box-label">Definition 1.3.2 - Cycle</div>
                     <p class="mb-0">A <strong>cycle</strong> $C$ is a closed walk $v_0, v_1, \ldots, v_k, v_0$ (returning to start) where $k \ge 3$, all $v_0, \ldots, v_{k-1}$ are distinct, and all edges are distinct. The <strong>length</strong> of the cycle is $k$. A cycle of length $k$ is denoted $C_k$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Distance and Graph Metrics</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.3.3 — Distance, Diameter, Girth</div>
+                    <div class="math-box-label">Definition 1.3.3 - Distance, Diameter, Girth</div>
                     <p>The <strong>distance</strong> $d_G(u, v)$ between vertices $u$ and $v$ is the length of a shortest $u$-$v$ path; if no path exists, $d_G(u,v) = \infty$.</p>
                     <p>The <strong>diameter</strong> $\text{diam}(G) = \max_{u,v \in V} d(u,v)$ is the largest distance in $G$.</p>
                     <p class="mb-0">The <strong>girth</strong> $g(G)$ is the length of a shortest cycle in $G$; if $G$ is acyclic, we set $g(G) = \infty$.</p>
@@ -164,7 +164,7 @@
                 <h2 class="mt-5 mb-3">Connectivity</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.3.4 — Connected Graph and Components</div>
+                    <div class="math-box-label">Definition 1.3.4 - Connected Graph and Components</div>
                     <p>A graph $G$ is <strong>connected</strong> if $d(u, v) < \infty$ for every pair $u, v \in V(G)$. A <strong>connected component</strong> is a maximal connected subgraph of $G$.</p>
                     <p class="mb-0">$G$ is connected if and only if it has exactly one connected component.</p>
                 </div>
@@ -172,21 +172,21 @@
                 <h2 class="mt-5 mb-3">BFS and Shortest Paths</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.3.5 — BFS Computes All Distances</div>
+                    <div class="math-box-label">Theorem 1.3.5 - BFS Computes All Distances</div>
                     <p class="mb-0">Breadth-first search (BFS) from a source vertex $s$ computes $d(s, v)$ for all $v \in V(G)$ in time $O(|V| + |E|)$. BFS explores vertices layer by layer: layer 0 is $\{s\}$, layer $i+1$ consists of all unvisited neighbours of layer $i$ vertices.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Bipartite Graphs and Odd Cycles</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.3.6 — Bipartite Characterisation</div>
+                    <div class="math-box-label">Theorem 1.3.6 - Bipartite Characterisation</div>
                     <p class="mb-0">A graph $G$ is bipartite if and only if it contains no odd cycle.</p>
                 </div>
 
                 <div class="math-box proof">
                     <div class="math-box-label">Proof</div>
                     <p><em>Necessity.</em> Suppose $G$ is bipartite with parts $A$ and $B$. Any walk alternates between $A$ and $B$, so a closed walk must have even length. Hence every cycle is even.</p>
-                    <p><em>Sufficiency.</em> Assume $G$ has no odd cycle; WLOG $G$ is connected. Fix $s \in V$ and run BFS. Set $A = \{v : d(s,v) \text{ even}\}$ and $B = \{v : d(s,v) \text{ odd}\}$. If any edge $\{u,v\}$ had both endpoints in $A$ (or both in $B$), then together with the BFS paths from $s$ to $u$ and $v$ this would produce an odd closed walk containing an odd cycle — a contradiction. So all edges go between $A$ and $B$, and $G$ is bipartite. $\square$</p>
+                    <p><em>Sufficiency.</em> Assume $G$ has no odd cycle; WLOG $G$ is connected. Fix $s \in V$ and run BFS. Set $A = \{v : d(s,v) \text{ even}\}$ and $B = \{v : d(s,v) \text{ odd}\}$. If any edge $\{u,v\}$ had both endpoints in $A$ (or both in $B$), then together with the BFS paths from $s$ to $u$ and $v$ this would produce an odd closed walk containing an odd cycle - a contradiction. So all edges go between $A$ and $B$, and $G$ is bipartite. $\square$</p>
                 </div>
 
                 <div class="math-box example">

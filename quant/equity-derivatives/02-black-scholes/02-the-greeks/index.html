@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,24 +81,24 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 The Greeks</h1>
 
-                <p>The Greeks are the partial derivatives of an option's value with respect to the inputs of the pricing model: the underlying price, volatility, time, and interest rate. They quantify how an option's value — and a portfolio's value — changes as market conditions move, and they are the primary risk metrics used by options trading desks to monitor and hedge exposure. For a European call with the Black-Scholes formula $C = S_0e^{-qT}N(d_1) - Ke^{-rT}N(d_2)$, each Greek has a closed-form expression.</p>
+                <p>The Greeks are the partial derivatives of an option's value with respect to the inputs of the pricing model: the underlying price, volatility, time, and interest rate. They quantify how an option's value - and a portfolio's value - changes as market conditions move, and they are the primary risk metrics used by options trading desks to monitor and hedge exposure. For a European call with the Black-Scholes formula $C = S_0e^{-qT}N(d_1) - Ke^{-rT}N(d_2)$, each Greek has a closed-form expression.</p>
 
                 <h2 class="mt-5 mb-3">Delta</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Delta</div>
+                    <div class="math-box-label">Definition - Delta</div>
                     <p class="mb-0">Delta measures the sensitivity of the option price to a change in the underlying price:
                     $$\Delta = \frac{\partial V}{\partial S}$$
                     For a Black-Scholes call: $\Delta_C = e^{-qT}N(d_1)$. For a put: $\Delta_P = -e^{-qT}N(-d_1) = \Delta_C - e^{-qT}$ (from put-call parity). Call delta ranges from $0$ (deep out of the money) to $e^{-qT} \approx 1$ (deep in the money); put delta ranges from $-e^{-qT}$ to $0$.</p>
                 </div>
 
-                <p>Delta has a dual interpretation: it is both the instantaneous hedge ratio (the number of shares needed to offset the option's price sensitivity) and, approximately, the probability that the option finishes in the money. A 25-delta call is market shorthand for a call whose delta is approximately $0.25$ — roughly a 25% chance of finishing in the money, and one that requires holding $0.25$ shares per option to be delta-neutral.</p>
+                <p>Delta has a dual interpretation: it is both the instantaneous hedge ratio (the number of shares needed to offset the option's price sensitivity) and, approximately, the probability that the option finishes in the money. A 25-delta call is market shorthand for a call whose delta is approximately $0.25$ - roughly a 25% chance of finishing in the money, and one that requires holding $0.25$ shares per option to be delta-neutral.</p>
 
                 <h2 class="mt-5 mb-3">Gamma</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Gamma</div>
-                    <p class="mb-0">Gamma measures the rate of change of delta with respect to the underlying — the curvature of the option value:
+                    <div class="math-box-label">Definition - Gamma</div>
+                    <p class="mb-0">Gamma measures the rate of change of delta with respect to the underlying - the curvature of the option value:
                     $$\Gamma = \frac{\partial^2 V}{\partial S^2} = \frac{\partial \Delta}{\partial S}$$
                     For both calls and puts: $\Gamma = \dfrac{e^{-qT}\phi(d_1)}{S_0\sigma\sqrt{T}}$, where $\phi(\cdot)$ is the standard normal PDF. Gamma is always positive for long option positions (calls and puts alike) and is largest for at-the-money options near expiry.</p>
                 </div>
@@ -106,27 +106,27 @@
                 <h2 class="mt-5 mb-3">Vega</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Vega</div>
+                    <div class="math-box-label">Definition - Vega</div>
                     <p class="mb-0">Vega measures the sensitivity of the option price to a change in volatility:
                     $$\mathcal{V} = \frac{\partial V}{\partial \sigma}$$
                     For both calls and puts: $\mathcal{V} = S_0 e^{-qT}\phi(d_1)\sqrt{T}$. Vega is always positive: an increase in volatility increases the value of both calls and puts, since optionality benefits from greater dispersion of outcomes. Vega is largest for at-the-money options and grows with time to maturity.</p>
                 </div>
 
-                <p>Note that "vega" is not a Greek letter — the name is a finance-industry coinage, sometimes also called kappa or lambda in older texts.</p>
+                <p>Note that "vega" is not a Greek letter - the name is a finance-industry coinage, sometimes also called kappa or lambda in older texts.</p>
 
                 <h2 class="mt-5 mb-3">Theta</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Theta</div>
+                    <div class="math-box-label">Definition - Theta</div>
                     <p class="mb-0">Theta measures the sensitivity of the option price to the passage of time, holding all else fixed:
                     $$\Theta = \frac{\partial V}{\partial t} = -\frac{\partial V}{\partial T}$$
-                    For a call: $\Theta_C = -\dfrac{S_0 e^{-qT}\phi(d_1)\sigma}{2\sqrt{T}} - rKe^{-rT}N(d_2) + qS_0e^{-qT}N(d_1)$. For a put, replace $N(d_2) \to -N(-d_2)$ and $N(d_1) \to -N(-d_1)$ in the corresponding terms. Theta is usually negative for long option positions: as time passes with the stock price unchanged, an option loses time value — this is "time decay."</p>
+                    For a call: $\Theta_C = -\dfrac{S_0 e^{-qT}\phi(d_1)\sigma}{2\sqrt{T}} - rKe^{-rT}N(d_2) + qS_0e^{-qT}N(d_1)$. For a put, replace $N(d_2) \to -N(-d_2)$ and $N(d_1) \to -N(-d_1)$ in the corresponding terms. Theta is usually negative for long option positions: as time passes with the stock price unchanged, an option loses time value - this is "time decay."</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Rho</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Rho</div>
+                    <div class="math-box-label">Definition - Rho</div>
                     <p class="mb-0">Rho measures the sensitivity of the option price to the risk-free interest rate:
                     $$\rho = \frac{\partial V}{\partial r}$$
                     For a call: $\rho_C = KTe^{-rT}N(d_2)$. For a put: $\rho_P = -KTe^{-rT}N(-d_2)$. Rho is generally the least important Greek for short-dated equity options, but becomes material for long-dated options (LEAPS) and in higher-rate environments.</p>
@@ -135,10 +135,10 @@
                 <h2 class="mt-5 mb-3">The Fundamental PDE Identity</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Relating the Greeks</div>
+                    <div class="math-box-label">Remark - Relating the Greeks</div>
                     <p class="mb-0">Substituting the Greeks into the Black-Scholes PDE (with $q=0$ for simplicity) recovers the identity:
                     $$\Theta + rS\Delta + \frac{1}{2}\sigma^2 S^2 \Gamma = rV$$
-                    This shows that theta and gamma are linked: for a delta-hedged portfolio (so the $rS\Delta$ term is hedged away in P&L terms), positive gamma is "paid for" by negative theta, and vice versa. A long-options position has positive gamma and negative theta — it profits from large moves but bleeds value over time. A short-options position is the mirror image: positive theta (it earns time decay) but negative gamma (it loses money on large moves in either direction).</p>
+                    This shows that theta and gamma are linked: for a delta-hedged portfolio (so the $rS\Delta$ term is hedged away in P&L terms), positive gamma is "paid for" by negative theta, and vice versa. A long-options position has positive gamma and negative theta - it profits from large moves but bleeds value over time. A short-options position is the mirror image: positive theta (it earns time decay) but negative gamma (it loses money on large moves in either direction).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Delta Hedging and Gamma Scalping</h2>
@@ -146,15 +146,15 @@
                 <p>A market maker who sells an option typically wants to hedge out directional exposure to the underlying, while retaining (and managing) the option's volatility exposure. This is achieved through delta hedging.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Delta Hedging</div>
+                    <div class="math-box-label">Remark - Delta Hedging</div>
                     <p><strong>Static delta hedge:</strong> a trader who is short one call option buys $\Delta$ shares of stock, making the combined position delta-neutral at that instant: $\frac{\partial}{\partial S}(-C + \Delta S) = -\Delta + \Delta = 0$.</p>
                     <p class="mb-0"><strong>Dynamic rebalancing:</strong> because $\Delta$ changes as $S$ moves (governed by gamma) and as time passes (governed by the cross-derivative $\partial\Gamma/\partial t$), the hedge must be rebalanced continuously (in theory) or at discrete intervals (in practice) to remain delta-neutral. The Black-Scholes replication argument is precisely this dynamic hedging strategy carried to the continuous-time limit.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Gamma Scalping</div>
-                    <p>A trader is long a delta-hedged straddle (long call + long put, short stock to neutralize delta), giving positive gamma and negative theta. If the stock rises, the position's delta becomes positive (gamma pulls delta up), so the trader sells stock to re-hedge — selling high. If the stock then falls back, delta becomes negative, so the trader buys stock to re-hedge — buying low. Each rebalance "scalps" a small profit from the round trip.</p>
-                    <p class="mb-0">This is gamma scalping: realized P&L from rebalancing approximates $\frac{1}{2}\Gamma S^2(\sigma_{\text{realized}}^2 - \sigma_{\text{implied}}^2)\,dt$ — positive if realized volatility exceeds the implied volatility at which the option was purchased, and negative otherwise. This is the precise sense in which an options position is a bet on realized vs. implied volatility.</p>
+                    <div class="math-box-label">Example - Gamma Scalping</div>
+                    <p>A trader is long a delta-hedged straddle (long call + long put, short stock to neutralize delta), giving positive gamma and negative theta. If the stock rises, the position's delta becomes positive (gamma pulls delta up), so the trader sells stock to re-hedge - selling high. If the stock then falls back, delta becomes negative, so the trader buys stock to re-hedge - buying low. Each rebalance "scalps" a small profit from the round trip.</p>
+                    <p class="mb-0">This is gamma scalping: realized P&L from rebalancing approximates $\frac{1}{2}\Gamma S^2(\sigma_{\text{realized}}^2 - \sigma_{\text{implied}}^2)\,dt$ - positive if realized volatility exceeds the implied volatility at which the option was purchased, and negative otherwise. This is the precise sense in which an options position is a bet on realized vs. implied volatility.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Greeks for Portfolios</h2>
@@ -162,10 +162,10 @@
                 <p>Greeks are additive across positions (for a fixed underlying), which makes them the natural language for portfolio risk management. A trading desk's net delta, gamma, vega, and theta across hundreds of positions in a name are simply the sums of the individual Greeks (scaled by position size).</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Portfolio Greeks and Hedging Practice</div>
+                    <div class="math-box-label">Remark - Portfolio Greeks and Hedging Practice</div>
                     <p><strong>Net delta</strong> determines the desk's directional exposure to the underlying and is typically hedged to near zero by trading the stock or futures.</p>
                     <p><strong>Net gamma and vega</strong> cannot generally both be hedged with the underlying alone (the underlying has zero gamma and vega); hedging these requires trading other options. A desk that is short gamma and short vega (common for sellers of options, e.g. structured product issuers) is exposed to large moves and volatility spikes.</p>
-                    <p class="mb-0"><strong>Cross-Greeks</strong> such as vanna ($\partial^2 V/\partial S\,\partial \sigma$) and volga/vomma ($\partial^2 V / \partial \sigma^2$) become important for portfolios with significant skew and convexity exposure, and are central to managing books that are exposed to changes in the shape of the volatility surface — the subject of the next chapter.</p>
+                    <p class="mb-0"><strong>Cross-Greeks</strong> such as vanna ($\partial^2 V/\partial S\,\partial \sigma$) and volga/vomma ($\partial^2 V / \partial \sigma^2$) become important for portfolios with significant skew and convexity exposure, and are central to managing books that are exposed to changes in the shape of the volatility surface - the subject of the next chapter.</p>
                 </div>
 
                 <hr class="my-5">

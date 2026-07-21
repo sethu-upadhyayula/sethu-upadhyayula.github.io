@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,67 +128,67 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">5.1 Newton-Cotes Formulas</h1>
-                <p>Newton-Cotes formulas approximate $\int_a^b f(x)\,dx$ by integrating the polynomial that interpolates $f$ at equally spaced nodes on $[a,b]$. The three classical rules — midpoint, trapezoidal, and Simpson's — form the foundation, and their composite versions with error analysis guide the choice of step size.</p>
+                <p>Newton-Cotes formulas approximate $\int_a^b f(x)\,dx$ by integrating the polynomial that interpolates $f$ at equally spaced nodes on $[a,b]$. The three classical rules - midpoint, trapezoidal, and Simpson's - form the foundation, and their composite versions with error analysis guide the choice of step size.</p>
 
                 <h2 class="mt-5 mb-3">Basic Rules on a Single Interval</h2>
                 <p>Let $m = \tfrac{a+b}{2}$ denote the midpoint of $[a,b]$.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Midpoint Rule</div>
+                    <div class="math-box-label">Definition - Midpoint Rule</div>
                     <p class="mb-0">The <strong>midpoint rule</strong> approximates the integral by the rectangle of height $f(m)$:
                     $$M(f) = (b-a)\,f(m).$$</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Midpoint Rule Error</div>
+                    <div class="math-box-label">Theorem - Midpoint Rule Error</div>
                     <p class="mb-0">If $f \in C^2[a,b]$, then
                     $$\int_a^b f(x)\,dx - M(f) = \frac{(b-a)^3}{24}\,f''(\xi)$$
                     for some $\xi \in (a,b)$. The midpoint rule is exact for polynomials of degree $\le 1$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Trapezoidal Rule</div>
+                    <div class="math-box-label">Definition - Trapezoidal Rule</div>
                     <p class="mb-0">The <strong>trapezoidal rule</strong> uses the linear interpolant through $(a,f(a))$ and $(b,f(b))$:
                     $$T(f) = \frac{b-a}{2}\bigl(f(a)+f(b)\bigr).$$</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Trapezoidal Rule Error</div>
+                    <div class="math-box-label">Theorem - Trapezoidal Rule Error</div>
                     <p class="mb-0">If $f \in C^2[a,b]$, then
                     $$\int_a^b f(x)\,dx - T(f) = -\frac{(b-a)^3}{12}\,f''(\xi)$$
                     for some $\xi \in (a,b)$. The trapezoidal rule is also exact for degree $\le 1$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Simpson's Rule</div>
+                    <div class="math-box-label">Definition - Simpson's Rule</div>
                     <p class="mb-0">Simpson's rule integrates the quadratic interpolant through $(a,f(a))$, $(m,f(m))$, $(b,f(b))$:
                     $$S(f) = \frac{b-a}{6}\bigl(f(a)+4f(m)+f(b)\bigr).$$</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Simpson's Rule Error</div>
+                    <div class="math-box-label">Theorem - Simpson's Rule Error</div>
                     <p class="mb-0">If $f \in C^4[a,b]$, then
                     $$\int_a^b f(x)\,dx - S(f) = -\frac{(b-a)^5}{2880}\,f^{(4)}(\xi)$$
-                    for some $\xi \in (a,b)$. Simpson's rule is exact for polynomials of degree $\le 3$ — one degree higher than expected from a 3-point rule — because the error term for degree 3 vanishes by symmetry.</p>
+                    for some $\xi \in (a,b)$. Simpson's rule is exact for polynomials of degree $\le 3$ - one degree higher than expected from a 3-point rule - because the error term for degree 3 vanishes by symmetry.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Composite Rules</h2>
                 <p>To integrate over $[a,b]$, partition it into $n$ equal subintervals of length $h = (b-a)/n$, with nodes $x_i = a + ih$.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Composite Trapezoidal Rule</div>
+                    <div class="math-box-label">Definition - Composite Trapezoidal Rule</div>
                     <p class="mb-0">$$T_n(f) = h\left[\frac{f(a)}{2} + f(x_1)+\cdots+f(x_{n-1}) + \frac{f(b)}{2}\right] = \frac{h}{2}\sum_{i=0}^{n-1}\bigl(f(x_i)+f(x_{i+1})\bigr).$$</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Composite Trapezoidal Error</div>
+                    <div class="math-box-label">Theorem - Composite Trapezoidal Error</div>
                     <p class="mb-0">If $f\in C^2[a,b]$,
                     $$\int_a^b f(x)\,dx - T_n(f) = -\frac{(b-a)}{12}\,h^2\,f''(\xi)$$
                     for some $\xi\in(a,b)$. The global error is $O(h^2)$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Composite Simpson's Rule</div>
+                    <div class="math-box-label">Definition - Composite Simpson's Rule</div>
                     <p>Requires $n$ even. With midpoints $m_i = x_{i-1}+h/2$ of each subinterval:
                     $$S_n(f) = \frac{h}{6}\sum_{i=1}^{n}\bigl(f(x_{i-1})+4f(m_i)+f(x_i)\bigr) = \frac{h}{3}\left[f(x_0)+4f(x_1)+2f(x_2)+\cdots+4f(x_{n-1})+f(x_n)\right]$$
                     (with alternating coefficients 4, 2 on interior nodes when written over $2n$ subintervals of length $h/2$).</p>
@@ -197,21 +197,21 @@
 
                 <h2 class="mt-5 mb-3">Richardson Extrapolation and the Romberg Method</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Euler-Maclaurin Error Expansion</div>
+                    <div class="math-box-label">Theorem - Euler-Maclaurin Error Expansion</div>
                     <p class="mb-0">The composite trapezoidal rule satisfies the asymptotic expansion
                     $$\int_a^b f\,dx = T_n(f) + c_2 h^2 + c_4 h^4 + c_6 h^6 + \cdots$$
                     where the constants $c_{2k}$ depend on $f$ and its derivatives at the endpoints but are independent of $h$. This is the <strong>Euler-Maclaurin formula</strong>.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Richardson Extrapolation</div>
+                    <div class="math-box-label">Definition - Richardson Extrapolation</div>
                     <p class="mb-0">Given two trapezoidal approximations $T_n$ (step $h$) and $T_{2n}$ (step $h/2$), the leading $h^2$ error term can be eliminated:
                     $$R = \frac{4\,T_{2n} - T_n}{3} = S_{2n}.$$
                     This is precisely the composite Simpson's rule on the combined grid, exact to $O(h^4)$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Romberg Triangle</div>
+                    <div class="math-box-label">Definition - Romberg Triangle</div>
                     <p>The Romberg method applies Richardson extrapolation recursively. Define $R(n,0) = T_{2^n}$. Then
                     $$R(n,k) = \frac{4^k\,R(n,k-1) - R(n-1,k-1)}{4^k - 1}, \quad k \ge 1.$$
                     Each column of the Romberg triangle has error one order higher: $R(n,k) = O(h^{2k+2})$ where $h = (b-a)/2^n$.</p>
@@ -228,7 +228,7 @@
 
                 <h2 class="mt-5 mb-3">Example: $\int_0^1 e^x\,dx$</h2>
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Integrating $e^x$ on $[0,1]$</div>
+                    <div class="math-box-label">Example - Integrating $e^x$ on $[0,1]$</div>
                     <p>The exact value is $e - 1 \approx 1.71828182845905$. Applying the composite trapezoidal rule with $n$ subintervals gives:</p>
                     <table class="table table-bordered table-sm text-center mt-2 small">
                         <thead><tr><th>$n$</th><th>$h$</th><th>$T_n$</th><th>Error</th></tr></thead>

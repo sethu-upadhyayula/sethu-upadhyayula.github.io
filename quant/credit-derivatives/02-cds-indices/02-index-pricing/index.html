@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -86,7 +86,7 @@
                 <h2 class="mt-5 mb-3">Theoretical (Intrinsic) Spread</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Intrinsic Index Spread</div>
+                    <div class="math-box-label">Definition - Intrinsic Index Spread</div>
                     <p class="mb-0">The intrinsic (or "theoretical") spread of an index with $n$ equally-weighted constituents, each with individual fair spread $s_i$ and risky annuity $\text{RPV01}_i$, is the notional- and risk-weighted average:</p>
                     <p class="mb-0">$$s_{\text{intrinsic}} = \frac{\frac{1}{n}\sum_{i=1}^n s_i \cdot \text{RPV01}_i}{\frac{1}{n}\sum_{i=1}^n \text{RPV01}_i}$$</p>
                     <p class="mb-0">This is the spread at which the index would trade if it were valued purely as a portfolio of its constituents, each priced off its own single-name CDS curve.</p>
@@ -95,7 +95,7 @@
                 <h2 class="mt-5 mb-3">The Index Basis</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — CDS Index Basis</div>
+                    <div class="math-box-label">Definition - CDS Index Basis</div>
                     <p class="mb-0">The index basis is the difference between the quoted (market) index spread $s_{\text{index}}$ and the intrinsic spread:</p>
                     <p class="mb-0">$$\text{Basis} = s_{\text{index}} - s_{\text{intrinsic}}$$</p>
                 </div>
@@ -103,14 +103,14 @@
                 <p>The basis is typically small but persistently non-zero, driven by several factors:</p>
 
                 <ul>
-                    <li><strong>Technical demand</strong> — the index is the primary instrument for expressing macro credit views and hedging broad portfolios, so its spread is influenced by supply and demand for portfolio-level protection independent of the constituents' individual curves.</li>
-                    <li><strong>Liquidity premium</strong> — the index trades with much tighter bid-offer spreads than assembling the equivalent single-name portfolio, so the index can trade "rich" or "cheap" relative to intrinsics.</li>
-                    <li><strong>Counterparty and funding considerations</strong> — index trades often face central clearing, while not all single names are cleared, affecting relative funding costs.</li>
+                    <li><strong>Technical demand</strong> - the index is the primary instrument for expressing macro credit views and hedging broad portfolios, so its spread is influenced by supply and demand for portfolio-level protection independent of the constituents' individual curves.</li>
+                    <li><strong>Liquidity premium</strong> - the index trades with much tighter bid-offer spreads than assembling the equivalent single-name portfolio, so the index can trade "rich" or "cheap" relative to intrinsics.</li>
+                    <li><strong>Counterparty and funding considerations</strong> - index trades often face central clearing, while not all single names are cleared, affecting relative funding costs.</li>
                 </ul>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Basis Trading</div>
-                    <p class="mb-0">A "basis trade" involves buying protection on the index and selling protection on each constituent (or vice versa) to capture a non-zero basis, profiting if the basis converges toward zero. In practice this requires trading all $n$ constituent CDS individually, incurring transaction costs and funding/margin requirements that limit how tightly the basis is arbitraged away — which is why persistent index bases are observed in practice, particularly during periods of stress when liquidity in single names dries up faster than in the index.</p>
+                    <div class="math-box-label">Remark - Basis Trading</div>
+                    <p class="mb-0">A "basis trade" involves buying protection on the index and selling protection on each constituent (or vice versa) to capture a non-zero basis, profiting if the basis converges toward zero. In practice this requires trading all $n$ constituent CDS individually, incurring transaction costs and funding/margin requirements that limit how tightly the basis is arbitraged away - which is why persistent index bases are observed in practice, particularly during periods of stress when liquidity in single names dries up faster than in the index.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Quoting Conventions</h2>
@@ -118,7 +118,7 @@
                 <p>Like single-name CDS, index contracts trade with a fixed coupon and an upfront payment. The upfront (as a percentage of remaining notional) is computed analogously, using the index's own risky annuity computed off a flat hazard rate calibrated to the quoted index spread:</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Index Upfront</div>
+                    <div class="math-box-label">Example - Index Upfront</div>
                     <p class="mb-0">$$\text{Upfront} \approx (s_{\text{index}} - \bar{s}) \times \text{RPV01}_{\text{index}}$$</p>
                     <p class="mb-0">where $\bar{s}$ is the index's fixed coupon (e.g., 100bp for CDX.NA.IG) and $\text{RPV01}_{\text{index}}$ is computed from a flat hazard rate that reproduces $s_{\text{index}}$ under the index's own maturity and discount curve. This mirrors exactly the single-name upfront calculation in <a href="../../01-credit-default-swaps/01-cds-basics/">CDS Structure</a>, applied at the index level.</p>
                 </div>

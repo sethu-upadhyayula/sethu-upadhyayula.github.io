@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -130,14 +130,14 @@
                 <h2 class="mt-4 mb-3">The Reference Triangle and Affine Map</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Reference Triangle</div>
+                    <div class="math-box-label">Definition - Reference Triangle</div>
                     <p class="mb-0">The <strong>reference triangle</strong> is
                     $$\hat{K} = \{(\hat{x}_1, \hat{x}_2) \in \mathbb{R}^2 : \hat{x}_1 \geq 0,\; \hat{x}_2 \geq 0,\; \hat{x}_1 + \hat{x}_2 \leq 1\},$$
                     with vertices $\hat{a}_1 = (0,0)$, $\hat{a}_2 = (1,0)$, $\hat{a}_3 = (0,1)$. The reference barycentric coordinates are $\hat\lambda_1 = 1 - \hat{x}_1 - \hat{x}_2$, $\hat\lambda_2 = \hat{x}_1$, $\hat\lambda_3 = \hat{x}_2$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Affine Map</div>
+                    <div class="math-box-label">Definition - Affine Map</div>
                     <p>For a physical triangle $K$ with vertices $a_1, a_2, a_3 \in \mathbb{R}^2$, the <strong>affine element map</strong> $F_K: \hat{K} \to K$ is defined by
                     $$x = F_K(\hat{x}) = B_K \hat{x} + b_K,$$
                     where
@@ -148,7 +148,7 @@
                 <h2 class="mt-5 mb-3">Change of Variables in Integrals</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Integral Transformation</div>
+                    <div class="math-box-label">Theorem - Integral Transformation</div>
                     <p class="mb-0">For any integrable function $f: K \to \mathbb{R}$:
                     $$\int_K f(x)\,dx = \int_{\hat{K}} f(F_K(\hat{x}))\,|\det B_K|\,d\hat{x} = 2|K|\int_{\hat{K}} \hat{f}(\hat{x})\,d\hat{x},$$
                     where $\hat{f} = f \circ F_K$. This reduces every element integral to a single reference domain integral, which can be evaluated by a fixed quadrature rule on $\hat{K}$.</p>
@@ -157,7 +157,7 @@
                 <h2 class="mt-5 mb-3">Gradient Transformation</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Chain Rule for Gradients</div>
+                    <div class="math-box-label">Proposition - Chain Rule for Gradients</div>
                     <p>Let $\varphi: K \to \mathbb{R}$ and $\hat\varphi = \varphi \circ F_K : \hat{K} \to \mathbb{R}$. By the chain rule:
                     $$\nabla_{\hat{x}} \hat\varphi = B_K^\top \nabla_x \varphi \circ F_K.$$
                     Solving for the physical gradient:
@@ -169,7 +169,7 @@
                 <h2 class="mt-5 mb-3">Numerical Quadrature on the Reference Element</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Gauss Quadrature on $\hat{K}$</div>
+                    <div class="math-box-label">Definition - Gauss Quadrature on $\hat{K}$</div>
                     <p class="mb-0">A quadrature rule on $\hat{K}$ approximates $\int_{\hat{K}} \hat{f}\,d\hat{x} \approx \sum_{q=1}^{n_q} w_q \hat{f}(\hat{x}_q)$, where $\hat{x}_q$ are quadrature points and $w_q > 0$ are weights with $\sum_q w_q = |\hat{K}| = 1/2$. Common rules:
                     <ul class="mb-0">
                         <li><strong>1-point:</strong> centroid $\hat{x} = (1/3, 1/3)$, $w = 1/2$; exact for $P_1$.</li>
@@ -182,17 +182,17 @@
                 <h2 class="mt-5 mb-3">Isoparametric Elements</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Isoparametric Mapping</div>
+                    <div class="math-box-label">Definition - Isoparametric Mapping</div>
                     <p class="mb-0">For curved domains or higher-order accuracy, the <strong>isoparametric</strong> approach uses the same $P_k$ polynomial basis to parametrise both the element geometry and the solution. For $P_2$ isoparametric elements, the map $F_K: \hat{K} \to K$ is a degree-2 polynomial (using edge midpoints as geometric nodes), allowing accurate representation of curved boundaries. The Jacobian $B_K(\hat{x}) = \partial F_K / \partial\hat{x}$ is then position-dependent, and $|\det B_K(\hat{x})|$ must be evaluated at each quadrature point.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Affine vs. Isoparametric</div>
+                    <div class="math-box-label">Remark - Affine vs. Isoparametric</div>
                     <p class="mb-0">For polygonal domains and $P_k$ elements on triangles, the affine map suffices and $B_K$ is constant on $K$, so the Jacobian factor $|\det B_K| = 2|K|$ can be precomputed. Isoparametric elements are needed when the domain boundary is curved (e.g.\ a disc) and one wishes to approximate the boundary geometry to order $h^{k+1}$ as well.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — $P_1$ Gradient Computation</div>
+                    <div class="math-box-label">Example - $P_1$ Gradient Computation</div>
                     <p class="mb-0">For $P_1$ elements, the reference basis gradients are constant: $\nabla_{\hat{x}}\hat\lambda_1 = (-1,-1)^\top$, $\nabla_{\hat{x}}\hat\lambda_2 = (1,0)^\top$, $\nabla_{\hat{x}}\hat\lambda_3 = (0,1)^\top$. The physical gradients are $\nabla_x\lambda_i = B_K^{-\top}\nabla_{\hat{x}}\hat\lambda_i$, constant on $K$. The element stiffness entries are then $K^e_{ij} = |K|\,(\nabla_x\lambda_j)\cdot(\nabla_x\lambda_i)$, computable with a single matrix-vector product per element.</p>
                 </div>
 

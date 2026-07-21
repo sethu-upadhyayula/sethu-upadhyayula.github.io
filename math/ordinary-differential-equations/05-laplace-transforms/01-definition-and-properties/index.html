@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -134,21 +134,21 @@
                 <h2 class="mt-5 mb-3">Definition and Region of Convergence</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.1.1 — Laplace Transform</div>
+                    <div class="math-box-label">Definition 5.1.1 - Laplace Transform</div>
                     <p class="mb-0">Let $f:[0,\infty)\to\mathbb{R}$ be locally integrable. The <strong>Laplace transform</strong> of $f$ is
                     $$\mathcal{L}\{f\}(s) = F(s) = \int_0^\infty e^{-st}f(t)\,dt,$$
                     defined for all $s \in \mathbb{C}$ for which the integral converges absolutely. The set of such $s$ is called the <strong>region of convergence (ROC)</strong>.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.1.2 — Existence and ROC</div>
+                    <div class="math-box-label">Theorem 5.1.2 - Existence and ROC</div>
                     <p class="mb-0">If $f$ is piecewise continuous on $[0,\infty)$ and of <strong>exponential order</strong> $\alpha$, meaning $|f(t)| \leq Me^{\alpha t}$ for some $M > 0$ and all $t \geq T$, then $F(s)$ is defined and analytic for $\text{Re}(s) > \alpha$. The ROC is always a right half-plane $\{\text{Re}(s) > \alpha_0\}$ for some $\alpha_0 \in [-\infty, \infty)$, called the <strong>abscissa of convergence</strong>.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Linearity</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 5.1.3 — Linearity</div>
+                    <div class="math-box-label">Proposition 5.1.3 - Linearity</div>
                     <p class="mb-0">For constants $\alpha, \beta$ and functions $f, g$ of exponential order,
                     $$\mathcal{L}\{\alpha f + \beta g\}(s) = \alpha F(s) + \beta G(s),$$
                     valid in the intersection of the ROCs of $f$ and $g$. Linearity follows directly from the linearity of the integral.</p>
@@ -157,7 +157,7 @@
                 <h2 class="mt-5 mb-3">Transform of Derivatives</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.1.4 — Derivative Rule</div>
+                    <div class="math-box-label">Theorem 5.1.4 - Derivative Rule</div>
                     <p>If $f, f', \ldots, f^{(n-1)}$ are continuous and $f^{(n)}$ is piecewise continuous, all of exponential order $\alpha$, then for $\text{Re}(s) > \alpha$:
                     $$\mathcal{L}\{f^{(n)}\}(s) = s^n F(s) - s^{n-1}f(0) - s^{n-2}f'(0) - \cdots - f^{(n-1)}(0).$$
                     In particular,
@@ -166,14 +166,14 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Initial Conditions</div>
+                    <div class="math-box-label">Remark - Initial Conditions</div>
                     <p class="mb-0">The derivative rule automatically incorporates the initial conditions $f(0), f'(0), \ldots$ into the algebraic equation for $F(s)$. This is the key advantage over classical undetermined-coefficient methods: there is no need to add a particular solution and then match initial data separately.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">First Shift Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.1.5 — First Shift Theorem (s-shifting)</div>
+                    <div class="math-box-label">Theorem 5.1.5 - First Shift Theorem (s-shifting)</div>
                     <p class="mb-0">If $\mathcal{L}\{f\}(s) = F(s)$ for $\text{Re}(s) > \alpha$, then
                     $$\mathcal{L}\{e^{at}f(t)\}(s) = F(s - a), \quad \text{Re}(s) > \alpha + \text{Re}(a).$$
                     <em>Proof.</em> $\int_0^\infty e^{-st}e^{at}f(t)\,dt = \int_0^\infty e^{-(s-a)t}f(t)\,dt = F(s-a)$.
@@ -183,7 +183,7 @@
                 <h2 class="mt-5 mb-3">Second Shift Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.1.6 — Second Shift Theorem (t-shifting)</div>
+                    <div class="math-box-label">Theorem 5.1.6 - Second Shift Theorem (t-shifting)</div>
                     <p>Let $H(t)$ denote the Heaviside unit step function, $H(t) = 0$ for $t < 0$ and $H(t) = 1$ for $t \geq 0$. If $\mathcal{L}\{f\}(s) = F(s)$, then for $a > 0$:
                     $$\mathcal{L}\{H(t-a)\,f(t-a)\}(s) = e^{-as}F(s).$$</p>
                     <p class="mb-0"><em>Proof.</em> Substitute $u = t - a$: $\int_a^\infty e^{-st}f(t-a)\,dt = e^{-as}\int_0^\infty e^{-su}f(u)\,du = e^{-as}F(s)$. The second shift theorem handles forcing functions that switch on at time $t = a$.</p>
@@ -194,7 +194,7 @@
                 <p>The following table collects the most frequently used Laplace pairs. All hold for sufficiently large $\text{Re}(s)$.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Table 5.1.7 — Standard Laplace Transforms</div>
+                    <div class="math-box-label">Table 5.1.7 - Standard Laplace Transforms</div>
                     <table class="table table-sm table-bordered mt-2" style="font-size:0.95em;">
                         <thead><tr><th>$f(t)$</th><th>$F(s) = \mathcal{L}\{f\}(s)$</th><th>ROC</th></tr></thead>
                         <tbody>
@@ -217,26 +217,26 @@
                 <h2 class="mt-5 mb-3">Additional Properties</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 5.1.8 — Multiplication by $t^n$</div>
+                    <div class="math-box-label">Proposition 5.1.8 - Multiplication by $t^n$</div>
                     <p class="mb-0">$$\mathcal{L}\{t^n f(t)\}(s) = (-1)^n \frac{d^n}{ds^n}F(s).$$
                     <em>Proof.</em> Differentiate $F(s) = \int_0^\infty e^{-st}f(t)\,dt$ under the integral sign: $F'(s) = -\int_0^\infty t e^{-st}f(t)\,dt = -\mathcal{L}\{tf\}(s)$. Iterate.</p>
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 5.1.9 — Division by $t$ (Integration in $s$)</div>
+                    <div class="math-box-label">Proposition 5.1.9 - Division by $t$ (Integration in $s$)</div>
                     <p class="mb-0">If $\lim_{t\to 0^+} f(t)/t$ exists, then
                     $$\mathcal{L}\!\left\{\frac{f(t)}{t}\right\}(s) = \int_s^\infty F(\sigma)\,d\sigma.$$
                     Example: $\mathcal{L}\!\left\{\dfrac{\sin t}{t}\right\}(s) = \int_s^\infty \dfrac{d\sigma}{\sigma^2+1} = \dfrac{\pi}{2} - \arctan s$.</p>
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 5.1.10 — Integration (Transform of $\int_0^t f$)</div>
+                    <div class="math-box-label">Proposition 5.1.10 - Integration (Transform of $\int_0^t f$)</div>
                     <p class="mb-0">$$\mathcal{L}\!\left\{\int_0^t f(\tau)\,d\tau\right\}(s) = \frac{F(s)}{s}.$$
                     This follows from the derivative rule applied to $g(t) = \int_0^t f(\tau)\,d\tau$: $\mathcal{L}\{g'\} = sG(s)-g(0) = sG(s)$, so $G(s) = F(s)/s$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.1.11 — Initial and Final Value Theorems</div>
+                    <div class="math-box-label">Theorem 5.1.11 - Initial and Final Value Theorems</div>
                     <p>Provided the relevant limits exist:</p>
                     <p>$\bullet$ <strong>Initial value:</strong> $\lim_{t\to 0^+} f(t) = \lim_{s\to\infty} sF(s).$</p>
                     <p class="mb-0">$\bullet$ <strong>Final value:</strong> $\lim_{t\to\infty} f(t) = \lim_{s\to 0^+} sF(s),$ provided all poles of $sF(s)$ lie in $\text{Re}(s) < 0$. These theorems allow direct reading of limiting behaviour from $F(s)$ without inverting the transform.</p>

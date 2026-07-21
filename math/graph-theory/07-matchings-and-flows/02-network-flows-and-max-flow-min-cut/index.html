@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -139,17 +139,17 @@
                 <p>A network flow model routes commodities through a directed graph subject to edge capacities. The max-flow min-cut theorem is one of the deepest and most useful results in combinatorial optimisation.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.1 — Flow Network</div>
+                    <div class="math-box-label">Definition 7.2.1 - Flow Network</div>
                     <p class="mb-0">A <strong>flow network</strong> $(G, c, s, t)$ consists of a directed graph $G = (V, E)$, a capacity function $c: E \to \mathbb{R}_{\ge 0}$, a source $s$, and a sink $t$. A <strong>flow</strong> is a function $f: E \to \mathbb{R}_{\ge 0}$ satisfying (1) $f(e) \le c(e)$ for all $e$ (capacity constraint) and (2) for every $v \neq s, t$: $\sum_{e\text{ into }v} f(e) = \sum_{e\text{ out of }v} f(e)$ (conservation). The <strong>value</strong> of $f$ is $|f| = \sum_{e\text{ out of }s} f(e)$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.2 — $s$-$t$ Cut</div>
+                    <div class="math-box-label">Definition 7.2.2 - $s$-$t$ Cut</div>
                     <p class="mb-0">An <strong>$s$-$t$ cut</strong> is a partition $(S, T)$ of $V$ with $s \in S$ and $t \in T$. Its <strong>capacity</strong> is $\text{cap}(S,T) = \sum_{u \in S,\, v \in T,\, (u,v)\in E} c(u,v)$. Weak duality: $|f| \le \text{cap}(S,T)$ for every flow $f$ and every cut $(S,T)$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.3 — Max-Flow Min-Cut Theorem (Ford-Fulkerson 1956)</div>
+                    <div class="math-box-label">Theorem 7.2.3 - Max-Flow Min-Cut Theorem (Ford-Fulkerson 1956)</div>
                     <p class="mb-0">In any flow network, the maximum flow value equals the minimum cut capacity:
                     $$\max_{f} |f| = \min_{(S,T) \text{ cut}} \mathrm{cap}(S,T).$$</p>
                 </div>
@@ -157,29 +157,29 @@
                 <h2 class="mt-5 mb-3">Algorithms</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.2.4 — Residual Graph</div>
+                    <div class="math-box-label">Definition 7.2.4 - Residual Graph</div>
                     <p class="mb-0">Given a flow $f$, the <strong>residual graph</strong> $G_f$ has the same vertex set; for each edge $(u,v)$ with $f(u,v) < c(u,v)$, add a <strong>forward edge</strong> with residual capacity $c(u,v) - f(u,v)$; for each edge with $f(u,v) > 0$, add a <strong>backward edge</strong> $(v,u)$ with residual capacity $f(u,v)$. An $s$-$t$ path in $G_f$ is an <strong>augmenting path</strong>.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.5 — Ford-Fulkerson Method</div>
+                    <div class="math-box-label">Theorem 7.2.5 - Ford-Fulkerson Method</div>
                     <p class="mb-0">Repeatedly find an $s$-$t$ augmenting path in the residual graph and push as much flow as possible. When no augmenting path exists, the current flow is maximum. For integer capacities this terminates in $O(E \cdot |f^*|)$ time where $|f^*|$ is the optimal flow value.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.2.6 — Edmonds-Karp Algorithm</div>
+                    <div class="math-box-label">Theorem 7.2.6 - Edmonds-Karp Algorithm</div>
                     <p class="mb-0">Using BFS to always find a <strong>shortest</strong> augmenting path (fewest edges), the algorithm runs in $O(VE^2)$ time regardless of edge capacities. The number of augmenting path iterations is $O(VE)$; each augmenting path takes $O(E)$ via BFS.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Applications</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.2.7 — Bipartite Matching via Flow</div>
+                    <div class="math-box-label">Example 7.2.7 - Bipartite Matching via Flow</div>
                     <p class="mb-0">Given bipartite graph $G = (A \cup B, E)$, add a super-source $s$ with unit-capacity edges to all $a \in A$, and a super-sink $t$ with unit-capacity edges from all $b \in B$. Direct edges $A \to B$ with unit capacity. The maximum integer flow equals the maximum matching size.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 7.2.8 — Edge-Disjoint Paths</div>
+                    <div class="math-box-label">Example 7.2.8 - Edge-Disjoint Paths</div>
                     <p class="mb-0">The maximum number of edge-disjoint $s$-$t$ paths in a directed graph equals the minimum $s$-$t$ edge cut (Menger's theorem for directed graphs), obtained by setting all capacities to 1 and computing max flow.</p>
                 </div>
 

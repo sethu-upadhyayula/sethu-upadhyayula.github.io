@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. Network Models: OSI and TCP/IP</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Computer Networks</a>
+                <hr>
+                <a href="../01-network-models-osi-and-tcp-ip/" class="text-decoration-none toc-chapter-link toc-active"><strong>1.</strong> Network Models: OSI and TCP/IP</a>
+                <a href="../02-the-physical-and-data-link-layers/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> The Physical and Data Link Layers</a>
+                <a href="../03-the-network-layer-ip-and-routing/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> The Network Layer: IP and Routing</a>
+                <a href="../04-the-transport-layer-tcp-and-udp/" class="text-decoration-none toc-chapter-link"><strong>4.</strong> The Transport Layer: TCP and UDP</a>
+                <a href="../05-reliability-and-congestion-control/" class="text-decoration-none toc-chapter-link"><strong>5.</strong> Reliability and Congestion Control</a>
+                <a href="../06-the-application-layer-dns-http-and-beyond/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> The Application Layer: DNS, HTTP, and Beyond</a>
+                <a href="../07-network-security-fundamentals/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Network Security Fundamentals</a>
+                <a href="../08-wireless-networks-and-modern-trends/" class="text-decoration-none toc-chapter-link"><strong>8.</strong> Wireless Networks and Modern Trends</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">Computer Networks</a> ›
+                <span>1. Network Models: OSI and TCP/IP</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">1. Network Models: OSI and TCP/IP</h1>
+
+                <p>Networking is organized into layers, each responsible for a distinct part of getting data from one machine to another - this chapter introduces the two standard layered models used to reason about that organization, before the rest of this subject works through each layer in turn.</p>
+
+                <h2 class="mt-5 mb-3">Why Layering?</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark - The Value of Layering</div>
+                    <p class="mb-0">Layering lets each part of the network stack be designed, implemented, and reasoned about somewhat independently - a web application (application layer) does not need to know whether the underlying physical link is Ethernet or Wi-Fi, and a new physical medium can be introduced without requiring changes to how applications communicate - as long as each layer presents a stable interface to the layer above it.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The OSI Model</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition - The Seven OSI Layers</div>
+                    <p class="mb-0">The <strong>OSI (Open Systems Interconnection) model</strong> divides networking into seven layers: physical, data link, network, transport, session, presentation, and application. It is primarily used today as a conceptual teaching and reference framework rather than a literal description of how most real systems are implemented.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">The TCP/IP Model</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition - The Four TCP/IP Layers</div>
+                    <p class="mb-0">The <strong>TCP/IP model</strong>, which more closely reflects how the actual internet is built and is the model this subject follows, condenses networking into four layers: <strong>link</strong> (Chapter 2), <strong>internet</strong> (Chapter 3), <strong>transport</strong> (Chapter 4), and <strong>application</strong> (Chapter 6) - collapsing OSI's separate session and presentation layers into the application layer, and its physical and data link layers into a single link layer.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Encapsulation</h2>
+
+                <p>As data moves down the stack from application to physical layer, each layer wraps ("encapsulates") the data from the layer above with its own header (and sometimes trailer) information - an application's data becomes a transport-layer segment, then a network-layer packet, then a link-layer frame - with the reverse process (decapsulation) stripping each header away as the data moves back up the stack at the receiving end.</p>
+
+                <h2 class="mt-5 mb-3">Protocols as Layer Implementations</h2>
+
+                <p>A <strong>protocol</strong> is a concrete, precisely specified implementation of one layer's responsibilities - IP (Chapter 3) implements the internet layer, TCP and UDP (Chapter 4) implement the transport layer, and HTTP and DNS (Chapter 6) implement specific application-layer services - each covered in the corresponding chapter of this subject.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../" class="btn btn-outline-custom">&larr; Back to Computer Networks</a>
+                    <a href="../02-the-physical-and-data-link-layers/" class="btn btn-custom">2. The Physical and Data Link Layers &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

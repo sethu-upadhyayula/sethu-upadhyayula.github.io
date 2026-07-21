@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -125,10 +125,10 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">5.1 Simple Linear Regression</h1>
-                <p>Simple linear regression models the relationship between a scalar response $Y$ and a single predictor $x$ via a straight line. It is the simplest regression model but introduces all the key concepts — OLS estimation, optimality, and inference — that extend directly to the multiple-predictor setting.</p>
+                <p>Simple linear regression models the relationship between a scalar response $Y$ and a single predictor $x$ via a straight line. It is the simplest regression model but introduces all the key concepts - OLS estimation, optimality, and inference - that extend directly to the multiple-predictor setting.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.1.1 — Simple Linear Regression Model</div>
+                    <div class="math-box-label">Definition 5.1.1 - Simple Linear Regression Model</div>
                     <p class="mb-0">The <strong>simple linear regression model</strong> is
                     $$Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \quad i = 1,\ldots,n,$$
                     where $x_i$ are fixed (non-random) predictor values, $\beta_0$ (intercept) and $\beta_1$ (slope) are unknown parameters, and $\varepsilon_i \stackrel{\text{iid}}{\sim} N(0,\sigma^2)$ are random errors. Thus $E[Y_i] = \beta_0 + \beta_1 x_i$ and $\mathrm{Var}(Y_i) = \sigma^2$.</p>
@@ -137,7 +137,7 @@
                 <h2 class="mt-5">Ordinary Least Squares Estimation</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.1.2 — OLS Estimators</div>
+                    <div class="math-box-label">Theorem 5.1.2 - OLS Estimators</div>
                     <p>Minimising $\mathrm{SSE}(\beta_0,\beta_1) = \sum_{i=1}^n (Y_i - \beta_0 - \beta_1 x_i)^2$ yields:
                     $$\hat{\beta}_1 = \frac{\sum_{i=1}^n (x_i - \bar{x})(Y_i - \bar{Y})}{\sum_{i=1}^n (x_i-\bar{x})^2} = \frac{S_{xy}}{S_{xx}}, \qquad \hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{x},$$
                     where $S_{xx} = \sum(x_i-\bar{x})^2$ and $S_{xy} = \sum(x_i-\bar{x})(Y_i-\bar{Y})$.</p>
@@ -145,14 +145,14 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.1.3 — Gauss-Markov Theorem</div>
+                    <div class="math-box-label">Theorem 5.1.3 - Gauss-Markov Theorem</div>
                     <p class="mb-0">Under the assumptions $E[\varepsilon_i]=0$, $\mathrm{Var}(\varepsilon_i)=\sigma^2$, and $\mathrm{Cov}(\varepsilon_i,\varepsilon_j)=0$ for $i\ne j$ (no normality required), the OLS estimators $\hat{\beta}_0$ and $\hat{\beta}_1$ are the <strong>Best Linear Unbiased Estimators (BLUE)</strong>: among all linear unbiased estimators they have minimum variance.</p>
                 </div>
 
                 <h2 class="mt-5">Variance Estimation and Decomposition</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.1.4 — Sum of Squares Decomposition</div>
+                    <div class="math-box-label">Definition 5.1.4 - Sum of Squares Decomposition</div>
                     <p>Define:
                     $$\mathrm{SST} = \sum_{i=1}^n(Y_i - \bar{Y})^2, \quad \mathrm{SSR} = \sum_{i=1}^n(\hat{Y}_i - \bar{Y})^2, \quad \mathrm{SSE} = \sum_{i=1}^n(Y_i - \hat{Y}_i)^2.$$
                     These satisfy $\mathrm{SST} = \mathrm{SSR} + \mathrm{SSE}$. The <strong>coefficient of determination</strong> is
@@ -163,7 +163,7 @@
                 <h2 class="mt-5">Inference for Coefficients</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.1.5 — $t$-Tests for Regression Coefficients</div>
+                    <div class="math-box-label">Theorem 5.1.5 - $t$-Tests for Regression Coefficients</div>
                     <p>Under the normal error assumption, $\hat{\beta}_1 \sim N(\beta_1, \sigma^2/S_{xx})$. The pivotal statistic
                     $$T_1 = \frac{\hat{\beta}_1 - \beta_1}{\hat{\sigma}/\sqrt{S_{xx}}} \sim t_{n-2}.$$
                     Test $H_0:\beta_1 = 0$ (no linear relationship) using $T_1 = \hat{\beta}_1\sqrt{S_{xx}}/\hat{\sigma}$; reject if $|T_1| > t_{n-2,\alpha/2}$.</p>
@@ -173,7 +173,7 @@
                 <h2 class="mt-5">Prediction and Confidence Intervals</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 5.1.6 — CI for Mean Response vs.\ Prediction Interval</div>
+                    <div class="math-box-label">Proposition 5.1.6 - CI for Mean Response vs.\ Prediction Interval</div>
                     <p>At a new predictor value $x^*$, the fitted value is $\hat{Y}^* = \hat{\beta}_0 + \hat{\beta}_1 x^*$.</p>
                     <ul class="mb-0">
                         <li><strong>Confidence interval for $E[Y^*]$:</strong> $\hat{Y}^* \pm t_{n-2,\alpha/2}\,\hat{\sigma}\sqrt{\frac{1}{n}+\frac{(x^*-\bar{x})^2}{S_{xx}}}$.</li>

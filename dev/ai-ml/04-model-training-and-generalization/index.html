@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Model Training and Generalization</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">AI/ML</a>
+                <hr>
+                <a href="../01-what-machine-learning-is/" class="text-decoration-none toc-chapter-link"><strong>1.</strong> What Machine Learning Is</a>
+                <a href="../02-supervised-learning/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> Supervised Learning</a>
+                <a href="../03-unsupervised-learning/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Unsupervised Learning</a>
+                <a href="../04-model-training-and-generalization/" class="text-decoration-none toc-chapter-link toc-active"><strong>4.</strong> Model Training and Generalization</a>
+                <a href="../05-neural-networks-and-deep-learning/" class="text-decoration-none toc-chapter-link"><strong>5.</strong> Neural Networks and Deep Learning</a>
+                <a href="../06-attention-and-large-language-models/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Attention and Large Language Models</a>
+                <a href="../07-reinforcement-learning/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Reinforcement Learning</a>
+                <a href="../08-practical-considerations-and-limitations/" class="text-decoration-none toc-chapter-link"><strong>8.</strong> Practical Considerations and Limitations</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">AI/ML</a> ›
+                <span>4. Model Training and Generalization</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">4. Model Training and Generalization</h1>
+
+                <p>Chapters 2 and 3 described what supervised and unsupervised models predict — this chapter surveys how a model's internal parameters actually get fit to training data, and how well the result can be expected to generalize to new data.</p>
+
+                <h2 class="mt-5 mb-3">Loss Functions and Gradient Descent</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Loss Function and Gradient Descent</div>
+                    <p class="mb-0">A <strong>loss function</strong> measures how wrong a model's current predictions are compared to the true, known outputs in the training set — training then becomes an optimization problem: adjust the model's parameters to minimize this loss. <strong>Gradient descent</strong> is the standard optimization approach used, repeatedly adjusting parameters a small step in the direction that decreases the loss fastest (its negative gradient), continuing until the loss stops decreasing meaningfully.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Overfitting and Underfitting</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Overfitting and Underfitting</div>
+                    <ul class="mb-0">
+                        <li><strong>Overfitting</strong> — a model fits its training data very closely, including its noise and idiosyncrasies, but generalizes poorly to new data.</li>
+                        <li><strong>Underfitting</strong> — a model is too simple to capture even the genuine underlying pattern in the training data, performing poorly on both training and new data alike.</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Regularization</h2>
+
+                <p><strong>Regularization</strong> techniques discourage a model from fitting the training data too closely, directly combatting overfitting above — commonly by adding a penalty term to the loss function that grows with the model's parameter magnitudes, encouraging the optimization to prefer simpler models unless the extra complexity is genuinely justified by a meaningfully better fit.</p>
+
+                <h2 class="mt-5 mb-3">Bias-Variance Tradeoff</h2>
+
+                <div class="math-box remark">
+                    <div class="math-box-label">Remark — Bias versus Variance</div>
+                    <p class="mb-0">A model's generalization error can be understood as a tradeoff between <strong>bias</strong> (error from a model too simple to capture the true pattern — underfitting) and <strong>variance</strong> (error from a model too sensitive to the specific training data it happened to see — overfitting) — model complexity, training data quantity, and regularization above all shift this tradeoff, and much of practical machine learning is about finding a good balance point for the problem at hand.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Cross-Validation</h2>
+
+                <p><strong>Cross-validation</strong> gives a more reliable estimate of how well a model generalizes than a single train/test split alone — repeatedly partitioning the training data into different train and validation subsets, training and evaluating on each partition in turn, and averaging the results — commonly used to compare different models or different settings of a model's own configuration parameters ("hyperparameters") before final evaluation on a truly held-out test set.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../03-unsupervised-learning/" class="btn btn-outline-custom">&larr; 3. Unsupervised Learning</a>
+                    <a href="../05-neural-networks-and-deep-learning/" class="btn btn-custom">5. Neural Networks and Deep Learning &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -85,12 +85,12 @@
                 <h2 class="mt-5 mb-3">Structure</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Target Redemption Forward</div>
+                    <div class="math-box-label">Definition - Target Redemption Forward</div>
                     <p class="mb-0">A TARF specifies a strike rate $K$ (typically better than the market forward rate $F$), a series of fixing dates $t_1 < t_2 < \dots < t_n$, a notional $N$ per fixing, a leverage factor $L > 1$, and a target cumulative gain $G$. At each fixing date $t_i$, with prevailing spot $S_{t_i}$:</p>
                     <ul class="mb-0 mt-2">
                         <li>If the fixing is favourable to the client (e.g., $S_{t_i} < K$ for a corporate that wants to sell foreign currency at $K$), the client transacts notional $N$ at rate $K$, realising a gain of $N(K - S_{t_i})$.</li>
                         <li>If the fixing is unfavourable ($S_{t_i} > K$), the client must transact a leveraged notional $L \cdot N$ at rate $K$, realising a loss of $L \cdot N (S_{t_i} - K)$ relative to transacting at market.</li>
-                        <li>The cumulative gains across all fixings to date are tracked. As soon as the cumulative gain reaches or exceeds the target $G$, the contract terminates ("knocks out") — typically with the final fixing's gain capped so that the cumulative total exactly equals $G$ — and no further fixings occur.</li>
+                        <li>The cumulative gains across all fixings to date are tracked. As soon as the cumulative gain reaches or exceeds the target $G$, the contract terminates ("knocks out") - typically with the final fixing's gain capped so that the cumulative total exactly equals $G$ - and no further fixings occur.</li>
                     </ul>
                 </div>
 
@@ -99,8 +99,8 @@
                 <h2 class="mt-5 mb-3">Use by Corporates</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Appeal of an Enhanced Rate</div>
-                    <p class="mb-0">TARFs were marketed heavily to corporates — particularly exporters in emerging markets needing to convert foreign currency export receivables into local currency — on the basis that the strike $K$ was meaningfully better than the market forward rate $F$ for the same tenor. A corporate could lock in, say, a EUR/PLN rate more favourable than the forward for the next 12 months of receivables. The "cost" of this enhanced rate is the leveraged exposure on adverse fixings and the early termination on favourable ones — effectively, the corporate has sold a strip of leveraged options to the bank in exchange for the improved rate, but this option-selling nature was often poorly understood or under-emphasised relative to the headline rate.</p>
+                    <div class="math-box-label">Remark - The Appeal of an Enhanced Rate</div>
+                    <p class="mb-0">TARFs were marketed heavily to corporates - particularly exporters in emerging markets needing to convert foreign currency export receivables into local currency - on the basis that the strike $K$ was meaningfully better than the market forward rate $F$ for the same tenor. A corporate could lock in, say, a EUR/PLN rate more favourable than the forward for the next 12 months of receivables. The "cost" of this enhanced rate is the leveraged exposure on adverse fixings and the early termination on favourable ones - effectively, the corporate has sold a strip of leveraged options to the bank in exchange for the improved rate, but this option-selling nature was often poorly understood or under-emphasised relative to the headline rate.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Risks and the CHF TARF Episodes</h2>
@@ -108,28 +108,28 @@
                 <p>The risk profile of a TARF is highly asymmetric: limited, capped upside (the target gain $G$) versus open-ended, leveraged downside for as long as the structure remains alive. This asymmetry becomes catastrophic when the underlying exchange rate makes a large, sustained, one-directional move against the corporate's hedge.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The 2008-09 and 2015 CHF Episodes</div>
+                    <div class="math-box-label">Remark - The 2008-09 and 2015 CHF Episodes</div>
                     <p>In the years before the 2008 financial crisis, many corporates across Central and Eastern Europe (notably Poland and Hungary) and Asia entered into TARF and similar leveraged accumulator structures referencing EUR/PLN, EUR/HUF, and USD/KRW, often as a way to obtain favourable financing rates or enhanced FX conversion rates. When these currencies depreciated sharply during the 2008 crisis, the leveraged legs of these structures generated losses that in some cases were many multiples of the corporates' actual underlying FX exposure, leading to significant corporate losses and litigation.</p>
                     <p class="mb-0">A second, even more dramatic episode occurred on 15 January 2015, when the Swiss National Bank abruptly removed the EUR/CHF 1.20 floor it had defended since 2011. EUR/CHF fell around 30% within minutes. Corporates (and retail FX traders) holding TARFs and similar leveraged structures that involved selling CHF calls (or being short CHF in leveraged size) suffered losses far exceeding any plausible benefit the structures had delivered, and several brokers and banks suffered severe losses or failure (most notably the retail broker Alpari UK) due to client default on these leveraged positions.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Pricing Considerations</h2>
 
-                <p>A TARF can be decomposed, fixing by fixing, into a strip of vanilla and digital options, but the path-dependent knockout feature — which depends on the cumulative sum of past payoffs — means the fixings cannot be priced independently. Valuation requires either a Monte Carlo simulation that tracks the running cumulative gain across simulated paths, or a backward-induction (PDE/lattice) approach over an augmented state space that includes the cumulative gain as a state variable in addition to spot.</p>
+                <p>A TARF can be decomposed, fixing by fixing, into a strip of vanilla and digital options, but the path-dependent knockout feature - which depends on the cumulative sum of past payoffs - means the fixings cannot be priced independently. Valuation requires either a Monte Carlo simulation that tracks the running cumulative gain across simulated paths, or a backward-induction (PDE/lattice) approach over an augmented state space that includes the cumulative gain as a state variable in addition to spot.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Smile and Correlation Sensitivity</div>
-                    <p class="mb-0">Because the knockout probability and the magnitude of leveraged losses depend on the joint distribution of spot across all fixing dates — not just the marginal distribution at each date — a TARF's value is sensitive to the volatility smile at multiple tenors and to the assumed dynamics of volatility (e.g., whether a local volatility, stochastic volatility, or local-stochastic volatility model is used), in addition to spot itself. This makes TARFs considerably more model-dependent than single-fixing barrier options.</p>
+                    <div class="math-box-label">Remark - Smile and Correlation Sensitivity</div>
+                    <p class="mb-0">Because the knockout probability and the magnitude of leveraged losses depend on the joint distribution of spot across all fixing dates - not just the marginal distribution at each date - a TARF's value is sensitive to the volatility smile at multiple tenors and to the assumed dynamics of volatility (e.g., whether a local volatility, stochastic volatility, or local-stochastic volatility model is used), in addition to spot itself. This makes TARFs considerably more model-dependent than single-fixing barrier options.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Regulatory Concerns</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Suitability and Disclosure</div>
+                    <div class="math-box-label">Remark - Suitability and Disclosure</div>
                     <p class="mb-0">Following the corporate losses associated with TARFs and similar leveraged accumulator products, regulators and industry bodies in several jurisdictions increased scrutiny of the sale of such products to non-financial corporates, focusing on suitability assessments, clearer disclosure of the embedded leverage and worst-case scenarios, and the documentation of the corporate's actual underlying hedging need relative to the notional and leverage of the structure sold. TARFs remain traded, particularly in EM corporate hedging, but with greater emphasis on scenario analysis and leverage caps than in the pre-2008 period.</p>
                 </div>
 
-                <p>Together, the two sections of this chapter cover the two most widely traded path-dependent FX exotics — barriers and TARFs — that combine vanilla pricing and volatility surface machinery into structures whose risks extend well beyond a simple directional view on the exchange rate. The next chapter turns to accumulators and decumulators, a related family of structured strips of forwards widely used by corporates for FX hedging.</p>
+                <p>Together, the two sections of this chapter cover the two most widely traded path-dependent FX exotics - barriers and TARFs - that combine vanilla pricing and volatility surface machinery into structures whose risks extend well beyond a simple directional view on the exchange rate. The next chapter turns to accumulators and decumulators, a related family of structured strips of forwards widely used by corporates for FX hedging.</p>
 
                 <hr class="my-5">
                 <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">

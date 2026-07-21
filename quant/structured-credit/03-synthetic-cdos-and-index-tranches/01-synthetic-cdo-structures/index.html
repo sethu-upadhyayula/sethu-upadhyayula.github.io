@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -85,15 +85,15 @@
 
                 <h2 class="mt-5 mb-3">CDS Portfolio Plus Tranching</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Synthetic CDO via CDS Reference Portfolio</div>
+                    <div class="math-box-label">Definition - Synthetic CDO via CDS Reference Portfolio</div>
                     <p>A synthetic CDO references a portfolio of $n$ single-name CDS (or a standardised CDS index), each with notional $N_i$, recovery rate $R_i$, and survival probability curve $Q_i(t)$. The portfolio loss process is:
                     $$L(t) = \sum_{i=1}^{n} \frac{N_i(1-R_i)}{\sum_j N_j} \, \mathbb{1}\{\tau_i \leq t\}$$
-                    where $\tau_i$ is the default time of name $i$. A tranche $[A,D]$ pays and receives cash flows based on $\text{Tranche Loss}(t) = [\min(L(t),D) - \min(L(t),A)] \times \text{Portfolio Notional}$, exactly as in Section 1.1, but with no exchange of the underlying notional — only premium and protection legs referencing the tranche notional change hands.</p>
+                    where $\tau_i$ is the default time of name $i$. A tranche $[A,D]$ pays and receives cash flows based on $\text{Tranche Loss}(t) = [\min(L(t),D) - \min(L(t),A)] \times \text{Portfolio Notional}$, exactly as in Section 1.1, but with no exchange of the underlying notional - only premium and protection legs referencing the tranche notional change hands.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Premium and Protection Legs</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Tranche Premium and Protection Legs</div>
+                    <div class="math-box-label">Definition - Tranche Premium and Protection Legs</div>
                     <p>The protection buyer pays a periodic premium (the tranche spread $s_{[A,D]}$, plus possibly an upfront payment for equity tranches) on the <em>outstanding</em> tranche notional, which amortises as the tranche absorbs losses. The protection seller pays the protection buyer the incremental tranche loss as it occurs. The premium leg value is:
                     $$\text{PV}_{\text{premium}} = s_{[A,D]} \sum_{k=1}^{m} \Delta_k \, Z(0,t_k) \, \mathbb{E}\big[(D-A) - \text{Tranche Loss}(t_k)\big]$$
                     and the protection leg value is:
@@ -103,19 +103,19 @@
 
                 <h2 class="mt-5 mb-3">Attachment, Detachment, and Subordination</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Subordination as Credit Enhancement</div>
-                    <p class="mb-0">The attachment point $A$ represents the <em>subordination</em> available to a tranche — the fraction of portfolio losses that must occur before the tranche is affected at all. A protection seller on the $[6\%,9\%]$ tranche is exposed only once cumulative portfolio losses exceed 6%, and is wiped out once losses reach 9%. From the protection buyer's perspective, buying protection on a mezzanine or senior tranche is a capital-efficient way to hedge tail credit risk in a portfolio, since the premium reflects only the risk of losses within that specific loss layer rather than the full notional.</p>
+                    <div class="math-box-label">Remark - Subordination as Credit Enhancement</div>
+                    <p class="mb-0">The attachment point $A$ represents the <em>subordination</em> available to a tranche - the fraction of portfolio losses that must occur before the tranche is affected at all. A protection seller on the $[6\%,9\%]$ tranche is exposed only once cumulative portfolio losses exceed 6%, and is wiped out once losses reach 9%. From the protection buyer's perspective, buying protection on a mezzanine or senior tranche is a capital-efficient way to hedge tail credit risk in a portfolio, since the premium reflects only the risk of losses within that specific loss layer rather than the full notional.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Single-Tranche CDOs (STCDOs)</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Single-Tranche CDO</div>
-                    <p>A <em>single-tranche CDO</em> (STCDO) is a bilateral trade in which a dealer sells protection on (or buys protection from) a client on a single tranche $[A,D]$ of a reference portfolio, without issuing or placing any other tranche of the capital structure. The dealer does not need to find investors for the rest of the stack — it manages the resulting exposure on its own book using the correlation-sensitive hedging techniques covered in Chapter 4.</p>
+                    <div class="math-box-label">Definition - Single-Tranche CDO</div>
+                    <p>A <em>single-tranche CDO</em> (STCDO) is a bilateral trade in which a dealer sells protection on (or buys protection from) a client on a single tranche $[A,D]$ of a reference portfolio, without issuing or placing any other tranche of the capital structure. The dealer does not need to find investors for the rest of the stack - it manages the resulting exposure on its own book using the correlation-sensitive hedging techniques covered in Chapter 4.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why STCDOs Drove the Index Tranche Market</div>
-                    <p class="mb-0">Before STCDOs, a dealer wishing to sell a mezzanine tranche to a client had to place every other tranche of the same deal to complete the structure — a slow, capital-intensive process. STCDOs let dealers warehouse single-tranche exposures, hedge them dynamically with the underlying index CDS (delta hedging, Section 4.1), and quote tranches on demand at any attachment/detachment combination, including "bespoke" portfolios tailored to a client's holdings. This flexibility, combined with standardised index tranches on CDX and iTraxx (covered in Section 3.2), made the single-tranche format the dominant vehicle for correlation trading until the 2008 crisis sharply reduced liquidity in the bespoke market.</p>
+                    <div class="math-box-label">Remark - Why STCDOs Drove the Index Tranche Market</div>
+                    <p class="mb-0">Before STCDOs, a dealer wishing to sell a mezzanine tranche to a client had to place every other tranche of the same deal to complete the structure - a slow, capital-intensive process. STCDOs let dealers warehouse single-tranche exposures, hedge them dynamically with the underlying index CDS (delta hedging, Section 4.1), and quote tranches on demand at any attachment/detachment combination, including "bespoke" portfolios tailored to a client's holdings. This flexibility, combined with standardised index tranches on CDX and iTraxx (covered in Section 3.2), made the single-tranche format the dominant vehicle for correlation trading until the 2008 crisis sharply reduced liquidity in the bespoke market.</p>
                 </div>
 
                 <hr class="my-5">

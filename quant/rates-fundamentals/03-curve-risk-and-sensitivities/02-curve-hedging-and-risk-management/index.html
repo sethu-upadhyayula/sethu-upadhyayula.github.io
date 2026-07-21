@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,36 +80,36 @@
             <article>
                 <h1 class="text-accent mb-4">3.2 Curve Hedging and Risk Management</h1>
 
-                <p>Once a position's risk ladder (Section 3.1) is known, the natural next step is to neutralise it — to construct a portfolio of liquid hedging instruments whose combined sensitivities offset the original position's, leaving the trading desk with a small, well-understood residual risk rather than raw exposure to every point on the curve.</p>
+                <p>Once a position's risk ladder (Section 3.1) is known, the natural next step is to neutralise it - to construct a portfolio of liquid hedging instruments whose combined sensitivities offset the original position's, leaving the trading desk with a small, well-understood residual risk rather than raw exposure to every point on the curve.</p>
 
                 <h2 class="mt-5 mb-3">Single-Instrument DV01 Hedging</h2>
 
                 <p>The simplest hedge neutralises only the parallel DV01, using a single liquid instrument (often an on-the-run government bond future or a benchmark swap).</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — DV01-Neutral Hedge Ratio</div>
+                    <div class="math-box-label">Definition - DV01-Neutral Hedge Ratio</div>
                     <p class="mb-0">To hedge a position with $\text{DV01}_{\text{pos}}$ using a hedging instrument with $\text{DV01}_{\text{hedge}}$ (per unit notional), the required hedge notional $N_h$ is:
                     $$N_h = -\frac{\text{DV01}_{\text{pos}}}{\text{DV01}_{\text{hedge}}}$$
                     The sign of $N_h$ determines whether the hedge is bought or sold (e.g. received or paid in a swap). After the hedge, the combined position has zero parallel DV01: a parallel shift in rates produces (to first order) no P&amp;L.</p>
                 </div>
 
-                <p>A single-instrument hedge only protects against parallel moves. If the hedge instrument's maturity differs materially from the position's, the hedged portfolio retains <strong>curve risk</strong> — exposure to changes in the slope of the curve between the position's maturity and the hedge's maturity.</p>
+                <p>A single-instrument hedge only protects against parallel moves. If the hedge instrument's maturity differs materially from the position's, the hedged portfolio retains <strong>curve risk</strong> - exposure to changes in the slope of the curve between the position's maturity and the hedge's maturity.</p>
 
                 <h2 class="mt-5 mb-3">Multi-Bucket Hedging</h2>
 
                 <p>To hedge against non-parallel moves, the desk matches the position's key rate ladder bucket-by-bucket using a set of hedging instruments whose maturities span the relevant pillars.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Matrix Hedge for Multiple Buckets</div>
+                    <div class="math-box-label">Theorem - Matrix Hedge for Multiple Buckets</div>
                     <p>Suppose the position has key rate '01s $\text{KR01}_1, \ldots, \text{KR01}_m$ at $m$ pillars, and there are $m$ hedging instruments, where instrument $j$ has key rate '01 vector $(h_{1j}, \ldots, h_{mj})$ per unit notional. Let $H$ be the $m\times m$ matrix with entries $h_{ij}$, and $\mathbf{k}=(\text{KR01}_1,\ldots,\text{KR01}_m)^\top$. The hedge notionals $\mathbf{N}=(N_1,\ldots,N_m)^\top$ that exactly zero out every bucket solve:
                     $$H\mathbf{N} = -\mathbf{k} \quad\Longrightarrow\quad \mathbf{N} = -H^{-1}\mathbf{k}$$</p>
-                    <p class="mb-0">In practice $H$ is often close to (but not exactly) diagonal — a 5-year swap's risk is concentrated near the 5-year bucket but "leaks" into adjacent buckets through interpolation — so the system must be solved jointly rather than bucket-by-bucket.</p>
+                    <p class="mb-0">In practice $H$ is often close to (but not exactly) diagonal - a 5-year swap's risk is concentrated near the 5-year bucket but "leaks" into adjacent buckets through interpolation - so the system must be solved jointly rather than bucket-by-bucket.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Hedging a 7-Year Swap with 5-Year and 10-Year Swaps</div>
+                    <div class="math-box-label">Example - Hedging a 7-Year Swap with 5-Year and 10-Year Swaps</div>
                     <p>A trader holds a 7-year receiver swap with $\text{KR01}_{5y} = \$800$ and $\text{KR01}_{10y} = \$1{,}200$ (and negligible exposure elsewhere, since 7y sits between the 5y and 10y pillars). Available hedges are a 5-year payer swap with $(\text{KR01}_{5y}, \text{KR01}_{10y}) = (\$1{,}900, \$0)$ per unit notional, and a 10-year payer swap with $(\$0, \$2{,}500)$ per unit notional.</p>
-                    <p class="mb-0">Solving $H\mathbf{N} = -\mathbf{k}$ with $H$ diagonal gives $N_{5y} = 800/1900 \approx 0.421$ units of the 5-year payer and $N_{10y} = 1200/2500 = 0.48$ units of the 10-year payer. The combined position (original 7y swap plus the two hedges) has zero 5y and 10y key rate '01 — it is hedged against both a parallel shift and a steepening/flattening of the 5y-10y segment, leaving only basis and interpolation risk.</p>
+                    <p class="mb-0">Solving $H\mathbf{N} = -\mathbf{k}$ with $H$ diagonal gives $N_{5y} = 800/1900 \approx 0.421$ units of the 5-year payer and $N_{10y} = 1200/2500 = 0.48$ units of the 10-year payer. The combined position (original 7y swap plus the two hedges) has zero 5y and 10y key rate '01 - it is hedged against both a parallel shift and a steepening/flattening of the 5y-10y segment, leaving only basis and interpolation risk.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Scenario Analysis: Parallel, Steepener, and Twist</h2>
@@ -117,19 +117,19 @@
                 <p>Beyond bucketed '01s, risk managers stress portfolios under standardised yield curve scenarios that capture the dominant modes of historical curve movement.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Standard Curve Scenarios</div>
+                    <div class="math-box-label">Remark - Standard Curve Scenarios</div>
                     <p><strong>Parallel shift:</strong> every maturity moves by the same amount (e.g. $\pm 25$bp, $\pm 100$bp). Captures level risk; corresponds to total DV01.</p>
                     <p><strong>Steepener / flattener:</strong> short rates and long rates move in opposite directions (e.g. short rates $-25$bp, long rates $+25$bp for a steepener). Captures slope risk; a barbell and a bullet with identical DV01 will show very different P&amp;L under this scenario.</p>
                     <p class="mb-0"><strong>Butterfly / twist:</strong> the belly of the curve (e.g. 5y) moves opposite to both the short and long ends. Captures curvature risk, relevant for portfolios with concentrated exposure around a single maturity bucket.</p>
                 </div>
 
-                <p>Empirically, the first three principal components of historical yield curve changes correspond closely to <em>level</em>, <em>slope</em>, and <em>curvature</em> — together explaining the overwhelming majority of the variance in curve moves. This is why level/slope/curvature (or equivalently parallel/steepener/butterfly) scenarios form the backbone of most rates risk frameworks, from desk-level hedging to firm-wide VaR.</p>
+                <p>Empirically, the first three principal components of historical yield curve changes correspond closely to <em>level</em>, <em>slope</em>, and <em>curvature</em> - together explaining the overwhelming majority of the variance in curve moves. This is why level/slope/curvature (or equivalently parallel/steepener/butterfly) scenarios form the backbone of most rates risk frameworks, from desk-level hedging to firm-wide VaR.</p>
 
                 <h2 class="mt-5 mb-3">Basis Risk</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Residual Basis Risk</div>
-                    <p class="mb-0">Even a perfectly bucketed DV01 hedge leaves <strong>basis risk</strong> if the hedging instrument is not identical in type to the position — for example, hedging a SOFR swap with a Treasury future leaves the trade exposed to changes in the swap spread (the difference between swap rates and government bond yields), and hedging across currencies or indices (e.g. SOFR vs. Term SOFR vs. Fed Funds) leaves exposure to the relevant basis. Managing curve risk in practice is therefore a layered exercise: first neutralise the dominant rate-level and slope risk with the most liquid available instruments, then separately monitor and, where economic, hedge the residual basis exposures.</p>
+                    <div class="math-box-label">Remark - Residual Basis Risk</div>
+                    <p class="mb-0">Even a perfectly bucketed DV01 hedge leaves <strong>basis risk</strong> if the hedging instrument is not identical in type to the position - for example, hedging a SOFR swap with a Treasury future leaves the trade exposed to changes in the swap spread (the difference between swap rates and government bond yields), and hedging across currencies or indices (e.g. SOFR vs. Term SOFR vs. Fed Funds) leaves exposure to the relevant basis. Managing curve risk in practice is therefore a layered exercise: first neutralise the dominant rate-level and slope risk with the most liquid available instruments, then separately monitor and, where economic, hedge the residual basis exposures.</p>
                 </div>
 
                 <hr class="my-5">

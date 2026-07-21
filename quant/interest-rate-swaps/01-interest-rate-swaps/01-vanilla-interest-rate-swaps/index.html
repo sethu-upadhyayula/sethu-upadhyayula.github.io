@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -83,7 +83,7 @@
                 <p>A vanilla interest rate swap is a bilateral agreement to exchange a stream of fixed-rate payments for a stream of floating-rate payments, computed on a common notional principal, over a set of future dates. No principal changes hands; only the interest amounts (the net difference, in practice) are exchanged. Swaps allow each counterparty to convert fixed exposure to floating, or vice versa, without altering the underlying asset or liability.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Fixed-for-Floating Interest Rate Swap</div>
+                    <div class="math-box-label">Definition - Fixed-for-Floating Interest Rate Swap</div>
                     <p class="mb-0">A <em>vanilla (fixed-for-floating) interest rate swap</em> with notional $N$, fixed rate $c$, and maturity $T_n$ consists of two legs on a common set of payment dates $t_1 < \cdots < t_n = T_n$ (the legs may have different payment frequencies in practice):</p>
                     <ul class="mb-0">
                         <li><strong>Fixed leg</strong>: pays $N \cdot c \cdot \delta_i^{fix}$ at each $t_i$, where $\delta_i^{fix}$ is the fixed-leg accrual fraction.</li>
@@ -94,30 +94,30 @@
 
                 <h2 class="mt-5 mb-3">Valuation as the Difference of Leg PVs</h2>
 
-                <p>The value of a swap to the fixed-rate payer is simply the present value of the floating leg minus the present value of the fixed leg (and vice versa for the receiver). Each leg is valued by discounting its cash flows — the floating leg's unknown future rates are replaced by their forward-rate estimates under the projection curve.</p>
+                <p>The value of a swap to the fixed-rate payer is simply the present value of the floating leg minus the present value of the fixed leg (and vice versa for the receiver). Each leg is valued by discounting its cash flows - the floating leg's unknown future rates are replaced by their forward-rate estimates under the projection curve.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Swap Valuation</div>
+                    <div class="math-box-label">Theorem - Swap Valuation</div>
                     <p>Let $P(0,t)$ denote discount factors (from the appropriate discounting curve) and $F_i = F(0;t_{i-1},t_i)$ the forward rate for period $i$ from the projection curve. The present value of the fixed leg is:
                     $$PV_{fix} = N c \sum_{i=1}^n \delta_i^{fix} P(0,t_i)$$
                     The present value of the floating leg is:
                     $$PV_{flt} = N \sum_{i=1}^n \delta_i^{flt} F_i\, P(0,t_i)$$
                     The value of the swap to the fixed-rate payer (pay fixed, receive floating) is:
                     $$V_{payer} = PV_{flt} - PV_{fix}$$</p>
-                    <p class="mb-0">For a single-curve setting where the floating leg resets at the same frequency and convention as the discount curve's index, $PV_{flt}$ simplifies telescopically to $N\big(P(0,t_0) - P(0,t_n)\big)$, i.e. the floating leg is worth par minus the final discount factor — but this simplification breaks down in the multi-curve framework of Section 1.2, where forward rates must be projected from a curve different from the discount curve.</p>
+                    <p class="mb-0">For a single-curve setting where the floating leg resets at the same frequency and convention as the discount curve's index, $PV_{flt}$ simplifies telescopically to $N\big(P(0,t_0) - P(0,t_n)\big)$, i.e. the floating leg is worth par minus the final discount factor - but this simplification breaks down in the multi-curve framework of Section 1.2, where forward rates must be projected from a curve different from the discount curve.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Par Swap Rate</h2>
 
-                <p>At inception, a swap is typically structured to have zero value to both parties — the fixed rate is set to the <em>par swap rate</em> that equates the two legs' present values.</p>
+                <p>At inception, a swap is typically structured to have zero value to both parties - the fixed rate is set to the <em>par swap rate</em> that equates the two legs' present values.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Par Swap Rate</div>
+                    <div class="math-box-label">Definition - Par Swap Rate</div>
                     <p>The par swap rate $c^*$ is the fixed rate for which $V_{payer}=0$, i.e. $PV_{fix}=PV_{flt}$:
                     $$c^* = \frac{\sum_{i=1}^n \delta_i^{flt} F_i\, P(0,t_i)}{\sum_{i=1}^n \delta_i^{fix} P(0,t_i)} = \frac{PV_{flt}}{A}$$
                     where $A = \sum_{i=1}^n \delta_i^{fix}P(0,t_i)$ is the <em>annuity</em> (PVBP/DV01-related quantity per unit fixed rate). In the single-curve telescoping case, this reduces to:
                     $$c^* = \frac{P(0,t_0) - P(0,t_n)}{\sum_{i=1}^n \delta_i^{fix} P(0,t_i)}$$
-                    which is precisely the par rate formula for discount-curve construction — confirming that swap rates and the par yields of the discount curve are the same object.</p>
+                    which is precisely the par rate formula for discount-curve construction - confirming that swap rates and the par yields of the discount curve are the same object.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">A Swap as a Portfolio of FRAs</h2>
@@ -125,8 +125,8 @@
                 <p>Each floating cash flow of a swap, taken in isolation, is economically identical to the settlement of a forward rate agreement (FRA) on the period $[t_{i-1},t_i]$. This decomposition is conceptually useful for both pricing and hedging.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Swap = Strip of FRAs vs. Fixed Bond</div>
-                    <p class="mb-0">An interest rate swap can be viewed as a portfolio consisting of (a) a long position in a strip of FRAs, one for each floating period, each paying $N\delta_i^{flt}(L(t_{i-1},t_i)-F_i)$ at $t_i$ — which has zero value at inception by definition of $F_i$ as the forward rate — combined with (b) the difference between a floating-rate note (valued near par) and a fixed-rate bond paying coupon $c$. This decomposition is why swap curves can be bootstrapped directly from FRA/futures strips at the short-to-medium end, and why the risk of a swap can be hedged using a strip of FRAs or futures plus a single long-dated instrument.</p>
+                    <div class="math-box-label">Remark - Swap = Strip of FRAs vs. Fixed Bond</div>
+                    <p class="mb-0">An interest rate swap can be viewed as a portfolio consisting of (a) a long position in a strip of FRAs, one for each floating period, each paying $N\delta_i^{flt}(L(t_{i-1},t_i)-F_i)$ at $t_i$ - which has zero value at inception by definition of $F_i$ as the forward rate - combined with (b) the difference between a floating-rate note (valued near par) and a fixed-rate bond paying coupon $c$. This decomposition is why swap curves can be bootstrapped directly from FRA/futures strips at the short-to-medium end, and why the risk of a swap can be hedged using a strip of FRAs or futures plus a single long-dated instrument.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Day Count and Payment Frequency Conventions</h2>
@@ -134,7 +134,7 @@
                 <p>Vanilla swap conventions vary by currency, and getting them right is essential for matching market quotes.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Typical USD Swap Conventions</div>
+                    <div class="math-box-label">Remark - Typical USD Swap Conventions</div>
                     <p><strong>Fixed leg:</strong> annual or semi-annual payments, 30/360 day count.</p>
                     <p><strong>Floating leg (legacy LIBOR):</strong> quarterly payments, Act/360, 3-month LIBOR.</p>
                     <p class="mb-0"><strong>Floating leg (SOFR OIS, current standard):</strong> annual payments for swaps up to 1 year, then annual fixed vs. compounded daily SOFR, Act/360, with payment lag and lookback conventions discussed in Section 1.2.</p>
@@ -142,23 +142,23 @@
 
                 <h2 class="mt-5 mb-3">DV01 of a Swap</h2>
 
-                <p>The DV01 (dollar value of a basis point) measures a swap's sensitivity to a parallel one-basis-point shift in interest rates — the primary risk metric used for hedging swap books.</p>
+                <p>The DV01 (dollar value of a basis point) measures a swap's sensitivity to a parallel one-basis-point shift in interest rates - the primary risk metric used for hedging swap books.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — DV01</div>
+                    <div class="math-box-label">Definition - DV01</div>
                     <p class="mb-0">The DV01 of a payer swap is the change in its value for a $+1\text{bp} = 0.0001$ parallel shift in the discount/forward curve:
                     $$\text{DV01} \approx \frac{\partial V_{payer}}{\partial r}\times 0.0001$$
                     For a swap struck at its par rate, the dominant contribution comes from the fixed leg's sensitivity through the annuity $A$:
                     $$\text{DV01} \approx -N \cdot A \times 0.0001 = -N\sum_{i=1}^n \delta_i^{fix}P(0,t_i)\times 0.0001$$
-                    (the floating leg's value is comparatively insensitive to small parallel rate moves near reset dates). DV01 is approximately proportional to the swap's notional and to its annuity — longer-maturity swaps have larger annuities and hence larger DV01 per unit notional, which is why traders quote risk in terms of "DV01-equivalent" notional when comparing swaps of different maturities.</p>
+                    (the floating leg's value is comparatively insensitive to small parallel rate moves near reset dates). DV01 is approximately proportional to the swap's notional and to its annuity - longer-maturity swaps have larger annuities and hence larger DV01 per unit notional, which is why traders quote risk in terms of "DV01-equivalent" notional when comparing swaps of different maturities.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — DV01 of a 2-Year Swap</div>
+                    <div class="math-box-label">Example - DV01 of a 2-Year Swap</div>
                     <p class="mb-0">Using discount factors $P(0,1)=0.96154$ and $P(0,2)=0.91553$, for an annual-pay fixed leg with $\delta_1=\delta_2=1$ and notional $N=10{,}000{,}000$:
                     $$A = 0.96154 + 0.91553 = 1.87707$$
                     $$\text{DV01} \approx 10{,}000{,}000 \times 1.87707 \times 0.0001 \approx \$1{,}877.07$$
-                    A 1bp parallel rise in rates reduces the value of the fixed leg's annuity by approximately \$1,877 per \$10mm notional — the receiver of fixed loses roughly this amount, the payer of fixed gains roughly this amount.</p>
+                    A 1bp parallel rise in rates reduces the value of the fixed leg's annuity by approximately \$1,877 per \$10mm notional - the receiver of fixed loses roughly this amount, the payer of fixed gains roughly this amount.</p>
                 </div>
 
                 <hr class="my-5">

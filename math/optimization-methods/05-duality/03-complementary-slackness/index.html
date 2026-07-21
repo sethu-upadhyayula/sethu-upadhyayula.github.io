@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -127,12 +127,12 @@
             <article>
                 <h1 class="text-accent mb-4">5.3 Complementary Slackness</h1>
 
-                <p>Complementary slackness (CS) conditions are necessary and sufficient optimality conditions expressed in terms of the primal-dual pair. They state that at optimality, a constraint's slack and its dual variable cannot both be positive simultaneously — one must be zero.</p>
+                <p>Complementary slackness (CS) conditions are necessary and sufficient optimality conditions expressed in terms of the primal-dual pair. They state that at optimality, a constraint's slack and its dual variable cannot both be positive simultaneously - one must be zero.</p>
 
                 <h2 class="mt-4 mb-3">CS Conditions</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.3.1 — Complementary Slackness</div>
+                    <div class="math-box-label">Theorem 5.3.1 - Complementary Slackness</div>
                     <p>Let $x^*$ be primal feasible and $y^*$ dual feasible for the LP pair (P) $\min c^\top x$ s.t. $Ax \ge b$, $x \ge 0$ and (D) $\max b^\top y$ s.t. $A^\top y \le c$, $y \ge 0$. Then $x^*$ and $y^*$ are both optimal if and only if:
                     $$y_i^*(A_i x^* - b_i) = 0 \quad \forall i, \qquad x_j^*(c_j - (A^\top y^*)_j) = 0 \quad \forall j.$$</p>
                     <p><em>Proof.</em> By weak duality, $c^\top x^* \ge b^\top y^*$. Expanding the gap:
@@ -144,17 +144,17 @@
                 <h2 class="mt-5 mb-3">Interpretation: Shadow Prices</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.2 — Shadow Prices</div>
+                    <div class="math-box-label">Definition 5.3.2 - Shadow Prices</div>
                     <p>The dual variable $y_i^*$ is the <strong>shadow price</strong> (or marginal value) of the $i$-th constraint: it equals the rate of change of the optimal primal objective with respect to the right-hand side $b_i$:
                     $$y_i^* = \frac{\partial p^*(b)}{\partial b_i}\bigg|_{b = b^*},$$
                     provided the optimal basis does not change (i.e., we are within the range of the parametric analysis).</p>
-                    <p class="mb-0">By CS: $y_i^* > 0$ implies $A_i x^* = b_i$ (the constraint is active/binding). Conversely, if a constraint is slack ($A_i x^* > b_i$), its shadow price is zero — relaxing it further has no effect on the optimal value.</p>
+                    <p class="mb-0">By CS: $y_i^* > 0$ implies $A_i x^* = b_i$ (the constraint is active/binding). Conversely, if a constraint is slack ($A_i x^* > b_i$), its shadow price is zero - relaxing it further has no effect on the optimal value.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">LP Complementary Slackness in Standard Form</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 5.3.3 — CS for Standard Form LP</div>
+                    <div class="math-box-label">Proposition 5.3.3 - CS for Standard Form LP</div>
                     <p>For the standard form LP $\min c^\top x$ s.t. $Ax = b$, $x \ge 0$ with dual $\max b^\top y$ (unconstrained $y$) s.t. $A^\top y \le c$, define reduced costs $\bar{c} = c - A^\top y$. The CS conditions reduce to:
                     $$x_j^* \bar{c}_j^* = 0 \quad \forall j.$$</p>
                     <p class="mb-0">This means: a non-basic variable ($x_j = 0$) can have any $\bar{c}_j \ge 0$, and a basic variable ($x_j > 0$) must have $\bar{c}_j = 0$. At a BFS, the basic variables automatically satisfy $\bar{c}_j = 0$ (by definition of reduced costs), so CS reduces exactly to the simplex optimality condition $\bar{c}_j \ge 0$ for non-basic $j$.</p>
@@ -163,17 +163,17 @@
                 <h2 class="mt-5 mb-3">Sensitivity Analysis</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Sensitivity Analysis via Shadow Prices</div>
+                    <div class="math-box-label">Remark - Sensitivity Analysis via Shadow Prices</div>
                     <p>Sensitivity analysis uses the shadow prices and CS conditions to answer: "How does the optimal value change if we perturb the problem data?" For the LP $\min c^\top x$ s.t. $Ax \ge b$, $x \ge 0$:</p>
                     <ul>
                         <li><strong>RHS ranging:</strong> If $b_i$ increases by $\delta$, then $p^* \approx p^* - y_i^* \delta$ (since $y_i^*$ measures decrease per unit of $b_i$; a larger $b_i$ tightens the constraint, so $p^*$ increases for minimisation).</li>
                         <li><strong>Cost ranging:</strong> The optimal basis remains unchanged as long as all reduced costs remain non-negative. The range of $c_j$ for which the current basis is optimal can be computed from the simplex tableau.</li>
                     </ul>
-                    <p class="mb-0">These analyses are performed without re-solving the LP — they use the basis inverse $A_B^{-1}$ already computed at optimality.</p>
+                    <p class="mb-0">These analyses are performed without re-solving the LP - they use the basis inverse $A_B^{-1}$ already computed at optimality.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Verifying Optimality via CS</div>
+                    <div class="math-box-label">Example - Verifying Optimality via CS</div>
                     <p>Consider $\min\; x_1 + 2x_2$ s.t. $x_1 + x_2 \ge 3$, $x_2 \ge 1$, $x_1, x_2 \ge 0$. Dual: $\max\; 3y_1 + y_2$ s.t. $y_1 \le 1$, $y_1 + y_2 \le 2$, $y_1, y_2 \ge 0$.</p>
                     <p>Claim: $x^* = (2, 1)$ is primal optimal with $p^* = 4$. Dual solution: $y_1^* = 1$, $y_2^* = 1$, $d^* = 4$. Check CS:
                     $$y_1^*(x_1^* + x_2^* - 3) = 1 \cdot 0 = 0\;\checkmark,\quad y_2^*(x_2^* - 1) = 1 \cdot 0 = 0\;\checkmark.$$

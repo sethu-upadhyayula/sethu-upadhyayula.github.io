@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,49 +81,49 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Volatility Surface Dynamics and Sticky Rules</h1>
 
-                <p>Sections 2.1 and 1.3 describe how to construct the volatility surface at a snapshot in time. But a trading book is repriced continuously as spot moves, and the volatility surface must move with it — the question is <em>how</em>. Different assumptions about how the surface re-anchors itself as spot changes are called "sticky rules," and the choice between them is not a modelling detail buried in the appendix: it directly determines the realized P&amp;L of a vega-hedged book and the effective delta of an option position.</p>
+                <p>Sections 2.1 and 1.3 describe how to construct the volatility surface at a snapshot in time. But a trading book is repriced continuously as spot moves, and the volatility surface must move with it - the question is <em>how</em>. Different assumptions about how the surface re-anchors itself as spot changes are called "sticky rules," and the choice between them is not a modelling detail buried in the appendix: it directly determines the realized P&amp;L of a vega-hedged book and the effective delta of an option position.</p>
 
                 <h2 class="mt-5 mb-3">Three Sticky Rules</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Sticky Strike, Sticky Delta, Sticky Moneyness</div>
+                    <div class="math-box-label">Definition - Sticky Strike, Sticky Delta, Sticky Moneyness</div>
                     <ul class="mb-0">
                         <li><strong>Sticky strike:</strong> the implied volatility for a given <em>absolute strike</em> $K$ stays fixed as spot moves. $\sigma(K)$ is unchanged; $\sigma(\Delta)$ for a fixed delta level changes because the strike corresponding to that delta shifts with spot.</li>
                         <li><strong>Sticky delta (sticky moneyness in delta space):</strong> the implied volatility for a given <em>delta</em> (e.g. the 25-delta call) stays fixed as spot moves. $\sigma(\Delta)$ is unchanged; $\sigma(K)$ for a fixed strike changes because that strike now corresponds to a different delta.</li>
-                        <li><strong>Sticky moneyness (in strike space):</strong> implied volatility is fixed as a function of $K/S_0$ (or $K/F_0$) — i.e. the smile "rides along" with spot when plotted against moneyness, similar in spirit to sticky delta but defined directly via the strike-to-spot ratio rather than delta.</li>
+                        <li><strong>Sticky moneyness (in strike space):</strong> implied volatility is fixed as a function of $K/S_0$ (or $K/F_0$) - i.e. the smile "rides along" with spot when plotted against moneyness, similar in spirit to sticky delta but defined directly via the strike-to-spot ratio rather than delta.</li>
                     </ul>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Which Rule Does the Market Follow?</div>
-                    <p class="mb-0">No single rule holds exactly in practice. Empirically, FX volatility surfaces tend to behave closer to sticky delta (or sticky moneyness) over short horizons and for liquid G10 pairs — the smile shifts with spot so that a given delta point retains roughly the same implied volatility — though the relationship is regime-dependent and can shift toward sticky strike during periods of acute stress when the market re-prices the entire surface around the new spot level rather than smoothly translating it. Many desks calibrate a "sticky-ness" parameter empirically from historical co-movements of spot and the vol surface, or use a local/stochastic volatility model whose dynamics interpolate between the two extremes.</p>
+                    <div class="math-box-label">Remark - Which Rule Does the Market Follow?</div>
+                    <p class="mb-0">No single rule holds exactly in practice. Empirically, FX volatility surfaces tend to behave closer to sticky delta (or sticky moneyness) over short horizons and for liquid G10 pairs - the smile shifts with spot so that a given delta point retains roughly the same implied volatility - though the relationship is regime-dependent and can shift toward sticky strike during periods of acute stress when the market re-prices the entire surface around the new spot level rather than smoothly translating it. Many desks calibrate a "sticky-ness" parameter empirically from historical co-movements of spot and the vol surface, or use a local/stochastic volatility model whose dynamics interpolate between the two extremes.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Implications for Delta Hedging</h2>
 
-                <p>The sticky rule assumption changes the <em>effective delta</em> of an option — the total sensitivity of the option price to spot, including the indirect effect of spot on the implied volatility used to price it.</p>
+                <p>The sticky rule assumption changes the <em>effective delta</em> of an option - the total sensitivity of the option price to spot, including the indirect effect of spot on the implied volatility used to price it.</p>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Effective Delta Under Different Sticky Rules</div>
+                    <div class="math-box-label">Proposition - Effective Delta Under Different Sticky Rules</div>
                     <p>For an option priced at implied volatility $\sigma(K, S_0)$, the total (effective) delta is:</p>
                     $$\Delta_{\text{eff}} = \frac{\partial V}{\partial S_0}\bigg|_{\sigma \text{ fixed}} + \frac{\partial V}{\partial \sigma}\cdot\frac{\partial \sigma}{\partial S_0} = \Delta_{\text{BS}} + \text{Vega}\cdot\frac{\partial \sigma}{\partial S_0}$$
-                    <p class="mb-0">Under <strong>sticky strike</strong>, $\sigma(K)$ does not depend on $S_0$ for fixed $K$, so $\partial\sigma/\partial S_0 = 0$ and $\Delta_{\text{eff}} = \Delta_{\text{BS}}$ — the plain Black-Scholes delta is the correct hedge ratio. Under <strong>sticky delta</strong>, as spot rises the smile shifts so that the volatility at the (now higher) original strike changes according to the local slope of the smile in delta space; for a smile with negative skew (puts richer than calls, as is typical with a negative risk reversal), a spot increase typically <em>decreases</em> the volatility at a fixed strike, so $\partial\sigma/\partial S_0 < 0$, and $\Delta_{\text{eff}} \neq \Delta_{\text{BS}}$.</p>
+                    <p class="mb-0">Under <strong>sticky strike</strong>, $\sigma(K)$ does not depend on $S_0$ for fixed $K$, so $\partial\sigma/\partial S_0 = 0$ and $\Delta_{\text{eff}} = \Delta_{\text{BS}}$ - the plain Black-Scholes delta is the correct hedge ratio. Under <strong>sticky delta</strong>, as spot rises the smile shifts so that the volatility at the (now higher) original strike changes according to the local slope of the smile in delta space; for a smile with negative skew (puts richer than calls, as is typical with a negative risk reversal), a spot increase typically <em>decreases</em> the volatility at a fixed strike, so $\partial\sigma/\partial S_0 < 0$, and $\Delta_{\text{eff}} \neq \Delta_{\text{BS}}$.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — The Sign and Size of the Correction</div>
-                    <p class="mb-0">For an OTM call on a currency pair with negative skew (negative risk reversal — puts richer than calls), under sticky delta a spot rally tends to reduce the implied volatility at the option's strike (the strike becomes "less OTM" on the call side, moving toward the cheaper part of the smile). Since $\text{Vega} > 0$ always, and $\partial\sigma/\partial S_0 < 0$ in this case, the correction term $\text{Vega}\cdot\partial\sigma/\partial S_0$ is negative — the sticky-delta effective delta is <em>smaller</em> than the plain Black-Scholes delta for this call. A hedger who uses the Black-Scholes delta under a sticky-delta market is therefore over-hedged, and will see a P&amp;L drag from carrying excess spot exposure relative to the option's true sensitivity.</p>
+                    <div class="math-box-label">Remark - The Sign and Size of the Correction</div>
+                    <p class="mb-0">For an OTM call on a currency pair with negative skew (negative risk reversal - puts richer than calls), under sticky delta a spot rally tends to reduce the implied volatility at the option's strike (the strike becomes "less OTM" on the call side, moving toward the cheaper part of the smile). Since $\text{Vega} > 0$ always, and $\partial\sigma/\partial S_0 < 0$ in this case, the correction term $\text{Vega}\cdot\partial\sigma/\partial S_0$ is negative - the sticky-delta effective delta is <em>smaller</em> than the plain Black-Scholes delta for this call. A hedger who uses the Black-Scholes delta under a sticky-delta market is therefore over-hedged, and will see a P&amp;L drag from carrying excess spot exposure relative to the option's true sensitivity.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">P&amp;L of a Vega-Hedged Book</h2>
 
-                <p>A book that is vega-hedged — net vega approximately zero across the surface — is not automatically immune to surface dynamics. The realized P&amp;L from a spot move depends on how the surface actually moves relative to the assumption embedded in the hedge.</p>
+                <p>A book that is vega-hedged - net vega approximately zero across the surface - is not automatically immune to surface dynamics. The realized P&amp;L from a spot move depends on how the surface actually moves relative to the assumption embedded in the hedge.</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Sticky-Delta Book, Sticky-Strike Realization</div>
+                    <div class="math-box-label">Example - Sticky-Delta Book, Sticky-Strike Realization</div>
                     <p>Suppose a trading desk hedges a short risk-reversal position (short OTM call, long OTM put, both 25-delta) assuming sticky-delta dynamics: as spot moves, they re-strike their delta hedge assuming the 25-delta implied volatilities stay constant. Vega exposure to the ATM bucket is hedged separately and assumed flat.</p>
-                    <p>Now suppose spot rallies sharply, but the market in fact realizes sticky-strike dynamics — the implied volatility at each <em>absolute strike</em> stays fixed, meaning the volatility at the (now more OTM, on a delta basis) original call strike has <em>not</em> fallen as the sticky-delta assumption would predict. The desk's short call position, marked under the realized sticky-strike surface, is now more expensive than the sticky-delta hedge assumed — generating a mark-to-market loss on the vega/vanna exposure of the risk reversal that the delta hedge alone cannot offset.</p>
-                    <p class="mb-0">This is the essence of "vanna P&amp;L": even a book with zero net vega and a delta hedge appropriate for one sticky rule will show P&amp;L when the realized surface dynamics differ from the assumed rule, because the cross-sensitivity of vega to spot (vanna) was hedged under the wrong assumption. Quantifying and managing this exposure — vanna and volga risk explicitly — is the subject of Chapter 4.</p>
+                    <p>Now suppose spot rallies sharply, but the market in fact realizes sticky-strike dynamics - the implied volatility at each <em>absolute strike</em> stays fixed, meaning the volatility at the (now more OTM, on a delta basis) original call strike has <em>not</em> fallen as the sticky-delta assumption would predict. The desk's short call position, marked under the realized sticky-strike surface, is now more expensive than the sticky-delta hedge assumed - generating a mark-to-market loss on the vega/vanna exposure of the risk reversal that the delta hedge alone cannot offset.</p>
+                    <p class="mb-0">This is the essence of "vanna P&amp;L": even a book with zero net vega and a delta hedge appropriate for one sticky rule will show P&amp;L when the realized surface dynamics differ from the assumed rule, because the cross-sensitivity of vega to spot (vanna) was hedged under the wrong assumption. Quantifying and managing this exposure - vanna and volga risk explicitly - is the subject of Chapter 4.</p>
                 </div>
 
                 <hr class="my-5">

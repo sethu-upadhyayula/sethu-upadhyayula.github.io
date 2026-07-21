@@ -20,7 +20,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -51,7 +51,7 @@
 
                 <h2 class="mt-5 mb-3">Shapes and Theories</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Yield Curve Shapes</div>
+                    <div class="math-box-label">Definition - Yield Curve Shapes</div>
                     <p class="mb-0">Common shapes: <strong>normal</strong> (upward sloping: long rates $>$ short rates, the usual case), <strong>inverted</strong> (short rates $>$ long rates, often a recession signal), <strong>humped</strong> (intermediate rates highest), <strong>flat</strong>. Three main explanatory theories:
                     <ul class="mb-0">
                         <li><strong>Expectations hypothesis:</strong> $f(S,T) = E[r_{S,T}]$; the forward rate equals the expected future spot rate. Implies no liquidity premium.</li>
@@ -62,7 +62,7 @@
 
                 <h2 class="mt-5 mb-3">Par Rate and Bootstrapping</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Par Rate</div>
+                    <div class="math-box-label">Definition - Par Rate</div>
                     <p class="mb-0">The <strong>par rate</strong> $y_n$ for maturity $n$ is the coupon rate that makes the bond price equal to face value $F = 100$:
                     $$100 = y_n \sum_{k=1}^n P(0,k) + 100\,P(0,n),$$
                     so $y_n = (1 - P(0,n))\big/\sum_{k=1}^n P(0,k)$ where $P(0,k) = e^{-z_k k}$ are zero-coupon bond prices. Given a table of par rates, one can bootstrap the zero-coupon curve sequentially.</p>
@@ -70,7 +70,7 @@
 
                 <h2 class="mt-5 mb-3">Nelson-Siegel Model</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Nelson-Siegel Parametrisation</div>
+                    <div class="math-box-label">Definition - Nelson-Siegel Parametrisation</div>
                     <p class="mb-0">The <strong>Nelson-Siegel</strong> model fits the instantaneous forward rate curve with 4 parameters $(\beta_0,\beta_1,\beta_2,\tau)$:
                     $$f(t) = \beta_0 + \beta_1 e^{-t/\tau} + \beta_2 \frac{t}{\tau}e^{-t/\tau}.$$
                     The spot rate is $z_t = \tfrac{1}{t}\int_0^t f(s)\,ds$. $\beta_0$ is the long-run rate, $\beta_0+\beta_1$ the instantaneous short rate, and $\beta_2$ controls hump shape. Central banks (ECB, Bank of England) use Svensson's extension (two decay terms) for official yield curve estimates.</p>
@@ -78,7 +78,7 @@
 
                 <h2 class="mt-5 mb-3">Interpolation Methods</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Curve Interpolation</div>
+                    <div class="math-box-label">Remark - Curve Interpolation</div>
                     <p class="mb-0"><strong>Linear interpolation</strong> on yields is simple but produces discontinuities in forward rates. <strong>Log-linear interpolation</strong> on discount factors is equivalent to linear interpolation on continuously compounded rates. <strong>Cubic spline interpolation</strong> on zero rates gives smooth curves and smooth forward rate curves, and is the standard in most yield curve libraries. The natural cubic spline (zero second derivative at endpoints) is often used; monotone cubic splines prevent unphysical oscillations in the forward curve.</p>
                 </div>
 

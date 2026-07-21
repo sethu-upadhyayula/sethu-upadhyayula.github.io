@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,35 +128,35 @@
                 <p>A confidence interval augments a point estimate with a measure of uncertainty, yielding a random interval that contains the true parameter with a prescribed probability. Unlike a point estimator, a CI communicates the precision of estimation directly to the practitioner.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 3.1.1 — Confidence Interval</div>
+                    <div class="math-box-label">Definition 3.1.1 - Confidence Interval</div>
                     <p class="mb-0">Let $X_1,\ldots,X_n$ be a random sample from a distribution depending on parameter $\theta$. Statistics $L = L(X_1,\ldots,X_n)$ and $U = U(X_1,\ldots,X_n)$ form a <strong>$100(1-\alpha)\%$ confidence interval</strong> for $\theta$ if
                     $$P_\theta(L \le \theta \le U) = 1 - \alpha \quad \text{for all } \theta,$$
                     where $\alpha \in (0,1)$ is the <strong>significance level</strong> and $1-\alpha$ is the <strong>confidence level</strong>. Common choices are $\alpha = 0.05$ (95% CI) and $\alpha = 0.01$ (99% CI).</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 3.1.2 — Frequentist Interpretation</div>
+                    <div class="math-box-label">Remark 3.1.2 - Frequentist Interpretation</div>
                     <p>The parameter $\theta$ is a fixed (unknown) constant, not a random variable. It is therefore incorrect to say "there is a 95% probability that $\theta$ lies in the observed interval $[l, u]$." Instead, the correct frequentist statement is: if the experiment were repeated indefinitely and a 95% CI constructed each time, then 95% of the resulting intervals would contain the true $\theta$.</p>
                     <p class="mb-0">The randomness resides entirely in $L$ and $U$; once data are observed and $l, u$ are computed, the interval either does or does not contain $\theta$.</p>
                 </div>
 
-                <h2 class="mt-5">One-Sample CI for the Mean — Known Variance</h2>
+                <h2 class="mt-5">One-Sample CI for the Mean - Known Variance</h2>
                 <p>Suppose $X_1,\ldots,X_n \stackrel{\text{iid}}{\sim} N(\mu,\sigma^2)$ with $\sigma^2$ <em>known</em>. The standardised mean
                 $$Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,1).$$
                 Let $z_{\alpha/2}$ denote the upper $\alpha/2$ quantile of $N(0,1)$, so $P(Z > z_{\alpha/2}) = \alpha/2$.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.1.3 — Z-Interval (Known $\sigma$)</div>
+                    <div class="math-box-label">Theorem 3.1.3 - Z-Interval (Known $\sigma$)</div>
                     <p class="mb-0">A $100(1-\alpha)\%$ CI for $\mu$ is
                     $$\left(\bar{X} - z_{\alpha/2}\frac{\sigma}{\sqrt{n}},\; \bar{X} + z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right).$$
                     The <strong>margin of error</strong> is $E = z_{\alpha/2}\,\sigma/\sqrt{n}$. The interval has length $2E$ which decreases as $\sqrt{n}$.</p>
                 </div>
 
-                <h2 class="mt-5">One-Sample CI for the Mean — Unknown Variance</h2>
+                <h2 class="mt-5">One-Sample CI for the Mean - Unknown Variance</h2>
                 <p>When $\sigma^2$ is unknown it is replaced by the sample variance $S^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i-\bar{X})^2$. The standardised statistic now follows a $t$-distribution:</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.1.4 — $t$-Interval (Unknown $\sigma$)</div>
+                    <div class="math-box-label">Theorem 3.1.4 - $t$-Interval (Unknown $\sigma$)</div>
                     <p>If $X_i \stackrel{\text{iid}}{\sim} N(\mu,\sigma^2)$ with $\sigma$ unknown, then
                     $$T = \frac{\bar{X} - \mu}{S/\sqrt{n}} \sim t_{n-1}.$$
                     A $100(1-\alpha)\%$ CI for $\mu$ is
@@ -168,7 +168,7 @@
                 <p>Let $X \sim \mathrm{Bin}(n,p)$ and $\hat{p} = X/n$. By the CLT, $\hat{p} \approx N(p, p(1-p)/n)$ for large $n$.</p>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 3.1.5 — Wald Interval for $p$</div>
+                    <div class="math-box-label">Proposition 3.1.5 - Wald Interval for $p$</div>
                     <p class="mb-0">An approximate $100(1-\alpha)\%$ CI for $p$ is
                     $$\hat{p} \pm z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}.$$
                     This is called the <strong>Wald interval</strong>. It performs poorly when $p$ is near 0 or 1 or $n$ is small. The <strong>Wilson (score) interval</strong>
@@ -179,7 +179,7 @@
                 <h2 class="mt-5">Worked Example</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 3.1.6 — Blood Pressure Study</div>
+                    <div class="math-box-label">Example 3.1.6 - Blood Pressure Study</div>
                     <p>A clinician measures systolic blood pressure (mmHg) for $n = 25$ patients, obtaining $\bar{x} = 132.4$ and $s = 14.8$. Construct a 95% CI for the population mean $\mu$.</p>
                     <p><strong>Solution.</strong> Since $\sigma$ is unknown and the data are approximately normal, use the $t$-interval with $n-1 = 24$ degrees of freedom. From $t$-tables, $t_{24, 0.025} = 2.064$.</p>
                     <p>Margin of error: $E = 2.064 \times 14.8/\sqrt{25} = 2.064 \times 2.96 = 6.11$.</p>
@@ -187,7 +187,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 3.1.7 — Sample Size Determination</div>
+                    <div class="math-box-label">Remark 3.1.7 - Sample Size Determination</div>
                     <p class="mb-0">To achieve margin of error at most $E$ with confidence $1-\alpha$ (using the $Z$-interval), solve $z_{\alpha/2}\,\sigma/\sqrt{n} \le E$ for $n$:
                     $$n \ge \left(\frac{z_{\alpha/2}\,\sigma}{E}\right)^2.$$
                     For proportions with $\sigma = \sqrt{p(1-p)} \le 1/2$, a conservative bound gives $n \ge z_{\alpha/2}^2/(4E^2)$.</p>

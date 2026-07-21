@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,23 +128,23 @@
             </nav>
             <article>
                 <h1 class="text-accent mb-4">3.3 Iterative Methods (Jacobi, Gauss-Seidel)</h1>
-                <p>For large sparse systems — arising from discretisation of PDEs, graph problems, or network models — direct methods require storing and factorising matrices with millions of rows, which is prohibitive. Iterative methods instead produce a sequence of approximations using only matrix-vector products, exploiting sparsity to achieve $O(n)$ or $O(n \log n)$ cost per iteration.</p>
+                <p>For large sparse systems - arising from discretisation of PDEs, graph problems, or network models - direct methods require storing and factorising matrices with millions of rows, which is prohibitive. Iterative methods instead produce a sequence of approximations using only matrix-vector products, exploiting sparsity to achieve $O(n)$ or $O(n \log n)$ cost per iteration.</p>
 
                 <h2 class="mt-4 mb-3">Splitting Methods</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Matrix Splitting</div>
+                    <div class="math-box-label">Definition - Matrix Splitting</div>
                     <p>Write $A = D + L + U$ where $D$ is the diagonal part, $L$ the strictly lower-triangular part, and $U$ the strictly upper-triangular part. A <strong>splitting</strong> $A = M - N$ leads to the iteration $Mx^{k+1} = Nx^k + b$, or $x^{k+1} = M^{-1}Nx^k + M^{-1}b$. The iteration matrix is $T = M^{-1}N$.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Jacobi Iteration</div>
+                    <div class="math-box-label">Definition - Jacobi Iteration</div>
                     <p>The <strong>Jacobi method</strong> takes $M = D$, $N = -(L+U)$:</p>
                     $$x^{k+1} = D^{-1}\bigl(-(L+U)x^k + b\bigr), \qquad \text{i.e.,} \quad x_i^{k+1} = \frac{1}{a_{ii}}\Bigl(b_i - \sum_{j \ne i} a_{ij} x_j^k\Bigr).$$
                     <p class="mb-0">Each component of $x^{k+1}$ is computed from the old iterate $x^k$, so all components can be updated in parallel.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Gauss-Seidel Iteration</div>
+                    <div class="math-box-label">Definition - Gauss-Seidel Iteration</div>
                     <p>The <strong>Gauss-Seidel method</strong> takes $M = D + L$, $N = -U$:</p>
                     $$(D+L)x^{k+1} = -Ux^k + b, \qquad \text{i.e.,} \quad x_i^{k+1} = \frac{1}{a_{ii}}\Bigl(b_i - \sum_{j < i} a_{ij}x_j^{k+1} - \sum_{j > i}a_{ij}x_j^k\Bigr).$$
                     <p class="mb-0">Components are updated sequentially, immediately using the most recently computed values. This typically halves the number of iterations compared to Jacobi, though it cannot be parallelised as easily.</p>
@@ -152,13 +152,13 @@
 
                 <h2 class="mt-5 mb-3">Convergence</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Spectral Radius Criterion</div>
+                    <div class="math-box-label">Theorem - Spectral Radius Criterion</div>
                     <p class="mb-0">The iteration $x^{k+1} = Tx^k + c$ converges for any starting vector $x^0$ if and only if the <strong>spectral radius</strong> $\rho(T) < 1$. The asymptotic convergence rate is $-\log_{10}\rho(T)$ decimal digits per iteration. For diagonally dominant matrices, both Jacobi and Gauss-Seidel converge. Gauss-Seidel converges in at most half as many iterations as Jacobi for most problems.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Successive Over-Relaxation (SOR)</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — SOR</div>
+                    <div class="math-box-label">Definition - SOR</div>
                     <p>The <strong>SOR method</strong> introduces a relaxation parameter $\omega \in (0,2)$:</p>
                     $$x_i^{k+1} = (1-\omega)x_i^k + \frac{\omega}{a_{ii}}\Bigl(b_i - \sum_{j<i}a_{ij}x_j^{k+1} - \sum_{j>i}a_{ij}x_j^k\Bigr).$$
                     <p>For the model Laplacian problem on a $n \times n$ grid, the optimal parameter is:
@@ -168,14 +168,14 @@
 
                 <h2 class="mt-5 mb-3">Conjugate Gradient Method</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Conjugate Gradient (CG)</div>
+                    <div class="math-box-label">Theorem - Conjugate Gradient (CG)</div>
                     <p>For SPD $A$, the <strong>Conjugate Gradient method</strong> is a Krylov subspace method that minimises the $A$-norm of the error over $\mathcal{K}_k = \text{span}\{r_0, Ar_0, \ldots, A^{k-1}r_0\}$. It terminates in at most $n$ steps (exact arithmetic). The practical convergence bound is:</p>
                     $$\frac{\|e_k\|_A}{\|e_0\|_A} \le 2\left(\frac{\sqrt{\kappa_2(A)}-1}{\sqrt{\kappa_2(A)}+1}\right)^k,$$
                     <p class="mb-0">so CG reaches accuracy $\varepsilon$ in $O(\sqrt{\kappa_2(A)}\,\log(2/\varepsilon))$ iterations. With an <strong>ICCG preconditioner</strong> (incomplete Cholesky), the effective condition number is greatly reduced, often yielding mesh-independent convergence for elliptic PDE problems.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Direct vs. Iterative</div>
+                    <div class="math-box-label">Remark - Direct vs. Iterative</div>
                     <p class="mb-0">Use <strong>direct methods</strong> (LU, Cholesky) for: dense matrices; moderate $n$ ($n \lesssim 10^4$); multiple right-hand sides with the same $A$; problems where exact solution (up to rounding) is required. Use <strong>iterative methods</strong> for: large sparse matrices ($n \gtrsim 10^5$); matrices where sparsity would be destroyed by factorisation; problems where a moderate-accuracy solution suffices; PDE problems with structured sparsity amenable to multigrid or FFT preconditioning.</p>
                 </div>
 

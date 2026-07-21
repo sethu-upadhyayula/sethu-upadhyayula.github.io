@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -86,40 +86,40 @@
                 <h2 class="mt-5 mb-3">Liquidity at the Long End</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Long-Dated FX Is Different</div>
+                    <div class="math-box-label">Remark - Why Long-Dated FX Is Different</div>
                     <p><strong>Sparse direct quotes.</strong> While FX swap points are actively quoted and traded out to 1-2 years for major pairs, points beyond 5 years are quoted by far fewer market makers, with wider bid-offer spreads, and trade in much smaller size. Beyond about 10 years, even major pairs may have only a handful of indicative quotes available, often only on request.</p>
-                    <p><strong>Reliance on the cross-currency basis curve.</strong> At long tenors, the cross-currency basis swap market (Section 1.3) — rather than the FX forward/swap points market directly — is often the primary source of long-end information, since cross-currency basis swaps are the instrument of choice for genuinely long-dated currency funding. Long-dated FX forward points are then derived indirectly via the relationship between forwards, deposit curves, and the cross-currency basis (Section 2.1's CIP-with-basis identity), rather than observed directly.</p>
-                    <p class="mb-0"><strong>Wider effective bid-offer.</strong> The combination of sparse quotes and basis-curve-derived pricing means the effective bid-offer spread on a 20-year FX forward, expressed in pips, can be an order of magnitude wider than for a 3-month forward — a critical consideration when hedging large, long-dated exposures, where the cost of execution itself can be a meaningful fraction of the hedge's value.</p>
+                    <p><strong>Reliance on the cross-currency basis curve.</strong> At long tenors, the cross-currency basis swap market (Section 1.3) - rather than the FX forward/swap points market directly - is often the primary source of long-end information, since cross-currency basis swaps are the instrument of choice for genuinely long-dated currency funding. Long-dated FX forward points are then derived indirectly via the relationship between forwards, deposit curves, and the cross-currency basis (Section 2.1's CIP-with-basis identity), rather than observed directly.</p>
+                    <p class="mb-0"><strong>Wider effective bid-offer.</strong> The combination of sparse quotes and basis-curve-derived pricing means the effective bid-offer spread on a 20-year FX forward, expressed in pips, can be an order of magnitude wider than for a 3-month forward - a critical consideration when hedging large, long-dated exposures, where the cost of execution itself can be a meaningful fraction of the hedge's value.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Extrapolation Beyond the Quoted Curve</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Extrapolation Risk</div>
-                    <p class="mb-0">When a valuation or hedging need arises for a maturity beyond the longest quoted point on the curve (e.g., a 25-year forward when the longest liquid quote is 10 years), the curve must be <em>extrapolated</em> rather than interpolated. A common approach is to hold the implied forward rate differential $g(T)/T$ (in the notation of Section 3.1) flat beyond the last liquid pillar — i.e., assume the long-run interest rate differential between the two currencies persists at its last-observed level. This is a strong assumption: interest rate differentials between currencies can and do change sign over horizons of decades (consider how relative JPY and USD rates have evolved over the past 30 years), and any extrapolated long-dated forward rate carries substantial model risk that should be flagged explicitly to anyone using it for hedging or valuation decisions.</p>
+                    <div class="math-box-label">Remark - Extrapolation Risk</div>
+                    <p class="mb-0">When a valuation or hedging need arises for a maturity beyond the longest quoted point on the curve (e.g., a 25-year forward when the longest liquid quote is 10 years), the curve must be <em>extrapolated</em> rather than interpolated. A common approach is to hold the implied forward rate differential $g(T)/T$ (in the notation of Section 3.1) flat beyond the last liquid pillar - i.e., assume the long-run interest rate differential between the two currencies persists at its last-observed level. This is a strong assumption: interest rate differentials between currencies can and do change sign over horizons of decades (consider how relative JPY and USD rates have evolved over the past 30 years), and any extrapolated long-dated forward rate carries substantial model risk that should be flagged explicitly to anyone using it for hedging or valuation decisions.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Curve Risk Sensitivities for Long-Dated Trades</h2>
 
-                <p>A long-dated FX forward's value is sensitive to moves in the entire FX forward curve — spot, the deposit/OIS curves in both currencies out to the trade's maturity, and the cross-currency basis curve. Decomposing this sensitivity is essential for hedging.</p>
+                <p>A long-dated FX forward's value is sensitive to moves in the entire FX forward curve - spot, the deposit/OIS curves in both currencies out to the trade's maturity, and the cross-currency basis curve. Decomposing this sensitivity is essential for hedging.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — FX Forward Risk Decomposition</div>
+                    <div class="math-box-label">Definition - FX Forward Risk Decomposition</div>
                     <p class="mb-0">The value of a long-dated FX forward position can be decomposed into sensitivities analogous to the rate curve sensitivities of Chapter 3 in Rates Fundamentals:</p>
                     <ul class="mb-0 mt-2">
-                        <li><strong>Spot delta:</strong> sensitivity to a parallel move in the spot rate $S$ — typically the dominant risk for forwards of any maturity, and the easiest to hedge (with spot FX or short-dated forwards).</li>
-                        <li><strong>Domestic and foreign rate delta (rho):</strong> sensitivity to moves in $r_d(T)$ and $r_f(T)$ at the trade's maturity — analogous to a DV01 (Section 3.1 of Rates Fundamentals) but for the rate that enters the FX forward formula. For long-dated trades, this can be a significant risk requiring hedging with interest rate swaps in each currency.</li>
-                        <li><strong>Cross-currency basis delta:</strong> sensitivity to a move in the cross-currency basis at the relevant tenor — a risk that can only be hedged with cross-currency basis swaps or other long-dated FX instruments, and one that is often the largest single source of P&amp;L volatility for long-dated FX positions, given how much the basis can move during stress episodes (Section 2.1).</li>
+                        <li><strong>Spot delta:</strong> sensitivity to a parallel move in the spot rate $S$ - typically the dominant risk for forwards of any maturity, and the easiest to hedge (with spot FX or short-dated forwards).</li>
+                        <li><strong>Domestic and foreign rate delta (rho):</strong> sensitivity to moves in $r_d(T)$ and $r_f(T)$ at the trade's maturity - analogous to a DV01 (Section 3.1 of Rates Fundamentals) but for the rate that enters the FX forward formula. For long-dated trades, this can be a significant risk requiring hedging with interest rate swaps in each currency.</li>
+                        <li><strong>Cross-currency basis delta:</strong> sensitivity to a move in the cross-currency basis at the relevant tenor - a risk that can only be hedged with cross-currency basis swaps or other long-dated FX instruments, and one that is often the largest single source of P&amp;L volatility for long-dated FX positions, given how much the basis can move during stress episodes (Section 2.1).</li>
                     </ul>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Hedging Long-Dated Curve Risk</div>
-                    <p class="mb-0">A bank running a book of long-dated FX forwards (e.g., from corporate hedging flow) typically hedges spot delta with offsetting spot or short-dated forward trades, hedges interest rate delta in each currency with interest rate swaps, and is left with residual cross-currency basis risk that can only be hedged with cross-currency basis swaps of matching or similar tenor — instruments that are themselves illiquid at long tenors. This residual basis risk is a structural feature of running a long-dated FX book and is one of the reasons banks charge wider spreads on long-dated forwards than the underlying curve construction alone would suggest.</p>
+                    <div class="math-box-label">Remark - Hedging Long-Dated Curve Risk</div>
+                    <p class="mb-0">A bank running a book of long-dated FX forwards (e.g., from corporate hedging flow) typically hedges spot delta with offsetting spot or short-dated forward trades, hedges interest rate delta in each currency with interest rate swaps, and is left with residual cross-currency basis risk that can only be hedged with cross-currency basis swaps of matching or similar tenor - instruments that are themselves illiquid at long tenors. This residual basis risk is a structural feature of running a long-dated FX book and is one of the reasons banks charge wider spreads on long-dated forwards than the underlying curve construction alone would suggest.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Looking Ahead</div>
+                    <div class="math-box-label">Remark - Looking Ahead</div>
                     <p class="mb-0">The final section applies all of this machinery to the most common real-world use case: a corporate or asset manager hedging a foreign-currency-denominated balance sheet item using a programme of FX forwards, including how such hedges are rolled over time and the considerations that determine the hedge's accounting treatment.</p>
                 </div>
 

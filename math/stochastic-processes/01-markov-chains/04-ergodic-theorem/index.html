@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -130,7 +130,7 @@
                 <p>The ergodic theorem is the central convergence result for Markov chains. It states that under mild conditions, the chain forgets its initial state and converges to the unique stationary distribution, both in the distributional sense and as time averages.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.4.1 — Ergodic Chain</div>
+                    <div class="math-box-label">Definition 1.4.1 - Ergodic Chain</div>
                     <p class="mb-0">A Markov chain is called <strong>ergodic</strong> if it is:
                     <br>(i) <strong>Irreducible</strong>: all states communicate;
                     <br>(ii) <strong>Positive recurrent</strong>: $E_i[T_i] < \infty$ for all $i$;
@@ -139,14 +139,14 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.4.2 — Convergence to Stationarity</div>
+                    <div class="math-box-label">Theorem 1.4.2 - Convergence to Stationarity</div>
                     <p class="mb-0">For an ergodic chain with unique stationary distribution $\pi$,
                     $$(P^n)_{ij} \to \pi_j \quad \text{as } n \to \infty, \text{ for all } i, j \in S.$$
                     In particular, $\mu P^n \to \pi$ for any initial distribution $\mu$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.4.3 — Ergodic Theorem (Time Averages)</div>
+                    <div class="math-box-label">Theorem 1.4.3 - Ergodic Theorem (Time Averages)</div>
                     <p class="mb-0">For an irreducible positive recurrent chain with stationary distribution $\pi$, and any bounded function $f: S \to \mathbb{R}$,
                     $$\frac{1}{n} \sum_{k=0}^{n-1} f(X_k) \xrightarrow{a.s.} \sum_{i \in S} \pi_i f(i) \quad \text{as } n \to \infty,$$
                     regardless of the initial state. This says time averages equal ensemble averages under $\pi$.</p>
@@ -160,19 +160,19 @@
                 <h2 class="mt-5 mb-3">Rate of Convergence</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.4.4 — Geometric Convergence (Finite Chains)</div>
+                    <div class="math-box-label">Theorem 1.4.4 - Geometric Convergence (Finite Chains)</div>
                     <p class="mb-0">For a finite ergodic chain with stationary distribution $\pi$ and second-largest eigenvalue magnitude $\lambda^* < 1$,
                     $$\|(P^n)_{i\cdot} - \pi\|_{\text{TV}} \le C \cdot (\lambda^*)^n$$
                     for some constant $C > 0$. The spectral gap $1 - \lambda^*$ controls how quickly the chain mixes.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Lazy Random Walk on $\{0, \ldots, N\}$</div>
+                    <div class="math-box-label">Example - Lazy Random Walk on $\{0, \ldots, N\}$</div>
                     <p class="mb-0">A lazy random walk (stays put with probability $1/2$, moves left or right with probability $1/4$ each) on $N+1$ states has stationary distribution $\pi_i = 1/(N+1)$ and mixing time $O(N^2)$. The spectral gap is $\Theta(1/N^2)$, reflecting the diffusive nature of the walk.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Coupling</div>
+                    <div class="math-box-label">Remark - Coupling</div>
                     <p class="mb-0">A powerful technique to prove convergence is <em>coupling</em>: run two copies of the chain (one from any initial state, one from $\pi$) until they meet (the coupling time $\tau$). Then $\|(P^n)_{i\cdot} - \pi\|_{\text{TV}} \le P(\tau > n)$, reducing mixing time estimates to questions about when two random walks meet.</p>
                 </div>
 

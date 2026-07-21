@@ -1,4 +1,4 @@
-/* Interactive game viewer — auto-activates on any page with a .move-list.
+/* Interactive game viewer - auto-activates on any page with a .move-list.
    Parses the move notation, wraps each half-move in a clickable token,
    inserts a live chess board above the moves, and updates it on click.
    Depends on: chess-board.js (renderChessBoard) and chess-board.css.
@@ -267,7 +267,7 @@
     }
 
     if (!window.Chess) {
-        console.warn('game-viewer: Chess not found — load chess.js before game-viewer.js');
+        console.warn('game-viewer: Chess not found - load chess.js before game-viewer.js');
         return;
     }
     if (document.readyState === 'loading') {

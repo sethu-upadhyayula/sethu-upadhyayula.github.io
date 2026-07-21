@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -130,7 +130,7 @@
                 <h2 class="mt-4 mb-3">Energy-Norm ($H^1$) Estimate</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — $H^1$ A Priori Error Estimate</div>
+                    <div class="math-box-label">Theorem - $H^1$ A Priori Error Estimate</div>
                     <p>Let $u \in H^{k+1}(\Omega) \cap H^1_0(\Omega)$ be the exact solution of a second-order elliptic problem and $u_h \in V_h$ the Galerkin solution on a shape-regular mesh with $P_k$ elements. Then
                     $$\|u - u_h\|_{H^1(\Omega)} \leq C\, h^k\, \|u\|_{H^{k+1}(\Omega)},$$
                     where $C$ is independent of $h$ and $u$. In particular, for $P_1$ elements ($k=1$):
@@ -145,14 +145,14 @@
                 <p>The $H^1$ estimate gives convergence of rate $h^k$. The <strong>Aubin-Nitsche duality argument</strong> (also called the <em>elliptic regularity trick</em>) lifts this to an $L^2$ estimate of rate $h^{k+1}$, gaining one extra power of $h$ at the cost of requiring an elliptic regularity assumption.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Assumption — Elliptic Regularity</div>
+                    <div class="math-box-label">Assumption - Elliptic Regularity</div>
                     <p class="mb-0">The domain $\Omega$ and the operator are such that for any $g \in L^2(\Omega)$, the dual problem
                     $$-\Delta z = g \quad \text{in } \Omega, \qquad z = 0 \quad \text{on } \partial\Omega$$
                     has a unique solution $z \in H^2(\Omega)$ satisfying $\|z\|_{H^2(\Omega)} \leq C_{\mathrm{reg}}\|g\|_{L^2(\Omega)}$. This holds when $\Omega$ is convex or has a $C^{1,1}$ boundary.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — $L^2$ A Priori Error Estimate (Aubin-Nitsche)</div>
+                    <div class="math-box-label">Theorem - $L^2$ A Priori Error Estimate (Aubin-Nitsche)</div>
                     <p>Under the elliptic regularity assumption, and with $u \in H^{k+1}(\Omega)$:
                     $$\|u - u_h\|_{L^2(\Omega)} \leq C\, h^{k+1}\, \|u\|_{H^{k+1}(\Omega)}.$$
                     For $P_1$ elements: $\|u - u_h\|_{L^2} \leq C h^2 \|u\|_{H^2}$.</p>
@@ -173,7 +173,7 @@
                 <p>The following table collects the a priori error rates for smooth solutions $u \in H^{k+1}(\Omega)$:</p>
 
                 <div class="math-box">
-                    <div class="math-box-label">Table — Convergence Rates</div>
+                    <div class="math-box-label">Table - Convergence Rates</div>
                     <table class="table table-sm table-bordered mb-0" style="font-size:0.92em;">
                         <thead>
                             <tr>
@@ -220,12 +220,12 @@
                 <h2 class="mt-5 mb-3">Limitations: Non-Smooth Solutions</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Loss of Regularity</div>
+                    <div class="math-box-label">Remark - Loss of Regularity</div>
                     <p class="mb-0">The a priori estimates require $u \in H^{k+1}(\Omega)$. If $\Omega$ has re-entrant corners (e.g., an L-shaped domain), $u$ may only lie in $H^{1+s}(\Omega)$ for some $s < 1$, and the convergence rate degrades to $O(h^s)$ in $H^1$. In such cases, adaptive mesh refinement (AMR) guided by a posteriori error estimators can recover optimal convergence.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Checking Convergence Rates Numerically</div>
+                    <div class="math-box-label">Remark - Checking Convergence Rates Numerically</div>
                     <p class="mb-0">To verify the expected rate $O(h^p)$ numerically, compute the error on a sequence of meshes with $h, h/2, h/4, \ldots$ and compute the convergence rate as
                     $$r \approx \log_2\!\left(\frac{\|u - u_{h}\|}{\|u - u_{h/2}\|}\right).$$
                     An observed rate of $r \approx k$ for the $H^1$ error (and $r \approx k+1$ for $L^2$) confirms the theoretical predictions.</p>

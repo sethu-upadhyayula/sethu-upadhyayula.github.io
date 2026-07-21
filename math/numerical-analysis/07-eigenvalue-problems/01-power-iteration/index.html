@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -55,7 +55,7 @@
 
                 <h2 class="mt-5 mb-3">The Power Method</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Power Method</div>
+                    <div class="math-box-label">Definition - Power Method</div>
                     <p class="mb-0">Given $A \in \mathbb{R}^{n\times n}$, choose an initial vector $x_0$ with $\|x_0\|=1$. Iterate:
                     $$z_{k+1} = A x_k, \qquad x_{k+1} = \frac{z_{k+1}}{\|z_{k+1}\|}.$$
                     The Rayleigh quotient $\rho_k = x_k^T A x_k$ converges to the dominant eigenvalue $\lambda_1$, and $x_k$ converges to the corresponding eigenvector $v_1$ (up to sign).</p>
@@ -63,7 +63,7 @@
 
                 <h2 class="mt-5 mb-3">Convergence Analysis</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Convergence Rate of Power Method</div>
+                    <div class="math-box-label">Theorem - Convergence Rate of Power Method</div>
                     <p>Assume $A$ has eigenvalues $|\lambda_1| > |\lambda_2| \ge \cdots \ge |\lambda_n|$ with eigenvectors $v_1,\ldots,v_n$. Write $x_0 = \sum_{j=1}^n c_j v_j$ with $c_1 \ne 0$. Then:
                     $$A^k x_0 = \lambda_1^k\left(c_1 v_1 + \sum_{j=2}^n c_j \left(\frac{\lambda_j}{\lambda_1}\right)^k v_j\right).$$</p>
                     <p class="mb-0">The dominant term grows as $\lambda_1^k$; after normalisation, $x_k \to v_1$ as $k\to\infty$. The convergence rate is $|\lambda_2/\lambda_1|^k$: the method is fast when $|\lambda_2/\lambda_1| \ll 1$ (well-separated dominant eigenvalue) and slow when $|\lambda_2/\lambda_1| \approx 1$.</p>
@@ -71,15 +71,15 @@
 
                 <h2 class="mt-5 mb-3">Rayleigh Quotient</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Rayleigh Quotient</div>
+                    <div class="math-box-label">Definition - Rayleigh Quotient</div>
                     <p class="mb-0">For a vector $x \ne 0$, the <strong>Rayleigh quotient</strong> is
                     $$\rho(x) = \frac{x^T A x}{x^T x}.$$
-                    At an eigenvector $v_j$, $\rho(v_j) = \lambda_j$. Near $v_1$, $\rho(x)$ converges to $\lambda_1$ at rate $|\lambda_2/\lambda_1|^{2k}$ — one order faster than $x_k$ itself, because the Rayleigh quotient is the optimal linear estimator of $\lambda$ given $x$.</p>
+                    At an eigenvector $v_j$, $\rho(v_j) = \lambda_j$. Near $v_1$, $\rho(x)$ converges to $\lambda_1$ at rate $|\lambda_2/\lambda_1|^{2k}$ - one order faster than $x_k$ itself, because the Rayleigh quotient is the optimal linear estimator of $\lambda$ given $x$.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Inverse Iteration and Shift-and-Invert</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Inverse Iteration with Shift</div>
+                    <div class="math-box-label">Definition - Inverse Iteration with Shift</div>
                     <p class="mb-0">To find the eigenvalue of $A$ nearest a given shift $\mu$, apply power iteration to $(A - \mu I)^{-1}$:
                     $$z_{k+1} = (A-\mu I)^{-1} x_k, \qquad x_{k+1} = z_{k+1}/\|z_{k+1}\|.$$
                     The eigenvalues of $(A-\mu I)^{-1}$ are $(\lambda_j - \mu)^{-1}$, so the dominant eigenvalue is $(\lambda_j-\mu)^{-1}$ for the $\lambda_j$ nearest $\mu$. Convergence rate: $|(\lambda_j-\mu)/(\lambda_{j'}-\mu)|$ where $\lambda_{j'}$ is the second nearest eigenvalue to $\mu$. Each iteration requires solving $(A-\mu I)x = z$ (factorize once, apply repeatedly).</p>
@@ -87,13 +87,13 @@
 
                 <h2 class="mt-5 mb-3">Rayleigh Quotient Iteration</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Cubic Convergence of Rayleigh Quotient Iteration</div>
+                    <div class="math-box-label">Theorem - Cubic Convergence of Rayleigh Quotient Iteration</div>
                     <p class="mb-0">Update the shift at each step: $\mu_k = \rho(x_k) = x_k^T A x_k$. Apply inverse iteration with shift $\mu_k$. For a symmetric matrix, this method converges <strong>cubically</strong> once near an eigenvector: if $\sin\angle(x_k,v_j) = O(\varepsilon)$, then $\sin\angle(x_{k+1},v_j) = O(\varepsilon^3)$. The cost per step is one linear solve (which changes because $\mu_k$ changes).</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Deflation</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Deflation</div>
+                    <div class="math-box-label">Definition - Deflation</div>
                     <p class="mb-0">Once $\lambda_1$ and $v_1$ have been found, <strong>deflation</strong> removes the dominant mode. Replace $A$ by $A - \lambda_1 v_1 v_1^T$ (Hotelling deflation for symmetric matrices). The new matrix has eigenvalues $0, \lambda_2, \ldots, \lambda_n$; power iteration on the deflated matrix finds $\lambda_2$. Successive deflations yield all eigenvalues in decreasing order of magnitude, though numerical errors accumulate and the approach is not recommended for more than a few eigenvalues (the QR algorithm is preferred).</p>
                 </div>
 

@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,11 +81,11 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Factor Copula Models</h1>
 
-                <p>The one-factor Gaussian copula's central weakness is its dependence structure: a single Gaussian common factor produces "thin tails" — the probability of many names defaulting together in a short window is too low relative to what is observed in systemic credit crises. Factor copula models generalise the construction to address this, either by adding more common factors or by replacing the Gaussian distribution with one that has heavier tails and explicit tail dependence.</p>
+                <p>The one-factor Gaussian copula's central weakness is its dependence structure: a single Gaussian common factor produces "thin tails" - the probability of many names defaulting together in a short window is too low relative to what is observed in systemic credit crises. Factor copula models generalise the construction to address this, either by adding more common factors or by replacing the Gaussian distribution with one that has heavier tails and explicit tail dependence.</p>
 
                 <h2 class="mt-5 mb-3">Multi-Factor Copulas</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Two-Factor (Sector) Gaussian Copula</div>
+                    <div class="math-box-label">Definition - Two-Factor (Sector) Gaussian Copula</div>
                     <p>A natural extension assigns each obligor to a sector and introduces both a global factor and a sector factor:
                     $$X_i = \sqrt{\rho_1}\,M + \sqrt{\rho_2 - \rho_1}\,M_{s(i)} + \sqrt{1-\rho_2}\,Z_i, \qquad 0 \leq \rho_1 \leq \rho_2 \leq 1$$
                     where $M \sim N(0,1)$ is the global factor common to all names, $M_{s(i)} \sim N(0,1)$ is a sector-specific factor for the sector $s(i)$ containing obligor $i$, and $Z_i$ is idiosyncratic. Names in the same sector share correlation $\rho_2$ (intra-sector), while names in different sectors share only $\rho_1$ (inter-sector). This better reflects real portfolios, where defaults cluster by industry or geography, but loses the simple semi-analytic loss distribution and generally requires conditioning on multiple factors via nested numerical integration or Monte Carlo.</p>
@@ -93,29 +93,29 @@
 
                 <h2 class="mt-5 mb-3">The Student-$t$ Copula</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — One-Factor Student-$t$ Copula</div>
+                    <div class="math-box-label">Definition - One-Factor Student-$t$ Copula</div>
                     <p>Replace the Gaussian common and idiosyncratic factors with a construction that produces multivariate Student-$t$ marginals:
                     $$X_i = \frac{\sqrt{\rho}\,M + \sqrt{1-\rho}\,Z_i}{\sqrt{W/\nu}}$$
-                    where $M, Z_i \sim N(0,1)$ as before, $W \sim \chi^2_\nu$ is a chi-squared random variable independent of $M$ and the $Z_i$, and $\nu$ is the degrees-of-freedom parameter. Dividing by a common random scaling factor $\sqrt{W/\nu}$ induces <em>tail dependence</em>: in periods where $W$ is small, all $X_i$ are scaled up together, producing simultaneous extreme moves across all names — exactly the systemic clustering the Gaussian copula cannot generate. As $\nu \to \infty$, the Student-$t$ copula converges to the Gaussian copula.</p>
+                    where $M, Z_i \sim N(0,1)$ as before, $W \sim \chi^2_\nu$ is a chi-squared random variable independent of $M$ and the $Z_i$, and $\nu$ is the degrees-of-freedom parameter. Dividing by a common random scaling factor $\sqrt{W/\nu}$ induces <em>tail dependence</em>: in periods where $W$ is small, all $X_i$ are scaled up together, producing simultaneous extreme moves across all names - exactly the systemic clustering the Gaussian copula cannot generate. As $\nu \to \infty$, the Student-$t$ copula converges to the Gaussian copula.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Double-$t$ Copula</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Double-$t$ Copula</div>
+                    <div class="math-box-label">Definition - Double-$t$ Copula</div>
                     <p>The double-$t$ copula applies Student-$t$ distributions to the common and idiosyncratic factors <em>separately</em>, rather than to their combination:
                     $$X_i = \sqrt{\rho}\, t_{\nu_M}(M) + \sqrt{1-\rho}\, t_{\nu_Z}(Z_i)$$
-                    where $t_{\nu_M}$ and $t_{\nu_Z}$ denote (rescaled) Student-$t$ transforms of the underlying Gaussian variables, with possibly different degrees-of-freedom parameters $\nu_M$ and $\nu_Z$. Giving the systematic factor $M$ fat tails (small $\nu_M$) increases the chance of a severe common shock driving correlated defaults, while keeping the idiosyncratic factors closer to Gaussian preserves realistic behaviour for isolated single-name defaults. This extra degree of freedom lets the model fit the base correlation skew more flatly across strikes than the single-parameter Gaussian copula — fewer distinct $\rho_{\text{base}}(D)$ values are needed because the tail behaviour is already richer.</p>
+                    where $t_{\nu_M}$ and $t_{\nu_Z}$ denote (rescaled) Student-$t$ transforms of the underlying Gaussian variables, with possibly different degrees-of-freedom parameters $\nu_M$ and $\nu_Z$. Giving the systematic factor $M$ fat tails (small $\nu_M$) increases the chance of a severe common shock driving correlated defaults, while keeping the idiosyncratic factors closer to Gaussian preserves realistic behaviour for isolated single-name defaults. This extra degree of freedom lets the model fit the base correlation skew more flatly across strikes than the single-parameter Gaussian copula - fewer distinct $\rho_{\text{base}}(D)$ values are needed because the tail behaviour is already richer.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Why These Models Help</h2>
                 <div class="math-box theorem">
-                    <div class="math-box-label">Result — Tail Dependence and the Correlation Skew</div>
-                    <p class="mb-0">A copula exhibits (upper) tail dependence if $\lambda_U = \lim_{u\to 1} P(U_2 > u \mid U_1 > u) > 0$ for uniform marginals $U_1, U_2$. The Gaussian copula has $\lambda_U = 0$ for any $\rho < 1$ — joint extreme outcomes become negligibly likely. The Student-$t$ and double-$t$ copulas have $\lambda_U > 0$ for finite $\nu$: extreme common shocks remain non-negligible in probability. Because senior tranches are paid off only in extreme, highly correlated loss scenarios, a copula with positive tail dependence assigns more probability mass to the scenarios that drive senior tranche losses without needing an artificially high $\rho$. This is precisely why fat-tailed factor copulas can fit the market-observed correlation skew with a flatter, more stable correlation parameter across the capital structure than the Gaussian copula requires.</p>
+                    <div class="math-box-label">Result - Tail Dependence and the Correlation Skew</div>
+                    <p class="mb-0">A copula exhibits (upper) tail dependence if $\lambda_U = \lim_{u\to 1} P(U_2 > u \mid U_1 > u) > 0$ for uniform marginals $U_1, U_2$. The Gaussian copula has $\lambda_U = 0$ for any $\rho < 1$ - joint extreme outcomes become negligibly likely. The Student-$t$ and double-$t$ copulas have $\lambda_U > 0$ for finite $\nu$: extreme common shocks remain non-negligible in probability. Because senior tranches are paid off only in extreme, highly correlated loss scenarios, a copula with positive tail dependence assigns more probability mass to the scenarios that drive senior tranche losses without needing an artificially high $\rho$. This is precisely why fat-tailed factor copulas can fit the market-observed correlation skew with a flatter, more stable correlation parameter across the capital structure than the Gaussian copula requires.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Practical Trade-offs</div>
-                    <p class="mb-0">Multi-factor and fat-tailed copulas come at a computational cost: the simple Gauss-Hermite quadrature of Section 1.2 generalises to multi-dimensional quadrature or Monte Carlo simulation, slowing calibration and full-revaluation risk runs. In practice, desks often retain the one-factor Gaussian copula with base correlation as a quoting and bootstrapping convention — because the market itself communicates in base correlation terms — while using richer factor copulas for model validation, stress testing, and pricing bespoke tranches where the standard index tranche quotes provide insufficient calibration information. The choice of copula family is itself a source of model risk, discussed further in Section 4.2.</p>
+                    <div class="math-box-label">Remark - Practical Trade-offs</div>
+                    <p class="mb-0">Multi-factor and fat-tailed copulas come at a computational cost: the simple Gauss-Hermite quadrature of Section 1.2 generalises to multi-dimensional quadrature or Monte Carlo simulation, slowing calibration and full-revaluation risk runs. In practice, desks often retain the one-factor Gaussian copula with base correlation as a quoting and bootstrapping convention - because the market itself communicates in base correlation terms - while using richer factor copulas for model validation, stress testing, and pricing bespoke tranches where the standard index tranche quotes provide insufficient calibration information. The choice of copula family is itself a source of model risk, discussed further in Section 4.2.</p>
                 </div>
 
                 <hr class="my-5">

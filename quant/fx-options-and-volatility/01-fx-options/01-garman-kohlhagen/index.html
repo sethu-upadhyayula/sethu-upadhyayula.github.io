@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -84,7 +84,7 @@
                 <p>The Garman-Kohlhagen model (1983) extends the Black-Scholes framework to options on exchange rates. The key insight is that holding the foreign currency is analogous to holding a stock that pays a continuous dividend yield: the dividend yield is simply the foreign risk-free rate $r_f$, since an investor holding one unit of the foreign currency earns interest on it at rate $r_f$. The domestic risk-free rate $r_d$ plays the role of the discount rate, exactly as $r$ does in Black-Scholes.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Garman-Kohlhagen Formula</div>
+                    <div class="math-box-label">Definition - Garman-Kohlhagen Formula</div>
                     <p>Let $S_0$ be the spot exchange rate (units of domestic currency per unit of foreign currency), $K$ the strike, $T$ the time to expiry, $r_d$ the domestic risk-free rate, $r_f$ the foreign risk-free rate, and $\sigma$ the volatility of the exchange rate. The price of a European call option to buy one unit of foreign currency at strike $K$ is:</p>
                     $$c = S_0 e^{-r_f T} N(d_1) - K e^{-r_d T} N(d_2)$$
                     <p>and the price of the corresponding put is:</p>
@@ -96,7 +96,7 @@
                 <p>This is structurally identical to the Black-Scholes-Merton formula for a stock paying a continuous dividend yield $q$, with the substitution $q \to r_f$. Both legs of the formula carry an explicit discount factor: $e^{-r_f T}$ discounts the foreign-currency notional (which itself earns $r_f$ until delivery), and $e^{-r_d T}$ discounts the domestic-currency strike payment.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Forward Formulation</div>
+                    <div class="math-box-label">Remark - Forward Formulation</div>
                     <p class="mb-0">Recalling covered interest rate parity, the FX forward rate is $F_0 = S_0 e^{(r_d-r_f)T}$. Substituting gives the equivalent Black-76 style form:</p>
                     $$c = e^{-r_d T}\left[F_0 N(d_1) - K N(d_2)\right], \qquad d_1 = \frac{\ln(F_0/K) + \tfrac{1}{2}\sigma^2 T}{\sigma\sqrt{T}}$$
                     <p class="mt-2 mb-0">This form is often more convenient in practice because $F_0$ is directly observable from the forward market, avoiding the need to separately specify $S_0$, $r_d$, and $r_f$.</p>
@@ -107,7 +107,7 @@
                 <p>Put-call parity follows from a simple static replication argument: a long call plus a short put with the same strike and maturity replicates a forward contract to buy the foreign currency at $K$.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — FX Put-Call Parity</div>
+                    <div class="math-box-label">Theorem - FX Put-Call Parity</div>
                     <p class="mb-0">For European call and put options with the same strike $K$ and maturity $T$ on the same currency pair:</p>
                     $$c - p = S_0 e^{-r_f T} - K e^{-r_d T}$$
                     <p class="mt-2 mb-0">Equivalently, $c - p = e^{-r_d T}(F_0 - K)$, the discounted value of the forward contract struck at $K$.</p>
@@ -115,19 +115,19 @@
 
                 <h2 class="mt-5 mb-3">Currency Pair Symmetry</h2>
 
-                <p>An exchange rate is a relative price, and every FX option can be viewed from either currency's perspective. A call option giving the right to buy one unit of foreign currency (CCY1) for $K$ units of domestic currency (CCY2) is, from the perspective of a CCY2-based investor, a put option giving the right to sell CCY2 for CCY1 — but the notional and strike must be re-expressed in the inverted quoting convention.</p>
+                <p>An exchange rate is a relative price, and every FX option can be viewed from either currency's perspective. A call option giving the right to buy one unit of foreign currency (CCY1) for $K$ units of domestic currency (CCY2) is, from the perspective of a CCY2-based investor, a put option giving the right to sell CCY2 for CCY1 - but the notional and strike must be re-expressed in the inverted quoting convention.</p>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition — Call/Put Duality (Numéraire Symmetry)</div>
+                    <div class="math-box-label">Proposition - Call/Put Duality (Numéraire Symmetry)</div>
                     <p>A EUR call / USD put on EUR/USD with strike $K$ (USD per EUR) and notional $N$ EUR, struck so the payoff is $N\max(S_T - K, 0)$ in USD, is equivalent to a position of $NK$ USD-denominated USD calls / EUR puts on USD/EUR struck at $1/K$, with payoff:</p>
                     $$NK \max\left(\frac{1}{K} - \frac{1}{S_T}, 0\right) \text{ EUR}$$
-                    <p class="mb-0">This identity — that "a call on X/Y is a put on Y/X" — is fundamental to FX options trading, because it allows a single book of vanilla options to be quoted, hedged, and risk-managed consistently regardless of which currency is treated as the "base" for pricing purposes. The Garman-Kohlhagen formula applied to USD/EUR (swapping the roles of $r_d$ and $r_f$, and using $1/S_0$ and $1/K$) reproduces the same value, converted at the appropriate rate.</p>
+                    <p class="mb-0">This identity - that "a call on X/Y is a put on Y/X" - is fundamental to FX options trading, because it allows a single book of vanilla options to be quoted, hedged, and risk-managed consistently regardless of which currency is treated as the "base" for pricing purposes. The Garman-Kohlhagen formula applied to USD/EUR (swapping the roles of $r_d$ and $r_f$, and using $1/S_0$ and $1/K$) reproduces the same value, converted at the appropriate rate.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Pricing a EUR/USD Call</div>
+                    <div class="math-box-label">Example - Pricing a EUR/USD Call</div>
                     <p>Consider a 6-month European call option on EUR/USD with the following inputs:</p>
                     <ul class="mb-2">
                         <li>Spot $S_0 = 1.0850$</li>
@@ -143,7 +143,7 @@
                     <p>Using $N(-0.0664) \approx 0.4735$ and $N(-0.1300) \approx 0.4483$:</p>
                     $$c = 1.0850\,e^{-0.035(0.5)}(0.4735) - 1.1000\,e^{-0.05(0.5)}(0.4483)$$
                     $$c \approx 1.0660(0.4735) - 1.0728(0.4483) \approx 0.5048 - 0.4810 \approx 0.0238$$
-                    <p class="mb-0">The call is worth approximately 0.0238 USD per EUR of notional — i.e. about 238 pips, or for a notional of €10,000,000, a premium of approximately $238,000.</p>
+                    <p class="mb-0">The call is worth approximately 0.0238 USD per EUR of notional - i.e. about 238 pips, or for a notional of €10,000,000, a premium of approximately $238,000.</p>
                 </div>
 
                 <hr class="my-5">

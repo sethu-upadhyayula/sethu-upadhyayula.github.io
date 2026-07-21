@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -130,7 +130,7 @@
                 <h2 class="mt-4 mb-3">Application 1: Geometric Brownian Motion</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 3.3.1 — Log Dynamics of GBM</div>
+                    <div class="math-box-label">Example 3.3.1 - Log Dynamics of GBM</div>
                     <p>Let $S_t$ satisfy $dS = \mu S\,dt + \sigma S\,dW$. Apply Itô's formula to $f(S) = \ln S$ (so $f_x = 1/S$, $f_{xx} = -1/S^2$, $f_t = 0$):</p>
                     $$d\ln S_t = \frac{1}{S_t}\,dS_t - \frac{1}{2S_t^2}\sigma^2 S_t^2\,dt = \mu\,dt + \sigma\,dW_t - \frac{\sigma^2}{2}\,dt = \left(\mu - \frac{\sigma^2}{2}\right)dt + \sigma\,dW_t.$$
                     <p>Since the right-hand side has constant coefficients, we can integrate directly:</p>
@@ -142,28 +142,28 @@
                 <h2 class="mt-5 mb-3">Application 2: The Stochastic Exponential</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 3.3.2 — Doléans-Dade Exponential</div>
+                    <div class="math-box-label">Definition 3.3.2 - Doléans-Dade Exponential</div>
                     <p>For an adapted process $\theta$, the <strong>stochastic exponential</strong> (or <strong>Doléans-Dade exponential</strong>) is:</p>
                     $$\mathcal{E}(\theta \cdot W)_t = \exp\!\left(\int_0^t \theta_s\,dW_s - \frac{1}{2}\int_0^t \theta_s^2\,ds\right).$$
                     <p class="mb-0">It is the unique solution to $dZ_t = Z_t \theta_t\,dW_t$, $Z_0 = 1$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.3.3 — Stochastic Exponential is a Local Martingale</div>
+                    <div class="math-box-label">Theorem 3.3.3 - Stochastic Exponential is a Local Martingale</div>
                     <p>$Z_t = \mathcal{E}(\theta \cdot W)_t$ is always a local martingale (since $dZ_t = Z_t\theta_t\,dW_t$ has no drift). Under Novikov's condition $E[e^{\frac{1}{2}\int_0^T\theta_s^2\,ds}] < \infty$, $Z_t$ is a true martingale with $E[Z_T] = 1$.</p>
                 </div>
 
                 <div class="math-box proof">
-                    <div class="math-box-label">Proof — Via Itô's Formula</div>
+                    <div class="math-box-label">Proof - Via Itô's Formula</div>
                     <p>Let $M_t = \int_0^t\theta_s\,dW_s$ and $A_t = \frac{1}{2}\int_0^t\theta_s^2\,ds$. Then $Z_t = e^{M_t - A_t}$. Apply Itô's formula to $f(m,a) = e^{m-a}$:</p>
                     $$dZ_t = e^{M_t-A_t}(dM_t - dA_t) + \frac{1}{2}e^{M_t-A_t}(dM_t)^2 = Z_t(\theta_t\,dW_t - \tfrac{1}{2}\theta_t^2\,dt + \tfrac{1}{2}\theta_t^2\,dt) = Z_t\theta_t\,dW_t.$$
-                    <p class="mb-0">So $Z_t$ satisfies $dZ_t = Z_t\theta_t\,dW_t$ — a pure martingale SDE with no drift.</p>
+                    <p class="mb-0">So $Z_t$ satisfies $dZ_t = Z_t\theta_t\,dW_t$ - a pure martingale SDE with no drift.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Application 3: Black-Scholes PDE Preview</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 3.3.4 — Discounted Price Process</div>
+                    <div class="math-box-label">Example 3.3.4 - Discounted Price Process</div>
                     <p>Let $V_t = V(t, S_t)$ be an option price and $B_t = e^{rt}$ a bond. Apply Itô to $f(t,S) = e^{-rt}V(t,S)$:</p>
                     $$d(e^{-rt}V) = e^{-rt}\left[-rV + V_t + \mu S V_S + \frac{1}{2}\sigma^2 S^2 V_{SS}\right]dt + e^{-rt}\sigma S V_S\,dW.$$
                     <p>For $e^{-rt}V_t$ to be a martingale (no drift), we need the coefficient of $dt$ to vanish:</p>

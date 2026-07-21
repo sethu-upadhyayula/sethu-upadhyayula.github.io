@@ -16,7 +16,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -103,17 +103,17 @@
 
 <p>A <strong>linear recurrence of order $k$</strong> expresses $a_n$ as a linear combination of $a_{n-1}, \ldots, a_{n-k}$ (possibly plus a forcing term). The theory mirrors that of linear ODEs: the solution space is $k$-dimensional and determined by $k$ initial conditions.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Homogeneous Linear Recurrence</div>
+<div class="math-box definition"><div class="math-box-label">Definition - Homogeneous Linear Recurrence</div>
 <p>A <strong>homogeneous linear recurrence of order $k$</strong> with constant coefficients is:
 $$a_n = c_1 a_{n-1} + c_2 a_{n-2} + \cdots + c_k a_{n-k}, \quad n \ge k,$$
 where $c_1, \ldots, c_k$ are constants with $c_k \ne 0$.</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Dimension of Solution Space</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - Dimension of Solution Space</div>
 <p>The set of all sequences satisfying a given homogeneous linear recurrence of order $k$ forms a vector space of dimension $k$. Any solution is uniquely determined by specifying $k$ initial values $a_0, a_1, \ldots, a_{k-1}$.</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Non-Homogeneous Linear Recurrence</div>
+<div class="math-box definition"><div class="math-box-label">Definition - Non-Homogeneous Linear Recurrence</div>
 <p>A <strong>non-homogeneous</strong> linear recurrence has the form:
 $$a_n = c_1 a_{n-1} + \cdots + c_k a_{n-k} + f(n),$$
 where $f(n) \ne 0$ is the <em>forcing term</em>. Its general solution is:
@@ -121,19 +121,19 @@ $$a_n = a_n^{(h)} + a_n^{(p)},$$
 where $a_n^{(h)}$ is the general homogeneous solution and $a_n^{(p)}$ is any particular solution.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Fibonacci Sequence</div>
+<div class="math-box example"><div class="math-box-label">Example - Fibonacci Sequence</div>
 <p>$F_n = F_{n-1} + F_{n-2}$ is a homogeneous recurrence of order 2 with $c_1 = c_2 = 1$. Given $F_0=0, F_1=1$, the sequence begins $0,1,1,2,3,5,8,13,21,\ldots$</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Tribonacci</div>
+<div class="math-box example"><div class="math-box-label">Example - Tribonacci</div>
 <p>$T_n = T_{n-1} + T_{n-2} + T_{n-3}$, $T_0=T_1=0, T_2=1$. This is a homogeneous recurrence of order 3. Its characteristic polynomial is $r^3 - r^2 - r - 1 = 0$.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Algorithm Analysis</div>
+<div class="math-box example"><div class="math-box-label">Example - Algorithm Analysis</div>
 <p>The number of comparisons in insertion sort satisfies $C_n = C_{n-1} + (n-1)$, $C_1 = 0$. This is non-homogeneous with forcing term $f(n) = n-1$. The particular solution is $a_n^{(p)} = n(n-1)/2$, and the general solution is $C_n = n(n-1)/2$.</p>
 </div>
 
-<div class="math-box remark"><div class="math-box-label">Remark — Finding Particular Solutions</div>
+<div class="math-box remark"><div class="math-box-label">Remark - Finding Particular Solutions</div>
 <p>For common forcing terms, guess a particular solution of the same form:</p>
 <ul>
   <li>$f(n) = p(n)$ (polynomial of degree $d$): try a polynomial of degree $d$ (or $d+m$ if the homogeneous recurrence has a characteristic root of multiplicity $m$ at $r=1$).</li>

@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -131,7 +131,7 @@
                 <p>A conditional distribution is a version of conditional probability that acts as a full probability measure for almost every conditioning value. The existence of such "regular" conditional distributions relies on topological assumptions on the state space.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.2.1 — Regular Conditional Distribution</div>
+                    <div class="math-box-label">Definition 6.2.1 - Regular Conditional Distribution</div>
                     <p>Let $X$ be a random variable on $(\Omega,\mathcal{F},P)$ and $\mathcal{G} \subseteq \mathcal{F}$ a sub-$\sigma$-algebra. A <em>regular conditional distribution</em> (RCD) of $X$ given $\mathcal{G}$ is a mapping $\mu: \Omega \times \mathcal{B}(\mathbb{R}) \to [0,1]$ such that:
                     <ol>
                         <li>For each $B \in \mathcal{B}(\mathbb{R})$, $\omega \mapsto \mu(\omega, B)$ is $\mathcal{G}$-measurable and equals $P(X \in B \mid \mathcal{G})(\omega)$ a.s.</li>
@@ -141,14 +141,14 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.2 — Existence for Polish Spaces</div>
+                    <div class="math-box-label">Theorem 6.2.2 - Existence for Polish Spaces</div>
                     <p class="mb-0">If $X$ takes values in a Polish space (complete separable metric space) $S$, then a regular conditional distribution of $X$ given $\mathcal{G}$ always exists. In particular, RCDs exist when $S = \mathbb{R}^d$, $S = C([0,1])$, or any Borel subset of a complete separable metric space.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Conditional Densities</h2>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 6.2.3 — Conditional Density Formula</div>
+                    <div class="math-box-label">Proposition 6.2.3 - Conditional Density Formula</div>
                     <p>Suppose $(X, Y)$ has joint density $f_{X,Y}(x,y)$ with respect to Lebesgue measure on $\mathbb{R}^2$, and let $f_X(x) = \int f_{X,Y}(x,y)\,dy > 0$. Then the conditional density of $Y$ given $X = x$ is
                     $$f_{Y|X}(y \mid x) = \frac{f_{X,Y}(x,y)}{f_X(x)},$$
                     and $E[g(Y) \mid X = x] = \int g(y)\,f_{Y|X}(y\mid x)\,dy$.</p>
@@ -158,14 +158,14 @@
                 <h2 class="mt-5 mb-3">Bayes' Formula</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.4 — Bayes' Theorem (Continuous)</div>
+                    <div class="math-box-label">Theorem 6.2.4 - Bayes' Theorem (Continuous)</div>
                     <p>Let $X$ (observable) and $\Theta$ (parameter) have joint density $f_{X,\Theta}(x,\theta) = f_{X|\Theta}(x\mid\theta)\,\pi(\theta)$ where $\pi$ is the prior density of $\Theta$. Then the posterior density of $\Theta$ given $X = x$ is
                     $$\pi(\theta \mid x) = f_{\Theta|X}(\theta \mid x) = \frac{f_{X|\Theta}(x\mid\theta)\,\pi(\theta)}{\int f_{X|\Theta}(x\mid\theta')\,\pi(\theta')\,d\theta'} \propto f_{X|\Theta}(x\mid\theta)\,\pi(\theta).$$</p>
                     <p class="mb-0">This is Bayesian updating: $\text{posterior} \propto \text{likelihood} \times \text{prior}$. It follows directly from the conditional density formula applied to the pair $(\Theta, X)$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Normal-Normal Conjugacy</div>
+                    <div class="math-box-label">Example - Normal-Normal Conjugacy</div>
                     <p>Let $\Theta \sim N(\mu_0, \tau^2)$ (prior) and $X \mid \Theta = \theta \sim N(\theta, \sigma^2)$. The posterior is
                     $$\Theta \mid X = x \sim N\!\left(\frac{\sigma^{-2}x + \tau^{-2}\mu_0}{\sigma^{-2}+\tau^{-2}},\; \frac{1}{\sigma^{-2}+\tau^{-2}}\right).$$
                     The posterior mean is a precision-weighted average of the observation $x$ and the prior mean $\mu_0$. As $\tau^2 \to \infty$ (flat prior), the posterior mean approaches $x$.</p>
@@ -174,7 +174,7 @@
                 <h2 class="mt-5 mb-3">Disintegration of Measures</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.2.5 — Disintegration</div>
+                    <div class="math-box-label">Theorem 6.2.5 - Disintegration</div>
                     <p>Let $\mu$ be a probability measure on a Polish space $S$ and $f: S \to T$ a measurable map to another Polish space $T$. Let $\nu = f_*\mu$ be the pushforward. Then there exists a family of probability measures $\{\mu_t\}_{t \in T}$ on $S$, the <em>disintegration</em> of $\mu$ along $f$, such that:
                     <ol>
                         <li>$\mu_t$ is supported on $f^{-1}(t)$ for $\nu$-a.e. $t$;</li>

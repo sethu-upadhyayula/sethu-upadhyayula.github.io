@@ -16,7 +16,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -101,14 +101,14 @@
 <nav class="breadcrumb-nav"><a href="../../../../math/">Math</a> › <a href="../../">Combinatorics</a> › <a href="../">6. Pólya Enumeration</a> › <span>6.3 Pólya's Theorem</span></nav>
 <article><h1 class="text-accent mb-4">6.3 Pólya's Theorem</h1>
 
-<p>Pólya's enumeration theorem (1937) extends Burnside's lemma by encoding not just the number of orbits, but the <em>inventory</em> of each equivalence class — how many use each colour, each weight, etc. The key algebraic object is the <strong>cycle index</strong> of the group.</p>
+<p>Pólya's enumeration theorem (1937) extends Burnside's lemma by encoding not just the number of orbits, but the <em>inventory</em> of each equivalence class - how many use each colour, each weight, etc. The key algebraic object is the <strong>cycle index</strong> of the group.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Cycle Index</div>
+<div class="math-box definition"><div class="math-box-label">Definition - Cycle Index</div>
 <p>Let $G$ be a permutation group acting on a set $[n] = \{1,\ldots,n\}$. For $g \in G$, let $c_k(g)$ denote the number of $k$-cycles in the cycle decomposition of $g$ (as a permutation of $[n]$). The <strong>cycle index</strong> of $G$ is the polynomial</p>
 $$Z(G; a_1, a_2, \ldots, a_n) = \frac{1}{|G|} \sum_{g \in G} a_1^{c_1(g)} a_2^{c_2(g)} \cdots a_n^{c_n(g)}$$
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Cycle Index of $\mathbb{Z}_4$</div>
+<div class="math-box example"><div class="math-box-label">Example - Cycle Index of $\mathbb{Z}_4$</div>
 <p>The cyclic group $\mathbb{Z}_4 = \{e, r, r^2, r^3\}$ acts on $[4]$ by rotation. Cycle types:</p>
 <ul>
   <li>$e = (1)(2)(3)(4)$: four 1-cycles. Contributes $a_1^4$.</li>
@@ -119,7 +119,7 @@ $$Z(G; a_1, a_2, \ldots, a_n) = \frac{1}{|G|} \sum_{g \in G} a_1^{c_1(g)} a_2^{c
 $$Z(\mathbb{Z}_4) = \frac{1}{4}(a_1^4 + a_4 + a_2^2 + a_4) = \frac{1}{4}(a_1^4 + a_2^2 + 2a_4)$$
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Pólya's Enumeration Theorem</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - Pólya's Enumeration Theorem</div>
 <p>Let $G$ act on positions $[n]$, and let $C$ be a set of $m$ colours. The number of distinct colourings of $[n]$ with colours from $C$, up to the action of $G$, equals</p>
 $$Z(G; m, m, \ldots, m)$$
 obtained by substituting $a_k = m$ for all $k$ in the cycle index.
@@ -129,27 +129,27 @@ obtained by substituting $a_k = m$ for all $k$ in the cycle index.
 <p>By Burnside's lemma, the number of orbits is $\frac{1}{|G|}\sum_{g \in G}|\mathrm{Fix}(g)|$. A colouring $f: [n] \to C$ is fixed by $g$ iff $f$ is constant on each cycle of $g$. If $g$ has cycle type $(c_1(g), c_2(g), \ldots)$, then the number of fixed colourings is $m^{c_1(g)+c_2(g)+\cdots} = m^{\sum_k c_k(g)}$. This equals $Z(G;m,\ldots,m)$ after averaging.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Necklaces with 4 Beads and 3 Colours</div>
+<div class="math-box example"><div class="math-box-label">Example - Necklaces with 4 Beads and 3 Colours</div>
 <p>Using $G = \mathbb{Z}_4$ and $m = 3$ colours:</p>
 $$Z(\mathbb{Z}_4; 3,3,3,3) = \frac{1}{4}(3^4 + 3^2 + 2 \cdot 3) = \frac{81 + 9 + 6}{4} = \frac{96}{4} = 24$$
 <p>There are 24 distinct 3-coloured necklaces with 4 beads (up to rotation).</p>
 </div>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Weighted Enumeration</div>
+<div class="math-box definition"><div class="math-box-label">Definition - Weighted Enumeration</div>
 <p>To count colourings by colour inventory, assign a <em>weight</em> $w_i$ to colour $i$. Substitute $a_k = \sum_i w_i^k$ into the cycle index. The resulting polynomial in the $w_i$ has coefficient of $w_1^{e_1}w_2^{e_2}\cdots$ equal to the number of orbits that use colour $i$ exactly $e_i$ times.</p>
 $$\text{Inventory generating function} = Z\!\left(G;\, \sum_i w_i,\, \sum_i w_i^2,\, \ldots,\, \sum_i w_i^n\right)$$
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Weighted Necklaces</div>
+<div class="math-box example"><div class="math-box-label">Example - Weighted Necklaces</div>
 <p>For $G = \mathbb{Z}_4$ and two colours $\{R, B\}$ with weights $r$ and $b$:</p>
 $$Z(\mathbb{Z}_4;\, r+b,\, r^2+b^2,\, r^3+b^3,\, r^4+b^4) = \frac{1}{4}\bigl((r+b)^4 + (r^2+b^2)^2 + 2(r^4+b^4)\bigr)$$
 <p>Expanding $(r+b)^4 = r^4 + 4r^3b + 6r^2b^2 + 4rb^3 + b^4$ and $(r^2+b^2)^2 = r^4 + 2r^2b^2 + b^4$:</p>
 $$= \frac{1}{4}(r^4+4r^3b+6r^2b^2+4rb^3+b^4 + r^4+2r^2b^2+b^4 + 2r^4+2b^4)$$
 $$= r^4 + r^3b + 2r^2b^2 + rb^3 + b^4$$
-<p>So: 1 all-red, 1 with 3 red 1 blue, 2 with 2 red 2 blue, 1 with 1 red 3 blue, 1 all-blue — a total of 6 distinct necklaces, consistent with our earlier Burnside calculation.</p>
+<p>So: 1 all-red, 1 with 3 red 1 blue, 2 with 2 red 2 blue, 1 with 1 red 3 blue, 1 all-blue - a total of 6 distinct necklaces, consistent with our earlier Burnside calculation.</p>
 </div>
 
-<div class="math-box remark"><div class="math-box-label">Application — Counting Graphs</div>
+<div class="math-box remark"><div class="math-box-label">Application - Counting Graphs</div>
 <p>To count non-isomorphic graphs on $n$ labelled vertices, take $G = S_n$ acting on the $\binom{n}{2}$ edges (each edge is a 2-element subset of vertices). The cycle index of $S_n$ acting on edges can be computed from the cycle index of $S_n$ acting on vertices. Substituting $m=2$ (each edge present or absent) gives the number of non-isomorphic graphs on $n$ vertices. For $n=4$: there are 11 non-isomorphic simple graphs on 4 vertices.</p>
 </div>
 

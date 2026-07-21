@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -139,7 +139,7 @@
                 <h2 class="mt-5 mb-3">Galerkin Orthogonality</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Lemma — Galerkin Orthogonality</div>
+                    <div class="math-box-label">Lemma - Galerkin Orthogonality</div>
                     <p class="mb-0">Let $u \in V$ solve the continuous problem and $u_h \in V_h$ solve the Galerkin problem. Then
                     $$a(u - u_h,\, v_h) = 0 \quad \forall\, v_h \in V_h.$$</p>
                 </div>
@@ -152,7 +152,7 @@
                 <h2 class="mt-5 mb-3">Céa's Lemma</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — Céa's Lemma</div>
+                    <div class="math-box-label">Theorem - Céa's Lemma</div>
                     <p>Let $u \in V$ and $u_h \in V_h$ be the solutions of the continuous and Galerkin problems, respectively, with $a$ coercive (constant $\alpha$) and continuous (constant $M$). Then
                     $$\|u - u_h\|_V \leq \frac{M}{\alpha} \min_{v_h \in V_h} \|u - v_h\|_V.$$</p>
                 </div>
@@ -174,7 +174,7 @@
                 <p>When $a$ is symmetric and coercive, it defines an inner product on $V$. The associated <strong>energy norm</strong> is $\|v\|_a = \sqrt{a(v,v)}$, which is equivalent to $\|\cdot\|_V$ via $\sqrt{\alpha}\|v\|_V \leq \|v\|_a \leq \sqrt{M}\|v\|_V$. In the energy norm, the Galerkin solution is exactly the best approximation:</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Corollary — Optimality in the Energy Norm (Symmetric Case)</div>
+                    <div class="math-box-label">Corollary - Optimality in the Energy Norm (Symmetric Case)</div>
                     <p class="mb-0">If $a$ is symmetric, then
                     $$\|u - u_h\|_a = \min_{v_h \in V_h} \|u - v_h\|_a,$$
                     i.e., $u_h$ is the best approximation to $u$ from $V_h$ in the energy norm. In the general (non-symmetric) case, Céa's lemma gives quasi-optimality with constant $M/\alpha \geq 1$.</p>
@@ -183,7 +183,7 @@
                 <h2 class="mt-5 mb-3">Interpretation and Significance</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Separation of Analysis</div>
+                    <div class="math-box-label">Remark - Separation of Analysis</div>
                     <p class="mb-0">Céa's lemma <em>decouples</em> the error analysis into two independent problems:
                     <ol class="mb-0 mt-2">
                         <li><strong>Approximation theory:</strong> How well can functions in $V$ be approximated by elements of $V_h$? This is answered by interpolation error estimates (Section 5.2).</li>
@@ -192,7 +192,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Poisson Equation</div>
+                    <div class="math-box-label">Example - Poisson Equation</div>
                     <p class="mb-0">For $-\Delta u = f$ with $a(u,v) = \int_\Omega \nabla u \cdot \nabla v\,dx$ on $H^1_0(\Omega)$, we have $\alpha = M = 1$ (after applying Poincaré). Céa's lemma gives
                     $$\|u - u_h\|_{H^1(\Omega)} \leq \min_{v_h \in V_h} \|u - v_h\|_{H^1(\Omega)}.$$
                     The FEM solution is the $H^1$-best approximation from $V_h$ to $u$.</p>

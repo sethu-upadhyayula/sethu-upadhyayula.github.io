@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Semantic Analysis and Type Checking</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Compilers</a>
+                <hr>
+                <a href="../01-overview-of-compilation-phases/" class="text-decoration-none toc-chapter-link"><strong>1.</strong> Overview of Compilation Phases</a>
+                <a href="../02-lexical-analysis/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> Lexical Analysis</a>
+                <a href="../03-parsing/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Parsing</a>
+                <a href="../04-semantic-analysis-and-type-checking/" class="text-decoration-none toc-chapter-link toc-active"><strong>4.</strong> Semantic Analysis and Type Checking</a>
+                <a href="../05-intermediate-representations/" class="text-decoration-none toc-chapter-link"><strong>5.</strong> Intermediate Representations</a>
+                <a href="../06-code-optimization/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Code Optimization</a>
+                <a href="../07-code-generation/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Code Generation</a>
+                <a href="../08-interpreters-jit-compilation-and-runtime-systems/" class="text-decoration-none toc-chapter-link"><strong>8.</strong> Interpreters, JIT Compilation, and Runtime Systems</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">Compilers</a> ›
+                <span>4. Semantic Analysis and Type Checking</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">4. Semantic Analysis and Type Checking</h1>
+
+                <p>A program can be perfectly well-formed syntactically (Chapter 3) and still be meaningless or invalid — using an undeclared variable, or adding a number to a string in a language that forbids it. Semantic analysis catches exactly these problems.</p>
+
+                <h2 class="mt-5 mb-3">Scope and Declaration Checking</h2>
+
+                <p>Semantic analysis verifies that every identifier used in a program was actually declared, in a scope where that declaration is visible at the point of use — consulting and building the symbol table introduced in Chapter 1 to track which declarations are visible at each point in the program, correctly handling nested scopes (a variable declared inside a block shadowing one of the same name from an enclosing scope).</p>
+
+                <h2 class="mt-5 mb-3">Type Checking</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Type Checking</div>
+                    <p class="mb-0"><strong>Type checking</strong> verifies that every operation in a program is applied to operands of compatible types — assigning a type to each expression in the abstract syntax tree (Chapter 3) and confirming that types match according to the language's typing rules (e.g., that an argument passed to a function matches the parameter's declared type), rejecting the program with a compile-time type error if any check fails.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Static versus Dynamic Typing</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Static and Dynamic Typing</div>
+                    <p class="mb-0">A <strong>statically typed</strong> language performs type checking at compile time, catching type errors before the program ever runs. A <strong>dynamically typed</strong> language instead defers type checking to run time, checking a value's actual type only when an operation is performed on it — trading the earlier error detection static typing provides for greater flexibility (and, often, less verbose code), a tradeoff different languages resolve differently, and one relevant to how a language's interpreter or JIT compiler (Chapter 8) is structured.</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Type Inference</h2>
+
+                <p><strong>Type inference</strong> allows a statically typed language to determine an expression's type automatically from context, without requiring the programmer to write an explicit type annotation everywhere — reducing the verbosity typically associated with static typing while retaining its compile-time error-catching benefit, at the cost of type-checking algorithms that are often considerably more sophisticated than simple explicit-annotation checking alone.</p>
+
+                <h2 class="mt-5 mb-3">Other Semantic Checks</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Further Semantic Analysis Tasks</div>
+                    <ul class="mb-0">
+                        <li>Verifying a function is called with the correct number of arguments.</li>
+                        <li>Resolving operator and function overloading, choosing the correct specific implementation based on argument types.</li>
+                        <li>Checking control-flow-related requirements, such as ensuring every path through a non-void function returns a value.</li>
+                    </ul>
+                </div>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../03-parsing/" class="btn btn-outline-custom">&larr; 3. Parsing</a>
+                    <a href="../05-intermediate-representations/" class="btn btn-custom">5. Intermediate Representations &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>

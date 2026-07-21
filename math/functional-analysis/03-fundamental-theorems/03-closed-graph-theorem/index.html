@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -122,19 +122,19 @@
                 <h2 class="mt-4 mb-3">The Graph of an Operator</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 3.3.1 — Graph of a Linear Operator</div>
+                    <div class="math-box-label">Definition 3.3.1 - Graph of a Linear Operator</div>
                     <p>Let $T: X \to Y$ be a linear operator between normed spaces. The <em>graph</em> of $T$ is the subset of $X \times Y$ defined by</p>
                     $$\Gamma(T) = \{(x, Tx) : x \in X\} \subseteq X \times Y.$$
                     <p class="mb-0">The product space $X \times Y$ is a normed space under $\|(x,y)\| = \|x\|_X + \|y\|_Y$ (or any equivalent product norm). We say $T$ has a <em>closed graph</em> if $\Gamma(T)$ is closed in $X \times Y$.</p>
                 </div>
 
                 <div class="math-box proposition">
-                    <div class="math-box-label">Proposition 3.3.2 — Sequential Characterization</div>
+                    <div class="math-box-label">Proposition 3.3.2 - Sequential Characterization</div>
                     <p class="mb-0">A linear operator $T: X \to Y$ has closed graph if and only if: whenever $x_n \to x$ in $X$ and $Tx_n \to y$ in $Y$, it follows that $y = Tx$. In other words, $T$ cannot be "tricked" by sequences that converge both in domain and range to different limits.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Closed vs. Continuous</div>
+                    <div class="math-box-label">Remark - Closed vs. Continuous</div>
                     <p>Every continuous (bounded) linear operator has closed graph: if $x_n \to x$ then $Tx_n \to Tx$ by continuity, so the limit must be $Tx$. The closed graph theorem says that for operators between Banach spaces, the converse holds too.</p>
                     <p class="mb-0">For incomplete spaces, the converse can fail. The classic example is the derivative operator $T: C^1[0,1] \to C[0,1]$, $Tf = f'$, under the $\sup$ norm on both spaces: $T$ has closed graph but is unbounded (the domain $C^1[0,1]$ is not complete under $\|\cdot\|_\infty$).</p>
                 </div>
@@ -142,7 +142,7 @@
                 <h2 class="mt-5 mb-3">The Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.3.3 — Closed Graph Theorem</div>
+                    <div class="math-box-label">Theorem 3.3.3 - Closed Graph Theorem</div>
                     <p>Let $X$ and $Y$ be Banach spaces, and let $T: X \to Y$ be a linear operator. Then $T$ is bounded if and only if its graph $\Gamma(T)$ is closed in $X \times Y$.</p>
                 </div>
 
@@ -159,14 +159,14 @@
                 <h2 class="mt-5 mb-3">Applications</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 3.3.4 — Checking Boundedness via Sequences</div>
+                    <div class="math-box-label">Example 3.3.4 - Checking Boundedness via Sequences</div>
                     <p>Consider the multiplication operator $M_\phi: L^2[0,1] \to L^2[0,1]$ defined by $(M_\phi f)(x) = \phi(x) f(x)$ for a measurable function $\phi$. To check boundedness, suppose $f_n \to f$ in $L^2$ and $M_\phi f_n \to g$ in $L^2$. We need $g = \phi f$ a.e.</p>
-                    <p>Passing to a subsequence, $f_{n_k} \to f$ a.e. and $\phi f_{n_k} \to g$ a.e. So $\phi(x) f(x) = g(x)$ a.e. The graph is closed. By the closed graph theorem, $M_\phi$ is bounded if and only if the graph is closed — and here we've verified closure, so boundedness follows provided $\phi \in L^\infty[0,1]$.</p>
+                    <p>Passing to a subsequence, $f_{n_k} \to f$ a.e. and $\phi f_{n_k} \to g$ a.e. So $\phi(x) f(x) = g(x)$ a.e. The graph is closed. By the closed graph theorem, $M_\phi$ is bounded if and only if the graph is closed - and here we've verified closure, so boundedness follows provided $\phi \in L^\infty[0,1]$.</p>
                     <p class="mb-0">This argument is cleaner than directly estimating $\|M_\phi f\|_{L^2}$, though in this case both approaches work.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 3.3.5 — Symmetric Operators on Hilbert Spaces</div>
+                    <div class="math-box-label">Example 3.3.5 - Symmetric Operators on Hilbert Spaces</div>
                     <p>Let $H$ be a Hilbert space and $T: H \to H$ a linear operator. If $T$ is everywhere defined and symmetric (i.e., $\langle Tx, y \rangle = \langle x, Ty \rangle$ for all $x, y$), then $T$ is bounded.</p>
                     <p class="mb-0"><em>Proof sketch:</em> Suppose $x_n \to x$ and $Tx_n \to y$. For any $z \in H$: $\langle y, z \rangle = \lim \langle Tx_n, z \rangle = \lim \langle x_n, Tz \rangle = \langle x, Tz \rangle = \langle Tx, z \rangle$. Since $z$ is arbitrary, $y = Tx$. So $T$ has closed graph, and by the closed graph theorem, $T$ is bounded.</p>
                 </div>

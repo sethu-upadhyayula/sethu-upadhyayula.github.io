@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -86,40 +86,40 @@
                 <h2 class="mt-5 mb-3">Funding Cost Differentials Across Currencies</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Bank-Specific Funding Curves</div>
-                    <p>In a frictionless world, every bank would borrow at the same risk-free rate in every currency, and CIP would hold automatically. In reality, each bank funds itself at a spread over the risk-free (OIS) rate that depends on its own credit, the currency, and the tenor — its <em>funding curve</em>. A USD-centric bank with abundant USD deposits but limited EUR deposits, for example, may fund EUR at a wider spread to €STR than it funds USD over SOFR.</p>
-                    <p class="mb-0">When many market participants face an asymmetric funding picture — structurally short USD funding relative to their home currency, a common situation for non-US banks and corporates with USD asset exposure — the aggregate effect is persistent one-directional demand to convert home-currency funding into USD via the FX swap and cross-currency markets. This directional demand is what keeps the basis persistently negative for USD against most other G10 currencies rather than fluctuating randomly around zero.</p>
+                    <div class="math-box-label">Remark - Bank-Specific Funding Curves</div>
+                    <p>In a frictionless world, every bank would borrow at the same risk-free rate in every currency, and CIP would hold automatically. In reality, each bank funds itself at a spread over the risk-free (OIS) rate that depends on its own credit, the currency, and the tenor - its <em>funding curve</em>. A USD-centric bank with abundant USD deposits but limited EUR deposits, for example, may fund EUR at a wider spread to €STR than it funds USD over SOFR.</p>
+                    <p class="mb-0">When many market participants face an asymmetric funding picture - structurally short USD funding relative to their home currency, a common situation for non-US banks and corporates with USD asset exposure - the aggregate effect is persistent one-directional demand to convert home-currency funding into USD via the FX swap and cross-currency markets. This directional demand is what keeps the basis persistently negative for USD against most other G10 currencies rather than fluctuating randomly around zero.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Collateral, CSA Currency, and Valuation</h2>
 
-                <p>For collateralized derivatives, the choice of collateral currency specified in the Credit Support Annex (CSA) directly affects the discount rate used to value future cash flows — and therefore the present value of any multi-currency trade.</p>
+                <p>For collateralized derivatives, the choice of collateral currency specified in the Credit Support Annex (CSA) directly affects the discount rate used to value future cash flows - and therefore the present value of any multi-currency trade.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Collateral (CSA) Discounting</div>
-                    <p class="mb-0">Under a CSA, variation margin is posted in a specified collateral currency and earns interest at that currency's overnight rate (e.g., SOFR for USD CSAs, €STR for EUR CSAs). The correct discount rate for a cash flow is the rate paid on the collateral that backs it — <em>not</em> necessarily the risk-free rate of the currency in which the cash flow itself is denominated. A EUR-denominated cash flow under a USD CSA must be discounted using a EUR/USD cross-currency basis-adjusted curve, reflecting the cost of holding USD collateral against a EUR-denominated exposure.</p>
+                    <div class="math-box-label">Definition - Collateral (CSA) Discounting</div>
+                    <p class="mb-0">Under a CSA, variation margin is posted in a specified collateral currency and earns interest at that currency's overnight rate (e.g., SOFR for USD CSAs, €STR for EUR CSAs). The correct discount rate for a cash flow is the rate paid on the collateral that backs it - <em>not</em> necessarily the risk-free rate of the currency in which the cash flow itself is denominated. A EUR-denominated cash flow under a USD CSA must be discounted using a EUR/USD cross-currency basis-adjusted curve, reflecting the cost of holding USD collateral against a EUR-denominated exposure.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why This Matters for the Basis</div>
-                    <p>Consider a USD-denominated interest rate swap collateralized in EUR (a "EUR CSA on a USD swap" — common for European counterparties trading with US dealers). The present value of the USD cash flows must be computed using a discount curve that reflects the cost of funding USD collateral requirements via EUR — i.e., a curve built using the EUR/USD cross-currency basis.</p>
-                    <p class="mb-0">If the basis is $-30\text{bp}$, discounting USD cash flows off a EUR-collateral curve versus a USD-collateral (OIS) curve produces a materially different present value for a long-dated swap — often tens of basis points of notional for a 10-30 year trade. Since the 2008 crisis, dealers have had to maintain separate discount curves for every (cash flow currency, collateral currency) pair they trade, each built using the relevant cross-currency basis — a direct, mechanical consequence of the basis being persistently non-zero.</p>
+                    <div class="math-box-label">Remark - Why This Matters for the Basis</div>
+                    <p>Consider a USD-denominated interest rate swap collateralized in EUR (a "EUR CSA on a USD swap" - common for European counterparties trading with US dealers). The present value of the USD cash flows must be computed using a discount curve that reflects the cost of funding USD collateral requirements via EUR - i.e., a curve built using the EUR/USD cross-currency basis.</p>
+                    <p class="mb-0">If the basis is $-30\text{bp}$, discounting USD cash flows off a EUR-collateral curve versus a USD-collateral (OIS) curve produces a materially different present value for a long-dated swap - often tens of basis points of notional for a 10-30 year trade. Since the 2008 crisis, dealers have had to maintain separate discount curves for every (cash flow currency, collateral currency) pair they trade, each built using the relevant cross-currency basis - a direct, mechanical consequence of the basis being persistently non-zero.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Money Market Spreads as a Basis Driver</h2>
 
-                <p>The cross-currency basis does not move in isolation — it is closely linked to spreads observable in each currency's own money markets, particularly the spread between unsecured interbank rates (where still quoted) and secured/overnight rates, and the spread between term funding and overnight-indexed swap (OIS) rates.</p>
+                <p>The cross-currency basis does not move in isolation - it is closely linked to spreads observable in each currency's own money markets, particularly the spread between unsecured interbank rates (where still quoted) and secured/overnight rates, and the spread between term funding and overnight-indexed swap (OIS) rates.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Linking Money Market Spreads to the Basis</div>
-                    <p><strong>FRA-OIS / Libor-OIS-style spreads:</strong> a widening of the spread between term unsecured funding rates and overnight rates in one currency (signalling stress in that currency's interbank funding market) typically coincides with a widening cross-currency basis against that currency, as banks scramble to secure term funding through whatever channel — including the FX swap market — is cheapest.</p>
-                    <p><strong>Repo and secured funding spreads:</strong> in currencies where unsecured interbank lending has largely disappeared (as in much of the post-LIBOR world), repo spreads and the cost of secured term funding play an analogous role — a dealer's marginal cost of funding USD via repo versus via an FX swap directly determines where it is willing to quote the cross-currency basis.</p>
+                    <div class="math-box-label">Remark - Linking Money Market Spreads to the Basis</div>
+                    <p><strong>FRA-OIS / Libor-OIS-style spreads:</strong> a widening of the spread between term unsecured funding rates and overnight rates in one currency (signalling stress in that currency's interbank funding market) typically coincides with a widening cross-currency basis against that currency, as banks scramble to secure term funding through whatever channel - including the FX swap market - is cheapest.</p>
+                    <p><strong>Repo and secured funding spreads:</strong> in currencies where unsecured interbank lending has largely disappeared (as in much of the post-LIBOR world), repo spreads and the cost of secured term funding play an analogous role - a dealer's marginal cost of funding USD via repo versus via an FX swap directly determines where it is willing to quote the cross-currency basis.</p>
                     <p class="mb-0"><strong>Quarter-end and year-end effects:</strong> just as repo and OIS rates spike around regulatory reporting dates (the "turn" effect discussed in the rates fundamentals notes), the cross-currency basis widens sharply around the same dates, as the same balance-sheet constraints that drive the turn in repo markets also constrain banks' willingness to run matched FX swap books over those dates.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Looking Ahead</div>
-                    <p class="mb-0">With CIP, the basis, and their funding-market drivers established, Chapter 3 turns to the practical task of building a full FX forward curve from spot, deposit rates, and FX swap points — a curve that, in the presence of a non-zero basis, embeds exactly the funding effects described in this section.</p>
+                    <div class="math-box-label">Remark - Looking Ahead</div>
+                    <p class="mb-0">With CIP, the basis, and their funding-market drivers established, Chapter 3 turns to the practical task of building a full FX forward curve from spot, deposit rates, and FX swap points - a curve that, in the presence of a non-zero basis, embeds exactly the funding effects described in this section.</p>
                 </div>
 
                 <hr class="my-5">

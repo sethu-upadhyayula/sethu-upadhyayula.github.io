@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -127,12 +127,12 @@
             <article>
                 <h1 class="text-accent mb-4">1.2 Convex Functions</h1>
 
-                <p>A convex function is one whose graph "curves upward" — the chord between any two points on the graph lies above the graph. This guarantees that any local minimum is a global minimum, a crucial property for optimisation.</p>
+                <p>A convex function is one whose graph "curves upward" - the chord between any two points on the graph lies above the graph. This guarantees that any local minimum is a global minimum, a crucial property for optimisation.</p>
 
                 <h2 class="mt-4 mb-3">Definition</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.2.1 — Convex Function</div>
+                    <div class="math-box-label">Definition 1.2.1 - Convex Function</div>
                     <p>A function $f:C\to\mathbb{R}$ on a convex set $C\subseteq\mathbb{R}^n$ is <strong>convex</strong> if for all $x,y\in C$ and $\lambda\in[0,1]$:
                     $$f(\lambda x + (1-\lambda)y) \le \lambda f(x) + (1-\lambda)f(y).$$</p>
                     <p>$f$ is <strong>strictly convex</strong> if the inequality is strict for $x\ne y$ and $\lambda\in(0,1)$.</p>
@@ -142,26 +142,26 @@
                 <h2 class="mt-5 mb-3">Equivalent Characterisations</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.2.2 — Epigraph Criterion</div>
+                    <div class="math-box-label">Theorem 1.2.2 - Epigraph Criterion</div>
                     <p class="mb-0">$f$ is convex if and only if its <strong>epigraph</strong> $\operatorname{epi}(f)=\{(x,t):f(x)\le t\}$ is a convex set in $\mathbb{R}^{n+1}$. This connects the theory of convex functions entirely to that of convex sets.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.2.3 — First-Order Condition</div>
+                    <div class="math-box-label">Theorem 1.2.3 - First-Order Condition</div>
                     <p>If $f$ is differentiable on an open convex set $C$, then $f$ is convex if and only if for all $x,y\in C$:
                     $$f(y) \ge f(x) + \nabla f(x)^T(y-x).$$</p>
                     <p class="mb-0">The tangent hyperplane at any point is a global under-estimate of $f$. This is the key property exploited by gradient-based algorithms: gradient information gives a globally valid lower bound.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.2.4 — Second-Order Condition</div>
+                    <div class="math-box-label">Theorem 1.2.4 - Second-Order Condition</div>
                     <p class="mb-0">If $f$ is twice continuously differentiable, then $f$ is convex on $C$ if and only if $\nabla^2f(x)\succeq0$ (positive semidefinite) for all $x\in C$. Strict convexity follows from $\nabla^2f(x)\succ0$ (positive definite), though this is not necessary.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Strong Convexity</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.2.5 — Strong Convexity</div>
+                    <div class="math-box-label">Definition 1.2.5 - Strong Convexity</div>
                     <p>$f$ is <strong>$m$-strongly convex</strong> ($m>0$) if for all $x,y\in C$ and $\lambda\in[0,1]$:
                     $$f(\lambda x+(1-\lambda)y) \le \lambda f(x)+(1-\lambda)f(y) - \frac{m}{2}\lambda(1-\lambda)\|y-x\|^2.$$</p>
                     <p class="mb-0">Equivalently (for smooth $f$): $\nabla^2f(x)\succeq mI$ for all $x$. Strong convexity implies the quadratic lower bound $f(y)\ge f(x)+\nabla f(x)^T(y-x)+\frac{m}{2}\|y-x\|^2$, and guarantees a unique minimiser. It is the condition that yields linear (geometric) convergence rates for gradient descent.</p>
@@ -170,14 +170,14 @@
                 <h2 class="mt-5 mb-3">Jensen's Inequality and the Fenchel Conjugate</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 1.2.6 — Jensen's Inequality</div>
+                    <div class="math-box-label">Theorem 1.2.6 - Jensen's Inequality</div>
                     <p class="mb-0">For a convex function $f$ and any random variable $X$ with $\mathbb{E}[X]\in\operatorname{dom}(f)$:
                     $$f(\mathbb{E}[X]) \le \mathbb{E}[f(X)].$$
                     This follows by applying the definition of convexity to the convex combination defining the expectation.</p>
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 1.2.7 — Fenchel Conjugate</div>
+                    <div class="math-box-label">Definition 1.2.7 - Fenchel Conjugate</div>
                     <p>The <strong>Fenchel (convex) conjugate</strong> of $f:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$ is:
                     $$f^*(y) = \sup_{x\in\operatorname{dom}(f)}\bigl(y^Tx - f(x)\bigr).$$</p>
                     <p>$f^*$ is always convex (as a supremum of affine functions). Key results: $(f^*)^*=f$ for closed convex $f$ (Fenchel-Moreau); if $f(x)=\frac{1}{2}\|x\|^2$ then $f^*(y)=\frac{1}{2}\|y\|^2$; the conjugate of the log-sum-exp is the negative entropy.</p>

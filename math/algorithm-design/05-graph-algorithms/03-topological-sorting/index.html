@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -131,7 +131,7 @@
                 <p>A topological sort linearises a directed acyclic graph (DAG) so that every edge points forward in the ordering. It arises naturally in task scheduling, build systems, and dependency resolution.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.1 — DAG and Topological Order</div>
+                    <div class="math-box-label">Definition 5.3.1 - DAG and Topological Order</div>
                     <p>A <strong>directed acyclic graph (DAG)</strong> is a directed graph with no directed cycles. A <strong>topological order</strong> (or topological sort) of a DAG is a linear ordering $v_1, v_2, \ldots, v_n$ of its vertices such that for every directed edge $(v_i, v_j)$, we have $i < j$ (i.e., $v_i$ appears before $v_j$).</p>
                     <p class="mb-0">Every DAG has at least one topological order. A directed graph has a topological order if and only if it is a DAG.</p>
                 </div>
@@ -139,7 +139,7 @@
                 <h2 class="mt-5 mb-3">DFS-Based Algorithm</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.3.2 — DFS Topological Sort</div>
+                    <div class="math-box-label">Theorem 5.3.2 - DFS Topological Sort</div>
                     <p><strong>Algorithm:</strong> Run DFS on the DAG. When DFS finishes processing a vertex $u$ (i.e., all descendants have been explored), prepend $u$ to the front of a linked list. The resulting list is a topological order.</p>
                     <p><strong>Correctness:</strong> For every edge $(u,v)$, $u$ finishes after $v$ (since DFS explores $v$ recursively from $u$). So $u$ is prepended after $v$, placing $u$ before $v$ in the final list.</p>
                     <p class="mb-0">Time: $O(V+E)$.</p>
@@ -148,25 +148,25 @@
                 <h2 class="mt-5 mb-3">Kahn's Algorithm</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 5.3.3 — Kahn's Algorithm</div>
+                    <div class="math-box-label">Definition 5.3.3 - Kahn's Algorithm</div>
                     <p>An alternative based on iteratively removing sources (vertices of in-degree 0). Compute in-degree $\deg^-(v)$ for all $v$. Enqueue all vertices with $\deg^-(v)=0$. While the queue is non-empty: dequeue $u$, append to order, and for each neighbour $v$ of $u$: decrement $\deg^-(v)$; if $\deg^-(v)=0$, enqueue $v$.</p>
                     <p class="mb-0"><strong>Cycle detection:</strong> If the output order has fewer than $V$ vertices, the graph contains a cycle (some vertices were never enqueued). Time: $O(V+E)$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 5.3.4 — Build System</div>
+                    <div class="math-box-label">Example 5.3.4 - Build System</div>
                     <p class="mb-0">In a build system, targets depend on other targets. Model as a DAG: edge $(A,B)$ means $A$ must be built before $B$. A topological sort gives a valid build order. Kahn's algorithm also detects circular dependencies (cycles) and reports them cleanly.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Uniqueness</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.3.5 — Unique Topological Order</div>
+                    <div class="math-box-label">Theorem 5.3.5 - Unique Topological Order</div>
                     <p class="mb-0">A DAG has a unique topological order if and only if it contains a Hamiltonian path (a directed path visiting every vertex exactly once). Equivalently, at each step of Kahn's algorithm there is exactly one vertex of in-degree 0. If multiple vertices always have in-degree 0 simultaneously, multiple valid orderings exist.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 5.3.6 — Shortest/Longest Paths in DAGs</div>
+                    <div class="math-box-label">Remark 5.3.6 - Shortest/Longest Paths in DAGs</div>
                     <p class="mb-0">Given a topological order, one can compute shortest or longest paths from a source in $O(V+E)$ by processing vertices in topological order and relaxing outgoing edges. This handles negative edge weights (no negative cycle exists in a DAG) and finds critical paths in project scheduling (PERT/CPM).</p>
                 </div>
 

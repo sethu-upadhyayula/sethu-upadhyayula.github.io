@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -128,7 +128,7 @@
                 <p>A linear SDE is one in which the coefficients are linear (affine) functions of the state. Such equations can always be solved explicitly using an integrating factor, a technique made rigorous by Itô's formula.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.1 — General Linear SDE</div>
+                    <div class="math-box-label">Definition 4.2.1 - General Linear SDE</div>
                     <p class="mb-0">A <strong>general linear SDE</strong> has the form</p>
                     $$dX_t = \bigl(a(t)X_t + b(t)\bigr)dt + \bigl(c(t)X_t + d(t)\bigr)dW_t, \quad X_0 = x_0,$$
                     where $a, b, c, d: [0,T] \to \mathbb{R}$ are deterministic, continuous functions.
@@ -140,7 +140,7 @@
                 $$dX_t = a(t)X_t\,dt + c(t)X_t\,dW_t.$$
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.2 — Explicit Solution of the Homogeneous Linear SDE</div>
+                    <div class="math-box-label">Theorem 4.2.2 - Explicit Solution of the Homogeneous Linear SDE</div>
                     <p>The solution of $dX = a(t)X\,dt + c(t)X\,dW$ with $X_0 = x_0$ is</p>
                     $$X_t = x_0 \exp\!\left(\int_0^t \!\bigl(a(s) - \tfrac{1}{2}c(s)^2\bigr)ds + \int_0^t c(s)\,dW_s\right).$$
                 </div>
@@ -157,14 +157,14 @@
                 <h2 class="mt-5 mb-3">The Ornstein-Uhlenbeck Process</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 4.2.3 — Ornstein-Uhlenbeck Process</div>
+                    <div class="math-box-label">Definition 4.2.3 - Ornstein-Uhlenbeck Process</div>
                     <p>The <strong>Ornstein-Uhlenbeck (OU) process</strong> satisfies the SDE</p>
                     $$dX_t = \theta(\mu - X_t)\,dt + \sigma\,dW_t, \quad X_0 = x_0,$$
                     <p class="mb-0">where $\theta > 0$ is the mean-reversion speed, $\mu \in \mathbb{R}$ the long-run mean, and $\sigma > 0$ the diffusion coefficient. This is the canonical linear SDE with additive noise, widely used in interest rate modelling (Vasicek model) and physics (velocity in a fluid).</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.2.4 — Explicit Solution of the OU Process</div>
+                    <div class="math-box-label">Theorem 4.2.4 - Explicit Solution of the OU Process</div>
                     <p>The OU process has the explicit solution</p>
                     $$X_t = \mu + (x_0 - \mu)e^{-\theta t} + \sigma \int_0^t e^{-\theta(t-s)}\,dW_s.$$
                     <p>Consequently, $X_t$ is Gaussian with</p>
@@ -181,12 +181,12 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 4.2.5 — Stationary Distribution</div>
+                    <div class="math-box-label">Remark 4.2.5 - Stationary Distribution</div>
                     <p class="mb-0">As $t \to \infty$, $\mathbb{E}[X_t] \to \mu$ and $\mathrm{Var}(X_t) \to \frac{\sigma^2}{2\theta}$. The process converges in distribution to $\mathcal{N}\!\left(\mu, \frac{\sigma^2}{2\theta}\right)$, which is the unique stationary distribution of the OU process. This makes it the prototypical mean-reverting diffusion.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.2.6 — General Inhomogeneous Linear SDE</div>
+                    <div class="math-box-label">Example 4.2.6 - General Inhomogeneous Linear SDE</div>
                     <p>For the full equation $dX = (aX + b)\,dt + (cX + d)\,dW$, define the fundamental solution $\Phi_t$ by $d\Phi = a\Phi\,dt + c\Phi\,dW$, $\Phi_0 = 1$, i.e.,</p>
                     $$\Phi_t = \exp\!\left(\bigl(a - \tfrac{1}{2}c^2\bigr)t + cW_t\right).$$
                     Then by the variation-of-constants formula:

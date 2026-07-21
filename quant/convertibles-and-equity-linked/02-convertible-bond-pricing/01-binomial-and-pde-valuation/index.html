@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,12 +80,12 @@
             <article>
                 <h1 class="text-accent mb-4">2.1 Binomial and PDE Approaches to Convertible Valuation</h1>
 
-                <p>Because a convertible bond embeds American-style conversion, call, and put rights, its value cannot generally be written as a closed-form expectation. Instead, practitioners value convertibles on a binomial (or trinomial) lattice for the underlying stock price, with the embedded decisions evaluated by backward induction at every node — a direct extension of the Cox-Ross-Rubinstein approach to American option pricing, augmented to handle the bond's coupon and principal cash flows and credit-risky discounting.</p>
+                <p>Because a convertible bond embeds American-style conversion, call, and put rights, its value cannot generally be written as a closed-form expectation. Instead, practitioners value convertibles on a binomial (or trinomial) lattice for the underlying stock price, with the embedded decisions evaluated by backward induction at every node - a direct extension of the Cox-Ross-Rubinstein approach to American option pricing, augmented to handle the bond's coupon and principal cash flows and credit-risky discounting.</p>
 
                 <h2 class="mt-5 mb-3">Building the Stock Price Lattice</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Binomial Stock Price Tree</div>
+                    <div class="math-box-label">Definition - Binomial Stock Price Tree</div>
                     <p class="mb-0">Divide the time to maturity $T$ into $N$ steps of length $\Delta t = T/N$. At each step the stock price moves up by a factor $u$ or down by a factor $d$, with risk-neutral probability $p$ of an up-move:
                     $$u = e^{\sigma\sqrt{\Delta t}}, \qquad d = \frac{1}{u} = e^{-\sigma\sqrt{\Delta t}}, \qquad p = \frac{e^{r\Delta t} - d}{u - d}$$
                     where $\sigma$ is the stock's volatility and $r$ the risk-free rate. After $N$ steps, the stock price at node $(i,j)$ (time step $i$, $j$ up-moves) is $S_{i,j} = S_0 u^j d^{i-j}$. This is the same recombining tree used for vanilla American options; what differs for a convertible is the payoff and decision logic applied at each node.</p>
@@ -96,7 +96,7 @@
                 <p>At maturity, the convertible's terminal value at each node is the maximum of redemption at par (plus final coupon) and the conversion value:</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Terminal Condition</div>
+                    <div class="math-box-label">Definition - Terminal Condition</div>
                     <p class="mb-0">At maturity node $(N,j)$:
                     $$V_{N,j} = \max\left(F + c\,F, \; C_r \, S_{N,j}\right)$$
                     where $F$ is the face value, $c$ the final coupon rate, and $C_r$ the conversion ratio.</p>
@@ -105,7 +105,7 @@
                 <p>Working backward from maturity, at each interior node $(i,j)$ the "continuation value" is the discounted expectation of the two successor node values, plus any coupon paid at step $i$. The holder's and issuer's embedded options are then applied to this continuation value:</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Convertible Lattice Recursion</div>
+                    <div class="math-box-label">Definition - Convertible Lattice Recursion</div>
                     <p class="mb-0">Let $H_{i,j}$ denote the continuation (holding) value at node $(i,j)$:
                     $$H_{i,j} = e^{-y_{i,j}\,\Delta t}\Big[p\,V_{i+1,j+1} + (1-p)\,V_{i+1,j}\Big] + \text{(coupon paid at } i\text{, if any)}$$
                     where $y_{i,j}$ is the credit-risky discount rate applicable at that node (Section 2.2). The convertible's value at the node, after applying the embedded optionality, is:
@@ -114,40 +114,40 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Order of Optionality</div>
-                    <p class="mb-0">The nesting in the recursion above encodes an important economic point: the issuer's call decision is applied to the holder's continuation value <em>before</em> the holder's conversion and put rights, because in practice the holder responds to a call notice by choosing the better of converting or accepting the call price — so the holder's final payoff upon a call is $\max(C_r S_{i,j}, K_{\text{call}})$, and the issuer only calls when this is less than $H_{i,j}$ would otherwise have been. Different lattice implementations vary in the exact sequencing of these checks, but all must respect that each party exercises its right only when doing so is in its own interest — the lattice computes the resulting game-theoretic equilibrium value at each node.</p>
+                    <div class="math-box-label">Remark - Order of Optionality</div>
+                    <p class="mb-0">The nesting in the recursion above encodes an important economic point: the issuer's call decision is applied to the holder's continuation value <em>before</em> the holder's conversion and put rights, because in practice the holder responds to a call notice by choosing the better of converting or accepting the call price - so the holder's final payoff upon a call is $\max(C_r S_{i,j}, K_{\text{call}})$, and the issuer only calls when this is less than $H_{i,j}$ would otherwise have been. Different lattice implementations vary in the exact sequencing of these checks, but all must respect that each party exercises its right only when doing so is in its own interest - the lattice computes the resulting game-theoretic equilibrium value at each node.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Connection to the Black-Scholes PDE</h2>
 
-                <p>As $\Delta t \to 0$ (equivalently $N \to \infty$), the binomial recursion converges to a partial differential equation in continuous time and stock price — the same Black-Scholes PDE that governs vanilla option prices, but with boundary conditions reflecting the convertible's embedded optionality.</p>
+                <p>As $\Delta t \to 0$ (equivalently $N \to \infty$), the binomial recursion converges to a partial differential equation in continuous time and stock price - the same Black-Scholes PDE that governs vanilla option prices, but with boundary conditions reflecting the convertible's embedded optionality.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem — PDE for Convertible Value</div>
+                    <div class="math-box-label">Theorem - PDE for Convertible Value</div>
                     <p class="mb-0">Let $V(S,t)$ denote the convertible's value as a function of stock price $S$ and time $t$. In the continuation region (where neither conversion, call, nor put is exercised), $V$ satisfies the Black-Scholes PDE with credit-risky discounting:
                     $$\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + (r-q) S \frac{\partial V}{\partial S} - (r+h) V + c\,F\,\delta(t) = 0$$
                     where $q$ is the stock's dividend yield, $h$ the issuer's hazard rate (Section 2.2), and the last term represents coupon payments. The free-boundary conditions enforce the lattice's $\max/\min$ logic continuously:
                     $$V(S,t) \geq C_r S \quad \text{(conversion)}, \qquad V(S,t) \leq K_{\text{call}}(t) \text{ when callable}, \qquad V(S,t) \geq K_{\text{put}}(t) \text{ when puttable}$$
-                    Solving this PDE numerically by finite differences (e.g. Crank-Nicolson) on a grid in $(S,t)$, applying these constraints at each time step, is the continuous-time analogue of the binomial backward induction — and the two methods converge to the same value as the grid is refined.</p>
+                    Solving this PDE numerically by finite differences (e.g. Crank-Nicolson) on a grid in $(S,t)$, applying these constraints at each time step, is the continuous-time analogue of the binomial backward induction - and the two methods converge to the same value as the grid is refined.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example: A Small Binomial Tree</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Two-Step Convertible Lattice</div>
+                    <div class="math-box-label">Example - Two-Step Convertible Lattice</div>
                     <p>Consider a simplified 2-step (1-year, $\Delta t = 0.5$) convertible with $F=100$, $C_r = 1$ (so the conversion price equals $100$), no coupons, no call/put features, $S_0 = 100$, $\sigma = 0.30$, $r = 0.04$, and a flat credit-risky discount rate $y = r + h = 0.08$ for the bond's continuation value.</p>
                     <p>Tree parameters: $u = e^{0.30\sqrt{0.5}} = e^{0.2121} = 1.2364$, $d = 1/u = 0.8088$, $p = \frac{e^{0.04 \times 0.5} - 0.8088}{1.2364 - 0.8088} = \frac{1.0202 - 0.8088}{0.4276} = 0.4944$.</p>
                     <table class="table table-sm table-bordered" style="max-width:520px;">
                         <thead><tr><th>Node (step, ups)</th><th>$S_{i,j}$</th><th>Terminal $V = \max(100, S)$</th></tr></thead>
                         <tbody>
-                            <tr><td>(2,2) — up,up</td><td>$152.86$</td><td>$152.86$</td></tr>
-                            <tr><td>(2,1) — one up</td><td>$100.00$</td><td>$100.00$</td></tr>
-                            <tr><td>(2,0) — down,down</td><td>$65.41$</td><td>$100.00$</td></tr>
+                            <tr><td>(2,2) - up,up</td><td>$152.86$</td><td>$152.86$</td></tr>
+                            <tr><td>(2,1) - one up</td><td>$100.00$</td><td>$100.00$</td></tr>
+                            <tr><td>(2,0) - down,down</td><td>$65.41$</td><td>$100.00$</td></tr>
                         </tbody>
                     </table>
                     <p>Step back to $t=0.5$. At node (1,1) ($S=123.64$): continuation value $H = e^{-0.08\times0.5}[0.4944\times152.86 + 0.5056\times100.00] = 0.9608 \times 125.84 = 120.85$. Since $C_r S = 123.64 > H$, conversion dominates: $V_{1,1} = \max(120.85, 123.64) = 123.64$.</p>
-                    <p>At node (1,0) ($S=80.88$): continuation value $H = e^{-0.04}[0.4944\times100.00 + 0.5056\times100.00] = 0.9608 \times 100.00 = 96.08$ (using the discount rate $y=0.04+0.04$ for an out-of-the-money node where the bond floor is more relevant — illustrating that the effective discount rate can vary by node, as discussed in Section 2.2). Conversion value $C_r S = 80.88 < H$, so $V_{1,0} = 96.08$.</p>
-                    <p class="mb-0">Finally, at $t=0$: $H_{0,0} = e^{-0.06\times0.5}[0.4944\times123.64 + 0.5056\times96.08] = 0.9704 \times (61.13 + 48.58) = 0.9704 \times 109.71 = 106.46$, and since $C_r S_0 = 100 < 106.46$, $V_{0,0} = 106.46$. The convertible's fair value today is approximately $\$106.46$ per $\$100$ face — a premium of $6.46$ points over par, reflecting the value of the embedded conversion option at this at-the-money starting point.</p>
+                    <p>At node (1,0) ($S=80.88$): continuation value $H = e^{-0.04}[0.4944\times100.00 + 0.5056\times100.00] = 0.9608 \times 100.00 = 96.08$ (using the discount rate $y=0.04+0.04$ for an out-of-the-money node where the bond floor is more relevant - illustrating that the effective discount rate can vary by node, as discussed in Section 2.2). Conversion value $C_r S = 80.88 < H$, so $V_{1,0} = 96.08$.</p>
+                    <p class="mb-0">Finally, at $t=0$: $H_{0,0} = e^{-0.06\times0.5}[0.4944\times123.64 + 0.5056\times96.08] = 0.9704 \times (61.13 + 48.58) = 0.9704 \times 109.71 = 106.46$, and since $C_r S_0 = 100 < 106.46$, $V_{0,0} = 106.46$. The convertible's fair value today is approximately $\$106.46$ per $\$100$ face - a premium of $6.46$ points over par, reflecting the value of the embedded conversion option at this at-the-money starting point.</p>
                 </div>
 
                 <hr class="my-5">

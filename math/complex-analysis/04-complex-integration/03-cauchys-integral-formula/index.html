@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -133,7 +133,7 @@
                 <h2 class="mt-5 mb-3">The Integral Formula</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.3.1 — Cauchy's Integral Formula</div>
+                    <div class="math-box-label">Theorem 4.3.1 - Cauchy's Integral Formula</div>
                     <p>Let $f$ be analytic on an open set containing a simple closed positively oriented contour $\gamma$ and its interior. For any $z_0$ in the interior of $\gamma$:
                     $$f(z_0) = \frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z - z_0}\,dz.$$</p>
                     <p class="mb-0"><em>Proof sketch.</em> The function $g(z) = f(z)/(z-z_0)$ is analytic inside $\gamma$ except at $z_0$. By contour deformation, $\oint_\gamma g\,dz = \oint_{|z-z_0|=\varepsilon} g\,dz$. On the small circle $z = z_0 + \varepsilon e^{i\theta}$, the integral equals $\int_0^{2\pi} f(z_0 + \varepsilon e^{i\theta})\,d\theta \to 2\pi f(z_0)$ as $\varepsilon \to 0$ by continuity. $\square$</p>
@@ -142,46 +142,46 @@
                 <h2 class="mt-5 mb-3">Derivatives via Contour Integrals</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.3.2 — Cauchy's Integral Formula for Derivatives</div>
+                    <div class="math-box-label">Theorem 4.3.2 - Cauchy's Integral Formula for Derivatives</div>
                     <p>Under the same hypotheses, $f$ is infinitely differentiable at every interior point $z_0$, with
                     $$f^{(n)}(z_0) = \frac{n!}{2\pi i} \oint_\gamma \frac{f(z)}{(z - z_0)^{n+1}}\,dz, \quad n = 0, 1, 2, \ldots$$</p>
                     <p class="mb-0"><em>Proof.</em> Differentiate the $n=0$ formula under the integral sign $n$ times with respect to $z_0$, justified by uniform convergence on compact sets. $\square$</p>
                 </div>
 
                 <div class="math-box corollary">
-                    <div class="math-box-label">Corollary 4.3.3 — Analyticity Implies $C^\infty$</div>
-                    <p class="mb-0">Every analytic function on an open set $D$ is infinitely complex differentiable on $D$. In particular, once a function is complex differentiable once in an open set, it is automatically differentiable infinitely many times — a phenomenon with no real counterpart.</p>
+                    <div class="math-box-label">Corollary 4.3.3 - Analyticity Implies $C^\infty$</div>
+                    <p class="mb-0">Every analytic function on an open set $D$ is infinitely complex differentiable on $D$. In particular, once a function is complex differentiable once in an open set, it is automatically differentiable infinitely many times - a phenomenon with no real counterpart.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Major Consequences</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.3.4 — Liouville's Theorem</div>
+                    <div class="math-box-label">Theorem 4.3.4 - Liouville's Theorem</div>
                     <p>Every bounded entire function is constant.</p>
                     <p class="mb-0"><em>Proof.</em> Let $|f(z)| \leq M$ for all $z$. By the $n=1$ CIF on $|z-z_0|=R$:
                     $|f'(z_0)| \leq \frac{1!}{2\pi} \cdot \frac{M}{R^2} \cdot 2\pi R = \frac{M}{R} \to 0$ as $R \to \infty$. So $f' \equiv 0$, hence $f$ is constant. $\square$</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.3.5 — Fundamental Theorem of Algebra</div>
+                    <div class="math-box-label">Theorem 4.3.5 - Fundamental Theorem of Algebra</div>
                     <p>Every non-constant polynomial $p(z) \in \mathbb{C}[z]$ has at least one root in $\mathbb{C}$.</p>
                     <p class="mb-0"><em>Proof.</em> Suppose $p$ has no zeros. Then $1/p$ is entire. Since $|p(z)| \to \infty$ as $|z| \to \infty$, we have $|1/p(z)| \to 0$, so $1/p$ is bounded. By Liouville, $1/p$ is constant, contradicting $p$ being non-constant. $\square$</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 4.3.6 — Morera's Theorem (Converse to Cauchy)</div>
+                    <div class="math-box-label">Theorem 4.3.6 - Morera's Theorem (Converse to Cauchy)</div>
                     <p>Let $f : D \to \mathbb{C}$ be continuous on an open set $D$. If $\oint_\gamma f(z)\,dz = 0$ for every triangle $\gamma$ in $D$, then $f$ is analytic on $D$.</p>
                     <p class="mb-0"><em>Proof.</em> The hypothesis implies $f$ has a local antiderivative $F$ (constructed by integration along paths), and $F$ is analytic by definition. Since $F' = f$, and $F$ is analytic, so is $f$. $\square$</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.3.7 — Computing $\displaystyle\oint_{|z|=2} \frac{e^z}{z-1}\,dz$</div>
+                    <div class="math-box-label">Example 4.3.7 - Computing $\displaystyle\oint_{|z|=2} \frac{e^z}{z-1}\,dz$</div>
                     <p>The function $e^z$ is entire, and $z_0 = 1$ lies inside $|z| = 2$. By the CIF:
                     $$\oint_{|z|=2} \frac{e^z}{z - 1}\,dz = 2\pi i \cdot e^1 = 2\pi i e.$$</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 4.3.8 — Computing $\displaystyle\oint_{|z|=1} \frac{\cos z}{z^3}\,dz$</div>
+                    <div class="math-box-label">Example 4.3.8 - Computing $\displaystyle\oint_{|z|=1} \frac{\cos z}{z^3}\,dz$</div>
                     <p>By the higher derivative formula with $f(z) = \cos z$, $z_0 = 0$, $n = 2$:
                     $$\oint_{|z|=1} \frac{\cos z}{z^3}\,dz = \frac{2\pi i}{2!} f''(0) = \pi i \cdot (-\cos 0) = -\pi i.$$</p>
                 </div>

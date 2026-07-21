@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -86,18 +86,18 @@
                 <h2 class="mt-5 mb-3">Straddles and Strangles</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Straddle and Strangle</div>
+                    <div class="math-box-label">Definition - Straddle and Strangle</div>
                     <ul class="mb-0">
                         <li><strong>Straddle:</strong> a long call and a long put with the same strike $K$ (typically the ATM strike) and maturity. Payoff at expiry: $\max(S_T-K,0) + \max(K-S_T,0) = |S_T - K|$.</li>
                         <li><strong>Strangle:</strong> a long call at strike $K_2 > K_1$ and a long put at strike $K_1$, both OTM relative to spot. Payoff: $\max(S_T-K_2,0) + \max(K_1-S_T,0)$, zero for $S_T \in [K_1,K_2]$.</li>
                     </ul>
                 </div>
 
-                <p>Both are pure volatility instruments in the sense that, at inception, an ATM straddle (and a strangle symmetric around the forward) have approximately zero net delta — their value depends primarily on the magnitude of the spot move, not its direction. A straddle is the more expensive, more delta-sensitive-to-spot (higher gamma) instrument; a strangle is cheaper and pays off only for larger moves, making it a "cheaper, more convex" bet on a big move in either direction.</p>
+                <p>Both are pure volatility instruments in the sense that, at inception, an ATM straddle (and a strangle symmetric around the forward) have approximately zero net delta - their value depends primarily on the magnitude of the spot move, not its direction. A straddle is the more expensive, more delta-sensitive-to-spot (higher gamma) instrument; a strangle is cheaper and pays off only for larger moves, making it a "cheaper, more convex" bet on a big move in either direction.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Use Cases</div>
-                    <p class="mb-0">A long straddle or strangle is the natural position ahead of a binary event (a central bank decision, an election, a major data release) where the direction of the move is uncertain but a large move is expected — the position profits from realized volatility exceeding the implied volatility paid. A short straddle or strangle is a bet on realized volatility being lower than implied — common for desks taking the other side of hedging flow, or for investors selling volatility for yield, with the obvious risk of large losses if a big move does occur.</p>
+                    <div class="math-box-label">Remark - Use Cases</div>
+                    <p class="mb-0">A long straddle or strangle is the natural position ahead of a binary event (a central bank decision, an election, a major data release) where the direction of the move is uncertain but a large move is expected - the position profits from realized volatility exceeding the implied volatility paid. A short straddle or strangle is a bet on realized volatility being lower than implied - common for desks taking the other side of hedging flow, or for investors selling volatility for yield, with the obvious risk of large losses if a big move does occur.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Risk Reversals</h2>
@@ -105,31 +105,31 @@
                 <p>Introduced in Section 1.3 as a quoting convention for skew, the risk reversal is also a directly tradeable strategy: simultaneously buy an OTM call and sell an OTM put of the same delta (or vice versa), both with the same maturity.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Risk Reversal (as a Trade)</div>
+                    <div class="math-box-label">Definition - Risk Reversal (as a Trade)</div>
                     <p class="mb-0">A long risk reversal is long an OTM call (strike $K_2 > F_0$) and short an OTM put (strike $K_1 < F_0$), typically of equal delta in magnitude. Payoff at expiry: $\max(S_T - K_2, 0) - \max(K_1 - S_T, 0)$.</p>
                 </div>
 
-                <p>The combined position has a "synthetic forward"-like payoff shape — long exposure above $K_2$, short exposure below $K_1$, flat in between — but unlike an outright forward, the strikes are away from the money and the position carries net vega and skew exposure. A long risk reversal expresses a bullish directional view <em>and</em> a view that the skew will become more positive (calls richening relative to puts); because the premium received from selling the put partially or fully offsets the premium paid for the call, risk reversals can often be structured for low net cost.</p>
+                <p>The combined position has a "synthetic forward"-like payoff shape - long exposure above $K_2$, short exposure below $K_1$, flat in between - but unlike an outright forward, the strikes are away from the money and the position carries net vega and skew exposure. A long risk reversal expresses a bullish directional view <em>and</em> a view that the skew will become more positive (calls richening relative to puts); because the premium received from selling the put partially or fully offsets the premium paid for the call, risk reversals can often be structured for low net cost.</p>
 
                 <h2 class="mt-5 mb-3">Collars and Zero-Cost Structures</h2>
 
-                <p>A collar combines a long position in the underlying (or an existing long/short FX exposure, as in corporate hedging) with a long OTM put and a short OTM call (for a long-underlying hedger) — capping the upside in exchange for downside protection, with the strikes often chosen so the two option premiums offset exactly, giving a "zero-cost collar."</p>
+                <p>A collar combines a long position in the underlying (or an existing long/short FX exposure, as in corporate hedging) with a long OTM put and a short OTM call (for a long-underlying hedger) - capping the upside in exchange for downside protection, with the strikes often chosen so the two option premiums offset exactly, giving a "zero-cost collar."</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Zero-Cost Collar</div>
+                    <div class="math-box-label">Definition - Zero-Cost Collar</div>
                     <p class="mb-0">For a corporate with a future foreign-currency receivable (e.g., a USD-based exporter expecting EUR revenue), a zero-cost collar buys a put at strike $K_P$ (floor on the EUR/USD rate received) and sells a call at strike $K_C > K_P$ (cap on the rate), with $K_C$ chosen such that the call premium received exactly equals the put premium paid:</p>
                     $$p(K_P) = c(K_C) \quad\Longrightarrow\quad \text{net premium} = 0$$
-                    <p class="mt-2 mb-0">The hedger's effective exchange rate at maturity is then $\min(\max(S_T, K_P), K_C)$ — floored at $K_P$, capped at $K_C$, and equal to $S_T$ in between.</p>
+                    <p class="mt-2 mb-0">The hedger's effective exchange rate at maturity is then $\min(\max(S_T, K_P), K_C)$ - floored at $K_P$, capped at $K_C$, and equal to $S_T$ in between.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Worked Example: Pricing a Zero-Cost Collar</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Zero-Cost Collar for a EUR Receivable</div>
+                    <div class="math-box-label">Example - Zero-Cost Collar for a EUR Receivable</div>
                     <p>A US exporter will receive EUR 10,000,000 in 6 months and wants to hedge against EUR depreciation (USD appreciation) while retaining some upside if EUR strengthens. Market data: $S_0 = 1.0850$, $F_0 = 1.0820$ (6-month EUR/USD forward), $r_d = 5.00\%$ (USD), $r_f = 3.50\%$ (EUR), $T=0.5$, and a flat-ish surface with $\sigma_{\text{ATM}} = 7.50\%$, modest negative skew.</p>
                     <p>The exporter buys a EUR put / USD call at $K_P = 1.0700$ (floor: they will receive at least 1.0700 USD per EUR). Suppose at the relevant (slightly higher, due to negative skew) implied volatility this put is worth approximately 0.0095 (USD per EUR, i.e. about 95 pips).</p>
-                    <p>To fund this, they sell a EUR call / USD put at a strike $K_C$ chosen so the premium received equals 0.0095. Searching along the call side of the smile (where implied vol is slightly lower due to the negative skew), a strike of approximately $K_C \approx 1.0980$ might produce a call premium of about 0.0095 as well — giving a zero-cost structure.</p>
-                    <p class="mb-0">The result: the exporter's effective rate on the EUR 10,000,000 receivable is floored at 1.0700 (worst case proceeds of USD 10,700,000) and capped at 1.0980 (best case proceeds of USD 10,980,000), with no premium paid or received today. Note that because of the skew (puts richer than calls), the zero-cost cap $K_C = 1.0980$ is closer to the forward (1.0820) than the floor $K_P=1.0700$ is — a put 120 pips OTM costs the same as a call roughly 160 pips OTM, reflecting the market's relatively higher pricing of downside protection.</p>
+                    <p>To fund this, they sell a EUR call / USD put at a strike $K_C$ chosen so the premium received equals 0.0095. Searching along the call side of the smile (where implied vol is slightly lower due to the negative skew), a strike of approximately $K_C \approx 1.0980$ might produce a call premium of about 0.0095 as well - giving a zero-cost structure.</p>
+                    <p class="mb-0">The result: the exporter's effective rate on the EUR 10,000,000 receivable is floored at 1.0700 (worst case proceeds of USD 10,700,000) and capped at 1.0980 (best case proceeds of USD 10,980,000), with no premium paid or received today. Note that because of the skew (puts richer than calls), the zero-cost cap $K_C = 1.0980$ is closer to the forward (1.0820) than the floor $K_P=1.0700$ is - a put 120 pips OTM costs the same as a call roughly 160 pips OTM, reflecting the market's relatively higher pricing of downside protection.</p>
                 </div>
 
                 <hr class="my-5">

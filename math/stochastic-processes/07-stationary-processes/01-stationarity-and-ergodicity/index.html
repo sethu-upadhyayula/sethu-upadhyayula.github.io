@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -132,7 +132,7 @@
                 <h2 class="mt-4 mb-3">Strict Stationarity</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.1 — Strict Stationarity</div>
+                    <div class="math-box-label">Definition 7.1.1 - Strict Stationarity</div>
                     <p>A stochastic process $(X_t)_{t \in \mathbb{R}}$ (or $t \in \mathbb{Z}$) is <strong>strictly stationary</strong> if for all $n \ge 1$, all $t_1, \ldots, t_n$, and all $h$:
                     $$(X_{t_1+h}, X_{t_2+h}, \ldots, X_{t_n+h}) \overset{d}{=} (X_{t_1}, X_{t_2}, \ldots, X_{t_n}).$$</p>
                     <p class="mb-0">That is, the joint distribution of any finite subcollection is invariant under time shifts. Strict stationarity implies all marginal distributions are identical: $X_t \overset{d}{=} X_0$ for all $t$. If $E[X_t^2] < \infty$, strict stationarity implies weak stationarity. The converse holds for Gaussian processes.</p>
@@ -141,7 +141,7 @@
                 <h2 class="mt-4 mb-3">Weak (Wide-Sense) Stationarity</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.2 — Weak Stationarity</div>
+                    <div class="math-box-label">Definition 7.1.2 - Weak Stationarity</div>
                     <p>A process $(X_t)$ with $E[X_t^2] < \infty$ is <strong>weakly stationary</strong> (or <strong>wide-sense stationary</strong>, WSS) if:</p>
                     <ol>
                         <li>$E[X_t] = \mu$ (constant mean, independent of $t$).</li>
@@ -152,7 +152,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — AR(1) Process</div>
+                    <div class="math-box-label">Example - AR(1) Process</div>
                     <p>The autoregressive process of order 1, AR(1): $X_t = \phi X_{t-1} + \varepsilon_t$ where $\varepsilon_t \sim \mathcal{N}(0, \sigma^2)$ i.i.d. For $|\phi| < 1$, the unique weakly stationary solution is $X_t = \sum_{k=0}^\infty \phi^k \varepsilon_{t-k}$, with:</p>
                     <ul>
                         <li>$E[X_t] = 0$</li>
@@ -165,13 +165,13 @@
                 <h2 class="mt-5 mb-3">The Ergodic Theorem</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.3 — Measure-Preserving Transformation</div>
+                    <div class="math-box-label">Definition 7.1.3 - Measure-Preserving Transformation</div>
                     <p>A measurable map $T: \Omega \to \Omega$ is <strong>measure-preserving</strong> with respect to $P$ if $P(T^{-1}A) = P(A)$ for all $A \in \mathcal{F}$. For a strictly stationary process $(X_t)_{t \in \mathbb{Z}}$, the shift $T: (x_0, x_1, \ldots) \mapsto (x_1, x_2, \ldots)$ is measure-preserving on the sequence space.</p>
-                    <p class="mb-0">A set $A$ is <strong>$T$-invariant</strong> if $T^{-1}A = A$. The transformation $T$ is <strong>ergodic</strong> if every invariant set has probability 0 or 1 — equivalently, the process cannot be decomposed into non-trivial invariant sub-processes.</p>
+                    <p class="mb-0">A set $A$ is <strong>$T$-invariant</strong> if $T^{-1}A = A$. The transformation $T$ is <strong>ergodic</strong> if every invariant set has probability 0 or 1 - equivalently, the process cannot be decomposed into non-trivial invariant sub-processes.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.1.4 — Birkhoff's Ergodic Theorem</div>
+                    <div class="math-box-label">Theorem 7.1.4 - Birkhoff's Ergodic Theorem</div>
                     <p>Let $T$ be a measure-preserving transformation and $f \in L^1(P)$. Then the time average converges almost surely:
                     $$\frac{1}{n}\sum_{k=0}^{n-1} f(T^k \omega) \xrightarrow{n \to \infty} E[f \mid \mathcal{I}](\omega) \quad \text{a.s.,}$$
                     where $\mathcal{I} = \{A \in \mathcal{F} : T^{-1}A = A\}$ is the $\sigma$-algebra of $T$-invariant sets.</p>
@@ -181,7 +181,7 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 7.1.5 — Continuous-Time Ergodic Theorem</div>
+                    <div class="math-box-label">Theorem 7.1.5 - Continuous-Time Ergodic Theorem</div>
                     <p>For a strictly stationary ergodic process $(X_t)_{t \ge 0}$ with $E[|X_0|] < \infty$:
                     $$\frac{1}{T}\int_0^T X_t\,dt \to E[X_0] \quad \text{a.s. as } T \to \infty.$$</p>
                     <p class="mb-0">More generally, for any $f$ with $E[|f(X_0)|] < \infty$: $\frac{1}{T}\int_0^T f(X_t)\,dt \to E[f(X_0)]$ a.s. This theorem justifies the use of time averages to estimate distributional properties, and underpins the ergodic hypothesis in statistical physics.</p>
@@ -190,7 +190,7 @@
                 <h2 class="mt-5 mb-3">Mixing Conditions</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 7.1.6 — Mixing</div>
+                    <div class="math-box-label">Definition 7.1.6 - Mixing</div>
                     <p>A stationary process is <strong>strongly mixing</strong> (or $\alpha$-mixing) if
                     $$\alpha(h) := \sup_{A \in \mathcal{F}_0^{-\infty},\, B \in \mathcal{F}_h^\infty} |P(A \cap B) - P(A)P(B)| \to 0 \quad \text{as } h \to \infty,$$
                     where $\mathcal{F}_a^b = \sigma(X_t : a \le t \le b)$.</p>
@@ -199,7 +199,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Ergodicity of AR(1)</div>
+                    <div class="math-box-label">Example - Ergodicity of AR(1)</div>
                     <p>The weakly stationary AR(1) process with $|\phi| < 1$ is ergodic. This follows because its innovation sequence $(\varepsilon_t)$ is i.i.d. (hence ergodic), and the AR(1) is a measurable function of this sequence.</p>
                     <p class="mb-0">Concretely, the ergodic theorem gives $\frac{1}{n}\sum_{t=1}^n X_t \to 0$ a.s. and $\frac{1}{n}\sum_{t=1}^n X_t X_{t+k} \to R(k) = \frac{\sigma^2 \phi^{|k|}}{1-\phi^2}$ a.s. for each fixed $k$. This allows consistent estimation of the ACF from a single observed trajectory.</p>
                 </div>

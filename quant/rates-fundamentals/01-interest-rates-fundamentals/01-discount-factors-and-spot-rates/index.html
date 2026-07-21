@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,21 +80,21 @@
             <article>
                 <h1 class="text-accent mb-4">1.1 Discount Factors and Spot Rates</h1>
 
-                <p>The central question of fixed income is: what is a future cash flow worth today? The answer is given by the discount factor — the present value of one unit of currency to be received at a specified future date. Discount factors are the primitive objects of interest rate theory; all other rates are derived from them.</p>
+                <p>The central question of fixed income is: what is a future cash flow worth today? The answer is given by the discount factor - the present value of one unit of currency to be received at a specified future date. Discount factors are the primitive objects of interest rate theory; all other rates are derived from them.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Discount Factor</div>
+                    <div class="math-box-label">Definition - Discount Factor</div>
                     <p class="mb-0">The <em>discount factor</em> $P(t, T)$ is the value at time $t$ of a contract that pays one unit of currency at time $T \geq t$ with certainty. In particular, $P(t,t) = 1$ for all $t$. The function $T \mapsto P(0, T)$ is called the <em>discount curve</em> or <em>term structure of discount factors</em>. It must be a positive, decreasing function with $P(0,0) = 1$ and $P(0,\infty) = 0$ (assuming positive interest rates).</p>
                 </div>
 
-                <p>A zero-coupon bond is the traded instrument that directly realises the discount factor: a zero-coupon bond maturing at $T$ with face value 1 has price $P(0,T)$ today. In practice, pure zero-coupon bonds are not traded at all maturities, so discount factors are inferred by stripping (bootstrapping) from prices of coupon-bearing instruments — a process we address in Chapter 2.</p>
+                <p>A zero-coupon bond is the traded instrument that directly realises the discount factor: a zero-coupon bond maturing at $T$ with face value 1 has price $P(0,T)$ today. In practice, pure zero-coupon bonds are not traded at all maturities, so discount factors are inferred by stripping (bootstrapping) from prices of coupon-bearing instruments - a process we address in Chapter 2.</p>
 
                 <h2 class="mt-5 mb-3">Compounding Conventions</h2>
 
                 <p>Given the discount factor $P(0,T)$, the associated interest rate depends on the compounding convention chosen. Different conventions are standard in different markets and for different instruments, so it is essential to be fluent in all of them.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Compounding Conventions</div>
+                    <div class="math-box-label">Definition - Compounding Conventions</div>
                     <p><strong>Continuous compounding.</strong> The continuously compounded spot rate $r(0,T)$ satisfies:
                     $$P(0,T) = e^{-r(0,T)\cdot T} \quad \Longleftrightarrow \quad r(0,T) = -\frac{\ln P(0,T)}{T}$$
                     This is the most natural convention for theoretical work as it simplifies many formulas.</p>
@@ -109,19 +109,19 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Equivalence of Conventions</div>
+                    <div class="math-box-label">Remark - Equivalence of Conventions</div>
                     <p class="mb-0">All conventions encode the same information. Given a discount factor $P(0,T)$, one can convert freely between conventions. For small rates and short maturities all conventions give nearly identical results. The differences become significant at longer maturities or higher rates. In quantitative work, continuous compounding is usually preferred for its analytic convenience; practitioners in specific markets use the relevant market convention for quoting and communication.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">The Spot Rate Curve</h2>
 
-                <p>The <em>spot rate curve</em> (or <em>zero curve</em>) is the function $T \mapsto r(0,T)$ — the continuously compounded yield on a zero-coupon bond of each maturity. It encodes the market's current pricing of all future cash flows.</p>
+                <p>The <em>spot rate curve</em> (or <em>zero curve</em>) is the function $T \mapsto r(0,T)$ - the continuously compounded yield on a zero-coupon bond of each maturity. It encodes the market's current pricing of all future cash flows.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Present Value of a Cash Flow Stream</div>
+                    <div class="math-box-label">Definition - Present Value of a Cash Flow Stream</div>
                     <p class="mb-0">The present value of a deterministic cash flow stream $(C_1, t_1), \ldots, (C_n, t_n)$ is:
                     $$PV = \sum_{i=1}^n C_i \cdot P(0, t_i) = \sum_{i=1}^n C_i \cdot e^{-r(0,t_i)\,t_i}$$
-                    Each cash flow is discounted at its own maturity-specific rate, not a single flat rate. Using a flat yield — as in the yield-to-maturity of a coupon bond — is an approximation that conflates rates at different maturities.</p>
+                    Each cash flow is discounted at its own maturity-specific rate, not a single flat rate. Using a flat yield - as in the yield-to-maturity of a coupon bond - is an approximation that conflates rates at different maturities.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Par Rate</h2>
@@ -129,7 +129,7 @@
                 <p>The par rate for maturity $T$ is the fixed coupon rate that makes a fixed-coupon bond (paying coupons at times $t_1, \ldots, t_n = T$ with face value 1) worth exactly par (price = 1) today.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Par Rate</div>
+                    <div class="math-box-label">Definition - Par Rate</div>
                     <p>Let $\delta_i = t_i - t_{i-1}$ be the day count fraction for coupon period $i$. The par rate $c$ satisfies:
                     $$1 = c \sum_{i=1}^n \delta_i P(0, t_i) + P(0, t_n)$$
                     Solving:
@@ -138,7 +138,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Par Rate from Discount Factors</div>
+                    <div class="math-box-label">Example - Par Rate from Discount Factors</div>
                     <p>Suppose we observe the following discount factors for annual maturities:</p>
                     <table class="table table-sm table-bordered" style="max-width:400px;">
                         <thead><tr><th>$T$ (years)</th><th>$P(0,T)$</th><th>$r(0,T)$ (cont.)</th></tr></thead>
@@ -158,7 +158,7 @@
                 <p>Interest accrual in rates markets depends on day count conventions, which determine the year fraction $\delta$ between two dates. The conventions differ by instrument and currency.</p>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Common Rates Day Count Conventions</div>
+                    <div class="math-box-label">Remark - Common Rates Day Count Conventions</div>
                     <p><strong>Act/360:</strong> standard for USD money market instruments, SOFR, Euribor, and most floating rate legs. The year fraction between dates $d_1$ and $d_2$ is (actual calendar days) / 360.</p>
                     <p><strong>Act/365 Fixed:</strong> standard for GBP SONIA and sterling money markets. Year fraction = (actual days) / 365.</p>
                     <p><strong>30/360 (Bond Basis):</strong> standard for the fixed legs of USD interest rate swaps and US corporate bonds. Assumes each month has 30 days and each year has 360 days.</p>

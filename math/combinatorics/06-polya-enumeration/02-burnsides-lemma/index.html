@@ -16,7 +16,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -103,13 +103,13 @@
 
 <p>Burnside's lemma (also known as the Cauchy-Frobenius lemma) gives a formula for the number of orbits of a group action in terms of fixed-point sets. It is the fundamental tool for counting objects up to symmetry.</p>
 
-<div class="math-box definition"><div class="math-box-label">Definition — Fixed-Point Set</div>
+<div class="math-box definition"><div class="math-box-label">Definition - Fixed-Point Set</div>
 <p>Let $G$ act on $X$. For $g \in G$, the <strong>fixed-point set</strong> of $g$ is</p>
 $$\mathrm{Fix}(g) = \{x \in X : g \cdot x = x\}$$
 <p>the set of elements of $X$ left unchanged by $g$.</p>
 </div>
 
-<div class="math-box theorem"><div class="math-box-label">Theorem — Burnside's Lemma</div>
+<div class="math-box theorem"><div class="math-box-label">Theorem - Burnside's Lemma</div>
 <p>Let $G$ be a finite group acting on a finite set $X$. The number of orbits is</p>
 $$|X/G| = \frac{1}{|G|} \sum_{g \in G} |\mathrm{Fix}(g)|$$
 </div>
@@ -121,7 +121,7 @@ $$|X/G| = \frac{1}{|G|} \sum_{g \in G} |\mathrm{Fix}(g)|$$
 <p>Equating the two counts: $\text{number of orbits} = \frac{1}{|G|} \sum_{g \in G} |\mathrm{Fix}(g)|$.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Colouring a Square's Corners</div>
+<div class="math-box example"><div class="math-box-label">Example - Colouring a Square's Corners</div>
 <p>Count 2-colourings of the 4 corners of a square, up to rotation by the cyclic group $G = \mathbb{Z}_4 = \{r^0, r^1, r^2, r^3\}$ (rotations by $0^\circ, 90^\circ, 180^\circ, 270^\circ$). Here $X = \{0,1\}^4$, so $|X| = 16$.</p>
 <ul>
   <li>$r^0$ (identity): fixes all $2^4 = 16$ colourings. $|\mathrm{Fix}(r^0)| = 16$.</li>
@@ -133,14 +133,14 @@ $$|X/G| = \frac{1}{4}(16 + 2 + 4 + 2) = \frac{24}{4} = 6$$
 <p>There are 6 distinct colourings of the corners up to rotation.</p>
 </div>
 
-<div class="math-box example"><div class="math-box-label">Example — Necklaces with 6 Beads and 2 Colours</div>
+<div class="math-box example"><div class="math-box-label">Example - Necklaces with 6 Beads and 2 Colours</div>
 <p>Count binary necklaces with 6 beads, where two necklaces are equivalent if one is a rotation of the other. Here $G = \mathbb{Z}_6$ acts on $X = \{0,1\}^6$.</p>
 <p>For a rotation $r^k$ (by $k$ positions), the fixed colourings are those periodic with period $\gcd(k,6)$: there are $2^{\gcd(k,6)}$ such colourings.</p>
 $$|X/G| = \frac{1}{6}\bigl(2^6 + 2^1 + 2^2 + 2^3 + 2^2 + 2^1\bigr) = \frac{64+2+4+8+4+2}{6} = \frac{84}{6} = 14$$
 <p>There are 14 distinct binary necklaces with 6 beads.</p>
 </div>
 
-<div class="math-box remark"><div class="math-box-label">Remark — Dihedral Symmetry</div>
+<div class="math-box remark"><div class="math-box-label">Remark - Dihedral Symmetry</div>
 <p>For necklaces where flips (reflections) are also considered equivalent, the symmetry group is the dihedral group $D_n$ of order $2n$. Burnside's lemma still applies; one must also compute $|\mathrm{Fix}|$ for each reflection. For $n=6$, this gives $(84 + 6 \cdot 8)/12 = 132/12 = 11$ bracelets (since reflections contribute $3 \cdot 2^3 + 3 \cdot 2^4 = 24 + 48 = 72$... careful calculation needed).</p>
 </div>
 

@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -127,32 +127,32 @@
             <article>
                 <h1 class="text-accent mb-4">3.3 Uniform Continuity</h1>
 
-                <p>Pointwise continuity allows the tolerance $\delta$ to depend on both $\varepsilon$ and the base point $x$. Uniform continuity demands a single $\delta$ that works everywhere simultaneously — a much stronger condition, automatically satisfied on compact domains.</p>
+                <p>Pointwise continuity allows the tolerance $\delta$ to depend on both $\varepsilon$ and the base point $x$. Uniform continuity demands a single $\delta$ that works everywhere simultaneously - a much stronger condition, automatically satisfied on compact domains.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 3.3.1 — Uniform Continuity</div>
+                    <div class="math-box-label">Definition 3.3.1 - Uniform Continuity</div>
                     <p class="mb-0">$f: E \to \mathbb{R}$ is <strong>uniformly continuous</strong> on $E$ if: $\forall\varepsilon > 0,\,\exists\delta > 0$ such that $\forall x, y \in E$: $|x - y| < \delta \Rightarrow |f(x) - f(y)| < \varepsilon$. The key distinction from pointwise continuity is that $\delta$ depends only on $\varepsilon$, not on the particular points $x, y$.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 3.3.2 — Uniform vs Non-Uniform</div>
+                    <div class="math-box-label">Example 3.3.2 - Uniform vs Non-Uniform</div>
                     <p>$f(x) = x^2$ on $(0, \infty)$: not uniformly continuous. For any $\delta > 0$, take $x = 1/\delta$, $y = 1/\delta + \delta/2$; then $|x-y| = \delta/2 < \delta$ but $|f(x)-f(y)| \approx 1$.</p>
                     <p class="mb-0">$f(x) = x^2$ on $[0, M]$ for any $M < \infty$: uniformly continuous (compact domain).</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.3.3 — Heine-Cantor Theorem</div>
+                    <div class="math-box-label">Theorem 3.3.3 - Heine-Cantor Theorem</div>
                     <p>If $f$ is continuous on a compact set $K$, then $f$ is uniformly continuous on $K$.</p>
                     <p class="mb-0"><strong>Proof sketch:</strong> Suppose not. Then $\exists\varepsilon_0 > 0$ and sequences $(x_n), (y_n)$ in $K$ with $|x_n - y_n| < 1/n$ but $|f(x_n) - f(y_n)| \ge \varepsilon_0$. By compactness, pass to a subsequence $x_{n_k} \to c \in K$. Then $y_{n_k} \to c$ also. By continuity, $f(x_{n_k}) \to f(c)$ and $f(y_{n_k}) \to f(c)$, so $|f(x_{n_k}) - f(y_{n_k})| \to 0$, contradicting $\ge \varepsilon_0$.</p>
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 3.3.4 — Extension Theorem</div>
+                    <div class="math-box-label">Theorem 3.3.4 - Extension Theorem</div>
                     <p class="mb-0">If $f: E \to \mathbb{R}$ is uniformly continuous on $E$ and $(x_n)$ is a Cauchy sequence in $E$, then $(f(x_n))$ is also Cauchy. Consequently, $f$ extends uniquely to a uniformly continuous function on $\bar{E}$. This is used to extend functions defined on dense subsets.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 3.3.5 — Lipschitz Implies Uniform Continuity</div>
+                    <div class="math-box-label">Remark 3.3.5 - Lipschitz Implies Uniform Continuity</div>
                     <p>If $|f(x) - f(y)| \le L|x - y|$ for all $x, y$ (Lipschitz condition with constant $L$), then $f$ is uniformly continuous: given $\varepsilon$, take $\delta = \varepsilon/L$.</p>
                     <p class="mb-0">The converse fails: $f(x) = \sqrt{x}$ on $[0,1]$ is uniformly continuous (compact domain) but not Lipschitz near 0, since $f'(x) = 1/(2\sqrt{x}) \to \infty$.</p>
                 </div>

@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -112,14 +112,14 @@
 <h1 class="text-accent mb-4">4.3 Jordan Normal Form</h1>
 
 <div class="math-box definition">
-<div class="math-box-label">Definition — Jordan Block</div>
+<div class="math-box-label">Definition - Jordan Block</div>
 <p>A <strong>Jordan block</strong> of size $k$ for eigenvalue $\lambda$ is the $k\times k$ matrix:</p>
 $$J_k(\lambda)=\begin{pmatrix}\lambda&1&0&\cdots&0\\0&\lambda&1&\cdots&0\\\vdots&&\ddots&\ddots&\vdots\\0&0&\cdots&\lambda&1\\0&0&\cdots&0&\lambda\end{pmatrix}.$$
 <p class="mb-0">A $1\times1$ Jordan block is simply the scalar $(\lambda)$. The identity matrix $I_n$ and any diagonal matrix consist entirely of $1\times1$ Jordan blocks.</p>
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Jordan Normal Form</div>
+<div class="math-box-label">Theorem - Jordan Normal Form</div>
 <p>Every square matrix $A\in M_n(\mathbb{C})$ is similar (over $\mathbb{C}$) to a <strong>Jordan normal form</strong>:</p>
 $$J = P^{-1}AP = \begin{pmatrix}J_{k_1}(\lambda_1)&&0\\&\ddots&\\0&&J_{k_r}(\lambda_r)\end{pmatrix}$$
 <p>which is block-diagonal with Jordan blocks along the diagonal. The Jordan form is unique up to reordering of blocks.</p>
@@ -127,7 +127,7 @@ $$J = P^{-1}AP = \begin{pmatrix}J_{k_1}(\lambda_1)&&0\\&\ddots&\\0&&J_{k_r}(\lam
 </div>
 
 <div class="math-box definition">
-<div class="math-box-label">Definition — Minimal Polynomial</div>
+<div class="math-box-label">Definition - Minimal Polynomial</div>
 <p>The <strong>minimal polynomial</strong> $m_A(\lambda)$ of $A$ is the monic polynomial of smallest degree such that $m_A(A)=0$.</p>
 <ul>
 <li>$m_A(\lambda)$ divides the characteristic polynomial $p_A(\lambda)$.</li>
@@ -138,7 +138,7 @@ $$J = P^{-1}AP = \begin{pmatrix}J_{k_1}(\lambda_1)&&0\\&\ddots&\\0&&J_{k_r}(\lam
 </div>
 
 <div class="math-box example">
-<div class="math-box-label">Example — Jordan Form of a Defective $3\times3$ Matrix</div>
+<div class="math-box-label">Example - Jordan Form of a Defective $3\times3$ Matrix</div>
 <p>Let $A=\begin{pmatrix}2&1&0\\0&2&1\\0&0&2\end{pmatrix}$. The characteristic polynomial is $p(\lambda)=(\lambda-2)^3$, so $\lambda=2$ with algebraic multiplicity 3.</p>
 <p>$\ker(A-2I)=\ker\begin{pmatrix}0&1&0\\0&0&1\\0&0&0\end{pmatrix}=\operatorname{span}\{e_1\}$, so geometric multiplicity $=1$.</p>
 <p>Therefore the Jordan form has a single block: $J=J_3(2)=\begin{pmatrix}2&1&0\\0&2&1\\0&0&2\end{pmatrix}=A$ (already in Jordan form).</p>
@@ -146,7 +146,7 @@ $$J = P^{-1}AP = \begin{pmatrix}J_{k_1}(\lambda_1)&&0\\&\ddots&\\0&&J_{k_r}(\lam
 </div>
 
 <div class="math-box theorem">
-<div class="math-box-label">Theorem — Matrix Exponential via Jordan Form</div>
+<div class="math-box-label">Theorem - Matrix Exponential via Jordan Form</div>
 <p>For a Jordan block $J_k(\lambda)$, the matrix exponential is:</p>
 $$e^{J_k(\lambda)t}=e^{\lambda t}\begin{pmatrix}1&t&\frac{t^2}{2!}&\cdots&\frac{t^{k-1}}{(k-1)!}\\0&1&t&\cdots&\frac{t^{k-2}}{(k-2)!}\\\vdots&&\ddots&&\vdots\\0&\cdots&&1&t\\0&\cdots&&&1\end{pmatrix}.$$
 <p>For a general matrix $A=PJP^{-1}$: $e^{At}=Pe^{Jt}P^{-1}$, where $e^{Jt}$ is block-diagonal with the above blocks.</p>

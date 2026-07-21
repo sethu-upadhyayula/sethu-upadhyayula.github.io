@@ -22,7 +22,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -130,7 +130,7 @@
                 <h2 class="mt-4">Loss Functions and Bayes Estimators</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.3.1 — Bayes Estimators Under Common Loss Functions</div>
+                    <div class="math-box-label">Theorem 6.3.1 - Bayes Estimators Under Common Loss Functions</div>
                     <p>The <strong>Bayes estimator</strong> minimises posterior expected loss $E[L(\theta, \hat{\theta}) \mid x]$:</p>
                     <ul class="mb-0">
                         <li><strong>Squared error loss</strong> $L(\theta,\hat\theta) = (\theta-\hat\theta)^2$: Bayes estimator $=$ posterior mean $E[\theta\mid x]$.</li>
@@ -142,7 +142,7 @@
                 <h2 class="mt-5">Jeffreys Prior</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.3.2 — Jeffreys Prior</div>
+                    <div class="math-box-label">Definition 6.3.2 - Jeffreys Prior</div>
                     <p>The <strong>Jeffreys prior</strong> is a non-informative prior defined as
                     $$p(\theta) \propto \sqrt{|I(\theta)|},$$
                     where $I(\theta)$ is the Fisher information. It is invariant under reparametrisation: if $\phi = g(\theta)$ then the Jeffreys prior for $\phi$ equals the Jeffreys prior for $\theta$ after the change of variables.</p>
@@ -152,7 +152,7 @@
                 <h2 class="mt-5">Hierarchical Models</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.3.3 — Hierarchical Bayesian Model</div>
+                    <div class="math-box-label">Definition 6.3.3 - Hierarchical Bayesian Model</div>
                     <p class="mb-0">A <strong>hierarchical model</strong> introduces multiple levels of uncertainty. For example, with group means $\theta_i$ and a common prior:
                     $$X_{ij} \mid \theta_i \sim p(x\mid\theta_i), \quad \theta_i \mid \tau \sim p(\theta\mid\tau), \quad \tau \sim p(\tau).$$
                     The hyperparameter $\tau$ governs the between-group variation and is itself estimated from the data. This <em>partial pooling</em> shrinks group estimates toward the grand mean, reducing variance without ignoring group-level information. Hierarchical models are the Bayesian counterpart of random effects models.</p>
@@ -161,7 +161,7 @@
                 <h2 class="mt-5">Markov Chain Monte Carlo</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.3.4 — Metropolis-Hastings Algorithm</div>
+                    <div class="math-box-label">Definition 6.3.4 - Metropolis-Hastings Algorithm</div>
                     <p>When the posterior $p(\theta\mid x)$ lacks a closed form, MCMC constructs a Markov chain with stationary distribution $p(\theta\mid x)$. The <strong>Metropolis-Hastings</strong> algorithm:</p>
                     <ol class="mb-0">
                         <li>Given current state $\theta^{(t)}$, propose $\theta^* \sim q(\theta^* \mid \theta^{(t)})$.</li>
@@ -172,14 +172,14 @@
                 </div>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.3.5 — Gibbs Sampler</div>
+                    <div class="math-box-label">Definition 6.3.5 - Gibbs Sampler</div>
                     <p class="mb-0">The <strong>Gibbs sampler</strong> is a special case of Metropolis-Hastings for multi-parameter posteriors $p(\theta_1,\ldots,\theta_k\mid x)$. At each step, cycle through parameters and sample each from its <em>full conditional</em> $p(\theta_j \mid \theta_{-j}, x)$. This requires closed-form full conditionals (available, e.g., in conjugate hierarchical models) but always accepts, making it efficient when the conditionals are easy to sample.</p>
                 </div>
 
                 <h2 class="mt-5">Model Comparison: Bayes Factor</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition 6.3.6 — Bayes Factor</div>
+                    <div class="math-box-label">Definition 6.3.6 - Bayes Factor</div>
                     <p class="mb-0">The <strong>Bayes factor</strong> for $M_1$ vs.\ $M_0$ is
                     $$BF_{10} = \frac{p(x \mid M_1)}{p(x \mid M_0)} = \frac{\int p(x\mid\theta_1, M_1)\,p(\theta_1\mid M_1)\,d\theta_1}{\int p(x\mid\theta_0, M_0)\,p(\theta_0\mid M_0)\,d\theta_0}.$$
                     $BF_{10} > 1$ favours $M_1$; by Jeffreys' scale, $BF_{10} > 100$ is "decisive" evidence. Unlike AIC/BIC, the Bayes factor integrates over parameter uncertainty and automatically penalises model complexity (Occam's razor). Computing marginal likelihoods often requires numerical integration or MCMC.</p>

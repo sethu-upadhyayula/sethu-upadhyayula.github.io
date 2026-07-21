@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -86,20 +86,20 @@
                 <h2 class="mt-5 mb-3">Defining the Basis</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Bond-CDS Basis</div>
+                    <div class="math-box-label">Definition - Bond-CDS Basis</div>
                     <p class="mb-0">The bond-CDS basis for a reference entity at a given maturity is:</p>
                     <p class="mb-0">$$\text{Basis} = s_{\text{CDS}} - Z_{\text{bond}}$$</p>
-                    <p class="mb-0">where $s_{\text{CDS}}$ is the CDS spread for that maturity (from <a href="../01-cds-curve-bootstrapping/">CDS Curve Bootstrapping</a>) and $Z_{\text{bond}}$ is the bond's Z-spread — the constant spread that must be added to the risk-free discount curve so that the bond's discounted cash flows equal its market price. The Z-spread is the standard "bond-implied" credit spread, capturing the same compensation-for-default-risk concept as the CDS spread but derived from the bond's price rather than from a derivatives market.</p>
+                    <p class="mb-0">where $s_{\text{CDS}}$ is the CDS spread for that maturity (from <a href="../01-cds-curve-bootstrapping/">CDS Curve Bootstrapping</a>) and $Z_{\text{bond}}$ is the bond's Z-spread - the constant spread that must be added to the risk-free discount curve so that the bond's discounted cash flows equal its market price. The Z-spread is the standard "bond-implied" credit spread, capturing the same compensation-for-default-risk concept as the CDS spread but derived from the bond's price rather than from a derivatives market.</p>
                 </div>
 
-                <p>A <strong>positive basis</strong> ($s_{\text{CDS}} > Z_{\text{bond}}$) means CDS protection is more expensive than the credit risk priced into the bond — buying the bond and buying CDS protection on it (a "negative basis package" from the trade's perspective, but the basis itself is positive) would, in a frictionless world, lock in a riskless profit. A <strong>negative basis</strong> ($s_{\text{CDS}} < Z_{\text{bond}}$) is the more commonly observed case historically, particularly during and after periods of stress.</p>
+                <p>A <strong>positive basis</strong> ($s_{\text{CDS}} > Z_{\text{bond}}$) means CDS protection is more expensive than the credit risk priced into the bond - buying the bond and buying CDS protection on it (a "negative basis package" from the trade's perspective, but the basis itself is positive) would, in a frictionless world, lock in a riskless profit. A <strong>negative basis</strong> ($s_{\text{CDS}} < Z_{\text{bond}}$) is the more commonly observed case historically, particularly during and after periods of stress.</p>
 
                 <h2 class="mt-5 mb-3">Drivers of the Basis</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why the Basis Is Non-Zero</div>
-                    <p><strong>Funding costs.</strong> Buying a cash bond requires funding the purchase price, typically at a spread over the risk-free rate (the bond's repo rate). A CDS is unfunded — no principal changes hands. When funding costs rise relative to the risk-free rate (as in 2008), holding the bond becomes relatively more expensive, pushing $Z_{\text{bond}}$ up relative to $s_{\text{CDS}}$ and making the basis <em>more negative</em>.</p>
-                    <p><strong>CDS-bond delivery option.</strong> Under physical settlement (and even under the auction-based cash settlement used since the Big Bang protocol), the protection buyer effectively has the option to deliver the cheapest among several deliverable obligations of the reference entity into the CDS following a credit event. This "cheapest-to-deliver" option has positive value to the protection buyer, which — all else equal — pushes the fair CDS spread <em>up</em> relative to what a single bond's risk alone would imply, contributing to a <em>positive</em> basis.</p>
+                    <div class="math-box-label">Remark - Why the Basis Is Non-Zero</div>
+                    <p><strong>Funding costs.</strong> Buying a cash bond requires funding the purchase price, typically at a spread over the risk-free rate (the bond's repo rate). A CDS is unfunded - no principal changes hands. When funding costs rise relative to the risk-free rate (as in 2008), holding the bond becomes relatively more expensive, pushing $Z_{\text{bond}}$ up relative to $s_{\text{CDS}}$ and making the basis <em>more negative</em>.</p>
+                    <p><strong>CDS-bond delivery option.</strong> Under physical settlement (and even under the auction-based cash settlement used since the Big Bang protocol), the protection buyer effectively has the option to deliver the cheapest among several deliverable obligations of the reference entity into the CDS following a credit event. This "cheapest-to-deliver" option has positive value to the protection buyer, which - all else equal - pushes the fair CDS spread <em>up</em> relative to what a single bond's risk alone would imply, contributing to a <em>positive</em> basis.</p>
                     <p><strong>Technical and supply/demand factors.</strong> New bond issuance increases the supply of cash bonds without a corresponding increase in CDS supply, which can cheapen bonds relative to CDS (more negative basis). Conversely, heavy demand for protection from banks hedging loan books can push CDS spreads wider relative to bonds (more positive basis).</p>
                     <p class="mb-0"><strong>Counterparty risk and collateralisation.</strong> CDS positions (especially cleared ones) carry different counterparty and margin profiles than holding a cash bond, and during periods of dealer balance-sheet stress this can drive a wedge between the two markets' pricing of the same credit.</p>
                 </div>
@@ -116,7 +116,7 @@
                 <p>The combined position earns the basis $(Z_{\text{bond}} - s_{\text{CDS}})$ as a carry, while being largely hedged against the reference entity's default: if a credit event occurs, the CDS protection pays out $N(1-R)$ (or the bond can be delivered into the CDS auction), offsetting the loss on the bond.</p>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Negative Basis Trade Cash Flows</div>
+                    <div class="math-box-label">Example - Negative Basis Trade Cash Flows</div>
                     <p>A 5Y bond from a reference entity trades at a Z-spread of $Z_{\text{bond}} = 150\text{bp}$, while the 5Y CDS spread is $s_{\text{CDS}} = 100\text{bp}$, giving a basis of $-50\text{bp}$. An investor buys \$10mm notional of the bond, funds it in repo at a rate close to risk-free, and buys \$10mm of 5Y CDS protection at 100bp.</p>
                     <p><strong>Carry.</strong> The position earns approximately $50\text{bp} \times \$10\text{mm} = \$50{,}000$ per year in net carry (bond yield spread minus CDS premium minus funding spread), for as long as both positions are held.</p>
                     <p class="mb-0"><strong>Default scenario.</strong> If the reference entity defaults with a recovery rate of $R = 40\%$, the bond falls in value to approximately 40 (per 100 face), a loss of \$600,000 on the \$10mm position. The CDS protection pays $N(1-R) = \$10\text{mm} \times 0.60 = \$600{,}000$, offsetting the bond loss almost exactly. The trade is therefore close to default-neutral, with the residual P&amp;L driven mainly by the accumulated carry plus any mark-to-market basis movements before default.</p>
@@ -125,11 +125,11 @@
                 <h2 class="mt-5 mb-3">Risks to the Basis Trade</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why the "Arbitrage" Isn't Free</div>
+                    <div class="math-box-label">Remark - Why the "Arbitrage" Isn't Free</div>
                     <p><strong>Funding and repo risk.</strong> The repo rate at which the bond position is funded is not fixed for the life of the trade; if repo rates rise (or the bond becomes "special" and repo financing becomes expensive or unavailable), the carry can be eroded or turn negative.</p>
-                    <p><strong>Basis risk between the bond and CDS.</strong> The CDS references a basket of the issuer's deliverable obligations, not the specific bond held — if the specific bond's price moves idiosyncratically relative to the issuer's broader curve (e.g. due to a covenant issue or its own technical scarcity), the hedge is imperfect.</p>
+                    <p><strong>Basis risk between the bond and CDS.</strong> The CDS references a basket of the issuer's deliverable obligations, not the specific bond held - if the specific bond's price moves idiosyncratically relative to the issuer's broader curve (e.g. due to a covenant issue or its own technical scarcity), the hedge is imperfect.</p>
                     <p><strong>Mark-to-market volatility.</strong> Even a basis trade intended to be held to maturity or default will show mark-to-market P&amp;L swings as the basis itself moves, which can trigger margin calls on the CDS leg well before any actual default.</p>
-                    <p class="mb-0"><strong>Counterparty risk on the CDS.</strong> The protection payout depends on the CDS counterparty (or central counterparty, if cleared) remaining solvent through a credit event — a particular concern in systemic stress scenarios where the reference entity's default is correlated with broader counterparty distress.</p>
+                    <p class="mb-0"><strong>Counterparty risk on the CDS.</strong> The protection payout depends on the CDS counterparty (or central counterparty, if cleared) remaining solvent through a credit event - a particular concern in systemic stress scenarios where the reference entity's default is correlated with broader counterparty distress.</p>
                 </div>
 
                 <hr class="my-5">

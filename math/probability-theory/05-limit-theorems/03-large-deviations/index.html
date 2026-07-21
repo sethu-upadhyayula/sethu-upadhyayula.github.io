@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -133,7 +133,7 @@
                 <h2 class="mt-4 mb-3">The Cramér Rate Function</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Log-Moment Generating Function and Rate Function</div>
+                    <div class="math-box-label">Definition - Log-Moment Generating Function and Rate Function</div>
                     <p>For a random variable $X$ with moment generating function $M(\theta) = E[e^{\theta X}]$, define the <em>log-moment generating function</em> (cumulant generating function):
                     $$\Lambda(\theta) = \log M(\theta) = \log E[e^{\theta X}].$$
                     The <em>Cramér rate function</em> (or Legendre-Fenchel transform of $\Lambda$) is
@@ -142,7 +142,7 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.3.1 — Cramér's Theorem</div>
+                    <div class="math-box-label">Theorem 5.3.1 - Cramér's Theorem</div>
                     <p>Let $X_1, X_2, \ldots$ be i.i.d. with $E[e^{\theta X_1}] < \infty$ for all $\theta$ in a neighbourhood of $0$. Then for any $x > \mu = E[X_1]$:
                     $$\lim_{n\to\infty} \frac{1}{n} \log P(\bar{X}_n \ge x) = -I(x).$$
                     More precisely, for any closed set $F$ and open set $G$ in $\mathbb{R}$:
@@ -150,14 +150,14 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Gaussian Rate Function</div>
+                    <div class="math-box-label">Example - Gaussian Rate Function</div>
                     <p>If $X \sim N(\mu, \sigma^2)$, then $\Lambda(\theta) = \mu\theta + \sigma^2\theta^2/2$. The rate function is
                     $$I(x) = \sup_\theta\left\{\theta x - \mu\theta - \frac{\sigma^2\theta^2}{2}\right\} = \frac{(x-\mu)^2}{2\sigma^2}.$$
                     This is just the squared Mahalanobis distance. Cramér's theorem gives $P(\bar{X}_n \ge x) \approx e^{-n(x-\mu)^2/(2\sigma^2)}$, consistent with the known Gaussian tail bound.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Bernoulli Rate Function</div>
+                    <div class="math-box-label">Example - Bernoulli Rate Function</div>
                     <p>If $X \sim \text{Bernoulli}(p)$, then $M(\theta) = 1 - p + pe^\theta$ and $\Lambda(\theta) = \log(1-p+pe^\theta)$. The rate function is the relative entropy
                     $$I(x) = x\log\frac{x}{p} + (1-x)\log\frac{1-x}{1-p} = D_{\text{KL}}(\text{Ber}(x) \,\|\, \text{Ber}(p))$$
                     for $x \in [0,1]$, and $I(x) = \infty$ otherwise. This is Sanov's theorem in the binary case.</p>
@@ -166,7 +166,7 @@
                 <h2 class="mt-5 mb-3">Gärtner-Ellis Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.3.2 — Gärtner-Ellis Theorem</div>
+                    <div class="math-box-label">Theorem 5.3.2 - Gärtner-Ellis Theorem</div>
                     <p>Let $\Lambda_n(\theta) = \frac{1}{n}\log E[e^{\theta S_n}]$ where $S_n = X_1 + \cdots + X_n$. Suppose $\Lambda(\theta) = \lim_{n\to\infty} \Lambda_n(\theta)$ exists in $[-\infty, +\infty]$ for all $\theta$, and that $\Lambda$ is differentiable on $\{\Lambda < \infty\}$. Then the sequence $(\bar{X}_n)$ satisfies a large deviation principle with rate function
                     $$I(x) = \sup_{\theta}\{\theta x - \Lambda(\theta)\}.$$</p>
                     <p class="mb-0">This extends Cramér's theorem to non-i.i.d. sequences (e.g. Markov chains) and provides a systematic framework for computing large deviation rates.</p>
@@ -175,7 +175,7 @@
                 <h2 class="mt-5 mb-3">Sanov's Theorem</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 5.3.3 — Sanov's Theorem</div>
+                    <div class="math-box-label">Theorem 5.3.3 - Sanov's Theorem</div>
                     <p>Let $X_1, \ldots, X_n$ be i.i.d. with law $P$. The empirical measure $L_n = \frac{1}{n}\sum_{i=1}^n \delta_{X_i}$ satisfies a large deviation principle on the space of probability measures with rate function
                     $$I(Q) = D_{\text{KL}}(Q \,\|\, P) = E_Q\!\left[\log\frac{dQ}{dP}\right]$$
                     (the relative entropy of $Q$ with respect to $P$). Explicitly:
@@ -184,7 +184,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Connection to Statistical Mechanics</div>
+                    <div class="math-box-label">Remark - Connection to Statistical Mechanics</div>
                     <p class="mb-0">In statistical mechanics, large deviation theory underlies the derivation of thermodynamic quantities. The rate function $I$ plays the role of entropy: equilibrium states are those minimising $I$. The Gibbs variational principle $F = -\frac{1}{\beta}\log Z$ is a large deviation statement about empirical averages of energy.</p>
                 </div>
 

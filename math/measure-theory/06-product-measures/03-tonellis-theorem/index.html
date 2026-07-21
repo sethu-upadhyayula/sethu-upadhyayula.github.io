@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -129,12 +129,12 @@
             <article>
                 <h1 class="text-accent mb-4">6.3 Tonelli's Theorem</h1>
 
-                <p>Tonelli's theorem is the non-negative analogue of Fubini's theorem — it requires no integrability hypothesis but only that $f \geq 0$. It is primarily used as a tool to <em>verify</em> that a function is integrable, after which Fubini's theorem applies.</p>
+                <p>Tonelli's theorem is the non-negative analogue of Fubini's theorem - it requires no integrability hypothesis but only that $f \geq 0$. It is primarily used as a tool to <em>verify</em> that a function is integrable, after which Fubini's theorem applies.</p>
 
                 <h2 class="mt-5 mb-3">Statement</h2>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 6.3.1 — Tonelli's Theorem</div>
+                    <div class="math-box-label">Theorem 6.3.1 - Tonelli's Theorem</div>
                     <p>Let $(X, \mathcal{A}, \mu)$ and $(Y, \mathcal{B}, \nu)$ be $\sigma$-finite measure spaces. Let $f : X \times Y \to [0, \infty]$ be $(\mathcal{A} \otimes \mathcal{B})$-measurable and non-negative. Then:</p>
                     <ol>
                         <li>For $\mu$-a.e. $x$: $y \mapsto f(x,y)$ is $\mathcal{B}$-measurable.</li>
@@ -146,7 +146,7 @@
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark 6.3.2 — Tonelli vs. Fubini</div>
+                    <div class="math-box-label">Remark 6.3.2 - Tonelli vs. Fubini</div>
                     <p>The key difference:</p>
                     <ul class="mb-0">
                         <li><strong>Tonelli</strong>: $f \geq 0$, no integrability required; all three expressions are always equal (in $[0,\infty]$).</li>
@@ -158,28 +158,28 @@
                 <h2 class="mt-5 mb-3">Applications</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 6.3.3 — Verifying Fubini Applies</div>
+                    <div class="math-box-label">Example 6.3.3 - Verifying Fubini Applies</div>
                     <p>Consider $f(x,y) = e^{-xy}\sin x$ on $X = Y = (0,\infty)$ with Lebesgue measure. We want $\int_0^\infty\!\!\int_0^\infty f\,dy\,dx$. First check integrability via Tonelli on $|f| = e^{-xy}|\sin x|$:
                     $$\int_0^\infty \left(\int_0^\infty e^{-xy}|\sin x|\,dy\right)dx = \int_0^\infty \frac{|\sin x|}{x}\,dx = +\infty.$$
                     So $f \notin L^1((0,\infty)^2)$ and Fubini does not apply in the usual sense. However, for each fixed $a > 0$, restricting to $(0,a)\times(0,\infty)$ the function is $L^1$, and Fubini applies there. This illustrates the importance of checking Tonelli first.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 6.3.4 — Computing with Tonelli</div>
+                    <div class="math-box-label">Example 6.3.4 - Computing with Tonelli</div>
                     <p>For non-negative $f(x,y) = e^{-(x+y)}$ on $(0,\infty)^2$:
                     $$\iint e^{-(x+y)}\,d(\lambda\otimes\lambda) = \int_0^\infty\!\int_0^\infty e^{-x}e^{-y}\,dy\,dx = \int_0^\infty e^{-x}\left(\int_0^\infty e^{-y}\,dy\right)dx = \int_0^\infty e^{-x} \cdot 1\,dx = 1.$$
                     The double integral is 1, which equals $(\int_0^\infty e^{-x}\,dx)^2 = 1^2 = 1$ as expected. Tonelli guarantees all three expressions equal 1.</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 6.3.5 — Gaussian Integral via Tonelli</div>
+                    <div class="math-box-label">Example 6.3.5 - Gaussian Integral via Tonelli</div>
                     <p>To compute $I = \int_{-\infty}^\infty e^{-x^2}\,dx$, write $I^2 = \int\!\int e^{-(x^2+y^2)}\,dx\,dy$. By Tonelli (integrand non-negative), convert to polar coordinates:
                     $$I^2 = \int_0^{2\pi}\!\int_0^\infty e^{-r^2} r\,dr\,d\theta = 2\pi \cdot \frac{1}{2} = \pi.$$
                     So $I = \sqrt{\pi}$. Tonelli justifies the interchange and the polar coordinate change.</p>
                 </div>
 
                 <div class="math-box corollary">
-                    <div class="math-box-label">Corollary 6.3.6 — Fubini-Tonelli Theorem</div>
+                    <div class="math-box-label">Corollary 6.3.6 - Fubini-Tonelli Theorem</div>
                     <p class="mb-0">Combining both: let $f$ be measurable on $X\times Y$ ($\sigma$-finite). If $\int_X\left(\int_Y |f(x,y)|\,d\nu\right)d\mu < \infty$ (or with the order of integration reversed), then $f \in L^1(\mu\otimes\nu)$ and all three integrals are equal. This combined statement is often what is applied in practice.</p>
                 </div>
 

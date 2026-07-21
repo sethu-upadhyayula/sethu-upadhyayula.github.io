@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -80,33 +80,33 @@
             <article>
                 <h1 class="text-accent mb-4">4.1 Pin Risk and Discrete Barrier Monitoring</h1>
 
-                <p>Throughout this subject, barrier and digital-like features (knockouts in barrier options and TARFs, accumulators, and worst-of digitals) have repeatedly been identified as the source of discontinuous Greeks and hedging difficulty. This section examines the sharpest form of this problem — pin risk near expiry — and the related practical question of how a barrier is actually observed in the market, which materially affects both its price and the dealer's hedging behaviour.</p>
+                <p>Throughout this subject, barrier and digital-like features (knockouts in barrier options and TARFs, accumulators, and worst-of digitals) have repeatedly been identified as the source of discontinuous Greeks and hedging difficulty. This section examines the sharpest form of this problem - pin risk near expiry - and the related practical question of how a barrier is actually observed in the market, which materially affects both its price and the dealer's hedging behaviour.</p>
 
                 <h2 class="mt-5 mb-3">Pin Risk</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Pin Risk</div>
-                    <p class="mb-0"><em>Pin risk</em> refers to the uncertainty a dealer faces when the underlying spot rate is very close to a critical level — a digital strike, a barrier, or a vanilla strike near expiry — such that the final outcome (in-the-money or out-of-the-money, knocked-out or not) is essentially a coin flip, but the hedge position required for each outcome is very different. The term originates in equity options trading, where a stock "pinned" to a strike at expiry creates ambiguity about whether assigned/exercised positions will be large or zero.</p>
+                    <div class="math-box-label">Definition - Pin Risk</div>
+                    <p class="mb-0"><em>Pin risk</em> refers to the uncertainty a dealer faces when the underlying spot rate is very close to a critical level - a digital strike, a barrier, or a vanilla strike near expiry - such that the final outcome (in-the-money or out-of-the-money, knocked-out or not) is essentially a coin flip, but the hedge position required for each outcome is very different. The term originates in equity options trading, where a stock "pinned" to a strike at expiry creates ambiguity about whether assigned/exercised positions will be large or zero.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Why Pin Risk Is Acute for Digitals and Barriers</div>
-                    <p class="mb-0">A vanilla option's payoff is continuous in spot — near the strike at expiry, the payoff is close to zero either way, so the hedging error from being on the "wrong side" of the strike is small. A digital or barrier option's payoff is discontinuous: an FX digital paying a fixed amount $X$ if $S_T > K$ and zero otherwise has a payoff that jumps by the full $X$ across the strike. As $T \to 0$ with $S_t$ close to $K$, the digital's delta — the sensitivity of its value to spot — approaches a Dirac-delta-like spike: it can require a hedge notional many multiples of the digital's payoff amount, concentrated in an infinitesimally small range of spot, and that hedge must be unwound entirely if spot ends up on the other side of $K$. The same logic applies to a barrier option's knockout as spot approaches $H$ near the monitoring date or expiry: the position's delta can swing from a large directional exposure to zero (or vice versa) based on whether spot is a fraction of a pip above or below $H$.</p>
+                    <div class="math-box-label">Remark - Why Pin Risk Is Acute for Digitals and Barriers</div>
+                    <p class="mb-0">A vanilla option's payoff is continuous in spot - near the strike at expiry, the payoff is close to zero either way, so the hedging error from being on the "wrong side" of the strike is small. A digital or barrier option's payoff is discontinuous: an FX digital paying a fixed amount $X$ if $S_T > K$ and zero otherwise has a payoff that jumps by the full $X$ across the strike. As $T \to 0$ with $S_t$ close to $K$, the digital's delta - the sensitivity of its value to spot - approaches a Dirac-delta-like spike: it can require a hedge notional many multiples of the digital's payoff amount, concentrated in an infinitesimally small range of spot, and that hedge must be unwound entirely if spot ends up on the other side of $K$. The same logic applies to a barrier option's knockout as spot approaches $H$ near the monitoring date or expiry: the position's delta can swing from a large directional exposure to zero (or vice versa) based on whether spot is a fraction of a pip above or below $H$.</p>
                 </div>
 
-                <p>Every product covered in this subject that has a barrier, knockout, or digital-like feature — barrier options (Section 1.1), TARFs (Section 1.2), accumulators (Section 2.1, with the gap risk discussion in Section 2.2 being a direct consequence of pin risk realised discontinuously), and worst-of digitals (Section 3.2) — is subject to pin risk concentrated around its respective trigger levels as the relevant observation date approaches.</p>
+                <p>Every product covered in this subject that has a barrier, knockout, or digital-like feature - barrier options (Section 1.1), TARFs (Section 1.2), accumulators (Section 2.1, with the gap risk discussion in Section 2.2 being a direct consequence of pin risk realised discontinuously), and worst-of digitals (Section 3.2) - is subject to pin risk concentrated around its respective trigger levels as the relevant observation date approaches.</p>
 
                 <h2 class="mt-5 mb-3">Discrete vs. Continuous Barrier Monitoring</h2>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Recap: The Monitoring Convention Matters</div>
-                    <p class="mb-0">As introduced in Section 1.1, a barrier can be monitored <em>continuously</em> (the option knocks in/out the instant spot touches $H$, at any time) or <em>discretely</em> (spot is checked only at specified observation times, e.g. once per business day at a fixed fixing such as the WM/Reuters 4pm London fix). The choice of convention is contractual and must be specified precisely — it is not a modelling nicety but a term of the trade that materially changes the option's value, since a discretely-monitored barrier is strictly "harder to hit" (the option is less likely to knock, all else equal) than a continuously-monitored one.</p>
+                    <div class="math-box-label">Remark - Recap: The Monitoring Convention Matters</div>
+                    <p class="mb-0">As introduced in Section 1.1, a barrier can be monitored <em>continuously</em> (the option knocks in/out the instant spot touches $H$, at any time) or <em>discretely</em> (spot is checked only at specified observation times, e.g. once per business day at a fixed fixing such as the WM/Reuters 4pm London fix). The choice of convention is contractual and must be specified precisely - it is not a modelling nicety but a term of the trade that materially changes the option's value, since a discretely-monitored barrier is strictly "harder to hit" (the option is less likely to knock, all else equal) than a continuously-monitored one.</p>
                 </div>
 
                 <h2 class="mt-5 mb-3">Pricing Adjustments for Discrete Monitoring</h2>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — Broadie-Glasserman-Kou Continuity Correction</div>
+                    <div class="math-box-label">Definition - Broadie-Glasserman-Kou Continuity Correction</div>
                     <p class="mb-0">For a barrier monitored discretely at $m$ equally-spaced times over the option's life $T$ (spacing $\Delta t = T/m$), the discretely-monitored barrier price can be approximated by applying the continuous-monitoring formula to a <em>shifted</em> barrier level $H'$:</p>
                     <p class="mb-0">$$H' = H \cdot \exp\!\left(\pm\,0.5826\,\sigma\sqrt{\Delta t}\right)$$</p>
                     <p class="mb-0">where the sign is chosen so that $H'$ is moved <em>away</em> from the current spot (i.e., $+$ for an up-barrier, $-$ for a down-barrier), reflecting that the discretely-monitored barrier is effectively "further away" than the nominal level $H$. As $\Delta t \to 0$ (monitoring frequency $\to \infty$), $H' \to H$ and the continuous formula is recovered exactly.</p>
@@ -115,10 +115,10 @@
                 <h2 class="mt-5 mb-3">Monitoring Frequency in Practice</h2>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — Daily vs. Continuous Monitoring on a Barrier Close to Spot</div>
+                    <div class="math-box-label">Example - Daily vs. Continuous Monitoring on a Barrier Close to Spot</div>
                     <p>Consider a 3-month down-and-out USD put / JPY call with barrier $H$ set 2% below the current spot $S_0$, with $\sigma = 10\%$ annualised. For daily monitoring ($\Delta t = 1/252$, so $\sqrt{\Delta t} \approx 0.063$), the continuity correction shifts the effective barrier by:</p>
                     <p>$$H' = H \cdot \exp(-0.5826 \times 0.10 \times 0.063) \approx H \times (1 - 0.00367) \approx H \times 0.99633$$</p>
-                    <p class="mb-0">i.e., the effective barrier for pricing purposes is roughly 0.37% further from spot than the contractual barrier $H$ — meaning the discretely (daily)-monitored option is slightly more expensive than a naive application of the continuous formula at $H$ would suggest, because the discrete barrier is genuinely harder to trigger. If the monitoring frequency were reduced to weekly ($\Delta t = 1/52$, $\sqrt{\Delta t}\approx 0.139$), the shift would be roughly 0.80% — a larger adjustment, reflecting that a weekly-checked barrier is meaningfully easier to "jump past" between observations without triggering than a daily-checked one, and correspondingly the option is worth more still. Dealers therefore must know not just the level $H$ but the precise monitoring schedule to price and hedge correctly — and near expiry, when only one or two monitoring dates remain, the pin risk discussion above applies acutely to each remaining discrete observation.</p>
+                    <p class="mb-0">i.e., the effective barrier for pricing purposes is roughly 0.37% further from spot than the contractual barrier $H$ - meaning the discretely (daily)-monitored option is slightly more expensive than a naive application of the continuous formula at $H$ would suggest, because the discrete barrier is genuinely harder to trigger. If the monitoring frequency were reduced to weekly ($\Delta t = 1/52$, $\sqrt{\Delta t}\approx 0.139$), the shift would be roughly 0.80% - a larger adjustment, reflecting that a weekly-checked barrier is meaningfully easier to "jump past" between observations without triggering than a daily-checked one, and correspondingly the option is worth more still. Dealers therefore must know not just the level $H$ but the precise monitoring schedule to price and hedge correctly - and near expiry, when only one or two monitoring dates remain, the pin risk discussion above applies acutely to each remaining discrete observation.</p>
                 </div>
 
                 <hr class="my-5">

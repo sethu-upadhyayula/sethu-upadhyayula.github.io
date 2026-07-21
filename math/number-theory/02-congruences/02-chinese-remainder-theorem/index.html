@@ -24,7 +24,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -118,17 +118,17 @@
             <article>
                 <h1 class="text-accent mb-4">2.2 Chinese Remainder Theorem</h1>
 
-                <p>The Chinese Remainder Theorem (CRT) — known in China as early as the 3rd century CE — solves systems of simultaneous congruences with pairwise coprime moduli. It is a cornerstone of computational number theory and modern cryptography.</p>
+                <p>The Chinese Remainder Theorem (CRT) - known in China as early as the 3rd century CE - solves systems of simultaneous congruences with pairwise coprime moduli. It is a cornerstone of computational number theory and modern cryptography.</p>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.2.1 — Chinese Remainder Theorem</div>
+                    <div class="math-box-label">Theorem 2.2.1 - Chinese Remainder Theorem</div>
                     <p>Let $m_1, \ldots, m_k$ be pairwise coprime positive integers (i.e., $\gcd(m_i, m_j) = 1$ for $i \neq j$), and let $a_1, \ldots, a_k$ be any integers. Then the system
                     $$x \equiv a_1 \pmod{m_1}, \quad x \equiv a_2 \pmod{m_2}, \quad \ldots, \quad x \equiv a_k \pmod{m_k}$$
                     has a unique solution modulo $M = m_1 m_2 \cdots m_k$.</p>
                 </div>
 
                 <div class="math-box proof">
-                    <div class="math-box-label">Proof — Construction</div>
+                    <div class="math-box-label">Proof - Construction</div>
                     <p>Set $M_i = M / m_i$ for each $i$. Since $\gcd(M_i, m_i) = 1$ (as $m_i$ divides none of the other $m_j$), there exists $y_i$ with $M_i y_i \equiv 1 \pmod{m_i}$ (found by extended Euclidean algorithm). Set
                     $$x = \sum_{i=1}^k a_i M_i y_i.$$
                     For each $j$: $M_i \equiv 0 \pmod{m_j}$ for $i \neq j$, so $x \equiv a_j M_j y_j \equiv a_j \cdot 1 = a_j \pmod{m_j}$.</p>
@@ -136,13 +136,13 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Theorem 2.2.2 — Ring Isomorphism</div>
+                    <div class="math-box-label">Theorem 2.2.2 - Ring Isomorphism</div>
                     <p class="mb-0">If $m_1, \ldots, m_k$ are pairwise coprime, then the map $x \mapsto (x \bmod m_1, \ldots, x \bmod m_k)$ is a ring isomorphism:
                     $$\mathbb{Z}/M\mathbb{Z} \cong \mathbb{Z}/m_1\mathbb{Z} \times \cdots \times \mathbb{Z}/m_k\mathbb{Z}.$$</p>
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example 2.2.3 — Solve $x \equiv 2 \pmod{3}$, $x \equiv 3 \pmod{5}$, $x \equiv 2 \pmod{7}$</div>
+                    <div class="math-box-label">Example 2.2.3 - Solve $x \equiv 2 \pmod{3}$, $x \equiv 3 \pmod{5}$, $x \equiv 2 \pmod{7}$</div>
                     <p>$M = 3 \cdot 5 \cdot 7 = 105$. $M_1 = 35$, $M_2 = 21$, $M_3 = 15$.</p>
                     <ul>
                         <li>$35 y_1 \equiv 1 \pmod{3}$: $35 \equiv 2 \pmod 3$, so $2y_1 \equiv 1$, $y_1 = 2$.</li>
@@ -154,7 +154,7 @@
                 </div>
 
                 <div class="math-box theorem">
-                    <div class="math-box-label">Corollary 2.2.4 — Multiplicativity of $\phi$</div>
+                    <div class="math-box-label">Corollary 2.2.4 - Multiplicativity of $\phi$</div>
                     <p class="mb-0">If $\gcd(m,n)=1$ then $\phi(mn) = \phi(m)\phi(n)$. This follows from the CRT isomorphism applied to the unit groups: $(\mathbb{Z}/mn\mathbb{Z})^* \cong (\mathbb{Z}/m\mathbb{Z})^* \times (\mathbb{Z}/n\mathbb{Z})^*$.</p>
                 </div>
 

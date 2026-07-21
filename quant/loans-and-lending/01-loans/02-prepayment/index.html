@@ -19,7 +19,7 @@
         </button>
         <div class="nav-dock-panel" id="nav-dock-panel">
             <a href="../../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
-            <a href="../../../../bio/" class="crosslink-dot" data-crosslink="bio" aria-label="Bio"><i class="fas fa-dna"></i></a>
+            <a href="../../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
             <a href="../../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
             <a href="../../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
             <a href="../../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
@@ -81,11 +81,11 @@
             <article>
                 <h1 class="text-accent mb-4">1.2 Prepayment Modelling</h1>
 
-                <p>A borrower typically has the right — but not the obligation — to repay a loan or mortgage before its scheduled maturity. This <em>prepayment optionality</em> creates cash flow uncertainty for the lender and is the primary source of risk in mortgage-backed securities (MBS). Accurate prepayment modelling is essential for pricing, hedging, and portfolio management of mortgage and consumer loan portfolios.</p>
+                <p>A borrower typically has the right - but not the obligation - to repay a loan or mortgage before its scheduled maturity. This <em>prepayment optionality</em> creates cash flow uncertainty for the lender and is the primary source of risk in mortgage-backed securities (MBS). Accurate prepayment modelling is essential for pricing, hedging, and portfolio management of mortgage and consumer loan portfolios.</p>
 
                 <h2 class="mt-5 mb-3">Single Monthly Mortality (SMM) and CPR</h2>
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — SMM and Conditional Prepayment Rate</div>
+                    <div class="math-box-label">Definition - SMM and Conditional Prepayment Rate</div>
                     <p>The <em>Single Monthly Mortality</em> (SMM) is the fraction of the beginning-of-month outstanding balance (net of scheduled principal) that prepays voluntarily in a given month:
                     $$\text{SMM}_t = \frac{\text{Unscheduled Principal}_t}{\text{Balance}_{t-1} - \text{Scheduled Principal}_t}$$
                     The annualised equivalent is the <em>Conditional Prepayment Rate</em> (CPR):
@@ -97,7 +97,7 @@
                 <p>The Public Securities Association (PSA) standard benchmark models the prepayment rate as a CPR that ramps up linearly during the first 30 months of a loan's life (the seasoning ramp), then remains constant.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — PSA Model</div>
+                    <div class="math-box-label">Definition - PSA Model</div>
                     <p>Under the 100% PSA standard:
                     $$\text{CPR}(t) = \begin{cases} 6\% \times (t/30) & t \leq 30\text{ months} \\ 6\% & t > 30\text{ months} \end{cases}$$
                     where $t$ is the loan age in months. The "100 PSA" curve is the baseline benchmark. "$k$ PSA" means prepayments run at $k\%$ of the benchmark CPR at each age:
@@ -106,7 +106,7 @@
                 </div>
 
                 <div class="math-box example">
-                    <div class="math-box-label">Example — PSA Cash Flow Impact</div>
+                    <div class="math-box-label">Example - PSA Cash Flow Impact</div>
                     <p>For a \$100m pool of 30-year 6% mortgages at 100 PSA:</p>
                     <p>Month 10: CPR $= 6\% \times 10/30 = 2\%$, SMM $= 1-(1-0.02)^{1/12} \approx 0.168\%$.</p>
                     <p>Month 30+: CPR $= 6\%$, SMM $= 1-(0.94)^{1/12} \approx 0.514\%$ per month.</p>
@@ -115,7 +115,7 @@
 
                 <h2 class="mt-5 mb-3">Prepayment Drivers</h2>
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Economic Drivers of Prepayment</div>
+                    <div class="math-box-label">Remark - Economic Drivers of Prepayment</div>
                     <p>Prepayments are driven by three main forces:</p>
                     <ul>
                         <li><strong>Refinancing incentive:</strong> when prevailing rates fall below the loan coupon rate, borrowers refinance at lower rates. The key variable is the WAC (weighted average coupon) minus current market mortgage rates.</li>
@@ -129,15 +129,15 @@
                 <p>Because prepayments depend on the interest rate path, MBS cannot be priced by Z-spread. The OAS framework uses Monte Carlo simulation over interest rate paths.</p>
 
                 <div class="math-box definition">
-                    <div class="math-box-label">Definition — MBS OAS via Monte Carlo</div>
+                    <div class="math-box-label">Definition - MBS OAS via Monte Carlo</div>
                     <p>Simulate $N$ interest rate paths $\{r^{(j)}_t\}$ under the risk-neutral measure. On each path, run the prepayment model to generate path-specific cash flows $\{CF^{(j)}_t\}$. The OAS is the spread such that:
                     $$P_{\text{MBS}} = \frac{1}{N}\sum_{j=1}^{N}\sum_{t} CF^{(j)}_t \cdot e^{-\int_0^t (r^{(j)}_s + \text{OAS})\,ds}$$
                     equals the observed market price. OAS measures pure credit and liquidity compensation after the prepayment option value is removed.</p>
                 </div>
 
                 <div class="math-box remark">
-                    <div class="math-box-label">Remark — Negative Convexity</div>
-                    <p class="mb-0">MBS exhibit <em>negative convexity</em>: when rates fall, prepayments accelerate (borrowers refinance), shortening duration and capping price appreciation. When rates rise, prepayments slow, extending duration and amplifying price losses. This asymmetric price behaviour — losing more than it gains symmetrically — is the key distinction from standard bonds, which have positive convexity.</p>
+                    <div class="math-box-label">Remark - Negative Convexity</div>
+                    <p class="mb-0">MBS exhibit <em>negative convexity</em>: when rates fall, prepayments accelerate (borrowers refinance), shortening duration and capping price appreciation. When rates rise, prepayments slow, extending duration and amplifying price losses. This asymmetric price behaviour - losing more than it gains symmetrically - is the key distinction from standard bonds, which have positive convexity.</p>
                 </div>
 
                 <hr class="my-5">

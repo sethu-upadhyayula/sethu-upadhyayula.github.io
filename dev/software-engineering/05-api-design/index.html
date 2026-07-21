@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-section="dev">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. API Design</title>
+    <link rel="icon" type="image/png" href="../../../assets/icons/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle-fab" id="mobile-theme-toggle" type="button" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="nav-dock" id="nav-dock">
+        <a href="../../../about/" class="brand-mark" aria-label="About Sethu Upadhyayula"><img src="../../../assets/icons/favicon.png" alt="" class="pie-center-img"></a>
+        <a href="../../../" class="nav-dock-home" aria-label="Home"><i class="fas fa-house"></i></a>
+        <button class="nav-dock-toggle" id="nav-dock-toggle" type="button" aria-label="Site sections" aria-expanded="false" aria-controls="nav-dock-panel">
+            <i class="fas fa-compass"></i>
+        </button>
+        <div class="nav-dock-panel" id="nav-dock-panel">
+            <a href="../../../math/" class="crosslink-dot" data-crosslink="math" aria-label="Math"><i class="fas fa-infinity"></i></a>
+            <a href="../../../biology/" class="crosslink-dot" data-crosslink="bio" aria-label="Biology"><i class="fas fa-dna"></i></a>
+            <a href="../../../quant/" class="crosslink-dot" data-crosslink="quant" aria-label="Quant"><i class="fas fa-dollar-sign"></i></a>
+            <a href="../../../dev/" class="crosslink-dot" data-crosslink="dev" aria-label="Dev"><i class="fas fa-code"></i></a>
+            <a href="../../../chess/" class="crosslink-dot" data-crosslink="chess" aria-label="Chess"><i class="fas fa-chess"></i></a>
+            <a href="../../../music/" class="crosslink-dot" data-crosslink="music" aria-label="Music"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <main>
+        <aside class="math-toc" id="math-toc">
+            <a href="../../../dev/" class="btn btn-outline-custom btn-sm mb-4">&larr; Back to Dev</a>
+            <nav class="d-flex flex-column gap-2 small" id="math-toc-nav">
+                <a href="../" class="text-decoration-none text-accent fw-semibold fs-5">Software Engineering & Systems Design</a>
+                <hr>
+                <a href="../01-software-development-methodologies/" class="text-decoration-none toc-chapter-link"><strong>1.</strong> Software Development Methodologies</a>
+                <a href="../02-design-principles/" class="text-decoration-none toc-chapter-link"><strong>2.</strong> Design Principles</a>
+                <a href="../03-design-patterns/" class="text-decoration-none toc-chapter-link"><strong>3.</strong> Design Patterns</a>
+                <a href="../04-software-architecture-patterns/" class="text-decoration-none toc-chapter-link"><strong>4.</strong> Software Architecture Patterns</a>
+                <a href="../05-api-design/" class="text-decoration-none toc-chapter-link toc-active"><strong>5.</strong> API Design</a>
+                <a href="../06-testing/" class="text-decoration-none toc-chapter-link"><strong>6.</strong> Testing</a>
+                <a href="../07-version-control-and-ci-cd/" class="text-decoration-none toc-chapter-link"><strong>7.</strong> Version Control and CI/CD</a>
+                <a href="../08-scalability-fundamentals/" class="text-decoration-none toc-chapter-link"><strong>8.</strong> Scalability Fundamentals</a>
+            </nav>
+        </aside>
+        <section class="math-content">
+            <div class="d-lg-none mb-4">
+                <a href="../../../dev/" class="btn btn-outline-custom btn-sm">&larr; Back to Dev</a>
+            </div>
+            <nav class="breadcrumb-nav">
+                <a href="../../../dev/">Dev</a> ›
+                <a href="../">Software Engineering & Systems Design</a> ›
+                <span>5. API Design</span>
+            </nav>
+            <article>
+
+                <h1 class="text-accent mb-4">5. API Design</h1>
+
+                <p>An API is a contract — this chapter covers how to design one that is clear to use correctly, hard to use incorrectly, and stable enough that consumers aren't constantly broken by changes on the other side of it.</p>
+
+                <h2 class="mt-5 mb-3">REST</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — REST</div>
+                    <p class="mb-0"><strong>REST (Representational State Transfer)</strong> is an architectural style for web APIs built around HTTP (Chapter 6 of Computer Networks) — resources are identified by URLs, and standard HTTP methods (GET, POST, PUT, DELETE) express the operation to perform on that resource, with responses typically encoded as JSON. RESTful design favours resource-oriented thinking (nouns, like "orders" or "users") over action-oriented endpoints (verbs, like "createOrder").</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Versioning</h2>
+
+                <p>Because an API's consumers cannot all update simultaneously with the API itself, breaking changes require a deliberate <strong>versioning</strong> strategy — commonly a version number in the URL path or a request header — allowing existing consumers to keep using an older version while new consumers adopt the latest, and giving the API owner a clear, bounded process for eventually deprecating and retiring old versions.</p>
+
+                <h2 class="mt-5 mb-3">Idempotency</h2>
+
+                <div class="math-box definition">
+                    <div class="math-box-label">Definition — Idempotency</div>
+                    <p class="mb-0">An operation is <strong>idempotent</strong> if performing it multiple times has the same effect as performing it once — GET, PUT, and DELETE are conventionally expected to be idempotent under REST, while POST typically is not. Idempotency matters enormously for reliability: a client that doesn't receive a response (due to a network issue, Computer Networks) can safely retry an idempotent request without risking an unintended duplicate effect (such as double-charging a customer).</p>
+                </div>
+
+                <h2 class="mt-5 mb-3">Pagination and Rate Limiting</h2>
+
+                <p>APIs returning potentially large result sets typically implement <strong>pagination</strong> (returning results in bounded-size pages, with a token or offset to fetch the next page), and APIs exposed to external or high-volume consumers typically implement <strong>rate limiting</strong> (capping how many requests a given client can make in a given time window) — both protecting the API's own backing systems from being overwhelmed by any single consumer's usage pattern.</p>
+
+                <h2 class="mt-5 mb-3">Beyond REST: GraphQL and gRPC</h2>
+
+                <div class="math-box example">
+                    <div class="math-box-label">Alternative API Styles</div>
+                    <ul class="mb-0">
+                        <li><strong>GraphQL</strong> — lets a client specify exactly which fields it needs in a single request, avoiding both the over-fetching and the multiple-round-trip under-fetching that a fixed REST endpoint shape can cause.</li>
+                        <li><strong>gRPC</strong> — a high-performance RPC framework using a strongly typed schema (Protocol Buffers) and HTTP/2, common for efficient internal service-to-service communication (particularly relevant to microservices, Chapter 4) rather than public-facing APIs.</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5 mb-3">Documentation as Part of the API</h2>
+
+                <p>An API is only as usable as its documentation — clear, accurate, example-rich documentation (often generated directly from a formal schema, such as an OpenAPI specification) is not a secondary concern but a core part of what makes an API actually usable by other developers, arguably as important as the API's own technical correctness.</p>
+
+                <hr class="my-5">
+                <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                    <a href="../04-software-architecture-patterns/" class="btn btn-outline-custom">&larr; 4. Software Architecture Patterns</a>
+                    <a href="../06-testing/" class="btn btn-custom">6. Testing &rarr;</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="social-dock">
+        <a href="https://www.linkedin.com/in/sethu-upadhyayula/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script src="../../../js/script.js"></script>
+</body>
+</html>
