@@ -9,7 +9,7 @@
     // 0deg/3-o'clock, going clockwise (screen y grows downward, so increasing angle
     // here reads clockwise on screen). Puts Math/Quant/Chess across the top half and
     // Bio/Dev/Music across the bottom half, each reading left-to-right.
-    const SECTIONS = ["music", "dev", "bio", "math", "quant", "chess"];
+    const SECTIONS = ["music", "dev", "biology", "math", "quant", "chess"];
 
     // Solid per-section slice color (the previous gradient's darker end), overlaid
     // with a radial vignette below so it still reads as "dark toward the center".
@@ -17,7 +17,7 @@
         math: "#1a2b3f",
         quant: "#3d2f0a",
         chess: "#2e1810",
-        bio: "#132a1c",
+        biology: "#132a1c",
         dev: "#0a2a2d",
         music: "#241a35",
     };

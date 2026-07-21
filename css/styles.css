@@ -63,14 +63,14 @@ main {
 html[data-section="math"]  { --accent: var(--section-math); }
 html[data-section="quant"] { --accent: var(--section-quant); }
 html[data-section="chess"] { --accent: var(--section-chess); }
-html[data-section="bio"]   { --accent: var(--section-bio); }
+html[data-section="biology"]   { --accent: var(--section-bio); }
 html[data-section="dev"]   { --accent: var(--section-dev); }
 html[data-section="music"] { --accent: var(--section-music); }
 
 [data-theme="dark"][data-section="math"]  { --accent: #6fa8dc; }
 [data-theme="dark"][data-section="quant"] { --accent: #f5c542; }
 [data-theme="dark"][data-section="chess"] { --accent: #e0707a; }
-[data-theme="dark"][data-section="bio"]   { --accent: #6fcf97; }
+[data-theme="dark"][data-section="biology"]   { --accent: #6fcf97; }
 [data-theme="dark"][data-section="dev"]   { --accent: #4dd0e1; }
 [data-theme="dark"][data-section="music"] { --accent: #b39ddb; }
 
@@ -86,7 +86,7 @@ html[data-section="chess"] {
     --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect x='8' y='8' width='18' height='18' fill='%23a5303a'/%3E%3Crect x='26' y='8' width='18' height='18' fill='none' stroke='%23a5303a' stroke-width='2'/%3E%3Crect x='8' y='26' width='18' height='18' fill='none' stroke='%23a5303a' stroke-width='2'/%3E%3Crect x='26' y='26' width='18' height='18' fill='%23a5303a'/%3E%3C/svg%3E");
 }
 
-html[data-section="bio"] {
+html[data-section="biology"] {
     --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M15,45 C15,20 45,15 48,10 C45,35 30,48 15,45 Z' fill='none' stroke='%233f8f5f' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='M18,42 C25,32 32,24 46,12' stroke='%233f8f5f' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
@@ -229,14 +229,14 @@ body::before {
 .crosslink-dot[data-crosslink="math"]  { color: var(--section-math); }
 .crosslink-dot[data-crosslink="quant"] { color: var(--section-quant); }
 .crosslink-dot[data-crosslink="chess"] { color: var(--section-chess); }
-.crosslink-dot[data-crosslink="bio"]   { color: var(--section-bio); }
+.crosslink-dot[data-crosslink="biology"]   { color: var(--section-bio); }
 .crosslink-dot[data-crosslink="dev"]   { color: var(--section-dev); }
 .crosslink-dot[data-crosslink="music"] { color: var(--section-music); }
 
 html[data-section="math"]  .crosslink-dot[data-crosslink="math"],
 html[data-section="quant"] .crosslink-dot[data-crosslink="quant"],
 html[data-section="chess"] .crosslink-dot[data-crosslink="chess"],
-html[data-section="bio"]   .crosslink-dot[data-crosslink="bio"],
+html[data-section="biology"]   .crosslink-dot[data-crosslink="biology"],
 html[data-section="dev"]   .crosslink-dot[data-crosslink="dev"],
 html[data-section="music"] .crosslink-dot[data-crosslink="music"] {
     opacity: 1;
@@ -511,25 +511,6 @@ html[data-section="music"] .crosslink-dot[data-crosslink="music"] {
     text-decoration: underline;
 }
 
-/* ── WIP Banner ── */
-
-.wip-banner {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    background: rgba(245, 197, 66, 0.08);
-    border: 1px solid rgba(245, 197, 66, 0.3);
-    border-radius: 10px;
-    padding: 0.65rem 1rem;
-    font-size: 0.875rem;
-    margin-bottom: 1.5rem;
-}
-
-.wip-banner i {
-    color: var(--accent);
-    flex-shrink: 0;
-}
-
 /* ── Content boxes (definitions, theorems, examples, …) ── */
 
 .math-box {
@@ -585,55 +566,10 @@ html[data-section="music"] .crosslink-dot[data-crosslink="music"] {
     margin-bottom: 0;
 }
 
-/* ── Homepage: dark celestial theme ── */
+/* ── Homepage ── */
 
 html[data-section="home"] {
     --bg-color: #06060c;
-}
-
-.orbital-rings {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -2;
-}
-
-.orbital-rings .ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid rgba(230, 187, 77, 0.1);
-}
-
-.orbital-rings .ring.r1 { width: 70vmax; height: 70vmax; top: -18vmax; left: -14vmax; }
-.orbital-rings .ring.r2 { width: 48vmax; height: 48vmax; bottom: -18vmax; right: -12vmax; border-color: rgba(230, 187, 77, 0.08); }
-.orbital-rings .ring.r3 { width: 96vmax; height: 96vmax; top: 50%; left: 50%; transform: translate(-50%, -50%); border-color: rgba(230, 187, 77, 0.05); }
-.orbital-rings .ring.r4 { width: 34vmax; height: 34vmax; top: 8vh; right: 6vw; border-color: rgba(111, 159, 209, 0.1); }
-.orbital-rings .ring.r5 { width: 26vmax; height: 26vmax; bottom: 10vh; left: 8vw; border-color: rgba(178, 146, 224, 0.1); }
-
-.nebula {
-    position: fixed;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: -2;
-    filter: blur(60px);
-}
-
-.nebula.n1 { width: 55vmax; height: 55vmax; top: -18vmax; left: 2vw; background: radial-gradient(circle, rgba(230, 187, 77, 0.12), transparent 70%); }
-.nebula.n2 { width: 60vmax; height: 60vmax; bottom: -22vmax; right: -4vw; background: radial-gradient(circle, rgba(111, 159, 209, 0.1), transparent 70%); }
-.nebula.n3 { width: 45vmax; height: 45vmax; top: 62%; left: 8%; background: radial-gradient(circle, rgba(178, 146, 224, 0.08), transparent 70%); }
-.nebula.n4 { width: 40vmax; height: 40vmax; top: 8%; right: 10%; background: radial-gradient(circle, rgba(123, 199, 154, 0.08), transparent 70%); }
-
-.constellation-lines {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.constellation-lines path {
-    stroke: rgba(230, 187, 77, 0.16);
-    stroke-width: 1;
-    fill: none;
 }
 
 /* ── Homepage pie ── */
@@ -707,14 +643,9 @@ html[data-section="home"] {
 .pie-label[data-section="math"]  { background: #4da6ff; }
 .pie-label[data-section="quant"] { background: #ffc94d; }
 .pie-label[data-section="chess"] { background: #ff9d4d; }
-.pie-label[data-section="bio"]   { background: #4ade80; }
+.pie-label[data-section="biology"]   { background: #4ade80; }
 .pie-label[data-section="dev"]   { background: #22d3ee; }
 .pie-label[data-section="music"] { background: #c084fc; }
-
-@keyframes icon-twinkle {
-    0%, 100% { opacity: 0.4; }
-    50%      { opacity: 1; }
-}
 
 /* Center "S" badge sits outside the (non-uniformly scaled) SVG so it always stays a circle. */
 
@@ -741,91 +672,9 @@ html[data-section="home"] {
 }
 
 /* Hovering the "S" only grows the "S" itself - it's an independent hover target,
-   not linked to the wedges/icons (and hovering a wedge/icon doesn't grow the "S" either,
-   handled above via the "wedge-hovered" class only touching wedges/icons). */
+   not linked to the wedges/icons. */
 
 .pie-center-group:hover .pie-center-img {
     transform: scale(1.22);
 }
 
-/* ── Orbit doodles: sparse scattered symbols (decoupled from the pie's angles), with real mouse-parallax ── */
-
-.orbit-doodles {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    background-repeat: repeat;
-    background-size: 260px 260px;
-    background-image:
-        radial-gradient(1.6px 1.6px at 8% 15%, rgba(230, 187, 77, 0.9), transparent),
-        radial-gradient(1.1px 1.1px at 22% 55%, rgba(230, 187, 77, 0.55), transparent),
-        radial-gradient(1.9px 1.9px at 38% 8%, rgba(255, 255, 255, 0.6), transparent),
-        radial-gradient(1.2px 1.2px at 48% 72%, rgba(230, 187, 77, 0.6), transparent),
-        radial-gradient(1.5px 1.5px at 60% 30%, rgba(230, 187, 77, 0.75), transparent),
-        radial-gradient(1px 1px at 70% 85%, rgba(255, 255, 255, 0.45), transparent),
-        radial-gradient(1.7px 1.7px at 82% 45%, rgba(230, 187, 77, 0.7), transparent),
-        radial-gradient(1.1px 1.1px at 92% 12%, rgba(230, 187, 77, 0.5), transparent);
-}
-
-.orbit-doodle {
-    position: absolute;
-    animation: icon-twinkle 5s ease-in-out infinite;
-    will-change: transform;
-    line-height: 1;
-}
-
-/* Three sparse symbols per theme, scattered toward the edges/corners, well clear of the pie and each other.
-   Position/size are static (CSS); js/home-parallax.js drives the transform: translate() on top for the mouse-parallax effect. */
-
-.orbit-doodle[data-section="dev"][data-item="1"]   { left: 6%;  top: 10%; font-size: 30px; opacity: 0.55; }
-.orbit-doodle[data-section="dev"][data-item="2"]   { left: 17%; top: 23%; font-size: 20px; opacity: 0.4;  animation-delay: 1.5s; }
-.orbit-doodle[data-section="dev"][data-item="3"]   { left: 3%;  top: 48%; font-size: 16px; opacity: 0.3;  animation-delay: 3s; }
-
-.orbit-doodle[data-section="bio"][data-item="1"]   { left: 33%; top: 6%;  font-size: 24px; opacity: 0.45; }
-.orbit-doodle[data-section="bio"][data-item="2"]   { left: 9%;  top: 60%; font-size: 32px; opacity: 0.55; animation-delay: 1.7s; }
-.orbit-doodle[data-section="bio"][data-item="3"]   { left: 21%; top: 74%; font-size: 16px; opacity: 0.3;  animation-delay: 3.4s; }
-
-.orbit-doodle[data-section="music"][data-item="1"] { left: 75%; top: 7%;  font-size: 26px; opacity: 0.5; }
-.orbit-doodle[data-section="music"][data-item="2"] { left: 88%; top: 17%; font-size: 22px; opacity: 0.4;  animation-delay: 2.1s; }
-.orbit-doodle[data-section="music"][data-item="3"] { left: 94%; top: 36%; font-size: 16px; opacity: 0.3;  animation-delay: 4s; }
-
-.orbit-doodle[data-section="math"][data-item="1"]  { left: 90%; top: 50%; font-size: 26px; opacity: 0.5; }
-.orbit-doodle[data-section="math"][data-item="2"]  { left: 93%; top: 67%; font-size: 20px; opacity: 0.4;  animation-delay: 2.5s; }
-.orbit-doodle[data-section="math"][data-item="3"]  { left: 81%; top: 78%; font-size: 16px; opacity: 0.3;  animation-delay: 4.3s; }
-
-.orbit-doodle[data-section="chess"][data-item="1"] { left: 8%;  top: 83%; font-size: 28px; opacity: 0.5; }
-.orbit-doodle[data-section="chess"][data-item="2"] { left: 20%; top: 93%; font-size: 20px; opacity: 0.4;  animation-delay: 1.2s; }
-.orbit-doodle[data-section="chess"][data-item="3"] { left: 30%; top: 87%; font-size: 16px; opacity: 0.3;  animation-delay: 3.7s; }
-
-.orbit-doodle[data-section="quant"][data-item="1"] { left: 55%; top: 91%; font-size: 26px; opacity: 0.5; }
-.orbit-doodle[data-section="quant"][data-item="2"] { left: 68%; top: 83%; font-size: 22px; opacity: 0.4;  animation-delay: 2.8s; }
-.orbit-doodle[data-section="quant"][data-item="3"] { left: 84%; top: 91%; font-size: 16px; opacity: 0.3;  animation-delay: 4.6s; }
-
-.orbit-doodle[data-section="math"]  { color: #4da6ff; filter: drop-shadow(0 0 7px rgba(77, 166, 255, 0.85)); }
-.orbit-doodle[data-section="quant"] { color: #ffc94d; filter: drop-shadow(0 0 7px rgba(255, 201, 77, 0.85)); }
-.orbit-doodle[data-section="chess"] { color: #ff9d4d; filter: drop-shadow(0 0 7px rgba(255, 157, 77, 0.85)); }
-.orbit-doodle[data-section="bio"]   { color: #4ade80; filter: drop-shadow(0 0 7px rgba(74, 222, 128, 0.85)); }
-.orbit-doodle[data-section="dev"]   { color: #22d3ee; filter: drop-shadow(0 0 7px rgba(34, 211, 238, 0.85)); }
-.orbit-doodle[data-section="music"] { color: #c084fc; filter: drop-shadow(0 0 7px rgba(192, 132, 252, 0.85)); }
-
-/* ── Placeholder chessboard ── */
-
-.chess-board-placeholder {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    width: 100%;
-    max-width: 480px;
-    aspect-ratio: 1;
-    border: 2px solid var(--border-color);
-    border-radius: 4px;
-    overflow: hidden;
-    margin: 1.5rem 0;
-}
-
-.chess-board-placeholder .sq {
-    aspect-ratio: 1;
-}
-
-.chess-board-placeholder .sq.light { background: #f0d9b5; }
-.chess-board-placeholder .sq.dark  { background: #b58863; }
