@@ -38,6 +38,15 @@ html[data-section="home"] {
     scrollbar-gutter: auto;
 }
 
+/* Fully covered edge-to-edge by the pie images - nothing behind them is ever visible. */
+html[data-section="home"] body {
+    background: none;
+}
+
+html[data-section="home"] body::before {
+    content: none;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -52,12 +61,12 @@ main {
 /* ── Section theming ── */
 
 :root {
-    --section-math:  #3a6ea5;
-    --section-quant: #b8860b;
-    --section-chess: #a5303a;
-    --section-bio:   #3f8f5f;
-    --section-dev:   #0e7c86;
-    --section-music: #7952b3;
+    --section-math:  #2563eb;
+    --section-quant: #f59e0b;
+    --section-chess: #94a3b8;
+    --section-bio:   #22c55e;
+    --section-dev:   #7c3aed;
+    --section-music: #be123c;
 }
 
 html[data-section="math"]  { --accent: var(--section-math); }
@@ -67,35 +76,35 @@ html[data-section="biology"]   { --accent: var(--section-bio); }
 html[data-section="dev"]   { --accent: var(--section-dev); }
 html[data-section="music"] { --accent: var(--section-music); }
 
-[data-theme="dark"][data-section="math"]  { --accent: #6fa8dc; }
-[data-theme="dark"][data-section="quant"] { --accent: #f5c542; }
-[data-theme="dark"][data-section="chess"] { --accent: #e0707a; }
-[data-theme="dark"][data-section="biology"]   { --accent: #6fcf97; }
-[data-theme="dark"][data-section="dev"]   { --accent: #4dd0e1; }
-[data-theme="dark"][data-section="music"] { --accent: #b39ddb; }
+[data-theme="dark"][data-section="math"]  { --accent: #7ab8ff; }
+[data-theme="dark"][data-section="quant"] { --accent: #fbbf24; }
+[data-theme="dark"][data-section="chess"] { --accent: #cbd5e1; }
+[data-theme="dark"][data-section="biology"]   { --accent: #4ade80; }
+[data-theme="dark"][data-section="dev"]   { --accent: #a78bfa; }
+[data-theme="dark"][data-section="music"] { --accent: #fb7185; }
 
 html[data-section="math"] {
-    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M10,50 L10,8 M10,50 L52,50 M14,44 Q30,12 48,30' stroke='%233a6ea5' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M10,50 L10,8 M10,50 L52,50 M14,44 Q30,12 48,30' stroke='%232563eb' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 html[data-section="quant"] {
-    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect x='10' y='38' width='7' height='14' fill='%23b8860b'/%3E%3Crect x='24' y='28' width='7' height='24' fill='%23b8860b'/%3E%3Crect x='38' y='16' width='7' height='36' fill='%23b8860b'/%3E%3Cpath d='M10,40 L27,26 L41,14' stroke='%23b8860b' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect x='10' y='38' width='7' height='14' fill='%23f59e0b'/%3E%3Crect x='24' y='28' width='7' height='24' fill='%23f59e0b'/%3E%3Crect x='38' y='16' width='7' height='36' fill='%23f59e0b'/%3E%3Cpath d='M10,40 L27,26 L41,14' stroke='%23f59e0b' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 html[data-section="chess"] {
-    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect x='8' y='8' width='18' height='18' fill='%23a5303a'/%3E%3Crect x='26' y='8' width='18' height='18' fill='none' stroke='%23a5303a' stroke-width='2'/%3E%3Crect x='8' y='26' width='18' height='18' fill='none' stroke='%23a5303a' stroke-width='2'/%3E%3Crect x='26' y='26' width='18' height='18' fill='%23a5303a'/%3E%3C/svg%3E");
+    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect x='8' y='8' width='18' height='18' fill='%2394a3b8'/%3E%3Crect x='26' y='8' width='18' height='18' fill='none' stroke='%2394a3b8' stroke-width='2'/%3E%3Crect x='8' y='26' width='18' height='18' fill='none' stroke='%2394a3b8' stroke-width='2'/%3E%3Crect x='26' y='26' width='18' height='18' fill='%2394a3b8'/%3E%3C/svg%3E");
 }
 
 html[data-section="biology"] {
-    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M15,45 C15,20 45,15 48,10 C45,35 30,48 15,45 Z' fill='none' stroke='%233f8f5f' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='M18,42 C25,32 32,24 46,12' stroke='%233f8f5f' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M15,45 C15,20 45,15 48,10 C45,35 30,48 15,45 Z' fill='none' stroke='%2322c55e' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='M18,42 C25,32 32,24 46,12' stroke='%2322c55e' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 html[data-section="dev"] {
-    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M20,16 L8,30 L20,44' stroke='%230e7c86' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M40,16 L52,30 L40,44' stroke='%230e7c86' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M33,10 L27,50' stroke='%230e7c86' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M20,16 L8,30 L20,44' stroke='%237c3aed' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M40,16 L52,30 L40,44' stroke='%237c3aed' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M33,10 L27,50' stroke='%237c3aed' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 html[data-section="music"] {
-    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='18' cy='42' r='7' fill='%237952b3'/%3E%3Cpath d='M25,42 L25,12 L40,16 L40,24' stroke='%237952b3' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    --doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='18' cy='42' r='7' fill='%23be123c'/%3E%3Cpath d='M25,42 L25,12 L40,16 L40,24' stroke='%23be123c' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 body::before {
@@ -566,12 +575,6 @@ html[data-section="music"] .crosslink-dot[data-crosslink="music"] {
     margin-bottom: 0;
 }
 
-/* ── Homepage ── */
-
-html[data-section="home"] {
-    --bg-color: #06060c;
-}
-
 /* ── Homepage pie ── */
 
 .pie-stage {
@@ -588,22 +591,11 @@ html[data-section="home"] {
     height: 100vh;
 }
 
-/* Background is a conic-gradient computed and set inline by js/home-pie.js: each
-   section gets a flat-colored angular slice extending all the way to the viewport's
-   rectangular edges (not an inscribed ellipse), with slice angles chosen so every
-   section covers equal on-screen AREA despite the rectangle's aspect ratio. A radial
-   vignette layered on top darkens toward the center, matching the site's existing
-   dark/starfield look until real per-section background images replace this. */
-.pie-sectors {
-    position: absolute;
-    inset: 0;
-}
-
 /* A per-section background image, cropped to that section's exact sector shape via a
-   clip-path polygon computed and kept in sync by js/home-pie.js. Sits above the flat
-   .pie-sectors color/vignette and below the labels/center hub. To add another section's
-   image, just add another ".pie-image" div with the matching data-section - the JS
-   picks up whichever ones exist without needing any code changes. */
+   clip-path polygon computed and kept in sync by js/home-pie.js. Sits below the labels/
+   center hub. To add another section's image, just add another ".pie-image" div with the
+   matching data-section - the JS picks up whichever ones exist without needing any code
+   changes. */
 /* Position/size are set directly by JS (to the sector's own bounding box, not the full
    viewport - see js/home-pie.js), so no "inset: 0" here; that would fight the explicit
    left/top/width/height and force the element back to full-screen size. */
@@ -640,12 +632,12 @@ html[data-section="home"] {
     transform: translate(-50%, -50%) scale(1.08);
 }
 
-.pie-label[data-section="math"]  { background: #4da6ff; }
-.pie-label[data-section="quant"] { background: #ffc94d; }
-.pie-label[data-section="chess"] { background: #ff9d4d; }
-.pie-label[data-section="biology"]   { background: #4ade80; }
-.pie-label[data-section="dev"]   { background: #22d3ee; }
-.pie-label[data-section="music"] { background: #c084fc; }
+.pie-label[data-section="math"]  { background: #2563eb; }
+.pie-label[data-section="quant"] { background: #f59e0b; }
+.pie-label[data-section="chess"] { background: #94a3b8; }
+.pie-label[data-section="biology"]   { background: #22c55e; }
+.pie-label[data-section="dev"]   { background: #7c3aed; }
+.pie-label[data-section="music"] { background: #be123c; }
 
 /* Center "S" badge sits outside the (non-uniformly scaled) SVG so it always stays a circle. */
 

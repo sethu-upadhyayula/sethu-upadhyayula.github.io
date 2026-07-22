@@ -11,17 +11,6 @@
     // Bio/Dev/Music across the bottom half, each reading left-to-right.
     const SECTIONS = ["music", "dev", "biology", "math", "quant", "chess"];
 
-    // Solid per-section slice color (the previous gradient's darker end), overlaid
-    // with a radial vignette below so it still reads as "dark toward the center".
-    const SECTION_COLORS = {
-        math: "#1a2b3f",
-        quant: "#3d2f0a",
-        chess: "#2e1810",
-        biology: "#132a1c",
-        dev: "#0a2a2d",
-        music: "#241a35",
-    };
-
     const SAMPLES = 3600; // angular resolution for the numeric area integration
 
     function debounce(fn, wait) {
@@ -136,8 +125,7 @@
 
     function updatePie() {
         const wrap = document.querySelector(".pie-wrap");
-        const sectors = document.querySelector(".pie-sectors");
-        if (!wrap || !sectors) return;
+        if (!wrap) return;
 
         const w = wrap.clientWidth;
         const h = wrap.clientHeight;
@@ -151,21 +139,6 @@
 
         const boundaries = equalAreaBoundaries(halfW, halfH, startAngle, SECTIONS.length);
         updateImageLayers(cx, cy, halfW, halfH, boundaries);
-
-        // conic-gradient's 0deg points up (12-o'clock) and increases clockwise, while our
-        // startAngle=0 points right (3-o'clock); "from 90deg" rotates the gradient's own
-        // 0% point to line up with our angle-zero, so the plain 0..100% stops below map
-        // directly onto our own angle system without any per-stop conversion.
-        const stops = SECTIONS.map((section, i) => {
-            const f0 = (boundaries[i] - startAngle) / (2 * Math.PI);
-            const f1 = (boundaries[i + 1] - startAngle) / (2 * Math.PI);
-            const color = SECTION_COLORS[section];
-            return `${color} ${(f0 * 100).toFixed(3)}% ${(f1 * 100).toFixed(3)}%`;
-        });
-
-        sectors.style.background =
-            `radial-gradient(circle at center, rgba(6,6,12,0.92) 0%, rgba(6,6,12,0) 42%), ` +
-            `conic-gradient(from 90deg at center, ${stops.join(", ")})`;
 
         SECTIONS.forEach((section, i) => {
             const b0 = boundaries[i];
