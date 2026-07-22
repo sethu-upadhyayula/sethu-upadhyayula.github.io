@@ -10,6 +10,10 @@
     style.textContent = [
         '.gv-wrap{display:flex;flex-wrap:wrap;gap:1.5rem;align-items:flex-start;margin:1rem 0;}',
         '.gv-board-col{flex:0 0 auto;}',
+        '.gv-controls{display:flex;gap:.4rem;margin-top:.6rem;}',
+        '.gv-btn{flex:1 1 0;display:flex;align-items:center;justify-content:center;padding:.4rem 0;border:1px solid var(--border-color,#555);border-radius:6px;background:rgba(108,142,191,0.08);color:inherit;cursor:pointer;font-size:.95rem;transition:background .15s;}',
+        '.gv-btn:hover:not(:disabled){background:rgba(108,142,191,0.25);}',
+        '.gv-btn:disabled{opacity:.35;cursor:default;}',
         '.gv-moves-col{flex:1 1 220px;min-width:0;font-family:"Courier New",monospace;line-height:1.85;background:rgba(108,142,191,0.08);border-radius:8px;padding:1rem;max-height:380px;overflow-y:auto;}',
         '.gv-move{cursor:pointer;padding:1px 3px;border-radius:3px;transition:background .15s;}',
         '.gv-move:hover{background:rgba(108,142,191,0.25);}',
@@ -178,6 +182,19 @@
         boardCol.className = 'gv-board-col';
         boardCol.appendChild(boardDiv);
 
+        var controls = document.createElement('div');
+        controls.className = 'gv-controls';
+        controls.innerHTML =
+            '<button type="button" class="gv-btn" data-action="first" aria-label="Go to start of game"><i class="fas fa-backward-fast"></i></button>' +
+            '<button type="button" class="gv-btn" data-action="prev" aria-label="Previous move"><i class="fas fa-chevron-left"></i></button>' +
+            '<button type="button" class="gv-btn" data-action="next" aria-label="Next move"><i class="fas fa-chevron-right"></i></button>' +
+            '<button type="button" class="gv-btn" data-action="last" aria-label="Go to end of game"><i class="fas fa-forward-fast"></i></button>';
+        boardCol.appendChild(controls);
+        var firstBtn = controls.querySelector('[data-action="first"]');
+        var prevBtn  = controls.querySelector('[data-action="prev"]');
+        var nextBtn  = controls.querySelector('[data-action="next"]');
+        var lastBtn  = controls.querySelector('[data-action="last"]');
+
         var movesCol = document.createElement('div');
         movesCol.className = 'gv-moves-col';
         movesCol.innerHTML = buildTokenHTML(tokens);
@@ -197,6 +214,15 @@
 
         var currentIdx = -1;
 
+        function updateControlsState() {
+            var atStart = currentIdx < 0;
+            var atEnd = currentIdx >= tokens.length - 1;
+            firstBtn.disabled = atStart;
+            prevBtn.disabled = atStart;
+            nextBtn.disabled = atEnd;
+            lastBtn.disabled = atEnd;
+        }
+
         function goTo(idx) {
             currentIdx = idx;
             var spans = movesCol.querySelectorAll('.gv-move');
@@ -205,6 +231,7 @@
                 renderChessBoard(boardId, fenToPieces(INIT_FEN));
                 spans.forEach(function (s) { s.classList.remove('gv-active'); });
                 movesCol.scrollTop = 0;
+                updateControlsState();
                 return;
             }
 
@@ -228,10 +255,23 @@
             if (activeSpan) {
                 activeSpan.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
             }
+            updateControlsState();
         }
 
         /* Render starting position */
         renderChessBoard(boardId, fenToPieces(INIT_FEN));
+        updateControlsState();
+
+        /* Control buttons: first / prev / next / last */
+        controls.addEventListener('click', function (e) {
+            var btn = e.target.closest('.gv-btn');
+            if (!btn || btn.disabled) return;
+            var action = btn.dataset.action;
+            if (action === 'first') goTo(-1);
+            else if (action === 'prev') { if (currentIdx >= 0) goTo(currentIdx - 1); }
+            else if (action === 'next') { if (currentIdx < tokens.length - 1) goTo(currentIdx + 1); }
+            else if (action === 'last') goTo(tokens.length - 1);
+        });
 
         /* Click handler */
         movesCol.addEventListener('click', function (e) {
