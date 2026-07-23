@@ -251,9 +251,20 @@
                 s.classList.toggle('gv-active', parseInt(s.dataset.idx) === safeIdx);
             });
 
+            /* Scroll only within the moves list itself, and only when the active move
+               isn't already visible there - movesCol.scrollTo() cannot bleed out to the
+               page/viewport the way element.scrollIntoView() can on some mobile browsers. */
             var activeSpan = movesCol.querySelector('.gv-move.gv-active');
             if (activeSpan) {
-                activeSpan.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                var visibleTop = movesCol.scrollTop;
+                var visibleBottom = visibleTop + movesCol.clientHeight;
+                var spanTop = activeSpan.offsetTop;
+                var spanBottom = spanTop + activeSpan.offsetHeight;
+                if (spanTop < visibleTop) {
+                    movesCol.scrollTo({ top: spanTop, behavior: 'smooth' });
+                } else if (spanBottom > visibleBottom) {
+                    movesCol.scrollTo({ top: spanBottom - movesCol.clientHeight, behavior: 'smooth' });
+                }
             }
             updateControlsState();
         }
